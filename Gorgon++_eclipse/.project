@@ -82,12 +82,27 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>addon</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>include</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>src</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -200,6 +215,21 @@
 			<name>.svn/text-base/SConscript.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-2-ECLIPSE_HOME/Dev/gorgon++/src/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/magick++</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>include/.svn/entries</name>
@@ -1025,6 +1055,21 @@
 			<name>src/script/gorgon_lua_return.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/gorgon_lua_return.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/magick++/gorgon_image_loader.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/magick++/gorgon_image_loader.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/magick++/gorgon_image_loader.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/magick++/gorgon_image_loader.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/.svn/prop-base/gorgon.hpp.svn-base</name>
