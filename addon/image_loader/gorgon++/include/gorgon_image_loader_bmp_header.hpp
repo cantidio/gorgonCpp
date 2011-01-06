@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,9 +27,8 @@
 #ifndef _GORGON_IMAGE_FORMAT_BMP_HEADER_
 #define _GORGON_IMAGE_FORMAT_BMP_HEADER_
 #include <iostream>
-#include "gorgon_image_format_bmp_info_header.hpp"
-#include "../core/gorgon_file.hpp"
-
+#include <gorgon++/core/gorgon_file.hpp>
+#include "gorgon_image_loader_bmp_info_header.hpp"
 namespace Gorgon
 {
 	class Image;
@@ -41,13 +40,13 @@ namespace Gorgon
 	 * @version	17/02/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageFormatBmpHeader
+	class ImageLoaderBmpHeader
 	{
 		private:
 			/**
 			 * Número que representa o arquivo como sendo uma imagem BMP
 			 */
-			static const int mImageFormatBmpMagicNumber;
+			static const int mImageLoaderBmpMagicNumber;
 			/**
 			 * Tipo do arquivo lido, deve ser sempre 4D42h ("BM")
 			 */
@@ -76,7 +75,7 @@ namespace Gorgon
 			 * @since	16/02/2009
 			 * @version	16/02/2009
 			 */
-			ImageFormatBmpHeader();
+			ImageLoaderBmpHeader();
 			/**
 			 * Método Construtor
 			 *
@@ -85,7 +84,7 @@ namespace Gorgon
 			 * @version	16/02/2009
 			 * @param	File& pFile, arquivo a abrir o header
 			 */
-			ImageFormatBmpHeader(Core::File& pFile);
+			ImageLoaderBmpHeader(Core::File& pFile);
 			/**
 			 * Método que preenche os dados do header dados o infoHeader
 			 *
@@ -94,7 +93,7 @@ namespace Gorgon
 			 * @version	19/02/2009
 			 * @param	const ImageBmpInfoHeader& pInfoHeader, o infoHeader da imagem gerado previamente
 			 */
-			void fill(const ImageFormatBmpInfoHeader& pInfoHeader);
+			void fill(const ImageLoaderBmpInfoHeader& pInfoHeader);
 			/**
 			 * Método que descreve os atributos da classe
 			 *

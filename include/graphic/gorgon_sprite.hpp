@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -152,9 +152,9 @@ namespace Gorgon
 			 * @since	07/08/2008
 			 * @version	21/06/2009
 			 * @param	const string& pSpriteName, nome do arquivo a salvar o sprite
-			 * @param	ImageFormat* pImageFormat, ponteiro para o formato de imagem a salvar
+			 * @param	ImageLoader* pImageLoader, ponteiro para o formato de imagem a salvar
 			 */
-			virtual void save(const std::string& pSpriteName,const ImageFormat& pImageFormat = ImageFormatAutodetect());
+			virtual void save(const std::string& pSpriteName,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
 			/**
 			 * Método para salvar o sprite em um arquivo já aberto
 			 *
@@ -162,9 +162,9 @@ namespace Gorgon
 			 * @since	07/08/2008
 			 * @version	21/06/2009
 			 * @param	File&			pFile			, arquivo já aberto
-			 * @param	imageFormat*	pImageFormat	, ponteiro para o formato de imagem a salvar
+			 * @param	ImageLoader*	pImageLoader	, ponteiro para o formato de imagem a salvar
 			 */
-			virtual void save(Core::File& pFile,const ImageFormat& pImageFormat = ImageFormatAutodetect());
+			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
 			/**
 			 * Método para setar o grupo do sprite
 			 *

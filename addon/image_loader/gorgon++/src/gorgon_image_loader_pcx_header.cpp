@@ -1,42 +1,42 @@
-#include "graphic/gorgon_image_format_pcx_header.hpp"
-#include "graphic/gorgon_image.hpp"
+#include "../include/gorgon_image_loader_pcx_header.hpp"
+#include <graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
 
-	ImageFormatPcxHeader::ImageFormatPcxHeader()
+	ImageLoaderPcxHeader::ImageLoaderPcxHeader()
 	{
 		mPalette = new Palette();
 	}
 
-	ImageFormatPcxHeader::~ImageFormatPcxHeader()
+	ImageLoaderPcxHeader::~ImageLoaderPcxHeader()
 	{
 		delete mPalette;
 	}
 
-	int ImageFormatPcxHeader::getType() const
+	int ImageLoaderPcxHeader::getType() const
 	{
 		switch(getNumBitPlanes())
 		{
 			case 1:
 				switch(getBitsPerPixel())
 				{
-					case 1: return ImageFormatPcx1Bit;
-					case 8:	return ImageFormatPcx8Bit;
+					case 1: return ImageLoaderPcx1Bit;
+					case 8:	return ImageLoaderPcx8Bit;
 				}
 				break;
 			case 3:
-				return ImageFormatPcx24Bit;
+				return ImageLoaderPcx24Bit;
 				break;
 			case 4:
-				return ImageFormatPcx4Bit;
+				return ImageLoaderPcx4Bit;
 				break;
 			default:
 				return -1;
 		}
 	}
 
-	void ImageFormatPcxHeader::fill(const Image& pImage)
+	void ImageLoaderPcxHeader::fill(const Image& pImage)
 	{
 		mXStart			= 0;
 		mYStart			= 0;
@@ -62,7 +62,7 @@ namespace Gorgon
 		}
 	}
 
-	std::string ImageFormatPcxHeader::describe() const
+	std::string ImageLoaderPcxHeader::describe() const
 	{
 		std::stringstream out;
 		out << "PcxHeader Descriptor"	<< std::endl;
@@ -82,37 +82,37 @@ namespace Gorgon
 		return out.str();
 	}
 	
-	int ImageFormatPcxHeader::getWidth() const
+	int ImageLoaderPcxHeader::getWidth() const
 	{
 		return mXEnd - mXStart + 1;
 	}
 
-	int ImageFormatPcxHeader::getHeight() const
+	int ImageLoaderPcxHeader::getHeight() const
 	{
 		return mYEnd - mYStart + 1;
 	}
 
-	int ImageFormatPcxHeader::getBitsPerPixel() const
+	int ImageLoaderPcxHeader::getBitsPerPixel() const
 	{
 		return (int)mBitsPerPixel;
 	}
 
-	int ImageFormatPcxHeader::getNumBitPlanes() const
+	int ImageLoaderPcxHeader::getNumBitPlanes() const
 	{
 		return (int)mNumBitPlanes;
 	}
 
-	int ImageFormatPcxHeader::getBytesPerLine() const
+	int ImageLoaderPcxHeader::getBytesPerLine() const
 	{
 		return (int)mBytesPerLine;
 	}
 
-	Palette* ImageFormatPcxHeader::getPalette() const
+	Palette* ImageLoaderPcxHeader::getPalette() const
 	{
 		return mPalette->copy();
 	}
 
-	void ImageFormatPcxHeader::save(Core::File& pFile) const
+	void ImageLoaderPcxHeader::save(Core::File& pFile) const
 	{
 		pFile.put(0x0A);//10
 		pFile.put(5);
@@ -136,7 +136,7 @@ namespace Gorgon
 		pFile.write("Pcx image saved using Gorgon Api.",58);
 	}
 
-	void ImageFormatPcxHeader::load(Core::File& pFile)
+	void ImageLoaderPcxHeader::load(Core::File& pFile)
 	{
 		mIdentifier		= pFile.readInt8();
 		mVersion		= pFile.readInt8();
@@ -157,7 +157,7 @@ namespace Gorgon
 		pFile.ignore(58);
 	}
 
-	bool ImageFormatPcxHeader::isValid() const
+	bool ImageLoaderPcxHeader::isValid() const
 	{
 		if(mIdentifier != 0x0A)
 		{
@@ -166,7 +166,7 @@ namespace Gorgon
 		return true;
 	}
 
-	long ImageFormatPcxHeader::getImageSize() const
+	long ImageLoaderPcxHeader::getImageSize() const
 	{
 		return getNumBitPlanes() * getBytesPerLine() * getHeight() + 128;
 	}

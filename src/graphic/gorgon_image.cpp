@@ -2,20 +2,20 @@
 
 namespace Gorgon
 {
-	Image::Image(const std::string& pFileName,const ImageFormat& pImageFormat)
+	Image::Image(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
 		mData		= NULL;
 		mDataBuffer	= NULL;
 		mPalette	= NULL;
-		load(pFileName,pImageFormat);
+		load(pFileName,pImageLoader);
 	}
 
-	Image::Image(Core::File& pFile, const ImageFormat& pImageFormat)
+	Image::Image(Core::File& pFile, const ImageLoader& pImageLoader)
 	{
 		mData		= NULL;
 		mDataBuffer	= NULL;
 		mPalette	= NULL;
-		load(pFile,pImageFormat);
+		load(pFile,pImageLoader);
 	}
 	
 	Image::Image(BITMAP* pBitmap, Palette *pPalette)
@@ -83,24 +83,24 @@ namespace Gorgon
 		}
 	}
 
-	void Image::load(const std::string& pFileName,const ImageFormat& pImageFormat)
+	void Image::load(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
-		pImageFormat.load(*this,pFileName);
+		pImageLoader.load(*this,pFileName);
 	}
 
-	void Image::load(Core::File& pFile, const ImageFormat& pImageFormat)
+	void Image::load(Core::File& pFile, const ImageLoader& pImageLoader)
 	{
-		pImageFormat.load(*this,pFile);
+		pImageLoader.load(*this,pFile);
 	}
 
-	void Image::save(const std::string& pFileName,const ImageFormat& pImageFormat)
+	void Image::save(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
-		pImageFormat.save(*this,pFileName);
+		pImageLoader.save(*this,pFileName);
 	}
 
-	void Image::save(Core::File& pFile, const ImageFormat& pImageFormat)
+	void Image::save(Core::File& pFile, const ImageLoader& pImageLoader)
 	{
-		pImageFormat.load(*this,pFile);
+		pImageLoader.load(*this,pFile);
 	}
 
 	void Image::create

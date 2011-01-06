@@ -1,20 +1,12 @@
-#include "graphic/gorgon_image_format_pcx.hpp"
-#include "graphic/gorgon_image.hpp"
+#include "../include/gorgon_image_loader_pcx.hpp"
+#include <graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
-	void printBinary(char a)
-	{
-		for(int i=0; i < 8; ++i)
-		{
-			printf("%d ",((a >> 7-i) & 1));
-		}
-	}
-
-	void ImageFormatPcx::loadEncoded1BitData
+	void ImageLoaderPcx::loadEncoded1BitData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
@@ -66,10 +58,10 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::loadEncoded4BitData
+	void ImageLoaderPcx::loadEncoded4BitData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
@@ -135,10 +127,10 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::loadEncoded8BitData
+	void ImageLoaderPcx::loadEncoded8BitData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
@@ -181,10 +173,10 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::loadEncoded24BitData
+	void ImageLoaderPcx::loadEncoded24BitData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
@@ -246,35 +238,35 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::loadEncodedData
+	void ImageLoaderPcx::loadEncodedData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
 		switch(pHeader.getType())
 		{
-			case ImageFormatPcx1Bit:	loadEncoded1BitData(pImage,pHeader,pFile);	break;
-			case ImageFormatPcx4Bit:	loadEncoded4BitData(pImage,pHeader,pFile);	break;
-			case ImageFormatPcx8Bit:	loadEncoded8BitData(pImage,pHeader,pFile);	break;
-			case ImageFormatPcx24Bit:	loadEncoded24BitData(pImage,pHeader,pFile); break;
+			case ImageLoaderPcx1Bit:	loadEncoded1BitData(pImage,pHeader,pFile);	break;
+			case ImageLoaderPcx4Bit:	loadEncoded4BitData(pImage,pHeader,pFile);	break;
+			case ImageLoaderPcx8Bit:	loadEncoded8BitData(pImage,pHeader,pFile);	break;
+			case ImageLoaderPcx24Bit:	loadEncoded24BitData(pImage,pHeader,pFile); break;
 			default:
-				throw ImageFormatPcxException("Unable to load ImageFormatPcx due to unknown image compression.");
+				throw ImageLoaderPcxException("Unable to load ImageLoaderPcx due to unknown image compression.");
 		}
 		pImage.mImgLinked = false;
 	}
 
-	void ImageFormatPcx::loadPaletteData
+	void ImageLoaderPcx::loadPaletteData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
 		pImage.mPalette	= NULL;
 
-		if(pHeader.getType() == ImageFormatPcx1Bit)
+		if(pHeader.getType() == ImageLoaderPcx1Bit)
 		{
 			pImage.mPalette = new Palette();
 			pImage.getPalette()->setColor(0,0,0,0);
@@ -295,7 +287,7 @@ namespace Gorgon
 		pImage.mPalLinked = false;
 	}
 
-	void ImageFormatPcx::load(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderPcx::load(Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::in | std::ios::binary);
 
@@ -305,13 +297,13 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageFormatPcxException("Unable to load ImageFormatPcx: "+pImageName+".");
+			throw ImageLoaderPcxException("Unable to load ImageLoaderPcx: "+pImageName+".");
 		}
 	}
 
-	void ImageFormatPcx::load(Image& pImage,Core::File& pFile) const
+	void ImageLoaderPcx::load(Image& pImage,Core::File& pFile) const
 	{
-		ImageFormatPcxHeader header;
+		ImageLoaderPcxHeader header;
 		header.load(pFile);
 		if(header.isValid())
 		{
@@ -321,14 +313,14 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageFormatPcxException("Unable to load ImageFormatPcx due to incorrect format.");
+			throw ImageLoaderPcxException("Unable to load ImageLoaderPcx due to incorrect format.");
 		}
 	}
 
-	void ImageFormatPcx::saveEncoded4BitData
+	void ImageLoaderPcx::saveEncoded4BitData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
@@ -382,7 +374,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::saveEncoded8BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderPcx::saveEncoded8BitData(Image& pImage, Core::File& pFile) const
 	{
 		char	pixel;
 		char	savePixel;
@@ -430,7 +422,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::saveEncoded24BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderPcx::saveEncoded24BitData(Image& pImage, Core::File& pFile) const
 	{
 		int		pixel;
 		char	savePixel;
@@ -495,28 +487,28 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::saveEncodedData
+	void ImageLoaderPcx::saveEncodedData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
 		switch(pHeader.getType())
 		{
-			case ImageFormatPcx1Bit:	//saveEncoded1BitData(pImage,pHeader,file);	break;
-			case ImageFormatPcx4Bit:	saveEncoded4BitData(pImage,pHeader,pFile);	break;
-			case ImageFormatPcx8Bit:	saveEncoded8BitData(pImage,pFile);			break;
-			case ImageFormatPcx24Bit:	saveEncoded24BitData(pImage,pFile);			break;
+			case ImageLoaderPcx1Bit:	//saveEncoded1BitData(pImage,pHeader,file);	break;
+			case ImageLoaderPcx4Bit:	saveEncoded4BitData(pImage,pHeader,pFile);	break;
+			case ImageLoaderPcx8Bit:	saveEncoded8BitData(pImage,pFile);			break;
+			case ImageLoaderPcx24Bit:	saveEncoded24BitData(pImage,pFile);			break;
 			default:
-				throw ImageFormatPcxException("Unable to save ImageFormatPcx due to unknown image compression.");
+				throw ImageLoaderPcxException("Unable to save ImageLoaderPcx due to unknown image compression.");
 		}
 	}
 
-	void ImageFormatPcx::savePaletteData
+	void ImageLoaderPcx::savePaletteData
 	(
 		Image& pImage,
-		ImageFormatPcxHeader& pHeader,
+		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
@@ -537,7 +529,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatPcx::save(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderPcx::save(Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::out | std::ios::binary);
 
@@ -547,13 +539,13 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageFormatPcxException("Unable to save ImageFormatPcx: "+pImageName+".");
+			throw ImageLoaderPcxException("Unable to save ImageLoaderPcx: "+pImageName+".");
 		}
 	}
 
-	void ImageFormatPcx::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderPcx::save(Image& pImage, Core::File& pFile) const
 	{
-		ImageFormatPcxHeader header;
+		ImageLoaderPcxHeader header;
 		header.fill(pImage);
 		header.save(pFile);
 		/*mHeader.fill(pImage);

@@ -1,5 +1,5 @@
-#include "graphic/gorgon_image_format_bmp.hpp"
-#include "graphic/gorgon_image.hpp"
+#include "../include/gorgon_image_loader_bmp.hpp"
+#include <graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
@@ -7,11 +7,11 @@ namespace Gorgon
 	 * @todo verificar as comparações de little endian de leitura e escrita dos dados
 	 */
 	
-	void ImageFormatBmp::loadPalette
+	void ImageLoaderBmp::loadPalette
 	(
 		Image& pImage,
-		ImageFormatBmpHeader& pHeader,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpHeader& pHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -33,11 +33,11 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::loadUncompressed1BitData
+	void ImageLoaderBmp::loadUncompressed1BitData
 	(
 		Image& pImage,
-		ImageFormatBmpHeader& pHeader,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpHeader& pHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -81,11 +81,11 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::loadUncompressed4BitData
+	void ImageLoaderBmp::loadUncompressed4BitData
 	(
 		Image& pImage,
-		ImageFormatBmpHeader& pHeader,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpHeader& pHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -121,11 +121,11 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::loadUncompressed8BitData
+	void ImageLoaderBmp::loadUncompressed8BitData
 	(
 		Image& pImage,
-		ImageFormatBmpHeader& pHeader,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpHeader& pHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -146,10 +146,10 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::loadUncompressed24BitData
+	void ImageLoaderBmp::loadUncompressed24BitData
 	(
 		Image& pImage,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -186,10 +186,10 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::loadUncompressed32BitData
+	void ImageLoaderBmp::loadUncompressed32BitData
 	(
 		Image& pImage,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -226,11 +226,11 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::loadUncompressedData
+	void ImageLoaderBmp::loadUncompressedData
 	(
 		Image& pImage,
-		ImageFormatBmpHeader& pHeader,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpHeader& pHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -239,22 +239,22 @@ namespace Gorgon
 			case 1:		loadUncompressed1BitData(pImage,pHeader,pInfoHeader,pFile);	break;
 			case 4:		loadUncompressed4BitData(pImage,pHeader,pInfoHeader,pFile);	break;
 			case 8:		loadUncompressed8BitData(pImage,pHeader,pInfoHeader,pFile);	break;
-			case 16:	throw ImageFormatBmpException("Unable to load ImageFormatBmp with 16 bpp yet."); break;
+			case 16:	throw ImageLoaderBmpException("Unable to load ImageLoaderBmp with 16 bpp yet."); break;
 			case 24:	loadUncompressed24BitData(pImage,pInfoHeader,pFile);		break;
 			case 32:	loadUncompressed32BitData(pImage,pInfoHeader,pFile);		break;
 		}
 		pImage.updateBuffer();
 	}
 
-	void ImageFormatBmp::loadRLE8CompressedData(Image& pImage,Core::File& pFile) const		{}
-	void ImageFormatBmp::loadRLE4CompressedData(Image& pImage,Core::File& pFile) const		{}
-	void ImageFormatBmp::loadBitFieldsCompressedData(Image& pImage,Core::File& pFile)	const	{}
+	void ImageLoaderBmp::loadRLE8CompressedData(Image& pImage,Core::File& pFile) const		{}
+	void ImageLoaderBmp::loadRLE4CompressedData(Image& pImage,Core::File& pFile) const		{}
+	void ImageLoaderBmp::loadBitFieldsCompressedData(Image& pImage,Core::File& pFile)	const	{}
 
-	void ImageFormatBmp::load(Image& pImage,Core::File& pFile) const
+	void ImageLoaderBmp::load(Image& pImage,Core::File& pFile) const
 	{
 		pImage.mImgLinked	= false;
-		ImageFormatBmpHeader		header;
-		ImageFormatBmpInfoHeader	infoHeader;
+		ImageLoaderBmpHeader		header;
+		ImageLoaderBmpInfoHeader	infoHeader;
 		header.load(pFile);//carrega o header
 		
 		if(header.isValid())
@@ -262,7 +262,7 @@ namespace Gorgon
 			infoHeader.load(pFile);//carrega o info header
 			if(infoHeader.getVersion() != 3)
 			{
-				throw ImageFormatBmpException("Unable to load ImageFormatBmp diferent than 3.x. Until now.");
+				throw ImageLoaderBmpException("Unable to load ImageLoaderBmp diferent than 3.x. Until now.");
 			}
 			switch(infoHeader.getCompression())
 			{
@@ -271,16 +271,16 @@ namespace Gorgon
 				case BI_RLE4:		loadRLE4CompressedData(pImage,pFile);		break;
 				case BI_BITFIELDS:	loadBitFieldsCompressedData(pImage,pFile);	break;*/
 				default:
-					throw ImageFormatBmpException("Unable to load ImageFormatBmp due to unknown compression.");
+					throw ImageLoaderBmpException("Unable to load ImageLoaderBmp due to unknown compression.");
 			}
 		}
 		else
 		{
-			throw ImageFormatBmpException("Unable to load ImageFormatBmp due to incorrect format.");
+			throw ImageLoaderBmpException("Unable to load ImageLoaderBmp due to incorrect format.");
 		}
 	}
 
-	void ImageFormatBmp::load(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderBmp::load(Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::in | std::ios::binary);
 
@@ -290,14 +290,14 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageFormatBmpException("Unable to load ImageFormatBmp: "+pImageName+".");
+			throw ImageLoaderBmpException("Unable to load ImageLoaderBmp: "+pImageName+".");
 		}
 	}
 
-	void ImageFormatBmp::savePalette
+	void ImageLoaderBmp::savePalette
 	(
 		Image& pImage,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -316,10 +316,10 @@ namespace Gorgon
 		delete pal;
 	}
 
-	void ImageFormatBmp::saveUncompressed1BitData
+	void ImageLoaderBmp::saveUncompressed1BitData
 	(
 		Image& pImage,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -360,10 +360,10 @@ namespace Gorgon
 	/**
 	 * @todo esse método não está salvando corretamente, tem que reorganizar a paleta de cores
 	 */
-	void ImageFormatBmp::saveUncompressed4BitData
+	void ImageLoaderBmp::saveUncompressed4BitData
 	(
 		Image& pImage,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -395,10 +395,10 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::saveUncompressed8BitData
+	void ImageLoaderBmp::saveUncompressed8BitData
 	(
 		Image& pImage,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -425,7 +425,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::saveUncompressed24BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderBmp::saveUncompressed24BitData(Image& pImage, Core::File& pFile) const
 	{
 		int x, y;
 		unsigned char r,g,b;
@@ -453,7 +453,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::saveUncompressed32BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderBmp::saveUncompressed32BitData(Image& pImage, Core::File& pFile) const
 	{
 		int x, y;
 		unsigned char r,g,b,a;
@@ -485,10 +485,10 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::saveUncompressedData
+	void ImageLoaderBmp::saveUncompressedData
 	(
 		Image& pImage,
-		ImageFormatBmpInfoHeader& pInfoHeader,
+		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
@@ -515,7 +515,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatBmp::save(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderBmp::save(Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::out | std::ios::binary);
 
@@ -525,14 +525,14 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageFormatBmpException("Unable to save ImageFormatBmp: "+pImageName+".");
+			throw ImageLoaderBmpException("Unable to save ImageLoaderBmp: "+pImageName+".");
 		}
 	}
 
-	void ImageFormatBmp::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderBmp::save(Image& pImage, Core::File& pFile) const
 	{
-		ImageFormatBmpHeader		header;
-		ImageFormatBmpInfoHeader	infoHeader;
+		ImageLoaderBmpHeader		header;
+		ImageLoaderBmpInfoHeader	infoHeader;
 		infoHeader.fill(pImage);
 		header.fill(infoHeader);
 		header.save(pFile);//salva o header
@@ -545,7 +545,7 @@ namespace Gorgon
 			case BI_RLE4:		saveRLE4CompressedData(pImage,file);		break;
 			case BI_BITFIELDS:	saveBitFieldsCompressedData(pImage,file);	break;*/
 			default:
-				throw ImageFormatBmpException("Unable to save ImageFormatBmp due to unknown compression.");
+				throw ImageLoaderBmpException("Unable to save ImageLoaderBmp due to unknown compression.");
 		}
 	}
 }

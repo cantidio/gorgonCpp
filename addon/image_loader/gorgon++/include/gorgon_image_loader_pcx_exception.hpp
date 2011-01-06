@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,21 +24,21 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_IMAGE_FORMAT_BMP_EXCEPTION_
-#define _GORGON_IMAGE_FORMAT_BMP_EXCEPTION_
-#include "gorgon_image_exception.hpp"
+#ifndef _GORGON_IMAGE_FORMAT_PCX_EXCEPTION_
+#define _GORGON_IMAGE_FORMAT_PCX_EXCEPTION_
+#include <gorgon++/graphic/gorgon_image_exception.hpp>
 
 namespace Gorgon
 {
 	/**
-	 * Classe de Excessão de ImagemBmp
+	 * Classe de excessões de imagens Pcx
 	 *
-	 * @author	Cantidio Oliveira Fontes
+	 * @author	Cantídio Oliveira Fontes
 	 * @since	20/01/2009
-	 * @version	23/01/2009
+	 * @version	13/02/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageFormatBmpException : public ImageException
+	class ImageLoaderPcxException : public ImageException
 	{
 		public:
 			/**
@@ -47,19 +47,19 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	13/02/2009
-			 * @param	const std::string&	pMessage	, mensagem
-			 * @param	const std::string&	pFile		, arquivo em que a excessão ocorreu
-			 * @param	const std::string&	pFunction	, funcão em que a excessão ocorreu
-			 * @param	const int&			pLine		, linha em que a excessão ocorreu
+			 * @param	const std::string	pMessage	, mensagem
+			 * @param	const std::string	pFile		, arquivo em que a excessão ocorreu
+			 * @param	const std::string	pFunction	, funcão em que a excessão ocorreu
+			 * @param	const int			pLine		, linha em que a excessão ocorreu
 			 */
-			ImageFormatBmpException
+			ImageLoaderPcxException
 			(
-				const std::string&	pMessage,
-				const std::string&	pFile		= "",
-				const std::string&	pFunction	= "",
-				const int&			pLine		= 1
+				const std::string	pMessage,
+				const std::string	pFile		= "",
+				const std::string	pFunction	= "",
+				const int			pLine		= 1
 			);
 	};
 }
-#define ImageFormatBmpException(pMessage) Gorgon::ImageFormatBmpException(pMessage,__FILE__,__FUNCTION__,__LINE__)
+#define ImageLoaderPcxException(pMessage) Gorgon::ImageLoaderPcxException(pMessage,__FILE__,__FUNCTION__,__LINE__)
 #endif

@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,10 +26,10 @@
  */
 #ifndef _GORGON_IMAGE_FORMAT_BMP_
 #define _GORGON_IMAGE_FORMAT_BMP_
-#include "gorgon_image_format.hpp"
-#include "gorgon_image_format_bmp_exception.hpp"
-#include "gorgon_image_format_bmp_header.hpp"
-#include "gorgon_image_format_bmp_info_header.hpp"
+#include <gorgon++/graphic/gorgon_image_loader.hpp>
+#include "gorgon_image_loader_bmp_exception.hpp"
+#include "gorgon_image_loader_bmp_header.hpp"
+#include "gorgon_image_loader_bmp_info_header.hpp"
 
 /*
 #define 1BitColorNumber		2
@@ -48,7 +48,7 @@ namespace Gorgon
 	 * @version	07/08/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageFormatBmp : public ImageFormat
+	class ImageLoaderBmp : public ImageLoader
 	{
 		public:
 			/**
@@ -99,15 +99,15 @@ namespace Gorgon
 			 * @since	17/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&						pImage		, imagem de destino
-			 * @param	ImageFormatBmpHeader&		pHeader		, header da imagem bmp
-			 * @param	ImageFormatBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
+			 * @param	ImageLoaderBmpHeader&		pHeader		, header da imagem bmp
+			 * @param	ImageLoaderBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
 			 * @param	File&						pFile		, ponteiro para o arquivo
 			 */
 			void loadPalette
 			(
 				Image& pImage,
-				ImageFormatBmpHeader& pHeader,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpHeader& pHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -117,15 +117,15 @@ namespace Gorgon
 			 * @since	17/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&						pImage		, imagem de destino
-			 * @param	ImageFormatBmpHeader&		pHeader		, header da imagem bmp
-			 * @param	ImageFormatBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
+			 * @param	ImageLoaderBmpHeader&		pHeader		, header da imagem bmp
+			 * @param	ImageLoaderBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
 			 * @param	File&						pFile		, ponteiro para o arquivo
 			 */
 			void loadUncompressed1BitData
 			(
 				Image& pImage,
-				ImageFormatBmpHeader& pHeader,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpHeader& pHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -135,15 +135,15 @@ namespace Gorgon
 			 * @since	17/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&						pImage		, imagem de destino
-			 * @param	ImageFormatBmpHeader&		pHeader		, header da imagem bmp
-			 * @param	ImageFormatBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
+			 * @param	ImageLoaderBmpHeader&		pHeader		, header da imagem bmp
+			 * @param	ImageLoaderBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
 			 * @param	File&						pFile		, ponteiro para o arquivo
 			 */
 			void loadUncompressed4BitData
 			(
 				Image& pImage,
-				ImageFormatBmpHeader& pHeader,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpHeader& pHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -153,15 +153,15 @@ namespace Gorgon
 			 * @since	17/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&						pImage		, imagem de destino
-			 * @param	ImageFormatBmpHeader&		pHeader		, header da imagem bmp
-			 * @param	ImageFormatBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
+			 * @param	ImageLoaderBmpHeader&		pHeader		, header da imagem bmp
+			 * @param	ImageLoaderBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
 			 * @param	File&						pFile		, ponteiro para o arquivo
 			 */
 			void loadUncompressed8BitData
 			(
 				Image& pImage,
-				ImageFormatBmpHeader& pHeader,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpHeader& pHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -171,13 +171,13 @@ namespace Gorgon
 			 * @since	17/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&						pImage		, imagem de destino
-			 * @param	ImageFormatBmpInfoHeader&	pInfoHeader	, infoheader da imagem
+			 * @param	ImageLoaderBmpInfoHeader&	pInfoHeader	, infoheader da imagem
 			 * @param	File&						pFile		, ponteiro para o arquivo
 			 */
 			void loadUncompressed24BitData
 			(
 				Image& pImage,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -187,13 +187,13 @@ namespace Gorgon
 			 * @since	17/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&						pImage		, imagem de destino
-			 * @param	ImageFormatBmpInfoHeader&	pInfoHeader	, infoheader da imagem
+			 * @param	ImageLoaderBmpInfoHeader&	pInfoHeader	, infoheader da imagem
 			 * @param	File&						pFile		, ponteiro para o arquivo
 			 */
 			void loadUncompressed32BitData
 			(
 				Image& pImage,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -203,15 +203,15 @@ namespace Gorgon
 			 * @since	17/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&						pImage		, imagem de destino
-			 * @param	ImageFormatBmpHeader&		pHeader		, header da imagem bmp
-			 * @param	ImageFormatBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
+			 * @param	ImageLoaderBmpHeader&		pHeader		, header da imagem bmp
+			 * @param	ImageLoaderBmpInfoHeader&	pInfoHeader	, infoheader da imagem bmp
 			 * @param	File&						pFile		, ponteiro para o arquivo
 			 */
 			void loadUncompressedData
 			(
 				Image& pImage,
-				ImageFormatBmpHeader& pHeader,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpHeader& pHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -251,13 +251,13 @@ namespace Gorgon
 			 * @since	18/02/2009
 			 * @version	07/08/2009
 			 * @param	Image& pImage				, imagem a ser salva
-			 * @param	ImageFormatBmpInfoHeader&	, infoheader da imagem
+			 * @param	ImageLoaderBmpInfoHeader&	, infoheader da imagem
 			 * @param	File& pFile					, ponteiro para o arquivo
 			 */
 			void savePalette
 			(
 				Image& pImage,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -267,13 +267,13 @@ namespace Gorgon
 			 * @since	18/02/2009
 			 * @version	07/08/2009
 			 * @param	Image& pImage				, imagem a ser salva
-			 * @param	ImageFormatBmpInfoHeader&	, infoheader da imagem
+			 * @param	ImageLoaderBmpInfoHeader&	, infoheader da imagem
 			 * @param	File& pFile					, ponteiro para o arquivo
 			 */
 			void saveUncompressed1BitData
 			(
 				Image& pImage,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -283,13 +283,13 @@ namespace Gorgon
 			 * @since	18/02/2009
 			 * @version	07/08/2009
 			 * @param	Image& pImage				, imagem a ser salva
-			 * @param	ImageFormatBmpInfoHeader&	, infoheader da imagem
+			 * @param	ImageLoaderBmpInfoHeader&	, infoheader da imagem
 			 * @param	File& pFile					, ponteiro para o arquivo
 			 */
 			void saveUncompressed4BitData
 			(
 				Image& pImage,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -299,13 +299,13 @@ namespace Gorgon
 			 * @since	18/02/2009
 			 * @version	07/08/2009
 			 * @param	Image& pImage				, imagem a ser salva
-			 * @param	ImageFormatBmpInfoHeader&	, infoheader da imagem
+			 * @param	ImageLoaderBmpInfoHeader&	, infoheader da imagem
 			 * @param	File& pFile					, ponteiro para o arquivo
 			 */
 			void saveUncompressed8BitData
 			(
 				Image& pImage,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -335,13 +335,13 @@ namespace Gorgon
 			 * @since	18/02/2009
 			 * @version	07/08/2009
 			 * @param	Image& pImage				, imagem a ser salva
-			 * @param	ImageFormatBmpInfoHeader&	, infoheader da imagem
+			 * @param	ImageLoaderBmpInfoHeader&	, infoheader da imagem
 			 * @param	File& pFile					, ponteiro para o arquivo
 			 */
 			void saveUncompressedData
 			(
 				Image& pImage,
-				ImageFormatBmpInfoHeader& pInfoHeader,
+				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
 	};

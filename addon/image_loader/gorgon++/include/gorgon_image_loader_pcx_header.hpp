@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,15 +27,16 @@
 #ifndef _GORGON_IMAGE_FORMAT_PCX_HEADER_
 #define _GORGON_IMAGE_FORMAT_PCX_HEADER_
 #include <sstream>
-#include "gorgon_image_format_pcx_exception.hpp"
-#include "../core/gorgon_file.hpp"
+#include <gorgon++/core/gorgon_file.hpp>
+#include "gorgon_image_loader_pcx_exception.hpp"
+
 /**
  * @todo criaar um enum para os dados abaixo
  */
-#define ImageFormatPcx1Bit	0
-#define	ImageFormatPcx4Bit	1
-#define	ImageFormatPcx8Bit	2
-#define	ImageFormatPcx24Bit	3
+#define ImageLoaderPcx1Bit	0
+#define	ImageLoaderPcx4Bit	1
+#define	ImageLoaderPcx8Bit	2
+#define	ImageLoaderPcx24Bit	3
 
 namespace Gorgon
 {
@@ -49,7 +50,7 @@ namespace Gorgon
 	 * @version	23/06/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageFormatPcxHeader
+	class ImageLoaderPcxHeader
 	{
 		private:
 			/**
@@ -116,7 +117,7 @@ namespace Gorgon
 			 * @since	20/01/2009
 			 * @version	20/01/2009
 			 */			
-			ImageFormatPcxHeader();
+			ImageLoaderPcxHeader();
 			/**
 			 * Método destrutor
 			 *
@@ -124,7 +125,7 @@ namespace Gorgon
 			 * @since	26/02/2009
 			 * @version	26/02/2009
 			 */
-			~ImageFormatPcxHeader();
+			~ImageLoaderPcxHeader();
 			/**
 			 * Método que retorna o tipo da imagem lida
 			 *

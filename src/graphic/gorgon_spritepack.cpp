@@ -560,7 +560,7 @@ namespace Gorgon
 		for(int i=0; i<this->size(); (*this)[i]->getOtimizedPalette(red,green,blue,this->globalPalette),++i);
 	}*/
 
-	void SpritePack::save(Core::File& pFile,const ImageFormat& pImageFormat)
+	void SpritePack::save(Core::File& pFile,const ImageLoader& pImageLoader)
 	{
 		const int spriteSize	= mSprites.size();
 		bool globPal			= (mGlobalPalette) ? true : false;
@@ -575,17 +575,17 @@ namespace Gorgon
 		pFile.writeInt32(spriteSize);
 		for(int i = 0; i < spriteSize; ++i)
 		{
-			mSprites[i].save(pFile,pImageFormat);
+			mSprites[i].save(pFile,pImageLoader);
 		}
 	}
 
-	void SpritePack::save(const std::string& pFileName,const ImageFormat& pImageFormat)
+	void SpritePack::save(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
 		Core::File file(pFileName,std::ios::out | std::ios::binary);
 
 		if(file.is_open())
 		{
-			save(file,pImageFormat);
+			save(file,pImageLoader);
 		}
 		else
 		{

@@ -56,7 +56,7 @@ namespace Gorgon
 		{
 			Sprite temp
 			(
-				Image(pFile,ImageFormatPcx()),
+				Image(pFile,ImageLoaderPcx()),
 				group,
 				index,
 				xOffset,

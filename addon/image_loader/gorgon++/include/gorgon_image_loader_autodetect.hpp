@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,10 +26,10 @@
  */
 #ifndef _GORGON_IMAGE_LOADER_AUTODETECT_
 #define	_GORGON_IMAGE_LOADER_AUTODETECT_
-#include "gorgon_image_format.hpp"
-#include "gorgon_image_format_pcx.hpp"
-#include "gorgon_image_format_bmp.hpp"
-#include "gorgon_image_format_unknown.hpp"
+#include <gorgon++/graphic/gorgon_image_loader.hpp>
+#include "gorgon_image_loader_pcx.hpp"
+#include "gorgon_image_loader_bmp.hpp"
+#include "gorgon_image_loader_unknown.hpp"
 
 namespace Gorgon
 {
@@ -40,7 +40,7 @@ namespace Gorgon
 	 * @since	05/08/2009
 	 * @version	06/08/2009
 	 */
-	class ImageFormatAutodetect : public ImageFormat
+	class ImageLoaderAutodetect : public ImageLoader
 	{
 		public:
 			/**
@@ -50,9 +50,9 @@ namespace Gorgon
 			 * @since	05/08/2009
 			 * @version	05/08/2009
 			 * @param	const std::string& pFileName, nome do arquivo
-			 * @return	ImageFormat*
+			 * @return	ImageLoader*
 			 */
-			ImageFormat* guessFormat(const std::string& pFileName) const;
+			ImageLoader* guessFormat(const std::string& pFileName) const;
 			/**
 			 * Método para carregar uma imagem
 			 *

@@ -1,4 +1,4 @@
-#include "graphic/gorgon_image_format_autodetect.hpp"
+#include "../include/gorgon_image_loader_autodetect.hpp"
 
 namespace Gorgon
 {
@@ -10,7 +10,7 @@ namespace Gorgon
 	 * @version	06/08/2009
 	 * @param	Image&			pImage			, imagem que receberá a imagem carregada
 	 * @param	File&			pFile			, arquivo que a imagem supostamente está
-	 * @param	ImageFormat*	pImageFormat	, formato a carregar o arquivo
+	 * @param	ImageLoader*	pImageLoader	, formato a carregar o arquivo
 	 * @return	bool
 	 * @details
 	 *			Esse método tenta carregar a imagem a partir do arquivo cedido,
@@ -22,13 +22,13 @@ namespace Gorgon
 	(
 		Image& pImage,
 		Core::File& pFile,
-		const ImageFormat& pImageFormat
+		const ImageLoader& pImageLoader
 	)
 	{
 		long initPosition = pFile.tellg();
 		try
 		{
-			pImageFormat.load(pImage,pFile);
+			pImageLoader.load(pImage,pFile);
 			return true;
 		}
 		catch(const ImageException& e)
@@ -38,18 +38,18 @@ namespace Gorgon
 		}
 	}
 
-	ImageFormat* ImageFormatAutodetect::guessFormat(const std::string& pImageName) const
+	ImageLoader* ImageLoaderAutodetect::guessFormat(const std::string& pImageName) const
 	{
-		if(Core::File::extensionIs(pImageName,".bmp"))		return new ImageFormatBmp();
-		else if(Core::File::extensionIs(pImageName,".pcx"))	return new ImageFormatPcx();
-		/*else if(File::extensionIs(pImageName,".png"))	return new ImageFormatPng();
-		else if(File::extensionIs(pImageName,".gif"))	return new ImageFormatGif();*/
-		return new ImageFormatUnknown();
+		if(Core::File::extensionIs(pImageName,".bmp"))		return new ImageLoaderBmp();
+		else if(Core::File::extensionIs(pImageName,".pcx"))	return new ImageLoaderPcx();
+		/*else if(File::extensionIs(pImageName,".png"))	return new ImageLoaderPng();
+		else if(File::extensionIs(pImageName,".gif"))	return new ImageLoaderGif();*/
+		return new ImageLoaderUnknown();
 	}
 
-	void ImageFormatAutodetect::load(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderAutodetect::load(Image& pImage,const std::string& pImageName) const
 	{
-		ImageFormat* tip = guessFormat(pImageName);	//primeiramente olha se no nome do arquivo tem alguma dica sobre o formato do mesmo
+		ImageLoader* tip = guessFormat(pImageName);	//primeiramente olha se no nome do arquivo tem alguma dica sobre o formato do mesmo
 		try
 		{
 			tip->load(pImage,pImageName);
@@ -63,16 +63,16 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatAutodetect::load(Image& pImage, Core::File& pFile) const
+	void ImageLoaderAutodetect::load(Image& pImage, Core::File& pFile) const
 	{
 		//tenta carregar as imagens por ordem de formatos mais comuns
 		if
 		(
 			!(
-				tryLoadFormat(pImage,pFile,ImageFormatBmp()) ||
-				tryLoadFormat(pImage,pFile,ImageFormatPcx()) /*||
-				tryLoadFormat(pImage,pFile,ImageFormatPng()) ||
-				tryLoadFormat(pImage,pFile,ImageFormatGif())*/
+				tryLoadFormat(pImage,pFile,ImageLoaderBmp()) ||
+				tryLoadFormat(pImage,pFile,ImageLoaderPcx()) /*||
+				tryLoadFormat(pImage,pFile,ImageLoaderPng()) ||
+				tryLoadFormat(pImage,pFile,ImageLoaderGif())*/
 			)
 		)
 		{
@@ -80,15 +80,15 @@ namespace Gorgon
 		}
 	}
 
-	void ImageFormatAutodetect::save(Image& pImage, const std::string& pImageName) const
+	void ImageLoaderAutodetect::save(Image& pImage, const std::string& pImageName) const
 	{
-		ImageFormatBmp defaultFormat;
+		ImageLoaderBmp defaultFormat;
 		defaultFormat.save(pImage,pImageName); //salva em bmp, por ser o formato padrão
 	}
 
-	void ImageFormatAutodetect::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderAutodetect::save(Image& pImage, Core::File& pFile) const
 	{
-		ImageFormatBmp defaultFormat;
+		ImageLoaderBmp defaultFormat;
 		defaultFormat.save(pImage,pFile);  //salva em bmp, por ser o formato padrão
 	}
 }

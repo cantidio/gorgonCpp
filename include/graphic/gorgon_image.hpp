@@ -34,7 +34,7 @@
 #include "gorgon_image_exception.hpp"
 #include "gorgon_mirroring.hpp"
 #include "gorgon_color.hpp"
-#include "gorgon_image_format_autodetect.hpp"
+#include "../addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp"
 #include "../geometry/gorgon_rectangle.hpp"
 
 namespace Gorgon
@@ -84,10 +84,10 @@ namespace Gorgon
 			/**
 			 * @todo retirar essas friend classes, substituir com métodos melhores
 			 */
-			friend class ImageFormatPcx;
-			friend class ImageFormatBmp;
-			Image(const std::string& pFileName,const ImageFormat& pImageFormat = ImageFormatAutodetect());
-			Image(Core::File& pFile,const ImageFormat& pImageFormat = ImageFormatAutodetect());
+			friend class ImageLoaderPcx;
+			friend class ImageLoaderBmp;
+			Image(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
+			Image(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
 			/**
 			 * Método construtor
 			 *
@@ -141,9 +141,9 @@ namespace Gorgon
 			 * @since	07/08/2008
 			 * @version	07/08/2009
 			 * @param	const std::string&	pFileName		, nome do arquivo a ser aberto
-			 * @param	const ImageFormat&	pImageFormat	, formato da imagem a ser aberta
+			 * @param	const ImageLoader&	pImageLoader	, formato da imagem a ser aberta
 			 */
-			virtual void load(const std::string& pFileName,const ImageFormat& pImageFormat = ImageFormatAutodetect());
+			virtual void load(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
 			/**
 			 * Método para carregar uma imagem de um arquivo ja aberto
 			 *
@@ -151,9 +151,9 @@ namespace Gorgon
 			 * @since	07/08/2008
 			 * @version	07/08/2009
 			 * @param	File&				pFile			, arquivo já aberto
-			 * @param	const ImageFormat&	pImageFormat	, formato da imagem a ser aberta
+			 * @param	const ImageLoader&	pImageLoader	, formato da imagem a ser aberta
 			 */
-			virtual void load(Core::File& pFile,const ImageFormat& pImageFormat = ImageFormatAutodetect());
+			virtual void load(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
 			/**
 			 * Método para salvar o sprite em um arquivo
 			 *
@@ -161,9 +161,9 @@ namespace Gorgon
 			 * @since	07/08/2008
 			 * @version	21/06/2009
 			 * @param	const string& pSpriteName, nome do arquivo a salvar o sprite
-			 * @param	ImageFormat* pImageFormat, ponteiro para o formato de imagem a salvar
+			 * @param	ImageLoader* pImageLoader, ponteiro para o formato de imagem a salvar
 			 */
-			virtual void save(const std::string& pFileName,const ImageFormat& pImageFormat = ImageFormatAutodetect());
+			virtual void save(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
 			/**
 			 * Método para salvar o sprite em um arquivo já aberto
 			 *
@@ -171,9 +171,9 @@ namespace Gorgon
 			 * @since	07/08/2008
 			 * @version	21/06/2009
 			 * @param	File&			pFile			, arquivo já aberto
-			 * @param	imageFormat*	pImageFormat	, ponteiro para o formato de imagem a salvar
+			 * @param	ImageLoader*	pImageLoader	, ponteiro para o formato de imagem a salvar
 			 */
-			virtual void save(Core::File& pFile,const ImageFormat& pImageFormat = ImageFormatAutodetect());
+			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
 			/**
 			 * Método que recria a imagem com as especificações dadas
 			 *

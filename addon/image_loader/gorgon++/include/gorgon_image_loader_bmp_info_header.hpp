@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_IMAGE_FORMAT_BMP_INFO_HEADER_
 #define _GORGON_IMAGE_FORMAT_BMP_INFO_HEADER_
-#include "../core/gorgon_file.hpp"
+#include <gorgon++/core/gorgon_file.hpp>
 
 /**
  * @todo criar enums para os defines abaixo
@@ -52,7 +52,7 @@ namespace Gorgon
 	 * @version	19/02/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageFormatBmpInfoHeader
+	class ImageLoaderBmpInfoHeader
 	{
 		private:
 			/**
@@ -108,7 +108,7 @@ namespace Gorgon
 			 * @since	16/02/2009
 			 * @version	16/02/2009
 			 */
-			ImageFormatBmpInfoHeader();
+			ImageLoaderBmpInfoHeader();
 			/**
 			 * Método Construtor
 			 *
@@ -117,7 +117,7 @@ namespace Gorgon
 			 * @version	16/02/2009
 			 * @param	File& pFile, ponteiro para o arquivo a carregar o header
 			 */
-			ImageFormatBmpInfoHeader(Core::File& pFile);
+			ImageLoaderBmpInfoHeader(Core::File& pFile);
 			/**
 			 * Método que preenche os valores do header dado uma imagem
 			 *

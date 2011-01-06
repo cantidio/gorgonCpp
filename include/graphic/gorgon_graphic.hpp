@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -44,8 +44,8 @@
 #include "gorgon_color.hpp"
 #include "gorgon_frame.hpp"
 #include "gorgon_image.hpp"
-#include "gorgon_image_format_bmp.hpp"
-#include "gorgon_image_format_pcx.hpp"
+//#include "gorgon_image_format_bmp.hpp"
+//#include "gorgon_image_format_pcx.hpp"
 #include "gorgon_mirroring.hpp"
 #include "gorgon_palette.hpp"
 #include "gorgon_sprite.hpp"

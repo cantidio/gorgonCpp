@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,9 +26,9 @@
  */
 #ifndef _GORGON_IMAGE_FORMAT_PCX_
 #define _GORGON_IMAGE_FORMAT_PCX_
-#include "gorgon_image_format.hpp"
-#include "gorgon_image_format_pcx_exception.hpp"
-#include "gorgon_image_format_pcx_header.hpp"
+#include <gorgon++/graphic/gorgon_image_loader.hpp>
+#include "gorgon_image_loader_pcx_exception.hpp"
+#include "gorgon_image_loader_pcx_header.hpp"
 
 namespace Gorgon
 {
@@ -40,7 +40,7 @@ namespace Gorgon
 	 * @version	07/08/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageFormatPcx : public ImageFormat
+	class ImageLoaderPcx : public ImageLoader
 	{
 		public:
 			/**
@@ -87,13 +87,13 @@ namespace Gorgon
 			 * @since	26/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem a ser salva
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, ponteiro do arquivo
 			 */
 			void saveEncoded4BitData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -123,13 +123,13 @@ namespace Gorgon
 			 * @since	06/06/2008
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem a ser salva
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, ponteiro do arquivo
 			 */
 			void saveEncodedData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -139,13 +139,13 @@ namespace Gorgon
 			 * @since	18/08/2008
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem a ser salva
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void savePaletteData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -155,13 +155,13 @@ namespace Gorgon
 			 * @since	20/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem de destino
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void loadEncoded1BitData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -171,13 +171,13 @@ namespace Gorgon
 			 * @since	26/02/2009
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem de destino
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void loadEncoded4BitData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -187,13 +187,13 @@ namespace Gorgon
 			 * @since	28/11/2007
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem de destino
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void loadEncoded8BitData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -203,13 +203,13 @@ namespace Gorgon
 			 * @since	28/11/2007
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem de destino
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void loadEncoded24BitData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -219,13 +219,13 @@ namespace Gorgon
 			 * @since	28/11/2007
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem de destino
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void loadEncodedData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 			/**
@@ -235,13 +235,13 @@ namespace Gorgon
 			 * @since	18/08/2008
 			 * @version	07/08/2009
 			 * @param	Image&					pImage	, imagem de destino
-			 * @param	ImageFormatPcxHeader&	pHeader	, header da imagem pcx
+			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void loadPaletteData
 			(
 				Image& pImage,
-				ImageFormatPcxHeader& pHeader,
+				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
 	};

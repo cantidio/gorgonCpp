@@ -90,8 +90,8 @@ namespace Gorgon
 		{
 			pFile.readInt8();					//retirar isso no future
 			
-			ImageFormatAutodetect imageFormat;
-			imageFormat.load(*this,pFile);
+			ImageLoaderAutodetect ImageLoader;
+			ImageLoader.load(*this,pFile);
 
 			setGroup	(pFile.readInt32());
 			setIndex	(pFile.readInt32());
@@ -105,13 +105,13 @@ namespace Gorgon
 		}
 	}
 
-	void Sprite::save(const std::string& pSpriteName,const ImageFormat& pImageFormat)
+	void Sprite::save(const std::string& pSpriteName,const ImageLoader& pImageLoader)
 	{
 		Core::File file(pSpriteName,std::ios::out | std::ios::binary);
 
 		if(file.is_open())
 		{
-			save(file,pImageFormat);
+			save(file,pImageLoader);
 		}
 		else
 		{
@@ -119,13 +119,13 @@ namespace Gorgon
 		}
 	}
 
-	void Sprite::save(Core::File& pFile,const ImageFormat& pImageFormat)
+	void Sprite::save(Core::File& pFile,const ImageLoader& pImageLoader)
 	{
 		SpriteHeader::save(pFile);
 		
 		pFile.writeInt8( 0 ); //retirar isso
 
-		pImageFormat.save( static_cast<Image&>(*this),pFile);
+		pImageLoader.save( static_cast<Image&>(*this),pFile);
 		
 		pFile.writeInt32(getGroup());
 		pFile.writeInt32(getIndex());

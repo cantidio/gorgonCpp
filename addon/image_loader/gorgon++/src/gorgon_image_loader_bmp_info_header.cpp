@@ -1,17 +1,17 @@
-#include "graphic/gorgon_image_format_bmp_info_header.hpp"
-#include "graphic/gorgon_image.hpp"
+#include "../include/gorgon_image_loader_bmp_info_header.hpp"
+#include <graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
 	
-	ImageFormatBmpInfoHeader::ImageFormatBmpInfoHeader(){}
+	ImageLoaderBmpInfoHeader::ImageLoaderBmpInfoHeader(){}
 
-	ImageFormatBmpInfoHeader::ImageFormatBmpInfoHeader(Core::File& pFile)
+	ImageLoaderBmpInfoHeader::ImageLoaderBmpInfoHeader(Core::File& pFile)
 	{
 		load(pFile);
 	}
 
-	void ImageFormatBmpInfoHeader::fill(const Image& pImage)
+	void ImageLoaderBmpInfoHeader::fill(const Image& pImage)
 	{
 		int filler;
 		mSize					= 40;
@@ -65,10 +65,10 @@ namespace Gorgon
 		mColorsImportant = mColorsUsed;
 	}
 
-	std::string ImageFormatBmpInfoHeader::describe() const
+	std::string ImageLoaderBmpInfoHeader::describe() const
 	{
 		std::stringstream out;
-		out << "ImageFormatBmpInfoHeader Descriptor"	<< std::endl;
+		out << "ImageLoaderBmpInfoHeader Descriptor"	<< std::endl;
 		out << "size:                 "			<< mSize					<< std::endl;
 		out << "width:                "			<< mWidth					<< std::endl;
 		out << "height:               "			<< mHeight					<< std::endl;
@@ -83,7 +83,7 @@ namespace Gorgon
 		return out.str();
 	}
 
-	void ImageFormatBmpInfoHeader::save(Core::File& pFile) const
+	void ImageLoaderBmpInfoHeader::save(Core::File& pFile) const
 	{
 		pFile.writeInt32(mSize);
 		pFile.writeInt32(mWidth);
@@ -98,7 +98,7 @@ namespace Gorgon
 		pFile.writeInt32(mColorsImportant);
 	}
 
-	void ImageFormatBmpInfoHeader::load(Core::File& pFile)
+	void ImageLoaderBmpInfoHeader::load(Core::File& pFile)
 	{
 		mSize					= pFile.readInt32();
 		mWidth					= pFile.readInt32();
@@ -113,32 +113,32 @@ namespace Gorgon
 		mColorsImportant		= pFile.readInt32();
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getSize() const
+	unsigned long ImageLoaderBmpInfoHeader::getSize() const
 	{
 		return mSize;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getWidth() const
+	unsigned long ImageLoaderBmpInfoHeader::getWidth() const
 	{
 		return mWidth;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getHeight() const
+	unsigned long ImageLoaderBmpInfoHeader::getHeight() const
 	{
 		return mHeight;
 	}
 
-	unsigned short ImageFormatBmpInfoHeader::getPlanes() const
+	unsigned short ImageLoaderBmpInfoHeader::getPlanes() const
 	{
 		return mPlanes;
 	}
 
-	unsigned short ImageFormatBmpInfoHeader::getBpp() const
+	unsigned short ImageLoaderBmpInfoHeader::getBpp() const
 	{
 		return mBitsPerPixel;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getCompression() const
+	unsigned long ImageLoaderBmpInfoHeader::getCompression() const
 	{
 		/*Compression indicates the type of encoding method used to compress
 		 * the bitmap data. 0 indicates that the data is uncompressed;
@@ -154,22 +154,22 @@ namespace Gorgon
 		return mCompression;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getSizeOfBitmap() const
+	unsigned long ImageLoaderBmpInfoHeader::getSizeOfBitmap() const
 	{
 		return mSizeOfBitmap;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getHorizontalResolution() const
+	unsigned long ImageLoaderBmpInfoHeader::getHorizontalResolution() const
 	{
 		return mHorizontalResolution;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getVerticalResolution() const
+	unsigned long ImageLoaderBmpInfoHeader::getVerticalResolution() const
 	{
 		return mVerticalResolution;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getColorsUsed() const
+	unsigned long ImageLoaderBmpInfoHeader::getColorsUsed() const
 	{
 		if(mColorsUsed == 0)
 		{
@@ -185,12 +185,12 @@ namespace Gorgon
 		return mColorsUsed;
 	}
 
-	unsigned long ImageFormatBmpInfoHeader::getColorsImportant() const
+	unsigned long ImageLoaderBmpInfoHeader::getColorsImportant() const
 	{
 		return mColorsImportant;
 	}
 
-	unsigned int ImageFormatBmpInfoHeader::getVersion() const
+	unsigned int ImageLoaderBmpInfoHeader::getVersion() const
 	{
 		switch(mSize)
 		{

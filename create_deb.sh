@@ -119,6 +119,7 @@ CREATE_DIR_INCLUDE()
 {
 	echo "\tCriando o diretório INCLUDE"
 	cp -r include/* $PACKAGE_DIR/usr/include/gorgon++/
+	cp -r addon $PACKAGE_DIR/usr/include/gorgon++/
 }
 #
 # Funcão para criar o diretório libs do pacote
