@@ -1,4 +1,4 @@
-#include "graphic/gorgon_spritepack.hpp"
+#include <graphic/gorgon_spritepack.hpp>
 
 namespace Gorgon
 {
@@ -43,13 +43,18 @@ namespace Gorgon
 		const int&		pJumpPixels
 	)
 	{
+		/**
+		 * @todo arrumar um jeito mais eficiente de tratar os sprites faltosos
+		 */
 		if(mNotFound == NULL)
 		{
 			mNotFound = new Sprite(Image(1,1));
 		}
-		for(int group = 0, j = pJumpPixels; j < pImageSheet.getHeight(); j+=pHeight+pJumpPixels,++group)
+		int group,index;
+		unsigned int j,i;
+		for(group = 0, j = pJumpPixels; j < pImageSheet.getHeight(); j+=pHeight+pJumpPixels,++group)
 		{
-			for(int index = 0, i = pJumpPixels; i < pImageSheet.getWidth(); i += pWidth + pJumpPixels,++index)
+			for(index = 0, i = pJumpPixels; i < pImageSheet.getWidth(); i += pWidth + pJumpPixels,++index)
 			{
 				add
 				(
@@ -268,7 +273,7 @@ namespace Gorgon
 		const int&	pBackgroundColor
 	)
 	{
-		int i,j,width = 0,height = 0;
+		unsigned int i,j,width = 0,height = 0;
 
 		for(i = pPosY; i < pImage.getHeight()-1; ++i)
 		{
@@ -324,11 +329,11 @@ namespace Gorgon
 		{
 			mNotFound = new Sprite(Image(1,1));
 		}
-		int index;
-		int group;
-		for(int y = group = 0; y < pImageSheet.getHeight()-1; ++y)
+		int group, index;
+		unsigned int x,y;
+		for(y = group = 0; y < pImageSheet.getHeight()-1; ++y)
 		{
-			for(int x = index = 0; x < pImageSheet.getWidth()-1; ++x)
+			for(x = index = 0; x < pImageSheet.getWidth()-1; ++x)
 			{
 				if(pImageSheet.getPixel(x,y) != pBackgroundColor)
 				{
@@ -371,7 +376,7 @@ namespace Gorgon
 		}
 		mGlobalPalette	= (pSpritePackOriginal.mGlobalPalette) ? pSpritePackOriginal.mGlobalPalette->copy() : NULL;
 		mPalLinked		= false;
-		for(int i = 0; i < pSpritePackOriginal.getSize(); ++i)
+		for(unsigned int i = 0; i < pSpritePackOriginal.getSize(); ++i)
 		{
 			add(Sprite(pSpritePackOriginal[i]));
 		}
@@ -406,7 +411,7 @@ namespace Gorgon
 
 	void SpritePack::setGlobalOffset(const int& pXOffset,const int& pYOffset)
 	{
-		for(int i = 0; i < getSize(); ++i)
+		for(unsigned int i = 0; i < getSize(); ++i)
 		{
 			(*this)[i].setXOffset(pXOffset);
 			(*this)[i].setYOffset(pYOffset);
@@ -417,7 +422,7 @@ namespace Gorgon
 	{
 		int x;
 		int y;
-		for(int i = 0; i < getSize(); ++i)
+		for(unsigned int i = 0; i < getSize(); ++i)
 		{
 			x = (*this)[i].getDelimiterLeft();
 			y = (*this)[i].getDelimiterUp();
@@ -443,7 +448,7 @@ namespace Gorgon
 		mSprites.insert(mSprites.begin() + pPos, pSprite);
 	}
 
-	void SpritePack::remove(const int& pPos)
+	void SpritePack::remove(const unsigned int& pPos)
 	{
 		if(pPos >= 0 && pPos < mSprites.size())
 		{
@@ -451,7 +456,7 @@ namespace Gorgon
 		}
 	}
 
-	int SpritePack::getSize()	const
+	unsigned int SpritePack::getSize()	const
 	{
 		return mSprites.size();
 	}
@@ -461,30 +466,31 @@ namespace Gorgon
 		remove(getSpriteRealIndex(pGroup,pIndex));
 	}
 
-	int SpritePack::getSpriteRealIndex(const int& pGroup,const int& pIndex) const
+	unsigned int SpritePack::getSpriteRealIndex(const int& pGroup,const int& pIndex) const
 	{
-		for(int i = 0; i < mSprites.size(); ++i)
+		unsigned int i;
+		for(i = 0; i < mSprites.size(); ++i)
 		{
 			if(mSprites[i].getGroup() == pGroup && mSprites[i].getIndex() == pIndex)
 			{
-				return i;
+				break;
 			}
 		}
-		return -1;
+		return i;
 	}
 
-	Sprite& SpritePack::getSprite(const int& pPos)
+	Sprite& SpritePack::getSprite(const unsigned int& pPos)
 	{
-		if(pPos >= 0 && pPos < mSprites.size())
+		if(pPos < mSprites.size())
 		{
 			return mSprites[pPos];
 		}
 		return *mNotFound;
 	}
 
-	const Sprite& SpritePack::getSprite(const int& pPos) const
+	const Sprite& SpritePack::getSprite(const unsigned int& pPos) const
 	{
-		if(pPos >= 0 && pPos < mSprites.size())
+		if(pPos < mSprites.size())
 		{
 			return mSprites[pPos];
 		}
@@ -501,12 +507,12 @@ namespace Gorgon
 		return getSprite(getSpriteRealIndex(group,index));
 	}
 
-	Sprite& SpritePack::operator [](const int& pPos)
+	Sprite& SpritePack::operator [](const unsigned int& pPos)
 	{
 		return getSprite(pPos);
 	}
 
-	const Sprite& SpritePack::operator [](const int& pPos) const
+	const Sprite& SpritePack::operator [](const unsigned int& pPos) const
 	{
 		return getSprite(pPos);
 	}
@@ -533,7 +539,7 @@ namespace Gorgon
 
 	void SpritePack::applyGlobalPalette(const bool& pForce)
 	{
-		for(int i = 0; i < getSize(); ++i)
+		for(unsigned int i = 0; i < getSize(); ++i)
 		{
 			if(!getSprite(i).getPalette() || (getSprite(i).getPalette() && pForce))
 			{

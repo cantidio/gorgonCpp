@@ -322,19 +322,19 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @return	int
+			 * @version	06/01/2011
+			 * @return	unsigned int
 			 */
-			int getWidth() const;
+			unsigned int getWidth() const;
 			/**
 			 * Método para retornar a altura da imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @return	int
+			 * @version	06/01/2011
+			 * @return	unsigned int
 			 */
-			int getHeight() const;
+			unsigned int getHeight() const;
 			/**
 			 * Método para retornar o tipo da imagem
 			 *

@@ -1,4 +1,4 @@
-#include "graphic/gorgon_animation_handler.hpp"
+#include <graphic/gorgon_animation_handler.hpp>
 
 namespace Gorgon
 {
@@ -272,7 +272,10 @@ namespace Gorgon
 		const float& pTrans
 	)
 	{
-		Frame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
+		/**
+		 * @todo concertar isso
+		 */
+		//Frame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
 
 		pSprite.drawSpriteTrans
 		(

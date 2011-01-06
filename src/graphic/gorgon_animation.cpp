@@ -1,4 +1,4 @@
-#include "graphic/gorgon_animation.hpp"
+#include <graphic/gorgon_animation.hpp>
 #include <sstream>
 
 namespace Gorgon
@@ -98,7 +98,7 @@ namespace Gorgon
 		mFrame.insert(mFrame.begin() + pPos,pFrame);
 	}
 
-	void Animation::remove(const int& pPos)
+	void Animation::remove(const unsigned int& pPos)
 	{
 		if(pPos >= 0 && pPos < mFrame.size())
 		{
@@ -242,7 +242,7 @@ namespace Gorgon
 		}
 	}
 
-	Frame& Animation::operator [](const int& pPos)
+	Frame& Animation::operator [](const unsigned int& pPos)
 	{
 		if(pPos < mFrame.size())
 		{
@@ -254,7 +254,7 @@ namespace Gorgon
 		}
 	}
 
-	const Frame& Animation::operator [](const int& pPos) const
+	const Frame& Animation::operator [](const unsigned int& pPos) const
 	{
 		if(pPos < mFrame.size())
 		{

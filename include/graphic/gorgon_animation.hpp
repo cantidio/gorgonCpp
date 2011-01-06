@@ -184,10 +184,10 @@ namespace Gorgon
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	02/03/2009
-			 * @version	02/03/2009
-			 * @param	const int& pos, posição do frame na animação
+			 * @version	06/01/2011
+			 * @param	const unsigned int& pos, posição do frame na animação
 			 */
-			void remove(const int& pPos);
+			void remove(const unsigned int& pPos);
 			/**
 			 * Método para remover um frame da animação dados o grupo e o índice
 			 *
@@ -337,21 +337,21 @@ namespace Gorgon
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
-			 * @version	21/06/2009
-			 * @param	const int& pPos, a posição que deseja-se selecionar
+			 * @version	06/01/2011
+			 * @param	const unsigned int& pPos, a posição que deseja-se selecionar
 			 * @return	Frame&
 			 */
-			Frame& operator [](const int& pPos);
+			Frame& operator [](const unsigned int& pPos);
 			/**
 			 * Operador para acessar algum frame dada sua posição de forma constante
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	18/06/2009
-			 * @version	21/06/2009
-			 * @param	const int& pPos, a posição que deseja-se selecionar
+			 * @version	06/01/2011
+			 * @param	const unsigned int& pPos, a posição que deseja-se selecionar
 			 * @return	Frame&
 			 */
-			const Frame& operator [](const int& pPos) const;
+			const Frame& operator [](const unsigned int& pPos) const;
 	};
 }
 #endif

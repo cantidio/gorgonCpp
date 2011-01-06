@@ -1,4 +1,4 @@
-#include "graphic/gorgon_image.hpp"
+#include <graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
@@ -235,7 +235,6 @@ namespace Gorgon
 	int Image::getColorNumber() const
 	{
 		std::vector<int> colors;
-		int colorNumber	= 0;
 		int color		= 0;
 		unsigned int x,y,k;
 		bool exists;
@@ -307,7 +306,7 @@ namespace Gorgon
 
 	}
 
-	int Image::getWidth() const
+	unsigned int Image::getWidth() const
 	{
 		if(mData == NULL)
 		{
@@ -316,7 +315,7 @@ namespace Gorgon
 		return mData->w;
 	}
 
-	int Image::getHeight() const
+	unsigned int Image::getHeight() const
 	{
 		if(mData == NULL)
 		{

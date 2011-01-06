@@ -1,10 +1,10 @@
-#include "graphic/gorgon_mirroring.hpp"
+#include <graphic/gorgon_mirroring.hpp>
 
 namespace Gorgon
 {
 	Mirroring::Mirroring(const Mirroring::Type& type)
 	{
-		mType=type;
+		mType = type;
 	}
 
 	const Mirroring::Type& Mirroring::getType() const
@@ -12,9 +12,9 @@ namespace Gorgon
 		return mType;
 	}
 
-	char Mirroring::setType(const Mirroring::Type& type)
+	void Mirroring::setType(const Mirroring::Type& type)
 	{
-		mType=type;
+		mType = type;
 	}
 
 	Mirroring& Mirroring::operator =(const Mirroring& mirroring)
@@ -35,18 +35,24 @@ namespace Gorgon
 		//00000001	-> horizontal
 		//00000010	-> vertical
 		//00000011	-> vertical e horizontal
-		setType(static_cast<Mirroring::Type>(getType()^pMirroring.getType()));
+		setType
+		(
+			static_cast<Mirroring::Type>
+			(
+				getType() ^ pMirroring.getType()
+			)
+		);
 	}
 
 	Mirroring Mirroring::operator + (const Mirroring& mirroring)
 	{
-		Mirroring out=(*this);
-		out+=mirroring;
+		Mirroring out = (*this);
+		out += mirroring;
 		return out;
 	}
 
 	bool Mirroring::operator == (const Mirroring& mirroring)
 	{
-		return (getType()==mirroring.getType());
+		return (getType() == mirroring.getType());
 	}
 }

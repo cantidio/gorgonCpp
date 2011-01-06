@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ namespace Gorgon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	26/02/2009
-	 * @version	20/05/2009
+	 * @version	20/05/2011
 	 * @ingroup	Graphic
 	 */
 	class Mirroring
@@ -83,7 +83,7 @@ namespace Gorgon
 			 * @version	27/02/2009
 			 * @param	const char& type, novo tipo de espelhamento
 			 */
-			char setType(const Mirroring::Type& type);
+			void setType(const Mirroring::Type& type);
 			/**
 			 * Operador de igualdade
 			 *

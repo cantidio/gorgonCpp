@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Gorgon Team
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ namespace Gorgon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	22/01/2009
-	 * @version	21/06/2009
+	 * @version	06/01/2011
 	 * @ingroup	Graphic
 	 */
 	class SpritePack
@@ -199,7 +199,7 @@ namespace Gorgon
 			 * @since	11/08/2008
 			 * @version	23/01/2009
 			 */
-			~SpritePack();
+			virtual ~SpritePack();
 			/**
 			 * Método para ordenar os sprites do pacote
 			 *
@@ -231,10 +231,10 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	12/08/2008
-			 * @version	21/06/2009
-			 * @param	const int& pPos, posição a ser removida
+			 * @version	06/01/2011
+			 * @param	const unsigned int& pPos, posição a ser removida
 			 */
-			void remove(const int& pPos);
+			void remove(const unsigned int& pPos);
 			/**
 			 * Método para remover um sprite do pacote
 			 *
@@ -244,27 +244,27 @@ namespace Gorgon
 			 * @param	const int& pGroup , grupo do sprite a ser removido
 			 * @param	const int& pIndex , indice do sprite a ser removido
 			 */
-			void remove(const int& pGroup,const int& pIndex);
+			void remove(const int& pGroup, const int& pIndex);
 			/**
 			 * Método para retornar o número de sprites no pacote
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/08/2008
-			 * @version	25/08/2008
-			 * @return	int
+			 * @version	06/01/2011
+			 * @return	unsigned int
 			 */
-			int getSize() const;
+			unsigned int getSize() const;
 			/**
 			 * Método para retornar a posição de um determinado sprite identificado
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/08/2008
-			 * @version	21/06/2009
+			 * @version	06/01/2011
 			 * @param	const int& pGroup , grupo do sprite
 			 * @param	const int& pIndex , indice do sprite
-			 * @return	int
+			 * @return	unsigned int
 			 */
-			int getSpriteRealIndex(const int& pGroup,const int& pIndex) const;
+			unsigned int getSpriteRealIndex(const int& pGroup,const int& pIndex) const;
 			/**
 			 * Método que seta um offset global para todos os sprites do pacote
 			 *
@@ -281,6 +281,7 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/01/2008
 			 * @version	25/01/2008
+			 * @todo	modificar o nome do método para trim
 			 */
 			void clipAll();
 /*			vector<Sprite*> getSpritesInGroup(int group)	const;*/
@@ -290,21 +291,21 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/08/2008
-			 * @version	22/01/2009
+			 * @version	06/01/2011
 			 * @param	const int& pPos, posição que o sprite será retornado
 			 * @return	Sprite&
 			 */
-			Sprite&	getSprite(const int& pPos);
+			Sprite&	getSprite(const unsigned int& pPos);
 			/**
 			 * Método para retornar o sprite de uma determinada posição de forma constante
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	21/06/2009
-			 * @version	21/06/2009
+			 * @version	06/01/2011
 			 * @param	const int& pPos, posição que o sprite será retornado
 			 * @return	const Sprite&
 			 */
-			const Sprite& getSprite(const int& pPos) const;
+			const Sprite& getSprite(const unsigned int& pPos) const;
 			/**
 			 * Método para retornar um sprite
 			 *
@@ -395,21 +396,21 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	12/08/2008
-			 * @version	27/02/2009
-			 * @param	const int& pPos, inteiro sem sinal que representa a posição que deseja acessar
+			 * @version	06/01/2011
+			 * @param	const unsigned int& pPos, inteiro sem sinal que representa a posição que deseja acessar
 			 * @return	Sprite&
 			 */
-			Sprite& operator [](const int& pPos);
+			Sprite& operator [](const unsigned int& pPos);
 			/**
 			 * Operador para acessar o SpritePack como um vetor de forma constante
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	21/06/2009
-			 * @version	21/06/2009
-			 * @param	const int& pPos, inteiro sem sinal que representa a posição que deseja acessar
+			 * @version	06/01/2011
+			 * @param	const unsigned int& pPos, inteiro sem sinal que representa a posição que deseja acessar
 			 * @return	const Sprite&
 			 */
-			const Sprite& operator [](const int& pPos) const;
+			const Sprite& operator [](const unsigned int& pPos) const;
 			/**
 			 * operador para acessar o SpritePack através de seus identificadores
 			 *

@@ -1,4 +1,4 @@
-#include "graphic/gorgon_palette.hpp"
+#include <graphic/gorgon_palette.hpp>
 
 namespace Gorgon
 {
@@ -257,31 +257,21 @@ namespace Gorgon
 		const int&	pJumpBytes
 	) const
 	{
-		unsigned char r;
-		unsigned char g;
-		unsigned char b;
-		unsigned char filler=0;
+		unsigned char filler = 0;
 		for(int i = pColorNumber -1; i >= 0; i--)
 		{
-			/*
-			r = getRed(i);
-			g = getGreen(i);
-			b = getBlue(i);
-			pFile->write((char*)&r,1);
-			pFile->write((char*)&g,1);
-			pFile->write((char*)&b,1);
-*/
 			pFile.writeInt8(getRed(i));
 			pFile.writeInt8(getGreen(i));
 			pFile.writeInt8(getBlue(i));
+
 			if(pJumpBytes > 0)
 			{
-				pFile.write((char*)&filler,pJumpBytes);
+				pFile.write( (char*)&filler, pJumpBytes );
 			}
 		}
 	}
 
-	void Palette::save(const std::string& pPaletteName,const int& pColorNumber) const
+	void Palette::save(const std::string& pPaletteName, const int& pColorNumber) const
 	{
 		Core::File file(pPaletteName,std::ios::out | std::ios::binary);
 		if(file.is_open())
@@ -308,12 +298,6 @@ namespace Gorgon
 	{
 		for(int i = (pColorNumber-1); i >= 0; --i)
 		{
-			/*
-			pFile->read((char*)&mPal[i].r,sizeof(char));	mPal2[i].r = mPal[i].r/4;
-			pFile->read((char*)&mPal[i].g,sizeof(char));	mPal2[i].g = mPal[i].g/4;
-			pFile->read((char*)&mPal[i].b,sizeof(char));	mPal2[i].b = mPal[i].b/4;
-			 **/
-			//talvez colocar unsigned?
 			setRed	(pFile.readUnsignedInt8(), i);
 			setGreen(pFile.readUnsignedInt8(), i);
 			setBlue	(pFile.readUnsignedInt8(), i);
