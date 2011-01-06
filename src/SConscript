@@ -1,0 +1,10 @@
+modules="""
+	audio/SConscript
+	core/SConscript
+	graphic/SConscript
+	input/SConscript
+	physics/SConscript
+	script/SConscript
+"""
+#adicionar o resto ai
+SConscript(Split(modules))

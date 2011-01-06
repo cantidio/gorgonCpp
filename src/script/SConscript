@@ -1,0 +1,12 @@
+Import('makeObj')
+Import('env')
+scriptEnv=env.Clone()
+script=[
+	makeObj(scriptEnv,'gorgon_lua_return'),
+	makeObj(scriptEnv,'gorgon_lua_exception'),
+	makeObj(scriptEnv,'gorgon_lua_param'),
+	makeObj(scriptEnv,'gorgon_lua'),
+#	'../third_party/bin/liblua.a'
+	]
+#StaticLibrary('./obj/gorgon_ascript',script)
+#Export('script')

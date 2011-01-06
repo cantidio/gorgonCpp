@@ -1,0 +1,11 @@
+Import('makeObj')
+Import('env')
+coreEnv=env.Clone()
+
+core=[
+	makeObj(coreEnv,'gorgon_file_header')	,
+	makeObj(coreEnv,'gorgon_exception')		,
+	makeObj(coreEnv,'gorgon_log')
+	]			
+#StaticLibrary('./obj/gorgon_core',core)
+#Export('core')

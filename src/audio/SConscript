@@ -1,0 +1,13 @@
+Import('makeObj')
+Import('env')
+
+audioEnv=env.Clone()
+audio=[
+	makeObj(audioEnv,'gorgon_sound_system_exception'),
+	makeObj(audioEnv,'gorgon_sound_system'),
+	makeObj(audioEnv,'gorgon_sound_exception'),
+	makeObj(audioEnv,'gorgon_sound'),
+	]
+
+#StaticLibrary('./obj/gorgon_audio',audio)
+#Export('audio')

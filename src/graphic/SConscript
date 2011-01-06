@@ -1,0 +1,39 @@
+Import('makeObj')
+Import('env')
+
+graphicEnv=env.Clone()
+graphic=[
+	makeObj(graphicEnv,'gorgon_animation'),
+	makeObj(graphicEnv,'gorgon_animation_exception'),
+	makeObj(graphicEnv,'gorgon_animation_handler'),
+	makeObj(graphicEnv,'gorgon_animation_header'),
+	makeObj(graphicEnv,'gorgon_animationpack'),
+	makeObj(graphicEnv,'gorgon_animationpack_exception'),
+	makeObj(graphicEnv,'gorgon_animationpack_header'),
+	makeObj(graphicEnv,'gorgon_color'),
+	makeObj(graphicEnv,'gorgon_frame'),
+	makeObj(graphicEnv,'gorgon_image'),
+	makeObj(graphicEnv,'gorgon_image_exception'),
+	makeObj(graphicEnv,'gorgon_image_format_autodetect'),
+	makeObj(graphicEnv,'gorgon_image_format_bmp'),
+	makeObj(graphicEnv,'gorgon_image_format_bmp_exception'),
+	makeObj(graphicEnv,'gorgon_image_format_bmp_header'),
+	makeObj(graphicEnv,'gorgon_image_format_bmp_info_header'),
+	makeObj(graphicEnv,'gorgon_image_format_pcx'),
+	makeObj(graphicEnv,'gorgon_image_format_pcx_exception'),
+	makeObj(graphicEnv,'gorgon_image_format_pcx_header'),
+	makeObj(graphicEnv,'gorgon_image_format_unknown'),
+	makeObj(graphicEnv,'gorgon_mirroring'),
+	makeObj(graphicEnv,'gorgon_palette'),
+	makeObj(graphicEnv,'gorgon_sff_spritepack'),
+	makeObj(graphicEnv,'gorgon_sprite'),
+	makeObj(graphicEnv,'gorgon_sprite_exception'),
+	makeObj(graphicEnv,'gorgon_sprite_header'),
+	makeObj(graphicEnv,'gorgon_spritepack'),
+	makeObj(graphicEnv,'gorgon_spritepack_exception'),
+	makeObj(graphicEnv,'gorgon_spritepack_header'),
+	makeObj(graphicEnv,'gorgon_video')
+	]
+
+#StaticLibrary('./obj/gorgon_audio',audio)
+#Export('graphic')

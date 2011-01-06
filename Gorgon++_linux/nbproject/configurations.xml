@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="include" displayName="include" projectFiles="true">
+      <logicalFolder name="audio" displayName="audio" projectFiles="true">
+        <itemPath>../include/audio/gorgon_audio.hpp</itemPath>
+        <itemPath>../include/audio/gorgon_sound.hpp</itemPath>
+        <itemPath>../include/audio/gorgon_sound_exception.hpp</itemPath>
+        <itemPath>../include/audio/gorgon_sound_system.hpp</itemPath>
+        <itemPath>../include/audio/gorgon_sound_system_exception.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="collision" displayName="collision" projectFiles="true">
+        <itemPath>../include/collision/gorgon_collision.hpp</itemPath>
+        <itemPath>../include/collision/gorgon_collision_frame.hpp</itemPath>
+        <itemPath>../include/collision/gorgon_collisionpack.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="core" displayName="core" projectFiles="true">
+        <itemPath>../include/core/game.hpp</itemPath>
+        <itemPath>../include/core/gorgon_binary.hpp</itemPath>
+        <itemPath>../include/core/gorgon_core.hpp</itemPath>
+        <itemPath>../include/core/gorgon_exception.hpp</itemPath>
+        <itemPath>../include/core/gorgon_file.hpp</itemPath>
+        <itemPath>../include/core/gorgon_file_header.hpp</itemPath>
+        <itemPath>../include/core/gorgon_log.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="geometry" displayName="geometry" projectFiles="true">
+        <itemPath>../include/geometry/gorgon_geometry.hpp</itemPath>
+        <itemPath>../include/geometry/gorgon_line.hpp</itemPath>
+        <itemPath>../include/geometry/gorgon_point.hpp</itemPath>
+        <itemPath>../include/geometry/gorgon_polygon.hpp</itemPath>
+        <itemPath>../include/geometry/gorgon_rectangle.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="graphic" displayName="graphic" projectFiles="true">
+        <itemPath>../include/graphic/gorgon_animation.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_animation_exception.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_animation_handler.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_animation_header.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_animationpack.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_animationpack_exception.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_animationpack_header.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_color.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_frame.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_graphic.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_exception.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_autodetect.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_bmp.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_bmp_exception.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_bmp_header.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_bmp_info_header.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_pcx.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_pcx_exception.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_pcx_header.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_image_format_unknown.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_mirroring.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_palette.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_sff_spritepack.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_sprite.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_sprite_exception.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_sprite_header.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_spritepack.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_spritepack_exception.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_spritepack_header.hpp</itemPath>
+        <itemPath>../include/graphic/gorgon_video.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="input" displayName="input" projectFiles="true">
+        <itemPath>../include/input/gorgon_input.hpp</itemPath>
+        <itemPath>../include/input/joystick.hpp</itemPath>
+        <itemPath>../include/input/key.hpp</itemPath>
+        <itemPath>../include/input/keyboard.hpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="script" displayName="script" projectFiles="true">
+        <itemPath>../include/script/gorgon_lua.hpp</itemPath>
+        <itemPath>../include/script/gorgon_lua_argument.hpp</itemPath>
+        <itemPath>../include/script/gorgon_lua_exception.hpp</itemPath>
+        <itemPath>../include/script/gorgon_lua_param.hpp</itemPath>
+        <itemPath>../include/script/gorgon_lua_return.hpp</itemPath>
+        <itemPath>../include/script/gorgon_script.hpp</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="src" displayName="src" projectFiles="true">
+      <logicalFolder name="audio" displayName="audio" projectFiles="true">
+        <itemPath>../src/audio/gorgon_sound.cpp</itemPath>
+        <itemPath>../src/audio/gorgon_sound_exception.cpp</itemPath>
+        <itemPath>../src/audio/gorgon_sound_system.cpp</itemPath>
+        <itemPath>../src/audio/gorgon_sound_system_exception.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="collision" displayName="collision" projectFiles="true">
+        <itemPath>../src/collision/gorgon_collision.cpp</itemPath>
+        <itemPath>../src/collision/gorgon_collision_frame.cpp</itemPath>
+        <itemPath>../src/collision/gorgon_collisionpack.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="core" displayName="core" projectFiles="true">
+        <itemPath>../src/core/gorgon_exception.cpp</itemPath>
+        <itemPath>../src/core/gorgon_file.cpp</itemPath>
+        <itemPath>../src/core/gorgon_file_header.cpp</itemPath>
+        <itemPath>../src/core/gorgon_log.cpp</itemPath>
+        <itemPath>../src/core/gorgon_zlib.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="geometry" displayName="geometry" projectFiles="true">
+        <itemPath>../src/geometry/gorgon_line.cpp</itemPath>
+        <itemPath>../src/geometry/gorgon_point.cpp</itemPath>
+        <itemPath>../src/geometry/gorgon_polygon.cpp</itemPath>
+        <itemPath>../src/geometry/gorgon_rectangle.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="graphic" displayName="graphic" projectFiles="true">
+        <itemPath>../src/graphic/gorgon_animation.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_animation_exception.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_animation_handler.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_animation_header.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_animationpack.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_animationpack_exception.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_animationpack_header.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_color.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_frame.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_exception.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_autodetect.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_bmp.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_bmp_exception.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_bmp_header.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_bmp_info_header.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_pcx.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_pcx_exception.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_pcx_header.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_image_format_unknown.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_mirroring.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_palette.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_sff_spritepack.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_sprite.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_sprite_exception.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_sprite_header.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_spritepack.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_spritepack_exception.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_spritepack_header.cpp</itemPath>
+        <itemPath>../src/graphic/gorgon_video.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="input" displayName="input" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="script" displayName="script" projectFiles="true">
+        <itemPath>../src/script/gorgon_lua.cpp</itemPath>
+        <itemPath>../src/script/gorgon_lua_argument.cpp</itemPath>
+        <itemPath>../src/script/gorgon_lua_exception.cpp</itemPath>
+        <itemPath>../src/script/gorgon_lua_param.cpp</itemPath>
+        <itemPath>../src/script/gorgon_lua_return.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="third_party" displayName="third_party" projectFiles="true">
+        <logicalFolder name="guichan" displayName="guichan" projectFiles="true">
+          <logicalFolder name="include" displayName="include" projectFiles="true">
+            <logicalFolder name="guichan" displayName="guichan" projectFiles="true">
+              <logicalFolder name="allegro" displayName="allegro" projectFiles="true">
+                <itemPath>../include/third_party/guichan/include/guichan/allegro/allegrofont.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/allegro/allegrographics.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/allegro/allegroimage.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/allegro/allegroimageloader.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/allegro/allegroinput.hpp</itemPath>
+              </logicalFolder>
+              <logicalFolder name="widgets" displayName="widgets" projectFiles="true">
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/button.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/checkbox.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/container.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/dropdown.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/icon.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/imagebutton.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/label.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/listbox.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/radiobutton.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/scrollarea.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/slider.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/tab.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/tabbedarea.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/textbox.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/textfield.hpp</itemPath>
+                <itemPath>../include/third_party/guichan/include/guichan/widgets/window.hpp</itemPath>
+              </logicalFolder>
+              <itemPath>../include/third_party/guichan/include/guichan/actionevent.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/actionlistener.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/allegro.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/basiccontainer.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/cliprectangle.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/color.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/deathlistener.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/defaultfont.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/event.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/exception.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/focushandler.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/focuslistener.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/font.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/genericinput.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/glut.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/graphics.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/gui.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/image.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/imagefont.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/imageloader.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/input.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/inputevent.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/key.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/keyevent.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/keyinput.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/keylistener.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/listmodel.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/mouseevent.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/mouseinput.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/mouselistener.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/opengl.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/platform.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/rectangle.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/sdl.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/selectionevent.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/selectionlistener.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/widget.hpp</itemPath>
+              <itemPath>../include/third_party/guichan/include/guichan/widgetlistener.hpp</itemPath>
+            </logicalFolder>
+            <itemPath>../include/third_party/guichan/include/guichan.hpp</itemPath>
+          </logicalFolder>
+          <logicalFolder name="lib" displayName="lib" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="include" displayName="include" projectFiles="true">
+          <itemPath>../include/third_party/include/audiere.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="lua-5.1.4" displayName="lua-5.1.4" projectFiles="true">
+          <logicalFolder name="bin" displayName="bin" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="include" displayName="include" projectFiles="true">
+            <itemPath>../include/third_party/lua-5.1.4/include/lauxlib.h</itemPath>
+            <itemPath>../include/third_party/lua-5.1.4/include/lua.h</itemPath>
+            <itemPath>../include/third_party/lua-5.1.4/include/lua.hpp</itemPath>
+            <itemPath>../include/third_party/lua-5.1.4/include/luaconf.h</itemPath>
+            <itemPath>../include/third_party/lua-5.1.4/include/lualib.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="lib" displayName="lib" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="third_party" displayName="third_party" projectFiles="true">
+      <logicalFolder name="zlib-1.2.5" displayName="zlib-1.2.5" projectFiles="true">
+        <itemPath>../third_party/zlib-1.2.5/adler32.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/compress.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/crc32.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/crc32.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/deflate.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/deflate.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/gzclose.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/gzguts.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/gzlib.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/gzread.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/gzwrite.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/infback.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/inffast.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/inffast.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/inffixed.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/inflate.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/inflate.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/inftrees.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/inftrees.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/trees.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/trees.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/uncompr.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/zconf.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/zlib.h</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/zutil.c</itemPath>
+        <itemPath>../third_party/zlib-1.2.5/zutil.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Arquivos importantes"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <itemPath>../gorgon.hpp</itemPath>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../src</Elem>
+    <Elem>../include</Elem>
+    <Elem>../third_party</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../include</pElem>
+            <pElem>../third_party</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>dist/Debug/${CND_PLATFORM}/libgorgon.so</output>
+          <linkerDynSerch>
+            <pElem>/home/cantidio/Dev/gorgon++/src</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerLibFileItem>../include/third_party/bin/libaudiere.a</linkerLibFileItem>
+            <linkerLibFileItem>../include/third_party/lua-5.1.4/lib/liblua.a</linkerLibFileItem>
+            <linkerOptionItem>-lrt -lpthread</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../include</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libGorgon__.so</output>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>
