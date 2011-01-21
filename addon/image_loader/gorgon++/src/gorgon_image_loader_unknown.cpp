@@ -1,5 +1,5 @@
 #include "../include/gorgon_image_loader_unknown.hpp"
-#include <graphic/gorgon_image_exception.hpp>
+#include <gorgon++/graphic/gorgon_image_exception.hpp>
 
 namespace Gorgon
 {
@@ -8,7 +8,12 @@ namespace Gorgon
 		throw ImageException("Unknowned image format.");
 	}
 
-	void ImageLoaderUnknown::load(Image& pImage, Core::File& pFile) const
+	void ImageLoaderUnknown::load
+	(
+		Image& pImage,
+		Core::File& pFile,
+		const int& pImageSize
+	) const
 	{
 		throw ImageException("Unknowned image format.");
 	}

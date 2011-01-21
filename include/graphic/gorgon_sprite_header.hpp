@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio O. Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -36,28 +36,24 @@ namespace Gorgon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	23/01/2008
-	 * @version	21/06/2009
+	 * @version	18/01/2011
 	 * @ingroup	Graphic
 	 */
 	class SpriteHeader : public Core::FileHeader
 	{
 		private:
-			/**
-			 * Número do sprite da gorgon correto
-			 */
-			static const int mGorgonSpriteMagicNumber;
-			/**
-			 * Assinatura do sprite Gorgon correto
-			 */
-			static const std::string mGorgonSpriteSignature;
-			/**
-			 * Número do arquivo lido, pode não ser o correto
-			 */
-			int mMyGorgonSpriteMagicNumber;
-			/**
-			 * Assinatura do sprite lido, pode não ser o correto
-			 */
-			std::string mMyGorgonSpriteSignature;
+			static const std::string	mGorgonSpriteSignature;		/**< Assinatura do sprite Gorgon correto*/
+			static const int			mGorgonSpriteMagicNumber;	/**< Número do sprite da gorgon correto */
+			static const int			mGorgonSpriteVersion;		/**< the current version of the sprite*/
+			std::streampos mGetPos;	/**< the position in the stream of the get pointer*/
+			std::streampos mPutPos;	/**< the position in the stream of the set pointer*/
+			int mSizeofData;		/**< the size of the image*/
+			int mWidth;				/**< the width of the image*/
+			int mHeight;			/**< the height of the image*/
+			int mGroup;				/**< the group of the sprite*/
+			int mIndex;				/**< the index of the sprite*/
+			int mXOffset;			/**< the horizontal offset of the sprite*/
+			int mYOffset;			/**< the vertical offset of the sprite*/
 		public:
 			/**
 			 * Método Construtor
@@ -81,37 +77,128 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	23/11/2008
-			 * @version	21/06/2009
+			 * @version	18/01/2011
 			 * @param	File& pFile, arquivo já aberto
 			 */
-			static void save(Core::File& pFile);
+			void save(Core::File& pFile);
 			/**
 			 * Método para carregar o header de um arquivo
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	23/11/2008
-			 * @version	21/06/2009
+			 * @version	18/01/2011
 			 * @param	File& pFile, arquivo já aberto
 			 */
 			void load(Core::File& pFile);
 			/**
-			 * Método para verificar a autenticidade do header lido
-			 *
-			 * @author		Cantidio Oliveira Fontes
-			 * @since		23/11/2008
-			 * @version		23/11/2008
-			 * @return		bool
-			 */
-			bool isValid();
-			/**
-			 * Método para retornar a posição do ponteiro do arquivo
+			 * Method tha returns the position of the get and set pointers of the file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	23/11/2008
-			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @version	18/01/2011
+			 * @param	File& pFile, opened file
 			 */
-			static void returnFilePosition(Core::File& pFile);
+			void returnFilePosition(Core::File& pFile);
+
+			/**
+			 * Method that sets the size of the data of the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @param	const int& pSizeOfData, the size of the image data
+			 */
+			void setSizeOfData(const int& pSizeOfData);
+			/**
+			 * Method that sets the group of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @param	const int& pGroup, the group of the sprite
+			 */
+			void setGroup(const int& pGroup);
+			/**
+			 * Method that sets the index of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @param	const int& pIndex, the index of the sprite
+			 */
+			void setIndex(const int& pIndex);
+			/**
+			 * Method that sets the XOffset of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @param	const int& pXOffset, the xOffset of the sprite
+			 */
+			void setXOffset(const int& pXOffset);
+			/**
+			 * Method that sets the YOffset of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @param	const int& pYOffset, the YOffset of the sprite
+			 */
+			void setYOffset(const int& pYOffset);
+			/**
+			 * Method that returns the size of the data of the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @return	int
+			 */
+			int getSizeOfData() const;
+			/**
+			 * Method that returns the group of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @return	int
+			 */
+			int getGroup()		const;
+			/**
+			 * Method that returns the index of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @return	int
+			 */
+			int getIndex()		const;
+			/**
+			 * Method that returns the XOffset of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @return	int
+			 */
+			int getXOffset()	const;
+			/**
+			 * Method that returns the YOffset of the sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @return	int
+			 */
+			int getYOffset()	const;
+			/**
+			 * Method that returns the size of header in bytes
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/01/2011
+			 * @version	18/01/2011
+			 * @return	int
+			 */
+			static int getSize();
 	};
 }
 #endif

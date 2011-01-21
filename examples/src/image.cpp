@@ -1,6 +1,8 @@
-#include "../../include/graphic/gorgon_video.hpp"
-#include "../../include/graphic/gorgon_image.hpp"
+#include <gorgon++/gorgon.hpp>
+#include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
+
 using namespace Gorgon;
+using namespace Gorgon::Core;
 using namespace std;
 #define dgb printf("%d\n",__LINE__);
 
@@ -10,6 +12,7 @@ int main()
 	install_keyboard();
 	try
 	{
+		ImageLoader::setLoader(new ImageLoaderMagick());
 		Video::init("Teste da classe Image");//iniciamos a classe de vídeo
 		Video video = Video::get();//pegamos um ponteiro para classe de vídeo para mais fácil acesso
 		int angle1	= 0;
@@ -42,13 +45,13 @@ int main()
 			video.drawText(10,20,makecol(255,255,255),-1,"Angle2 : %d",angle2);
 			video.show();
 
-			angle1+=2;
-			angle2-=2;
-			if(angle2<0) angle2=255;
-			if(angle1>=255) angle1=0;
+			angle1 += 2;
+			angle2 -= 2;
+			if(angle2 < 0) angle2=255;
+			if(angle1 >= 255) angle1=0;
 		}
 	}
-	catch(Exception e)
+	catch(Exception& e)
 	{
 		cout << e.getMessage() << endl;
 	}

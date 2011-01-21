@@ -154,7 +154,7 @@ namespace Gorgon
 			 * @param	const string& pSpriteName, nome do arquivo a salvar o sprite
 			 * @param	ImageLoader* pImageLoader, ponteiro para o formato de imagem a salvar
 			 */
-			virtual void save(const std::string& pSpriteName,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
+			virtual void save(const std::string& pSpriteName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
 			 * Método para salvar o sprite em um arquivo já aberto
 			 *
@@ -164,7 +164,7 @@ namespace Gorgon
 			 * @param	File&			pFile			, arquivo já aberto
 			 * @param	ImageLoader*	pImageLoader	, ponteiro para o formato de imagem a salvar
 			 */
-			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoaderAutodetect());
+			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
 			 * Método para setar o grupo do sprite
 			 *

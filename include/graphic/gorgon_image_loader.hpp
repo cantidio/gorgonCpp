@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -37,12 +37,32 @@ namespace Gorgon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	05/08/2009
-	 * @version	05/08/2009
+	 * @version	21/01/2011
 	 */
 	class ImageLoader
 	{
+		private:
+			static ImageLoader* mLoader;
 		public:
 			/**
+			 * Método para retornar o loader atual
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	06/01/2011
+			 * @version	07/01/2011
+			 * @return	ImageLoader&
+			 */
+			static ImageLoader& getLoader();
+			/**
+			 * Método para setar o loader atual
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	06/01/2011
+			 * @version	07/01/2011
+			 * @param	ImageLoader* pImageLoader, ponteiro para o novo loader
+			 */
+			static void setLoader(ImageLoader* pImageLoader);
+			/**
 			 * Método genérico para carregar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
@@ -51,17 +71,23 @@ namespace Gorgon
 			 * @param	Image&				pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
-			virtual void load(Image& pImage, const std::string& pImageName) const = 0;
+			virtual void load(Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método genérico para carregar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/08/2009
 			 * @version	05/08/2009
-			 * @param	Image&	pImage	, destino da imagem a ser carregada
-			 * @param	File&	pFile	, arquivo onde a imagem está
+			 * @param	Image&		pImage			, destino da imagem a ser carregada
+			 * @param	File&		pFile			, arquivo onde a imagem está,
+			 * @param	const int&	pSizeOfImage	, o tamanho da imagem em bytes
 			 */
-			virtual void load(Image& pImage, Core::File& pFile) const = 0;
+			virtual void load
+			(
+				Image& pImage,
+				Core::File& pFile,
+				const int& pSizeOfImage = 0
+			) const;
 			/**
 			 * Método genérico para salvar uma imagem
 			 *
@@ -71,7 +97,7 @@ namespace Gorgon
 			 * @param	Image&	pImage	, destino da imagem a ser carregada
 			 * @param	File&	pFile	, arquivo onde a imagem está
 			 */
-			virtual void save(Image& pImage, Core::File& pFile) const = 0;
+			virtual void save(Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método genérico para salvar uma imagem
 			 *
@@ -81,7 +107,7 @@ namespace Gorgon
 			 * @param	Image&				pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
-			virtual void save(Image& pImage, const std::string& pImageName) const = 0;
+			virtual void save(Image& pImage, const std::string& pImageName) const;
 	};
 }
 #endif

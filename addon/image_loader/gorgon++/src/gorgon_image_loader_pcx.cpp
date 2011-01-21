@@ -1,5 +1,5 @@
 #include "../include/gorgon_image_loader_pcx.hpp"
-#include <graphic/gorgon_image.hpp>
+#include <gorgon++/graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
@@ -10,7 +10,7 @@ namespace Gorgon
 		Core::File& pFile
 	) const
 	{
-		int x,y,j;
+		unsigned int x,y,j;
 		char value;
 		int count;
 
@@ -40,7 +40,7 @@ namespace Gorgon
 				}
 				while (count > 0)
 				{
-					for(int i = 0; i < 8 && x < pImage.getWidth(); ++i,++x)
+					for(unsigned int i = 0; i < 8 && x < pImage.getWidth(); ++i,++x)
 					{
 						pImage.drawPixel(x,y,((value >> (7-i)) & 1));
 					}
@@ -293,7 +293,7 @@ namespace Gorgon
 
 		if(file.is_open())
 		{
-			load(pImage,file);
+			load(pImage,file,0);
 		}
 		else
 		{
@@ -301,7 +301,12 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderPcx::load(Image& pImage,Core::File& pFile) const
+	void ImageLoaderPcx::load
+	(
+		Image&		pImage,
+		Core::File&	pFile,
+		const int&	pSizeOfImage
+	) const
 	{
 		ImageLoaderPcxHeader header;
 		header.load(pFile);
@@ -379,8 +384,7 @@ namespace Gorgon
 		char	pixel;
 		char	savePixel;
 		int 	count;
-		int 	x;
-		int 	y;
+		unsigned int x, y;
 
 		for (y = 0; y < pImage.getHeight(); ++y)
 		{
@@ -424,11 +428,10 @@ namespace Gorgon
 
 	void ImageLoaderPcx::saveEncoded24BitData(Image& pImage, Core::File& pFile) const
 	{
-		int		pixel;
-		char	savePixel;
-		int 	count;
-		int 	x;
-		int 	y;
+		int				pixel;
+		char			savePixel;
+		int 			count;
+		unsigned int	x, y;
 
 		for (y = 0; y < pImage.getHeight(); ++y)
 		{

@@ -1,9 +1,8 @@
 #include "../include/gorgon_image_loader_pcx_header.hpp"
-#include <graphic/gorgon_image.hpp>
+#include <gorgon++/graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
-
 	ImageLoaderPcxHeader::ImageLoaderPcxHeader()
 	{
 		mPalette = new Palette();
@@ -31,9 +30,8 @@ namespace Gorgon
 			case 4:
 				return ImageLoaderPcx4Bit;
 				break;
-			default:
-				return -1;
 		}
+		return -1;
 	}
 
 	void ImageLoaderPcxHeader::fill(const Image& pImage)

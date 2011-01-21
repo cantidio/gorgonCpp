@@ -85,20 +85,24 @@ namespace Gorgon
 
 	void Sprite::load(Core::File& pFile)
 	{
-		SpriteHeader header(pFile);
-		if(header.isValid())
+		SpriteHeader header;
+		try
 		{
-			pFile.readInt8();					//retirar isso no future
-			
-			ImageLoaderAutodetect ImageLoader;
-			ImageLoader.load(*this,pFile);
+			header.load(pFile);
 
-			setGroup	(pFile.readInt32());
-			setIndex	(pFile.readInt32());
-			setXOffset	(pFile.readInt32());
-			setYOffset	(pFile.readInt32());
+			setGroup	(header.getGroup());
+			setIndex	(header.getIndex());
+			setXOffset	(header.getXOffset());
+			setYOffset	(header.getYOffset());
+
+			ImageLoader::getLoader().load
+			(
+				*this,
+				pFile,
+				header.getSizeOfData()
+			);
 		}
-		else
+		catch(SpriteException& exception)
 		{
 			header.returnFilePosition(pFile);
 			throw SpriteException("Unable to load Sprite due to incorrect format.");
@@ -121,16 +125,33 @@ namespace Gorgon
 
 	void Sprite::save(Core::File& pFile,const ImageLoader& pImageLoader)
 	{
-		SpriteHeader::save(pFile);
-		
-		pFile.writeInt8( 0 ); //retirar isso
+		SpriteHeader header;
+		try
+		{
+			//escreve o header vazio...
+			header.save(pFile);
+			std::streampos pos1 = pFile.tellp();
 
-		pImageLoader.save( static_cast<Image&>(*this),pFile);
-		
-		pFile.writeInt32(getGroup());
-		pFile.writeInt32(getIndex());
-		pFile.writeInt32(getXOffset());
-		pFile.writeInt32(getYOffset());
+			pImageLoader.save(static_cast<Image&>(*this), pFile);
+
+			std::streampos pos2 = pFile.tellp();
+
+			header.returnFilePosition(pFile);
+
+			header.setGroup		(mGroup);
+			header.setIndex		(mIndex);
+			header.setXOffset	(mXOffset);
+			header.setYOffset	(mYOffset);
+			header.setSizeOfData(pos2 - pos1);
+			/**@todo arrumar um jeito mais eficiente de se fazer isso, talvez o imageLoader retornar o tamanho da futura imagem*/
+			header.save(pFile);//agora salva o header com seu valor verdadeiro
+			pFile.seekp(pos2);//retorna o ponteiro para o seu lugar certo.
+		}
+		catch(SpriteException& e)
+		{
+			header.returnFilePosition(pFile);
+			throw SpriteException("Unable to save Sprite.");
+		}
 	}
 
 	void Sprite::setGroup(const int& pGroup)

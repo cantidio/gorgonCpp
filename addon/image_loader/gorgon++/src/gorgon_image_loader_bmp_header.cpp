@@ -1,5 +1,5 @@
 #include "../include/gorgon_image_loader_bmp_header.hpp"
-#include <graphic/gorgon_image.hpp>
+#include <gorgon++/graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {

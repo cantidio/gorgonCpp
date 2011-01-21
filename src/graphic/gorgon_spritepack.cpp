@@ -1,5 +1,5 @@
 #include <graphic/gorgon_spritepack.hpp>
-
+#include <graphic/gorgon_video.hpp>
 namespace Gorgon
 {
 	/**
@@ -52,7 +52,7 @@ namespace Gorgon
 		}
 		int group,index;
 		unsigned int j,i;
-		for(group = 0, j = pJumpPixels; j < pImageSheet.getHeight(); j+=pHeight+pJumpPixels,++group)
+		for(group = 0, j = pJumpPixels; j < pImageSheet.getHeight(); j += pHeight + pJumpPixels,++group)
 		{
 			for(index = 0, i = pJumpPixels; i < pImageSheet.getWidth(); i += pWidth + pJumpPixels,++index)
 			{
@@ -70,6 +70,7 @@ namespace Gorgon
 						index
 					)
 				);
+				(*this)[getSize()-1].clear();
 				(*this)[getSize()-1].blitImage(pImageSheet,0,0,i,j,pWidth,pHeight);
 				(*this)[getSize()-1].setType(pImageSheet.getType());
 			}

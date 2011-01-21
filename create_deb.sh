@@ -1,7 +1,7 @@
 #!/bin/sh
 PACKAGE_DIR='DEB_PACKAGE/'
-#LIB_LOCATION='Gorgon++_linux/dist/Debug/GNU-Linux-x86/libgorgon.so'
 LIB_LOCATION='Gorgon++_eclipse/Release/libgorgon.so'
+ADDON_LOCATION='Gorgon++_eclipse/Addon/libgorgon_addon.so'
 #
 # Funćão que cria o script de configuraćão da biblioteca Gorgon
 #
@@ -43,6 +43,9 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--libs)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon -lpthread\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon_addon\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t*)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\tusage 1 1>& 2\n'
@@ -132,6 +135,7 @@ CREATE_DIR_LIB()
 {
 	echo "\tCriando o diretório LIB"
 	cp $LIB_LOCATION $PACKAGE_DIR/usr/lib/
+	cp $ADDON_LOCATION $PACKAGE_DIR/usr/lib/
 }
 #
 # Funcão para criar o diretório Share do pacote

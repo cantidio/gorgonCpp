@@ -58,9 +58,16 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	28/11/2007
 			 * @version	07/08/2009
-			 * @param	File& pFile, ponteiro para o arquivo
+			 * @param	Image&		pImage		, referencia para a imagem a ser carregada
+			 * @param	Core::File&	pFile		, referencia para o arquivo que contem a imagem
+			 * @param	const int&	pImageSize	, tamanho da imagem em bytes, campo não usado
 			 */
-			virtual void load(Image& pImage, Core::File& pFile) const;
+			virtual void load
+			(
+				Image& pImage,
+				Core::File& pFile,
+				const int& pImageSize = 0
+			) const;
 			/**
 			 * Método para salvar uma imagem pcx
 			 *

@@ -20,15 +20,15 @@ namespace Gorgon
 	 */
 	inline bool tryLoadFormat
 	(
-		Image& pImage,
-		Core::File& pFile,
-		const ImageLoader& pImageLoader
+		Image&				pImage,
+		Core::File&			pFile,
+		const ImageLoader&	pImageLoader
 	)
 	{
 		long initPosition = pFile.tellg();
 		try
 		{
-			pImageLoader.load(pImage,pFile);
+			pImageLoader.load(pImage,pFile,0);
 			return true;
 		}
 		catch(const ImageException& e)
@@ -59,11 +59,21 @@ namespace Gorgon
 		{
 			delete tip;
 			Core::File file(pImageName,std::ios::binary | std::ios::in);
-			load(pImage,file);
+			load
+			(
+				pImage,
+				file,
+				0
+			);
 		}
 	}
 
-	void ImageLoaderAutodetect::load(Image& pImage, Core::File& pFile) const
+	void ImageLoaderAutodetect::load
+	(
+		Image& pImage,
+		Core::File& pFile,
+		const int& pSizeOfImage
+	) const
 	{
 		//tenta carregar as imagens por ordem de formatos mais comuns
 		if

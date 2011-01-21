@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -59,10 +59,16 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/08/2009
 			 * @version	06/08/2009
-			 * @param	Image&	pImage	, destino da imagem a ser carregada
-			 * @param	File&	pFile	, arquivo onde a imagem está
+			 * @param	Image&		pImage			, destino da imagem a ser carregada
+			 * @param	File&		pFile			, arquivo onde a imagem está
+			 * @param	const int&	pSizeOfImage	, tamanho da imagem em bytes
 			 */
-			virtual void load(Image& pImage, Core::File& pFile) const;
+			virtual void load
+			(
+				Image& pImage,
+				Core::File& pFile,
+				const int& pSizeOfImage = 0
+			) const;
 			/**
 			 * Método genérico para salvar uma imagem
 			 *

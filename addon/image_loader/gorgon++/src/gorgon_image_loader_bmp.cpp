@@ -1,5 +1,5 @@
 #include "../include/gorgon_image_loader_bmp.hpp"
-#include <graphic/gorgon_image.hpp>
+#include <gorgon++/graphic/gorgon_image.hpp>
 
 namespace Gorgon
 {
@@ -195,7 +195,6 @@ namespace Gorgon
 	{
 		int x,y;
 		unsigned char r,g,b,a;
-		
 		pImage.create(pInfoHeader.getWidth(),pInfoHeader.getHeight(),32);
 		for(y = pInfoHeader.getHeight() - 1; y >= 0; --y)
 		{
@@ -250,13 +249,17 @@ namespace Gorgon
 	void ImageLoaderBmp::loadRLE4CompressedData(Image& pImage,Core::File& pFile) const		{}
 	void ImageLoaderBmp::loadBitFieldsCompressedData(Image& pImage,Core::File& pFile)	const	{}
 
-	void ImageLoaderBmp::load(Image& pImage,Core::File& pFile) const
+	void ImageLoaderBmp::load
+	(
+		Image&		pImage,
+		Core::File&	pFile,
+		const int&	pSizeOfImage
+	) const
 	{
 		pImage.mImgLinked	= false;
 		ImageLoaderBmpHeader		header;
 		ImageLoaderBmpInfoHeader	infoHeader;
 		header.load(pFile);//carrega o header
-		
 		if(header.isValid())
 		{
 			infoHeader.load(pFile);//carrega o info header
@@ -286,7 +289,7 @@ namespace Gorgon
 
 		if(file.is_open())
 		{
-			load(pImage,file);
+			load(pImage,file,0);
 		}
 		else
 		{
@@ -428,7 +431,6 @@ namespace Gorgon
 	void ImageLoaderBmp::saveUncompressed24BitData(Image& pImage, Core::File& pFile) const
 	{
 		int x, y;
-		unsigned char r,g,b;
 		int pixel;
 		int filler = (4 - ((pImage.getWidth() * 3) % 4)) % 4;
 
@@ -437,14 +439,6 @@ namespace Gorgon
 			for (x = 0; x < pImage.getWidth(); ++x)
 			{
 				pixel = pImage.getPixel(x,y,true);
-				/*r = ((pixel >> 0)	& 0xFF);
-				g = ((pixel >> 8)	& 0xFF);
-				b = ((pixel >> 16)	& 0xFF);
-
-				pFile->write((char*)&r,1);
-				pFile->write((char*)&g,1);
-				pFile->write((char*)&b,1);*/
-
 				pFile.writeInt8((pixel >> 0)	& 0xFF);
 				pFile.writeInt8((pixel >> 8)	& 0xFF);
 				pFile.writeInt8((pixel >> 16)	& 0xFF);
@@ -456,7 +450,6 @@ namespace Gorgon
 	void ImageLoaderBmp::saveUncompressed32BitData(Image& pImage, Core::File& pFile) const
 	{
 		int x, y;
-		unsigned char r,g,b,a;
 		int pixel;
 
 		for(y = pImage.getHeight() - 1; y >= 0; --y)
@@ -464,16 +457,6 @@ namespace Gorgon
 			for (x = 0; x < pImage.getWidth(); ++x)
 			{
 				pixel = pImage.getPixel(x,y,true);
-				/*
-				r = ((pixel >> 0)	& 0xFF);
-				g = ((pixel >> 8)	& 0xFF);
-				b = ((pixel >> 16)	& 0xFF);
-				a = ((pixel >> 24)	& 0xFF);
-
-				pFile->write((char*)&r,1);
-				pFile->write((char*)&g,1);
-				pFile->write((char*)&b,1);
-				pFile->write((char*)&a,1);*/
 				/**
 				 * @todo verificar littleendian ou big enddian aki
 				 */
