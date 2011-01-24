@@ -49,7 +49,7 @@ namespace Script
 		}
 	}
 
-	LuaReturn* Lua::function
+	LuaReturn Lua::function
 	(
 		const std::string&	pFunctionName,
 		const LuaParam&		pParam,
@@ -65,7 +65,7 @@ namespace Script
 			Core::LogRegister(std::string("error: ") + lua_tostring(mState, -1) + " when trying to call function: " + pFunctionName);
 			//throw Exception("Error")
 		}
-		return new LuaReturn(mState,pReturnNumber);
+		return LuaReturn(mState,pReturnNumber);
 	}
 
 	void Lua::registerFunction(const std::string& pFunctionName,int (*pFunction) (lua_State*))

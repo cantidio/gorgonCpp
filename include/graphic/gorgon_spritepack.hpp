@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -433,6 +433,9 @@ namespace Gorgon
 			 * @return	const Sprite&
 			 */
 			const Sprite& operator ()(const int& pGroup,const int& pIndex) const;
+
+			void saveScript(const std::string& pFileName);
+			void loadScript(const std::string& pFileName);
 	};
 }
 #endif

@@ -1,4 +1,4 @@
-#include "script/gorgon_lua_return.hpp"
+#include <script/gorgon_lua_return.hpp>
 
 namespace Gorgon{
 namespace Script

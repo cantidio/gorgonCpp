@@ -412,6 +412,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_log.hpp</locationURI>
 		</link>
 		<link>
+			<name>include/core/gorgon_string.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_string.hpp</locationURI>
+		</link>
+		<link>
 			<name>include/core/gorgon_zlib.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_zlib.hpp</locationURI>
@@ -810,6 +815,11 @@
 			<name>src/core/gorgon_log.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/gorgon_log.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/core/gorgon_string.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/gorgon_string.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/core/gorgon_zlib.cpp</name>

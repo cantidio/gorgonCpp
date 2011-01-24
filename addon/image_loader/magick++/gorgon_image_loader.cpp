@@ -76,9 +76,9 @@ namespace Gorgon
 				}
 			}
 		}
-		catch(Magick::Exception &error_)
+		catch(Magick::Exception& e)
 		{
-		//	cout << "deu merda veio" << endl;
+			throw ImageException(e.what());
 		}
 		delete mData;
 		mDataLength	= 0;
@@ -96,10 +96,11 @@ namespace Gorgon
 			magickSize.width	( pImage.getWidth()  );
 			magickSize.height	( pImage.getHeight() );
 			magickImage.size	( magickSize );
-			magickImage.type	( Magick::OptimizeType );
+			//magickImage.type	( Magick::OptimizeType );
 			//magickImage.type	( Magick::TrueColorType );
 
-			magickImage.magick	( "PNG" );
+			magickImage.magick	( "BMP" );
+			magickImage.fillColor(Magick::Color(255,0,255));
 
 			for(unsigned int h = 0; h < pImage.getHeight(); ++h)
 			{
@@ -113,7 +114,6 @@ namespace Gorgon
 						gorgonColorToMagick( pImage.getColor(w,h).getAlfa()		)
 					);
 					magickImage.pixelColor (w, h, magickColor );
-
 				}
 			}
 			magickImage.write(&magickBlob);

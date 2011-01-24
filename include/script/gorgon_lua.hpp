@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -118,9 +118,9 @@ namespace Script
 			 * @param	const std::string&	pFunctionName	, nome da função em lua a ser chamada
 			 * @param	const LuaParam&		pParam			, parametros
 			 * @param	const int&			pReturnNumber	, número de variáveis retornadas no método
-			 * @return	LuaReturn*, objeto de retorno
+			 * @return	LuaReturn, objeto de retorno
 			 */
-			LuaReturn* function
+			LuaReturn function
 			(
 				const std::string&	pFunctionName,
 				const LuaParam&		pParam			= LuaParam(),

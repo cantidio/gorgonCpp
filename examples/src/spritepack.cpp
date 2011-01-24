@@ -17,14 +17,13 @@ int main(int srgc, char** argv)
 		Video		video = Video::get();
 		//SpritePack	gspk(ImagePcx("../resources/tileset2.pcx"),16,16);//59
 
-		SpritePack	gspk(Image("../resources/klona_48x48.png"),46,46,1);//59
-		gspk.save("../resources/explode.sprPk");
-		gspk[0].save("imagem_teste.gspr");
-		((Image)gspk[0]).save("imagem_teste.png");
+		//SpritePack	gspk(Image("../resources/klona_48x48.pcx"),0xFF0000);
+		SpritePack	gspk;
 
-		Image a("imagem_teste.png");
+		gspk.loadScript("teste/teste.lua");////59
+		//gspk.saveScript("teste.lua");
+		//gspk.save("teste.gspk");
 
-		gspk.add(Sprite("imagem_teste.gspr"));
 		printf("saiu\n");
 		int counter = 0;
 
@@ -45,7 +44,6 @@ int main(int srgc, char** argv)
 				2 * gspk[counter].getHeight()
 			);
 
-			video.drawImage(a,200,200);
 			video.drawSpriteFlipped(gspk[counter],96,57,Mirroring::Normal);
 			
 			
@@ -59,13 +57,20 @@ int main(int srgc, char** argv)
 			video.drawText(10,90,0xFFFFFF,-1,"counter: %d",counter);
 			video.show();
 
-			if(key[KEY_RIGHT])	++counter;
-			if(key[KEY_LEFT])	--counter;
+			if(key[KEY_RIGHT])
+			{
+				++counter;
+				if(counter >= gspk.getSize())
+					counter = 0;
+			}
+			else if(key[KEY_LEFT])
+			{
+				--counter;
+				if(counter < 0)
+					counter = gspk.getSize() - 1;
+			}
 	
 			key[KEY_DOWN]=key[KEY_UP]=key[KEY_LEFT]=key[KEY_RIGHT]=key[KEY_ENTER]=0;
-
-			if(counter >= gspk.getSize())	counter = 0;
-			else if(counter<0)				counter = gspk.getSize() - 1;
 		}
 	}
 	catch(Core::Exception& e)

@@ -1,5 +1,7 @@
 #include <graphic/gorgon_spritepack.hpp>
-#include <graphic/gorgon_video.hpp>
+#include <sstream>
+#include <script/gorgon_script.hpp>
+
 namespace Gorgon
 {
 	/**
@@ -275,12 +277,16 @@ namespace Gorgon
 	)
 	{
 		unsigned int i,j,width = 0,height = 0;
-
-		for(i = pPosY; i < pImage.getHeight()-1; ++i)
+		//printf("antony\n");
+		for(i = pPosY; i < pImage.getHeight(); ++i)
 		{
-			for(j = pPosX; j < pImage.getWidth()-1; ++j)
+			for(j = pPosX; j < pImage.getWidth(); ++j)
 			{
-				if(pImage.getPixel(j,i) == pBackgroundColor || j == pImage.getWidth() - 1)
+				if
+				(
+					pImage.getPixel(j,i) == pBackgroundColor
+					|| j == (pImage.getWidth() - 1)
+				)
 				{
 					if(j - pPosX > width)
 					{
@@ -288,6 +294,7 @@ namespace Gorgon
 					}
 					break;
 				}
+
 			}
 			if(j == pPosX)
 			{
@@ -299,12 +306,15 @@ namespace Gorgon
 		{
 			return 1;
 		}
-		printf("width: %d, height: %d\n",width,height);
+		//printf("width: %d, height: %d\n",width,height);
 		Sprite sprite(Image(width,height,pImage.getColorDepth()),pGroup,pIndex);
 		sprite.setType(pImage.getType());
 		sprite.blitImage(pImage,0,0,pPosX,pPosY,width,height);
 		sprite.updateBuffer();
-		add(sprite);
+		if(!sprite.isEmpty())
+		{
+			add(sprite);
+		}
 		pImage.drawRectangle
 		(
 			pPosX,
@@ -331,14 +341,15 @@ namespace Gorgon
 			mNotFound = new Sprite(Image(1,1));
 		}
 		int group, index;
-		unsigned int x,y;
-		for(y = group = 0; y < pImageSheet.getHeight()-1; ++y)
+		int x, y;
+
+		for(y = group = 0; y < pImageSheet.getHeight(); ++y)
 		{
-			for(x = index = 0; x < pImageSheet.getWidth()-1; ++x)
+			for(x = index = 0; x < pImageSheet.getWidth(); ++x)
 			{
 				if(pImageSheet.getPixel(x,y) != pBackgroundColor)
 				{
-					printf("imagem encontrada posxy: %d, %d\n",x,y);
+					//printf("X:%d, Y: %d bG: %d, found: %d\n",x,y,pBackgroundColor,pImageSheet.getPixel(x,y));
 					const int offset = getSpriteInSpriteSheet
 					(
 						pImageSheet,
@@ -348,6 +359,8 @@ namespace Gorgon
 						index,
 						pBackgroundColor
 					);
+					//printf("imagem encontrada posxy: %d, %d, offset:%d\n",x,y,offset);
+
 					x += offset - 1;
 					++index;
 				}
@@ -631,6 +644,55 @@ namespace Gorgon
 		else
 		{
 			throw SpritePackException("Unable to load SpritePack: "+pFileName+".");
+		}
+	}
+	void SpritePack::saveScript(const String& pFileName)
+	{
+		Core::File file(pFileName,std::ios::out);
+		if(file.is_open())
+		{
+			file << "function getSpriteNumber()		return #spritepack				end\n";
+			file << "function getSpriteLocation(i)	return spritepack[i].image		end\n";
+			file << "function getSpriteGroup(i)		return spritepack[i].group		end\n";
+			file << "function getSpriteIndex(i)		return spritepack[i].index		end\n";
+			file << "function getSpriteXOffset(i)	return spritepack[i].xoffset	end\n";
+			file << "function getSpriteYOffset(i)	return spritepack[i].yoffset	end\n";
+			file << "spritepack = {\n";
+			for(int i = 0; i < getSize(); ++i)
+			{
+				std::stringstream filename;
+				filename << pFileName << "image_" << i << ".bmp";
+				((Image)(*this)[i]).save(filename.str());
+
+				file << "\t{\n";
+				file << "\t\tgroup   = " << (*this)[i].getGroup()	<< ",\n";
+				file << "\t\tindex   = " << (*this)[i].getIndex()	<< ",\n";
+				file << "\t\txoffset = " << (*this)[i].getXOffset()	<< ",\n";
+				file << "\t\tyoffset = " << (*this)[i].getYOffset()	<< ",\n";
+				file << "\t\timage   = " << "\"" << filename.str() << "\"\n";
+				file << "\t},\n";
+			}
+			file << "}";
+		}
+	}
+	void SpritePack::loadScript(const std::string& pFileName)
+	{
+		Script::Lua script(pFileName);
+		const int sprites = script.function("getSpriteNumber",Script::LuaParam(),1).getNumericValue();
+
+		for(int i = 1; i <= sprites; ++i)
+		{
+			this->add
+			(
+				Sprite
+				(
+					Image( script.function("getSpriteLocation", Script::LuaParam("i",i),1).getStringValue() ),
+					script.function("getSpriteGroup", Script::LuaParam("i",i),1).getNumericValue(),
+					script.function("getSpriteIndex", Script::LuaParam("i",i),1).getNumericValue(),
+					script.function("getSpriteXOffset", Script::LuaParam("i",i),1).getNumericValue(),
+					script.function("getSpriteYOffset", Script::LuaParam("i",i),1).getNumericValue()
+				)
+			);
 		}
 	}
 }
