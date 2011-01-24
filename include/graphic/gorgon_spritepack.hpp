@@ -31,6 +31,7 @@
 #include "gorgon_spritepack_exception.hpp"
 #include "gorgon_spritepack_header.hpp"
 #include "../core/gorgon_file.hpp"
+#include "../core/gorgon_string.hpp"
 
 namespace Gorgon
 {
@@ -180,9 +181,9 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/08/2008
 			 * @version	20/05/2009
-			 * @param	const std::string& pFileName, nome do arquivo com as informações do pacote
+			 * @param	const Core::String& pFileName, nome do arquivo com as informações do pacote
 			 */
-			SpritePack(const std::string& pFileName);
+			SpritePack(const Core::String& pFileName);
 			/**
 			 * Método construtor de classe iniciado
 			 *
@@ -359,10 +360,10 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/08/2008
 			 * @version	07/08/2009
-			 * @param	const std::string& pFileName, nome do arquivo para salvar
+			 * @param	const Core::String& pFileName, nome do arquivo para salvar
 			 * @param	ImageLoader*	pImageLoader	, ponteiro para o formato de imagem a salvar
 			 */
-			virtual void save(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void save(const Core::String& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
 			 * Método para salvar os sprites em um arquivo já aberto
 			 *
@@ -379,9 +380,9 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/08/2008
 			 * @version	07/01/2011
-			 * @param	const std::string& pFileName, string com o nome do arquivo
+			 * @param	const Core::String& pFileName, string com o nome do arquivo
 			 */
-			virtual void load(const std::string& pFileName);
+			virtual void load(const Core::String& pFileName);
 			/**
 			 * Método para carregar os sprites de um arquivo já aberto
 			 *
@@ -433,9 +434,9 @@ namespace Gorgon
 			 * @return	const Sprite&
 			 */
 			const Sprite& operator ()(const int& pGroup,const int& pIndex) const;
-
-			void saveScript(const std::string& pFileName);
-			void loadScript(const std::string& pFileName);
+			void operator =(const SpritePack& pSpritePack);
+			void saveScript(const Core::String& pFileName);
+			void loadScript(const Core::String& pFileName);
 	};
 }
 #endif

@@ -396,7 +396,7 @@ namespace Gorgon
 		}
 	}
 
-	SpritePack::SpritePack(const std::string& pFileName)
+	SpritePack::SpritePack(const Core::String& pFileName)
 	{
 		if(mNotFound == NULL)
 		{
@@ -541,6 +541,21 @@ namespace Gorgon
 		return getSprite(pGroup,pIndex);
 	}
 
+	void SpritePack::operator =(const SpritePack& pSpritePack)
+	{
+		if(!mPalLinked && mGlobalPalette)
+		{
+			delete mGlobalPalette;
+		}
+		mSprites.clear();
+		mGlobalPalette	= (pSpritePack.mGlobalPalette) ? pSpritePack.mGlobalPalette->copy() : NULL;
+		mPalLinked		= false;
+		for(unsigned int i = 0; i < pSpritePack.getSize(); ++i)
+		{
+			add(Sprite(pSpritePack[i]));
+		}
+	}
+
 	void SpritePack::setGlobalPalette(Palette* pPalette)
 	{
 		if(!mPalLinked && mGlobalPalette)
@@ -593,7 +608,7 @@ namespace Gorgon
 		}
 	}
 
-	void SpritePack::save(const std::string& pFileName,const ImageLoader& pImageLoader)
+	void SpritePack::save(const Core::String& pFileName,const ImageLoader& pImageLoader)
 	{
 		Core::File file(pFileName,std::ios::out | std::ios::binary);
 
@@ -634,7 +649,7 @@ namespace Gorgon
 		}
 	}
 
-	void SpritePack::load(const std::string& pFileName)
+	void SpritePack::load(const Core::String& pFileName)
 	{
 		Core::File file(pFileName,std::ios::in | std::ios::binary);
 		if(file.is_open())
@@ -646,9 +661,27 @@ namespace Gorgon
 			throw SpritePackException("Unable to load SpritePack: "+pFileName+".");
 		}
 	}
-	void SpritePack::saveScript(const String& pFileName)
+	void SpritePack::saveScript(const Core::String& pFileName)
 	{
 		Core::File file(pFileName,std::ios::out);
+		std::vector<Core::String> pieces;
+		Core::String subfilename;
+		Core::String dir;
+
+		pieces = pFileName.explode("/");
+		for(unsigned int i = 0; i < pieces.size() - 1; ++i)
+		{
+			dir.append(pieces[i]);
+			dir.append("/");
+		}
+		pieces = pieces.back().explode(".");
+		subfilename.append(pieces[0]);
+		for(unsigned int i = 1; i < pieces.size() - 1; ++i)
+		{
+			subfilename.append(".");
+			subfilename.append(pieces[i]);
+		}
+
 		if(file.is_open())
 		{
 			file << "function getSpriteNumber()		return #spritepack				end\n";
@@ -658,10 +691,11 @@ namespace Gorgon
 			file << "function getSpriteXOffset(i)	return spritepack[i].xoffset	end\n";
 			file << "function getSpriteYOffset(i)	return spritepack[i].yoffset	end\n";
 			file << "spritepack = {\n";
-			for(int i = 0; i < getSize(); ++i)
+
+			for(unsigned int i = 0; i < getSize(); ++i)
 			{
 				std::stringstream filename;
-				filename << pFileName << "image_" << i << ".bmp";
+				filename << dir << subfilename << "_image_" << i << ".bmp";
 				((Image)(*this)[i]).save(filename.str());
 
 				file << "\t{\n";
@@ -669,24 +703,36 @@ namespace Gorgon
 				file << "\t\tindex   = " << (*this)[i].getIndex()	<< ",\n";
 				file << "\t\txoffset = " << (*this)[i].getXOffset()	<< ",\n";
 				file << "\t\tyoffset = " << (*this)[i].getYOffset()	<< ",\n";
-				file << "\t\timage   = " << "\"" << filename.str() << "\"\n";
+				file << "\t\timage   = " << "\"" << subfilename << "_image_" << i << ".bmp\"\n";
 				file << "\t},\n";
 			}
 			file << "}";
 		}
 	}
-	void SpritePack::loadScript(const std::string& pFileName)
+
+	void SpritePack::loadScript(const Core::String& pFileName)
 	{
 		Script::Lua script(pFileName);
+
+		std::vector<Core::String> pieces = pFileName.explode("/");
+		Core::String dir;
+
+		for(unsigned int i = 0; i < pieces.size() - 1; ++i)
+		{
+			dir.append(pieces[i]);
+			dir.append("/");
+		}
 		const int sprites = script.function("getSpriteNumber",Script::LuaParam(),1).getNumericValue();
 
 		for(int i = 1; i <= sprites; ++i)
 		{
+			std::stringstream image;
+			image << dir << script.function("getSpriteLocation", Script::LuaParam("i",i),1).getStringValue();
 			this->add
 			(
 				Sprite
 				(
-					Image( script.function("getSpriteLocation", Script::LuaParam("i",i),1).getStringValue() ),
+					Image( image.str() ),
 					script.function("getSpriteGroup", Script::LuaParam("i",i),1).getNumericValue(),
 					script.function("getSpriteIndex", Script::LuaParam("i",i),1).getNumericValue(),
 					script.function("getSpriteXOffset", Script::LuaParam("i",i),1).getNumericValue(),
