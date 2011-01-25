@@ -434,8 +434,32 @@ namespace Gorgon
 			 * @return	const Sprite&
 			 */
 			const Sprite& operator ()(const int& pGroup,const int& pIndex) const;
+			/**
+			 * Operador de igualdade
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	24/01/2011
+			 * @version	24/01/2011
+			 * @param	const SpritePack& pSpritePack
+			 */
 			void operator =(const SpritePack& pSpritePack);
+			/**
+			 * Method that saves the spritepack throught a lua script
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	23/01/2011
+			 * @version	24/01/2011
+			 * @param	const Core::String& pFileName, the name of the script
+			 */
 			void saveScript(const Core::String& pFileName);
+			/**
+			 * Method that loads a spritepack throught a lua script
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	23/01/2011
+			 * @version	23/01/2011
+			 * @param	const Core::String& pFileName, the name of the script to load
+			 */
 			void loadScript(const Core::String& pFileName);
 	};
 }
