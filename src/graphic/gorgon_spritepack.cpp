@@ -684,14 +684,7 @@ namespace Gorgon
 
 		if(file.is_open())
 		{
-			file << "function getSpriteNumber()		return #spritepack				end\n";
-			file << "function getSpriteLocation(i)	return spritepack[i].image		end\n";
-			file << "function getSpriteGroup(i)		return spritepack[i].group		end\n";
-			file << "function getSpriteIndex(i)		return spritepack[i].index		end\n";
-			file << "function getSpriteXOffset(i)	return spritepack[i].xoffset	end\n";
-			file << "function getSpriteYOffset(i)	return spritepack[i].yoffset	end\n";
 			file << "spritepack = {\n";
-
 			for(unsigned int i = 0; i < getSize(); ++i)
 			{
 				std::stringstream filename;
@@ -713,7 +706,12 @@ namespace Gorgon
 	void SpritePack::loadScript(const Core::String& pFileName)
 	{
 		Script::Lua script(pFileName);
-
+		script.executeString("function getSpriteNumber()	return #spritepack				end");
+		script.executeString("function getSpriteLocation(i)	return spritepack[i].image		end");
+		script.executeString("function getSpriteGroup(i)	return spritepack[i].group		end");
+		script.executeString("function getSpriteIndex(i)	return spritepack[i].index		end");
+		script.executeString("function getSpriteXOffset(i)	return spritepack[i].xoffset	end");
+		script.executeString("function getSpriteYOffset(i)	return spritepack[i].yoffset	end");
 		std::vector<Core::String> pieces = pFileName.explode("/");
 		Core::String dir;
 

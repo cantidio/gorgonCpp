@@ -448,7 +448,7 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	23/01/2011
-			 * @version	24/01/2011
+			 * @version	27/04/2011
 			 * @param	const Core::String& pFileName, the name of the script
 			 */
 			void saveScript(const Core::String& pFileName);
@@ -457,7 +457,7 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	23/01/2011
-			 * @version	23/01/2011
+			 * @version	27/04/2011
 			 * @param	const Core::String& pFileName, the name of the script to load
 			 */
 			void loadScript(const Core::String& pFileName);

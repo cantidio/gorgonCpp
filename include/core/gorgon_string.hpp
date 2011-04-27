@@ -24,8 +24,10 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#include<string>
-#include<vector>
+#ifndef _GORGON_CORE_STRING_
+#define _GORGON_CORE_STRING_
+#include <string>
+#include <vector>
 namespace Gorgon{
 namespace Core
 {
@@ -88,3 +90,4 @@ namespace Core
 			std::vector<String> explode(const String& pDelimiter) const;
 	};
 }}
+#endif

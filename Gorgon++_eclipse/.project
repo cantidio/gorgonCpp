@@ -112,6 +112,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/animationpack</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>addon/image_loader</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -235,6 +240,16 @@
 			<name>addon/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/animationpack/gorgon_animationpack_lua.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/animationpack/gorgon_animationpack_lua.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.hpp</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader/.svn</name>

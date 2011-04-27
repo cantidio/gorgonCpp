@@ -1,11 +1,12 @@
 #include <gorgon++/gorgon.hpp>
 #include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
 
-const int X=160;
-const int Y=120;
-const int zoom=2;
+const int X=320;
+const int Y=240;
+int zoom=1;
 using namespace Gorgon;
 using namespace std;
+
 void usageMSG()
 {
 	printf("opções Disponíveis:\n");
@@ -13,6 +14,39 @@ void usageMSG()
 	printf("\t-spritepack [spritepack.gspk]\n");
 	printf("\t-script     [script.lua]\n\n");
 }
+
+void showCommands()
+{
+	printf("Commands:\n");
+	printf("Geral Functions:\n");
+	printf("\tNext Sprite:                  Right\n");
+	printf("\tPrev Sprite:                  Left\n");
+	printf("\tSave:                         Ctrl + S\n");
+	printf("\tTrim Sprite:                  Ctrl + t\n");
+	printf("\tToogle Transparence:          Ctrl + Q\n");
+	printf("\tMark Sprite To Onion Skins:   Ctrl + 1\n");
+	printf("\tZoom +:                       Ctrl + -\n");
+	printf("\tZoom -:                       Ctrl + =\n\n");
+
+	printf("Sprite Functions:\n");
+	printf("\tAlign Sprite:                 Ctrl + Arrows\n");
+	printf("\tSub SpriteGroup:              Shift + Up\n");
+	printf("\tAdd SpriteGroup:              Shift + Down\n");
+	printf("\tSub SpriteIndex:              Shift + Left\n");
+	printf("\tAdd SpriteIndex:              Shift + Right\n");
+
+
+}
+void createAnimationPack(const SpritePack& pSpritePack)
+{
+	AnimationPack animation;
+//	animation.add(Animation(j,0,false));
+	for(int i = 1; i < pSpritePack.getSize(); ++i)
+	{
+
+	}
+}
+
 int main(int argc, char** argv)
 {
 	allegro_init();
@@ -50,7 +84,9 @@ int main(int argc, char** argv)
 			usageMSG();
 			return 0;
 		}
-		Sprite buffer(Image(320,240));
+		showCommands();
+
+		Sprite buffer(Image(640,480));
 		int counter		= 0;
 		int onionIndex	= 0;
 		while(!key[KEY_ESC])
@@ -58,15 +94,16 @@ int main(int argc, char** argv)
 			buffer.clear();
 			buffer.drawSpriteTrans(gspk[onionIndex],X,Y,0.5);
 			(trans) ? buffer.drawSprite(gspk[counter],X,Y) : buffer.blitSprite(gspk[counter],X,Y);
-			buffer.drawRectangle(X,Y,X+zoom,Y+zoom,0xFFFFFF,true);//draw a hot spot
+			buffer.drawRectangle(X-1,Y-1,X+1,Y+1,0xFFFFFF,true);//draw a hot spot
 			video.clear();
-			video.blitSpriteStretched(buffer,0,0,zoom,zoom);
+
+			video.blitSpriteStretched(buffer,-X * (zoom-1),-Y * (zoom-1),zoom,zoom);
 
 			video.drawText("Gorgon SpritePack View",10,10,0xFFFFFF);
-			video.drawText(10,30,0xFFFFFF,-1,"Width: %d",gspk[counter].getWidth());
-			video.drawText(10,40,0xFFFFFF,-1,"Height: %d",gspk[counter].getHeight());
-			video.drawText(10,50,0xFFFFFF,-1,"Group: %d",gspk[counter].getGroup());
-			video.drawText(10,60,0xFFFFFF,-1,"Index: %d",gspk[counter].getIndex());
+			video.drawText(10,30,0xFFFFFF,-1,"Width:   %d",gspk[counter].getWidth());
+			video.drawText(10,40,0xFFFFFF,-1,"Height:  %d",gspk[counter].getHeight());
+			video.drawText(10,50,0xFFFFFF,-1,"Group:   %d",gspk[counter].getGroup());
+			video.drawText(10,60,0xFFFFFF,-1,"Index:   %d",gspk[counter].getIndex());
 			video.drawText(10,70,0xFFFFFF,-1,"xOffset: %d",gspk[counter].getXOffset());
 			video.drawText(10,80,0xFFFFFF,-1,"yOffset: %d",gspk[counter].getYOffset());
 			video.drawText(10,90,0xFFFFFF,-1,"counter: %d",counter);
@@ -85,10 +122,10 @@ int main(int argc, char** argv)
 
 					file1.append(".lua");
 					file2.append(".gspk");
-					printf("salvando.\n");
+					printf("salvando...");
 					gspk.saveScript(file1);
 					gspk.save(file2);
-					printf("ok\n");
+					printf("[ok]\n");
 				}
 				else if(key[KEY_T])
 				{
@@ -102,8 +139,16 @@ int main(int argc, char** argv)
 				}
 				else if(key[KEY_1])
 				{
-					printf("mark sprite to onion skin.\n");
+					printf("mark sprite %d to onion skin.\n",counter);
 					onionIndex = counter;
+				}
+				else if(key[KEY_MINUS])
+				{
+					--zoom;
+				}
+				else if(key[KEY_EQUALS])
+				{
+					++zoom;
 				}
 				if(key[KEY_UP])
 				{
@@ -157,7 +202,7 @@ int main(int argc, char** argv)
 				}
 			}
 
-			key[KEY_1]=key[KEY_S]=key[KEY_Q]=key[KEY_T]=key[KEY_DOWN]=key[KEY_UP]=key[KEY_LEFT]=key[KEY_RIGHT]=key[KEY_ENTER]=0;
+			key[KEY_MINUS]=key[KEY_EQUALS]=key[KEY_1]=key[KEY_S]=key[KEY_Q]=key[KEY_T]=key[KEY_DOWN]=key[KEY_UP]=key[KEY_LEFT]=key[KEY_RIGHT]=key[KEY_ENTER]=0;
 		}
 	}
 	catch(Core::Exception& e)
