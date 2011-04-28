@@ -54,10 +54,6 @@ int main(int argc, char** argv)
 	bool trans = false;
 	try
 	{
-		ImageLoader::setLoader(new ImageLoaderMagick());
-		Video::init("Teste da classe SpritePack",640,480);
-		Video		video = Video::get();
-		SpritePack	gspk;
 		if(argc > 2)
 		{
 			if(std::string(argv[1]).compare("-image") == 0)
@@ -85,7 +81,11 @@ int main(int argc, char** argv)
 			return 0;
 		}
 		showCommands();
-
+		ImageLoader::setLoader(new ImageLoaderMagick());
+		Video::init("Teste da classe SpritePack",640,480);
+		Video		video = Video::get();
+		SpritePack	gspk;
+		
 		Sprite buffer(Image(640,480));
 		int counter		= 0;
 		int onionIndex	= 0;

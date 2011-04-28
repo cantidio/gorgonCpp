@@ -75,8 +75,8 @@ namespace Core
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	21/04/2010
 			 * @version	21/04/2010
-			 * @param	std::fstream&		pSource	, origem
-			 * @param	std::stringstream&	pDest	, destino
+			 * @param	std::fstream&		pSource	, arquivo de origem
+			 * @param	std::stringstream&	pDest	, stream de destino
 			 */
 			static void passBuffer(std::fstream& pSource, std::stringstream& pDest);
 			/**
@@ -85,8 +85,8 @@ namespace Core
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	21/04/2010
 			 * @version	21/04/2010
-			 * @param	std::stringstream&	pSource	, origem
-			 * @param	std::fstream&		pDest	, destino
+			 * @param	std::stringstream&	pSource	, stream de origem
+			 * @param	std::fstream&		pDest	, arquivo de destino
 			 */
 			static void passBuffer(std::stringstream& pSource, std::fstream& pDest);
 	};
