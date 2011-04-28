@@ -7,7 +7,6 @@
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
-			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
 					<key>?name?</key>
@@ -23,7 +22,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value>-j</value>
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>
@@ -43,7 +42,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
-					<value>false</value>
+					<value>true</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
@@ -118,6 +117,11 @@
 		</link>
 		<link>
 			<name>addon/image_loader</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -270,6 +274,26 @@
 			<name>addon/image_loader/magick++</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_lua.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_lua.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_lua.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_lua.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_sff.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_sff.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_sff.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_sff.hpp</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn</name>

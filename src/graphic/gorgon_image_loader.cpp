@@ -3,7 +3,7 @@
 namespace Gorgon
 {
 	ImageLoader* ImageLoader::mLoader = NULL;
-
+	std::string ImageLoader::mSaveFormat = "BMP";
 	ImageLoader& ImageLoader::getLoader()
 	{
 		if(mLoader == NULL)
@@ -12,6 +12,7 @@ namespace Gorgon
 		}
 		return *mLoader;
 	}
+
 	void ImageLoader::setLoader(ImageLoader* pImageLoader)
 	{
 		if( mLoader != NULL)

@@ -43,6 +43,8 @@ namespace Gorgon
 	{
 		private:
 			static ImageLoader* mLoader;
+		protected:
+			static std::string mSaveFormat;
 		public:
 			/**
 			 * Método para retornar o loader atual
@@ -108,6 +110,15 @@ namespace Gorgon
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
 			virtual void save(Image& pImage, const std::string& pImageName) const;
+			/**
+			 * Método para setar o formato que o loader irá salvar as imagens
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	28/04/2011
+			 * @version	28/04/2011
+			 * @param	const std::string& pSaveFormat, formato a ser salvo ex. BMP, PNG, PCX..
+			 */
+			virtual void setSaveFormat(const std::string& pSaveFormat) {}
 	};
 }
 #endif

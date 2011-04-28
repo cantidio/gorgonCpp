@@ -1,20 +1,21 @@
-#include <graphic/gorgon_sff_spritepack.hpp>
-#include <../addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
+#include "spritepack_sff.hpp"
+#include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
+
 namespace Gorgon
 {
-	SffSpritePack::SffSpritePack(){}
+	SpritePackSff::SpritePackSff(){}
 
-	SffSpritePack::SffSpritePack(const std::string& pFileName)
+	SpritePackSff::SpritePackSff(const std::string& pFileName)
 	{
 		load(pFileName);
 	}
 
-	SffSpritePack::SffSpritePack(Core::File& pFile)
+	SpritePackSff::SpritePackSff(Core::File& pFile)
 	{
 		load(pFile);
 	}
 
-	void SffSpritePack::load(const std::string& pFileName)
+	void SpritePackSff::load(const std::string& pFileName)
 	{
 		Core::File file(pFileName,std::ios::in | std::ios::binary);
 		if(file.is_open())
@@ -23,11 +24,11 @@ namespace Gorgon
 		}
 		else
 		{
-			throw SpritePackException("Unable to load SffSpritePack: "+pFileName+".");
+			throw SpritePackException("Unable to load SpritePackSff: "+pFileName+".");
 		}
 	}
 	
-	Sprite SffSpritePack::loadSprite(Core::File& pFile) const
+	Sprite SpritePackSff::loadSprite(Core::File& pFile) const
 	{
 		Image imageTmp;
 		const int nextSubFile		= pFile.readInt32();
@@ -84,7 +85,7 @@ namespace Gorgon
 		}
 	}
 
-	void SffSpritePack::load(Core::File& pFile)
+	void SpritePackSff::load(Core::File& pFile)
 	{
 		const std::string signature	= pFile.readString(12);
 		const std::string version	= pFile.readString(4);

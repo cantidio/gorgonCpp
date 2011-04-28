@@ -1,5 +1,6 @@
 #include "gorgon_image_loader.hpp"
 #include <ImageMagick/Magick++.h>
+
 #define magickColorToGorgon(color) 255 * color / MaxRGB
 #define gorgonColorToMagick(color) color * MaxRGB / 255
 
@@ -32,7 +33,8 @@ namespace Gorgon
 	(
 		Image&		pImage,
 		Core::File&	pFile,
-		const int&	pDataLength) const
+		const int&	pDataLength
+	) const
 	{
 		Magick::Blob	magickFile;
 		Magick::Image	magickImage;
@@ -99,7 +101,7 @@ namespace Gorgon
 			//magickImage.type	( Magick::OptimizeType );
 			//magickImage.type	( Magick::TrueColorType );
 
-			magickImage.magick	( "BMP" );
+			magickImage.magick	( mSaveFormat );
 			magickImage.fillColor(Magick::Color(255,0,255));
 
 			for(unsigned int h = 0; h < pImage.getHeight(); ++h)
@@ -137,6 +139,13 @@ namespace Gorgon
 		{
 			throw ImageException("Unable to save Image: "+pImageName+".");
 		}
+	}
+	/**
+	 * @todo fazer  uma verificação nos formatos aceitos
+	 */
+	void ImageLoaderMagick::setSaveFormat(const std::string& pSaveFormat)
+	{
+		mSaveFormat = pSaveFormat;
 	}
 }
 

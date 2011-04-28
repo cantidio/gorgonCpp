@@ -1,6 +1,7 @@
 #include <gorgon++/gorgon.hpp>
 #include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
-
+#include <gorgon++/addon/spritepack/spritepack_lua.hpp>
+#include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp>
 const int X=320;
 const int Y=240;
 int zoom=1;
@@ -22,7 +23,8 @@ void showCommands()
 	printf("\tNext Sprite:                  Right\n");
 	printf("\tPrev Sprite:                  Left\n");
 	printf("\tSave:                         Ctrl + S\n");
-	printf("\tTrim Sprite:                  Ctrl + t\n");
+
+	printf("\tTrim All:                     Ctrl + t");
 	printf("\tToogle Transparence:          Ctrl + Q\n");
 	printf("\tMark Sprite To Onion Skins:   Ctrl + 1\n");
 	printf("\tZoom +:                       Ctrl + -\n");
@@ -34,7 +36,7 @@ void showCommands()
 	printf("\tAdd SpriteGroup:              Shift + Down\n");
 	printf("\tSub SpriteIndex:              Shift + Left\n");
 	printf("\tAdd SpriteIndex:              Shift + Right\n");
-
+	printf("\tTrim Sprite:                  Shift + t\n");
 
 }
 void createAnimationPack(const SpritePack& pSpritePack)
@@ -54,6 +56,12 @@ int main(int argc, char** argv)
 	bool trans = false;
 	try
 	{
+		ImageLoader::setLoader(new ImageLoaderMagick());
+		ImageLoader::getLoader().setSaveFormat("PNG");
+		//ImageLoader::setLoader(new Gorgon::ImageLoaderAutodetect());
+		Video::init("Teste da classe SpritePack",640,480);
+		Video		video = Video::get();
+		SpritePack	gspk;
 		if(argc > 2)
 		{
 			if(std::string(argv[1]).compare("-image") == 0)
@@ -66,7 +74,7 @@ int main(int argc, char** argv)
 			}
 			else if(std::string(argv[1]).compare("-script") == 0)
 			{
-				gspk.loadScript(argv[2]);
+				gspk = SpritePackLua(argv[2]);
 			}
 			else
 			{
@@ -81,11 +89,8 @@ int main(int argc, char** argv)
 			return 0;
 		}
 		showCommands();
-		ImageLoader::setLoader(new ImageLoaderMagick());
-		Video::init("Teste da classe SpritePack",640,480);
-		Video		video = Video::get();
-		SpritePack	gspk;
 		
+
 		Sprite buffer(Image(640,480));
 		int counter		= 0;
 		int onionIndex	= 0;
@@ -123,14 +128,20 @@ int main(int argc, char** argv)
 					file1.append(".lua");
 					file2.append(".gspk");
 					printf("salvando...");
-					gspk.saveScript(file1);
+					SpritePackLua a(gspk);
+					a.save(file1);
+				//	gspk.saveScript(file1);
 					gspk.save(file2);
 					printf("[ok]\n");
 				}
 				else if(key[KEY_T])
 				{
-					printf("trim sprite\n");
-					gspk[counter].clipNoBorder();
+					printf("trim sprite all\n");
+					for(int i = 0; i < gspk.getSize(); ++i)
+					{
+						gspk[i].clipNoBorder();
+					}
+					printf("%d sprites trimmed.\n",gspk.getSize());
 				}
 				else if(key[KEY_Q])
 				{
@@ -184,6 +195,11 @@ int main(int argc, char** argv)
 				else if (key[KEY_RIGHT])
 				{
 					gspk[counter].setIndex(gspk[counter].getIndex() + 1);
+				}
+				else if(key[KEY_T])
+				{
+					printf("trim sprite\n");
+					gspk[counter].clipNoBorder();
 				}
 			}
 			else
