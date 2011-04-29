@@ -57,7 +57,7 @@ namespace Gorgon
 		{
 			Sprite temp
 			(
-				Image(pFile,ImageLoaderPcx()),
+				Image(pFile, ImageLoaderPcx() ),
 				group,
 				index,
 				xOffset,
@@ -72,7 +72,7 @@ namespace Gorgon
 			}
 			else if(getSize() > 0)
 			{
-				temp.setPalette((*this)[getSize()-1].getPalette()->copy());
+				temp.setPalette( (*this)[getSize()-1].getPalette()->copy() );
 			}
 			else
 			{

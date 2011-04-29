@@ -1,60 +1,109 @@
 #include "gorgon_animationpack_lua.hpp"
+#include <gorgon++/script/gorgon_lua.hpp>
+
 namespace Gorgon
 {
-	AnimationPackLua::AnimationPackLua(){}
-	AnimationPackLua::AnimationPackLua(Core::File& pFile)
-	{
-		load(pFile);
-	}
+	AnimationPackLua::AnimationPackLua() {}
+	AnimationPackLua::AnimationPackLua(const AnimationPack& pAnimationPack) : AnimationPack(pAnimationPack) {}
+
 	AnimationPackLua::AnimationPackLua(const Core::String& pFileName)
 	{
 		load(pFileName);
 	}
+
 	void AnimationPackLua::save(const Core::String& pFileName)
 	{
-
-	}
-	void AnimationPackLua::save(Core::File& pFile)
-	{
-		if(pFile.is_open())
+		Core::File file(pFileName,std::ios::out);
+		if(file.is_open())
 		{
-			pFile << "animationpack = {\n";
+			file << "animationpack = {\n";
 
 			for(unsigned int i = 0; i < getSize(); ++i)
 			{
-				pFile << "\t{\n";
-				pFile << "\t\tgroup   		= " << (*this)[i].getGroup()						<< ",\n";
-				pFile << "\t\tindex   		= " << (*this)[i].getIndex()						<< ",\n";
-				pFile << "\t\tlooping 		= " << ((*this)[i].getLooping() ? "true" : "false")	<< ",\n";
-				pFile << "\t\tloopFrame		= " << (*this)[i].getLoopFrame()					<< ",\n";
-				pFile << "\t\trepeatNumber	= " << (*this)[i].getRepeatNumber()					<< ",\n";
-				pFile << "\t\tframes		= {\n";
+				file << "\t{\n";
+				file << "\t\tgroup   		= " << (*this)[i].getGroup()						<< ",\n";
+				file << "\t\tindex   		= " << (*this)[i].getIndex()						<< ",\n";
+				file << "\t\tlooping 		= " << ((*this)[i].getLooping() ? "true" : "false")	<< ",\n";
+				file << "\t\tloopFrame		= " << (*this)[i].getLoopFrame()					<< ",\n";
+				file << "\t\trepeatNumber	= " << (*this)[i].getRepeatNumber()					<< ",\n";
+				file << "\t\tframes		= {\n";
 
 				for(unsigned int j = 0; j < (*this)[i].getSize(); ++j)
 				{
 					Frame a = (*this)[i][j];
-					pFile << "\t\t\t{\n";
-					pFile << "\t\t\t\tgroup		= " << a.getGroup()					<< ",\n";
-					pFile << "\t\t\t\tindex		= " << a.getIndex()					<< ",\n";
-					pFile << "\t\t\t\txoffset	= " << a.getXOffset()				<< ",\n";
-					pFile << "\t\t\t\tyoffset	= " << a.getYOffset()				<< ",\n";
-					pFile << "\t\t\t\ttime		= "	<< a.getTime()					<< ",\n";
-					pFile << "\t\t\t\tmorroring	= " << a.getMirroring().getType()	<< ",\n";
-					pFile << "\t\t\t\tangle		= " << a.getAngle() 				<< "\n";
-					pFile << "\t\t\t},\n";
+					file << "\t\t\t{\n";
+					file << "\t\t\t\tgroup		= " << a.getGroup()					<< ",\n";
+					file << "\t\t\t\tindex		= " << a.getIndex()					<< ",\n";
+					file << "\t\t\t\txoffset	= " << a.getXOffset()				<< ",\n";
+					file << "\t\t\t\tyoffset	= " << a.getYOffset()				<< ",\n";
+					file << "\t\t\t\ttime		= "	<< a.getTime()					<< ",\n";
+					file << "\t\t\t\tmirroring	= " << a.getMirroring().getType()	<< ",\n";
+					file << "\t\t\t\tangle		= " << a.getAngle() 				<< "\n";
+					file << "\t\t\t},\n";
 				}
-				pFile << "\t\t}\n";
-				pFile << "\t},\n";
+				file << "\t\t}\n";
+				file << "\t},\n";
 			}
-			pFile << "}";
+			file << "}";
+		}
+		else
+		{
+			throw AnimationPackException("Unable to save AnimationPackLua: "+pFileName+".");
 		}
 	}
+
 	void AnimationPackLua::load(const Core::String& pFileName)
 	{
+		Script::Lua script(pFileName);
+		//registra algumas funções para serem executadas na recuperação dos dados do animationpack
+		script.executeString("function getAnimationNumber()			return #animationpack					or 0		end");
+		script.executeString("function getAnimationGroup(i)			return animationpack[i].group			or 0		end");
+		script.executeString("function getAnimationIndex(i)			return animationpack[i].index			or 0		end");
+		script.executeString("function getAnimationLooping(i)		return animationpack[i].looping			or false	end");
+		script.executeString("function getAnimationLoopFrame(i)		return animationpack[i].loopFrame		or 0		end");
+		script.executeString("function getAnimationRepeatNumber(i)	return animationpack[i].repeatNumber	or 0		end");
+		script.executeString("function getFrameNumber(i)		return #animationpack[i].frames				or 0		end");
+		script.executeString("function getFrameGroup(i,j)		return animationpack[i].frames[j].group		or 0		end");
+		script.executeString("function getFrameIndex(i,j)		return animationpack[i].frames[j].index		or 0		end");
+		script.executeString("function getFrameTime(i,j)		return animationpack[i].frames[j].time		or 0		end");
+		script.executeString("function getFrameMirroring(i,j)	return animationpack[i].frames[j].mirroring	or 0		end");
+		script.executeString("function getFrameAngle(i,j)		return animationpack[i].frames[j].angle		or 0		end");
+		script.executeString("function getFrameXOffset(i,j)		return animationpack[i].frames[j].xoffset	or 0		end");
+		script.executeString("function getFrameYOffset(i,j)		return animationpack[i].frames[j].yoffset	or 0		end");
 
-	}
-	void AnimationPackLua::load(Core::File& pFile)
-	{
 
+		const int animationNumber = script.function("getAnimationNumber",Script::LuaParam(),1).getNumericValue();
+		for(int i = 1; i <= animationNumber; ++i)//em lua os vetores começam em 1
+		{
+			Animation aux
+			(
+				script.function("getAnimationGroup"			, Script::LuaParam("i",i), 1).getNumericValue(),
+				script.function("getAnimationIndex"			, Script::LuaParam("i",i), 1).getNumericValue(),
+				script.function("getAnimationLooping"		, Script::LuaParam("i",i), 1).getBoolValue(),
+				script.function("getAnimationLoopFrame"		, Script::LuaParam("i",i), 1).getNumericValue(),
+				script.function("getAnimationRepeatNumber"	, Script::LuaParam("i",i), 1).getNumericValue()
+			);
+
+			const int frameNumber = script.function("getFrameNumber" , Script::LuaParam("i",i), 1).getNumericValue();
+			for(int j = 1; j <= frameNumber; ++j)
+			{
+				aux.add
+				(
+					Frame
+					(
+						script.function("getFrameGroup"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
+						script.function("getFrameIndex"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
+						script.function("getFrameTime"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
+						Mirroring((Mirroring::Type)script.function("getFrameMirroring" , Script::LuaParam("ii",i,j), 1).getNumericValue()),
+						script.function("getFrameAngle"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
+						script.function("getFrameXOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue(),
+						script.function("getFrameYOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue()
+					)
+				);
+			}
+
+			add(aux);
+		}
 	}
+
 }

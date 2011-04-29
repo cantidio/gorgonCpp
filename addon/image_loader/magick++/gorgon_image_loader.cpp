@@ -1,9 +1,6 @@
 #include "gorgon_image_loader.hpp"
 #include <ImageMagick/Magick++.h>
 
-#define magickColorToGorgon(color) 255 * color / MaxRGB
-#define gorgonColorToMagick(color) color * MaxRGB / 255
-
 namespace Gorgon
 {
 	ImageLoaderMagick::ImageLoaderMagick(char* pRunDir )
@@ -29,6 +26,7 @@ namespace Gorgon
 			throw ImageException("Unable to load Image: "+pImageName+".");
 		}
 	}
+
 	void ImageLoaderMagick::load
 	(
 		Image&		pImage,
@@ -36,12 +34,12 @@ namespace Gorgon
 		const int&	pDataLength
 	) const
 	{
-		Magick::Blob	magickFile;
-		Magick::Image	magickImage;
-		Magick::Color	magickColor;
-		Gorgon::Color	gorgonColor;
-		unsigned char*	mData		= NULL;
-		size_t			mDataLength	= 0;
+		Magick::Blob		magickFile;
+		Magick::Image		magickImage;
+		Magick::ColorRGB	magickColor;
+		Gorgon::Color		gorgonColor;
+		unsigned char*		mData		= NULL;
+		size_t				mDataLength	= 0;
 		try
 		{
 			mDataLength	= (pDataLength > 0) ? pDataLength : pFile.getSize();
@@ -64,10 +62,10 @@ namespace Gorgon
 				for(unsigned int w = 0; w < magickImage.size().width(); ++w)
 				{
 					magickColor = magickImage.pixelColor ( w, h );
-					gorgonColor.setRed		( magickColorToGorgon( magickColor.redQuantum()		));
-					gorgonColor.setGreen	( magickColorToGorgon( magickColor.greenQuantum()	));
-					gorgonColor.setBlue 	( magickColorToGorgon( magickColor.blueQuantum()	));
-					gorgonColor.setAlfa 	( magickColorToGorgon( magickColor.alphaQuantum()	));
+					gorgonColor.setRed		(magickColor.red()*255);
+					gorgonColor.setGreen	(magickColor.green()*255);
+					gorgonColor.setBlue		(magickColor.blue()*255);
+					gorgonColor.setAlfa		((magickColor.alpha() >= 0 ) ? 0 : magickColor.alpha()*255);//feito pare eliminar lixo
 
 					pImage.drawPixel
 					(
@@ -91,7 +89,7 @@ namespace Gorgon
 	{
 		Magick::Geometry	magickSize;
 		Magick::Image		magickImage;
-		Magick::Color		magickColor;
+		Magick::ColorRGB	magickColor;
 		Magick::Blob		magickBlob;
 		try
 		{
@@ -102,19 +100,16 @@ namespace Gorgon
 			//magickImage.type	( Magick::TrueColorType );
 
 			magickImage.magick	( mSaveFormat );
-			magickImage.fillColor(Magick::Color(255,0,255));
+			magickImage.fillColor(Magick::ColorRGB(255,0,255));
 
 			for(unsigned int h = 0; h < pImage.getHeight(); ++h)
 			{
 				for(unsigned int w = 0; w < pImage.getWidth(); ++w)
 				{
-					magickColor = Magick::Color
-					(
-						gorgonColorToMagick( pImage.getColor(w,h).getRed()		),
-						gorgonColorToMagick( pImage.getColor(w,h).getGreen()	),
-						gorgonColorToMagick( pImage.getColor(w,h).getBlue()		),
-						gorgonColorToMagick( pImage.getColor(w,h).getAlfa()		)
-					);
+					magickColor.red		( pImage.getColor(w,h).getRed()		/ (double)255);
+					magickColor.green	( pImage.getColor(w,h).getGreen()	/ (double)255);
+					magickColor.blue	( pImage.getColor(w,h).getBlue()	/ (double)255);
+					magickColor.alpha	( pImage.getColor(w,h).getAlfa()	/ (double)255);
 					magickImage.pixelColor (w, h, magickColor );
 				}
 			}

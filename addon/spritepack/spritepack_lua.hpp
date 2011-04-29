@@ -30,13 +30,59 @@
 
 namespace Gorgon
 {
+	/**
+	 * Classe que representa um spritepack com loader através de um script lua
+	 *
+	 * @author	Cantidio Oliveira Fontes
+	 * @since	25/01/2011
+	 * @version	28/04/2011
+	 */
 	class SpritePackLua : public SpritePack
 	{
 		public:
+			/**
+			 * Método Construtor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	28/04/2011
+			 */
 			SpritePackLua();
-			SpritePackLua(const SpritePackLua& pSpritePack);
+			/**
+			 * Método Construtor
+			 *
+			 * @author
+			 * @since	25/01/2011
+			 * @version	28/04/2011
+			 * @param	const SpritePack& pSpritePack
+			 */
+			SpritePackLua(const SpritePack& pSpritePack);
+			/**
+			 * Método Construtor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	28/04/2011
+			 * @param	const Core::String& pFileName,
+			 */
 			SpritePackLua(const Core::String& pFileName);
+			/**
+			 * Método para se salvar o spritepack em um spritepack
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	28/04/2011
+			 * @param	const Core::String& pFileName
+			 */
 			void save(const Core::String& pFileName);
+			/**
+			 * Método para se carregar o spritepack através de um script
+			 *
+			 * @author	Cantidioi Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	28/04/2011
+			 * @param	const Core::String& pFileName, string com a localização do script
+			 */
 			void load(const Core::String& pFileName);
 	};
 }

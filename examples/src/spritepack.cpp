@@ -60,6 +60,7 @@ int main(int argc, char** argv)
 		ImageLoader::getLoader().setSaveFormat("PNG");
 		//ImageLoader::setLoader(new Gorgon::ImageLoaderAutodetect());
 		Video::init("Teste da classe SpritePack",640,480);
+		//set_color_depth(24);
 		Video		video = Video::get();
 		SpritePack	gspk;
 		if(argc > 2)
@@ -130,7 +131,6 @@ int main(int argc, char** argv)
 					printf("salvando...");
 					SpritePackLua a(gspk);
 					a.save(file1);
-				//	gspk.saveScript(file1);
 					gspk.save(file2);
 					printf("[ok]\n");
 				}

@@ -30,63 +30,60 @@
 #include <gorgon++/core/gorgon_string.hpp>
 namespace Gorgon
 {
+	/**
+	 * Classe que representa um animationpack com loader através de um script lua
+	 *
+	 * @author	Cantidio Oliveira Fontes
+	 * @since	25/01/2011
+	 * @version	29/04/2011
+	 */
 	class AnimationPackLua : public AnimationPack
 	{
-		AnimationPackLua();
-		/**
-		 * Método construtor que carrega os dados de um arquivo já aberto
-		 *
-		 * @author	Cantídio Oliveira Fontes
-		 * @since	25/01/2011
-		 * @version	25/01/2011
-		 * @param	File& pFile, arquivo já aberto
-		 */
-		AnimationPackLua(Core::File& pFile);
-		/**
-		 * Método construtor que carrega os dados de um arquivo
-		 *
-		 * @author	Cantídio Oliveira Fontes
-		 * @since	25/01/2011
-		 * @version	25/01/2011
-		 * @param	const std::string& pFileName, nome do arquivo a ser aberto para carregar os dados
-		 */
-		AnimationPackLua(const Core::String& pFileName);
-		/**
-		 * Método para salvar o pacote de animações em um arquivo já aberto previamente
-		 *
-		 * @author	Cantídio Oliveira Fontes
-		 * @since	25/01/2011
-		 * @version	25/01/2011
-		 * @param	File& pFile, arquivo já aberto
-		 */
-		void save(Core::File& pFile);
-		/**
-		 * Método para salvar o pacote de animações em um arquivo
-		 *
-		 * @author	Cantídio Oliveira Fontes
-		 * @since	25/01/2011
-		 * @version	25/01/2011
-		 * @param	std::string pFileName, nome do arquivo a ser salvo os dados do pacote de animações
-		 */
-		void save(const Core::String& pFileName);
-		/**
-		 * Método para carregar os dados do pacote de animações de um arquivo já aberto
-		 *
-		 * @author	Cantídio Oliveira Fontes
-		 * @since	25/01/2011
-		 * @version	25/01/2011
-		 * @param	File& pFile, arquivo já aberto
-		 */
-		void load(Core::File& pFile);
-		/**
-		 * Método para carregar os dados do pacote de animações de um arquivo
-		 *
-		 * @author	Cantídio Oliveira Fontes
-		 * @since	25/01/2011
-		 * @version	25/01/2011
-		 * @param	std::string pFileName, nome do arquivo a ser carregado
-		 */
-		void load(const Core::String& pFileName);
+		public:
+			/**
+			 * Método Construtor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	25/01/2011
+			 */
+			AnimationPackLua();
+			/**
+			 * Método construtor de cópia
+			 *
+			 * @author	Cantídio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	25/01/2011
+			 * @param	const AnimationPack& pAnimationPack, animationpack já criado
+			 */
+			AnimationPackLua(const AnimationPack& pAnimationPack);
+			/**
+			 * Método construtor que carrega os dados de um arquivo
+			 *
+			 * @author	Cantídio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	25/01/2011
+			 * @param	const std::string& pFileName, nome do arquivo a ser aberto para carregar os dados
+			 */
+			AnimationPackLua(const Core::String& pFileName);
+			/**
+			 * Método para salvar o pacote de animações em um arquivo
+			 *
+			 * @author	Cantídio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	25/01/2011
+			 * @param	std::string pFileName, nome do arquivo a ser salvo os dados do pacote de animações
+			 */
+			void save(const Core::String& pFileName);
+			/**
+			 * Método para carregar os dados do pacote de animações de um arquivo
+			 *
+			 * @author	Cantídio Oliveira Fontes
+			 * @since	25/01/2011
+			 * @version	25/01/2011
+			 * @param	std::string pFileName, nome do arquivo a ser carregado
+			 */
+			void load(const Core::String& pFileName);
 	};
 }
 #endif

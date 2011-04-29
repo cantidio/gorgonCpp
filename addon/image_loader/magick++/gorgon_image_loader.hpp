@@ -24,7 +24,6 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-//
 #include <gorgon++/graphic/gorgon_image_loader.hpp>
 #include <gorgon++/gorgon.hpp>
 namespace Gorgon
@@ -34,12 +33,18 @@ namespace Gorgon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	07/01/2011
-	 * @version	28/04/2011
+	 * @version	29/04/2011
 	 */
 	class ImageLoaderMagick : public ImageLoader
 	{
 		public:
-
+			/**
+			 * Método Construtor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/01/2011
+			 * @version	29/04/2011
+			 */
 			ImageLoaderMagick(char* pRunDir = NULL);
 			/**
 			 * Método genérico para carregar uma imagem
@@ -56,7 +61,7 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/01/2011
-			 * @version	07/01/2011
+			 * @version	29/04/2011
 			 * @param	Image&		pImage			, destino da imagem a ser carregada
 			 * @param	File&		pFile			, arquivo onde a imagem está
 			 * @param	const int&	pSizeOfImage	, tamanho da imagem a ser carregada
@@ -83,7 +88,7 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/01/2011
-			 * @version	08/01/2011
+			 * @version	29/04/2011
 			 * @param	Image&				pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */

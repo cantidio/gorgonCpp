@@ -4,7 +4,7 @@
 namespace Gorgon
 {
 	SpritePackLua::SpritePackLua(){}
-	SpritePackLua::SpritePackLua(const SpritePackLua& pSpritePack) : SpritePack(pSpritePack) {}
+	SpritePackLua::SpritePackLua(const SpritePack& pSpritePack) : SpritePack(pSpritePack) {}
 	SpritePackLua::SpritePackLua(const Core::String& pFileName)
 	{
 		load(pFileName);
@@ -55,6 +55,7 @@ namespace Gorgon
 	void SpritePackLua::load(const Core::String& pFileName)
 	{
 		Script::Lua script(pFileName);
+		//registra algumas funções para serem executadas na recuperação dos dados do spritepack
 		script.executeString("function getSpriteNumber()	return #spritepack				end");
 		script.executeString("function getSpriteLocation(i)	return spritepack[i].image		end");
 		script.executeString("function getSpriteGroup(i)	return spritepack[i].group		end");
@@ -80,10 +81,10 @@ namespace Gorgon
 				Sprite
 				(
 					Image( image.str() ),
-					script.function("getSpriteGroup", Script::LuaParam("i",i),1).getNumericValue(),
-					script.function("getSpriteIndex", Script::LuaParam("i",i),1).getNumericValue(),
-					script.function("getSpriteXOffset", Script::LuaParam("i",i),1).getNumericValue(),
-					script.function("getSpriteYOffset", Script::LuaParam("i",i),1).getNumericValue()
+					script.function("getSpriteGroup"	, Script::LuaParam("i",i), 1).getNumericValue(),
+					script.function("getSpriteIndex"	, Script::LuaParam("i",i), 1).getNumericValue(),
+					script.function("getSpriteXOffset"	, Script::LuaParam("i",i), 1).getNumericValue(),
+					script.function("getSpriteYOffset"	, Script::LuaParam("i",i), 1).getNumericValue()
 				)
 			);
 		}
