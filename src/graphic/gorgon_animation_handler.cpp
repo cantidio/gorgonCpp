@@ -63,6 +63,7 @@ namespace Gorgon
 		mTimeOn			= 0;
 		mLoopOn			= 0;
 	}
+
 	void AnimationHandler::pause()
 	{
 		mIsPaused = true;
@@ -209,7 +210,7 @@ namespace Gorgon
 			{
 				if(animation.getLooping())
 				{
-					if(animation.getRepeatNumber()<0)
+					if(animation.getRepeatNumber() < 0)
 					{
 						mTimeOn		= 0;
 						mFrameOn	= animation.getLoopFrame();

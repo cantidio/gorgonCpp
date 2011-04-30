@@ -8,6 +8,8 @@ int main(int argc, char** argv)
 		AnimationPackLua a(argv[1]);
 		
 		printf("animacoes encontradas: %d\n",a.getSize());
+		
+		printf("%s\n",a.describe().c_str());
 		AnimationPack b(a);
 		b.save(argv[2]);
 	}
