@@ -49,7 +49,7 @@ namespace Gorgon
 				throw ImageException("Não foi possível alocar memória.");
 			}
 			pFile.read((char*)mData, mDataLength);
-			magickFile.update(mData, mDataLength);
+			magickFile.updateNoCopy(mData, mDataLength);
 			magickImage.read( magickFile );
 
 			pImage.create
@@ -57,9 +57,9 @@ namespace Gorgon
 				magickImage.size().width(),
 				magickImage.size().height()
 			);
-			for(unsigned int h = 0; h < magickImage.size().height(); ++h)
+			for(register unsigned int h = 0; h < magickImage.size().height(); ++h)
 			{
-				for(unsigned int w = 0; w < magickImage.size().width(); ++w)
+				for(register unsigned int w = 0; w < magickImage.size().width(); ++w)
 				{
 					magickColor = magickImage.pixelColor ( w, h );
 					gorgonColor.setRed		(magickColor.red()*255);
@@ -80,7 +80,6 @@ namespace Gorgon
 		{
 			throw ImageException(e.what());
 		}
-		delete mData;
 		mDataLength	= 0;
 		mData		= NULL;
 	}

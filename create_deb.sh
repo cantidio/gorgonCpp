@@ -74,7 +74,7 @@ CREATE_PACKAGE_CONTROL()
 	CONTROL=$CONTROL"Version:		\t\t$1\n"
 	CONTROL=$CONTROL"Section:		\t\tlibdevel\n"
 	CONTROL=$CONTROL"Architecture:	\ti386\n"
-	CONTROL=$CONTROL"Depends:		\t\tliballegro4.2-dev, libaudiere-dev, liblua5.1-0-dev, libz-dev, libmagick++-dev\n"
+	CONTROL=$CONTROL"Depends:		\t\tliballegro4.2-dev, libaudiere-dev, liblua5.1-0-dev, libz-dev\n"
 	CONTROL=$CONTROL"Maintainer:	\tCantídio Oliveira Fontes <aniquilatorbloody@gmail.com>\n"
 	CONTROL=$CONTROL"Description:	\tBiblioteca de desenvolvimento de games.\n"
 	CONTROL=$CONTROL" Este pacote contém os includes e libs dinâmicas necessárias para construir programas que usem a gorgon.\n"
