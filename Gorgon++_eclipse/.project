@@ -276,6 +276,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/image_loader/sdl</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>addon/spritepack/spritepack_lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_lua.cpp</locationURI>
@@ -559,11 +564,6 @@
 			<name>include/graphic/gorgon_palette.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_palette.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_sff_spritepack.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_sff_spritepack.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/graphic/gorgon_sprite.hpp</name>
@@ -1126,6 +1126,21 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/magick++/gorgon_image_loader.hpp</locationURI>
 		</link>
 		<link>
+			<name>addon/image_loader/sdl/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/sdl/image_loader.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/sdl/image_loader.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/sdl/image_loader.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/sdl/image_loader.hpp</locationURI>
+		</link>
+		<link>
 			<name>examples/src/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/entries</locationURI>
@@ -1494,6 +1509,11 @@
 			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_unknown.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_unknown.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/sdl/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/sdl/.svn/entries</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/prop-base/animation.cpp.svn-base</name>

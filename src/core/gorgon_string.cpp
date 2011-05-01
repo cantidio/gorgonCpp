@@ -3,9 +3,39 @@ namespace Gorgon{
 namespace Core
 {
 	String::String() {}
-	String::String(const String& pString) : std::string(pString) {}
-	String::String(const std::string& pString) : std::string(pString) {}
-	String::String(const char* pString) : std::string(pString) {}
+	String::String(const String& pString)		: std::string(pString) {}
+	String::String(const std::string& pString)	: std::string(pString) {}
+	String::String(const char* pString)			: std::string(pString) {}
+
+	String& String::toLower()
+	{
+		for(register int i = length() - 1; i >= 0; --i)
+		{
+			 (*this)[i] = tolower( (*this)[i] );
+		}
+		return *this;
+	}
+
+	String& String::toUpper()
+	{
+		for(register int i = length() - 1; i >= 0; --i)
+		{
+			 (*this)[i] = toupper( (*this)[i] );
+		}
+		return *this;
+	}
+
+	String& String::replace(const String& pOld, const String& pNew)
+	{
+		size_t pos = find(pOld);
+		while( pos != npos)
+		{
+			std::string::replace(pos, pOld.length(), pNew);
+			pos += pNew.length();
+			pos = find(pOld, pos);
+		}
+		return *this;
+	}
 
 	std::vector<String> String::explode(const String& pDelimiter) const
 	{

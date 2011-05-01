@@ -26,7 +26,7 @@ namespace Gorgon
 				file << "\t\tlooping 		= " << ((*this)[i].getLooping() ? "true" : "false")	<< ",\n";
 				file << "\t\tloopFrame		= " << (*this)[i].getLoopFrame()					<< ",\n";
 				file << "\t\trepeatNumber	= " << (*this)[i].getRepeatNumber()					<< ",\n";
-				file << "\t\tframes		= {\n";
+				file << "\t\tframes			= {\n";
 
 				for(unsigned int j = 0; j < (*this)[i].getSize(); ++j)
 				{
@@ -34,8 +34,8 @@ namespace Gorgon
 					file << "\t\t\t{\n";
 					file << "\t\t\t\tgroup		= " << a.getGroup()					<< ",\n";
 					file << "\t\t\t\tindex		= " << a.getIndex()					<< ",\n";
-					file << "\t\t\t\txoffset	= " << a.getXOffset()				<< ",\n";
-					file << "\t\t\t\tyoffset	= " << a.getYOffset()				<< ",\n";
+					file << "\t\t\t\txoffset\t	= " << a.getXOffset()				<< ",\n";
+					file << "\t\t\t\tyoffset\t	= " << a.getYOffset()				<< ",\n";
 					file << "\t\t\t\ttime		= "	<< a.getTime()					<< ",\n";
 					file << "\t\t\t\tmirroring	= " << a.getMirroring().getType()	<< ",\n";
 					file << "\t\t\t\tangle		= " << a.getAngle() 				<< "\n";
@@ -101,7 +101,6 @@ namespace Gorgon
 					)
 				);
 			}
-
 			add(aux);
 		}
 	}

@@ -36,7 +36,7 @@ namespace Core
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	24/01/2011
-	 * @version	24/01/2011
+	 * @version	01/05/2011
 	 * @details
 	 * 			This class is like the same std::string class, but with more methods
 	 */
@@ -78,6 +78,35 @@ namespace Core
 			 * @param	const char* pString, the string to be copied
 			 */
 			String(const char* pString);
+			/**
+			 * Method that puts all characters in the string into lowercase
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	01/05/2011
+			 * @version	01/05/2011
+			 * @return	*this
+			 */
+			String& toLower();
+			/**
+			 * Method that puts all characters in the string into uppercase
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	01/05/2011
+			 * @version	01/05/2011
+			 * @return	*this
+			 */
+			String& toUpper();
+			/**
+			 * Method that replaces every ocurrence of pOld with pNew
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	01/05/2011
+			 * @version	01/05/2011
+			 * @param	const String& pOld, the string to be replaced
+			 * @param	const String& pNew, the string to replace the old one
+			 * @return	*this
+			 */
+			String& replace(const String& pOld,const String& pNew);
 			/**
 			 * Method that cuts the string into substrings, based in a delimiter
 			 *
