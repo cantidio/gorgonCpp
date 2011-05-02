@@ -122,8 +122,7 @@ namespace Gorgon
 			
 			sdlFile		= SDL_RWFromMem((void*)mData, mDataLength);
 			sdlImage	= IMG_Load_RW(sdlFile, 0);
-			SDL_FreeRW(sdlFile);
-			delete mData;
+			if(sdlImage == NULL) throw ImageException(IMG_GetError());
 
 			pImage.create
 			(
@@ -143,6 +142,9 @@ namespace Gorgon
 					);
 				}
 			}
+			delete mData;
+			SDL_FreeRW(sdlFile);
+			SDL_FreeSurface(sdlImage);
 		}
 		catch(Core::Exception& e)
 		{
@@ -153,43 +155,13 @@ namespace Gorgon
 	}
 
 	void ImageLoaderSDL::save(Image& pImage, Core::File& pFile) const
-	{
-		/**
-		 * @todo implementar esse método
-		 */
-		/*Magick::Geometry	magickSize;
-		Magick::Image		magickImage;
-		Magick::ColorRGB	magickColor;
-		Magick::Blob		magickBlob;
-		try
-		{
-			magickSize.width	( pImage.getWidth()  );
-			magickSize.height	( pImage.getHeight() );
-			magickImage.size	( magickSize );
-			//magickImage.type	( Magick::OptimizeType );
-			//magickImage.type	( Magick::TrueColorType );
+	/*
+		SDL_RWops*			sdlFile;
+		SDL_Surface*		sdlImage;
 
-			magickImage.magick	( mSaveFormat );
-			magickImage.fillColor(Magick::ColorRGB(255,0,255));
-
-			for(unsigned int h = 0; h < pImage.getHeight(); ++h)
-			{
-				for(unsigned int w = 0; w < pImage.getWidth(); ++w)
-				{
-					magickColor.red		( pImage.getColor(w,h).getRed()		/ (double)255);
-					magickColor.green	( pImage.getColor(w,h).getGreen()	/ (double)255);
-					magickColor.blue	( pImage.getColor(w,h).getBlue()	/ (double)255);
-					magickColor.alpha	( pImage.getColor(w,h).getAlfa()	/ (double)255);
-					magickImage.pixelColor (w, h, magickColor );
-				}
-			}
-			magickImage.write(&magickBlob);
-			pFile.write((char*)magickBlob.data(), magickBlob.length());
-		}
-		catch(Magick::Exception& e)
-		{
-			throw ImageException(e.what());
-		}*/
+		sdlImage = SDL_createSurface(0,pImage.getWidth(),pImage.getHeight(),pImage.getBpp());
+		SDL_SaveBMP_RW(sdlImage,sdlFile,0);*/
+		throw ImageException("SDL imageloader não possui um saver.");
 	}
 
 	void ImageLoaderSDL::save(Image& pImage, const std::string& pImageName) const

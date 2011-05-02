@@ -23,6 +23,8 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--prefix]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--version]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--libs]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons_sdl]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'EOF\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\texit $1\n'
 	GORGON_CONFIG=$GORGON_CONFIG'}\n\n'
@@ -35,21 +37,31 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t*) optarg= ;;\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\tesac\n\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\tcase $1 in\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--prefix)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo /usr\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--version)\n'
 	GORGON_CONFIG=$GORGON_CONFIG"			\t\t\techo 'rev_$1'\n"
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--libs)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon -lpthread\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon_addon\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons_sdl)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo `sdl-config --libs` -L/usr${exec_prefix}/lib -lgorgon_addon -lSDL_image\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t*)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\tusage 1 1>& 2\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+
 	GORGON_CONFIG=$GORGON_CONFIG'	\tesac\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\tshift\n'
 	GORGON_CONFIG=$GORGON_CONFIG'done\n'
