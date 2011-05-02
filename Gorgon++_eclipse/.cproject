@@ -870,6 +870,7 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="addon|examples" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="gorgon_image_loader.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="addon/image_loader/magick++"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -2460,7 +2461,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.release.890817432" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.release">
 								<option id="gnu.cpp.link.option.libs.1192854751" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs"/>
-								<option id="gnu.cpp.link.option.flags.687723136" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="`Magick++-config --cppflags --cxxflags --ldflags --libs` `gorgon-config --libs`" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.687723136" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="`gorgon-config --libs`" valueType="string"/>
 								<option defaultValue="true" id="gnu.cpp.link.so.release.option.shared.1735338007" name="Shared (-shared)" superClass="gnu.cpp.link.so.release.option.shared" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1690407821" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>

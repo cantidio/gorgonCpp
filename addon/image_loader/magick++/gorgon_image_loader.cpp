@@ -1,4 +1,4 @@
-#include "gorgon_image_loader.hpp"
+/*#include "gorgon_image_loader.hpp"
 #include <ImageMagick/Magick++.h>
 // /usr/include/ImageMagick
 namespace Gorgon
@@ -136,10 +136,11 @@ namespace Gorgon
 	}
 	/**
 	 * @todo fazer  uma verificação nos formatos aceitos
-	 */
+	 *
 	void ImageLoaderMagick::setSaveFormat(const std::string& pSaveFormat)
 	{
 		mSaveFormat = pSaveFormat;
 	}
 }
 
+*/
