@@ -1,6 +1,6 @@
 #include "gorgon_image_loader.hpp"
 #include <ImageMagick/Magick++.h>
-
+// /usr/include/ImageMagick
 namespace Gorgon
 {
 	ImageLoaderMagick::ImageLoaderMagick(char* pRunDir )
@@ -65,7 +65,7 @@ namespace Gorgon
 					gorgonColor.setRed		(magickColor.red()*255);
 					gorgonColor.setGreen	(magickColor.green()*255);
 					gorgonColor.setBlue		(magickColor.blue()*255);
-					gorgonColor.setAlfa		((magickColor.alpha() >= 0 ) ? 0 : magickColor.alpha()*255);//feito pare eliminar lixo
+					gorgonColor.setAlpha	((magickColor.alpha() >= 0 ) ? 0 : magickColor.alpha()*255);//feito pare eliminar lixo
 
 					pImage.drawPixel
 					(
@@ -108,7 +108,7 @@ namespace Gorgon
 					magickColor.red		( pImage.getColor(w,h).getRed()		/ (double)255);
 					magickColor.green	( pImage.getColor(w,h).getGreen()	/ (double)255);
 					magickColor.blue	( pImage.getColor(w,h).getBlue()	/ (double)255);
-					magickColor.alpha	( pImage.getColor(w,h).getAlfa()	/ (double)255);
+					magickColor.alpha	( pImage.getColor(w,h).getAlpha()	/ (double)255);
 					magickImage.pixelColor (w, h, magickColor );
 				}
 			}

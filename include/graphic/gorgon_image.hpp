@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -70,11 +70,7 @@ namespace Gorgon
 			 * Se a imagem for linkada ela não será destruída pelos métodos
 			 */
 			bool mImgLinked;
-			/**
-			 * Variável que guarda se a paleta é linkada
-			 * Se a paleta for linkada ela não será destruída pelos métodos
-			 */
-			bool mPalLinked;
+			bool mFreePalette;/**<< Variável que guarda se a paleta será desalocada pela classe */
 			/**
 			 * Variável que guarda o tipo da imagem
 			 * Essa variável pode ser usada por outras classes para saber que tipo de imagem é essa
@@ -114,7 +110,7 @@ namespace Gorgon
 			(
 				const int& pWidth,
 				const int& pHeight,
-				const int& pBpp		= desktop_color_depth(),
+				const int& pBpp		= get_color_depth(),
 				const int& pColor	= 0xFF00FF
 			);
 			/**
@@ -189,7 +185,7 @@ namespace Gorgon
 			(
 				const int& pWidth,
 				const int& pHeight,
-				const int& pBpp		= desktop_color_depth(),
+				const int& pBpp		= get_color_depth(),
 				const int& pColor	= 0xFF00FF
 			);
 			/**
@@ -226,8 +222,19 @@ namespace Gorgon
 			 * @since	20/01/2009
 			 * @version	20/01/2009
 			 * @param	Palette *pPalette, ponteiro para a paleta
+			 * @details	a paleta não será desalocada
 			 */
-			void setPalette(Palette *pPalette);
+			void setPalette(Palette *pPalette, const bool& pFreeSource = false);
+			/**
+			 * Método para setar a paleta de cores
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	02/05/2011
+			 * @version	02/05/2011
+			 * @param	const Palette& pPalette, paleta a ser copiada
+			 * @details	esse método copia a paleta para a imagem
+			 */
+			void setPalette(const Palette& pPalette);
 			/**
 			 * Método para usar a paleta
 			 *
@@ -421,7 +428,7 @@ namespace Gorgon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
+			 * @version	02/05/2011
 			 * @param	const int& pPosX	, posicao x do pixel na imagem
 			 * @param	const int& pPosY	, posicao y do pixel na imagem
 			 * @param	const int& pColor	, cor do pixel

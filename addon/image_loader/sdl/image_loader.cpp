@@ -1,4 +1,5 @@
 #include "image_loader.hpp"
+#include <gorgon++/gorgon.hpp>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 
@@ -7,15 +8,14 @@ namespace Gorgon
 	Uint32 getpixel(SDL_Surface *surface, int x, int y)
 	{
 		int bpp = surface->format->BytesPerPixel;
-		/* Here p is the address to the pixel we want to retrieve */
-		Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
+		Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;/* Here p is the address to the pixel we want to retrieve */
 
 		switch (bpp)
 		{
 			case 1:	return *p;
 			case 2:	return *(Uint16 *)p;
 			case 3:
-				if (SDL_BYTEORDER != SDL_BIG_ENDIAN)
+				if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
 				{
 					return p[0] << 16 | p[1] << 8 | p[2];
 				}
@@ -26,11 +26,10 @@ namespace Gorgon
 			case 4:
 				return *(Uint32 *)p;
 			default:
-				return 0;       /* shouldn't happen, but avoids warnings */
+				return 0;/* shouldn't happen, but avoids warnings */
 		} // switch
 	}
-	
-	void putpixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
+	/*void putpixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
 	{
 		int bpp = surface->format->BytesPerPixel;
 		Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch + x * bpp;
@@ -62,6 +61,35 @@ namespace Gorgon
 				break;
 			default: break;
 		} // switch
+	}*/
+	int getPixel(SDL_Surface *surface, int x, int y)
+	{
+		Uint8 r=0, g=0, b=0, a=0;
+		Uint32 pixel = getpixel(surface,x,y);
+		switch(surface->format->BytesPerPixel)
+		{
+			case 1:
+				return pixel;
+			case 2:
+			case 3:
+				SDL_GetRGB
+				(
+					pixel,
+					surface->format,
+					&r,&g,&b
+				);
+				break;
+			case 4:
+				SDL_GetRGBA
+				(
+					pixel,
+					surface->format,
+					&r,&g,&b,&a
+				);
+				break;
+		}
+		//printf("r:%d,g:%d,b:%d,a:%d\n",r,g,b,a);
+		return Color(r,g,b,a).get();
 	}
 
 	ImageLoaderSDL::ImageLoaderSDL()
@@ -71,9 +99,7 @@ namespace Gorgon
 
 		if((initted&flags) != flags)
 		{
-		    printf("IMG_Init: Failed to init required jpg and png support!\n");
-		    printf("IMG_Init: %s\n", IMG_GetError());
-		    // handle error
+		    throw ImageException("ImageLoaderSDL Error: "+Core::String(IMG_GetError()));
 		}
 		IMG_Quit();
 	}
@@ -106,10 +132,11 @@ namespace Gorgon
 	{
 		SDL_RWops*			sdlFile;
 		SDL_Surface*		sdlImage;
-		
-		Gorgon::Color		gorgonColor;
+		SDL_Palette*		sdlPalette;
+		Palette*			gorgonPalette;
 		unsigned char*		mData		= NULL;
 		size_t				mDataLength	= 0;
+
 		try
 		{
 			mDataLength	= (pDataLength > 0) ? pDataLength : pFile.getSize();
@@ -123,13 +150,17 @@ namespace Gorgon
 			sdlFile		= SDL_RWFromMem((void*)mData, mDataLength);
 			sdlImage	= IMG_Load_RW(sdlFile, 0);
 			if(sdlImage == NULL) throw ImageException(IMG_GetError());
+			sdlPalette	= sdlImage->format->palette;
 
-			pImage.create
-			(
-				sdlImage->w,
-				sdlImage->h//,
-				//sdlImage->format->BitsPerPixel //vamos ver se isso fica ou não
-			);
+			if(sdlImage->format->BitsPerPixel <= 8)
+			{
+				pImage.create(sdlImage->w, sdlImage->h, 8);
+			}
+			else
+			{
+				pImage.create(sdlImage->w, sdlImage->h);
+			}
+
 			for(register int h = 0; h < sdlImage->h; ++h)
 			{
 				for(register int w = 0; w < sdlImage->w; ++w)
@@ -138,9 +169,25 @@ namespace Gorgon
 					(
 						w,
 						h,
-						getpixel(sdlImage, w, h)
+						getPixel(sdlImage, w, h)
 					);
 				}
+			}
+
+			if(sdlPalette != NULL)
+			{
+				gorgonPalette = new Palette();
+				for(register int i = sdlPalette->ncolors - 1; i >=0; --i)
+				{
+					gorgonPalette->setColor
+					(
+						sdlPalette->colors[i].r,
+						sdlPalette->colors[i].g,
+						sdlPalette->colors[i].b,
+						i
+					);
+				}
+				pImage.setPalette(gorgonPalette, true);
 			}
 			delete mData;
 			SDL_FreeRW(sdlFile);
@@ -155,6 +202,7 @@ namespace Gorgon
 	}
 
 	void ImageLoaderSDL::save(Image& pImage, Core::File& pFile) const
+	{
 	/*
 		SDL_RWops*			sdlFile;
 		SDL_Surface*		sdlImage;

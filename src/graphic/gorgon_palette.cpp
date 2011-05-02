@@ -60,7 +60,7 @@ namespace Gorgon
 		return out.str();
 	}
 
-	Palette* Palette::copy()
+	Palette* Palette::copy() const
 	{
 		Palette* aux;
 		aux = new Palette();

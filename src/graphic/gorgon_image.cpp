@@ -20,11 +20,11 @@ namespace Gorgon
 	
 	Image::Image(BITMAP* pBitmap, Palette *pPalette)
 	{
-		mData		= pBitmap;
-		mDataBuffer	= NULL;
-		mPalette	= pPalette;
-		mImgLinked	= true;
-		mPalLinked	= true;
+		mData			= pBitmap;
+		mDataBuffer		= NULL;
+		mPalette		= pPalette;
+		mImgLinked		= true;
+		mFreePalette	= false;
 		setType(imageUnknownCod);
 		updateBuffer();
 	}
@@ -37,11 +37,11 @@ namespace Gorgon
 		const int& pColor
 	)
 	{
-		mData		= (pBpp < 8) ? create_bitmap_ex(8,pWidth,pHeight) : create_bitmap_ex(pBpp,pWidth,pHeight);
-		mDataBuffer	= NULL;
-		mPalette	= NULL;
-		mImgLinked	= false;
-		mPalLinked	= false;
+		mData			= (pBpp < 8) ? create_bitmap_ex(8,pWidth,pHeight) : create_bitmap_ex(pBpp,pWidth,pHeight);
+		mDataBuffer		= NULL;
+		mPalette		= NULL;
+		mImgLinked		= false;
+		mFreePalette	= true;
 		clear(pColor);
 		updateBuffer();
 		setType(imageUnknownCod);
@@ -76,7 +76,7 @@ namespace Gorgon
 				mDataBuffer	= NULL;
 			}
 		}
-		if(!mPalLinked && mPalette)
+		if(mFreePalette && mPalette)
 		{
 			delete mPalette;
 			mPalette = NULL;
@@ -119,16 +119,16 @@ namespace Gorgon
 		{
 			destroy_bitmap(mDataBuffer);
 		}
-		if(mPalette && !mPalLinked)
+		if(mPalette && mFreePalette)
 		{
 			delete mPalette;
 		}
 
-		mData		= (pBpp < 8) ? create_bitmap_ex(8,pWidth,pHeight) : create_bitmap_ex(pBpp,pWidth,pHeight);
-		mDataBuffer	= NULL;
+		mData			= (pBpp < 8) ? create_bitmap_ex(8,pWidth,pHeight) : create_bitmap_ex(pBpp,pWidth,pHeight);
+		mDataBuffer		= NULL;
 		mPalette		= NULL;
-		mImgLinked	= false;
-		mPalLinked	= false;
+		mImgLinked		= false;
+		mFreePalette	= true;
 		clear(pColor);
 		updateBuffer();
 	}
@@ -137,10 +137,10 @@ namespace Gorgon
 	{
 		std::stringstream out;
 		out << "Image Descriptor" 	<< std::endl;
-		out << "Have Data:      " 	<< (mData 		? "Yes" : "No") << std::endl;
-		out << "Image Linked:   " 	<< (mImgLinked	? "Yes" : "No") << std::endl;
-		out << "Have Palette:   " 	<< (mPalette	? "Yes" : "No") << std::endl;
-		out << "Palette Linked: " 	<< (mPalLinked	? "Yes" : "No")	<< std::endl;
+		out << "Have Data:      " 	<< (mData 			? "Yes" : "No") << std::endl;
+		out << "Image Linked:   " 	<< (mImgLinked		? "Yes" : "No") << std::endl;
+		out << "Have Palette:   " 	<< (mPalette		? "Yes" : "No") << std::endl;
+		out << "Palette Linked: " 	<< (!mFreePalette	? "Yes" : "No")	<< std::endl;
 		if(mData)
 		{
 			out << "Width:          " 	<< getWidth() 		<< std::endl;
@@ -166,10 +166,17 @@ namespace Gorgon
 		mImgType = pImgType;
 	}
 
-	void Image::setPalette(Palette* pPalette)
+	void Image::setPalette(Palette* pPalette, const bool& pFreeSource)
 	{
-		mPalette	= pPalette;
-		mPalLinked	= true;
+		mPalette		= pPalette;
+		mFreePalette	= pFreeSource;
+		updateBuffer();
+	}
+
+	void Image::setPalette(const Palette& pPalette)
+	{
+		mPalette		= pPalette.copy();
+		mFreePalette	= true;
 		updateBuffer();
 	}
 
@@ -183,26 +190,26 @@ namespace Gorgon
 
 	void Image::updateBuffer()
 	{
+		/**
+		 * @todo criar o bpp de acordo com o usado no geral
+		 * */
 		if(mData && getColorDepth() == 8)
 		{
 			if(!mDataBuffer)
 			{
-				mDataBuffer = create_bitmap_ex(32,getWidth(),getHeight());
+				mDataBuffer = create_bitmap_ex(get_color_depth(),getWidth(),getHeight());
 			}
 			else if(mDataBuffer->w != mData->w || mDataBuffer->h != mData->h)
 			{
 				destroy_bitmap(mDataBuffer);
-				mDataBuffer = create_bitmap_ex(32,getWidth(),getHeight());
+				mDataBuffer = create_bitmap_ex(get_color_depth(),getWidth(),getHeight());
 			}
 			usePalette();
 			blit
 			(
 				mData,
 				mDataBuffer,
-				0,
-				0,
-				0,
-				0,
+				0,0,0,0,
 				getWidth(),
 				getHeight()
 			);
@@ -482,13 +489,19 @@ namespace Gorgon
 		{
 			throw ImageException("Trying to put a pixel in a non loaded Image.");
 		}
-		putpixel
-		(
-			mData,
-			pPosX,
-			pPosY,
-			pColor
-		);
+		/**
+		 * @todo depois eu posso criar ponteiros para as funções e chamar por lá para evitar o switch
+		 */
+		//printf("BPP: %d - %d \n",getColorDepth(),get_color_depth());
+
+		switch(getColorDepth())
+		{
+			case 8:		_putpixel(mData, pPosX, pPosY, pColor);		break;
+			case 15:	_putpixel15(mData, pPosX, pPosY, pColor);	break;
+			case 16:	_putpixel16(mData, pPosX, pPosY, pColor);	break;
+			case 24:	_putpixel24(mData, pPosX, pPosY, pColor);	break;
+			case 32:	_putpixel32(mData, pPosX, pPosY, pColor);	break;
+		}
 	}
 
 	void Image::drawLine
@@ -1197,7 +1210,7 @@ namespace Gorgon
 		mPalette	= NULL;
 		setType(pImage.getType());
 
-		if(pImage.getPalette())
+		if(pImage.mPalette)
 		{
 			setPalette(pImage.getPalette()->copy());
 		}
@@ -1223,7 +1236,7 @@ namespace Gorgon
 		}
 		updateBuffer();
 		mImgLinked	= false;
-		mPalLinked	= false;
+		mFreePalette = true;
 	}
 }
 

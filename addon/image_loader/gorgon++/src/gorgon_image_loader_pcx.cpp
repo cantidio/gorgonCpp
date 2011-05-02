@@ -284,7 +284,7 @@ namespace Gorgon
 				pImage.mPalette = pHeader.getPalette();
 			}
 		}
-		pImage.mPalLinked = false;
+		pImage.mFreePalette = true;
 	}
 
 	void ImageLoaderPcx::load(Image& pImage,const std::string& pImageName) const

@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -55,9 +55,9 @@ namespace Gorgon
 			 */
 			unsigned char mBlue;
 			/**
-			 * Componente alfa da cor
+			 * Componente alpha da cor
 			 */
-			unsigned char mAlfa;
+			unsigned char mAlpha;
 		public:
 			/**
 			 * Método Construtor
@@ -68,14 +68,14 @@ namespace Gorgon
 			 * @param	const int& pRed		, valor do componente vermelho da cor
 			 * @param	const int& pGreen	, valor do componente verde da cor
 			 * @param	const int& pBlue	, valor do componente azul da cor
-			 * @param	const int& pAlfa	, valor do componente alfa da cor
+			 * @param	const int& pAlpha	, valor do componente alpha da cor
 			 */
 			Color
 			(
 				const int& pRed,
 				const int& pGreen,
 				const int& pBlue,
-				const int& pAlfa = 0
+				const int& pAlpha = 0
 			);
 			/**
 			 * Método Construtor
@@ -140,14 +140,14 @@ namespace Gorgon
 			 */
 			void setBlue(const int& pBlue);
 			/**
-			 * Método para setar o componente alfa da cor
+			 * Método para setar o componente alpha da cor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
 			 * @version	29/05/2009
-			 * @param	const int& pAlfa, valor do componente alfa
+			 * @param	const int& palpha, valor do componente alpha
 			 */
-			void setAlfa(const int& pAlfa);
+			void setAlpha(const int& palpha);
 			/**
 			 * Método para setar os atributos da classe
 			 *
@@ -157,14 +157,14 @@ namespace Gorgon
 			 * @param	const int& pRed		, valor do componente vermelho da cor
 			 * @param	const int& pGreen	, valor do componente verde da cor
 			 * @param	const int& pBlue	, valor do componente azul da cor
-			 * @param	const int& pAlfa	, valor do componente alfa da cor
+			 * @param	const int& pAlpha	, valor do componente alpha da cor
 			 */
 			void set
 			(
 				const int& pRed		= 0,
 				const int& pGreen	= 0,
 				const int& pBlue	= 0,
-				const int& pAlfa	= 0
+				const int& pAlpha	= 0
 			);
 			/**
 			 * Método para pegar o valor do componente vermelho da cor
@@ -194,14 +194,14 @@ namespace Gorgon
 			 */
 			int getBlue() const;
 			/**
-			 * Método para pegar o valor do componente alfa da cor
+			 * Método para pegar o valor do componente alpha da cor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
 			 * @version	29/05/2009
 			 * @return	int
 			 */
-			int getAlfa() const;
+			int getAlpha() const;
 			/**
 			 * Método para retornar o valor da cor
 			 *

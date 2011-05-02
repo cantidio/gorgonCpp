@@ -7,7 +7,7 @@ namespace Gorgon
 		const int& pRed,
 		const int& pGreen,
 		const int& pBlue,
-		const int& pAlfa
+		const int& pAlpha
 	)
 	{
 		set
@@ -15,7 +15,7 @@ namespace Gorgon
 			pRed,
 			pGreen,
 			pBlue,
-			pAlfa
+			pAlpha
 		);
 	}
 
@@ -26,16 +26,16 @@ namespace Gorgon
 			pColor.getRed(),
 			pColor.getGreen(),
 			pColor.getBlue(),
-			pColor.getAlfa()
+			pColor.getAlpha()
 		);
 	}
 
 	Color::Color(const int& pColor)
 	{
-		setRed((pColor >> 16) & 255);
-		setGreen((pColor >> 8) & 255);
-		setBlue((pColor) & 255);
-		setAlfa((pColor >> 24) & 255);
+		setRed		((pColor >> 16) & 255);
+		setGreen	((pColor >> 8) & 255);
+		setBlue		((pColor) & 255);
+		setAlpha	((pColor >> 24) & 255);
 	}
 
 	Color::~Color()
@@ -49,7 +49,7 @@ namespace Gorgon
 		out << "Red:   " << getRed()	<< std::endl;
 		out << "Green: " << getGreen()	<< std::endl;
 		out << "Blue:  " << getBlue()	<< std::endl;
-		out << "Alfa:  " << getAlfa()	<< std::endl;
+		out << "alpha:  " << getAlpha()	<< std::endl;
 		return out.str();
 	}
 	
@@ -110,22 +110,22 @@ namespace Gorgon
 		}
 	}
 
-	void Color::setAlfa(const int& pAlfa)
+	void Color::setAlpha(const int& pAlpha)
 	{
-		if(pAlfa >= 0)
+		if(pAlpha >= 0)
 		{
-			if(pAlfa <= 255)
+			if(pAlpha <= 255)
 			{
-				mAlfa = pAlfa;
+				mAlpha = pAlpha;
 			}
 			else
 			{
-				mAlfa = 510 - pAlfa;
+				mAlpha = 510 - pAlpha;
 			}
 		}
 		else
 		{
-			mAlfa = 0;
+			mAlpha = 0;
 		}
 	}
 
@@ -134,13 +134,13 @@ namespace Gorgon
 		const int& pRed,
 		const int& pGreen,
 		const int& pBlue,
-		const int& pAlfa
+		const int& pAlpha
 	)
 	{
 		setRed(pRed);
 		setGreen(pGreen);
 		setBlue(pBlue);
-		setAlfa(pAlfa);
+		setAlpha(pAlpha);
 	}
 
 	int Color::getRed() const
@@ -158,9 +158,9 @@ namespace Gorgon
 		return mBlue;
 	}
 
-	int Color::getAlfa() const
+	int Color::getAlpha() const
 	{
-		return mAlfa;
+		return mAlpha;
 	}
 
 	int Color::get() const
@@ -173,7 +173,7 @@ namespace Gorgon
 			(getBlue()	<< 0)	|
 			(getGreen()	<< 8)	|
 			(getRed()	<< 16)	|
-			(getAlfa()	<< 24)
+			(getAlpha()	<< 24)
 		);
 	}
 
@@ -184,7 +184,7 @@ namespace Gorgon
 			getRed()	+ pColor.getRed(),
 			getGreen()	+ pColor.getGreen(),
 			getBlue()	+ pColor.getBlue(),
-			getAlfa()	+ pColor.getAlfa()
+			getAlpha()	+ pColor.getAlpha()
 		);
 	}
 
@@ -195,7 +195,7 @@ namespace Gorgon
 			getRed()	+ pColor.getRed(),
 			getGreen()	+ pColor.getGreen(),
 			getBlue()	+ pColor.getBlue(),
-			getAlfa()	+ pColor.getAlfa()
+			getAlpha()	+ pColor.getAlpha()
 		);
 	}
 
@@ -206,7 +206,7 @@ namespace Gorgon
 			getRed()	- pColor.getRed(),
 			getGreen()	- pColor.getGreen(),
 			getBlue()	- pColor.getBlue(),
-			getAlfa()	- pColor.getAlfa()
+			getAlpha()	- pColor.getAlpha()
 		);
 	}
 
@@ -217,7 +217,7 @@ namespace Gorgon
 			getRed()	- pColor.getRed(),
 			getGreen()	- pColor.getGreen(),
 			getBlue()	- pColor.getBlue(),
-			getAlfa()	- pColor.getAlfa()
+			getAlpha()	- pColor.getAlpha()
 		);
 	}
 
@@ -228,7 +228,7 @@ namespace Gorgon
 			getRed()	* pValue,
 			getGreen()	* pValue,
 			getBlue()	* pValue,
-			getAlfa()	* pValue
+			getAlpha()	* pValue
 		);
 	}
 
@@ -239,7 +239,7 @@ namespace Gorgon
 			getRed()	/ pValue,
 			getGreen()	/ pValue,
 			getBlue()	/ pValue,
-			getAlfa()	/ pValue
+			getAlpha()	/ pValue
 		);
 	}
 	
@@ -250,7 +250,7 @@ namespace Gorgon
 			getRed()	== pColor.getRed()		&&
 			getGreen()	== pColor.getGreen()	&&
 			getBlue()	== pColor.getBlue()		&&
-			getAlfa()	== pColor.getAlfa()
+			getAlpha()	== pColor.getAlpha()
 		);
 	}
 	bool Color::operator !=(const Color& pColor) const
@@ -260,7 +260,7 @@ namespace Gorgon
 			getRed()	== pColor.getRed()		&&
 			getGreen()	== pColor.getGreen()	&&
 			getBlue()	== pColor.getBlue()		&&
-			getAlfa()	== pColor.getAlfa()
+			getAlpha()	== pColor.getAlpha()
 		);
 	}
 }

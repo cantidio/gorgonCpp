@@ -1,5 +1,6 @@
-#include<graphic/gorgon_image_loader.hpp>
-#include<graphic/gorgon_image_exception.hpp>
+#include <graphic/gorgon_image_loader.hpp>
+#include <graphic/gorgon_image_exception.hpp>
+
 namespace Gorgon
 {
 	ImageLoader* ImageLoader::mLoader = NULL;

@@ -25,9 +25,10 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 #include <gorgon++/graphic/gorgon_image_loader.hpp>
-#include <gorgon++/gorgon.hpp>
 namespace Gorgon
 {
+	class Image;
+	class ImageLoader;
 	/**
 	 * Classe que representa o loader de imagens da lib SDL
 	 *
