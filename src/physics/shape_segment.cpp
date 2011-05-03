@@ -25,10 +25,8 @@ namespace Physics
 	{
 		pSprite.drawLine
 		(
-			getPointA().getX(),
-			getPointA().getY(),
-			getPointB().getX(),
-			getPointB().getY(),
+			getPointA(),
+			getPointB(),
 			pColor
 		);
 	}

@@ -9,8 +9,7 @@ namespace Graphic
 		mGroup		= 0;
 		mIndex		= 0;
 		mRealIndex	= -1;
-		mXOffset	= 0;
-		mYOffset	= 0;
+		mOffset		= Point(0,0);
 		mTime		= 0;
 		mMirroring	= Mirroring::Normal;
 		mAngle		= 0;
@@ -23,15 +22,13 @@ namespace Graphic
 		const int&			pTime,
 		const Mirroring&	pMirroring,
 		const int&			pAngle,
-		const int&			pXOffset,
-		const int&			pYOffset
+		const Point&		pOffset
 	)
 	{
 		mGroup		= pGroup;
 		mIndex		= pIndex;
 		mRealIndex	= -1;
-		mXOffset	= pXOffset;
-		mYOffset	= pYOffset;
+		mOffset		= pOffset;
 		mTime		= pTime;
 		mMirroring	= pMirroring;
 		mAngle		= pAngle;
@@ -46,12 +43,12 @@ namespace Graphic
 	{
 		std::stringstream out;
 		out << "Gorgon Frame"	<< std::endl;
-		out << "group: "		<< mGroup		<< std::endl;
-		out << "index: "		<< mIndex		<< std::endl;
-		out << "realIndex: "	<< mRealIndex	<< std::endl;
-		out << "xOffset: "		<< mXOffset		<< std::endl;
-		out << "yOffset: "		<< mYOffset		<< std::endl;
-		out << "Time: "			<< mTime		<< std::endl;
+		out << "group: "		<< mGroup			<< std::endl;
+		out << "index: "		<< mIndex			<< std::endl;
+		out << "realIndex: "	<< mRealIndex		<< std::endl;
+		out << "xOffset: "		<< mOffset.getX()	<< std::endl;
+		out << "yOffset: "		<< mOffset.getY()	<< std::endl;
+		out << "Time: "			<< mTime			<< std::endl;
 		out << "Mirroring: ";
 
 		switch(mMirroring.getType())
@@ -82,14 +79,9 @@ namespace Graphic
 		return mRealIndex;
 	}
 
-	int Frame::getXOffset() const
+	Point Frame::getOffset() const
 	{
-		return mXOffset;
-	}
-
-	int Frame::getYOffset() const
-	{
-		return mYOffset;
+		return mOffset;
 	}
 
 	int Frame::getTime() const
@@ -127,14 +119,18 @@ namespace Graphic
 		mTime = pTime;
 	}
 
+	void Frame::setOffset(const Point& pOffset)
+	{
+		mOffset = pOffset;
+	}
 	void Frame::setXOffset(const int& pXOffset)
 	{
-		mXOffset = pXOffset;
+		mOffset.setX(pXOffset);
 	}
 
 	void Frame::setYOffset(const int& pYOffset)
 	{
-		mYOffset = pYOffset;
+		mOffset.setY(pYOffset);
 	}
 
 	void Frame::setMirroring(const Mirroring& pMirroring)
@@ -157,8 +153,8 @@ namespace Graphic
 		pFile.writeInt32(getGroup());
 		pFile.writeInt32(getIndex());
 		pFile.writeInt32(getRealIndex());
-		pFile.writeInt32(getXOffset());
-		pFile.writeInt32(getYOffset());
+		pFile.writeInt32(getOffset().getX());
+		pFile.writeInt32(getOffset().getY());
 		pFile.writeInt32(getTime());
 		pFile.write((char*)&mMirroring.getType(),sizeof(Mirroring::Type));
 		pFile.writeInt32(getAngle());

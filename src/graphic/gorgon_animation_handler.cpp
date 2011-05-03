@@ -249,18 +249,16 @@ namespace Graphic
 	void AnimationHandler::draw
 	(
 		Sprite& pSprite,
-		const int& pX,
-		const int& pY,
+		const Point& pPosition,
 		const Mirroring& pMirroring,
 		const int& pAngle
 	)
 	{
 		Frame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
-		pSprite.drawSpriteRotetedFlipped
+		pSprite.drawSpriteRotatedFlipped
 		(
 			getCurrentSprite(),
-			frame.getXOffset()		+ pX,
-			frame.getYOffset()		+ pY,
+			frame.getOffset()		+ pPosition,
 			frame.getAngle()		+ pAngle,
 			frame.getMirroring()	+ pMirroring
 		);
@@ -269,8 +267,7 @@ namespace Graphic
 	void AnimationHandler::drawTrans
 	(
 		Sprite& pSprite,
-		const int& pX,
-		const int& pY,
+		const Point& pPosition,
 		const float& pTrans
 	)
 	{
@@ -282,8 +279,7 @@ namespace Graphic
 		pSprite.drawSpriteTrans
 		(
 			getCurrentSprite(),
-			pX,
-			pY,
+			pPosition,
 			pTrans
 		);
 	}

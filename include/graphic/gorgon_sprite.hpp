@@ -46,42 +46,34 @@ namespace Graphic
 	class Sprite : public Image
 	{
 		private:
-			/**
-			 * Guarda o grupo ao qual o sprite pertence
-			 */
-			int mGroup;
-			/**
-			 * Guarda o índice do sprite no grupo
-			 */
-			int mIndex;
-			/**
-			 * Guarda o offset no eixo x do sprite
-			 */
-			int mXOffset;
+			int mGroup;/**<< Guarda o grupo ao qual o sprite pertence*/
+			int mIndex;/**<< Guarda o índice do sprite no grupo*/
+			Point mOffset;/**<< Guarda o offset no eixo x do sprite*/
+
+
+			//int mXOffset;
 			/**
 			 * Guarda o offset no eixo y do sprite
 			 */
-			int mYOffset;
+			//int mYOffset;
 		public:
 			/**
 			 * Método Construtor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	21/01/2009
-			 * @param	const Image&	pImage		, imagem do sprite
-			 * @param	const int&		pGroup		, grupo do sprite
-			 * @param	const int&		pIndex		, indice do sprite
-			 * @param	const int&		pXOffset	, offset no eixo x
-			 * @param	const int&		pYOffset	, offset no eixo y
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage	, imagem do sprite
+			 * @param	const int&		pGroup	, grupo do sprite
+			 * @param	const int&		pIndex	, indice do sprite
+			 * @param	const Point&	pOffset	, offset do sprite
 			 */
 			Sprite
 			(
 				const Image&	pImage,
-				const int&		pGroup		= 0,
-				const int&		pIndex		= 0,
-				const int&		pXOffset	= 0,
-				const int&		pYOffset	= 0
+				const int&		pGroup	= 0,
+				const int&		pIndex	= 0,
+				const Point&	pOffset	= Point(0,0)
 			);
 			/**
 			 * Método Construtor
@@ -185,6 +177,15 @@ namespace Graphic
 			 */
 			void setIndex(const int& pIndex);
 			/**
+			 * Método para setar o offset do sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/05/2011
+			 * @version	03/05/2011
+			 * @param	const Point& pOffset, offset do sprite
+			 */
+			void setOffset(const Point& pOffset);
+			/**
 			 * Método para setar o offset horizontal do sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
@@ -202,76 +203,58 @@ namespace Graphic
 			 * @param	const int& pYOffset, offset vertical do sprite
 			 */
 			void setYOffset(const int& pYOffset);
-
 			/**
 			 * Método para retornar o grupo do sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	09/08/2008
 			 * @version	21/01/2009
-			 * @return	const int&
+			 * @return	int
 			 */
-			const int& getGroup() const;
+			int getGroup() const;
 			/**
 			 * Método para retornar o indice do sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	09/08/2008
 			 * @version	21/01/2009
-			 * @return	const int&
+			 * @return	int
 			 */
-			const int& getIndex() const;
+			int getIndex() const;
 			/**
-			 * Método para retornar o offset no eixo x do sprite
+			 * Método para retornar o offset do sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	09/08/2008
-			 * @version	21/01/2009
-			 * @return	const int&
+			 * @version	03/05/2011
+			 * @return	const Point&
 			 */
-			const int& getXOffset() const;
-			/**
-			 * Método para retornar o offset no eixo y do sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	09/08/2008
-			 * @version	21/01/2009
-			 * @return	const int&
-			 */
-			const int& getYOffset() const;
+			Point getOffset() const;
 			/**
 			 * Método para desenhar um Sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2008
-			 * @version	24/01/2009
-			 * @param	const Image&	pSprite	, sprite a ser desenhada
-			 * @param	const int&		pPosX	, posição no eixo x a desenhar o sprite
-			 * @param	const int&		pPosY	, posição no eixo
+			 * @version	03/05/2011
+			 * @param	const Image&	pSprite		, sprite a ser desenhada
+			 * @param	const Point&	pPosition	, posição a desenhar o sprite
 			 */
-			void drawSprite
-			(
-				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY
-			);
+			void drawSprite(const Sprite& pSprite, const Point& pPosition);
 			/**
 			 * Método para desenhar um Sprite esticado
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/01/2009
-			 * @version	26/01/2009
-			 * @param	const Sprite&	pSprite	, imagem que deseja-se desenhar
-			 * @param	const int&		pPosX	, posição no eixo x
-			 * @param	const int&		pPosY	, posição no eixo y
-			 * @param	const int&		pXScale	, escala horizontal
-			 * @param	const int&		pYScale	, escala vertical
+			 * @version	26/01/2011
+			 * @param	const Sprite&	pSprite		, imagem que deseja-se desenhar
+			 * @param	const Point&	pPosition	, posição a desenhar o sprite
+			 * @param	const int&		pXScale		, escala horizontal
+			 * @param	const int&		pYScale		, escala vertical
 			 */
 			void drawSpriteStretched
 			(
 				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const int&		pXScale,
 				const int&		pYScale
 			);
@@ -280,17 +263,15 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2008
-			 * @version	27/02/2009
+			 * @version	03/05/2011
 			 * @param	const Sprite&		pSprite		, sprite que deseja-se desenhar
-			 * @param	const int&			pPosX		, posição no eixo x
-			 * @param	const int&			pPosY		, posição no eixo y
+			 * @param	const Point&		pPosition	, posição a desenhar o sprite
 			 * @param	const Mirroring&	pMirroring	, tipo de espelhamento
 			 */
 			void drawSpriteFlipped
 			(
 				const Sprite&		pSprite,
-				const int&			pPosX,
-				const int&			pPosY,
+				const Point&		pPosition,
 				const Mirroring&	pMirroring = Mirroring::Normal
 			);
 			/**
@@ -303,12 +284,12 @@ namespace Graphic
 			 * @param	const int&		pPosX	, posição no eixo x a desenhar o sprite
 			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
 			 */
-			void drawSpriteFlippedV
-			(
-				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY
-			);
+//			void drawSpriteFlippedV
+//			(
+//				const Sprite&	pSprite,
+//				const int&		pPosX,
+//				const int&		pPosY
+//			);
 			/**
 			 * Método para desenhar um Sprite invertido horizontalmente
 			 *
@@ -319,12 +300,12 @@ namespace Graphic
 			 * @param	const int&		pPosX	, posição no eixo x a desenhar o sprite
 			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
 			 */
-			void drawSpriteFlippedH
-			(
-				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY
-			);
+//			void drawSpriteFlippedH
+//			(
+//				const Sprite&	pSprite,
+//				const int&		pPosX,
+//				const int&		pPosY
+//			);
 			/**
 			 * Método para desenhar um Sprite invertido verticalmente e horizontalmente
 			 *
@@ -335,27 +316,26 @@ namespace Graphic
 			 * @param	const int&		pPosX	, posição no eixo x a desenhar o sprite
 			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
 			 */
-			void drawSpriteFlippedVH
-			(
-				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY
-			);
+//			void drawSpriteFlippedVH
+//			(
+//				const Sprite&	pSprite,
+//				const int&		pPosX,
+//				const int&		pPosY
+//			);
 			/**
 			 * Método para desenhar um Sprite com transparencia ou blender
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/01/2009
-			 * @version	24/01/2009
-			 * @param	const Sprite&	pSprite	, sprite que deseja-se desenhar
-			 * @param	const int&		pPosX	, posição no eixo x a desenhar o sprite
-			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
+			 * @version	03/05/2011
+			 * @param	const Sprite&	pSprite		, sprite que deseja-se desenhar
+			 * @param	const int&		pPosition	, posição a desenhar o sprite
+			 * @param	const float&	pTrans		, transparencia do sprite [0 - 1]
 			 */
 			void drawSpriteTrans
 			(
 				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const float&	pTrans = 0.5
 			);
 			/**
@@ -363,25 +343,26 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/04/2010
-			 * @version	20/04/2010
+			 * @version	03/05/2011
 			 * @param	const Sprite&		pSprite		, sprite que deseja-se desenhar
-			 * @param	const int&			pPosX		, posição no eixo x a desenhar o sprite
-			 * @param	const int&			pPosY		, posição no eixo y a desenhar o sprite
+			 * @param	const Point&		pPosition	, posição a desenhar o sprite
+			 * @param	const float&		pTrans		, transparencia do sprite [0 - 1]
 			 * @param	const Mirroring&	pMirroring	, espelhamento
 			 */
 			void drawSpriteTransFlipped
 			(
 				const Sprite&		pSprite,
-				const int&			pPosX,
-				const int&			pPosY,
+				const Point&		pPosition,
 				const float&		pTrans = 0.5,
 				const Mirroring&	pMirroring = Mirroring::Normal
 			);
+			/**
+			 * @todo comentar isso ou excluir
+			 */
 			void drawSpriteAdd
 			(
 				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const Color&	pColorAdd,
 				const Color&	pColorSub,
 				const float&	pTrans = 0.5
@@ -391,18 +372,15 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2008
-			 * @version	24/01/2009
+			 * @version	03/05/2011
 			 * @param	const Sprite&	pSprite	, sprite que deseja-se desenhar
-			 * @param	const int&		pPosX	, posição no eixo x a desenhar o sprite
-			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
+			 * @param	const Point&	pPosition	, posição no eixo x a desenhar o sprite
 			 * @param	const int&		pAngle	, angulo a desenhar o sprite
-			 * @todo	consertar o nome da funćão
 			 */
-			void drawSpriteRoteted
+			void drawSpriteRotated
 			(
 				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const int&		pAngle
 			);
 			/**
@@ -410,18 +388,16 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2008
-			 * @version	27/02/2009
+			 * @version	03/05/2011
 			 * @param	const Sprite&		pSprite		, sprite que deseja-se desenhar
-			 * @param	const int&			pPosX		, posição no eixo x a desenhar o sprite
-			 * @param	const int&			pPosY		, posição no eixo y a desenhar o sprite
+			 * @param	const Point&		pPosition	, posição a desenhar o sprite
 			 * @param	const int&			pAngle		, angulo a desenhar o sprite
 			 * @param	const Mirroring&	pMirroring	, tipo de espelhamento do sprite
 			 */
-			void drawSpriteRotetedFlipped
+			void drawSpriteRotatedFlipped
 			(
 				const Sprite&		pSprite,
-				const int&			pPosX,
-				const int&			pPosY,
+				const Point&		pPosX,
 				const int&			pAngle,
 				const Mirroring&	pMirroring = Mirroring::Normal
 			);
@@ -430,19 +406,17 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2008
-			 * @version	24/01/2009
-			 * @param	const Sprite&	pSprite	, sprite que deseja-se desenhar
-			 * @param	const int&		pPosX	, posição no eixo x a desenhar o sprite
-			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
-			 * @param	const int&		pAngle	, angulo a desenhar o sprite
+			 * @version	03/05/2011
+			 * @param	const Sprite&	pSprite		, sprite que deseja-se desenhar
+			 * @param	const Point&	pPosition	, posição a desenhar o sprite
+			 * @param	const int&		pAngle		, angulo a desenhar o sprite
 			 */
-			void drawSpriteRotetedFlippedV
-			(
-				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pAngle
-			);
+//			void drawSpriteRotetedFlippedV
+//			(
+//				const Sprite&	pSprite,
+//				const Point&	pPosition,
+//				const int&		pAngle
+//			);
 			/**
 			 * Método para desenhar um Sprite rotacionada e invertida horizontalmente
 			 *
@@ -454,13 +428,13 @@ namespace Graphic
 			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
 			 * @param	const int&		pAngle	, angulo a desenhar o sprite
 			 */
-			void drawSpriteRotetedFlippedH
-			(
-				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pAngle
-			);
+//			void drawSpriteRotetedFlippedH
+//			(
+//				const Sprite&	pSprite,
+//				const int&		pPosX,
+//				const int&		pPosY,
+//				const int&		pAngle
+//			);
 			/**
 			 * Método para desenhar um Sprite rotacionada e invertida verticalmente e horizontalmente
 			 *
@@ -472,52 +446,46 @@ namespace Graphic
 			 * @param	const int&		pPosY	, posição no eixo y a desenhar o sprite
 			 * @param	const int&		pAngle	, angulo a desenhar o sprite
 			 */
-			void drawSpriteRotetedFlippedVH
-			(
-				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pAngle
-			);
+//			void drawSpriteRotetedFlippedVH
+//			(
+//				const Sprite&	pSprite,
+//				const int&		pPosX,
+//				const int&		pPosY,
+//				const int&		pAngle
+//			);
 			/**
 			 * Método para copiar o Sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	02/07/2008
-			 * @version	25/01/2009
-			 * @param	const Sprite&	pSprite		, sprite a ser colado
-			 * @param	const int&		pPosX		, posição x na imagem que irá colar a outra
-			 * @param	const int&		pPosY		, posição y na imagem que irá colar a outra
-			 * @param	const int& 		pSourcePosX	, posição x na imagem passada que começará a colar
-			 * @param	const int& 		pSourcePosY , posição x na imagem passada que começará a colar
-			 * @param	const int& 		pWidth		, largura do corte
-			 * @param	const int&		pHeight		, altura do corte
-			 * @param	const bool		pMasked		, se irá permitir transparência ou não
+			 * @version	03/05/2011
+			 * @param	const Sprite&	pSprite			, sprite a ser colado
+			 * @param	const Point&	pPosition		, posição na imagem que irá colar a outra
+			 * @param	const Point&	pSourcePosition	, posição na imagem passada que começará a colar
+			 * @param	const int& 		pWidth			, largura do corte
+			 * @param	const int&		pHeight			, altura do corte
+			 * @param	const bool		pMasked			, se irá permitir transparência ou não
 			 */
 			void blitSprite
 			(
 				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pSourcePosX	=  0,
-				const int&		pSourcePosY	=  0,
-				const int&		pWidth		= -1,
-				const int&		pHeight		= -1,
-				const bool&		pMasked		= false
+				const Point&	pPosition,
+				const Point&	pSourcePosition	=  Point(0,0),
+				const int&		pWidth			= -1,
+				const int&		pHeight			= -1,
+				const bool&		pMasked			= false
 			);
 			/**
 			 * Método para copiar um Sprite esticado
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/01/2009
-			 * @version	25/01/2009
+			 * @version	03/05/2011
 			 * @param	const Sprite&	pSprite			, sprite a ser colado
-			 * @param	const int&		pPosX			, posição x na imagem que irá colar a outra
-			 * @param	const int&		pPosY			, posição y na imagem que irá colar a outra
+			 * @param	const Point&	pPosition		, posição na imagem que irá colar a outra
 			 * @param	const int&		pXScale			, número de vezes que irá multiplicar o tamanho do sprite original no eixo x
 			 * @param	const int&		pYScale			, número de vezes que irá multiplicar o tamanho do sprite original no eixo y
-			 * @param	const int& 		pSourcePosX		, posição x na imagem passada que começará a colar
-			 * @param	const int& 		pSourcePosY 	, posição x na imagem passada que começará a colar
+			 * @param	const Point&	pSourcePosition	, posição na imagem passada que começará a colar
 			 * @param	int		 		pSourceWidth	, largura do corte na imagem passada
 			 * @param	int				pSourceHeight	, altura do corte na imagem passada
 			 * @param	bool			pMasked			, se irá permitir transparência ou não
@@ -525,12 +493,10 @@ namespace Graphic
 			void blitSpriteStretched
 			(
 				const Sprite&	pSprite,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const int&		pXScale			= -1,
 				const int&		pYScale			= -1,
-				const int&		pSourcePosX		=  0,
-				const int&		pSourcePosY		=  0,
+				const Point&	pSourcePosition	=  Point(0,0),
 				const int&		pSourceWidth	= -1,
 				const int&		pSourceHeight	= -1,
 				const bool&		pMasked			= false

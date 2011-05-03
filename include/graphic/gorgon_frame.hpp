@@ -44,38 +44,13 @@ namespace Graphic
 	class Frame
 	{
 		private:
-			/**
-			 * Grupo do sprite do frame
-			 */
-			int mGroup;
-			/**
-			 * Índice do sprite do frame
-			 */
-			int mIndex;
-			/**
-			 * Índice real do sprite do frame no SpritePack
-			 */
-			int mRealIndex;
-			/**
-			 * Tempo que o frame deve ser exibido
-			 */
-			int mTime;
-			/**
-			 * Offset horizontal do frame
-			 */
-			int mXOffset;
-			/**
-			 * Offset vertical do frame
-			 */
-			int mYOffset;
-			/**
-			 * Espelhamento do sprite do frame
-			 */
-			Mirroring mMirroring;
-			/**
-			 * Ângulo do sprite do frame
-			 */
-			int mAngle;
+			int mGroup;				/**<< Grupo do sprite do frame*/
+			int mIndex;				/**<< Índice do sprite do frame*/
+			int mRealIndex;			/**<< Índice real do sprite do frame no SpritePack*/
+			int mTime;				/**<< Tempo que o frame deve ser exibido*/
+			Point mOffset;			/**<< Offset do frame*/
+			Mirroring mMirroring;	/**<< Espelhamento do sprite do frame*/
+			int mAngle;				/**<< Ângulo do sprite do frame*/
 			//int transparence;
 		public:
 			/**
@@ -91,14 +66,13 @@ namespace Graphic
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
-			 * @version	27/02/2009
-			 * @param	const int& pGroup			, grupo do sprite do frame
-			 * @param	const int& pIndex			, index do sprite do frame
-			 * @param	const int& pXOffset			, offset horizontal do sprite do frame
-			 * @param	const int& pYOffset			, offset vertical do sprite do frame
-			 * @param	const int& pTime			, tempo que o frame deve ser exibido
-			 * @param	const Mirroring& mirroring	, espelhamento do sprite do frame
-			 * @param	const int& pAngle			, ângulo do sprite do frame
+			 * @version	03/05/2011
+			 * @param	const int&			pGroup		, grupo do sprite do frame
+			 * @param	const int&			pIndex		, index do sprite do frame
+			 * @param	const int& 			pTime		, tempo que o frame deve ser exibido
+			 * @param	const Mirroring&	pMirroring	, espelhamento do sprite do frame
+			 * @param	const int&			pAngle		, ângulo do sprite do frame
+			 * @param	const Point&		pOffset		, offset do sprite do frame
 			 */
 			Frame
 			(
@@ -107,8 +81,7 @@ namespace Graphic
 				const int&			pTime,
 				const Mirroring&	pMirroring	= Mirroring::Normal,
 				const int&			pAngle		= 0,
-				const int&			pXOffset	= 0,
-				const int&			pYOffset	= 0
+				const Point&		pOffset		= Point(0,0)
 			);
 			/**
 			 * método construtor que busca as informações em um arquivo já aberto
@@ -160,19 +133,10 @@ namespace Graphic
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
-			 * @version	23/02/2009
-			 * @return	int
+			 * @version	03/05/2011
+			 * @return	Point
 			 */
-			int getXOffset() const;
-			/**
-			 * método para retornar o shift no eixo y do sprite que o frame indica
-			 *
-			 * @author	Cantídio Oliveira Fontes
-			 * @since	12/08/2008
-			 * @version	23/02/2009
-			 * @return	int
-			 */
-			int getYOffset() const;
+			Point getOffset() const;
 			/**
 			 * método para retornar o tempo que o frame deve ser exibido
 			 *
@@ -236,6 +200,15 @@ namespace Graphic
 			 * @param	const int& pTime, o tempo de exibição do frame
 			 */
 			void setTime(const int& pTime);
+			/**
+			 * Método para setar o offset
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/05/2011
+			 * @version	03/05/2011
+			 * @param	const Point& pOffset, offset do frame
+			 */
+			void setOffset(const Point& pOffset);
 			/**
 			 * Método para setar o offset horizontal
 			 *

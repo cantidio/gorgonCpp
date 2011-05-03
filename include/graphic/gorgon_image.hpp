@@ -53,19 +53,10 @@ namespace Graphic
 	class Image
 	{
 		protected:
-			/**
-			 * Variável que guarda a imagem em si
-			 */
-			BITMAP* mData;
-			/**
-			 * Variável que guarda um buffer da imagem, onde são realizadas todas operacões,
-			 * se mudar a paleta ou a imagem ele deve ser atualizado
-			 */
-			BITMAP* mDataBuffer;
-			/**
-			 * Ponteiro para a paleta de cores, se a imagem possuir uma
-			 */
-			Palette* mPalette;
+
+			BITMAP* mData;/**<< Variável que guarda a imagem em si*/
+			BITMAP* mDataBuffer;/**<< Variável que guarda um buffer da imagem, onde são realizadas todas operacões se mudar a paleta ou a imagem ele deve ser atualizado*/
+			Palette* mPalette;/**<< Ponteiro para a paleta de cores, se a imagem possuir uma*/
 			/**
 			 * Variável que guarda se a imagem é linkada
 			 * Se a imagem for linkada ela não será destruída pelos métodos
@@ -73,16 +64,10 @@ namespace Graphic
 			bool mImgLinked;
 			bool mFreePalette;/**<< Variável que guarda se a paleta será desalocada pela classe */
 			/**
-			 * Variável que guarda o tipo da imagem
-			 * Essa variável pode ser usada por outras classes para saber que tipo de imagem é essa
+			 * @todo remover essa variável
 			 */
 			char mImgType;
 		public:
-			/**
-			 * @todo retirar essas friend classes, substituir com métodos melhores
-			 */
-			friend class ImageLoaderPcx;
-			friend class ImageLoaderBmp;
 			Image(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			Image(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
@@ -214,6 +199,7 @@ namespace Graphic
 			 * @since	23/01/2009
 			 * @version	23/01/2009
 			 * @param	const char& pImgType, tipo da imagem
+			 * @todo 	remover esse método
 			 */
 			void setType(const char& pImgType);
 			/**
@@ -446,137 +432,94 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const int& pPosX1	, posição x de início da linha
-			 * @param	const int& pPosY1	, posição y de início da linha
-			 * @param	const int& pPosX2	, posição x de término da linha
-			 * @param	const int& pPosY2	, posição y de término da linha
-			 * @param	const int& pColor	, cor da linha
+			 * @version	03/05/2011
+			 * @param	const Point& pPosX1	, posição de início da linha
+			 * @param	const Point& pPosX2	, posição de término da linha
+			 * @param	const Color& pColor	, cor da linha
 			 * @todo	substituir pelo objeto Color
 			 */
-			void drawLine
-			(
-				const int& pPosX1,
-				const int& pPosY1,
-				const int& pPosX2,
-				const int& pPosY2,
-				const int& pColor
-			);
+			void drawLine(const Point& pPos1, const Point& pPos2, const Color& pColor);
 			/**
 			 * Método para desenhar um retângulo na imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	14/02/2009
-			 * @param	const int&		pPosX1	, posição x de início do retângulo
-			 * @param	const int&		pPosY1	, posição y de início do retângulo
-			 * @param	const int&	 	pPosX2	, posição x de término do retângulo
-			 * @param	const int&		pPosY2	, posição y de término do retângulo
+			 * @version	03/05/2011
+			 * @param	const Point&	pPos1	, posição de início do retângulo
+			 * @param	const Point& 	pPos2	, posição de término do retângulo
 			 * @param	const Color& 	pColor	, cor do retângulo
-			 * @param	const bool&		pFill	, se irá preencher o retangulo todo com a cor
+			 * @param	const bool&		pFill	, se irá preencher o retangulo com a cor
 			 */
 			void drawRectangle
 			(
-				const int&		pPosX1,
-				const int&		pPosY1,
-				const int&		pPoxX2,
-				const int&		pPosY2,
+				const Point&	pPos1,
+				const Point&	pPos2,
 				const Color&	pColor,
 				const bool&		pFill = false
-			);
-			/**
-			 * Método para desenhar um retângulo na imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	19/06/2009
-			 * @version	19/06/2009
-			 * @param	const Point&		pPosition	, posição a desenhar o retângulo
-			 * @param	const Rectangle&	pRectangle	, retângulo a ser desenhado
-			 * @param	const Color&		pColor		, cor do retângulo
-			 * @param	const bool&			pFill		, se irá preencher o retangulo todo com a cor
-			 */
-			void drawRectangle
-			(
-				const Point&		pPosition,
-				const Rectangle&	pRectangle,
-				const Color&		pColor,
-				const bool&			pFill = false
 			);
 			/**
 			 * Método para desenhar um circulo na imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	24/01/2009
-			 * @param	const int& 	pPosX	, posição x do círculo
-			 * @param	const int& 	pPosY	, posição y do círculo
-			 * @param	const int& 	pRadius	, radio do círculo
-			 * @param	const int& 	pColor	, cor do círculo
-			 * @param	const bool&	pFill	, se irá preencher o círculo todo com a cor
+			 * @version	03/05/2011
+			 * @param	const Point& 	pPosition	, posição do círculo
+			 * @param	const int& 		pRadius		, radio do círculo
+			 * @param	const Color& 	pColor		, cor do círculo
+			 * @param	const bool&		pFill		, se irá preencher o círculo com a cor
 			 */
 			void drawCircle
 			(
-				const int&	pPosX,
-				const int&	pPosY,
-				const int&	pRadius,
-				const int&	pColor,
-				const bool&	pFill = false
+				const Point&	pPosition,
+				const int&		pRadius,
+				const Color&	pColor,
+				const bool&		pFill = false
 			);
 			/**
 			 * Método para desenhar uma elipse na imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	24/01/2009
-			 * @param	const int& 	pPosX		, posição x da elipse
-			 * @param	const int& 	pPosY		, posição y da elipse
-			 * @param	const int& 	pRadiusX	, raio do eixo x da elipse
-			 * @param	const int& 	pRadiusY	, raio do eixo y da elipse
-			 * @param	const int& 	pColor		, cor da elipse
-			 * @param	const bool&	pFill		, se irá preencher a elipse toda com a cor
+			 * @version	03/05/2011
+			 * @param	const Point& 	pPosition	, posição da elipse
+			 * @param	const int& 		pRadiusX	, raio do eixo x da elipse
+			 * @param	const int& 		pRadiusY	, raio do eixo y da elipse
+			 * @param	const Color& 	pColor		, cor da elipse
+			 * @param	const bool&		pFill		, se irá preencher a elipse toda com a cor
 			 */
 			void drawEllipse
 			(
-				const int&	pPosX,
-				const int&	pPosY,
-				const int&	pRadiusX,
-				const int&	pRadiusY,
-				const int&	pColor,
-				const bool&	pFill = false
+				const Point&	pPosition,
+				const int&		pRadiusX,
+				const int&		pRadiusY,
+				const Color&	pColor,
+				const bool&		pFill = false
 			);
 			/**
 			 * Método para desenhar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage		, imagem a ser desenhada
+			 * @param	const Point&	pPosition	, posição a desenhar a imagem
 			 */
-			void drawImage
-			(
-				const Image& pImage,
-				const int& pPosX,
-				const int& pPosY
-			);
+			void drawImage(const Image& pImage, const Point& pPosition);
 			/**
 			 * Método para desenhar uma imagem esticada
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 * @param	const int&		pWidth	, largura a desenhar a imagem
-			 * @param	const int&		pHeight	, altura a desenhar a imagem
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage		, imagem a ser desenhada
+			 * @param	const Point&	pPosition	, posição a desenhar a imagem
+			 * @param	const int&		pWidth		, largura a desenhar a imagem
+			 * @param	const int&		pHeight		, altura a desenhar a imagem
 			 */
 			void drawImageStretched
 			(
 				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const int&		pWidth,
 				const int&		pHeight
 			);
@@ -585,65 +528,63 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
+			 * @version	03/05/2011
 			 * @param	const Image&	pImage	, imagem a ser desenhada
 			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
 			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
 			 */
-			void drawImageFlippedV
-			(
-				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY
-			);
+//			void drawImageFlippedV
+//			(
+//				const Image&	pImage,
+//				const int&		pPosX,
+//				const int&		pPosY
+//			);
 			/**
 			 * Método para desenhar uma imagem invertida horizontalmete
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
+			 * @version	03/05/2011
 			 * @param	const Image&	pImage	, imagem a ser desenhada
 			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
 			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
 			 */
-			void drawImageFlippedH
-			(
-				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY
-			);
+//			void drawImageFlippedH
+//			(
+//				const Image&	pImage,
+//				const int&		pPosX,
+//				const int&		pPosY
+//			);
 			/**
 			 * Método para desenhar uma imagem invertida verticalmente e horizontalmente
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
+			 * @version	03/05/2011
 			 * @param	const Image&	pImage	, imagem a ser desenhada
 			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
 			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
 			 */
-			void drawImageFlippedVH
-			(
-				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY
-			);
+//			void drawImageFlippedVH
+//			(
+//				const Image&	pImage,
+//				const int&		pPosX,
+//				const int&		pPosY
+//			);
 			/**
 			 * Método para desenhar uma imagem invertida
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const Image&		pImage		, imagem a ser desenhada
-			 * @param	const int&			pPosX		, posição nom eixo x a desenhar a imagem
-			 * @param	const int&			pPosY		, posição nom eixo y a desenhar a imagem
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage		, imagem a ser desenhada
+			 * @param	const Point&	pPosition	, posição a desenhar a imagem
 			 * @param	const Mirroring&	pMirroring	, espelhamento a aplicar na imagem
 			 */
 			void drawImageFlipped
 			(
 				const Image&		pImage,
-				const int&			pPosX,
-				const int&			pPosY,
+				const Point&		pPosition,
 				const Mirroring&	pMirroring = Mirroring::Normal
 			);
 			/**
@@ -651,18 +592,16 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	25/06/2009
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 * @param	const float&	pTrans	, valor da transparência de 0 a 1
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage		, imagem a ser desenhada
+			 * @param	const Point&	pPosition	, posição a desenhar a imagem
+			 * @param	const float&	pTrans		, valor da transparência de 0 a 1
 			 * @todo	Otimizar
 			 */
 			void drawImageTrans
 			(
 				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const float&	pTrans = 0.5
 			);
 			/**
@@ -670,10 +609,9 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/04/2010
-			 * @version	20/04/2010
+			 * @version	03/05/2011
 			 * @param	const Image&		pImage		, imagem a ser desenhada
-			 * @param	const int&			pPosX		, posição nom eixo x a desenhar a imagem
-			 * @param	const int&			pPosY		, posição nom eixo y a desenhar a imagem
+			 * @param	const Point&		pPosition	, posição a desenhar a imagem
 			 * @param	const float&		pTrans		, valor da transparência de 0 a 1
 			 * @param	const Mirroring&	pMirroring	, espelhamento
 			 * @todo	Otimizar
@@ -681,8 +619,7 @@ namespace Graphic
 			void drawImageTransFlipped
 			(
 				const Image&		pImage,
-				const int&			pPosX,
-				const int&			pPosY,
+				const Point&		pPosition,
 				const float&		pTrans = 0.5,
 				const Mirroring&	pMirroring = Mirroring::Normal
 			);
@@ -691,20 +628,18 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/06/2009
-			 * @version	26/06/2009
+			 * @version	03/05/2011
 			 * @param	const Image&	pImage		, imagem a ser desenhada
-			 * @param	const int&		pPosX		, posição x da imagem a ser desenhada
-			 * @param	const int&		pPosY		, posição y da imagem a ser desenhada
-			 * @param	const int&		pColorAdd	, cor a ser adicionada
-			 * @param	const int&		pColorSub	, cor a ser subtraída
+			 * @param	const Point&	pPosition	, posição a desenhar a imagem
+			 * @param	const Color&	pColorAdd	, cor a ser adicionada
+			 * @param	const Color&	pColorSub	, cor a ser subtraída
 			 * @param	const float&	pTrans		, proporção da transparencia
 			 * @todo	Otimizar
 			 */
 			void drawImageAdd
 			(
 				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const Color&	pColorAdd,
 				const Color&	pColorSub,
 				const float&	pTrans = 0.5
@@ -714,46 +649,39 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 * @param	const int&		pAangle	, angulo a desenhar a imagem
-			 * @param	const int&		pXAlign	, alinhamento no eixo x
-			 * @param	const int&		pYAlign	, alinhamento no eixo y
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage		, imagem a ser desenhada
+			 * @param	const Point&	pPosition	, posição a desenhar a imagem
+			 * @param	const int&		pAangle		, angulo a desenhar a imagem
+			 * @param	const Point&	pAlign		, alinhamento
 			 */
-			void drawImageRoteted
+			void drawImageRotated
 			(
 				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
+				const Point&	pPosition,
 				const int&		pAngle,
-				const int&		pXAlign = 0,
-				const int&		pYAlign = 0
+				const Point&	pAlign = Point(0,0)
 			);
 			/**
 			 * Método para desenhar uma imagem rotacionada e invertida
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	24/01/2009
+			 * @version	03/05/2011
 			 * @param	const Image&		pImage		, imagem a ser desenhada
-			 * @param	const int&			pPosX		, posição nom eixo x a desenhar a imagem
-			 * @param	const int&			pPosY		, posição nom eixo y a desenhar a imagem
-			 * @param	const int&			pAangle		, angulo a desenhar a imagem
-			 * @param	const int&			pXAlign		, alinhamento no eixo x
-			 * @param	const int&			pYAlign		, alinhamento no eixo y
+			 * @param	const Point&		pPosition	, posição a desenhar a imagem
+			 * @param	const int&			pAngle		, angulo a desenhar a imagem
 			 * @param	const Mirroring&	pMirroring	, espelhamento
+			 * @param	const Point&		pAlign		, alinhamento
+
 			 */
-			void drawImageRotetedFlipped
+			void drawImageRotatedFlipped
 			(
 				const Image&		pImage,
-				const int&			pPosX,
-				const int&			pPoxY,
+				const Point&		pPosition,
 				const int&			pAngle,
 				const Mirroring&	pMirroring	= Mirroring::Normal,
-				const int&			pXAlign		= 0,
-				const int&			pYAlign		= 0
+				const Point&		pAlign		= Point(0,0)
 			);
 			/**
 			 * Método para desenhar uma imagem rotacionada e invertida verticalmente
@@ -768,15 +696,15 @@ namespace Graphic
 			 * @param	const int&		pXAlign	, alinhamento no eixo x
 			 * @param	const int&		pYAlign	, alinhamento no eixo y
 			 */
-			void drawImageRotetedFlippedV
-			(
-				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pAngle,
-				const int&		pXAlign = 0,
-				const int&		pYAlign = 0
-			);
+//			void drawImageRotetedFlippedV
+//			(
+//				const Image&	pImage,
+//				const int&		pPosX,
+//				const int&		pPosY,
+//				const int&		pAngle,
+//				const int&		pXAlign = 0,
+//				const int&		pYAlign = 0
+//			);
 			/**
 			 * Método para desenhar uma imagem rotacionada e invertida horizontalmente
 			 *
@@ -790,15 +718,15 @@ namespace Graphic
 			 * @param	const int&		pXAlign	, alinhamento no eixo x
 			 * @param	const int&		pYAlign	, alinhamento no eixo y
 			 */
-			void drawImageRotetedFlippedH
-			(
-				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pAngle,
-				const int&		pXAlign = 0,
-				const int&		pYAlign = 0
-			);
+//			void drawImageRotetedFlippedH
+//			(
+//				const Image&	pImage,
+//				const int&		pPosX,
+//				const int&		pPosY,
+//				const int&		pAngle,
+//				const int&		pXAlign = 0,
+//				const int&		pYAlign = 0
+//			);
 			/**
 			 * Método para desenhar uma imagem rotacionada e invertida verticalmente e horizontalmente
 			 *
@@ -812,55 +740,51 @@ namespace Graphic
 			 * @param	const int&		pXAlign	, alinhamento no eixo x
 			 * @param	const int&		pYAlign	, alinhamento no eixo y
 			 */
-			void drawImageRotetedFlippedVH
-			(
-				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pAngle,
-				const int&		pXAlign = 0,
-				const int&		pYAlign = 0
-			);
+//			void drawImageRotetedFlippedVH
+//			(
+//				const Image&	pImage,
+//				const int&		pPosX,
+//				const int&		pPosY,
+//				const int&		pAngle,
+//				const int&		pXAlign = 0,
+//				const int&		pYAlign = 0
+//			);
 			/**
 			 * Método para imprimir std::strings
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	22/01/2009
-			 * @version	27/02/2009
+			 * @version	03/05/2011
 			 * @param	const std::string&	pText		, texto
-			 * @param	const int&			pPosX		, posição x na imagem para imprimir o texto
-			 * @param	const int&			pPosY		, posição y na imagem para imprimir o texto
-			 * @param	const int&			pColor		, cor a imprimir
-			 * @param	const int&			pBgColor	, cor de fundo, use -1 para transparente
+			 * @param	const Point&		pPosition	, posição a imprimir o texto
+			 * @param	const Color&		pColor		, cor a imprimir
+			 * @param	const Color&		pBgColor	, cor de fundo, use -1 para transparente
 			 */
 			void drawText
 			(
 				const std::string&	pText,
-				const int&			pPosX,
-				const int&			pPosY,
-				const int&			pColor		= 0,
-				const int&			pBgColor	= -1
+				const Point&		pPosition,
+				const Color&		pColor		= 0,
+				const Color&		pBgColor	= -1
 			);
 			/**
 			 * Método para imprimir std::strings formatadas ao estilo printf
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	22/01/2009
-			 * @version	13/02/2009
-			 * @param	const int&	pPosX		, posição x na imagem para imprimir o texto
-			 * @param	const int&	pPosY		, posição y na imagem para imprimir o texto
-			 * @param	const int&	pColor		, cor a imprimir
-			 * @param	const int&	pBgColor	, cor de fundo, use -1 para transparente
-			 * @param	const char*	pText		, texto formatado
-			 * @param	...						, as variáveis de formato
+			 * @version	03/05/2011
+			 * @param	const Point&	pPosition	, posição a imprimir o texto
+			 * @param	const Color&	pColor		, cor a imprimir
+			 * @param	const Color&	pBgColor	, cor de fundo, use -1 para transparente
+			 * @param	const char*		pText		, texto formatado
+			 * @param	...							, as variáveis de formato
 			 */
 			void drawText
 			(
-				const int&	pPosX,
-				const int&	pPosY,
-				const int&	pColor,
-				const int&	pBgColor,
-				const char* pText,
+				const Point&	pPosition,
+				const Color&	pColor,
+				const Color&	pBgColor,
+				const char* 	pText,
 				...
 			);
 			/**
@@ -868,23 +792,19 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	18/02/2009
-			 * @param	const Image&	pImage		, imagem a ser colada
-			 * @param	const int&		pPosX		, posição x na imagem que irá colar a outra
-			 * @param	const int&		pPosY		, posição y na imagem que irá colar a outra
-			 * @param	const int& 		pSourcePosX	, posição x na imagem passada que começará a colar
-			 * @param	const int& 		pSourcePosY , posição x na imagem passada que começará a colar
-			 * @param	const int& 		pWidth		, largura do corte
-			 * @param	const int&		pHeight		, altura do corte
-			 * @param	bool			pMasked		, se irá permitir transparência ou não
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage			, imagem a ser colada
+			 * @param	const Point&	pPosition		, posição na imagem que irá colar a outra
+			 * @param	const Point&	pSourcePosition	, posição na imagem passada que começará a colar
+			 * @param	const int& 		pWidth			, largura do corte
+			 * @param	const int&		pHeight			, altura do corte
+			 * @param	bool			pMasked			, se irá permitir transparência ou não
 			 */
 			void blitImage
 			(
 				const Image&	pImage,
-				const int&		pPosX,
-				const int&		pPosY,
-				const int&		pSourcePosX	=  0,
-				const int&		pSourcePosY	=  0,
+				const Point&	pPosition,
+				const Point&	pSourcePosition	=  Point(0,0),
 				const int&		pWidth		= -1,
 				const int&		pHeight		= -1,
 				const bool&		pMasked		= false
@@ -894,30 +814,26 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	18/02/2009
-			 * @param	const Image&	pImage		, imagem a ser colada
-			 * @param	const int&	pPosX		, posição x na imagem que irá colar a outra
-			 * @param	const int&	pPosY		, posição y na imagem que irá colar a outra
-			 * @param	int		pWidth		, largura que ocupará na imagem
-			 * @param	int		pHeight		, altura que ocupará na imagem
-			 * @param	const int& 	pSourcePosX	, posição x na imagem passada que começará a colar
-			 * @param	const int& 	pSourcePosY 	, posição x na imagem passada que começará a colar
-			 * @param	int		pSourceWidth	, largura do corte na imagem passada
-			 * @param	int		pSourceHeight	, altura do corte na imagem passada
-			 * @param	bool		pMasked		, se irá permitir transparência ou não
+			 * @version	03/05/2011
+			 * @param	const Image&	pImage			, imagem a ser colada
+			 * @param	const Point&	pPosition		, posição na imagem que irá colar a outra
+			 * @param	const int&		pWidth			, largura que ocupará na imagem
+			 * @param	const int&		pHeight			, altura que ocupará na imagem
+			 * @param	const Point& 	pSourcePosition	, posição na imagem passada que começará a colar
+			 * @param	const int&		pSourceWidth	, largura do corte na imagem passada
+			 * @param	const int&		pSourceHeight	, altura do corte na imagem passada
+			 * @param	const bool&		pMasked			, se irá permitir transparência ou não
 			 */
 			void blitImageStretched
 			(
 				const Image&	pImage,
-				const int&	pPosX,
-				const int&	pPosY,
-				const int&	pWidth		= -1,
-				const int&	pHeight		= -1,
-				const int&	pSourcePosX	=  0,
-				const int&	pSourcePosY	=  0,
-				const int&	pSourceWidth	= -1,
-				const int&	pSourceHeight	= -1,
-				const bool&	pMasked		= false
+				const Point&	pPosition,
+				const int&		pWidth			= -1,
+				const int&		pHeight			= -1,
+				const Point&	pSourcePosition	=  Point(0,0),
+				const int&		pSourceWidth	= -1,
+				const int&		pSourceHeight	= -1,
+				const bool&		pMasked			= false
 			);
 			/**
 			 * Método que retorna se a imagem está vazia, ou sejá preenchida com a cor transparente

@@ -505,14 +505,7 @@ namespace Graphic
 		}
 	}
 
-	void Image::drawLine
-	(
-		const int& pPosX1,
-		const int& pPosY1,
-		const int& pPosX2,
-		const int& pPosY2,
-		const int& pColor
-	)
+	void Image::drawLine(const Point& pPos1, const Point& pPos2, const Color& pColor)
 	{
 		if(mData == NULL)
 		{
@@ -521,20 +514,16 @@ namespace Graphic
 		line
 		(
 			mData,
-			pPosX1,
-			pPosY1,
-			pPosX2,
-			pPosY2,
-			pColor
+			pPos1.getX(), pPos1.getY(),
+			pPos2.getX(), pPos2.getY(),
+			pColor.get()
 		);
 	}
 
 	void Image::drawRectangle
 	(
-		const int&		pPosX1,
-		const int&		pPosY1,
-		const int&		pPosX2,
-		const int&		pPosY2,
+		const Point&	pPos1,
+		const Point&	pPos2,
 		const Color&	pColor,
 		const bool&		pFill
 	)
@@ -548,10 +537,8 @@ namespace Graphic
 			rectfill
 			(
 				mData,
-				pPosX1,
-				pPosY1,
-				pPosX2,
-				pPosY2,
+				pPos1.getX(), pPos1.getY(),
+				pPos2.getX(), pPos2.getY(),
 				pColor.get()
 			);
 		}
@@ -560,42 +547,19 @@ namespace Graphic
 			rect
 			(
 				mData,
-				pPosX1,
-				pPosY1,
-				pPosX2,
-				pPosY2,
+				pPos1.getX(), pPos1.getY(),
+				pPos2.getX(), pPos2.getY(),
 				pColor.get()
 			);
 		}
 	}
-
-	void Image::drawRectangle
-	(
-		const Point&		pPosition,
-		const Rectangle&	pRectangle,
-		const Color&		pColor,
-		const bool&			pFill
-	)
-	{
-		const Point position = pRectangle.getPosition();
-		drawRectangle
-		(
-			pPosition.getX() + position.getX(),
-			pPosition.getY() + position.getY(),
-			pPosition.getX() + position.getX() + pRectangle.getWidth(),
-			pPosition.getY() + position.getY() + pRectangle.getHeight(),
-			pColor,
-			pFill
-		);
-	}
 	
 	void Image::drawCircle
 	(
-		const int&	pPosX,
-		const int&	pPosY,
-		const int&	pRadius,
-		const int&	pColor,
-		const bool&	pFill
+		const Point&	pPosition,
+		const int&		pRadius,
+		const Color&	pColor,
+		const bool&		pFill
 	)
 	{
 		if(mData == NULL)
@@ -607,10 +571,10 @@ namespace Graphic
 			circlefill
 			(
 				mData,
-				pPosX,
-				pPosY,
+				pPosition.getX(),
+				pPosition.getY(),
 				pRadius,
-				pColor
+				pColor.get()
 			);
 		}
 		else
@@ -618,22 +582,21 @@ namespace Graphic
 			circle
 			(
 				mData,
-				pPosX,
-				pPosY,
+				pPosition.getX(),
+				pPosition.getY(),
 				pRadius,
-				pColor
+				pColor.get()
 			);
 		}
 	}
 
 	void Image::drawEllipse
 	(
-		const int&	pPosX,
-		const int&	pPosY,
-		const int&	pRadiusX,
-		const int&	pRadiusY,
-		const int&	pColor,
-		const bool&	pFill
+		const Point&	pPosition,
+		const int&		pRadiusX,
+		const int&		pRadiusY,
+		const Color&	pColor,
+		const bool&		pFill
 	)
 	{
 		if(mData == NULL)
@@ -645,11 +608,11 @@ namespace Graphic
 			ellipsefill
 			(
 				mData,
-				pPosX,
-				pPosY,
+				pPosition.getX(),
+				pPosition.getY(),
 				pRadiusX,
 				pRadiusY,
-				pColor
+				pColor.get()
 			);
 		}
 		else
@@ -657,11 +620,11 @@ namespace Graphic
 			ellipse
 			(
 				mData,
-				pPosX,
-				pPosY,
+				pPosition.getX(),
+				pPosition.getY(),
 				pRadiusX,
 				pRadiusY,
-				pColor
+				pColor.get()
 			);
 		}
 	}
@@ -669,10 +632,8 @@ namespace Graphic
 	void Image::blitImage
 	(
 		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
-		const int&		pSourcePosX,
-		const int&		pSourcePosY,
+		const Point&	pPosition,
+		const Point&	pSourcePosition,
 		const int&		pWidth,
 		const int&		pHeight,
 		const bool&		pMasked
@@ -691,10 +652,10 @@ namespace Graphic
 			(
 				pImage.mDataBuffer,
 				mData,
-				pSourcePosX,
-				pSourcePosY,
-				pPosX,
-				pPosY,
+				pSourcePosition.getX(),
+				pSourcePosition.getY(),
+				pPosition.getX(),
+				pPosition.getY(),
 				width,
 				height
 			);
@@ -705,10 +666,10 @@ namespace Graphic
 			(
 				pImage.mDataBuffer,
 				mData,
-				pSourcePosX,
-				pSourcePosY,
-				pPosX,
-				pPosY,
+				pSourcePosition.getX(),
+				pSourcePosition.getY(),
+				pPosition.getX(),
+				pPosition.getY(),
 				width,
 				height
 			);
@@ -718,12 +679,10 @@ namespace Graphic
 	void Image::blitImageStretched
 	(
 		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const int&		pWidth,
 		const int&		pHeight,
-		const int&		pSourceX,
-		const int&		pSourceY,
+		const Point&	pSourcePosition,
 		const int&		pSourceWidth,
 		const int&		pSourceHeight,
 		const bool&		pMasked
@@ -744,12 +703,12 @@ namespace Graphic
 			(
 				pImage.mDataBuffer,
 				mData,
-				pSourceX,
-				pSourceY,
+				pSourcePosition.getX(),
+				pSourcePosition.getY(),
 				sourceWidth,
 				sourceHeight,
-				pPosX,
-				pPosY,
+				pPosition.getX(),
+				pPosition.getY(),
 				width,
 				height
 			);
@@ -760,24 +719,19 @@ namespace Graphic
 			(
 				pImage.mDataBuffer,
 				mData,
-				pSourceX,
-				pSourceY,
+				pSourcePosition.getX(),
+				pSourcePosition.getY(),
 				sourceWidth,
 				sourceHeight,
-				pPosX,
-				pPosY,
+				pPosition.getX(),
+				pPosition.getY(),
 				width,
 				height
 			);
 		}
 	}
 
-	void Image::drawImage
-	(
-		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY
-	)
+	void Image::drawImage(const Image& pImage, const Point& pPosition)
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
@@ -787,16 +741,15 @@ namespace Graphic
 		(
 			mData,
 			pImage.mDataBuffer,
-			pPosX,
-			pPosY
+			pPosition.getX(),
+			pPosition.getY()
 		);
 	}
 
 	void Image::drawImageStretched
 	(
 		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const int&		pWidth,
 		const int&		pHeight
 	)
@@ -809,95 +762,121 @@ namespace Graphic
 		(
 			mData,
 			pImage.mDataBuffer,
-			pPosX,
-			pPosY,
+			pPosition.getX(),
+			pPosition.getY(),
 			pWidth,
 			pHeight
 		);
 	}
 
-	void Image::drawImageFlippedV
-	(
-		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY
-	)
-	{
-		if(mData == NULL || pImage.mData == NULL)
-		{
-			throw ImageException("Trying to draw a non loaded Image.");
-		}
-		draw_sprite_v_flip
-		(
-			mData,
-			pImage.mDataBuffer,
-			pPosX,
-			pPosY
-		);
-	}
+//	void Image::drawImageFlippedV
+//	(
+//		const Image&	pImage,
+//		const int&		pPosX,
+//		const int&		pPosY
+//	)
+//	{
+//		if(mData == NULL || pImage.mData == NULL)
+//		{
+//			throw ImageException("Trying to draw a non loaded Image.");
+//		}
+//		draw_sprite_v_flip
+//		(
+//			mData,
+//			pImage.mDataBuffer,
+//			pPosX,
+//			pPosY
+//		);
+//	}
 
-	void Image::drawImageFlippedH
-	(
-		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY
-	)
-	{
-		if(mData == NULL || pImage.mData == NULL)
-		{
-			throw ImageException("Trying to draw a non loaded Image.");
-		}
-		draw_sprite_h_flip
-		(
-			mData,
-			pImage.mDataBuffer,
-			pPosX,
-			pPosY
-		);
-	}
+//	void Image::drawImageFlippedH
+//	(
+//		const Image&	pImage,
+//		const int&		pPosX,
+//		const int&		pPosY
+//	)
+//	{
+//		if(mData == NULL || pImage.mData == NULL)
+//		{
+//			throw ImageException("Trying to draw a non loaded Image.");
+//		}
+//		draw_sprite_h_flip
+//		(
+//			mData,
+//			pImage.mDataBuffer,
+//			pPosX,
+//			pPosY
+//		);
+//	}
 
-	void Image::drawImageFlippedVH
-	(
-		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY
-	)
-	{
-		if(mData == NULL || pImage.mData == NULL)
-		{
-			throw ImageException("Trying to draw a non loaded Image.");
-		}
-		draw_sprite_vh_flip
-		(
-			mData,
-			pImage.mDataBuffer,
-			pPosX,
-			pPosY
-		);
-	}
+//	void Image::drawImageFlippedVH
+//	(
+//		const Image&	pImage,
+//		const int&		pPosX,
+//		const int&		pPosY
+//	)
+//	{
+//		if(mData == NULL || pImage.mData == NULL)
+//		{
+//			throw ImageException("Trying to draw a non loaded Image.");
+//		}
+//		draw_sprite_vh_flip
+//		(
+//			mData,
+//			pImage.mDataBuffer,
+//			pPosX,
+//			pPosY
+//		);
+//	}
 
+//	void Image::drawImageFlipped
+//	(
+//		const Image&		pImage,
+//		const int&			pPosX,
+//		const int&			pPosY,
+//		const Mirroring&	pMirroring
+//	)
+//	{
+//		if(mData == NULL || pImage.mData == NULL)
+//		{
+//			throw ImageException("Trying to draw a non loaded Image.");
+//		}
+//		switch(pMirroring.getType())
+//		{
+//			case Mirroring::Normal:
+//				drawImage(pImage,pPosX,pPosY);			break;
+//			case Mirroring::VFlip:
+//				drawImageFlippedV(pImage,pPosX,pPosY);	break;
+//			case Mirroring::HFlip:
+//				drawImageFlippedH(pImage,pPosX,pPosY);	break;
+//			case Mirroring::VHFlip:
+//				drawImageFlippedVH(pImage,pPosX,pPosY);	break;
+//		}
+//	}
 	void Image::drawImageFlipped
 	(
 		const Image&		pImage,
-		const int&			pPosX,
-		const int&			pPosY,
+		const Point&		pPosition,
 		const Mirroring&	pMirroring
 	)
 	{
+		if(mData == NULL || pImage.mData == NULL)
+		{
+			throw ImageException("Trying to draw a non loaded Image.");
+		}
 		switch(pMirroring.getType())
 		{
-			case Mirroring::Normal:	drawImage(pImage,pPosX,pPosY);			break;
-			case Mirroring::VFlip:	drawImageFlippedV(pImage,pPosX,pPosY);	break;
-			case Mirroring::HFlip:	drawImageFlippedH(pImage,pPosX,pPosY);	break;
-			case Mirroring::VHFlip:	drawImageFlippedVH(pImage,pPosX,pPosY);	break;
+			case Mirroring::Normal:	drawImage(pImage,pPosition);															break;
+			case Mirroring::VFlip:	draw_sprite_v_flip( mData, pImage.mDataBuffer, pPosition.getX(), pPosition.getY() );	break;
+			case Mirroring::HFlip:	draw_sprite_h_flip( mData, pImage.mDataBuffer, pPosition.getX(), pPosition.getY() );	break;
+			case Mirroring::VHFlip:	draw_sprite_vh_flip( mData, pImage.mDataBuffer, pPosition.getX(), pPosition.getY() );	break;
 		}
 	}
 
 	void Image::drawImageTrans
 	(
 		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const float&	pTrans
 	)
 	{
@@ -907,14 +886,13 @@ namespace Graphic
 		}
 		set_trans_blender(255, 255, 255, 255*pTrans);
 		drawing_mode(DRAW_MODE_TRANS, NULL, 0, 0);
-		draw_trans_sprite(mData,pImage.mDataBuffer,pPosX,pPosY);
+		draw_trans_sprite(mData, pImage.mDataBuffer, pPosition.getX(), pPosition.getY());
 	}
 
 	void Image::drawImageTransFlipped
 	(
 		const Image&		pImage,
-		const int&			pPosX,
-		const int&			pPosY,
+		const Point&		pPosition,
 		const float&		pTrans,
 		const Mirroring&	pMirroring
 	)
@@ -924,16 +902,14 @@ namespace Graphic
 			throw ImageException("Trying to draw a non loaded Image.");
 		}
 		Image aux(getWidth(),getHeight());
-		aux.drawImageFlipped(pImage,0,0,pMirroring);
-		drawImageTrans(aux,pPosX,pPosY,pTrans);
-
+		aux.drawImageFlipped(pImage,pPosition,pMirroring);
+		drawImageTrans(aux,pPosition,pTrans);
 	}
 
 	void Image::drawImageAdd
 	(
 		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const Color&	pColorAdd,
 		const Color&	pColorSub,
 		const float&	pTrans
@@ -943,21 +919,18 @@ namespace Graphic
 		{
 			throw ImageException("Trying to draw a non loaded Image.");
 		}
-		/*set_trans_blender(pColorAdd.getRed(), pColorAdd.getGreen(), pColorAdd.getRed(), 255*pTrans);
-		drawing_mode(DRAW_MODE_XOR, NULL, 0, 0);
-		draw_trans_sprite(mData,pImage.mDataBuffer,pPosX,pPosY);*/
-		
-		const int xLimit = (getWidth()	> pImage.getWidth()		+ pPosX) ? pImage.getWidth()	+ pPosX : getWidth();
-		const int yLimit = (getHeight()	> pImage.getHeight()	+ pPosY) ? pImage.getHeight()	+ pPosY : getHeight();
+
+		const int xLimit = (getWidth()	> pImage.getWidth()		+ pPosition.getX()) ? pImage.getWidth()		+ pPosition.getX() : getWidth();
+		const int yLimit = (getHeight()	> pImage.getHeight()	+ pPosition.getY()) ? pImage.getHeight()	+ pPosition.getY() : getHeight();
 		const Color tranparent(255,0,255);
 		register int i,j,x,y;
 		register Color a;
 		register Color b;
 		const float aTransValue = 1 - pTrans;
 
-		for(i = pPosY, y = 0; i < yLimit; ++i, ++y)
+		for(i = pPosition.getY(), y = 0; i < yLimit; ++i, ++y)
 		{
-			for(j = pPosX, x = 0; j < xLimit; ++j, ++x)
+			for(j = pPosition.getX(), x = 0; j < xLimit; ++j, ++x)
 			{
 				b = pImage.getColor(x,y);
 				if(b != tranparent)
@@ -965,6 +938,7 @@ namespace Graphic
 					a = getColor(j,i);
 					if(a != tranparent)
 					{
+						//fazer o somatorio das cores pColorSub + pColorAdd, antes
 						drawPixel(j,i,(a*aTransValue + (b - pColorSub + pColorAdd)*pTrans).get());
 					}
 					else
@@ -976,14 +950,12 @@ namespace Graphic
 		}
 	}
 
-	void Image::drawImageRoteted
+	void Image::drawImageRotated
 	(
 		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const int&		pAngle,
-		const int&		pXAlign,
-		const int&		pYAlign
+		const Point&	pAlign
 	)
 	{
 		if(mData == NULL || pImage.mData == NULL)
@@ -992,121 +964,151 @@ namespace Graphic
 		}
 		pivot_sprite
 		(
-			mData,
-			pImage.mDataBuffer,
-			pPosX,
-			pPosY,
-			pXAlign,
-			pYAlign,
+			mData				, pImage.mDataBuffer,
+			pPosition.getX()	, pPosition.getY(),
+			pAlign.getX()		, pAlign.getY(),
 			itofix(pAngle)
 		);
 	}
 
-	void Image::drawImageRotetedFlipped
+	void Image::drawImageRotatedFlipped
 	(
 		const Image&		pImage,
-		const int&			pPosX,
-		const int&			pPosY,
+		const Point&		pPosition,
 		const int&			pAngle,
 		const Mirroring&	pMirroring,
-		const int&			pXAlign,
-		const int&			pYAlign
+		const Point&		pAlign
 	)
 	{
+		if(mData == NULL || pImage.mData == NULL)
+		{
+			throw ImageException("Trying to draw a non loaded Image.");
+		}
 		switch(pMirroring.getType())
 		{
-			case Mirroring::Normal:	drawImageRoteted(pImage,pPosX,pPosY,pAngle,pXAlign,pYAlign);			break;
-			case Mirroring::VFlip:	drawImageRotetedFlippedV(pImage,pPosX,pPosY,pAngle,pXAlign,pYAlign);	break;
-			case Mirroring::HFlip:	drawImageRotetedFlippedH(pImage,pPosX,pPosY,pAngle,pXAlign,pYAlign);	break;
-			case Mirroring::VHFlip:	drawImageRotetedFlippedVH(pImage,pPosX,pPosY,pAngle,pXAlign,pYAlign);	break;
+			case Mirroring::Normal:
+				drawImageRotated
+				(
+					pImage,
+					pPosition,
+					pAngle,
+					pAlign
+				);
+				break;
+			case Mirroring::VFlip:
+				pivot_sprite_v_flip
+				(
+					mData				, pImage.mDataBuffer,
+					pPosition.getX()	, pPosition.getY(),
+					pAlign.getX()		, pAlign.getY(),
+					itofix(pAngle)
+				);
+				break;
+			case Mirroring::HFlip:
+				pivot_sprite_v_flip
+				(
+					mData				, pImage.mDataBuffer,
+					pPosition.getX()	, pPosition.getY(),
+					pAlign.getX()		, pAlign.getY(),
+					itofix(pAngle + 128)
+				);
+				break;
+			case Mirroring::VHFlip:
+				pivot_sprite
+				(
+					mData				, pImage.mDataBuffer,
+					pPosition.getX()	, pPosition.getY(),
+					pAlign.getX()		, pAlign.getY(),
+					itofix(pAngle+128)
+				);
+				break;
 		}
 	}
 
-	void Image::drawImageRotetedFlippedV
-	(
-		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
-		const int&		pAngle,
-		const int&		pXAlign,
-		const int&		pYAlign
-	)
-	{
-		if(mData == NULL || pImage.mData == NULL)
-		{
-			throw ImageException("Trying to draw a non loaded Image.");
-		}
-		pivot_sprite_v_flip
-		(
-			mData,
-			pImage.mDataBuffer,
-			pPosX,
-			pPosY,
-			pXAlign,
-			pYAlign,
-			itofix(pAngle)
-		);
-	}
+//	void Image::drawImageRotetedFlippedV
+//	(
+//		const Image&	pImage,
+//		const int&		pPosX,
+//		const int&		pPosY,
+//		const int&		pAngle,
+//		const int&		pXAlign,
+//		const int&		pYAlign
+//	)
+//	{
+//		if(mData == NULL || pImage.mData == NULL)
+//		{
+//			throw ImageException("Trying to draw a non loaded Image.");
+//		}
+//		pivot_sprite_v_flip
+//		(
+//			mData,
+//			pImage.mDataBuffer,
+//			pPosX,
+//			pPosY,
+//			pXAlign,
+//			pYAlign,
+//			itofix(pAngle)
+//		);
+//	}
 
-	void Image::drawImageRotetedFlippedH
-	(
-		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
-		const int&		pAngle,
-		const int&		pXAlign,
-		const int&		pYAlign
-	)
-	{
-		if(mData == NULL || pImage.mData == NULL)
-		{
-			throw ImageException("Trying to draw a non loaded Image.");
-		}
-		pivot_sprite_v_flip
-		(
-			mData,
-			pImage.mDataBuffer,
-			pPosX,
-			pPosY,
-			pXAlign,
-			pYAlign,
-			itofix(pAngle + 128)
-		);
-	}
-
-	void Image::drawImageRotetedFlippedVH
-	(
-		const Image&	pImage,
-		const int&		pPosX,
-		const int&		pPosY,
-		const int&		pAngle,
-		const int&		pXAlign,
-		const int&		pYAlign
-	)
-	{
-		if(mData == NULL || pImage.mData == NULL)
-		{
-			throw ImageException("Trying to draw a non loaded Image.");
-		}
-		pivot_sprite
-		(
-			mData,
-			pImage.mDataBuffer,
-			pPosX,
-			pPosY,
-			pXAlign,
-			pYAlign,
-			itofix(pAngle+128)
-		);
-	}
+//	void Image::drawImageRotetedFlippedH
+//	(
+//		const Image&	pImage,
+//		const int&		pPosX,
+//		const int&		pPosY,
+//		const int&		pAngle,
+//		const int&		pXAlign,
+//		const int&		pYAlign
+//	)
+//	{
+//		if(mData == NULL || pImage.mData == NULL)
+//		{
+//			throw ImageException("Trying to draw a non loaded Image.");
+//		}
+//		pivot_sprite_v_flip
+//		(
+//			mData,
+//			pImage.mDataBuffer,
+//			pPosX,
+//			pPosY,
+//			pXAlign,
+//			pYAlign,
+//			itofix(pAngle + 128)
+//		);
+//	}
+//
+//	void Image::drawImageRotetedFlippedVH
+//	(
+//		const Image&	pImage,
+//		const int&		pPosX,
+//		const int&		pPosY,
+//		const int&		pAngle,
+//		const int&		pXAlign,
+//		const int&		pYAlign
+//	)
+//	{
+//		if(mData == NULL || pImage.mData == NULL)
+//		{
+//			throw ImageException("Trying to draw a non loaded Image.");
+//		}
+//		pivot_sprite
+//		(
+//			mData,
+//			pImage.mDataBuffer,
+//			pPosX,
+//			pPosY,
+//			pXAlign,
+//			pYAlign,
+//			itofix(pAngle+128)
+//		);
+//	}
 
 	void Image::drawText
 	(
 		const std::string&	pText,
-		const int&			pPosX,
-		const int&			pPosY,
-		const int&			pColor,
-		const int&			pBgColor
+		const Point&		pPosition,
+		const Color&		pColor,
+		const Color&		pBgColor
 	)
 	{
 		if(mData == NULL)
@@ -1118,20 +1120,19 @@ namespace Graphic
 			mData,
 			font,
 			pText.c_str(),
-			pPosX,
-			pPosY,
-			pColor,
-			pBgColor
+			pPosition.getX(),
+			pPosition.getY(),
+			pColor.get(),
+			pBgColor.get()
 		);
 	}
 
 	void Image::drawText
 	(
-		const int&	pPosX,
-		const int&	pPosY,
-		const int&	pColor,
-		const int&	pBgColor,
-		const char*	pText,
+		const Point&	pPosition,
+		const Color&	pColor,
+		const Color&	pBgColor,
+		const char*		pText,
 		...
 	)
 	{
@@ -1153,10 +1154,10 @@ namespace Graphic
 			mData,
 			font,
 			buf,
-			pPosX,
-			pPosY,
-			pColor,
-			pBgColor
+			pPosition.getX(),
+			pPosition.getY(),
+			pColor.get(),
+			pBgColor.get()
 		);
 	}
 

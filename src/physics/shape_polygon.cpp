@@ -39,8 +39,7 @@ namespace Physics
 				mMaximum.getX() - mMinimum.getX() + 1,
 				mMaximum.getY() - mMinimum.getY() + 1
 			),0,0,
-			(mMaximum.getX() - mMinimum.getX()) / 2,
-			(mMaximum.getY() - mMinimum.getY()) / 2
+			(mMaximum - mMinimum)/2
 		);
 		if( getVerticesNumber() > 2)
 		{
@@ -48,27 +47,22 @@ namespace Physics
 			{
 				poly.drawLine
 				(
-					getVertice(i).getX() - mMinimum.getX(),
-					getVertice(i).getY() - mMinimum.getY(),
-					getVertice(i - 1).getX() - mMinimum.getX(),
-					getVertice(i - 1).getY() - mMinimum.getY(),
+					getVertice(i)	- mMinimum,
+					getVertice(i-1) - mMinimum,
 					pColor
-				);	
+				);
 			}
 			poly.drawLine
 			(
-				getVertice(0).getX() - mMinimum.getX(),
-				getVertice(0).getY() - mMinimum.getY(),
-				getVertice(getVerticesNumber() - 1).getX() - mMinimum.getX(),
-				getVertice(getVerticesNumber() - 1).getY() - mMinimum.getY(),
+				getVertice(0)						- mMinimum,
+				getVertice(getVerticesNumber()-1)	- mMinimum,
 				pColor
 			);
 		}
-		pSprite.drawSpriteRoteted
+		pSprite.drawSpriteRotated
 		(
 			poly,
-			mBody->getPosition().getX(),
-			mBody->getPosition().getY(),
+			mBody->getPosition(),
 			360/256 * mBody->getAngle()
 		);
 	}

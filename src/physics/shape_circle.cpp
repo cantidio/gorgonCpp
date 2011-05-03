@@ -29,10 +29,8 @@ namespace Physics
 				getRadius() * 2,
 				getRadius() * 2
 			),
-			0,
-			0,
-			getRadius(),
-			getRadius()
+			0,0,
+			Point( getRadius(),	getRadius() )
 		);
 		a.drawCircle
 		(
@@ -43,24 +41,21 @@ namespace Physics
 		);
 		a.drawLine
 		(
-			getRadius(),
-			getRadius() - 1,
-			getRadius() * 2 - 1,
-			getRadius() - 1,
+			Point(getRadius()		, getRadius() - 1),
+			Point(getRadius()*2 - 1	, getRadius() - 1),
 			pColor
 		);
 		image.drawImageStretched
 		(
 			a,
-			0,0,//x,y
+			Point(0,0),
 			getRadius() * 2,
 			getRadius() * 2
 		);
-		pSprite.drawSpriteRoteted
+		pSprite.drawSpriteRotated
 		(
 			image,
-			mBody->getPosition().getX(),
-			mBody->getPosition().getY(),
+			mBody->getPosition(),
 			360/256 * mBody->getAngle()
 		);
 	}

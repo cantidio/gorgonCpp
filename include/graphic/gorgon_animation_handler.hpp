@@ -302,26 +302,23 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/02/2009
-			 * @version	27/05/2009
+			 * @version	03/05/2011
 			 * @param	Sprite& pSprite				, sprite onde a animação será desenhada
-			 * @param	const int& pX				, posição no eixo x do sprite que a animação será desenhada
-			 * @param	const int& pY				, posição no eixo y do sprite que a animação será desenhada
+			 * @param	const Point& pPosition		, posição que a animação será desenhada
 			 * @param	const Mirroring& pMirroring	, espelhamento a ser usado para desenhar a animação
 			 * @param	const int& pAngle			, angulo a ser usado para desenhar a animação
 			 */
 			void draw
 			(
 				Sprite& pSprite,
-				const int& pX,
-				const int& pY,
+				const Point& pPosition,
 				const Mirroring& pMirroring=Mirroring::Normal,
 				const int& pAngle=0
 			);
 			void drawTrans
 			(
 				Sprite& pSprite,
-				const int& pX,
-				const int& pY,
+				const Point& pPosition,
 				const float& pTrans = 0.5
 			);
 			//virtual void onFinish();//?

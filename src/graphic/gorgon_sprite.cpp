@@ -8,14 +8,12 @@ namespace Graphic
 		const Image&	pImage,
 		const int&		pGroup,
 		const int&		pIndex,
-		const int&		pXOffset,
-		const int&		pYOffset
+		const Point&	pOffset
 	) : Image(pImage)
 	{
-		mGroup		= pGroup;
-		mIndex		= pIndex;
-		mXOffset	= pXOffset;
-		mYOffset	= pYOffset;
+		mGroup	= pGroup;
+		mIndex	= pIndex;
+		mOffset	= pOffset;
 	}
 
 	Sprite::Sprite(const std::string& pSpriteName) : Image()
@@ -32,8 +30,7 @@ namespace Graphic
 	{
 		mGroup		= pSpriteOrig.mGroup;
 		mIndex		= pSpriteOrig.mIndex;
-		mXOffset	= pSpriteOrig.mXOffset;
-		mYOffset	= pSpriteOrig.mYOffset;
+		mOffset		= pSpriteOrig.mOffset;
 	}	
 
 	Sprite::~Sprite()
@@ -45,11 +42,11 @@ namespace Graphic
 	std::string Sprite::describe() const
 	{
 		std::stringstream out;
-		out << "Gorgon Sprite"			<< std::endl;
-		out << "Group:   " << mGroup	<< std::endl;
-		out << "Index:   " << mIndex	<< std::endl;
-		out << "xOffset: " << mXOffset	<< std::endl;
-		out << "yOffset: " << mYOffset	<< std::endl;
+		out << "Gorgon Sprite"					<< std::endl;
+		out << "Group:   " << mGroup			<< std::endl;
+		out << "Index:   " << mIndex			<< std::endl;
+		out << "xOffset: " << mOffset.getX()	<< std::endl;
+		out << "yOffset: " << mOffset.getY()	<< std::endl;
 		out << Image::describe();
 		return out.str();
 	}
@@ -65,8 +62,7 @@ namespace Graphic
 			getWidth() - x - getDelimiterRight(),
 			getHeight() - y - getDelimiterDown()
 		);
-		setXOffset(getXOffset() - x);
-		setYOffset(getYOffset() - y);
+		setOffset( getOffset() - Point(x,y) );
 	}
 	
 	void Sprite::load(const std::string& pSpriteName)
@@ -141,8 +137,7 @@ namespace Graphic
 
 			header.setGroup		(mGroup);
 			header.setIndex		(mIndex);
-			header.setXOffset	(mXOffset);
-			header.setYOffset	(mYOffset);
+			header.setOffset	(mOffset);
 			header.setSizeOfData(pos2 - pos1);
 			/**@todo arrumar um jeito mais eficiente de se fazer isso, talvez o imageLoader retornar o tamanho da futura imagem*/
 			header.save(pFile);//agora salva o header com seu valor verdadeiro
@@ -167,54 +162,42 @@ namespace Graphic
 
 	void Sprite::setXOffset(const int& pXOffset)
 	{
-		mXOffset = pXOffset;
+		mOffset.setX(pXOffset);
 	}
 
 	void Sprite::setYOffset(const int& pYOffset)
 	{
-		mYOffset = pYOffset;
+		mOffset.setY(pYOffset);
 	}
 
-	const int& Sprite::getGroup() const
+	int Sprite::getGroup() const
 	{
 		return mGroup;
 	}
 
-	const int& Sprite::getIndex() const
+	int Sprite::getIndex() const
 	{
 		return mIndex;
 	}
 
-	const int& Sprite::getXOffset()	const
+	Point Sprite::getOffset() const
 	{
-		return mXOffset;
-	}
-
-	const int& Sprite::getYOffset()	const
-	{
-		return mYOffset;
+		return mOffset;
 	}
 
 	void Sprite::drawSprite
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY
+		const Point&	pPosition
 	)
 	{
-		drawImage
-		(
-			pSprite,
-			pPosX - pSprite.getXOffset(),
-			pPosY - pSprite.getYOffset()
-		);
+		drawImage(pSprite, pPosition - pSprite.mOffset );
 	}
 
 	void Sprite::drawSpriteStretched
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const int&		pXScale,
 		const int&		pYScale
 	)
@@ -222,8 +205,7 @@ namespace Graphic
 		drawImageStretched
 		(
 			pSprite,
-			pPosX - (pSprite.getXOffset() * pXScale),
-			pPosY - (pSprite.getYOffset() * pYScale),
+			pPosition - (pSprite.getOffset() * Point(pXScale,pYScale)),
 			pSprite.getWidth() * pXScale,
 			pSprite.getHeight() * pYScale
 		);
@@ -232,87 +214,81 @@ namespace Graphic
 	void Sprite::drawSpriteFlipped
 	(
 		const Sprite&		pSprite,
-		const int&			pPosX,
-		const int&			pPosY,
+		const Point&		pPosition,
 		const Mirroring&	pMirroring
 	)
 	{
-		switch(pMirroring.getType())
+		Point position = pPosition - pSprite.mOffset;
+		if((pMirroring.getType() & Mirroring::HFlip) == Mirroring::HFlip )
 		{
-			case Mirroring::Normal:	drawSprite(pSprite,pPosX,pPosY);			break;
-			case Mirroring::VFlip:	drawSpriteFlippedV(pSprite,pPosX,pPosY);	break;
-			case Mirroring::HFlip:	drawSpriteFlippedH(pSprite,pPosX,pPosY);	break;
-			case Mirroring::VHFlip:	drawSpriteFlippedVH(pSprite,pPosX,pPosY);	break;
+			position.setX( position.getX() - (pSprite.getWidth() - pSprite.mOffset.getX()) );
 		}
+		if((pMirroring.getType() & Mirroring::VFlip) == Mirroring::VFlip )
+		{
+			position.setY( position.getY() - (pSprite.getHeight() - pSprite.mOffset.getY()) );
+		}
+		drawImageFlipped(pSprite, position, pMirroring);
 	}
 
-	void Sprite::drawSpriteFlippedV
-	(
-		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY
-	)
-	{
-		drawImageFlippedV
-		(
-			pSprite,
-			pPosX - pSprite.getXOffset(),
-			pPosY - (pSprite.getHeight() - pSprite.getYOffset())
-		);
-	}
+//	void Sprite::drawSpriteFlippedV
+//	(
+//		const Sprite&	pSprite,
+//		const int&		pPosX,
+//		const int&		pPosY
+//	)
+//	{
+//		drawImageFlippedV
+//		(
+//			pSprite,
+//			pPosX - pSprite.getXOffset(),
+//			pPosY - (pSprite.getHeight() - pSprite.getYOffset())
+//		);
+//	}
 
-	void Sprite::drawSpriteFlippedH
-	(
-		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY
-	)
-	{
-		drawImageFlippedH
-		(
-			pSprite,
-			pPosX - (pSprite.getWidth() - pSprite.getXOffset()),
-			pPosY - pSprite.getYOffset()
-		);
-	}
+//	void Sprite::drawSpriteFlippedH
+//	(
+//		const Sprite&	pSprite,
+//		const int&		pPosX,
+//		const int&		pPosY
+//	)
+//	{
+//		drawImageFlippedH
+//		(
+//			pSprite,
+//			pPosX - (pSprite.getWidth() - pSprite.getXOffset()),
+//			pPosY - pSprite.getYOffset()
+//		);
+//	}
 
-	void Sprite::drawSpriteFlippedVH
-	(
-		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY
-	)
-	{
-		drawImageFlippedVH
-		(
-			pSprite,
-			pPosX - (pSprite.getWidth() - pSprite.getXOffset()),
-			pPosY - (pSprite.getHeight() - pSprite.getYOffset())
-		);
-	}
+//	void Sprite::drawSpriteFlippedVH
+//	(
+//		const Sprite&	pSprite,
+//		const int&		pPosX,
+//		const int&		pPosY
+//	)
+//	{
+//		drawImageFlippedVH
+//		(
+//			pSprite,
+//			pPosX - (pSprite.getWidth() - pSprite.getXOffset()),
+//			pPosY - (pSprite.getHeight() - pSprite.getYOffset())
+//		);
+//	}
 
 	void Sprite::drawSpriteTrans
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const float&	pTrans
 	)
 	{
-		drawImageTrans
-		(
-			pSprite,
-			pPosX - pSprite.getXOffset(),
-			pPosY - pSprite.getYOffset(),
-			pTrans
-		);
+		drawImageTrans(pSprite, pPosition - pSprite.mOffset, pTrans);
 	}
 
 	void Sprite::drawSpriteTransFlipped
 	(
 		const Sprite&		pSprite,
-		const int&			pPosX,
-		const int&			pPosY,
+		const Point&		pPosition,
 		const float&		pTrans,
 		const Mirroring&	pMirroring
 	)
@@ -320,8 +296,7 @@ namespace Graphic
 		drawImageTransFlipped
 		(
 			pSprite,
-			pPosX - pSprite.getXOffset(),
-			pPosY - pSprite.getYOffset(),
+			pPosition - pSprite.mOffset,
 			pTrans,
 			pMirroring
 		);
@@ -330,8 +305,7 @@ namespace Graphic
 	void Sprite::drawSpriteAdd
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const Color&	pColorAdd,
 		const Color&	pColorSub,
 		const float&	pTrans
@@ -340,38 +314,33 @@ namespace Graphic
 		drawImageAdd
 		(
 			pSprite,
-			pPosX - pSprite.getXOffset(),
-			pPosY - pSprite.getYOffset(),
+			pPosition - pSprite.mOffset,
 			pColorAdd,
 			pColorSub,
 			pTrans
 		);
 	}
 
-	void Sprite::drawSpriteRoteted
+	void Sprite::drawSpriteRotated
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const int&		pAngle
 	)
 	{
 		drawImageRoteted
 		(
 			pSprite,
-			pPosX,
-			pPosY,
+			pPosition,
 			pAngle,
-			pSprite.getXOffset(),
-			pSprite.getYOffset()
+			pSprite.mOffset
 		);
 	}
 
-	void Sprite::drawSpriteRotetedFlipped
+	void Sprite::drawSpriteRotatedFlipped
 	(
 		const Sprite&		pSprite,
-		const int&			pPosX,
-		const int&			pPosY,
+		const Point&		pPosition,
 		const int&			pAngle,
 		const Mirroring&	pMirroring
 	)
@@ -379,30 +348,59 @@ namespace Graphic
 		switch(pMirroring.getType())
 		{
 			case Mirroring::Normal:	drawSpriteRoteted(pSprite,pPosX,pPosY,pAngle);			break;
-			case Mirroring::VFlip:	drawSpriteRotetedFlippedV(pSprite,pPosX,pPosY,pAngle);	break;
-			case Mirroring::HFlip:	drawSpriteRotetedFlippedH(pSprite,pPosX,pPosY,pAngle);	break;
-			case Mirroring::VHFlip:	drawSpriteRotetedFlippedVH(pSprite,pPosX,pPosY,pAngle);	break;
+			case Mirroring::VFlip:
+				drawImageRotetedFlippedV
+				(
+					pSprite,
+					pPosX,
+					pPosY,
+					pAngle,
+					pSprite.getXOffset(),
+					pSprite.getHeight() - pSprite.getYOffset()
+				);
+				break;
+			case Mirroring::HFlip:
+				drawImageRotetedFlippedH
+				(
+					pSprite,
+					pPosX,
+					pPosY,
+					pAngle,
+					pSprite.getXOffset(),
+					pSprite.getHeight() - pSprite.getYOffset()
+				);
+				break;
+			case Mirroring::VHFlip:
+				drawImageRotetedFlippedVH
+				(
+					pSprite,
+					pPosX,
+					pPosY,
+					pAngle,
+					pSprite.getXOffset(),
+					pSprite.getYOffset()
+				);	break;
 		}
 	}
 
-	void Sprite::drawSpriteRotetedFlippedV
-	(
-		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
-		const int&		pAngle
-	)
-	{
-		drawImageRotetedFlippedV
-		(
-			pSprite,
-			pPosX,
-			pPosY,
-			pAngle,
-			pSprite.getXOffset(),
-			pSprite.getHeight() - pSprite.getYOffset()
-		);
-	}
+//	void Sprite::drawSpriteRotetedFlippedV
+//	(
+//		const Sprite&	pSprite,
+//		const int&		pPosX,
+//		const int&		pPosY,
+//		const int&		pAngle
+//	)
+//	{
+//		drawImageRotetedFlippedV
+//		(
+//			pSprite,
+//			pPosX,
+//			pPosY,
+//			pAngle,
+//			pSprite.getXOffset(),
+//			pSprite.getHeight() - pSprite.getYOffset()
+//		);
+//	}
 
 	void Sprite::drawSpriteRotetedFlippedH
 	(
@@ -412,6 +410,10 @@ namespace Graphic
 		const int&		pAngle
 	)
 	{
+		drawImageRotatedFlipped(pSprite,pPosition,pAngle,Mirroring::HFlip,pSprite.mOffset);
+
+
+
 		drawImageRotetedFlippedH
 		(
 			pSprite,
@@ -426,29 +428,18 @@ namespace Graphic
 	void Sprite::drawSpriteRotetedFlippedVH
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const int&		pAngle
 	)
 	{
-		drawImageRotetedFlippedVH
-		(
-			pSprite,
-			pPosX,
-			pPosY,
-			pAngle,
-			pSprite.getXOffset(),
-			pSprite.getYOffset()
-		);
+		drawImageRotatedFlipped(pSprite,pPosition,pAngle,Mirroring::VHFlip,pSprite.mOffset);
 	}
 
 	void Sprite::blitSprite
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
-		const int&		pSourcePosX,
-		const int&		pSourcePosY,
+		const Point&	pPosition,
+		const Point&	pSourcePosition,
 		const int&		pWidth,
 		const int&		pHeight,
 		const bool&		pMasked
@@ -457,10 +448,8 @@ namespace Graphic
 		blitImage
 		(
 			pSprite,
-			pPosX - pSprite.getXOffset(),
-			pPosY - pSprite.getYOffset(),
-			pSourcePosX,
-			pSourcePosY,
+			pPosition - pSprite.mOffset,
+			pSourcePosition,
 			pWidth,
 			pHeight,
 			pMasked
@@ -470,12 +459,10 @@ namespace Graphic
 	void Sprite::blitSpriteStretched
 	(
 		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
+		const Point&	pPosition,
 		const int&		pXScale,
 		const int&		pYScale,
-		const int&		pSourcePosX,
-		const int&		pSourcePosY,
+		const Point&	pSourcePosition,
 		const int&		pSourceWidth,
 		const int&		pSourceHeight,
 		const bool&		pMasked
@@ -484,12 +471,10 @@ namespace Graphic
 		blitImageStretched
 		(
 			pSprite,
-			pPosX-(pXScale * pSprite.getXOffset()),
-			pPosY-(pYScale * pSprite.getYOffset()),
+			pPosition - (Point(pXScale,pYScale)*pSprite.mOffset),
 			pSprite.getWidth() * pXScale,
 			pSprite.getHeight() * pYScale,
-			pSourcePosX,
-			pSourcePosY,
+			pSourcePosition,
 			pSourceWidth,
 			pSourceHeight,
 			pMasked

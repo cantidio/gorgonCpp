@@ -25,17 +25,15 @@ namespace Physics
 	{
 		Graphic::Sprite box
 		(
-			Graphic::Image(mWidth,mHeight),
-			0,0,//x,y
-			(mWidth / 2),
-			(mHeight / 2) 
+			Graphic::Image(mWidth, mHeight),
+			0,0,
+			Point(mWidth/2, mHeight/2)
 		);
-		box.drawRectangle(0, 0, mWidth - 1, mHeight - 1, pColor);
-		pSprite.drawSpriteRoteted
+		box.drawRectangle( Point(0,0), Point(mWidth - 1, mHeight - 1), pColor);
+		pSprite.drawSpriteRotated
 		(
 			box,
-			mBody->getPosition().getX(),
-			mBody->getPosition().getY(),
+			mBody->getPosition(),
 			360/256 * mBody->getAngle()
 		);
 	}

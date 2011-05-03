@@ -193,10 +193,9 @@ namespace Physics
 			{
 				Point a = getAnchorA() + getBodyA().getPosition();
 				Point b = getAnchorB() + getBodyB().getPosition();
-				pSprite.drawLine(a.getX(), a.getY(), b.getX(), b.getY(), pColor);
-				pSprite.drawLine(a.getX()+1, a.getY(), b.getX()+1, b.getY(), pColor);
-				pSprite.drawLine(a.getX()-1, a.getY(), b.getX()-1, b.getY(), pColor);
-
+				pSprite.drawLine(a,b,pColor);
+				pSprite.drawLine(a + Point(1,0), b + Point(1,0), pColor);
+				pSprite.drawLine(a - Point(1,0), b - Point(1,0), pColor);
 			}
 	};
 }}
