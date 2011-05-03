@@ -89,7 +89,7 @@ namespace Gorgon
 				break;
 		}
 		//printf("r:%d,g:%d,b:%d,a:%d\n",r,g,b,a);
-		return Color(r,g,b,a).get();
+		return Graphic::Color(r,g,b,a).get();
 	}
 
 	ImageLoaderSDL::ImageLoaderSDL()
@@ -99,12 +99,12 @@ namespace Gorgon
 
 		if((initted&flags) != flags)
 		{
-		    throw ImageException("ImageLoaderSDL Error: "+Core::String(IMG_GetError()));
+		    throw Graphic::ImageException("ImageLoaderSDL Error: "+Core::String(IMG_GetError()));
 		}
 		IMG_Quit();
 	}
 
-	void ImageLoaderSDL::load(Image& pImage, const std::string& pImageName) const
+	void ImageLoaderSDL::load(Graphic::Image& pImage, const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::in | std::ios::binary);
 
@@ -119,21 +119,21 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageException("Unable to load Image: "+pImageName+".");
+			throw Graphic::ImageException("Unable to load Image: "+pImageName+".");
 		}
 	}
 
 	void ImageLoaderSDL::load
 	(
-		Image&		pImage,
-		Core::File&	pFile,
-		const int&	pDataLength
+		Graphic::Image&	pImage,
+		Core::File&		pFile,
+		const int&		pDataLength
 	) const
 	{
 		SDL_RWops*			sdlFile;
 		SDL_Surface*		sdlImage;
 		SDL_Palette*		sdlPalette;
-		Palette*			gorgonPalette;
+		Graphic::Palette*	gorgonPalette;
 		unsigned char*		mData		= NULL;
 		size_t				mDataLength	= 0;
 
@@ -143,13 +143,13 @@ namespace Gorgon
 			mData		= new unsigned char[mDataLength];
 			if(mData == NULL)
 			{
-				throw ImageException("Não foi possível alocar memória.");
+				throw Graphic::ImageException("Não foi possível alocar memória.");
 			}
 			pFile.read((char*)mData, mDataLength);
 			
 			sdlFile		= SDL_RWFromMem((void*)mData, mDataLength);
 			sdlImage	= IMG_Load_RW(sdlFile, 0);
-			if(sdlImage == NULL) throw ImageException(IMG_GetError());
+			if(sdlImage == NULL) throw Graphic::ImageException(IMG_GetError());
 			sdlPalette	= sdlImage->format->palette;
 
 			if(sdlImage->format->BitsPerPixel <= 8)
@@ -176,7 +176,7 @@ namespace Gorgon
 
 			if(sdlPalette != NULL)
 			{
-				gorgonPalette = new Palette();
+				gorgonPalette = new Graphic::Palette();
 				for(register int i = sdlPalette->ncolors - 1; i >=0; --i)
 				{
 					gorgonPalette->setColor
@@ -195,13 +195,13 @@ namespace Gorgon
 		}
 		catch(Core::Exception& e)
 		{
-			throw ImageException(e.what());
+			throw Graphic::ImageException(e.what());
 		}
 		mDataLength	= 0;
 		mData		= NULL;
 	}
 
-	void ImageLoaderSDL::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderSDL::save(Graphic::Image& pImage, Core::File& pFile) const
 	{
 	/*
 		SDL_RWops*			sdlFile;
@@ -209,10 +209,10 @@ namespace Gorgon
 
 		sdlImage = SDL_createSurface(0,pImage.getWidth(),pImage.getHeight(),pImage.getBpp());
 		SDL_SaveBMP_RW(sdlImage,sdlFile,0);*/
-		throw ImageException("SDL imageloader não possui um saver.");
+		throw Graphic::ImageException("SDL imageloader não possui um saver.");
 	}
 
-	void ImageLoaderSDL::save(Image& pImage, const std::string& pImageName) const
+	void ImageLoaderSDL::save(Graphic::Image& pImage, const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::out | std::ios::binary);
 
@@ -222,7 +222,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageException("Unable to save Image: "+pImageName+".");
+			throw Graphic::ImageException("Unable to save Image: "+pImageName+".");
 		}
 	}
 	/**

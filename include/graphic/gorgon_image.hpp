@@ -37,7 +37,8 @@
 #include "gorgon_image_loader.hpp"
 #include "../geometry/gorgon_rectangle.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	const char imageUnknownCod	= 0;
 	/**
@@ -918,15 +919,15 @@ namespace Gorgon
 				const int&	pSourceHeight	= -1,
 				const bool&	pMasked		= false
 			);
-                        /**
-                         * Método que retorna se a imagem está vazia, ou sejá preenchida com a cor transparente
-                         * 
-                         * @author  Cantidio Oliveira Fontes
-                         * @since   13/12/2009
-                         * @version 13/12/2009
-                         * @return  bool
-                         */
-                        bool isEmpty() const;
+			/**
+			 * Método que retorna se a imagem está vazia, ou sejá preenchida com a cor transparente
+			 *
+			 * @author  Cantidio Oliveira Fontes
+			 * @since   13/12/2009
+			 * @version 13/12/2009
+			 * @return  bool
+			 */
+			bool isEmpty() const;
 			/**
 			 * Operador de comparação
 			 *
@@ -947,6 +948,5 @@ namespace Gorgon
 			 */
 			void operator =(const Image& pImage);
 	};
-}
+}}
 #endif
-

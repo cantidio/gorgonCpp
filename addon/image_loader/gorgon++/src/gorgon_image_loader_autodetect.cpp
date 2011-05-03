@@ -20,9 +20,9 @@ namespace Gorgon
 	 */
 	inline bool tryLoadFormat
 	(
-		Image&				pImage,
-		Core::File&			pFile,
-		const ImageLoader&	pImageLoader
+		Graphic::Image&				pImage,
+		Core::File&					pFile,
+		const Graphic::ImageLoader&	pImageLoader
 	)
 	{
 		long initPosition = pFile.tellg();
@@ -31,14 +31,14 @@ namespace Gorgon
 			pImageLoader.load(pImage,pFile,0);
 			return true;
 		}
-		catch(const ImageException& e)
+		catch(const Graphic::ImageException& e)
 		{
 			pFile.seekg(initPosition); //retorna o ponteiro
 			return false;
 		}
 	}
 
-	ImageLoader* ImageLoaderAutodetect::guessFormat(const std::string& pImageName) const
+	Graphic::ImageLoader* ImageLoaderAutodetect::guessFormat(const std::string& pImageName) const
 	{
 		if(Core::File::extensionIs(pImageName,".bmp"))		return new ImageLoaderBmp();
 		else if(Core::File::extensionIs(pImageName,".pcx"))	return new ImageLoaderPcx();
@@ -47,7 +47,7 @@ namespace Gorgon
 		return new ImageLoaderUnknown();
 	}
 
-	void ImageLoaderAutodetect::load(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderAutodetect::load(Graphic::Image& pImage,const std::string& pImageName) const
 	{
 		ImageLoader* tip = guessFormat(pImageName);	//primeiramente olha se no nome do arquivo tem alguma dica sobre o formato do mesmo
 		try
@@ -55,7 +55,7 @@ namespace Gorgon
 			tip->load(pImage,pImageName);
 			delete tip;
 		}
-		catch(const ImageException& e) // se não conseguir carregar do formato da extenção, carrega pela força bruta
+		catch(const Graphic::ImageException& e) // se não conseguir carregar do formato da extenção, carrega pela força bruta
 		{
 			delete tip;
 			Core::File file(pImageName,std::ios::binary | std::ios::in);
@@ -70,7 +70,7 @@ namespace Gorgon
 
 	void ImageLoaderAutodetect::load
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		Core::File& pFile,
 		const int& pSizeOfImage
 	) const
@@ -86,17 +86,17 @@ namespace Gorgon
 			)
 		)
 		{
-			throw ImageException("format unknown.");
+			throw Graphic::ImageException("format unknown.");
 		}
 	}
 
-	void ImageLoaderAutodetect::save(Image& pImage, const std::string& pImageName) const
+	void ImageLoaderAutodetect::save(Graphic::Image& pImage, const std::string& pImageName) const
 	{
 		ImageLoaderBmp defaultFormat;
 		defaultFormat.save(pImage,pImageName); //salva em bmp, por ser o formato padrão
 	}
 
-	void ImageLoaderAutodetect::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderAutodetect::save(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		ImageLoaderBmp defaultFormat;
 		defaultFormat.save(pImage,pFile);  //salva em bmp, por ser o formato padrão

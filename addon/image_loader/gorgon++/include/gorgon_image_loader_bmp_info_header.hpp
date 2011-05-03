@@ -43,7 +43,10 @@
 
 namespace Gorgon
 {
-	class Image;
+	namespace Graphic
+	{
+		class Image;
+	}
 	/**
 	 * Classe que representa o cabeçálho de informações de uma imagem bmp
 	 *
@@ -126,7 +129,7 @@ namespace Gorgon
 			 * @version	19/02/2009
 			 * @param	const Image& pImage, imagem que irá gerar o header
 			 */
-			void fill(const Image& pImage);
+			void fill(const Graphic::Image& pImage);
 			/**
 			 * Método para descrever a header
 			 *

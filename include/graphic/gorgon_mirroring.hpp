@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,7 +27,8 @@
 #ifndef _GORGON_MIRRORING_
 #define _GORGON_MIRRORING_
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe para tratar de espelhamento
@@ -134,5 +135,5 @@ namespace Gorgon
 			 */
 			bool operator == (const Mirroring& mirroring);
 	};
-}
+}}
 #endif

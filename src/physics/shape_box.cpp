@@ -21,11 +21,11 @@ namespace Physics
 		);
 	}
 	
-	void ShapeBox::draw(Gorgon::Sprite& pSprite, const int& pColor) const 
+	void ShapeBox::draw(Graphic::Sprite& pSprite, const int& pColor) const
 	{
-		Gorgon::Sprite box
+		Graphic::Sprite box
 		(
-			Gorgon::Image(mWidth,mHeight),
+			Graphic::Image(mWidth,mHeight),
 			0,0,//x,y
 			(mWidth / 2),
 			(mHeight / 2) 

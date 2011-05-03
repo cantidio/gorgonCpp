@@ -1,6 +1,8 @@
-/*#include "gorgon_image_loader.hpp"
+#include "gorgon_image_loader.hpp"
 #include <ImageMagick/Magick++.h>
+#include <gorgon++/graphic/gorgon_image.hpp>
 // /usr/include/ImageMagick
+
 namespace Gorgon
 {
 	ImageLoaderMagick::ImageLoaderMagick(char* pRunDir )
@@ -8,7 +10,7 @@ namespace Gorgon
 		Magick::InitializeMagick(pRunDir);
 	}
 
-	void ImageLoaderMagick::load(Image& pImage, const std::string& pImageName) const
+	void ImageLoaderMagick::load(Graphic::Image& pImage, const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::in | std::ios::binary);
 
@@ -23,21 +25,21 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageException("Unable to load Image: "+pImageName+".");
+			throw Graphic::ImageException("Unable to load Image: "+pImageName+".");
 		}
 	}
 
 	void ImageLoaderMagick::load
 	(
-		Image&		pImage,
-		Core::File&	pFile,
-		const int&	pDataLength
+		Graphic::Image&	pImage,
+		Core::File&		pFile,
+		const int&		pDataLength
 	) const
 	{
 		Magick::Blob		magickFile;
 		Magick::Image		magickImage;
 		Magick::ColorRGB	magickColor;
-		Gorgon::Color		gorgonColor;
+		Graphic::Color		gorgonColor;
 		unsigned char*		mData		= NULL;
 		size_t				mDataLength	= 0;
 		try
@@ -46,7 +48,7 @@ namespace Gorgon
 			mData		= new unsigned char[mDataLength];
 			if(mData == NULL)
 			{
-				throw ImageException("Não foi possível alocar memória.");
+				throw Graphic::ImageException("Não foi possível alocar memória.");
 			}
 			pFile.read((char*)mData, mDataLength);
 			magickFile.updateNoCopy(mData, mDataLength);
@@ -78,13 +80,13 @@ namespace Gorgon
 		}
 		catch(Magick::Exception& e)
 		{
-			throw ImageException(e.what());
+			throw Graphic::ImageException(e.what());
 		}
 		mDataLength	= 0;
 		mData		= NULL;
 	}
 
-	void ImageLoaderMagick::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderMagick::save(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		Magick::Geometry	magickSize;
 		Magick::Image		magickImage;
@@ -117,11 +119,11 @@ namespace Gorgon
 		}
 		catch(Magick::Exception& e)
 		{
-			throw ImageException(e.what());
+			throw Graphic::ImageException(e.what());
 		}
 	}
 
-	void ImageLoaderMagick::save(Image& pImage, const std::string& pImageName) const
+	void ImageLoaderMagick::save(Graphic::Image& pImage, const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::out | std::ios::binary);
 
@@ -131,16 +133,16 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageException("Unable to save Image: "+pImageName+".");
+			throw Graphic::ImageException("Unable to save Image: "+pImageName+".");
 		}
 	}
 	/**
 	 * @todo fazer  uma verificação nos formatos aceitos
-	 *
+	 */
 	void ImageLoaderMagick::setSaveFormat(const std::string& pSaveFormat)
 	{
 		mSaveFormat = pSaveFormat;
 	}
 }
 
-*/
+

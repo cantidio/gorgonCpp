@@ -1,7 +1,8 @@
 #include "graphic/gorgon_animationpack.hpp"
 #include <sstream>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Animation AnimationPack::mNotFound;
 
@@ -162,4 +163,4 @@ namespace Gorgon
 	{
 		return (*this)[getAnimationRealIndex(pGroup,pIndex)];
 	}
-}
+}}

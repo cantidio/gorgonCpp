@@ -1,6 +1,7 @@
 #include <graphic/gorgon_animation_handler.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	AnimationHandler::AnimationHandler()
 	{
@@ -286,4 +287,4 @@ namespace Gorgon
 			pTrans
 		);
 	}
-}
+}}

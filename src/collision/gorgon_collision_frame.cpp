@@ -30,7 +30,12 @@ namespace Gorgon
 		return out.str();
 	}
 	
-	void CollisionFrame::draw(const Point& pPosition,const Color& pColor,Image& pImage) const
+	void CollisionFrame::draw
+	(
+		const Point& pPosition,
+		const Graphic::Color& pColor,
+		Graphic::Image& pImage
+	) const
 	{
 		const int rectangleNumber = getSize();
 		for(register int i = 0; i < rectangleNumber; ++i)

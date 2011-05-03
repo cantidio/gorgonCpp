@@ -1,7 +1,8 @@
 #include "graphic/gorgon_frame.hpp"
 #include <sstream>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Frame::Frame()
 	{
@@ -178,4 +179,4 @@ namespace Gorgon
 		setAngle	(pFile.readInt32());
 		mMirroring = mirroring;
 	}
-}
+}}

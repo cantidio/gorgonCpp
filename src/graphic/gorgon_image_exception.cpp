@@ -1,7 +1,8 @@
 #include "graphic/gorgon_image_exception.hpp"
 #undef ImageException
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	ImageException::ImageException
 	(
@@ -11,4 +12,4 @@ namespace Gorgon
 		const std::string&	pFunction,
 		const int&			pLine
 	) : Exception(pMessage,"Image: "+pSubModule,pFile,pFunction,pLine){}
-}
+}}

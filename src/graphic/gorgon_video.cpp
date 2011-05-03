@@ -2,7 +2,8 @@
 /*
  * @todo mudar o nome do método show para swapBuffers, e mudar o nome do método updateBuffer da classe Image para swapBuffers tbm
  */
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Video*	Video::mSingleton	= NULL;
 	Image*	Video::mScreen		= NULL;
@@ -99,4 +100,4 @@ namespace Gorgon
 			0
 		);
 	}
-}
+}}

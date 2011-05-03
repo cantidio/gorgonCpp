@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ namespace Gorgon
 	 * @version	13/02/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageLoaderPcxException : public ImageException
+	class ImageLoaderPcxException : public Graphic::ImageException
 	{
 		public:
 			/**
@@ -61,5 +61,5 @@ namespace Gorgon
 			);
 	};
 }
-#define ImageLoaderPcxException(pMessage) Gorgon::ImageLoaderPcxException(pMessage,__FILE__,__FUNCTION__,__LINE__)
+#define ImageLoaderPcxException(pMessage) ImageLoaderPcxException(pMessage,__FILE__,__FUNCTION__,__LINE__)
 #endif

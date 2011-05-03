@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,7 +28,8 @@
 #define _GORGON_IMAGE_EXCEPTION_
 #include "../core/gorgon_exception.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe para tratar de excessões de imagens
@@ -62,6 +63,6 @@ namespace Gorgon
 				const int& line					= 1
 			);
 	};
-}
-#define ImageException(pMessage) Gorgon::ImageException(pMessage,"Base",__FILE__,__FUNCTION__,__LINE__)
+}}
+#define ImageException(pMessage) ImageException(pMessage,"Base",__FILE__,__FUNCTION__,__LINE__)
 #endif

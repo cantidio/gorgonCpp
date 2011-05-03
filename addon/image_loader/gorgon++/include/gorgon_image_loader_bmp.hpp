@@ -48,7 +48,7 @@ namespace Gorgon
 	 * @version	07/08/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageLoaderBmp : public ImageLoader
+	class ImageLoaderBmp : public Graphic::ImageLoader
 	{
 		public:
 			/**
@@ -57,23 +57,23 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	07/08/2009
-			 * @param	Image&				pImage		, imagem de destino
+			 * @param	Graphic::Image&		pImage		, imagem de destino
 			 * @param	const std::string&	pImageName	, nome do Imagem Bmp a carregar
 			 */
-			virtual void load(Image& pImage,const std::string& pImageName) const;
+			virtual void load(Graphic::Image& pImage,const std::string& pImageName) const;
 			/**
 			 * Método para carregar uma imagem ImageBmp de um arquivo já aberto
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	21/01/2011
-			 * @param	Image&		pImage			, imagem de destino
-			 * @param	File&		pFile			, ponteiro para um arquivo já aberto
-			 * @param	const int&	pSizeOfImage	, o tamanho da imagem em bytes, não é utilizado
+			 * @param	Graphic::Image&	pImage			, imagem de destino
+			 * @param	Core::File&		pFile			, ponteiro para um arquivo já aberto
+			 * @param	const int&		pSizeOfImage	, o tamanho da imagem em bytes, não é utilizado
 			 */
 			virtual void load
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				Core::File& pFile,
 				const int& pSizeOfImage = 0
 			) const;
@@ -86,7 +86,7 @@ namespace Gorgon
 			 * @param	Image&				pImage		, imagem a ser salva
 			 * @param	const std::string&	pImageName	, nome do arquivo Imagem Bmp a ser salvo
 			 */
-			virtual void save(Image& pImage,const std::string& pImageName) const;
+			virtual void save(Graphic::Image& pImage,const std::string& pImageName) const;
 			/**
 			 * Método para salvar o bitmap em um arquivo já aberto
 			 *
@@ -96,7 +96,7 @@ namespace Gorgon
 			 * @param	Image&	pImage	, imagem a ser salva
 			 * @param	File&	pFile	, ponteiro para o arquivo já aberto
 			 */
-			virtual void save(Image& pImage, Core::File& pFile) const;
+			virtual void save(Graphic::Image& pImage, Core::File& pFile) const;
 		private:
 			/**
 			 * Método que carrega a paleta de cores do bmp
@@ -111,7 +111,7 @@ namespace Gorgon
 			 */
 			void loadPalette
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpHeader& pHeader,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
@@ -129,7 +129,7 @@ namespace Gorgon
 			 */
 			void loadUncompressed1BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpHeader& pHeader,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
@@ -147,7 +147,7 @@ namespace Gorgon
 			 */
 			void loadUncompressed4BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpHeader& pHeader,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
@@ -165,7 +165,7 @@ namespace Gorgon
 			 */
 			void loadUncompressed8BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpHeader& pHeader,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
@@ -182,7 +182,7 @@ namespace Gorgon
 			 */
 			void loadUncompressed24BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
@@ -198,7 +198,7 @@ namespace Gorgon
 			 */
 			void loadUncompressed32BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
@@ -215,7 +215,7 @@ namespace Gorgon
 			 */
 			void loadUncompressedData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpHeader& pHeader,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
@@ -229,7 +229,7 @@ namespace Gorgon
 			 * @param	File& pFile, ponteiro para o arquivo
 			 * @todo 	implementar esse método
 			 */
-			void loadRLE8CompressedData(Image& pImage, Core::File& pFile) const;
+			void loadRLE8CompressedData(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método que carrega os dados de uma imagem com compressão RLE4
 			 *
@@ -239,7 +239,7 @@ namespace Gorgon
 			 * @param	File& file, ponteiro para o arquivo
 			 * @todo	implementar esse método
 			 */
-			void loadRLE4CompressedData(Image& pImage, Core::File& pFile) const;
+			void loadRLE4CompressedData(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método que carrega os dados de uma imagem com compressão BitFields
 			 *
@@ -249,7 +249,7 @@ namespace Gorgon
 			 * @param	File& file, ponteiro para o arquivo
 			 * @todo	implementar esse método
 			 */
-			void loadBitFieldsCompressedData(Image& pImage, Core::File& pFile) const;
+			void loadBitFieldsCompressedData(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método que salva os dados da palheta de cores de  uma imagem
 			 *
@@ -262,7 +262,7 @@ namespace Gorgon
 			 */
 			void savePalette
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
@@ -278,7 +278,7 @@ namespace Gorgon
 			 */
 			void saveUncompressed1BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
@@ -294,7 +294,7 @@ namespace Gorgon
 			 */
 			void saveUncompressed4BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
@@ -310,7 +310,7 @@ namespace Gorgon
 			 */
 			void saveUncompressed8BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;
@@ -323,7 +323,7 @@ namespace Gorgon
 			 * @param	Image& pImage	, imagem a ser salva
 			 * @param	File& pFile		, ponteiro para o arquivo
 			 */
-			void saveUncompressed24BitData(Image& pImage, Core::File& pFile) const;
+			void saveUncompressed24BitData(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método que salva os dados de uma imagem de 32 bits
 			 *
@@ -333,7 +333,7 @@ namespace Gorgon
 			 * @param	Image& pImage	, imagem a ser salva
 			 * @param	File& pFile		, ponteiro para o arquivo
 			 */
-			void saveUncompressed32BitData(Image& pImage, Core::File& pFile) const;
+			void saveUncompressed32BitData(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método que salva os dados de uma imagem sem compressão
 			 *
@@ -346,7 +346,7 @@ namespace Gorgon
 			 */
 			void saveUncompressedData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderBmpInfoHeader& pInfoHeader,
 				Core::File& pFile
 			) const;

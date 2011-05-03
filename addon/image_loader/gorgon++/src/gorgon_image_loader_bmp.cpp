@@ -9,7 +9,7 @@ namespace Gorgon
 	
 	void ImageLoaderBmp::loadPalette
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpHeader& pHeader,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
@@ -19,12 +19,12 @@ namespace Gorgon
 		if(pInfoHeader.getVersion() == OS2_1)
 		{
 			nCol			= (pHeader.getBitmapOffset() - 26) / 3;
-			pImage.mPalette	= new Palette(pFile,nCol,0);
+			pImage.setPalette(new Graphic::Palette(pFile,nCol,0), true);
 		}
 		else if(pInfoHeader.getVersion() == Windows_3 && pInfoHeader.getCompression() != BI_BITFIELDS)
 		{
 			nCol			= (pHeader.getBitmapOffset() - 54) / 4;
-			pImage.mPalette	= new Palette(pFile,nCol,1);
+			pImage.setPalette(new Graphic::Palette(pFile,nCol,1), true);
 		}
 		if(pImage.getPalette())
 		{
@@ -35,7 +35,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::loadUncompressed1BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpHeader& pHeader,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
@@ -83,7 +83,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::loadUncompressed4BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpHeader& pHeader,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
@@ -123,7 +123,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::loadUncompressed8BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpHeader& pHeader,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
@@ -148,7 +148,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::loadUncompressed24BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
@@ -188,7 +188,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::loadUncompressed32BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
@@ -227,7 +227,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::loadUncompressedData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpHeader& pHeader,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
@@ -245,18 +245,17 @@ namespace Gorgon
 		pImage.updateBuffer();
 	}
 
-	void ImageLoaderBmp::loadRLE8CompressedData(Image& pImage,Core::File& pFile) const		{}
-	void ImageLoaderBmp::loadRLE4CompressedData(Image& pImage,Core::File& pFile) const		{}
-	void ImageLoaderBmp::loadBitFieldsCompressedData(Image& pImage,Core::File& pFile)	const	{}
+	void ImageLoaderBmp::loadRLE8CompressedData(Graphic::Image& pImage,Core::File& pFile) const		{}
+	void ImageLoaderBmp::loadRLE4CompressedData(Graphic::Image& pImage,Core::File& pFile) const		{}
+	void ImageLoaderBmp::loadBitFieldsCompressedData(Graphic::Image& pImage,Core::File& pFile)	const	{}
 
 	void ImageLoaderBmp::load
 	(
-		Image&		pImage,
-		Core::File&	pFile,
-		const int&	pSizeOfImage
+		Graphic::Image&	pImage,
+		Core::File&		pFile,
+		const int&		pSizeOfImage
 	) const
 	{
-		pImage.mImgLinked	= false;
 		ImageLoaderBmpHeader		header;
 		ImageLoaderBmpInfoHeader	infoHeader;
 		header.load(pFile);//carrega o header
@@ -283,7 +282,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderBmp::load(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderBmp::load(Graphic::Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::in | std::ios::binary);
 
@@ -299,13 +298,13 @@ namespace Gorgon
 
 	void ImageLoaderBmp::savePalette
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
 	{
-		int			nCol= pInfoHeader.getColorsUsed();
-		Palette*	pal	= pImage.getPalette()->copy();
+		int					nCol= pInfoHeader.getColorsUsed();
+		Graphic::Palette*	pal	= pImage.getPalette()->copy();
 		pal->switchBlueForRed();
 		pal->inverse(nCol);
 		if(pInfoHeader.getVersion() == OS2_1)
@@ -321,7 +320,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::saveUncompressed1BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
@@ -365,7 +364,7 @@ namespace Gorgon
 	 */
 	void ImageLoaderBmp::saveUncompressed4BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
@@ -391,7 +390,6 @@ namespace Gorgon
 				{
 					pixels = ((pixel1 << 4));
 				}
-				//pFile->write(&pixels,1);
 				pFile.writeInt8(pixels);
 			}
 			pFile.write((char*)&filler,filler);
@@ -400,7 +398,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::saveUncompressed8BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
@@ -417,7 +415,6 @@ namespace Gorgon
 				 * @todo verificar se é realmente necessário o casting de char ali
 				 */
 				pixel = (char)pImage.getPixel(x,y,true);
-				//pFile->write(&pixel,1);
 				pFile.writeInt8(pixel);
 			}
 			/**
@@ -428,7 +425,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderBmp::saveUncompressed24BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderBmp::saveUncompressed24BitData(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		int x, y;
 		int pixel;
@@ -447,7 +444,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderBmp::saveUncompressed32BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderBmp::saveUncompressed32BitData(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		int x, y;
 		int pixel;
@@ -470,7 +467,7 @@ namespace Gorgon
 
 	void ImageLoaderBmp::saveUncompressedData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderBmpInfoHeader& pInfoHeader,
 		Core::File& pFile
 	) const
@@ -498,7 +495,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderBmp::save(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderBmp::save(Graphic::Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::out | std::ios::binary);
 
@@ -512,7 +509,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderBmp::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderBmp::save(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		ImageLoaderBmpHeader		header;
 		ImageLoaderBmpInfoHeader	infoHeader;

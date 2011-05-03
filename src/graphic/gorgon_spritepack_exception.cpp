@@ -2,7 +2,8 @@
 #undef ImageException
 #undef SpritePackException
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	SpritePackException::SpritePackException
 	(
@@ -11,4 +12,4 @@ namespace Gorgon
 		const std::string&	pFunction,
 		const int&			pLine
 	) : ImageException(pMessage,"SpritePack",pFile,pFunction,pLine){}
-}
+}}

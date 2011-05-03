@@ -2,7 +2,8 @@
 
 #undef ImageException
 #undef SpriteException
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	SpriteException::SpriteException
 	(
@@ -11,4 +12,4 @@ namespace Gorgon
 		const std::string&	pFunction,
 		const int&			pLine
 	) : ImageException(pMessage,"Sprite",pFile,pFunction,pLine){}
-}
+}}

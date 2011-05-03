@@ -1,8 +1,9 @@
 #include "spritepack_sff.hpp"
-#include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
+//#include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
 
-namespace Gorgon
-{
+namespace Gorgon{
+namespace Graphic
+{/*
 	SpritePackSff::SpritePackSff(){}
 
 	SpritePackSff::SpritePackSff(const std::string& pFileName)
@@ -67,12 +68,12 @@ namespace Gorgon
 			if(!reusePalette)
 			{
 				pFile.seekg(pFile.beg + nextSubFile - 768);
-				temp.setPalette(new Palette(pFile));
+				temp.setPalette(new Palette(pFile),true);
 				temp.getPalette()->inverse();
 			}
 			else if(getSize() > 0)
 			{
-				temp.setPalette( (*this)[getSize()-1].getPalette()->copy() );
+				temp.setPalette( (*this)[getSize()-1].getPalette()->copy() , true);
 			}
 			else
 			{
@@ -96,12 +97,11 @@ namespace Gorgon
 		const char paletteType		= pFile.readInt8();
 		pFile.ignore(479);
 
-		mPalLinked		= false;
+		mPalLinked		= true;
 		mGlobalPalette	= NULL;
 		for(int i = 0; i < imageNumber; ++i)
 		{
 			add(loadSprite(pFile));
 		}
-	}
-}
-
+	}*/
+}}

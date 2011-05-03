@@ -29,7 +29,8 @@
 #include <string>
 #include "gorgon_image_exception.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe para trataras exceções dos Sprites
@@ -61,6 +62,6 @@ namespace Gorgon
 				const int&			pLine		= 1
 			);
 	};
-}
-#define SpriteException(pMessage) Gorgon::SpriteException(pMessage,__FILE__,__FUNCTION__,__LINE__)
+}}
+#define SpriteException(pMessage) SpriteException(pMessage,__FILE__,__FUNCTION__,__LINE__)
 #endif

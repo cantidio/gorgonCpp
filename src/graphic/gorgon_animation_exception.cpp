@@ -1,7 +1,8 @@
 #include "graphic/gorgon_animation_exception.hpp"
 #undef AnimationException
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	AnimationException::AnimationException
 	(
@@ -10,5 +11,5 @@ namespace Gorgon
 		const std::string& pFunction,
 		const int& pLine
 	) : Exception(pMessage,"Animation",pFile,pFunction,pLine){}
-}
+}}
 

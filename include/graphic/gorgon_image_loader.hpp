@@ -29,7 +29,8 @@
 #include <string>
 #include "../core/gorgon_file.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	class Image;
 	/**
@@ -120,5 +121,5 @@ namespace Gorgon
 			 */
 			virtual void setSaveFormat(const std::string& pSaveFormat) {}
 	};
-}
+}}
 #endif

@@ -29,7 +29,8 @@
 #include "../core/gorgon_file.hpp"
 #include "gorgon_spritepack.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que representa um frame de uma animação
@@ -299,5 +300,5 @@ namespace Gorgon
 			 */
 			void save(Core::File& pFile);
 	};
-}
+}}
 #endif

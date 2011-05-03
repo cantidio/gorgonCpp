@@ -1,7 +1,8 @@
 #include "spritepack_lua.hpp"
 #include <gorgon++/script/gorgon_lua.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	SpritePackLua::SpritePackLua(){}
 	SpritePackLua::SpritePackLua(const SpritePack& pSpritePack) : SpritePack(pSpritePack) {}
@@ -89,4 +90,4 @@ namespace Gorgon
 			);
 		}
 	}
-}
+}}

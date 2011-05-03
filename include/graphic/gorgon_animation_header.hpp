@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -29,7 +29,8 @@
 #include "../core/gorgon_file_header.hpp"
 #include "../core/gorgon_file.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe com o cabeçalho dos arquivos gorgon
@@ -144,5 +145,5 @@ namespace Gorgon
 			 */
 			bool isValid();
 	};
-}
+}}
 #endif

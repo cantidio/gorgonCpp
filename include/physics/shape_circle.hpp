@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -91,11 +91,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	04/10/2010
-			 * @param	Gorgon::Sprite& pSprite , the sprite the circle will be draw
+			 * @param	Graphic::Sprite& pSprite , the sprite the circle will be draw
 			 * @param	const int& pColor , the color to draw the circle
 			 * @todo	optmize this method
 			 */
-			virtual void draw(Gorgon::Sprite& pSprite, const int& pColor) const;
+			virtual void draw(Graphic::Sprite& pSprite, const int& pColor) const;
 	};
 }}
 #endif

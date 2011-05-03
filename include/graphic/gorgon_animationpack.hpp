@@ -32,7 +32,8 @@
 #include "gorgon_animationpack_exception.hpp"
 #include "gorgon_animationpack_header.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que representa um pacote de animações
@@ -240,5 +241,5 @@ namespace Gorgon
 			 */
 			Animation& operator ()(const int& pGroup,const int& pIndex);
 	};
-}
+}}
 #endif

@@ -28,7 +28,8 @@
 #define _GORGON_SPRITEPACK_LUA_
 #include <gorgon++/graphic/gorgon_spritepack.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que representa um spritepack com loader através de um script lua
@@ -85,5 +86,5 @@ namespace Gorgon
 			 */
 			void load(const Core::String& pFileName);
 	};
-}
+}}
 #endif

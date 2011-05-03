@@ -163,7 +163,7 @@ namespace Physics
 		);
 	}
 	
-	void Body::draw(Gorgon::Sprite& pSprite, const int& pColor) const
+	void Body::draw(Graphic::Sprite& pSprite, const int& pColor) const
 	{
 		for(int i = getShapeNumber() - 1; i >= 0; --i)
 		{

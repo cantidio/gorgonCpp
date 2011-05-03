@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,7 +30,8 @@
 #include "gorgon_spritepack.hpp"
 #include "gorgon_mirroring.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que representa o manipulador de animações
@@ -325,5 +326,5 @@ namespace Gorgon
 			);
 			//virtual void onFinish();//?
 	};
-}
+}}
 #endif

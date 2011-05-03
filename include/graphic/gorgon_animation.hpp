@@ -32,7 +32,8 @@
 #include "gorgon_animation_exception.hpp"
 #include "gorgon_animation_header.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que representa a definição de uma animação
@@ -45,38 +46,14 @@ namespace Gorgon
 	class Animation
 	{
 		private:
-			/**
-			 * Header do arquivo Animation
-			 */
-			AnimationHeader mHeader;
-			/**
-			 * Frame que é retornando sempre que um frame que não existe é requisitado
-			 */
-			static Frame mNotFound;
-			/**
-			 * Vetor que guarda os frames da animação
-			 */
-			std::vector<Frame> mFrame;
-			/**
-			 * Grupo da animação
-			 */
-			int	mGroup;
-			/**
-			 * Índice da animação
-			 */
-			int	mIndex;
-			/**
-			 * Verdadeiro se a animação entra em loop
-			 */
-			bool mLooping;
-			/**
-			 * frame em que a animação entra em loop
-			 */
-			int	mLoopFrame;
-			/**
-			 * número de vezes que a animação repetirá
-			 */
-			int mRepeatNumber;
+			AnimationHeader mHeader;	/**<< Header do arquivo Animation*/
+			static Frame mNotFound;		/**<< Frame que é retornando sempre que um frame que não existe é requisitado*/
+			std::vector<Frame> mFrame;	/**<< Vetor que guarda os frames da animação*/
+			int	mGroup;					/**<< Grupo da animação*/
+			int	mIndex;					/**<< Índice da animação*/
+			bool mLooping;				/**<< Verdadeiro se a animação entra em loop*/
+			int	mLoopFrame;				/**<< frame em que a animação entra em loop*/
+			int mRepeatNumber;			/**<< número de vezes que a animação repetirá*/
 		public:
 			/**
 			 * Método construtor vazio
@@ -353,5 +330,5 @@ namespace Gorgon
 			 */
 			const Frame& operator [](const unsigned int& pPos) const;
 	};
-}
+}}
 #endif

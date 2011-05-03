@@ -5,7 +5,7 @@ namespace Gorgon
 {
 	void ImageLoaderPcx::loadEncoded1BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -60,7 +60,7 @@ namespace Gorgon
 
 	void ImageLoaderPcx::loadEncoded4BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -129,7 +129,7 @@ namespace Gorgon
 
 	void ImageLoaderPcx::loadEncoded8BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -175,7 +175,7 @@ namespace Gorgon
 
 	void ImageLoaderPcx::loadEncoded24BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -240,7 +240,7 @@ namespace Gorgon
 
 	void ImageLoaderPcx::loadEncodedData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -254,21 +254,18 @@ namespace Gorgon
 			default:
 				throw ImageLoaderPcxException("Unable to load ImageLoaderPcx due to unknown image compression.");
 		}
-		pImage.mImgLinked = false;
 	}
 
 	void ImageLoaderPcx::loadPaletteData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
 	{
-		pImage.mPalette	= NULL;
-
 		if(pHeader.getType() == ImageLoaderPcx1Bit)
 		{
-			pImage.mPalette = new Palette();
+			pImage.setPalette(new Graphic::Palette(),true);
 			pImage.getPalette()->setColor(0,0,0,0);
 			pImage.getPalette()->setColor(255,255,255,1);
 		}
@@ -276,18 +273,17 @@ namespace Gorgon
 		{
 			if((int)pFile.readInt8() == 12)//we got a palette
 			{
-				pImage.mPalette = new Palette(pFile);
+				pImage.setPalette(new Graphic::Palette(pFile),true);
 				pImage.getPalette()->inverse();
 			}
 			else
 			{
-				pImage.mPalette = pHeader.getPalette();
+				pImage.setPalette(pHeader.getPalette(),true);
 			}
 		}
-		pImage.mFreePalette = true;
 	}
 
-	void ImageLoaderPcx::load(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderPcx::load(Graphic::Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::in | std::ios::binary);
 
@@ -303,9 +299,9 @@ namespace Gorgon
 
 	void ImageLoaderPcx::load
 	(
-		Image&		pImage,
-		Core::File&	pFile,
-		const int&	pSizeOfImage
+		Graphic::Image&	pImage,
+		Core::File&		pFile,
+		const int&		pSizeOfImage
 	) const
 	{
 		ImageLoaderPcxHeader header;
@@ -324,7 +320,7 @@ namespace Gorgon
 
 	void ImageLoaderPcx::saveEncoded4BitData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -379,7 +375,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderPcx::saveEncoded8BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderPcx::saveEncoded8BitData(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		char	pixel;
 		char	savePixel;
@@ -426,7 +422,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderPcx::saveEncoded24BitData(Image& pImage, Core::File& pFile) const
+	void ImageLoaderPcx::saveEncoded24BitData(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		int				pixel;
 		char			savePixel;
@@ -492,7 +488,7 @@ namespace Gorgon
 
 	void ImageLoaderPcx::saveEncodedData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -510,7 +506,7 @@ namespace Gorgon
 
 	void ImageLoaderPcx::savePaletteData
 	(
-		Image& pImage,
+		Graphic::Image& pImage,
 		ImageLoaderPcxHeader& pHeader,
 		Core::File& pFile
 	) const
@@ -532,7 +528,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderPcx::save(Image& pImage,const std::string& pImageName) const
+	void ImageLoaderPcx::save(Graphic::Image& pImage,const std::string& pImageName) const
 	{
 		Core::File file(pImageName,std::ios::out | std::ios::binary);
 
@@ -546,7 +542,7 @@ namespace Gorgon
 		}
 	}
 
-	void ImageLoaderPcx::save(Image& pImage, Core::File& pFile) const
+	void ImageLoaderPcx::save(Graphic::Image& pImage, Core::File& pFile) const
 	{
 		ImageLoaderPcxHeader header;
 		header.fill(pImage);

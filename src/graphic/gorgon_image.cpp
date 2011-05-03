@@ -1,6 +1,7 @@
 #include <graphic/gorgon_image.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Image::Image(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
@@ -1238,5 +1239,4 @@ namespace Gorgon
 		mImgLinked	= false;
 		mFreePalette = true;
 	}
-}
-
+}}

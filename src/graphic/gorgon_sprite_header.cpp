@@ -1,7 +1,9 @@
 #include <graphic/gorgon_sprite_header.hpp>
 #include <graphic/gorgon_sprite_exception.hpp>
 #include <iostream>
-namespace Gorgon
+
+namespace Gorgon{
+namespace Graphic
 {
 	const int			SpriteHeader::mGorgonSpriteMagicNumber	= 0x676f267;
 	const std::string	SpriteHeader::mGorgonSpriteSignature	= "GSPR";
@@ -120,4 +122,4 @@ namespace Gorgon
 		//32 = 8 * 4(sizeof(int))
 		return 32 + mGorgonSpriteSignature.length();
 	}
-}
+}}

@@ -1,6 +1,7 @@
 #include "graphic/gorgon_sprite.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Sprite::Sprite
 	(
@@ -494,4 +495,4 @@ namespace Gorgon
 			pMasked
 		);
 	}
-}
+}}

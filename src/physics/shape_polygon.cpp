@@ -30,11 +30,11 @@ namespace Physics
 		);
 	}
 	
-	void ShapePolygon::draw(Gorgon::Sprite& pSprite,const int& pColor) const
+	void ShapePolygon::draw(Graphic::Sprite& pSprite,const int& pColor) const
 	{
-		Gorgon::Sprite poly
+		Graphic::Sprite poly
 		(
-			Gorgon::Image
+			Graphic::Image
 			(
 				mMaximum.getX() - mMinimum.getX() + 1,
 				mMaximum.getY() - mMinimum.getY() + 1

@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2009  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -29,7 +29,8 @@
 #include <string>
 #include "../core/gorgon_exception.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que excessão de Animações
@@ -61,7 +62,7 @@ namespace Gorgon
 				const int&			pLine		= 1
 			);
 	};
-}
-#define AnimationException(pMessage) Gorgon::AnimationException(pMessage,__FILE__,__FUNCTION__,__LINE__)
+}}
+#define AnimationException(pMessage) AnimationException(pMessage,__FILE__,__FUNCTION__,__LINE__)
 #endif
 

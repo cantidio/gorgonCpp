@@ -21,7 +21,7 @@ namespace Physics
 		);
 	}
 	
-	void ShapeSegment::draw(Gorgon::Sprite& pSprite, const int& pColor) const
+	void ShapeSegment::draw(Graphic::Sprite& pSprite, const int& pColor) const
 	{
 		pSprite.drawLine
 		(

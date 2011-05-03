@@ -28,7 +28,8 @@
 #define _GORGON_ANIMATION_PACK_LUA_
 #include <gorgon++/graphic/gorgon_animationpack.hpp>
 #include <gorgon++/core/gorgon_string.hpp>
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que representa um animationpack com loader através de um script lua
@@ -37,7 +38,7 @@ namespace Gorgon
 	 * @since	25/01/2011
 	 * @version	29/04/2011
 	 */
-	class AnimationPackLua : public AnimationPack
+	class AnimationPackLua : public Graphic::AnimationPack
 	{
 		public:
 			/**
@@ -85,6 +86,5 @@ namespace Gorgon
 			 */
 			void load(const Core::String& pFileName);
 	};
-}
+}}
 #endif
-

@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -436,13 +436,13 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	04/10/2010
-			 * @param	Gorgon::Sprite& pSprite, sprite to be draw
+			 * @param	Graphic::Sprite& pSprite, sprite to be draw
 			 * @details
 			 * 			This method generates some colors to the shapes,
 			 * based in their pointers
 			 * @see		getColor
 			 */
-			void draw(Gorgon::Sprite& pSprite) const;
+			void draw(Graphic::Sprite& pSprite) const;
 	};
 }}
 #endif

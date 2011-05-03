@@ -19,12 +19,12 @@ namespace Physics
 		);
 	}
 	
-	void ShapeCircle::draw(Gorgon::Sprite& pSprite, const int& pColor) const
+	void ShapeCircle::draw(Graphic::Sprite& pSprite, const int& pColor) const
 	{
-		Gorgon::Image a(getRadius() * 2 - 1, getRadius() * 2 - 1);
-		Gorgon::Sprite image
+		Graphic::Image a(getRadius() * 2 - 1, getRadius() * 2 - 1);
+		Graphic::Sprite image
 		(
-			Gorgon::Image
+			Graphic::Image
 			(
 				getRadius() * 2,
 				getRadius() * 2

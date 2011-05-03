@@ -25,7 +25,6 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 #include <gorgon++/graphic/gorgon_image_loader.hpp>
-#include <gorgon++/gorgon.hpp>
 namespace Gorgon
 {
 	/**
@@ -35,7 +34,7 @@ namespace Gorgon
 	 * @since	07/01/2011
 	 * @version	29/04/2011
 	 */
-	class ImageLoaderMagick : public ImageLoader
+	class ImageLoaderMagick : public Graphic::ImageLoader
 	{
 		public:
 			/**
@@ -55,7 +54,7 @@ namespace Gorgon
 			 * @param	Image&				pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
-			virtual void load(Image& pImage, const std::string& pImageName) const;
+			virtual void load(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método genérico para carregar uma imagem
 			 *
@@ -68,7 +67,7 @@ namespace Gorgon
 			 */
 			virtual void load
 			(
-				Image&		pImage,
+				Graphic::Image&		pImage,
 				Core::File&	pFile,
 				const int&	pSizeOfImage
 			) const;
@@ -82,7 +81,7 @@ namespace Gorgon
 			 * @param	File&	pFile	, arquivo onde a imagem está
 			 * @todo	permitir passar o tipo de imagem a ser salva
 			 */
-			virtual void save(Image& pImage, Core::File& pFile) const;
+			virtual void save(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método genérico para salvar uma imagem
 			 *
@@ -92,7 +91,7 @@ namespace Gorgon
 			 * @param	Image&				pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
-			virtual void save(Image& pImage, const std::string& pImageName) const;
+			virtual void save(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método para setar o formato que o loader irá salvar as imagens
 			 *

@@ -1,7 +1,8 @@
 #include "gorgon_animationpack_lua.hpp"
 #include <gorgon++/script/gorgon_lua.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	AnimationPackLua::AnimationPackLua() {}
 	AnimationPackLua::AnimationPackLua(const AnimationPack& pAnimationPack) : AnimationPack(pAnimationPack) {}
@@ -104,5 +105,4 @@ namespace Gorgon
 			add(aux);
 		}
 	}
-
-}
+}}

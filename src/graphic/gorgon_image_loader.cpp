@@ -1,7 +1,8 @@
 #include <graphic/gorgon_image_loader.hpp>
 #include <graphic/gorgon_image_exception.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	ImageLoader* ImageLoader::mLoader = NULL;
 	std::string ImageLoader::mSaveFormat = "BMP";
@@ -44,4 +45,4 @@ namespace Gorgon
 	{
 		throw ImageException("Unable to save image, none ImageLoader is being used, please set a loader.");
 	}
-}
+}}

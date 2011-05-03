@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ namespace Physics
 			 * @param	Gorgon::Sprite& pSprite , the sprite the box will be draw
 			 * @param	const int& pColor , the color to draw the box
 			 */
-			virtual void draw(Sprite& pSprite, const int& pColor) const;
+			virtual void draw(Graphic::Sprite& pSprite, const int& pColor) const;
 	};
 }}
 #endif 

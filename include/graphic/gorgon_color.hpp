@@ -29,7 +29,8 @@
 #include <string>
 #include <sstream>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe responsável por representar uma cor
@@ -289,7 +290,5 @@ namespace Gorgon
 			 */
 			bool operator !=(const Color& pColor) const;
 	};
-}
-
+}}
 #endif
-

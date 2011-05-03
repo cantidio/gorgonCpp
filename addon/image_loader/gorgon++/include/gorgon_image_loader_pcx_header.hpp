@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2011  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -40,8 +40,11 @@
 
 namespace Gorgon
 {
-	class Image;
-	class Palette;
+	namespace Graphic
+	{
+		class Palette;
+		class Image;
+	}
 	/**
 	 * Classe que representa o header de imagens pcx
 	 *
@@ -96,7 +99,7 @@ namespace Gorgon
 			/**
 			 * 16-Color EGA Palette
 			 */
-			Palette* mPalette;
+			Graphic::Palette* mPalette;
 			/**
 			 * Number of Bit Planes
 			 */
@@ -141,9 +144,9 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	19/02/2009
-			 * @param	const Image& image, imagem a gerar o header
+			 * @param	const Graphic::Image& image, imagem a gerar o header
 			 */
-			void fill(const Image& pImage);
+			void fill(const Graphic::Image& pImage);
 			/**
 			 * Método para descrever os valores do header
 			 *
@@ -205,7 +208,7 @@ namespace Gorgon
 			 * @version	26/02/2009
 			 * @return	Palette*
 			 */
-			Palette* getPalette() const;
+			Graphic::Palette* getPalette() const;
 			/**
 			 * Método para salvar o cabeçalho da imagem
 			 *

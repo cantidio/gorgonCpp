@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Cantidio Oliveira Fontes
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -90,7 +90,12 @@ namespace Gorgon
 			 * @param	const Color&	pColor		, cor em que a colisão será desenhada
 			 * @param	Image&			pImage		, imagem de destino que a colisão será desenhada
 			 */
-			void draw(const Point& pPosition,const Color& pColor,Image& pImage) const;
+			void draw
+			(
+				const Point& pPosition,
+				const Graphic::Color& pColor,
+				Graphic::Image& pImage
+			) const;
 			/**
 			 * Método para saber se uma determinada caixa de colisão colidiu com a outra
 			 *

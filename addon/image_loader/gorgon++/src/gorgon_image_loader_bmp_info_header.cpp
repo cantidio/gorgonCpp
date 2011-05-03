@@ -11,7 +11,7 @@ namespace Gorgon
 		load(pFile);
 	}
 
-	void ImageLoaderBmpInfoHeader::fill(const Image& pImage)
+	void ImageLoaderBmpInfoHeader::fill(const Graphic::Image& pImage)
 	{
 		int filler;
 		mSize					= 40;

@@ -1,6 +1,7 @@
 #include <graphic/gorgon_mirroring.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Mirroring::Mirroring(const Mirroring::Type& type)
 	{
@@ -55,4 +56,4 @@ namespace Gorgon
 	{
 		return (getType() == mirroring.getType());
 	}
-}
+}}

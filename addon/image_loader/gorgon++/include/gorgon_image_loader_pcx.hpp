@@ -40,7 +40,7 @@ namespace Gorgon
 	 * @version	07/08/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageLoaderPcx : public ImageLoader
+	class ImageLoaderPcx : public Graphic::ImageLoader
 	{
 		public:
 			/**
@@ -51,20 +51,20 @@ namespace Gorgon
 			 * @version	07/08/2009
 			 * @param	const std::string& pImageName, nome da imagem a carregar
 			 */
-			virtual void load(Image& pImage, const std::string& pImageName) const;
+			virtual void load(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método para carregar a imagem de um arquivo já aberto
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	28/11/2007
 			 * @version	07/08/2009
-			 * @param	Image&		pImage		, referencia para a imagem a ser carregada
-			 * @param	Core::File&	pFile		, referencia para o arquivo que contem a imagem
-			 * @param	const int&	pImageSize	, tamanho da imagem em bytes, campo não usado
+			 * @param	Graphic::Image&	pImage		, referencia para a imagem a ser carregada
+			 * @param	Core::File&		pFile		, referencia para o arquivo que contem a imagem
+			 * @param	const int&		pImageSize	, tamanho da imagem em bytes, campo não usado
 			 */
 			virtual void load
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				Core::File& pFile,
 				const int& pImageSize = 0
 			) const;
@@ -76,7 +76,7 @@ namespace Gorgon
 			 * @version	07/08/2009
 			 * @param	const std::string& pImageName, nome do arquivo a ser salvo
 			 */
-			virtual void save(Image& pImage, const std::string& pImageName) const;
+			virtual void save(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método para salvar uma imagem pcx
 			 *
@@ -85,7 +85,7 @@ namespace Gorgon
 			 * @version	07/08/2009
 			 * @param	File& pFile, ponteiro para o arquivo já aberto
 			 */
-			virtual void save(Image& pImage, Core::File& pFile) const;
+			virtual void save(Graphic::Image& pImage, Core::File& pFile) const;
 		private:
 			/**
 			 * Método para salvar os dados de uma imagem com 4 bit planes (4 bits)
@@ -99,7 +99,7 @@ namespace Gorgon
 			 */
 			void saveEncoded4BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -112,30 +112,30 @@ namespace Gorgon
 			 * @param	Image&	pImage	, imagem a ser salva
 			 * @param	File&	pFile	, ponteiro do arquivo
 			 */
-			void saveEncoded8BitData(Image& pImage, Core::File& pFile) const;
+			void saveEncoded8BitData(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método para salvar os dados de uma imagem com 3 bit planes (24 bits)
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/06/2008
 			 * @version	07/08/2009
-			 * @param	Image&	pImage	, imagem a ser salva
+			 * @param	Graphic::Image&	pImage	, imagem a ser salva
 			 * @param	File&	pFile	, ponteiro do arquivo
 			 */
-			void saveEncoded24BitData(Image& pImage, Core::File& pFile) const;
+			void saveEncoded24BitData(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método para salvar os dados da imagem em si
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/06/2008
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem a ser salva
+			 * @param	Graphic::Image&			pImage	, imagem a ser salva
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, ponteiro do arquivo
 			 */
 			void saveEncodedData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -145,13 +145,13 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	18/08/2008
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem a ser salva
+			 * @param	Graphic::Image&			pImage	, imagem a ser salva
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void savePaletteData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -161,13 +161,13 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/02/2009
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem de destino
+			 * @param	Graphic::Image&			pImage	, imagem de destino
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
 			 * @param	File&					pFile	, arquivo já aberto
 			 */
 			void loadEncoded1BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -177,13 +177,13 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/02/2009
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem de destino
+			 * @param	Graphic::Image&			pImage	, imagem de destino
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
-			 * @param	File&					pFile	, arquivo já aberto
+			 * @param	Core::File&				pFile	, arquivo já aberto
 			 */
 			void loadEncoded4BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -193,13 +193,13 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	28/11/2007
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem de destino
+			 * @param	Graphic::Image&			pImage	, imagem de destino
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
-			 * @param	File&					pFile	, arquivo já aberto
+			 * @param	Core::File&				pFile	, arquivo já aberto
 			 */
 			void loadEncoded8BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -209,13 +209,13 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	28/11/2007
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem de destino
+			 * @param	Graphic::Image&			pImage	, imagem de destino
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
-			 * @param	File&					pFile	, arquivo já aberto
+			 * @param	Core::File&				pFile	, arquivo já aberto
 			 */
 			void loadEncoded24BitData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -225,13 +225,13 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	28/11/2007
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem de destino
+			 * @param	Graphic::Image&			pImage	, imagem de destino
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
-			 * @param	File&					pFile	, arquivo já aberto
+			 * @param	Core::File&				pFile	, arquivo já aberto
 			 */
 			void loadEncodedData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;
@@ -241,13 +241,13 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	18/08/2008
 			 * @version	07/08/2009
-			 * @param	Image&					pImage	, imagem de destino
+			 * @param	Graphic::Image&			pImage	, imagem de destino
 			 * @param	ImageLoaderPcxHeader&	pHeader	, header da imagem pcx
-			 * @param	File&					pFile	, arquivo já aberto
+			 * @param	Core::File&				pFile	, arquivo já aberto
 			 */
 			void loadPaletteData
 			(
-				Image& pImage,
+				Graphic::Image& pImage,
 				ImageLoaderPcxHeader& pHeader,
 				Core::File& pFile
 			) const;

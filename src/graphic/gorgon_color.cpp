@@ -1,6 +1,7 @@
 #include "graphic/gorgon_color.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Color::Color
 	(
@@ -263,4 +264,4 @@ namespace Gorgon
 			getAlpha()	== pColor.getAlpha()
 		);
 	}
-}
+}}

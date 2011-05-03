@@ -38,7 +38,7 @@ namespace Gorgon
 	 * @version	23/01/2009
 	 * @ingroup	Graphic
 	 */
-	class ImageLoaderBmpException : public ImageException
+	class ImageLoaderBmpException : public Graphic::ImageException
 	{
 		public:
 			/**
@@ -61,5 +61,5 @@ namespace Gorgon
 			);
 	};
 }
-#define ImageLoaderBmpException(pMessage) Gorgon::ImageLoaderBmpException(pMessage,__FILE__,__FUNCTION__,__LINE__)
+#define ImageLoaderBmpException(pMessage) ImageLoaderBmpException(pMessage,__FILE__,__FUNCTION__,__LINE__)
 #endif

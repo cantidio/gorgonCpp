@@ -27,8 +27,6 @@
 #include <gorgon++/graphic/gorgon_image_loader.hpp>
 namespace Gorgon
 {
-	class Image;
-	class ImageLoader;
 	/**
 	 * Classe que representa o loader de imagens da lib SDL
 	 *
@@ -36,7 +34,7 @@ namespace Gorgon
 	 * @since	01/05/2011
 	 * @version	01/05/2011
 	 */
-	class ImageLoaderSDL : public ImageLoader
+	class ImageLoaderSDL : public Graphic::ImageLoader
 	{
 		public:
 			/**
@@ -53,25 +51,25 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2011
 			 * @version	01/05/2011
-			 * @param	Image&				pImage		, destino da imagem a ser carregada
+			 * @param	Graphic::Image&		pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
-			virtual void load(Image& pImage, const std::string& pImageName) const;
+			virtual void load(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método genérico para carregar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2011
 			 * @version	01/05/2011
-			 * @param	Image&		pImage			, destino da imagem a ser carregada
-			 * @param	File&		pFile			, arquivo onde a imagem está
-			 * @param	const int&	pSizeOfImage	, tamanho da imagem a ser carregada
+			 * @param	Graphic::Image&	pImage			, destino da imagem a ser carregada
+			 * @param	Core::File&		pFile			, arquivo onde a imagem está
+			 * @param	const int&		pSizeOfImage	, tamanho da imagem a ser carregada
 			 */
 			virtual void load
 			(
-				Image&		pImage,
-				Core::File&	pFile,
-				const int&	pSizeOfImage
+				Graphic::Image&	pImage,
+				Core::File&		pFile,
+				const int&		pSizeOfImage
 			) const;
 			/**
 			 * Método genérico para salvar uma imagem
@@ -79,21 +77,20 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2011
 			 * @version	01/05/2011
-			 * @param	Image&	pImage	, destino da imagem a ser carregada
-			 * @param	File&	pFile	, arquivo onde a imagem está
-			 * @todo	permitir passar o tipo de imagem a ser salva
+			 * @param	Graphic::Image&	pImage	, destino da imagem a ser carregada
+			 * @param	Core::File&		pFile	, arquivo onde a imagem está
 			 */
-			virtual void save(Image& pImage, Core::File& pFile) const;
+			virtual void save(Graphic::Image& pImage, Core::File& pFile) const;
 			/**
 			 * Método genérico para salvar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/05/2011
 			 * @version	01/05/2011
-			 * @param	Image&				pImage		, destino da imagem a ser carregada
+			 * @param	Graphic::Image&		pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
-			virtual void save(Image& pImage, const std::string& pImageName) const;
+			virtual void save(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método para setar o formato que o loader irá salvar as imagens
 			 *

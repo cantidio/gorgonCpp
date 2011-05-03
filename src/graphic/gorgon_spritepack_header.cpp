@@ -1,6 +1,7 @@
 #include "graphic/gorgon_spritepack_header.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	const int			SpritePackHeader::mGorgonSpritePackMagicNumber	= 0x676f267f;
 	const std::string	SpritePackHeader::mGorgonSpritePackSignature	= "GSPR_PK";
@@ -48,4 +49,4 @@ namespace Gorgon
 			sizeof(int) * 2 + sizeof(char) * mGorgonSpritePackSignature.length()
 		);
 	};
-}
+}}

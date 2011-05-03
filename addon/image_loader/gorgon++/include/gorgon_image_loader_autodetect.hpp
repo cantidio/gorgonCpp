@@ -40,7 +40,7 @@ namespace Gorgon
 	 * @since	05/08/2009
 	 * @version	21/01/2011
 	 */
-	class ImageLoaderAutodetect : public ImageLoader
+	class ImageLoaderAutodetect : public Graphic::ImageLoader
 	{
 		public:
 			/**
@@ -50,50 +50,55 @@ namespace Gorgon
 			 * @since	05/08/2009
 			 * @version	05/08/2009
 			 * @param	const std::string& pFileName, nome do arquivo
-			 * @return	ImageLoader*
+			 * @return	Graphic::ImageLoader*
 			 */
-			ImageLoader* guessFormat(const std::string& pFileName) const;
+			Graphic::ImageLoader* guessFormat(const std::string& pFileName) const;
 			/**
 			 * Método para carregar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/08/2009
 			 * @version	06/08/2009
-			 * @param	Image&				pImage		, destino da imagem a ser carregada
+			 * @param	Graphic::Image&		pImage		, destino da imagem a ser carregada
 			 * @param	const std::string	pImageName	, nome da imagem a ser carregada
 			 */
-			virtual void load(Image& pImage, const std::string& pImageName) const;
+			virtual void load(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método genérico para carregar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/08/2009
 			 * @version	21/01/2011
-			 * @param	Image&		pImage			, destino da imagem a ser carregada
+			 * @param	Graphic::Image&		pImage			, destino da imagem a ser carregada
 			 * @param	File&		pFile			, nome da imagem a ser carregada
 			 * @param	const int&	pSizeOfImage	, o tamanho da imagem em bytes
 			 */
-			virtual void load(Image& pImage, Core::File& pFile, const int& pSizeOfImage = 0) const ;
+			virtual void load
+			(
+				Graphic::Image& pImage,
+				Core::File& pFile,
+				const int& pSizeOfImage = 0
+			) const ;
 			/**
 			 * Método para salvar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/08/2009
 			 * @version	06/08/2009
-			 * @param	Image&				pImage		, imagem a ser salva
+			 * @param	Graphic::Image&		pImage		, imagem a ser salva
 			 * @param	const std::string&	pImageName	, nome da imagem a salvar
 			 */
-			virtual void save(Image& pImage, const std::string& pImageName) const;
+			virtual void save(Graphic::Image& pImage, const std::string& pImageName) const;
 			/**
 			 * Método para salvar uma imagem
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/08/2009
 			 * @version	06/08/2009
-			 * @param	Image&	pImage	, imagem a ser salva
+			 * @param	Graphic::Image&	pImage	, imagem a ser salva
 			 * @param	File&	pFile	, arquivo a receber a imagem
 			 */
-			virtual void save(Image& pImage, Core::File& pFile) const;
+			virtual void save(Graphic::Image& pImage, Core::File& pFile) const;
 	};
 }
 #endif

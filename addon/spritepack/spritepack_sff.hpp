@@ -28,7 +28,8 @@
 #define	_GORGON_SFF_SPRITEPACK_
 #include <gorgon++/graphic/gorgon_spritepack.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * @todo verificar se tem algum ponteiro morto por aqui, as vezes dá falha de segmentação ao sair do programa que utiliza essa classe
@@ -44,6 +45,5 @@ namespace Gorgon
 			void load(const std::string& pSpriteName);
 			void load(Core::File& pFile);
 	};
-}
+}}
 #endif
-

@@ -5,7 +5,7 @@ namespace Gorgon
 {
 	ImageLoaderPcxHeader::ImageLoaderPcxHeader()
 	{
-		mPalette = new Palette();
+		mPalette = new Graphic::Palette();
 	}
 
 	ImageLoaderPcxHeader::~ImageLoaderPcxHeader()
@@ -34,7 +34,7 @@ namespace Gorgon
 		return -1;
 	}
 
-	void ImageLoaderPcxHeader::fill(const Image& pImage)
+	void ImageLoaderPcxHeader::fill(const Graphic::Image& pImage)
 	{
 		mXStart			= 0;
 		mYStart			= 0;
@@ -105,7 +105,7 @@ namespace Gorgon
 		return (int)mBytesPerLine;
 	}
 
-	Palette* ImageLoaderPcxHeader::getPalette() const
+	Graphic::Palette* ImageLoaderPcxHeader::getPalette() const
 	{
 		return mPalette->copy();
 	}

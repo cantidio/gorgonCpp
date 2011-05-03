@@ -31,7 +31,8 @@
 #include "../core/gorgon_file.hpp"
 #include "../core/gorgon_exception.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe responsavel por tratar das paletas de cores
@@ -330,5 +331,5 @@ namespace Gorgon
 			 */
 			void load(const std::string& pPaletteName,const int& pColorNumber = 256);
 	};
-}
+}}
 #endif

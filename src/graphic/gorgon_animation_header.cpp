@@ -1,6 +1,7 @@
 #include "graphic/gorgon_animation_header.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	const std::string	AnimationHeader::mAnimationSignature	= "GANM";
 	const float			AnimationHeader::mAnimationVersion		= 0.101;
@@ -70,4 +71,4 @@ namespace Gorgon
 	{
 		FileHeader::returnFilePosition(pFile,getSize());
 	}
-}
+}}

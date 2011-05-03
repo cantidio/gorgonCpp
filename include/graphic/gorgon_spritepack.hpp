@@ -33,7 +33,8 @@
 #include "../core/gorgon_file.hpp"
 #include "../core/gorgon_string.hpp"
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Classe que representa um pacote de sprites
@@ -462,5 +463,5 @@ namespace Gorgon
 			 */
 			void loadScript(const Core::String& pFileName);
 	};
-}
+}}
 #endif

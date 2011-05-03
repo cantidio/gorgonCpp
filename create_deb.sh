@@ -25,6 +25,7 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--libs]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons_sdl]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons_magick]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'EOF\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\texit $1\n'
 	GORGON_CONFIG=$GORGON_CONFIG'}\n\n'
@@ -55,7 +56,11 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
 	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons_sdl)\n'
-	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo `sdl-config --libs` -L/usr${exec_prefix}/lib -lgorgon_addon -lSDL_image\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo `sdl-config --libs` -lSDL_image\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons_magick)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo `Magick++-config --cppflags --cxxflags --ldflags --libs`\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
 	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t*)\n'

@@ -1,7 +1,8 @@
 #include <graphic/gorgon_animation.hpp>
 #include <sstream>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Frame Animation::mNotFound = Frame();
 
@@ -265,4 +266,4 @@ namespace Gorgon
 			return mNotFound;
 		}
 	}
-}
+}}

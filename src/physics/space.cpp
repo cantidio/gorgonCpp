@@ -271,7 +271,7 @@ namespace Physics
 		return val;
 	}
 	
-	void Space::draw(Gorgon::Sprite& pSprite) const
+	void Space::draw(Graphic::Sprite& pSprite) const
 	{
 		for(int i = mBodies.size() - 1; i >= 0; --i)
 		{

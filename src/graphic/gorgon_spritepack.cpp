@@ -2,7 +2,8 @@
 #include <sstream>
 #include <script/gorgon_script.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	/**
 	 * Método para informar se o vetor possui a posição pesquisada
@@ -661,4 +662,4 @@ namespace Gorgon
 			throw SpritePackException("Unable to load SpritePack: "+pFileName+".");
 		}
 	}
-}
+}}

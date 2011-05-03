@@ -1,6 +1,7 @@
 #include <graphic/gorgon_palette.hpp>
 
-namespace Gorgon
+namespace Gorgon{
+namespace Graphic
 {
 	Palette::Palette()
 	{
@@ -326,4 +327,4 @@ namespace Gorgon
 		}
 		
 	}
-}
+}}
