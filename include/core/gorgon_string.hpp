@@ -36,7 +36,7 @@ namespace Core
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	24/01/2011
-	 * @version	01/05/2011
+	 * @version	04/05/2011
 	 * @details
 	 * 			This class is like the same std::string class, but with more methods
 	 */
@@ -96,6 +96,33 @@ namespace Core
 			 * @return	*this
 			 */
 			String& toUpper();
+			/**
+			 * Method that returns the value of the string converted to an integer
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	04/05/2011
+			 * @version	04/05/2011
+			 * @return	int
+			 */
+			int toInt() const;
+			/**
+			 * Method that returns the value of the string converted to a long integer
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	04/05/2011
+			 * @version	04/05/2011
+			 * @return	long int
+			 */
+			long int toLongInt() const;
+			/**
+			 * Method that returns the value of the string converted to a double
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	04/05/2011
+			 * @version	04/05/2011
+			 * @return	double
+			 */
+			double toDouble() const;
 			/**
 			 * Method that replaces every ocurrence of pOld with pNew
 			 *

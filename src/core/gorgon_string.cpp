@@ -1,4 +1,6 @@
 #include <core/gorgon_string.hpp>
+#include <stdlib.h>
+
 namespace Gorgon{
 namespace Core
 {
@@ -23,6 +25,21 @@ namespace Core
 			 (*this)[i] = toupper( (*this)[i] );
 		}
 		return *this;
+	}
+
+	int String::toInt() const
+	{
+		return atoi(c_str());
+	}
+
+	long int String::toLongInt() const
+	{
+		return atol(c_str());
+	}
+
+	double String::toDouble() const
+	{
+		return atof(c_str());
 	}
 
 	String& String::replace(const String& pOld, const String& pNew)
