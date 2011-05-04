@@ -1,11 +1,13 @@
 #include <gorgon++/gorgon.hpp>
 #include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
+#include <gorgon++/addon/image_loader/sdl/image_loader.hpp>
 #include <gorgon++/addon/spritepack/spritepack_lua.hpp>
 #include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp>
 const int X=320;
 const int Y=240;
 int zoom=1;
 using namespace Gorgon;
+using namespace Gorgon::Graphic;
 using namespace std;
 
 void usageMSG()
@@ -98,21 +100,21 @@ int main(int argc, char** argv)
 		while(!key[KEY_ESC])
 		{
 			buffer.clear();
-			buffer.drawSpriteTrans(gspk[onionIndex],X,Y,0.5);
-			(trans) ? buffer.drawSprite(gspk[counter],X,Y) : buffer.blitSprite(gspk[counter],X,Y);
-			buffer.drawRectangle(X-1,Y-1,X+1,Y+1,0xFFFFFF,true);//draw a hot spot
+			buffer.drawSpriteTrans(gspk[onionIndex],Point(X,Y),0.5);
+			(trans) ? buffer.drawSprite(gspk[counter],Point(X,Y)) : buffer.blitSprite(gspk[counter],Point(X,Y));
+			buffer.drawRectangle(Point(X-1,Y-1),Point(X+1,Y+1),0xFFFFFF,true);//draw a hot spot
 			video.clear();
 
-			video.blitSpriteStretched(buffer,-X * (zoom-1),-Y * (zoom-1),zoom,zoom);
+			video.blitSpriteStretched(buffer,Point(-X * (zoom-1),-Y * (zoom-1)),zoom,zoom);
 
 			video.drawText("Gorgon SpritePack View",10,10,0xFFFFFF);
-			video.drawText(10,30,0xFFFFFF,-1,"Width:   %d",gspk[counter].getWidth());
-			video.drawText(10,40,0xFFFFFF,-1,"Height:  %d",gspk[counter].getHeight());
-			video.drawText(10,50,0xFFFFFF,-1,"Group:   %d",gspk[counter].getGroup());
-			video.drawText(10,60,0xFFFFFF,-1,"Index:   %d",gspk[counter].getIndex());
-			video.drawText(10,70,0xFFFFFF,-1,"xOffset: %d",gspk[counter].getXOffset());
-			video.drawText(10,80,0xFFFFFF,-1,"yOffset: %d",gspk[counter].getYOffset());
-			video.drawText(10,90,0xFFFFFF,-1,"counter: %d",counter);
+			video.drawText(Point(10,30),0xFFFFFF,-1,"Width:   %d",gspk[counter].getWidth());
+			video.drawText(Point(10,40),0xFFFFFF,-1,"Height:  %d",gspk[counter].getHeight());
+			video.drawText(Point(10,50),0xFFFFFF,-1,"Group:   %d",gspk[counter].getGroup());
+			video.drawText(Point(10,60),0xFFFFFF,-1,"Index:   %d",gspk[counter].getIndex());
+			video.drawText(Point(10,70),0xFFFFFF,-1,"xOffset: %d",gspk[counter].getOffset().getX());
+			video.drawText(Point(10,80),0xFFFFFF,-1,"yOffset: %d",gspk[counter].getOffset().getY());
+			video.drawText(Point(10,90),0xFFFFFF,-1,"counter: %d",counter);
 			video.show();
 
 			if(key[KEY_LCONTROL])
@@ -163,19 +165,19 @@ int main(int argc, char** argv)
 				}
 				if(key[KEY_UP])
 				{
-					gspk[counter].setYOffset(gspk[counter].getYOffset() - 1);
+					gspk[counter].setOffset( gspk[counter].getOffset() - Point(0,1) );
 				}
 				else if (key[KEY_DOWN])
 				{
-					gspk[counter].setYOffset(gspk[counter].getYOffset() + 1);
+					gspk[counter].setOffset( gspk[counter].getOffset() + Point(0,1) );
 				}
 				if(key[KEY_RIGHT])
 				{
-					gspk[counter].setXOffset(gspk[counter].getXOffset() + 1);
+					gspk[counter].setOffset( gspk[counter].getOffset() + Point(1,0) );
 				}
 				else if (key[KEY_LEFT])
 				{
-					gspk[counter].setXOffset(gspk[counter].getXOffset() - 1);
+					gspk[counter].setOffset( gspk[counter].getOffset() - Point(1,0) );
 				}
 			}
 			else if(key[KEY_LSHIFT])

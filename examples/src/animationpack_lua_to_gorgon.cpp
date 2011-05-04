@@ -1,6 +1,7 @@
 #include <gorgon++/gorgon.hpp>
 #include <gorgon++/addon/animationpack/gorgon_animationpack_lua.hpp>
 using namespace Gorgon;
+using namespace Gorgon::Graphic;
 int main(int argc, char** argv)
 {
 	if(argc == 3 )

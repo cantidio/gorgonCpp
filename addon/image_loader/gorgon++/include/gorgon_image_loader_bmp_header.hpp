@@ -31,7 +31,6 @@
 #include "gorgon_image_loader_bmp_info_header.hpp"
 namespace Gorgon
 {
-	class Image;
 	/**
 	 * Classe que representa o cabeçá-lho do arquivo de uma imagem bmp
 	 *

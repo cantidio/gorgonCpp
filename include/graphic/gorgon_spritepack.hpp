@@ -91,7 +91,6 @@ namespace Graphic
 				const int&	pIndex,
 				const int&	pBackgroundColor
 			);
-
 			/**
 			 * Método para achar os limites de uma imagem, a partir de um determinado ponto
 			 *
@@ -272,11 +271,10 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/01/2008
-			 * @version	24/01/2008
-			 * @param	const int& pXOffset, offset horizontal
-			 * @param	const int& pYOffset, offset vertical
+			 * @version	04/05/2011
+			 * @param	const Point& pOffset, offset
 			 */
-			void setGlobalOffset(const int& pXOffset,const int& pYOffset);
+			void setGlobalOffset(const Point& pOffset);
 			/**
 			 * Método para retirar as bordas transparentes dos sprites, deixando somente a parte útil da mesma e os alinhando
 			 *
@@ -285,7 +283,7 @@ namespace Graphic
 			 * @version	25/01/2008
 			 * @todo	modificar o nome do método para trim
 			 */
-			void clipAll();
+			void trimAll();
 /*			vector<Sprite*> getSpritesInGroup(int group)	const;*/
 
 			/**

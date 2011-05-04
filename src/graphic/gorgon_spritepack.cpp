@@ -422,20 +422,19 @@ namespace Graphic
 		mSprites.clear();
 	}
 
-	void SpritePack::setGlobalOffset(const int& pXOffset,const int& pYOffset)
+	void SpritePack::setGlobalOffset(const Point& pOffset)
 	{
 		for(unsigned int i = 0; i < getSize(); ++i)
 		{
-			(*this)[i].setXOffset(pXOffset);
-			(*this)[i].setYOffset(pYOffset);
+			(*this)[i].setOffset(pOffset);
 		}
 	}
 
-	void SpritePack::clipAll()
+	void SpritePack::trimAll()
 	{
 		for(unsigned int i = 0; i < getSize(); ++i)
 		{
-			(*this)[i].clipNoBorder();
+			(*this)[i].trim();
 		}
 	}
 
