@@ -44,8 +44,8 @@ namespace Graphic
 				file << "\t{\n";
 				file << "\t\tgroup   = " << (*this)[i].getGroup()	<< ",\n";
 				file << "\t\tindex   = " << (*this)[i].getIndex()	<< ",\n";
-				file << "\t\txoffset = " << (*this)[i].getXOffset()	<< ",\n";
-				file << "\t\tyoffset = " << (*this)[i].getYOffset()	<< ",\n";
+				file << "\t\txoffset = " << (*this)[i].getOffset().getX()	<< ",\n";
+				file << "\t\tyoffset = " << (*this)[i].getOffset().getY()	<< ",\n";
 				file << "\t\timage   = " << "\"" << subfilename << "_image_" << i << ".bmp\"\n";
 				file << "\t},\n";
 			}
@@ -84,8 +84,11 @@ namespace Graphic
 					Image( image.str() ),
 					script.function("getSpriteGroup"	, Script::LuaParam("i",i), 1).getNumericValue(),
 					script.function("getSpriteIndex"	, Script::LuaParam("i",i), 1).getNumericValue(),
-					script.function("getSpriteXOffset"	, Script::LuaParam("i",i), 1).getNumericValue(),
-					script.function("getSpriteYOffset"	, Script::LuaParam("i",i), 1).getNumericValue()
+					Point
+					(
+						script.function("getSpriteXOffset"	, Script::LuaParam("i",i), 1).getNumericValue(),
+						script.function("getSpriteYOffset"	, Script::LuaParam("i",i), 1).getNumericValue()
+					)
 				)
 			);
 		}

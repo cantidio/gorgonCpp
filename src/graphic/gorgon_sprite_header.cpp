@@ -29,8 +29,8 @@ namespace Graphic
 		//@todo escrever largura e altura da imagem?
 		pFile.writeInt32(mGroup);
 		pFile.writeInt32(mIndex);
-		pFile.writeInt32(mXOffset);
-		pFile.writeInt32(mYOffset);
+		pFile.writeInt32(mOffset.getX());
+		pFile.writeInt32(mOffset.getY());
 		pFile.writeInt32(mSizeofData);
 	}
 
@@ -54,8 +54,8 @@ namespace Graphic
 		{
 			setGroup		(pFile.readInt32());
 			setIndex		(pFile.readInt32());
-			setXOffset		(pFile.readInt32());
-			setYOffset		(pFile.readInt32());
+			mOffset.setX	(pFile.readInt32());
+			mOffset.setY	(pFile.readInt32());
 			setSizeOfData	(pFile.readInt32());
 
 			/*std::cout << "Group:    " << mGroup   << std::endl;
@@ -88,14 +88,14 @@ namespace Graphic
 	{
 		mIndex = pIndex;
 	}
-	void SpriteHeader::setXOffset(const int& pXOffset)
+	void SpriteHeader::setOffset(const Point& pOffset)
 	{
-		mXOffset = pXOffset;
+		mOffset = pOffset;
 	}
-	void SpriteHeader::setYOffset(const int& pYOffset)
-	{
-		mYOffset = pYOffset;
-	}
+//	void SpriteHeader::setYOffset(const int& pYOffset)
+//	{
+//		mYOffset = pYOffset;
+//	}
 	int SpriteHeader::getSizeOfData() const
 	{
 		return mSizeofData;
@@ -108,15 +108,10 @@ namespace Graphic
 	{
 		return mIndex;
 	}
-	int SpriteHeader::getXOffset()	const
+	Point SpriteHeader::getOffset()	const
 	{
-		return mXOffset;
+		return mOffset;
 	}
-	int SpriteHeader::getYOffset()	const
-	{
-		return mYOffset;
-	}
-
 	int SpriteHeader::getSize()
 	{
 		//32 = 8 * 4(sizeof(int))

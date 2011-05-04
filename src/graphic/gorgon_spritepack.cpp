@@ -74,8 +74,8 @@ namespace Graphic
 					)
 				);
 				(*this)[getSize()-1].clear();
-				(*this)[getSize()-1].blitImage(pImageSheet,0,0,i,j,pWidth,pHeight);
-				(*this)[getSize()-1].setType(pImageSheet.getType());
+				(*this)[getSize()-1].blitImage(pImageSheet,Point(0,0),Point(i,j),pWidth,pHeight);
+//				(*this)[getSize()-1].setType(pImageSheet.getType());
 			}
 		}
 		mPalLinked = false;
@@ -310,7 +310,7 @@ namespace Graphic
 		//printf("width: %d, height: %d\n",width,height);
 		Sprite sprite(Image(width,height,pImage.getColorDepth()),pGroup,pIndex);
 		sprite.setType(pImage.getType());
-		sprite.blitImage(pImage,0,0,pPosX,pPosY,width,height);
+		sprite.blitImage(pImage,Point(0,0),Point(pPosX,pPosY),width,height);
 		sprite.updateBuffer();
 		if(!sprite.isEmpty())
 		{
@@ -318,10 +318,8 @@ namespace Graphic
 		}
 		pImage.drawRectangle
 		(
-			pPosX,
-			pPosY,
-			pPosX + width,
-			pPosY + height,
+			Point(pPosX, pPosY),
+			Point(pPosX + width, pPosY + height),
 			pBackgroundColor,
 			true
 		);
@@ -435,21 +433,9 @@ namespace Graphic
 
 	void SpritePack::clipAll()
 	{
-		int x;
-		int y;
 		for(unsigned int i = 0; i < getSize(); ++i)
 		{
-			x = (*this)[i].getDelimiterLeft();
-			y = (*this)[i].getDelimiterUp();
-			(*this)[i].clip
-			(
-				x,
-				y,
-				(*this)[i].getWidth() - x - (*this)[i].getDelimiterRight(),
-				(*this)[i].getHeight() - y - (*this)[i].getDelimiterDown()
-			);
-			(*this)[i].setXOffset((*this)[i].getXOffset() - x);
-			(*this)[i].setYOffset((*this)[i].getYOffset() - y);
+			(*this)[i].clipNoBorder();
 		}
 	}
 

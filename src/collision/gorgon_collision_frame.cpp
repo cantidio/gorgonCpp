@@ -40,7 +40,7 @@ namespace Gorgon
 		const int rectangleNumber = getSize();
 		for(register int i = 0; i < rectangleNumber; ++i)
 		{
-			pImage.drawRectangle(pPosition, mBoxes[i], pColor);
+			//pImage.drawRectangle(pPosition, mBoxes[i], pColor);
 		}
 	}
 

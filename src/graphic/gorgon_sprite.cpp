@@ -89,8 +89,7 @@ namespace Graphic
 
 			setGroup	(header.getGroup());
 			setIndex	(header.getIndex());
-			setXOffset	(header.getXOffset());
-			setYOffset	(header.getYOffset());
+			setOffset	(header.getOffset());
 
 			ImageLoader::getLoader().load
 			(
@@ -158,6 +157,11 @@ namespace Graphic
 	void Sprite::setIndex(const int& pIndex)
 	{
 		mIndex = pIndex;
+	}
+
+	void Sprite::setOffset(const Gorgon::Point& pOffset)
+	{
+		mOffset = pOffset;
 	}
 
 	void Sprite::setXOffset(const int& pXOffset)
@@ -328,7 +332,7 @@ namespace Graphic
 		const int&		pAngle
 	)
 	{
-		drawImageRoteted
+		drawImageRotated
 		(
 			pSprite,
 			pPosition,
@@ -345,42 +349,12 @@ namespace Graphic
 		const Mirroring&	pMirroring
 	)
 	{
-		switch(pMirroring.getType())
+		Point off = pSprite.mOffset;
+		if(pMirroring.getType() == Mirroring::HFlip || pMirroring.getType() == Mirroring::VFlip)
 		{
-			case Mirroring::Normal:	drawSpriteRoteted(pSprite,pPosX,pPosY,pAngle);			break;
-			case Mirroring::VFlip:
-				drawImageRotetedFlippedV
-				(
-					pSprite,
-					pPosX,
-					pPosY,
-					pAngle,
-					pSprite.getXOffset(),
-					pSprite.getHeight() - pSprite.getYOffset()
-				);
-				break;
-			case Mirroring::HFlip:
-				drawImageRotetedFlippedH
-				(
-					pSprite,
-					pPosX,
-					pPosY,
-					pAngle,
-					pSprite.getXOffset(),
-					pSprite.getHeight() - pSprite.getYOffset()
-				);
-				break;
-			case Mirroring::VHFlip:
-				drawImageRotetedFlippedVH
-				(
-					pSprite,
-					pPosX,
-					pPosY,
-					pAngle,
-					pSprite.getXOffset(),
-					pSprite.getYOffset()
-				);	break;
+			off = Point( pSprite.mOffset.getX(), pSprite.getHeight() - pSprite.mOffset.getY() );
 		}
+		drawImageRotatedFlipped( pSprite, pPosition, pAngle, pMirroring, off );
 	}
 
 //	void Sprite::drawSpriteRotetedFlippedV
@@ -402,38 +376,38 @@ namespace Graphic
 //		);
 //	}
 
-	void Sprite::drawSpriteRotetedFlippedH
-	(
-		const Sprite&	pSprite,
-		const int&		pPosX,
-		const int&		pPosY,
-		const int&		pAngle
-	)
-	{
-		drawImageRotatedFlipped(pSprite,pPosition,pAngle,Mirroring::HFlip,pSprite.mOffset);
-
-
-
-		drawImageRotetedFlippedH
-		(
-			pSprite,
-			pPosX,
-			pPosY,
-			pAngle,
-			pSprite.getXOffset(),
-			pSprite.getHeight() - pSprite.getYOffset()
-		);
-	}
-
-	void Sprite::drawSpriteRotetedFlippedVH
-	(
-		const Sprite&	pSprite,
-		const Point&	pPosition,
-		const int&		pAngle
-	)
-	{
-		drawImageRotatedFlipped(pSprite,pPosition,pAngle,Mirroring::VHFlip,pSprite.mOffset);
-	}
+//	void Sprite::drawSpriteRotetedFlippedH
+//	(
+//		const Sprite&	pSprite,
+//		const int&		pPosX,
+//		const int&		pPosY,
+//		const int&		pAngle
+//	)
+//	{
+//		drawImageRotatedFlipped(pSprite,pPosition,pAngle,Mirroring::HFlip,pSprite.mOffset);
+//
+//
+//
+//		drawImageRotetedFlippedH
+//		(
+//			pSprite,
+//			pPosX,
+//			pPosY,
+//			pAngle,
+//			pSprite.getXOffset(),
+//			pSprite.getHeight() - pSprite.getYOffset()
+//		);
+//	}
+//
+//	void Sprite::drawSpriteRotetedFlippedVH
+//	(
+//		const Sprite&	pSprite,
+//		const Point&	pPosition,
+//		const int&		pAngle
+//	)
+//	{
+//		drawImageRotatedFlipped(pSprite,pPosition,pAngle,Mirroring::VHFlip,pSprite.mOffset);
+//	}
 
 	void Sprite::blitSprite
 	(

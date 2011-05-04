@@ -28,10 +28,11 @@
 #define _GORGON_SPRITE_HEADER_
 #include "../core/gorgon_file.hpp"
 #include "../core/gorgon_file_header.hpp"
-
+#include "gorgon_image.hpp"
 namespace Gorgon{
 namespace Graphic
 {
+
 	/**
 	 * Classe com o cabeçalho dos arquivos gorgon
 	 *
@@ -53,8 +54,7 @@ namespace Graphic
 			int mHeight;			/**< the height of the image*/
 			int mGroup;				/**< the group of the sprite*/
 			int mIndex;				/**< the index of the sprite*/
-			int mXOffset;			/**< the horizontal offset of the sprite*/
-			int mYOffset;			/**< the vertical offset of the sprite*/
+			Point mOffset;			/**< the offset of the sprite*/
 		public:
 			/**
 			 * Método Construtor
@@ -100,7 +100,6 @@ namespace Graphic
 			 * @param	File& pFile, opened file
 			 */
 			void returnFilePosition(Core::File& pFile);
-
 			/**
 			 * Method that sets the size of the data of the image
 			 *
@@ -133,19 +132,10 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	18/01/2011
-			 * @version	18/01/2011
-			 * @param	const int& pXOffset, the xOffset of the sprite
+			 * @version	03/05/2011
+			 * @param	const Point& pOffset, the offset of the sprite
 			 */
-			void setXOffset(const int& pXOffset);
-			/**
-			 * Method that sets the YOffset of the sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	18/01/2011
-			 * @version	18/01/2011
-			 * @param	const int& pYOffset, the YOffset of the sprite
-			 */
-			void setYOffset(const int& pYOffset);
+			void setOffset(const Point& pOffset);
 			/**
 			 * Method that returns the size of the data of the image
 			 *
@@ -178,19 +168,10 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	18/01/2011
-			 * @version	18/01/2011
-			 * @return	int
+			 * @version	03/05/2011
+			 * @return	Point
 			 */
-			int getXOffset()	const;
-			/**
-			 * Method that returns the YOffset of the sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	18/01/2011
-			 * @version	18/01/2011
-			 * @return	int
-			 */
-			int getYOffset()	const;
+			Point getOffset()	const;
 			/**
 			 * Method that returns the size of header in bytes
 			 *

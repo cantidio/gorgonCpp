@@ -35,8 +35,8 @@ namespace Graphic
 					file << "\t\t\t{\n";
 					file << "\t\t\t\tgroup		= " << a.getGroup()					<< ",\n";
 					file << "\t\t\t\tindex		= " << a.getIndex()					<< ",\n";
-					file << "\t\t\t\txoffset\t	= " << a.getXOffset()				<< ",\n";
-					file << "\t\t\t\tyoffset\t	= " << a.getYOffset()				<< ",\n";
+					file << "\t\t\t\txoffset\t	= " << a.getOffset().getX()			<< ",\n";
+					file << "\t\t\t\tyoffset\t	= " << a.getOffset().getY()			<< ",\n";
 					file << "\t\t\t\ttime		= "	<< a.getTime()					<< ",\n";
 					file << "\t\t\t\tmirroring	= " << a.getMirroring().getType()	<< ",\n";
 					file << "\t\t\t\tangle		= " << a.getAngle() 				<< "\n";
@@ -97,8 +97,11 @@ namespace Graphic
 						script.function("getFrameTime"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
 						Mirroring((Mirroring::Type)script.function("getFrameMirroring" , Script::LuaParam("ii",i,j), 1).getNumericValue()),
 						script.function("getFrameAngle"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
-						script.function("getFrameXOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue(),
-						script.function("getFrameYOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue()
+						Point
+						(
+							script.function("getFrameXOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue(),
+							script.function("getFrameYOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue()
+						)
 					)
 				);
 			}
