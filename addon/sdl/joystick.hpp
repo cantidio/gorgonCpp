@@ -24,18 +24,22 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_INPUT_
-#define	_GORGON_INPUT_
+namespace Gorgon{
+namespace Addon
+//namespace SDL{
+{
+	class JoystickSDL : public Input::Joystick
+	{
+		protected:
+			SDL_Joystick *mJoystick;
+		public:
+			JoystickSDL(const int& pIndex = 0);
 
-/**
- * @defgroup	Input
- *
- * @author		Cantidio Oliveira Fontes
- * @since		18/08/2008
- * @version		04/05/2011
- * @details
- *				O módulo Input engloba todas as funcionalidades relacionadas
- *				à entrada de dados, como classes de teclado, joystick
- *				entre outros
- */
-#endif
+			virtual ~JoystickSDL();
+
+			virtual bool isOpened() const;
+			virtual void update();
+			virtual static int getJoystickNumber();
+	};
+}}
+

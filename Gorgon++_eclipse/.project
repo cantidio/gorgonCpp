@@ -111,12 +111,22 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>addon/animationpack</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -246,6 +256,21 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/.svn/entries</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/joystick.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/animationpack/gorgon_animationpack_lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.cpp</locationURI>
@@ -279,6 +304,21 @@
 			<name>addon/image_loader/sdl</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/joystick.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/joystick.hpp</locationURI>
 		</link>
 		<link>
 			<name>addon/spritepack/spritepack_lua.cpp</name>
@@ -614,6 +654,11 @@
 			<name>include/input/joystick.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/joystick_stick.hpp</name>
+			<type>1</type>
+			<location>/home/cantidio/Dev/gorgon++/include/input/joystick_stick.hpp</location>
 		</link>
 		<link>
 			<name>include/input/key.hpp</name>
@@ -1091,6 +1136,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/gorgon_lua_return.cpp</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/entries</locationURI>
+		</link>
+		<link>
 			<name>addon/image_loader/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/.svn/entries</locationURI>
@@ -1139,6 +1189,11 @@
 			<name>addon/image_loader/sdl/image_loader.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/sdl/image_loader.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/entries</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/entries</name>
