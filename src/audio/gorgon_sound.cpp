@@ -1,32 +1,42 @@
 #include "audio/gorgon_sound.hpp"
-
+#include "core/gorgon_string.hpp"
 namespace Gorgon{
 namespace Audio
 {
 	Sound::Sound
 	(
-		const std::string& soundLocation,
-		const bool& bufferFirst,
-		SoundSystem* system
+		const std::string& pSoundLocation,
+		const bool& pBufferFirst,
+		SoundSystem* pSystem
 	)
 	{
-		Core::LogRegister("Trying to open a Sound...");
-		if(!system)	throw newSoundException("NULL SoundSystem passed.");
+		Core::logWriteFormatted
+		(
+			Core::String("Gorgon::Audio::Sound::Sound(\"%s\",%s,%d): "),
+			pSoundLocation,
+			(pBufferFirst ? "true" : "false"),
+			(int)pSystem
+		);
+		if(!pSystem)
+		{
+			Core::logWrite(Core::String("Error No SoundSystem passed."),true,false);
+			throw newSoundException("NULL SoundSystem passed.");
+		}
 
 		sound = audiere::OpenSound
 		(
-			system->getDevice(),
-			soundLocation.c_str(),
-			!bufferFirst
+			pSystem->getDevice(),
+			pSoundLocation.c_str(),
+			!pBufferFirst
 		);
 
 		if(!sound)	throw newSoundException("Opening Sound.");
-		Core::LogRegister("Sucessfull.");
+		Core::logWrite("Sucessfull.",true,false);
 	}
 
 	Sound::~Sound()
 	{
-		Core::LogRegister("Sound Closed...");
+		Core::logWrite(Core::String("Gorgon::Audio::Sound::~Sound()\n"));
 	//	if(sound)	delete sound;
 	}
 

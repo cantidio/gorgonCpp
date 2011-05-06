@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,82 +26,62 @@
  */
 #ifndef _GORGON_LOG_
 #define	_GORGON_LOG_
-#include <iostream>
+
 #include <string>
 #include <stdio.h>
 #include <stdarg.h>
 #include "gorgon_file.hpp"
-/**
- * Define para ativar logs
- */
-#define	_USE_LOG_
 
+#define	_USE_LOG_ /**<< Define to turn on logs */
 namespace Gorgon{
 namespace Core
 {
 	/**
-	 * Classe para realizar logs
+	 * Class to write log files
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	01/01/2009
-	 * @version	26/03/2009
+	 * @version	05/05/2011
 	 * @ingroup	Core
 	 */
 	class Log
 	{
-		private:
-			/**
-			 * Arquivo de log
-			 */
-			File mFile;
-			/**
-			 * Se irá usar o append no arquivo existente ou sobrescreve-lo
-			 */
-			bool mAppend;
 		protected:
+			static Log* mSingleton;	/**<< Pointer to the singleton pointer*/
+			File mFile;				/**<< log file*/
+			bool mAppend;			/**<< if true, the file will append to the previous log file*/
+
 			/**
-			 * Ponteiro para a instancia da classe
-			 */
-			static Log* mSingleton;
-			/**
-			 * Método Construtor
+			 * Protected Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
 			 * @version	25/03/2009
-			 * @param	const std::string& logFile, nome do arquivo de log a ser gerado
-			 * @param	const bool& append, se irá sobrescrever o arquivo existente ou ir mesclando os logs
+			 * @param	const std::string& logFile	, name of the log file to be created
+			 * @param	const bool& append			, if the log will append to the previous log, or overwrite it
 			 */
-			Log(const std::string& logFile,const bool& append);
+			Log(const std::string& logFile, const bool& append);
 			/**
-			 * Método Destrutor
+			 * Protected Destructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
-			 * @version	25/03/2009
+			 * @version	05/05/2011
 			 */
 			virtual ~Log();
 		public:
 			/**
-			 * Método para iniciar a instância da classe
+			 * Method to instanciate the Log
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/03/2009
-			 * @version	25/03/2009
-			 * @param	const std::string& logFile, nome do arquivo de log a ser gerado
-			 * @param	const bool& append, se irá sobrescrever o arquivo existente ou ir mesclando os logs
+			 * @version	05/05/2011
+			 * @param	const std::string& logFile	, name of the log file to be created
+			 * @param	const bool& append			, if the log will append to the previous log, or overwrite it
 			 */
 			static void init(const std::string& logFile = "log.txt",const bool& append = false);
 			/**
-			 * Método para destruir a instância da classe de log
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	25/03/2009
-			 * @version	25/03/2009
-			 */
-			static void halt();
-			/**
-			 * Método para retornar a instância da classe se a mesma tiver sido instanciada
+			 * Method that returns an instance of the class
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/03/2009
@@ -110,140 +90,147 @@ namespace Core
 			 */
 			static Log& get();
 			/**
-			 * Método para registrar a timeStamp do sistema no log
+			 * Method to register the timestamp in the log
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
 			 * @version	25/03/2009
 			 */
-			void RegisterTimeStamp();
+			void writeTimeStamp();
 			/**
-			 * Método para registrar uma string no log
+			 * Method to register a string in the log
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
 			 * @version	25/03/2009
-			 * @param	const string& message, mensagem a ser registrada
+			 * @param	const string& message	, messege to be registered
+			 * @param	const bool& pNewLine	, if the message will generate a newline
 			 */
-			void Register(const std::string& message,const bool& newLine=true);
+			void write(const std::string& message,const bool& newLine=true,const bool& pWriteTimeStamp=true);
 			/**
-			 * Método para registrar um número inteiro no arquivo de log
+			 * Method that registers a number into the log
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
 			 * @version	25/03/2009
-			 * @param	const long& number, número a ser registrado
+			 * @param	const long& number		, number to be registered
+			 * @param	const bool& pNewline	, if true puts a new line after the number
 			 */
-			void Register(const long& number,const bool& newLine=true);
+			void write(const long& number,const bool& newLine=true,const bool& pWriteTimeStamp=true);
 			/**
-			 * Método para registrar um número em ponto flutuante no arquivo de log
+			 * Method that registers a double into the log
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
 			 * @version	25/03/2009
-			 * @param	const double& number, número em ponto flutuante a ser registrado
+			 * @param	const double& number	, double to be registered
+			 * @param	const bool& pNewline	, if true puts a new line after the double
 			 */
-			void Register(const double& number,const bool& newLine=true);
+			void write(const double& number,const bool& newLine=true,const bool& pWriteTimeStamp=true);
 			/**
-			 * Método para registrar um booleano no arquivo de log
+			 * Method that registers a boolean into the log
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
 			 * @version	25/03/2009
-			 * @param	const bool& boolean, booleano a ser registrado
+			 * @param	const bool& boolean		, boolean to be registered
+			 * @param	const bool& pNewline	, if true puts a new line after the boolean
 			 */
-			void Register(const bool& boolean,const bool& newLine=true);
+			void write(const bool& boolean,const bool& newLine=true,const bool& pWriteTimeStamp=true);
 			/**
-			 * Método para registrar uma string formatada atravez de uma losta de parametros
+			 * Method that registers a string formatted like printf into the log
 			 *
 			 * @author	Cantidio Oliveia Fontess
 			 * @since	25/03/2009
 			 * @version	25/03/2009
-			 * @param	const char* text	, texto com as devidas formatações
-			 * @param	va_list& ap			, lista de parâmetros
+			 * @param	const char* text	, formatted string like printf
+			 * @param	va_list& ap			, parameters list
 			 */
-			void RegisterFormated(const char* text,va_list& ap);
+			void writeFormatted(const char* text,va_list& ap);
 			/**
-			 * Método para registrar uma string formatada estilo printf
+			 * Method that registers a string formatted like printf into the log
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/01/2009
 			 * @version	25/03/2009
-			 * @param	const char* text, texto com as devidas formatações
-			 * @param	... outros parametros
+			 * @param	const char* text	, formatted strinf like printf
+			 * @param	... 				, all parameters
 			 */
-			void RegisterFormated(const char* text,...);
+			void writeFormatted(const char* text, ...);
 	};
 	/**
-	 * Função inline para registrar uma string formatada no arquivo de log
+	 * Inline Function that registers a string formatted like printf into the current log
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	26/03/2009
-	 * @version	26/03/2009
+	 * @version	05/05/2011
 	 * @param	const std::string& str, string com o formato a ser registrada,
 	 * @param	... os argumentos a serem substituídos na string formatada
 	 */
-	inline void LogRegister(const std::string& str, ...)
+	inline void logWriteFormatted(const std::string& str, ...)
 	{
 		#ifdef	_USE_LOG_
-		if(&Log::get())
-		{
-			va_list ap;
-			va_start(ap,str);
-			Log::get().RegisterFormated(str.c_str(),ap);
-			va_end(ap);
-		}
+		va_list ap;
+		va_start(ap, str);
+		Log::get().writeFormatted(str.c_str(),ap);
+		va_end(ap);
 		#endif
 	}
 	/**
-	 * Função inline para registrar um long no arquivo de log
+		 * Inline Function that writes a string into the current log
+		 *
+		 * @author	Cantidio Oliveira Fontes
+		 * @since	05/05/2011
+		 * @version	05/05/2011
+		 * @param	const long& number, valor long a ser registrado
+		 */
+		inline void logWrite(const std::string& pString, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
+		{
+			#ifdef	_USE_LOG_
+			Log::get().write(pString, pNewline, pWriteTimeStamp);
+			#endif
+		}
+	/**
+	 * Inline Function that registers a number into the current log
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	26/03/2009
-	 * @version	26/03/2009
+	 * @version	05/05/2011
 	 * @param	const long& number, valor long a ser registrado
 	 */
-	inline void LogRegister(const long& number)
+	inline void logWrite(const long& number, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
 	{
 		#ifdef	_USE_LOG_
-		if(&Log::get())
-		{
-			Log::get().Register(number);
-		}
+		Log::get().write(number, pNewline, pWriteTimeStamp);
 		#endif
 	}
 	/**
-	 * Função inline para registrar um double no arquivo de log
+	 * Inline Function that registers a double into the current log
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	26/03/2009
-	 * @version	26/03/2009
+	 * @version	05/05/2011
 	 * @param	const double& number, valor double a ser registrado
 	 */
-	inline void LogRegister(const double& number)
+	inline void logWrite(const double& number, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
 	{
 		#ifdef	_USE_LOG_
-		if(&Log::get())
-		{
-			Log::get().Register(number);
-		}
+		Log::get().write(number, pNewline, pWriteTimeStamp);
 		#endif
 	}
 	/**
-	 * Função inline para registrar um booleano no arquivo de log
+	 * Inline Function that registers a boolean into the current log
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	26/03/2009
-	 * @version	26/03/2009
+	 * @version	05/05/2011
 	 * @param	const bool& boolean, valor booleano a ser registrado
+	 * @param
 	 */
-	inline void LogRegister(const bool& boolean)
+	inline void logWrite(const bool& boolean, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
 	{
 		#ifdef	_USE_LOG_
-		if(&Log::get())
-		{
-			Log::get().Register(boolean);
-		}
+		Log::get().write(boolean, pNewline, pWriteTimeStamp);
 		#endif
 	}
 }}

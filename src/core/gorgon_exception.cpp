@@ -17,7 +17,7 @@ namespace Core
 		this->file		= file;
 		this->function	= function;
 		this->line		= line;
-		LogRegister(what());
+		logWrite(what());
 	}
 
 	std::string Exception::what() const

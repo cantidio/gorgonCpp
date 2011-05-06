@@ -24,83 +24,68 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_ALLEGRO5_JOYSTICK_
-#define _GORGON_ALLEGRO5_JOYSTICK_
-#include <gorgon++/input/joystick.hpp>
-
-struct ALLEGRO_JOYSTICK;
-struct ALLEGRO_JOYSTICK_STATE;
-
+#ifndef _GORGON_JOYSTICK_BASE_NULL_
+#define _GORGON_JOYSTICK_BASE_NULL_
+#include "joystick_base.hpp"
 namespace Gorgon{
-namespace Addon
-//namespace Allegro5{
+namespace Input
 {
 	/**
-	 * Class that represents an allegro5 joystick
+	 * Class that represents an null joystick
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	04/05/2011
-	 * @version	05/05/2011
+	 * @since	05/05/2010
+	 * @version	05/05/2010
 	 */
-	class JoystickAllegro : public Input::JoystickBase
+	class JoystickBaseNull : public JoystickBase
 	{
-		protected:
-			ALLEGRO_JOYSTICK* mJoystick;			/**<< var that holds the allegro joystick*/
-			ALLEGRO_JOYSTICK_STATE* mJoystickState;	/**<< var that holds the allegro joystick state*/
 		public:
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @verion	05/05/2011
+			 * @since	05/05/2011
+			 * @version	05/05/2011
 			 * @param	const int& pIndex, the index of the joystick
 			 */
-			JoystickAllegro(const int& pIndex = 0);
-			/**
-			 * Destructor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @verion	05/05/2011
-			 */
-			virtual ~JoystickAllegro();
-			/**
-			 * Method that returns if the joystick is available
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 */
-			virtual bool isOpened() const;
+			inline JoystickBaseNull(const int& pIndex = 0) : JoystickBase(pIndex) { }
 			/**
 			 * Method that updates the values of the joystick
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @since	05/05/2011
+			 * @version	05/05/2011
 			 */
-			virtual void update();
+			virtual void update() { }
 			/**
-			 * Method that returns a stick of the joystick
+			 * Method that returns if the joystick is opened
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @param	const int& pStick, the index of the stick
+			 * @since	05/05/2011
+			 * @version	05/05/2011
+			 * @return	bool
+			 */
+			virtual bool isOpened() const { return false; }
+			/**
+			 * Method that returns a stick
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	05/05/2011
+			 * @param	const int& pStick, the index of the stick to be retrieved
 			 * @return	Stick
 			 */
-			virtual Input::Stick getStick(const int& pStick) const;
+			virtual Stick getStick(const int& pStick) const { return Stick(0); }
 			/**
-			 * Method that returns the value of the button
+			 * Method that returns a button
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @since	05/05/2011
+			 * @version	05/05/2011
 			 * @param	const int& pButton, the index of the button
 			 * @return	float
 			 */
-			virtual float getButton(const int& pButtonIndex) const;
+			virtual float getButton(const int& pButton) const { return 0; }
 	};
 }}
 #endif

@@ -24,6 +24,10 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
+#ifndef _GORGON_JOYSTICK_STICK_
+#define _GORGON_JOYSTICK_STICK_
+#include<stdio.h>
+#include<stdlib.h>
 namespace Gorgon{
 namespace Input
 {
@@ -47,12 +51,28 @@ namespace Input
 			 * @since	04/05/2011
 			 * @version	04/05/2011
 			 * @param	const int& pAxesNumber, number of axes of the stick
-			 * @todo	verificar se precisa de um construtor de cópia
 			 */
 			inline Stick(const int& pAxesNumber)
 			{
 				mAxesNumber = pAxesNumber;
 				mAxes		= new float(mAxesNumber);
+			}
+			/**
+			 * Copy Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	05/05/2011
+			 * @param	const Stick& pStick, original stick
+			 */
+			inline Stick(const Stick& pStick)
+			{
+				mAxesNumber = pStick.mAxesNumber;
+				mAxes		= new float(mAxesNumber);
+				for(register int i = 0; i < mAxesNumber; ++i)
+				{
+					mAxes[i] = pStick.mAxes[i];
+				}
 			}
 			/**
 			 * Destructor
@@ -105,3 +125,4 @@ namespace Input
 			}
 	};
 }}
+#endif

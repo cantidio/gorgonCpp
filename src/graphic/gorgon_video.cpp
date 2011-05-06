@@ -1,4 +1,5 @@
 #include "graphic/gorgon_video.hpp"
+#include <core/gorgon_string.hpp>
 /*
  * @todo mudar o nome do método show para swapBuffers, e mudar o nome do método updateBuffer da classe Image para swapBuffers tbm
  */
@@ -17,36 +18,27 @@ namespace Graphic
 		const int&			pBpp
 	) : Sprite(Image(pWidth,pHeight,pBpp))
 	{
-		Core::LogRegister(std::string("Trying to open a Video Device..."));
-
+		Core::logWriteFormatted
+		(
+			Core::String("Gorgon::Graphic::Video::Video(\"%s\",%d,%d,%s,%d): "),
+			pWindowTitle.c_str(),
+			pWidth,
+			pHeight,
+			(pFullscreen ? "true" : "false"),
+			pBpp
+		);
 		const int screenMode = (pFullscreen) ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED;
-		if(pBpp == 0)
-		{
-			set_color_depth(24);
-		}
-		else
-		{
-			set_color_depth(pBpp);
-		}
-		
+		set_color_depth((pBpp == 0) ? 24 : pBpp);
 		if
 		(
-			set_gfx_mode
-			(
-				screenMode,
-				pWidth,
-				pHeight,
-				0,
-				0
-			) !=0
+			set_gfx_mode( screenMode, pWidth, pHeight, 0, 0 ) !=0
 		)
 		{
-			exit(-1);
-			//throw VideoException("Unable to set video mode.");
+			Core::logWrite(Core::String("Error: unable to set video mode."),true,false);
 		}
 		Video::mScreen = new Image(screen);
 		setWindowTitle(pWindowTitle);
-		Core::LogRegister(std::string("Sucessfull."));
+		Core::logWrite(Core::String("Sucessfull."),true,false);
 	}
 
 	void Video::init

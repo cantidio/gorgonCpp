@@ -1,5 +1,5 @@
 #include "audio/gorgon_sound_system.hpp"
-
+#include "core/gorgon_string.hpp"
 namespace Gorgon{
 namespace Audio
 {
@@ -7,16 +7,20 @@ namespace Audio
 
 	SoundSystem::SoundSystem(const std::string device_name)
 	{
-		Core::LogRegister("Trying to open a Sound Device %s",device_name.c_str());
+		Core::logWriteFormatted(Core::String("Gorgon::Audio::SoundSystem::SoundSystem(\"%s\"): "), device_name.c_str());
 		device		= audiere::OpenDevice(device_name.c_str());
-		if(!device)	throw newSoundSystemException("Opening Device.");
-		Core::LogRegister("Sucessfull.");
+		if(!device)
+		{
+			Core::logWrite(Core::String("Error could not open the audio device."),true,false);
+			throw newSoundSystemException("Opening Device.");
+		}
+		Core::logWrite(Core::String("Sucessfull.\n"),true,false);
 		lastSystem	= this;
 	}
 
 	SoundSystem::~SoundSystem()
 	{
-		Core::LogRegister("SoundSystem Closed...");
+		Core::logWrite(Core::String("Gorgon::Audio::SoundSystem::~SoundSystem()\n"));
 		//delete device;
 	}
 

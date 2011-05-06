@@ -24,83 +24,70 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_ALLEGRO5_JOYSTICK_
-#define _GORGON_ALLEGRO5_JOYSTICK_
-#include <gorgon++/input/joystick.hpp>
-
-struct ALLEGRO_JOYSTICK;
-struct ALLEGRO_JOYSTICK_STATE;
+#ifndef _GORGON_JOYSTICK_HANDLER_
+#define _GORGON_JOYSTICK_HANDLER_
 
 namespace Gorgon{
-namespace Addon
-//namespace Allegro5{
+namespace Input
 {
+	class JoystickBase;
 	/**
-	 * Class that represents an allegro5 joystick
+	 * Class that represents a JoystickHandler
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	04/05/2011
+	 * @since	05/05/2011
 	 * @version	05/05/2011
 	 */
-	class JoystickAllegro : public Input::JoystickBase
+	class JoystickHandler
 	{
 		protected:
-			ALLEGRO_JOYSTICK* mJoystick;			/**<< var that holds the allegro joystick*/
-			ALLEGRO_JOYSTICK_STATE* mJoystickState;	/**<< var that holds the allegro joystick state*/
+			static JoystickHandler* mHandler;/**<< Singleton instance of the class*/
+			/**
+			 * Protected Constructor
+			 */
+			JoystickHandler();
+			/**
+			 * Protected Destructor
+			 */
+			virtual ~JoystickHandler();
+			/**
+			 * Method that sets the JoystickHandler
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2010
+			 * @version	05/05/2010
+			 * @param Joystick& pHandler, the Handler
+			 */
+			static void set(JoystickHandler& pHandler);
 		public:
 			/**
-			 * Constructor
+			 * Method that returns the JoystickHandler
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @verion	05/05/2011
-			 * @param	const int& pIndex, the index of the joystick
+			 * @since	05/05/2010
+			 * @version	05/05/2010
+			 * @return	JoystickHandler&
 			 */
-			JoystickAllegro(const int& pIndex = 0);
+			static JoystickHandler& get();
 			/**
-			 * Destructor
+			 * Method that returns an instance of the current joystickBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @verion	05/05/2011
+			 * @since	05/05/2010
+			 * @version	05/05/2010
+			 * @param	const int& pIndex, the index of the Joystick
+			 * @return	JoystickBase*
 			 */
-			virtual ~JoystickAllegro();
+			virtual JoystickBase* getJoystick(const int& pIndex) const;
 			/**
-			 * Method that returns if the joystick is available
+			 * Method that returns the number of joysticks available on system
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
 			 * @version	04/05/2011
+			 * @return	int
 			 */
-			virtual bool isOpened() const;
-			/**
-			 * Method that updates the values of the joystick
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 */
-			virtual void update();
-			/**
-			 * Method that returns a stick of the joystick
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @param	const int& pStick, the index of the stick
-			 * @return	Stick
-			 */
-			virtual Input::Stick getStick(const int& pStick) const;
-			/**
-			 * Method that returns the value of the button
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @param	const int& pButton, the index of the button
-			 * @return	float
-			 */
-			virtual float getButton(const int& pButtonIndex) const;
+			virtual int getJoystickNumber() const;
 	};
 }}
 #endif

@@ -24,24 +24,27 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_
-#define _GORGON_JOYSTICK_
-#include "joystick_base.hpp"
-#include "joystick_handler.hpp"
+#ifndef _GORGON_JOYSTICK_BASE_
+#define _GORGON_JOYSTICK_BASE_
+#include "../core/gorgon_string.hpp"
+#include "joystick_stick.hpp"
 namespace Gorgon{
 namespace Input
 {
 	/**
-	 * Class that represents a joystick
+	 * Class that represents an Abstract Joystick
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	04/05/2011
-	 * @version	05/05/2011
+	 * @version	04/05/2011
 	 */
-	class Joystick
+	class JoystickBase
 	{
 		protected:
-			JoystickBase* mJoystick;
+			int mIndex;			/**<< the index of the joystick*/
+			Core::String mName;	/**<< the name of the joystick*/
+			int mButtonNumber;	/**<< the number of buttons available*/
+			int mStickNumber;	/**<< the number of sticks available */
 		public:
 			/**
 			 * Constructor
@@ -51,9 +54,12 @@ namespace Input
 			 * @version	04/05/2011
 			 * @param	const int& pIndex, the index of the joystick
 			 */
-			inline Joystick(const int& pIndex = 0)
+			inline JoystickBase(const int& pIndex = 0)
 			{
-				mJoystick = JoystickHandler::get().getJoystick(pIndex);
+				mIndex			= pIndex;
+				mName			= "";
+				mButtonNumber	= 0;
+				mStickNumber	= 0;
 			}
 			/**
 			 * Method that updates the values of the joystick
@@ -62,10 +68,7 @@ namespace Input
 			 * @since	04/05/2011
 			 * @version	04/05/2011
 			 */
-			inline void update()
-			{
-				mJoystick->update();
-			}
+			virtual void update()			= 0;
 			/**
 			 * Method that returns if the joystick is opened
 			 *
@@ -74,19 +77,8 @@ namespace Input
 			 * @version	04/05/2011
 			 * @return	bool
 			 */
-			bool isOpened() const
-			{
-				return mJoystick->isOpened();
-			}
-			/**
-			 * Method that returns the number of joysticks available on system
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @return	int
-			 */
-			//static int getJoystickNumber();
+			virtual bool isOpened() const	= 0;
+
 			/**
 			 * Method that returns the name of the joystick
 			 *
@@ -97,7 +89,7 @@ namespace Input
 			 */
 			inline Core::String getName() const
 			{
-				return mJoystick->getName();
+				return mName;
 			}
 			/**
 			 * Method that returns the index of the joystick
@@ -109,7 +101,7 @@ namespace Input
 			 */
 			inline int getIndex() const
 			{
-				return mJoystick->getIndex();
+				return mIndex;
 			}
 			/**
 			 * Method that returns the number of the buttons of the joystick
@@ -121,7 +113,7 @@ namespace Input
 			 */
 			inline int getButtonNumber() const
 			{
-				return mJoystick->getButtonNumber();
+				return mButtonNumber;
 			}
 			/**
 			 * Method that returns the number of the sticks of the joystick
@@ -133,7 +125,7 @@ namespace Input
 			 */
 			inline int getStickNumber() const
 			{
-				return mJoystick->getStickNumber();
+				return mStickNumber;
 			}
 			/**
 			 * Method that returns a stick
@@ -144,10 +136,7 @@ namespace Input
 			 * @param	const int& pStick, the index of the stick to be retrieved
 			 * @return	Stick
 			 */
-			inline Stick getStick(const int& pStick) const
-			{
-				return mJoystick->getStick(pStick);
-			}
+			virtual Stick getStick(const int& pStick) const = 0;
 			/**
 			 * Method that returns a button
 			 *
@@ -157,10 +146,7 @@ namespace Input
 			 * @param	const int& pButton, the index of the button
 			 * @return	float
 			 */
-			inline float getButton(const int& pButton) const
-			{
-				return mJoystick->getButton(pButton);
-			}
+			virtual float getButton(const int& pButton) const = 0;
 	};
 }}
 #endif

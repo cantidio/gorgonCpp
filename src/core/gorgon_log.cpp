@@ -1,6 +1,6 @@
 #include "core/gorgon_log.hpp"
 #include <time.h>
-
+#include <iostream>
 namespace Gorgon{
 namespace Core
 {
@@ -20,22 +20,16 @@ namespace Core
 	}
 
 	Log::~Log()
-	{}
+	{
+		mFile.close();
+	}
 
 	void Log::init(const std::string& pLogFileName,const bool& pAppend)
 	{
 		if(mSingleton == NULL)
 		{
-			mSingleton = new Log(pLogFileName,pAppend);
-		}
-	}
-
-	void Log::halt()
-	{
-		if(mSingleton)
-		{
-			delete mSingleton;
-			mSingleton = NULL;
+			static Log log(pLogFileName,pAppend);
+			mSingleton = &log;
 		}
 	}
 	
@@ -45,7 +39,7 @@ namespace Core
 		return *mSingleton;
 	}
 
-	void Log::RegisterTimeStamp()
+	void Log::writeTimeStamp()
 	{
 		char		st[23];
 		time_t 		rawtime;
@@ -57,11 +51,11 @@ namespace Core
 		mFile << st << "\t";
 	}
 
-	void Log::Register(const std::string& message,const bool& newLine)
+	void Log::write(const std::string& message,const bool& newLine,const bool& pWriteTimeStamp)
 	{
 		if(mFile.is_open())
 		{
-			RegisterTimeStamp();
+			if(pWriteTimeStamp) writeTimeStamp();
 			mFile << message;
 			if(newLine)
 			{
@@ -70,11 +64,11 @@ namespace Core
 		}
 	}
 
-	void Log::Register(const long& number,const bool& newLine)
+	void Log::write(const long& number,const bool& newLine,const bool& pWriteTimeStamp)
 	{
 		if(mFile.is_open())
 		{
-			RegisterTimeStamp();
+			if(pWriteTimeStamp) writeTimeStamp();
 			mFile << number;
 			if(newLine)
 			{
@@ -83,11 +77,11 @@ namespace Core
 		}
 	}
 
-	void Log::Register(const double& number,const bool& newLine)
+	void Log::write(const double& number,const bool& newLine,const bool& pWriteTimeStamp)
 	{
 		if(mFile.is_open())
 		{
-			RegisterTimeStamp();
+			if(pWriteTimeStamp) writeTimeStamp();
 			mFile << number;
 			if(newLine)
 			{
@@ -96,11 +90,11 @@ namespace Core
 		}
 	}
 
-	void Log::Register(const bool& boolean,const bool& newLine)
+	void Log::write(const bool& boolean,const bool& newLine,const bool& pWriteTimeStamp)
 	{
 		if(mFile.is_open())
 		{
-			RegisterTimeStamp();
+			if(pWriteTimeStamp) writeTimeStamp();
 			if(boolean)
 			{
 				mFile << "True";
@@ -116,18 +110,18 @@ namespace Core
 		}
 	}
 
-	void Log::RegisterFormated(const char* text,va_list& ap)
+	void Log::writeFormatted(const char* text,va_list& ap)
 	{
 		char buf[512];
 		vsnprintf(buf,sizeof(buf),text,ap);
-		Register(std::string(buf));
+		write(std::string(buf),false);
 	}
 
-	void Log::RegisterFormated(const char* text,...)
+	void Log::writeFormatted(const char* text,...)
 	{
 		va_list ap;
 		va_start(ap,text);
-		RegisterFormated(text,ap);
+		writeFormatted(text,ap);
 		va_end(ap);
 	}
 }}

@@ -271,6 +271,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick.hpp</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/joystick_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/joystick_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick_handler.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/animationpack/gorgon_animationpack_lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.cpp</locationURI>
@@ -646,6 +656,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>include/input/SConscript</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/SConscript</locationURI>
+		</link>
+		<link>
 			<name>include/input/gorgon_input.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/gorgon_input.hpp</locationURI>
@@ -656,9 +671,24 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick.hpp</locationURI>
 		</link>
 		<link>
+			<name>include/input/joystick_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/joystick_base_null.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick_base_null.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/joystick_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick_handler.hpp</locationURI>
+		</link>
+		<link>
 			<name>include/input/joystick_stick.hpp</name>
 			<type>1</type>
-			<location>/home/cantidio/Dev/gorgon++/include/input/joystick_stick.hpp</location>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick_stick.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/input/key.hpp</name>
@@ -871,11 +901,6 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>src/core/CMakeLists.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/core/CMakeLists.txt</locationURI>
-		</link>
-		<link>
 			<name>src/core/SConscript</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/SConscript</locationURI>
@@ -1056,6 +1081,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/input/SConscript</locationURI>
 		</link>
 		<link>
+			<name>src/input/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/input/joystick_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/joystick_handler.cpp</locationURI>
+		</link>
+		<link>
 			<name>src/physics/.svn</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -1139,6 +1174,11 @@
 			<name>addon/allegro5/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader/.svn/entries</name>
@@ -1454,6 +1494,16 @@
 			<name>src/script/.svn/text-base</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/joystick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/joystick.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader/allegro5/.svn/entries</name>
@@ -2111,6 +2161,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/gorgon_video.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/input/.svn/text-base/SConscript.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/input/.svn/text-base/gorgon_input.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/gorgon_input.hpp.svn-base</locationURI>
@@ -2119,6 +2174,11 @@
 			<name>include/input/.svn/text-base/joystick.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/joystick_stick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/joystick_stick.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/input/.svn/text-base/key.hpp.svn-base</name>

@@ -1,7 +1,9 @@
 #!/bin/sh
 PACKAGE_DIR='DEB_PACKAGE/'
-LIB_LOCATION='Gorgon++_eclipse/Release/libgorgon.so'
-ADDON_LOCATION='Gorgon++_eclipse/Addon/libgorgon_addon.so'
+LIB_LOCATION='Gorgon++_eclipse/build_release/libgorgon.so'
+ADDON_LOCATION='Gorgon++_eclipse/build_addon/libgorgon_addon.so'
+ADDON_ALLEGRO5='Gorgon++_eclipse/build_addon_allegro5/libgorgon_addon_allegro5.so'
+
 #
 # Funćão que cria o script de configuraćão da biblioteca Gorgon
 #
@@ -24,8 +26,9 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--version]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--libs]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons]\n'
-	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons_sdl]\n'
-	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons_magick]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addon_sdl]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addon_magick]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addon_allegro5]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'EOF\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\texit $1\n'
 	GORGON_CONFIG=$GORGON_CONFIG'}\n\n'
@@ -55,11 +58,15 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon_addon\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
 	
-	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons_sdl)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addon_sdl)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo `sdl-config --libs` -lSDL_image\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
 	
-	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons_magick)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addon_allegro5)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon_addon_allegro5\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addon_magick)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo `Magick++-config --cppflags --cxxflags --ldflags --libs`\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
 	
@@ -153,6 +160,7 @@ CREATE_DIR_LIB()
 	echo "\tCriando o diretório LIB"
 	cp $LIB_LOCATION $PACKAGE_DIR/usr/lib/
 	cp $ADDON_LOCATION $PACKAGE_DIR/usr/lib/
+	cp $ADDON_ALLEGRO5 $PACKAGE_DIR/usr/lib/
 }
 #
 # Funcão para criar o diretório Share do pacote

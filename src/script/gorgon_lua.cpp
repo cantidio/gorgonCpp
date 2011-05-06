@@ -1,20 +1,43 @@
 #include <script/gorgon_lua.hpp>
+#include <core/gorgon_string.hpp>
 
 namespace Gorgon{
 namespace Script
 {
+	inline Core::String getErrorMsg(lua_State *L, int status)
+	{
+		Core::String msg;
+		if (status)
+		{
+			msg = lua_tostring(L, -1);
+			if (msg.length() == 0)
+			{
+				msg = "(error with no message)";
+			}
+			//fprintf(stderr, "status=%d, %s\n", status, msg);
+			//lua_pop(L, 1);
+			return msg;
+		}
+		return "No Error.";
+	}
+
 	Lua::Lua(const std::string& pScriptName)
 	{
 		mState	= lua_open();
 		mClose	= true;
 		luaL_openlibs(mState);
-		loadScript(pScriptName);
+		if(pScriptName.length())
+		{
+			loadScript(pScriptName);
+		}
 	}
+
 	Lua::Lua(lua_State* pState)
 	{
 		mState	= pState;
 		mClose	= false;
 	}
+
 	Lua::~Lua()
 	{
 		if(mClose)
@@ -25,27 +48,35 @@ namespace Script
 
 	void Lua::loadScript(const std::string& pScriptName)
 	{
+		Core::logWrite(std::string("Gorgon::Script::LUA::loadScript(\"")+pScriptName+ "\"): ", false);
 		if(pScriptName == "")
 		{
+			Core::logWrite(std::string("No ScriptName provided."), true, false);
 			return;
 		}
-		Core::LogRegister(std::string("Loading Scriptfile: ") + pScriptName);
-		int status = luaL_dofile(mState, pScriptName.c_str());
-		if(status != 0)//deu erro ao carregar o script
+		//mudar para luaL_loadfile
+		//int status = luaL_dofile(mState, pScriptName.c_str());
+		int status = luaL_loadfile(mState, pScriptName.c_str());
+		switch(status)
 		{
-			Core::Log::get().Register(std::string("Error loading the script."),true);
-/*			throw new LuaException("error loading script file");
-			*/
+			case 0:
+				Core::logWrite(std::string("Sucessfull."), true, false);
+				lua_pcall(mState, 0, LUA_MULTRET, 0);
+				break;
+			default:
+				Core::logWrite(std::string("Error: ") + getErrorMsg(mState, status), true, false);
+				throw new LuaException(std::string("Error loading the script: ") + getErrorMsg(mState, status));
+				break;
 		}
 	}
-
 	void Lua::executeString(const std::string& pValue)
 	{
-		if(luaL_dostring(mState,pValue.c_str())!=0)
+		const int status = luaL_dostring(mState,pValue.c_str());
+		if(status != 0)
 		{
-			Core::Log::get().Register(std::string("Unable to execute string."),true);
-			//throw LuaException("Unable to execute string.");
-			//cout << "Unable to execute string." << endl;
+			Core::logWrite(Core::String("Gorgon::Script::LUA::executeString(\"")+pValue+ "\"): ", false);
+			Core::logWrite(Core::String("Error: ") + getErrorMsg(mState, status), true, false);
+			/** @todo throw LuaException("Unable to execute string."); */
 		}
 	}
 
@@ -58,11 +89,20 @@ namespace Script
 	{
 		lua_getglobal(mState, pFunctionName.c_str());
 		pParam.pushAll(mState);//pushing the arguments
-
-		/* do the call (param.size() arguments, result) */
-		if(lua_pcall(mState, pParam.getSize(), pReturnNumber, 0) != 0)
+		const int status = lua_pcall
+		(
+			mState,
+			pParam.getSize(),
+			pReturnNumber,
+			0
+		);
+		if(status != 0)
 		{
-			Core::LogRegister(std::string("error: ") + lua_tostring(mState, -1) + " when trying to call function: " + pFunctionName);
+			Core::logWrite
+			(
+				Core::String("Gorgon::Script::LUA::function(\"") +
+				pFunctionName + "\"): Error" + getErrorMsg(mState, status)
+			);
 			//throw Exception("Error")
 		}
 		return LuaReturn(mState,pReturnNumber);
@@ -83,8 +123,9 @@ namespace Script
 		lua_getglobal(mState,pVarName.c_str());
 		if (!lua_isnumber(mState, -1))
 		{
-			Core::LogRegister(std::string("Trying to get a NumericVar: ") + pVarName + " but it isn't a number");
-			return -1;
+			Core::logWrite(Core::String("Gorgon::Script::LUA::getNumericVar(\"")+pVarName+ "\"): ", false);
+			Core::logWrite(Core::String("Error: it isn't a number"), true, false);
+			return 0;
 		}
 		return (double)lua_tonumber(mState, -1);
 	}
@@ -94,8 +135,9 @@ namespace Script
 		lua_getglobal(mState, pVarName.c_str());
 		if (!lua_isstring(mState, -1))
 		{
-			Core::LogRegister(std::string("Trying to get a StringVar: ") + pVarName + " but it isn't a string");
-			return std::string("erro");
+			Core::logWrite(Core::String("Gorgon::Script::LUA::getStringVar(\"")+pVarName+ "\"): ", false);
+			Core::logWrite(Core::String("Error: it isn't a string"), true, false);
+			return std::string("");
 		}
 		return std::string((char*)lua_tostring(mState, -1));
 	}
@@ -105,7 +147,8 @@ namespace Script
 		lua_getglobal(mState,pVarName.c_str());
 		if (!lua_isboolean(mState,-1))
 		{
-			Core::LogRegister(std::string("Trying to get a BoolVar: ") + pVarName + " but it isn't a boolean");
+			Core::logWrite(Core::String("Gorgon::Script::LUA::getBoolenVar(\"")+pVarName+ "\"): ", false);
+			Core::logWrite(Core::String("Error: it isn't a boolean"), true, false);
 			return false;
 		}
 		return (bool)lua_toboolean(mState, -1);
@@ -160,5 +203,4 @@ namespace Script
 		luaL_getmetatable	(mState, pName.c_str());
 		lua_setmetatable	(mState, -2);
 	}
-
 }}
