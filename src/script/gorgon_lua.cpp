@@ -12,10 +12,8 @@ namespace Script
 			msg = lua_tostring(L, -1);
 			if (msg.length() == 0)
 			{
-				msg = "(error with no message)";
+				msg = "(error with no message).";
 			}
-			//fprintf(stderr, "status=%d, %s\n", status, msg);
-			//lua_pop(L, 1);
 			return msg;
 		}
 		return "No Error.";
@@ -54,8 +52,6 @@ namespace Script
 			Core::logWrite(std::string("No ScriptName provided."), true, false);
 			return;
 		}
-		//mudar para luaL_loadfile
-		//int status = luaL_dofile(mState, pScriptName.c_str());
 		int status = luaL_loadfile(mState, pScriptName.c_str());
 		switch(status)
 		{
@@ -69,6 +65,7 @@ namespace Script
 				break;
 		}
 	}
+
 	void Lua::executeString(const std::string& pValue)
 	{
 		const int status = luaL_dostring(mState,pValue.c_str());
@@ -76,7 +73,7 @@ namespace Script
 		{
 			Core::logWrite(Core::String("Gorgon::Script::LUA::executeString(\"")+pValue+ "\"): ", false);
 			Core::logWrite(Core::String("Error: ") + getErrorMsg(mState, status), true, false);
-			/** @todo throw LuaException("Unable to execute string."); */
+			throw LuaException(Core::String("Error executing code: ") + getErrorMsg(mState, status));
 		}
 	}
 

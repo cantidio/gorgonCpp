@@ -1,19 +1,25 @@
 #include<gorgon++/input/joystick.hpp>
 #include<gorgon++/addon/allegro5/joystick_handler.hpp>
+#include<gorgon++/addon/sdl/joystick_handler.hpp>
 #include <iostream>
-
+#include <stdlib.h>
 using namespace Gorgon;
 using namespace Gorgon::Input;
 using namespace Gorgon::Addon;
 using namespace std;
-
+#include<SDL/SDL.h>
+#define DEBUG(x) cout << "DEGUB-" << __LINE__ << ":" << x << endl
 int main()
 {
+	SDL_Init(SDL_INIT_EVERYTHING);
+	//printf("[%.6d]  %6.0d %6d\n",(int)5,6,7); return 0;
 	try
 	{
-		JoystickHandlerAllegro::set();
+		//JoystickHandlerAllegro::set();
+		JoystickHandlerSDL::set();
 		const int joyNum = JoystickHandler::get().getJoystickNumber();
-		Joystick joy;		
+		cout << "NUM: " << joyNum << endl;
+		Joystick joy;
 		bool sair=false;
 		int i,j;
 		
@@ -22,11 +28,16 @@ int main()
 		{
 			system("clear");
 			cout << joy.getName() << endl;
+			
+			
 			joy.update();
+			cout << "doido\n" << joy.getStickNumber() << endl;
+			
 			for(i = 0; i < joy.getStickNumber(); ++i)
-			{
+			{	
 				Input::Stick stick = joy.getStick(i);
 				cout << "Stick" << i << endl;
+				
 				for(j=0; j < stick.getAxesNumber(); ++j)
 				{
 					cout << "\tAxis" << j << ": " << stick.getAxis(j) << endl;

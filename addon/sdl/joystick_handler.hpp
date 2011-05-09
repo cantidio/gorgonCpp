@@ -24,80 +24,60 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_SDL_JOYSTICK_
-#define _GORGON_SDL_JOYSTICK_
-#include <gorgon++/input/joystick_base.hpp>
-#include <SDL/SDL.h>
-
+#ifndef _GORGON_SDL_JOYSTICK_HANDLER_
+#define _GORGON_SDL_JOYSTICK_HANDLER_
+#include <gorgon++/input/joystick_handler.hpp>
 namespace Gorgon{
 namespace Addon
-//namespace SDL{
 {
-	/**
-	 * Class that represents an SDL joystick
-	 *
-	 * @author	Cantidio Oliveira Fontes
-	 * @since	06/05/2011
-	 * @version	06/05/2011
-	 */
-	class JoystickSDL : public Input::JoystickBase
+	class JoystickHandlerSDL : public Input::JoystickHandler
 	{
 		protected:
-			SDL_Joystick*	mJoystick; /**<< var that holds the SDL joystick*/
-		public:
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/05/2011
 			 * @version	06/05/2011
-			 * @param	const int& pIndex, the index of the joystick
 			 */
-			JoystickSDL(const int& pIndex = 0);
+			JoystickHandlerSDL();
 			/**
 			 * Destructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
+			 * @since	06/05/2010
+			 * @version	06/05/2010
+			 */
+			~JoystickHandlerSDL();
+		public:
+			/**
+			 * Method that sets the JoystickHandler
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	06/05/2011
+			 * @version	06/05/2011
+			 * @param Joystick* pHandler, the Handler
+			 */
+			static void set();
+			/**
+			 * Method that returns an instance of the current joystickBase
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	06/05/2011
+			 * @version	06/05/2011
+			 * @param	const int& pIndex, the index of the Joystick
+			 * @return	JoystickBase*
+			 */
+			virtual Input::JoystickBase* getJoystick(const int& pIndex) const;
+			/**
+			 * Method that returns the number of joysticks available on system
+			 *
+			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
 			 * @version	04/05/2011
+			 * @return	int
 			 */
-			virtual ~JoystickSDL();
-			/**
-			 * Method that returns if the joystick is available
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	06/05/2011
-			 * @version	06/05/2011
-			 */
-			virtual bool isOpened() const;
-			/**
-			 * Method that updates the values of the joystick
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	06/05/2011
-			 * @version	06/05/2011
-			 */
-			virtual void update();
-			/**
-			 * Method that returns a stick of the joystick
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	06/05/2011
-			 * @version	06/05/2011
-			 * @param	const int& pStick, the index of the stick
-			 * @return	Stick
-			 */
-			virtual Input::Stick getStick(const int& pStick) const;
-			/**
-			 * Method that returns the value of the button
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	06/05/2011
-			 * @version	06/05/2011
-			 * @param	const int& pButton, the index of the button
-			 * @return	float
-			 */
-			virtual float getButton(const int& pButtonIndex) const;
+			virtual int getJoystickNumber() const;
 	};
 }}
 #endif

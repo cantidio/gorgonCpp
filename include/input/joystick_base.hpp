@@ -78,7 +78,6 @@ namespace Input
 			 * @return	bool
 			 */
 			virtual bool isOpened() const	= 0;
-
 			/**
 			 * Method that returns the name of the joystick
 			 *

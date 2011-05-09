@@ -177,19 +177,19 @@ namespace Core
 		#endif
 	}
 	/**
-		 * Inline Function that writes a string into the current log
-		 *
-		 * @author	Cantidio Oliveira Fontes
-		 * @since	05/05/2011
-		 * @version	05/05/2011
-		 * @param	const long& number, valor long a ser registrado
-		 */
-		inline void logWrite(const std::string& pString, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
-		{
-			#ifdef	_USE_LOG_
-			Log::get().write(pString, pNewline, pWriteTimeStamp);
-			#endif
-		}
+	 * Inline Function that writes a string into the current log
+	 *
+	 * @author	Cantidio Oliveira Fontes
+	 * @since	05/05/2011
+	 * @version	05/05/2011
+	 * @param	const long& number, valor long a ser registrado
+	 */
+	inline void logWrite(const std::string& pString, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
+	{
+		#ifdef	_USE_LOG_
+		Log::get().write(pString, pNewline, pWriteTimeStamp);
+		#endif
+	}
 	/**
 	 * Inline Function that registers a number into the current log
 	 *

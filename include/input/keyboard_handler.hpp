@@ -24,69 +24,60 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_BASE_NULL_
-#define _GORGON_JOYSTICK_BASE_NULL_
-#include "joystick_base.hpp"
-#include "joystick_stick.hpp"
+#ifndef _GORGON_KEYBOARD_HANDLER_
+#define _GORGON_KEYBOARD_HANDLER_
+
 namespace Gorgon{
 namespace Input
 {
+	class KeyboardBase;
 	/**
-	 * Class that represents an null joystick
+	 * Class that represents a JoystickHandler
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	05/05/2010
-	 * @version	05/05/2010
+	 * @since	05/05/2011
+	 * @version	05/05/2011
 	 */
-	class JoystickBaseNull : public JoystickBase
+	class KeyboardHandler
 	{
+		protected:
+			static KeyboardHandler* mHandler;/**<< Singleton instance of the class*/
+			/**
+			 * Protected Constructor
+			 */
+			KeyboardHandler();
+			/**
+			 * Protected Destructor
+			 */
+			virtual ~KeyboardHandler();
+			/**
+			 * Method that sets the JoystickHandler
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2010
+			 * @version	05/05/2010
+			 * @param Joystick& pHandler, the Handler
+			 */
+			static void set(KeyboardHandler& pHandler);
 		public:
 			/**
-			 * Constructor
+			 * Method that returns the KeyboardHandler
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pIndex, the index of the joystick
+			 * @since	07/05/2011
+			 * @version	07/05/2011
+			 * @return	JoystickHandler&
 			 */
-			inline JoystickBaseNull(const int& pIndex = 0) : JoystickBase(pIndex) { }
+			static KeyboardHandler& get();
 			/**
-			 * Method that updates the values of the joystick
+			 * Method that returns an instance of the current KeyboardBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
+			 * @since	07/05/2011
+			 * @version	07/05/2011
+			 * @return	KeyboardBase*
 			 */
-			virtual void update() { }
-			/**
-			 * Method that returns if the joystick is opened
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @return	bool
-			 */
-			virtual bool isOpened() const { return false; }
-			/**
-			 * Method that returns a stick
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pStick, the index of the stick to be retrieved
-			 * @return	Stick
-			 */
-			virtual Stick getStick(const int& pStick) const { return Stick(0); }
-			/**
-			 * Method that returns a button
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pButton, the index of the button
-			 * @return	float
-			 */
-			virtual float getButton(const int& pButton) const { return 0; }
+			virtual KeyboardBase* getKeyboard() const;
 	};
 }}
 #endif

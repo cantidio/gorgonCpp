@@ -32,7 +32,7 @@
 #include "core/gorgon_core.hpp"
 #include "geometry/gorgon_geometry.hpp"
 #include "graphic/gorgon_graphic.hpp"
-#include "input/gorgon_input.hpp"
+#include "input/input.hpp"
 #include "physics/physics.hpp"
 #include "script/gorgon_script.hpp"
 

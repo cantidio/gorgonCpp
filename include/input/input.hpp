@@ -26,7 +26,10 @@
  */
 #ifndef _GORGON_INPUT_
 #define	_GORGON_INPUT_
-
+#include "joystick_handler.hpp"
+#include "joystick.hpp"
+#include "keyboard_base.hpp"
+#include "keyboard.hpp"
 /**
  * @defgroup	Input
  *
@@ -34,8 +37,16 @@
  * @since		18/08/2008
  * @version		04/05/2011
  * @details
- *				O módulo Input engloba todas as funcionalidades relacionadas
- *				à entrada de dados, como classes de teclado, joystick
- *				entre outros
+ * 				This module is responsable for all the input functions,
+ * 				like joystick, keyboard and mouse
  */
+namespace Gorgon{
+namespace Input
+{
+	class InputHandler
+	{
+		protected:
+			static InputHandler* mHandler;/**<< Singleton instance of the class*/
+	};
+}}
 #endif

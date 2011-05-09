@@ -1,23 +1,28 @@
+#include "keyboard_base.hpp"
+
 namespace Gorgon{
 namespace Input
 {
-	class Key
-	{
-		std::vector<bool>
-	};
-	enum key
-	{
-		A,
-		B
-	};
 	class Keyboard
 	{
-		private:
-			Keyboard* mSingleton;
-			Keyboard();
-			~Keyboard();
+		protected:
+			KeyboardBase* mKeyboard;/**<< The implementation of the keyboard*/
 		public:
-			
-			bool isKeyPressed() const;
+			Keyboard()
+			{
+				mKeyboard = NULL;
+			}
+			~Keyboard()
+			{
+				if(mKeyboard != NULL) delete mKeyboard;
+			}
+			inline Key getKey(const Key& pKey) const
+			{
+				return mKeyboard->getKey(pKey);
+			}//return the state of the key
+			inline void update()
+			{
+				mKeyboard->update();
+			}
 	};
 }}

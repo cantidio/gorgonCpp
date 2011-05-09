@@ -26,8 +26,7 @@
  */
 #ifndef _GORGON_JOYSTICK_STICK_
 #define _GORGON_JOYSTICK_STICK_
-#include<stdio.h>
-#include<stdlib.h>
+
 namespace Gorgon{
 namespace Input
 {
@@ -55,7 +54,7 @@ namespace Input
 			inline Stick(const int& pAxesNumber)
 			{
 				mAxesNumber = pAxesNumber;
-				mAxes		= new float(mAxesNumber);
+				mAxes		= new float((mAxesNumber>0)?mAxesNumber:1);
 			}
 			/**
 			 * Copy Constructor
@@ -68,7 +67,7 @@ namespace Input
 			inline Stick(const Stick& pStick)
 			{
 				mAxesNumber = pStick.mAxesNumber;
-				mAxes		= new float(mAxesNumber);
+				mAxes		= new float((mAxesNumber>0)?mAxesNumber:1);
 				for(register int i = 0; i < mAxesNumber; ++i)
 				{
 					mAxes[i] = pStick.mAxes[i];
