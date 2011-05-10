@@ -371,6 +371,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard.hpp</locationURI>
 		</link>
 		<link>
+			<name>addon/sdl/keyboard_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/keyboard_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard_handler.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/spritepack/spritepack_lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_lua.cpp</locationURI>
@@ -1709,6 +1719,26 @@
 			<name>addon/sdl/.svn/text-base/joystick.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/prop-base/animation.cpp.svn-base</name>

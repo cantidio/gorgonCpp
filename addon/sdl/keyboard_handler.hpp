@@ -24,70 +24,56 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_SDL_KEYBOARD_
-#define _GOROGN_SDL_KEYBOARD_
-#include <gorgon++/input/keyboard_base.hpp>
-#include <SDL/SDL.h>
+#ifndef _GORGON_KEYBOARD_HANDLER_SDL_
+#define _GORGON_KEYBOARD_HANDLER_SDL_
+#include <gorgon++/input/keyboard_handler.hpp>
 namespace Gorgon{
 namespace Addon
 {
 	/**
-	 * Class that represents the keyboard implementation with SDL
+	 * Class that represents a KeyboardHandlerSDL
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	07/05/2011
-	 * @version	07/05/2011
+	 * @since	10/05/2011
+	 * @version	10/05/2011
 	 */
-	class KeyboardSDL : public Input::KeyboardBase
+	class KeyboardHandlerSDL : public Input::KeyboardHandler
 	{
 		protected:
-			Uint8 *mState;		/**<< var that stores the state of the keyboard*/
-			SDLMod mModState;	/**<< var that stores the state of the mod keys of the keyboard*/
+			/**
+			 * Protected Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 */
+			KeyboardHandlerSDL();
+			/**
+			 * Protected Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 */
+			virtual ~KeyboardHandlerSDL();
 		public:
 			/**
-			 * Constructor
+			 * Method that sets the KeyboardHandler to the KeyBoardHandlerSDL
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 */
-			KeyboardSDL();
+			static void set();
 			/**
-			 * Virtual Destructor
+			 * Method that returns an instance of the current KeyboardBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @return	KeyboardBase*
 			 */
-			virtual ~KeyboardSDL();
-			/**
-			 * Method that returns if the keyboard driver is opened
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 * @return	bool
-			 */
-			virtual bool isOpened() const;
-			/**
-			 * Method that updates the state of the keyboard
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 * @details
-			 * 			This method must be called every cycle of the game
-			 */
-			virtual void update();
-			/**
-			 * Method that returns the key
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 * @return	Input::Key
-			 */
-			virtual Input::Key getKey(const int& pKeyValue) const;
+			virtual Input::KeyboardBase* getKeyboard() const;
 	};
 }}
 #endif

@@ -215,7 +215,7 @@ namespace Input
 				LEFT_WIN,
 				RIGHT_WIN,
 				MENU,
-				SCROOL_LOCK,
+				SCROLL_LOCK,
 				NUM_LOCK,
 				CAPS_LOCK,
 				KEY_LAST

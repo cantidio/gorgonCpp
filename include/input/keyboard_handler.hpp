@@ -44,19 +44,27 @@ namespace Input
 			static KeyboardHandler* mHandler;/**<< Singleton instance of the class*/
 			/**
 			 * Protected Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	05/05/2011
 			 */
 			KeyboardHandler();
 			/**
 			 * Protected Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	05/05/2011
 			 */
 			virtual ~KeyboardHandler();
 			/**
 			 * Method that sets the JoystickHandler
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2010
-			 * @version	05/05/2010
-			 * @param Joystick& pHandler, the Handler
+			 * @since	05/05/2011
+			 * @version	05/05/2011
+			 * @param	KeyboardHandler& pHandler, the Handler
 			 */
 			static void set(KeyboardHandler& pHandler);
 		public:
@@ -66,7 +74,7 @@ namespace Input
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
 			 * @version	07/05/2011
-			 * @return	JoystickHandler&
+			 * @return	KeyboardHandler&
 			 */
 			static KeyboardHandler& get();
 			/**
