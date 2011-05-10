@@ -1,3 +1,5 @@
+#ifndef _GORGON_KEYBOARD_BASE_
+#define _GORGON_KEYBOARD_BASE_
 #include "keyboard_key.hpp"
 namespace Gorgon{
 namespace Input
@@ -21,3 +23,4 @@ namespace Input
 			virtual void update() = 0;
 	};
 }}
+#endif

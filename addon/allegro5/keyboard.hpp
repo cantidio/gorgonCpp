@@ -1,3 +1,5 @@
+#ifndef _GORGON_ALLEGRO_KEYBOARD_
+#define _GOROGN_ALLEGRO_KEYBOARD_
 #include <gorgon++/input/keyboard_base.hpp>
 //#include <gorgon++/input/keyboard_key.hpp>
 struct ALLEGRO_KEYBOARD_STATE;
@@ -17,3 +19,4 @@ namespace Addon
 			virtual Input::Key getKey(const int& pKeyValue) const;
 	};
 }}
+#endif

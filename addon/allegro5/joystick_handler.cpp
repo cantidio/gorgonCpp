@@ -10,15 +10,15 @@ namespace Addon
 	{
 		if( !(al_init() && al_install_joystick()) )
 		{
-			Core::logWrite(Core::String("JoystickHandlerAllegro::JoystickHandlerAllegro(): Error, could not open Handler.\n"));
+			Core::logWrite(Core::String("JoystickHandlerAllegro::JoystickHandlerAllegro(): Error, could not open Handler."));
 			throw("Couldn't create allegro5 joystick handler.");
 		}
-		Core::logWrite(Core::String("JoystickHandlerAllegro::JoystickHandlerAllegro(): Sucessfull.\n"));
+		Core::logWrite(Core::String("JoystickHandlerAllegro::JoystickHandlerAllegro(): Sucessfull."));
 	}
 
 	JoystickHandlerAllegro::~JoystickHandlerAllegro()
 	{
-		Core::logWrite(Core::String("JoystickHandlerAllegro::~JoystickHandlerAllegro()\n"));
+		Core::logWrite(Core::String("JoystickHandlerAllegro::~JoystickHandlerAllegro()"));
 	}
 
 	void JoystickHandlerAllegro::set()
