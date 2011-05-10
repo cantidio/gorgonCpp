@@ -41,6 +41,13 @@ namespace Addon
 			 * @version	05/05/2011
 			 */
 			JoystickHandlerAllegro();
+			/**
+			 * Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	05/05/2011
+			 */
 			~JoystickHandlerAllegro();
 		public:
 			/**

@@ -301,16 +301,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard_handler.hpp</locationURI>
 		</link>
 		<link>
-			<name>addon/allegro5/keyboard_key.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard_key.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/keyboard_key.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard_key.hpp</locationURI>
-		</link>
-		<link>
 			<name>addon/animationpack/gorgon_animationpack_lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.cpp</locationURI>
