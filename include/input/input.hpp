@@ -30,6 +30,9 @@
 #include "joystick.hpp"
 #include "keyboard_base.hpp"
 #include "keyboard.hpp"
+#include "mouse_handler.hpp"
+#include "mouse.hpp"
+
 /**
  * @defgroup	Input
  *

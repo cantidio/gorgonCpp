@@ -11,6 +11,7 @@ namespace Addon
 		//SDL_WM_GrabInput(SDL_GRAB_ON);
 	//	mModState = new SDLMod;
 
+		SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
 		//SDL_EventState(SDL_ENABLE , SDL_KEYDOWN);
 		//SDL_EventState(SDL_ENABLE , SDL_KEYUP);
 

@@ -24,70 +24,59 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_BASE_NULL_
-#define _GORGON_JOYSTICK_BASE_NULL_
-#include "joystick_base.hpp"
-#include "joystick_stick.hpp"
+#ifndef _GORGON_MOUSE_BASE_
+#define _GORGON_MOUSE_BASE_
 
 namespace Gorgon{
 namespace Input
 {
 	/**
-	 * Class that represents an null joystick
+	 * Class that represents the mouseBase
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	05/05/2010
-	 * @version	05/05/2010
+	 * @since	10/05/2011
+	 * @version	10/05/2011
 	 */
-	class JoystickBaseNull : public JoystickBase
+	class MouseBase
 	{
 		public:
 			/**
-			 * Constructor
+			 * Method that updates the values of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pIndex, the index of the joystick
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 */
-			inline JoystickBaseNull(const int& pIndex = 0) : JoystickBase(pIndex) { }
+			virtual void update() = 0;
 			/**
-			 * Method that updates the values of the joystick
+			 * Method that returns if the mouse is opened
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 */
-			virtual void update() { }
-			/**
-			 * Method that returns if the joystick is opened
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 * @return	bool
 			 */
-			virtual bool isOpened() const { return false; }
+			virtual bool isOpened() const = 0;
 			/**
-			 * Method that returns a stick
+			 * Method that returns the position of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pStick, the index of the stick to be retrieved
-			 * @return	Stick
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @return	Point
 			 */
-			virtual Stick getStick(const int& pStick) const { return Stick(0); }
+			virtual Point getPosition() const = 0;
 			/**
-			 * Method that returns a button
+			 * Method that returns the state of a button
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pButton, the index of the button
-			 * @return	float
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @param	const int& pButton, the button
+			 * @return	bool
 			 */
-			virtual float getButton(const int& pButton) const { return 0; }
+//SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, SDL_BUTTON_RIGHT, SDL_BUTTON_WHEELUP, SDL_BUTTON_WHEELDOWN
+			virtual bool getButton(const int& pButton) const = 0;
 	};
 }}
 #endif

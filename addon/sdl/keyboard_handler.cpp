@@ -3,8 +3,14 @@
 namespace Gorgon{
 namespace Addon
 {
-	KeyboardHandlerSDL::KeyboardHandlerSDL(){}
-	KeyboardHandlerSDL::~KeyboardHandlerSDL(){}
+	KeyboardHandlerSDL::KeyboardHandlerSDL()
+	{
+		Core::logWrite(Core::String("KeyboardHandlerSDL::KeyboardHandlerSDL(): Sucessfull."));
+	}
+	KeyboardHandlerSDL::~KeyboardHandlerSDL()
+	{
+		Core::logWrite(Core::String("KeyboardHandlerSDL::~KeyboardHandlerSDL(): Sucessfull."));
+	}
 	void KeyboardHandlerSDL::set()
 	{
 		static KeyboardHandlerSDL handler;

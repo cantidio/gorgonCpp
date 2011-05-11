@@ -44,10 +44,18 @@ namespace Input
 			static JoystickHandler* mHandler;/**<< Singleton instance of the class*/
 			/**
 			 * Protected Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	05/05/2011
 			 */
 			JoystickHandler();
 			/**
 			 * Protected Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	05/05/2011
 			 */
 			virtual ~JoystickHandler();
 			/**

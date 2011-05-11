@@ -7,6 +7,7 @@
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
 					<key>?name?</key>
@@ -30,7 +31,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>${workspace_loc:/Gorgon++/Release}</value>
+					<value>${workspace_loc:/Gorgon++/Debug}</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
@@ -42,7 +43,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
-					<value>true</value>
+					<value>false</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
@@ -379,6 +380,26 @@
 			<name>addon/sdl/keyboard_handler.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard_handler.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/mouse.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/mouse.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/mouse_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/mouse_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse_handler.hpp</locationURI>
 		</link>
 		<link>
 			<name>addon/spritepack/spritepack_lua.cpp</name>
@@ -766,6 +787,26 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/keyboard_key.hpp</locationURI>
 		</link>
 		<link>
+			<name>include/input/mouse.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/mouse.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/mouse_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/mouse_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/mouse_base_null.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/mouse_base_null.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/mouse_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/mouse_handler.hpp</locationURI>
+		</link>
+		<link>
 			<name>include/physics/.svn</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -1146,11 +1187,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/input/SConscript</locationURI>
 		</link>
 		<link>
-			<name>src/input/joystick.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/input/joystick.cpp</locationURI>
-		</link>
-		<link>
 			<name>src/input/joystick_handler.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/input/joystick_handler.cpp</locationURI>
@@ -1164,6 +1200,11 @@
 			<name>src/input/keyboard_key.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/input/keyboard_key.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/input/mouse_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/mouse_handler.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/physics/.svn</name>
@@ -1739,6 +1780,16 @@
 			<name>addon/sdl/.svn/text-base/keyboard.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/prop-base/animation.cpp.svn-base</name>
@@ -2331,6 +2382,21 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/input/.svn/text-base/keyboard_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/keyboard_base_null.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_base_null.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/input/.svn/text-base/keyboard_key.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_key.hpp.svn-base</locationURI>
@@ -2909,6 +2975,21 @@
 			<name>src/input/.svn/text-base/joystick.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/keyboard_key.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/keyboard_key.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/physics/.svn/text-base/body.cpp.svn-base</name>

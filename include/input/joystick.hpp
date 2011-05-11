@@ -28,6 +28,7 @@
 #define _GORGON_JOYSTICK_
 #include "joystick_base.hpp"
 #include "joystick_handler.hpp"
+
 namespace Gorgon{
 namespace Input
 {
@@ -41,7 +42,7 @@ namespace Input
 	class Joystick
 	{
 		protected:
-			JoystickBase* mJoystick;
+			JoystickBase* mJoystick;/**<< var that stores the joystickBase*/
 		public:
 			/**
 			 * Constructor
@@ -78,15 +79,6 @@ namespace Input
 			{
 				return mJoystick->isOpened();
 			}
-			/**
-			 * Method that returns the number of joysticks available on system
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @return	int
-			 */
-			//static int getJoystickNumber();
 			/**
 			 * Method that returns the name of the joystick
 			 *

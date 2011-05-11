@@ -24,70 +24,58 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_BASE_NULL_
-#define _GORGON_JOYSTICK_BASE_NULL_
-#include "joystick_base.hpp"
-#include "joystick_stick.hpp"
+#ifndef _GORGON_MOUSE_HANDLER_SDL_
+#define _GORGON_MOUSE_HANDLER_SDL_
+#include <gorgon++/input/mouse_handler.hpp>
 
 namespace Gorgon{
-namespace Input
+namespace Addon
 {
 	/**
-	 * Class that represents an null joystick
+	 * Class that represents a MouseHandlerSDL
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	05/05/2010
-	 * @version	05/05/2010
+	 * @since	10/05/2011
+	 * @version	10/05/2011
 	 */
-	class JoystickBaseNull : public JoystickBase
+	class MouseHandlerSDL : public Input::MouseHandler
 	{
+		protected:
+			/**
+			 * Protected Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 */
+			MouseHandlerSDL();
+			/**
+			 * Protected Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 */
+			virtual ~MouseHandlerSDL();
 		public:
 			/**
-			 * Constructor
+			 * Method that sets the JoystickHandler
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pIndex, the index of the joystick
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @param	MouseHandler& pHandler, the Handler
 			 */
-			inline JoystickBaseNull(const int& pIndex = 0) : JoystickBase(pIndex) { }
+			static void set();
 			/**
-			 * Method that updates the values of the joystick
+			 * Method that returns an instance of the current MouseBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @return	MouseBase*
 			 */
-			virtual void update() { }
-			/**
-			 * Method that returns if the joystick is opened
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @return	bool
-			 */
-			virtual bool isOpened() const { return false; }
-			/**
-			 * Method that returns a stick
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pStick, the index of the stick to be retrieved
-			 * @return	Stick
-			 */
-			virtual Stick getStick(const int& pStick) const { return Stick(0); }
-			/**
-			 * Method that returns a button
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pButton, the index of the button
-			 * @return	float
-			 */
-			virtual float getButton(const int& pButton) const { return 0; }
+			virtual MouseBase* getMouse() const;
 	};
 }}
 #endif

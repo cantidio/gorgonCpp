@@ -24,70 +24,99 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_BASE_NULL_
-#define _GORGON_JOYSTICK_BASE_NULL_
-#include "joystick_base.hpp"
-#include "joystick_stick.hpp"
+#ifndef _GORGON_MOUSE_
+#define _GORGON_MOUSE_
+#include "mouse_base.hpp"
+#include "mouse_handler.hpp"
 
 namespace Gorgon{
 namespace Input
 {
 	/**
-	 * Class that represents an null joystick
+	 * Class that represents the mouse
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	05/05/2010
-	 * @version	05/05/2010
+	 * @since	10/05/2011
+	 * @version	10/05/2011
 	 */
-	class JoystickBaseNull : public JoystickBase
+	class Mouse
 	{
+		protected:
+			MouseBase* mMouse;/**<< The implementation of the mouse*/
 		public:
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pIndex, the index of the joystick
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 */
-			inline JoystickBaseNull(const int& pIndex = 0) : JoystickBase(pIndex) { }
+			Mouse()
+			{
+				mMouse = MouseHandler::get().getMouse();
+			}
 			/**
-			 * Method that updates the values of the joystick
+			 * Destructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 */
-			virtual void update() { }
+			~Mouse()
+			{
+				if(mMouse != NULL)
+				{
+					delete mMouse;
+				}
+			}
 			/**
-			 * Method that returns if the joystick is opened
+			 * Method that updates the values of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 */
+			inline void update()
+			{
+				mMouse->update();
+			}
+			/**
+			 * Method that returns if the mouse is opened
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 * @return	bool
 			 */
-			virtual bool isOpened() const { return false; }
+			inline bool isOpened() const
+			{
+				mMouse->isOpened();
+			}
 			/**
-			 * Method that returns a stick
+			 * Method that returns the position of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pStick, the index of the stick to be retrieved
-			 * @return	Stick
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @return	Point
 			 */
-			virtual Stick getStick(const int& pStick) const { return Stick(0); }
+			inline Point getPosition() const
+			{
+				return mMouse->getPosition();
+			}
 			/**
-			 * Method that returns a button
+			 * Method that returns the state of a button
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const int& pButton, the index of the button
-			 * @return	float
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @param	const int& pButton, the button
+			 * @return	bool
 			 */
-			virtual float getButton(const int& pButton) const { return 0; }
+			inline bool getButton(const int& pButton) const
+			{
+				return mMouse->getButton(pButton);
+			}
 	};
 }}
 #endif

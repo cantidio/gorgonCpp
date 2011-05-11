@@ -28,6 +28,7 @@
 #define _GORGON_KEYBOARD_BASE_NULL_
 #include "keyboard_base.hpp"
 #include "keyboard_key.hpp"
+
 namespace Gorgon{
 namespace Input
 {

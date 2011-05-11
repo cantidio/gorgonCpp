@@ -28,6 +28,7 @@
 #define _GORGON_JOYSTICK_BASE_
 #include "../core/gorgon_string.hpp"
 #include "joystick_stick.hpp"
+
 namespace Gorgon{
 namespace Input
 {
