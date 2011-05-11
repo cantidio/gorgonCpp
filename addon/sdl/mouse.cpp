@@ -2,27 +2,37 @@
 namespace Gorgon{
 namespace Addon
 {
+	MouseSDL::MouseSDL()
+	{
+		mButton[Input::MouseBase::LEFT]			= SDL_BUTTON_LEFT;
+		mButton[Input::MouseBase::MIDDLE]		= SDL_BUTTON_MIDDLE;
+		mButton[Input::MouseBase::RIGHT]		= SDL_BUTTON_RIGHT;
+		mButton[Input::MouseBase::WHEEL_UP]		= SDL_BUTTON_WHEELUP;
+		mButton[Input::MouseBase::WHEEL_DOWN]	= SDL_BUTTON_WHEELDOWN;
+	}
 	void MouseSDL::update()
 	{
-		//http://www.libsdl.org/docs/html/eventfunctions.html
-		//http://www.libsdl.org/docs/html/sdlgetmousestate.html
-		//http://www.libsdl.org/docs/html/sdlgetrelativemousestate.html
-		//http://www.libsdl.org/docs/html/sdlevent.html
-		//http://lazyfoo.net/SDL_tutorials/lesson09/index.php
+		int x,y;
 		SDL_PumpEvents();
-		SDL_GetMouseState(int *x, int *y);
-		//SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, SDL_BUTTON_RIGHT, SDL_BUTTON_WHEELUP, SDL_BUTTON_WHEELDOWN
+		mState = SDL_GetMouseState(&x, &y);
+		mPosition = Point(x,y);
 	}
 	bool MouseSDL::isOpened() const
 	{
-
+		return SDL_EventState(SDL_QUERY, SDL_MOUSEMOTION)	&&
+			SDL_EventState(SDL_QUERY, SDL_MOUSEBUTTONDOWN)	&&
+			SDL_EventState(SDL_QUERY, SDL_MOUSEBUTTONUP);
 	}
 	Point MouseSDL::getPosition() const
 	{
-
+		return mPosition;
 	}
-	bool MouseSDL::getButton(const int& pButton) const
+	bool MouseSDL::getButton(const Input::MouseBase::Button& pButton) const
 	{
-
+		if(pButton < (Input::MouseBase::LAST_BUTTON-1))
+		{
+			return (mState & SDL_BUTTON( mButton[pButton] ));
+		}
+		return false;
 	}
 }}

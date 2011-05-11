@@ -26,6 +26,7 @@
  */
 #ifndef _GORGON_MOUSE_BASE_
 #define _GORGON_MOUSE_BASE_
+#include "../geometry/gorgon_point.hpp"
 
 namespace Gorgon{
 namespace Input
@@ -40,6 +41,15 @@ namespace Input
 	class MouseBase
 	{
 		public:
+			enum Button
+			{
+				LEFT,
+				MIDDLE,
+				RIGHT,
+				WHEEL_UP,
+				WHEEL_DOWN,
+				LAST_BUTTON
+			};/**<< enum that stores the buttons of the mouse*/
 			/**
 			 * Method that updates the values of the mouse
 			 *
@@ -75,8 +85,7 @@ namespace Input
 			 * @param	const int& pButton, the button
 			 * @return	bool
 			 */
-//SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, SDL_BUTTON_RIGHT, SDL_BUTTON_WHEELUP, SDL_BUTTON_WHEELDOWN
-			virtual bool getButton(const int& pButton) const = 0;
+			virtual bool getButton(const MouseBase::Button& pButton) const = 0;
 	};
 }}
 #endif

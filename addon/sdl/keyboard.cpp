@@ -164,7 +164,6 @@ namespace Addon
 				}
 				else
 				{
-					printf("AQUI\n");
 					return Input::Key(pKeyValue,false);
 				}
 		}

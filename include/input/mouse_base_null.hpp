@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_MOUSE_BASE_NULL_
 #define _GORGON_MOUSE_BASE_NULL_
-
+#include "mouse_base.hpp"
 namespace Gorgon{
 namespace Input
 {
@@ -37,7 +37,7 @@ namespace Input
 	 * @since	10/05/2011
 	 * @version	10/05/2011
 	 */
-	class MouseBaseNull
+	class MouseBaseNull : public MouseBase
 	{
 		public:
 			/**
@@ -47,7 +47,7 @@ namespace Input
 			 * @since	10/05/2011
 			 * @version	10/05/2011
 			 */
-			inline void update(){ }
+			inline virtual void update(){ }
 			/**
 			 * Method that returns if the mouse is opened
 			 *
@@ -56,7 +56,7 @@ namespace Input
 			 * @version	10/05/2011
 			 * @return	bool
 			 */
-			inline bool isOpened() const
+			inline virtual bool isOpened() const
 			{
 				return false;
 			}
@@ -68,7 +68,7 @@ namespace Input
 			 * @version	10/05/2011
 			 * @return	Point
 			 */
-			inline Point getPosition() const
+			inline virtual Point getPosition() const
 			{
 				return Point(0,0);
 			}
@@ -81,7 +81,7 @@ namespace Input
 			 * @param	const int& pButton, the button
 			 * @return	bool
 			 */
-			inline bool getButton(const int& pButton) const
+			inline virtual bool getButton(const MouseBase::Button& pButton) const
 			{
 				return false;
 			}

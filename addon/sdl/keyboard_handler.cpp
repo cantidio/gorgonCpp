@@ -1,5 +1,6 @@
 #include "keyboard_handler.hpp"
 #include "keyboard.hpp"
+#include <gorgon++/core/gorgon_log.hpp>
 namespace Gorgon{
 namespace Addon
 {

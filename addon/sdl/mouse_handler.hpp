@@ -75,7 +75,7 @@ namespace Addon
 			 * @version	10/05/2011
 			 * @return	MouseBase*
 			 */
-			virtual MouseBase* getMouse() const;
+			virtual Input::MouseBase* getMouse() const;
 	};
 }}
 #endif

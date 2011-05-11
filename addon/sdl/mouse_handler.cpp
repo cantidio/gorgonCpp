@@ -1,5 +1,7 @@
 #include "mouse_handler.hpp"
 #include "mouse.hpp"
+#include <gorgon++/core/gorgon_log.hpp>
+#include <gorgon++/core/gorgon_string.hpp>
 namespace Gorgon{
 namespace Addon
 {
@@ -16,7 +18,7 @@ namespace Addon
 		static MouseHandlerSDL handler;
 		Input::MouseHandler::set(handler);
 	}
-	MouseBase* MouseHandlerSDL::getMouse() const
+	Input::MouseBase* MouseHandlerSDL::getMouse() const
 	{
 		return new MouseSDL();
 	}

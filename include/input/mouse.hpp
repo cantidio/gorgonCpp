@@ -90,7 +90,7 @@ namespace Input
 			 */
 			inline bool isOpened() const
 			{
-				mMouse->isOpened();
+				return mMouse->isOpened();
 			}
 			/**
 			 * Method that returns the position of the mouse
@@ -113,7 +113,7 @@ namespace Input
 			 * @param	const int& pButton, the button
 			 * @return	bool
 			 */
-			inline bool getButton(const int& pButton) const
+			inline bool getButton(const MouseBase::Button& pButton) const
 			{
 				return mMouse->getButton(pButton);
 			}
