@@ -1,5 +1,5 @@
 #include<gorgon++/gorgon.hpp>
-//#include<gorgon++/addon/allegro5/keyboard_handler.hpp>
+#include<gorgon++/addon/allegro5/keyboard_handler.hpp>
 #include<gorgon++/addon/sdl/keyboard_handler.hpp>
 #include<allegro5/allegro.h>
 #include<SDL/SDL.h>

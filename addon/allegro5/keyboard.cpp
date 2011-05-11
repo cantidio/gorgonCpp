@@ -109,7 +109,7 @@ namespace Addon
 			mKey[Input::Key::LEFT_WIN]		= ALLEGRO_KEY_LWIN;
 			mKey[Input::Key::RIGHT_WIN]		= ALLEGRO_KEY_RWIN;
 			mKey[Input::Key::MENU]			= ALLEGRO_KEY_MENU;
-			mKey[Input::Key::SCROOL_LOCK]	= ALLEGRO_KEY_SCROLLLOCK;
+			mKey[Input::Key::SCROLL_LOCK]	= ALLEGRO_KEY_SCROLLLOCK;
 			mKey[Input::Key::NUM_LOCK]		= ALLEGRO_KEY_NUMLOCK;
 			mKey[Input::Key::CAPS_LOCK]		= ALLEGRO_KEY_CAPSLOCK;
 		}

@@ -302,6 +302,26 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard_handler.hpp</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/mouse.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/mouse.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/mouse_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/mouse_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse_handler.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/animationpack/gorgon_animationpack_lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.cpp</locationURI>
@@ -1635,6 +1655,26 @@
 			<name>addon/allegro5/.svn/text-base/joystick_handler.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader/allegro5/.svn/entries</name>
