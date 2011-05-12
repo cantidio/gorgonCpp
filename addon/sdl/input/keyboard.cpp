@@ -1,5 +1,6 @@
 #include "keyboard.hpp"
 #include <SDL/SDL.h>
+#include <SDL/SDL_keyboard.h>
 #include <gorgon++/core/gorgon_log.hpp>
 namespace Gorgon{
 namespace Addon
@@ -144,7 +145,8 @@ namespace Addon
 	void KeyboardSDL::update()
 	{
 		SDL_PumpEvents();
-		mState		= SDL_GetKeyState(NULL);
+		//mState		= SDL_GetKeyState(NULL);//SDL1.2
+		mState		= SDL_GetKeyboardState(NULL);
 		mModState	= SDL_GetModState();
 	}
 

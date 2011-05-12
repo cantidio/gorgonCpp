@@ -54,7 +54,11 @@ namespace Input
 			inline Stick(const int& pAxesNumber)
 			{
 				mAxesNumber = pAxesNumber;
-				mAxes		= new float((mAxesNumber>0)?mAxesNumber:1);
+				mAxes		= new float(mAxesNumber);
+				for(register int i = 0; i < mAxesNumber; ++i)
+				{
+					mAxes[i]=0;
+				}
 			}
 			/**
 			 * Copy Constructor

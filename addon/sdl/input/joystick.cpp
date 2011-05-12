@@ -14,7 +14,7 @@ namespace Addon
 			const int hats	= SDL_JoystickNumHats(mJoystick);
 			mButtonNumber	= SDL_JoystickNumButtons(mJoystick);
 			mName			= SDL_JoystickName(mIndex);
-			mStickNumber	= ((axes>0)?1:0) + ((hats>0)?1:0);
+			mStickNumber	= ((axes>0)?1:0) + hats;
 		}
 		else
 		{
@@ -43,16 +43,20 @@ namespace Addon
 	Input::Stick JoystickSDL::getStick(const int& pStick) const
 	{
 		const int hats = SDL_JoystickNumHats(mJoystick);
-		const int axes = (SDL_JoystickNumAxes(mJoystick)>3) ? 3 : SDL_JoystickNumAxes(mJoystick);
+		const int axes = (SDL_JoystickNumAxes(mJoystick)>2) ? 2 : SDL_JoystickNumAxes(mJoystick);
 		/**@todo SDL just suport 3 axes in a joystick, fix it ok*/
-		if(pStick == 0 && (hats>0))// (mStickNumber-1))//SDL
+		if(pStick < hats)// (mStickNumber-1))//SDL
 		{
-			Input::Stick stick( hats );
+			Input::Stick stick( 2 );
+			Uint8 hat = SDL_JoystickGetHat(mJoystick,pStick);
+			if((hat & SDL_HAT_LEFT) == SDL_HAT_LEFT)		stick.setAxis(0, -1);//x
+			else if((hat & SDL_HAT_RIGHT) == SDL_HAT_RIGHT)	stick.setAxis(0, 1);//x
+			else											stick.setAxis(0, 0);//x
 
-			for(register int i = 0; i < hats; ++i)
-			{
-				stick.setAxis(i, SDL_JoystickGetHat(mJoystick,i));
-			}
+			if((hat & SDL_HAT_UP) == SDL_HAT_UP)			stick.setAxis(1, -1);//y
+			else if((hat & SDL_HAT_DOWN) == SDL_HAT_DOWN)	stick.setAxis(1, 1);//y
+			else											stick.setAxis(1, 0);//y
+
 			return stick;
 		}
 		else if(axes>0)

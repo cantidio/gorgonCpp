@@ -1222,6 +1222,16 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/graphic/image.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/image.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/image.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/image.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/allegro5/input/.svn</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
