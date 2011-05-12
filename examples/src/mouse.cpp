@@ -28,6 +28,7 @@ bool initSDL()
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0)			return false;
     if( !SDL_SetVideoMode( 640, 480, 0, 0 ) )	return false;
     MouseHandlerSDL::set();
+    return true;
 }
 void closeSDL()
 {
@@ -35,17 +36,25 @@ void closeSDL()
 }
 int main()
 {
-	initAllegro();
+	initSDL();
 	
 	Mouse a;
 	Point pos;
 	cout << (a.isOpened() ? "opened" : "not opened") << endl;
 	while(!a.getButton(MouseBase::LEFT))
 	{
+		a.update();
+		if(a.getButton(MouseBase::WHEEL_UP))
+		{
+			cout << "Wheel up"  << endl;
+		}
+		else if(a.getButton(MouseBase::WHEEL_DOWN))
+		{
+			cout << "Wheel down"  << endl;
+		}
 		pos = a.getPosition();
 //		pos.describe();
-		a.update();
 	}
-	closeAllegro();
+	closeSDL();
 	return 0;
 }

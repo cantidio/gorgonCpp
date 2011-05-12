@@ -262,64 +262,14 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>addon/allegro5/joystick.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick.cpp</locationURI>
+			<name>addon/allegro5/graphic</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>addon/allegro5/joystick.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/joystick_handler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick_handler.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/joystick_handler.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/joystick_handler.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/keyboard.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/keyboard.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/keyboard_handler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard_handler.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/keyboard_handler.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/keyboard_handler.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/mouse.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/mouse.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/mouse_handler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse_handler.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/mouse_handler.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/mouse_handler.hpp</locationURI>
+			<name>addon/allegro5/input</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>addon/animationpack/gorgon_animationpack_lua.cpp</name>
@@ -362,64 +312,14 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/joystick.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/joystick.cpp</locationURI>
+			<name>addon/sdl/graphic</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/joystick.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/joystick.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/joystick_handler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/joystick_handler.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/joystick_handler.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/joystick_handler.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/keyboard.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/keyboard.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/keyboard_handler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard_handler.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/keyboard_handler.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/keyboard_handler.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/mouse.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/mouse.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/mouse_handler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse_handler.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/mouse_handler.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/mouse_handler.hpp</locationURI>
+			<name>addon/sdl/input</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>addon/spritepack/spritepack_lua.cpp</name>
@@ -1317,6 +1217,76 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/graphic/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/joystick.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/joystick.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/joystick_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/joystick_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/joystick_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/joystick_handler.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/keyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/keyboard.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/keyboard.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/keyboard.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/keyboard_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/keyboard_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/keyboard_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/keyboard_handler.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/mouse.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/mouse.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/mouse.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/mouse.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/mouse_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/mouse_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/mouse_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/mouse_handler.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/image_loader/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/.svn/entries</locationURI>
@@ -1375,6 +1345,76 @@
 			<name>addon/sdl/.svn/text-base</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/joystick.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/joystick_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/joystick_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_handler.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/keyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/keyboard.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/keyboard_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/keyboard_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_handler.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/mouse.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/mouse.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/mouse_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/mouse_handler.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_handler.hpp</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/entries</name>
@@ -1677,6 +1717,21 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/graphic/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>addon/image_loader/allegro5/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/allegro5/.svn/entries</locationURI>
@@ -1830,6 +1885,21 @@
 			<name>addon/sdl/.svn/text-base/keyboard_handler.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/prop-base/animation.cpp.svn-base</name>
@@ -3122,6 +3192,66 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/gorgon_lua_return.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>addon/image_loader/gorgon++/include/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/entries</locationURI>
@@ -3150,6 +3280,66 @@
 			<name>addon/image_loader/gorgon++/src/.svn/text-base</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_handler.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_bmp_exception.hpp.svn-base</name>

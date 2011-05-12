@@ -42,8 +42,7 @@ namespace Addon
 	class MouseAllegro : public Input::MouseBase
 	{
 		protected:
-			ALLEGRO_MOUSE_STATE* mState;
-//			Uint8	mState;					/**<< var that stores the state of the keyboard*/
+			ALLEGRO_MOUSE_STATE* mState;	/**<< var that stores the state of the mouse*/
 			Point	mPosition;				/**<< var that stores the position of the mouse*/
 			int		mButton[LAST_BUTTON];
 		public:
@@ -62,7 +61,7 @@ namespace Addon
 			 * @since	11/05/2011
 			 * @version	11/05/2011
 			 */
-			~MouseAllegro();
+			virtual ~MouseAllegro();
 			/**
 			 * Method that updates the values of the mouse
 			 *

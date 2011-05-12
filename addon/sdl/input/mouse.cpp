@@ -29,7 +29,7 @@ namespace Addon
 	}
 	bool MouseSDL::getButton(const Input::MouseBase::Button& pButton) const
 	{
-		if(pButton < (Input::MouseBase::LAST_BUTTON-1))
+		if(pButton < (Input::MouseBase::LAST_BUTTON))
 		{
 			return (mState & SDL_BUTTON( mButton[pButton] ));
 		}

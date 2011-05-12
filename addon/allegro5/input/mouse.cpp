@@ -36,6 +36,7 @@ namespace Addon
 			al_get_mouse_state_axis(mState, 0),
 			al_get_mouse_state_axis(mState, 1)
 		);
+		al_set_mouse_z(0);
 	}
 	bool MouseAllegro::isOpened() const
 	{
