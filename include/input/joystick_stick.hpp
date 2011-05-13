@@ -41,7 +41,7 @@ namespace Input
 	{
 		protected:
 			int		mAxesNumber;/**<< var that holds the number of axes of this stick */
-			float*	mAxes;		/**<< var that holds the value of the axes of this stick*/
+			float	mAxes[4];		/**<< var that holds the value of the axes of this stick*/
 		public:
 			/**
 			 * Constructor
@@ -51,31 +51,14 @@ namespace Input
 			 * @version	04/05/2011
 			 * @param	const int& pAxesNumber, number of axes of the stick
 			 */
-			inline Stick(const int& pAxesNumber)
+			Stick(const int& pAxesNumber)
 			{
-				mAxesNumber = pAxesNumber;
-				mAxes		= new float(mAxesNumber);
-				for(register int i = 0; i < mAxesNumber; ++i)
-				{
-					mAxes[i]=0;
-				}
+				mAxesNumber = (pAxesNumber < 4) ? pAxesNumber : 4;
+				//mAxes		= new float[mAxesNumber];
 			}
-			/**
-			 * Copy Constructor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param	const Stick& pStick, original stick
-			 */
-			inline Stick(const Stick& pStick)
+			Stick(const Stick& pStick)
 			{
-				mAxesNumber = pStick.mAxesNumber;
-				mAxes		= new float((mAxesNumber>0)?mAxesNumber:1);
-				for(register int i = 0; i < mAxesNumber; ++i)
-				{
-					mAxes[i] = pStick.mAxes[i];
-				}
+				*this = pStick;
 			}
 			/**
 			 * Destructor
@@ -84,9 +67,12 @@ namespace Input
 			 * @since	04/05/2011
 			 * @version	04/05/2011
 			 */
-			inline virtual ~Stick()
+			virtual ~Stick()
 			{
-				delete mAxes;
+				//if(mAxes != NULL)
+				//{
+				//	delete mAxes;
+				//}
 			}
 			/**
 			 * Method that returns the number of axes of the stick
@@ -126,6 +112,28 @@ namespace Input
 			{
 				if(pAxis < mAxesNumber) mAxes[pAxis] = pValue;
 			}
+			/**
+			 * Operator =
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	11/05/2011
+			 * @version	11/05/2011
+			 * @param	const Stick& pStick, original stick
+			 */
+			Stick& operator =(const Stick& pStick)
+			{
+				//if(mAxes != NULL) delete mAxes;
+				mAxesNumber = pStick.mAxesNumber;
+				//mAxes		= new float[mAxesNumber];
+
+				for(register int i = 0; i < mAxesNumber; ++i)
+				{
+					mAxes[i] = pStick.mAxes[i];
+				}
+				return *this;
+			}
 	};
 }}
 #endif
+
+

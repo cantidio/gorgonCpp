@@ -12,11 +12,11 @@ int main()
 {
 	try
 	{
-		 if( SDL_Init( SDL_INIT_VIDEO ) < 0)
-		 {
-            fprintf( stderr, "Could not initialise SDL: %s\n", SDL_GetError() );
-            exit( -1 );
-        }
+		if( SDL_Init( SDL_INIT_VIDEO ) < 0)
+		{
+			fprintf( stderr, "Could not initialise SDL: %s\n", SDL_GetError() );
+			exit( -1 );
+		}
 
 
         if( !SDL_SetVideoMode( 320, 200, 0, 0 ) ){
