@@ -63,8 +63,8 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB,
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB,
 				const float& pRestLength,
 				const float& pStiffness,
 				const float& pDamping
@@ -88,11 +88,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getAnchorA() const
+			inline Core::Point getAnchorA() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpDampedSpringGetAnchr1(mConstraint).x,
 					cpDampedSpringGetAnchr1(mConstraint).y
@@ -104,11 +104,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getAnchorB() const
+			inline Core::Point getAnchorB() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpDampedSpringGetAnchr2(mConstraint).x,
 					cpDampedSpringGetAnchr2(mConstraint).y
@@ -191,11 +191,11 @@ namespace Physics
 
 			inline void draw(Graphic::Sprite& pSprite, const int& pColor)// const
 			{
-				Point a = getAnchorA() + getBodyA().getPosition();
-				Point b = getAnchorB() + getBodyB().getPosition();
+				Core::Point a = getAnchorA() + getBodyA().getPosition();
+				Core::Point b = getAnchorB() + getBodyB().getPosition();
 				pSprite.drawLine(a,b,pColor);
-				pSprite.drawLine(a + Point(1,0), b + Point(1,0), pColor);
-				pSprite.drawLine(a - Point(1,0), b - Point(1,0), pColor);
+				pSprite.drawLine(a + Core::Point(1,0), b + Core::Point(1,0), pColor);
+				pSprite.drawLine(a - Core::Point(1,0), b - Core::Point(1,0), pColor);
 			}
 	};
 }}

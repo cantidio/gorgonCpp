@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_JOYSTICK_BASE_
 #define _GORGON_JOYSTICK_BASE_
-#include "../core/gorgon_string.hpp"
+#include "../core/string.hpp"
 #include "joystick_stick.hpp"
 
 namespace Gorgon{

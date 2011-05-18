@@ -1,6 +1,6 @@
 #include "gorgon_image_loader.hpp"
 #include <ImageMagick/Magick++.h>
-#include <gorgon++/graphic/gorgon_image.hpp>
+#include <gorgon++/graphic/image.hpp>
 // /usr/include/ImageMagick
 
 namespace Gorgon

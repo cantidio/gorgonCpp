@@ -98,9 +98,9 @@ namespace Input
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	10/05/2011
 			 * @version	10/05/2011
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getPosition() const
+			inline Core::Point getPosition() const
 			{
 				return mMouse->getPosition();
 			}

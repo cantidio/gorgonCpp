@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_MOUSE_BASE_
 #define _GORGON_MOUSE_BASE_
-#include "../geometry/gorgon_point.hpp"
+#include "../core/point.hpp"
 
 namespace Gorgon{
 namespace Input
@@ -73,9 +73,9 @@ namespace Input
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	10/05/2011
 			 * @version	10/05/2011
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			virtual Point getPosition() const = 0;
+			virtual Core::Point getPosition() const = 0;
 			/**
 			 * Method that returns the state of a button
 			 *

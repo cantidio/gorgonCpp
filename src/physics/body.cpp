@@ -37,7 +37,7 @@ namespace Physics
 		}
 	}
 	
-	ShapeCircle* Body::addShapeCircle(const float& pRadius, const Point& pOffset)
+	ShapeCircle* Body::addShapeCircle(const float& pRadius, const Core::Point& pOffset)
 	{
 		ShapeCircle* circle = new ShapeCircle
 		(
@@ -63,7 +63,11 @@ namespace Physics
 		return box;
 	}
 	
-	ShapePolygon* Body::addShapePolygon(const std::vector<Point>& pVerts, const Point& pOffset)
+	ShapePolygon* Body::addShapePolygon
+	(
+		const std::vector<Core::Point>& pVerts,
+		const Core::Point& pOffset
+	)
 	{
 		ShapePolygon* polygon = new ShapePolygon
 		(
@@ -78,8 +82,8 @@ namespace Physics
 	
 	ShapeSegment* Body::addShapeSegment
 	(
-		const Point& pPointA,
-		const Point& pPointB,
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
 		const float& pRadius = 0.0f
 	)
 	{
@@ -100,7 +104,7 @@ namespace Physics
 		const float& pMass,
 		const float& pDiameter,
 		const float& pInnerDiameter,
-		const Point& pOffset
+		const Core::Point& pOffset
 	)
 	{
 		return cpMomentForCircle
@@ -130,8 +134,8 @@ namespace Physics
 	float Body::getMomentForSegment
 	(
 		const float& pMass,
-		const Point& pPointA,
-		const Point& pPointB
+		const Core::Point& pPointA,
+		const Core::Point& pPointB
 	)
 	{
 		return cpMomentForSegment
@@ -145,8 +149,8 @@ namespace Physics
 	float Body::getMomentForPolygon
 	(
 		const float& pMass,
-		const std::vector<Point>& pVerts,
-		const Point& pOffset
+		const std::vector<Core::Point>& pVerts,
+		const Core::Point& pOffset
 	)
 	{
 		cpVect verts[ pVerts.size() ];

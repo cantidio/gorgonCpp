@@ -27,7 +27,7 @@
 #ifndef _GORGON_PHYSICS_SHAPE_
 #define _GORGON_PHYSICS_SHAPE_
 #include <chipmunk/chipmunk.h>
-#include "../graphic/gorgon_graphic.hpp"
+#include "../graphic/graphic.hpp"
 
 namespace Gorgon{
 namespace Physics
@@ -146,11 +146,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getSurfaceVelocity() const
+			inline Core::Point getSurfaceVelocity() const
 			{
-				return Gorgon::Point
+				return Core::Point
 				(
 					mShape->surface_v.x,
 					mShape->surface_v.y

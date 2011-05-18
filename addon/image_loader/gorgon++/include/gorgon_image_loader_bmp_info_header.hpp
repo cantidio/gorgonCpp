@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_IMAGE_FORMAT_BMP_INFO_HEADER_
 #define _GORGON_IMAGE_FORMAT_BMP_INFO_HEADER_
-#include <gorgon++/core/gorgon_file.hpp>
+#include <gorgon++/core/file.hpp>
 
 /**
  * @todo criar enums para os defines abaixo

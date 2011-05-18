@@ -49,13 +49,13 @@ namespace Physics
 			 * @since	03/10/2010
 			 * @version	04/10/2010
 			 * @param	const float&			pRadius , the radius of the circle
-			 * @param	const Gorgon::Point&	pOffset , the offset from the body's center of gravity
+			 * @param	const Core::Point&	pOffset , the offset from the body's center of gravity
 			 * @param	Body&					pBody	, the body thw Shape is attached				
 			 */
 			ShapeCircle
 			(
 				const float& pRadius,
-				const Gorgon::Point& pOffset,
+				const Core::Point& pOffset,
 				Body& pBody
 			);
 			/**
@@ -66,9 +66,9 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	Gorgon::Point
 			 */
-			inline Gorgon::Point getOffset() const
+			inline Core::Point getOffset() const
 			{
-				return Gorgon::Point
+				return Core::Point
 				(
 					cpCircleShapeGetOffset(mShape).x,
 					cpCircleShapeGetOffset(mShape).y

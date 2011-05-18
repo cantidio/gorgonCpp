@@ -45,11 +45,11 @@ namespace Physics
 			/**
 			 * Variable that holds the mininum x,y position of the polygon
 			 */ 
-			Gorgon::Point mMinimum;
+			Core::Point mMinimum;
 			/**
 			 * Variable that holds the maximum x,y position of the polygon
 			 */ 
-			Gorgon::Point mMaximum;
+			Core::Point mMaximum;
 		public:
 			/**
 			 * Constructor
@@ -62,8 +62,8 @@ namespace Physics
 			 */
 			ShapePolygon
 			(
-				const std::vector<Gorgon::Point>& pVerts,
-				const Gorgon::Point& pOffset,
+				const std::vector<Core::Point>& pVerts,
+				const Core::Point& pOffset,
 				Body& pBody
 			);
 			/**
@@ -87,9 +87,9 @@ namespace Physics
 			 * @param	const int& pIndex, the index of the vertice you want to get
 			 * @return	Gorgon::Point
 			 */
-			Gorgon::Point getVertice(const int& pIndex) const
+			Core::Point getVertice(const int& pIndex) const
 			{
-				return Gorgon::Point
+				return Core::Point
 				(
 					cpPolyShapeGetVert(mShape, pIndex).x,
 					cpPolyShapeGetVert(mShape, pIndex).y

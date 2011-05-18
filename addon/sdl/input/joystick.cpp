@@ -45,7 +45,6 @@ namespace Addon
 	{
 		const int hats	 = SDL_JoystickNumHats(mJoystick);
 		const int sticks = SDL_JoystickNumAxes(mJoystick)/2;
-		/**@todo SDL just suport 3 axes in a joystick, fix it ok*/
 		if(pStick < hats)// (mStickNumber-1))//SDL
 		{
 			Input::Stick stick( 2 );

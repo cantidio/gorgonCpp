@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_IMAGE_LOADER_AUTODETECT_
 #define	_GORGON_IMAGE_LOADER_AUTODETECT_
-#include <gorgon++/graphic/gorgon_image_loader.hpp>
+#include <gorgon++/graphic/image_loader.hpp>
 #include "gorgon_image_loader_pcx.hpp"
 #include "gorgon_image_loader_bmp.hpp"
 #include "gorgon_image_loader_unknown.hpp"

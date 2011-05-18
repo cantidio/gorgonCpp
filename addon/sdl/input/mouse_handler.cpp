@@ -1,7 +1,8 @@
 #include "mouse_handler.hpp"
 #include "mouse.hpp"
-#include <gorgon++/core/gorgon_log.hpp>
-#include <gorgon++/core/gorgon_string.hpp>
+#include <gorgon++/core/log.hpp>
+#include <gorgon++/core/string.hpp>
+
 namespace Gorgon{
 namespace Addon
 {

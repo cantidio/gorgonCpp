@@ -27,7 +27,7 @@
 #ifndef _GORGON_IMAGE_FORMAT_BMP_HEADER_
 #define _GORGON_IMAGE_FORMAT_BMP_HEADER_
 #include <iostream>
-#include <gorgon++/core/gorgon_file.hpp>
+#include <gorgon++/core/file.hpp>
 #include "gorgon_image_loader_bmp_info_header.hpp"
 namespace Gorgon
 {

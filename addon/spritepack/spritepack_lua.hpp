@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_SPRITEPACK_LUA_
 #define _GORGON_SPRITEPACK_LUA_
-#include <gorgon++/graphic/gorgon_spritepack.hpp>
+#include <gorgon++/graphic/spritepack.hpp>
 
 namespace Gorgon{
 namespace Graphic

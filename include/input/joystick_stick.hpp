@@ -40,7 +40,7 @@ namespace Input
 	class Stick
 	{
 		protected:
-			int		mAxesNumber;/**<< var that holds the number of axes of this stick */
+			int		mAxesNumber;	/**<< var that holds the number of axes of this stick */
 			float	mAxes[4];		/**<< var that holds the value of the axes of this stick*/
 		public:
 			/**

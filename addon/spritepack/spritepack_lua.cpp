@@ -1,5 +1,5 @@
 #include "spritepack_lua.hpp"
-#include <gorgon++/script/gorgon_lua.hpp>
+#include <gorgon++/script/lua.hpp>
 
 namespace Gorgon{
 namespace Graphic
@@ -84,7 +84,7 @@ namespace Graphic
 					Image( image.str() ),
 					script.function("getSpriteGroup"	, Script::LuaParam("i",i), 1).getNumericValue(),
 					script.function("getSpriteIndex"	, Script::LuaParam("i",i), 1).getNumericValue(),
-					Point
+					Core::Point
 					(
 						script.function("getSpriteXOffset"	, Script::LuaParam("i",i), 1).getNumericValue(),
 						script.function("getSpriteYOffset"	, Script::LuaParam("i",i), 1).getNumericValue()

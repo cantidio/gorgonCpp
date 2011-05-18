@@ -7,7 +7,7 @@ namespace Physics
 	ShapeCircle::ShapeCircle
 	(
 		const float& pRadius,
-		const Gorgon::Point& pOffset,
+		const Core::Point& pOffset,
 		Body& pBody
 	) : Shape(pBody)
 	{
@@ -30,7 +30,7 @@ namespace Physics
 				getRadius() * 2
 			),
 			0,0,
-			Point( getRadius(),	getRadius() )
+			Core::Point( getRadius(),	getRadius() )
 		);
 		a.drawCircle
 		(
@@ -41,14 +41,14 @@ namespace Physics
 		);
 		a.drawLine
 		(
-			Point(getRadius()		, getRadius() - 1),
-			Point(getRadius()*2 - 1	, getRadius() - 1),
+			Core::Point(getRadius()			, getRadius() - 1),
+			Core::Point(getRadius()*2 - 1	, getRadius() - 1),
 			pColor
 		);
 		image.drawImageStretched
 		(
 			a,
-			Point(0,0),
+			Core::Point(0,0),
 			getRadius() * 2,
 			getRadius() * 2
 		);

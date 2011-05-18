@@ -27,7 +27,7 @@
 #ifndef _GORGON_IMAGE_FORMAT_PCX_HEADER_
 #define _GORGON_IMAGE_FORMAT_PCX_HEADER_
 #include <sstream>
-#include <gorgon++/core/gorgon_file.hpp>
+#include <gorgon++/core/file.hpp>
 #include "gorgon_image_loader_pcx_exception.hpp"
 
 /**

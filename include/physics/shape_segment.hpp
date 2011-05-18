@@ -48,14 +48,14 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	04/10/2010
-			 * @param	const Gorgon::Point&	pPointA , the first point of the segment
-			 * @param	const Gorgon::Point&	pPointB , the second point of the segment
-			 * @param	const float&			pRadius , the radius of the segment
+			 * @param	const Core::Point&	pPointA , the first point of the segment
+			 * @param	const Core::Point&	pPointB , the second point of the segment
+			 * @param	const float&		pRadius , the radius of the segment
 			 */
 			ShapeSegment
 			(
-				const Gorgon::Point& pPointA,
-				const Gorgon::Point& pPointB,
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
 				const float& pRadius,
 				Body& pBody
 			);
@@ -65,11 +65,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getPointA() const
+			inline Core::Point getPointA() const
 			{
-				return Gorgon::Point
+				return Core::Point
 				(
 					cpSegmentShapeGetA(mShape).x,
 					cpSegmentShapeGetA(mShape).y
@@ -81,11 +81,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getPointB() const
+			inline Core::Point getPointB() const
 			{
-				return Gorgon::Point
+				return Core::Point
 				(
 					cpSegmentShapeGetB(mShape).x,
 					cpSegmentShapeGetB(mShape).y
@@ -97,11 +97,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getNormal() const
+			inline Core::Point getNormal() const
 			{
-				return Gorgon::Point
+				return Core::Point
 				(
 					cpSegmentShapeGetNormal(mShape).x,
 					cpSegmentShapeGetNormal(mShape).y

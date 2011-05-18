@@ -27,7 +27,7 @@
 #ifndef _GORGON_MOUSE_SDL_
 #define _GORGON_MOUSE_SDL_
 #include <gorgon++/input/mouse_base.hpp>
-#include <gorgon++/geometry/gorgon_point.hpp>
+#include <gorgon++/core/point.hpp>
 #include <SDL/SDL.h>
 namespace Gorgon{
 namespace Addon
@@ -42,9 +42,9 @@ namespace Addon
 	class MouseSDL : public Input::MouseBase
 	{
 		protected:
-			Uint8	mState;					/**<< var that stores the state of the keyboard*/
-			Point	mPosition;				/**<< var that stores the position of the mouse*/
-			int		mButton[LAST_BUTTON];
+			Uint8		mState;					/**<< var that stores the state of the keyboard*/
+			Core::Point	mPosition;				/**<< var that stores the position of the mouse*/
+			int			mButton[LAST_BUTTON];
 		public:
 			MouseSDL();
 			/**
@@ -70,9 +70,9 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	10/05/2011
 			 * @version	10/05/2011
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			virtual Point getPosition() const;
+			virtual Core::Point getPosition() const;
 			/**
 			 * Method that returns the state of a button
 			 *

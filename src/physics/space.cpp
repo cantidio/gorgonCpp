@@ -52,8 +52,8 @@ namespace Physics
 	(
 		Body& pBodyA,
 		Body& pBodyB,
-		const Point& pAnchorA,
-		const Point& pAnchorB
+		const Core::Point& pAnchorA,
+		const Core::Point& pAnchorB
 	)
 	{
 		return (PinJoint*)addConstraint(new PinJoint
@@ -69,8 +69,8 @@ namespace Physics
 	(
 		Body& pBodyA,
 		Body& pBodyB,
-		const Point& pAnchorA,
-		const Point& pAnchorB,
+		const Core::Point& pAnchorA,
+		const Core::Point& pAnchorB,
 		const float& pMin,
 		const float& pMax
 	)
@@ -90,7 +90,7 @@ namespace Physics
 	(
 		Body& pBodyA,
 		Body& pBodyB,
-		const Point& pPivot
+		const Core::Point& pPivot
 	)
 	{
 		return (PivotJoint*)addConstraint(new PivotJoint
@@ -105,8 +105,8 @@ namespace Physics
 	(
 		Body& pBodyA,
 		Body& pBodyB,
-		const Point& pAnchorA,
-		const Point& pAnchorB
+		const Core::Point& pAnchorA,
+		const Core::Point& pAnchorB
 	)
 	{
 		return (PivotJoint*)addConstraint(new PivotJoint
@@ -122,9 +122,9 @@ namespace Physics
 	(
 		Body& pBodyA,
 		Body& pBodyB,
-		const Point& pGrooveA,
-		const Point& pGrooveB,
-		const Point& pAnchorB
+		const Core::Point& pGrooveA,
+		const Core::Point& pGrooveB,
+		const Core::Point& pAnchorB
 	)
 	{
 		return (GrooveJoint*)addConstraint(new GrooveJoint
@@ -141,8 +141,8 @@ namespace Physics
 	(
 		Body& pBodyA,
 		Body& pBodyB,
-		const Point& pAnchorA,
-		const Point& pAnchorB,
+		const Core::Point& pAnchorA,
+		const Core::Point& pAnchorB,
 		const float& pRestLength,
 		const float& pStiffness,
 		const float& pDamping

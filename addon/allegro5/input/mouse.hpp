@@ -27,7 +27,7 @@
 #ifndef _GORGON_MOUSE_ALLEGRO_
 #define _GORGON_MOUSE_ALLEGRO_
 #include <gorgon++/input/mouse_base.hpp>
-#include <gorgon++/geometry/gorgon_point.hpp>
+#include <gorgon++/core/point.hpp>
 struct ALLEGRO_MOUSE_STATE;
 namespace Gorgon{
 namespace Addon
@@ -43,8 +43,8 @@ namespace Addon
 	{
 		protected:
 			ALLEGRO_MOUSE_STATE* mState;	/**<< var that stores the state of the mouse*/
-			Point	mPosition;				/**<< var that stores the position of the mouse*/
-			int		mButton[LAST_BUTTON];
+			Core::Point	mPosition;			/**<< var that stores the position of the mouse*/
+			int mButton[LAST_BUTTON];
 		public:
 			/**
 			 * Constructor
@@ -85,9 +85,9 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/05/2011
 			 * @version	11/05/2011
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			virtual Point getPosition() const;
+			virtual Core::Point getPosition() const;
 			/**
 			 * Method that returns the state of a button
 			 *

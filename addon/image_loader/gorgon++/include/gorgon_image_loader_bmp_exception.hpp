@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_IMAGE_FORMAT_BMP_EXCEPTION_
 #define _GORGON_IMAGE_FORMAT_BMP_EXCEPTION_
-#include <gorgon++/graphic/gorgon_image_exception.hpp>
+#include <gorgon++/graphic/image_exception.hpp>
 
 namespace Gorgon
 {

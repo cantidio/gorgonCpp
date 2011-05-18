@@ -26,8 +26,8 @@
  */
 #ifndef _GORGON_ANIMATION_PACK_LUA_
 #define _GORGON_ANIMATION_PACK_LUA_
-#include <gorgon++/graphic/gorgon_animationpack.hpp>
-#include <gorgon++/core/gorgon_string.hpp>
+#include <gorgon++/graphic/animationpack.hpp>
+#include <gorgon++/core/string.hpp>
 namespace Gorgon{
 namespace Graphic
 {

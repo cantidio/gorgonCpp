@@ -1,5 +1,5 @@
 #include "gorgon_animationpack_lua.hpp"
-#include <gorgon++/script/gorgon_lua.hpp>
+#include <gorgon++/script/lua.hpp>
 
 namespace Gorgon{
 namespace Graphic
@@ -31,7 +31,7 @@ namespace Graphic
 
 				for(unsigned int j = 0; j < (*this)[i].getSize(); ++j)
 				{
-					Frame a = (*this)[i][j];
+					AnimationFrame a = (*this)[i][j];
 					file << "\t\t\t{\n";
 					file << "\t\t\t\tgroup		= " << a.getGroup()					<< ",\n";
 					file << "\t\t\t\tindex		= " << a.getIndex()					<< ",\n";
@@ -90,14 +90,14 @@ namespace Graphic
 			{
 				aux.add
 				(
-					Frame
+					AnimationFrame
 					(
 						script.function("getFrameGroup"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
 						script.function("getFrameIndex"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
 						script.function("getFrameTime"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
 						Mirroring((Mirroring::Type)script.function("getFrameMirroring" , Script::LuaParam("ii",i,j), 1).getNumericValue()),
 						script.function("getFrameAngle"		, Script::LuaParam("ii",i,j), 1).getNumericValue(),
-						Point
+						Core::Point
 						(
 							script.function("getFrameXOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue(),
 							script.function("getFrameYOffset"	, Script::LuaParam("ii",i,j), 1).getNumericValue()

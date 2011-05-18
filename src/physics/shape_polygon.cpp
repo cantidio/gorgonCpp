@@ -6,8 +6,8 @@ namespace Physics
 {
 	ShapePolygon::ShapePolygon
 	(
-		const std::vector<Gorgon::Point>& pVerts,
-		const Gorgon::Point& pOffset,
+		const std::vector<Core::Point>& pVerts,
+		const Core::Point& pOffset,
 		Body& pBody
 	) : Shape(pBody)
 	{

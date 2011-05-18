@@ -6,8 +6,8 @@ namespace Physics
 {
 	ShapeSegment::ShapeSegment
 	(
-		const Gorgon::Point& pPointA,
-		const Gorgon::Point& pPointB,
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
 		const float& pRadius,
 		Body& pBody
 	) : Shape(pBody)

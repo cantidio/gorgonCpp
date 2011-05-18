@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_KEYBOARD_KEY_
 #define _GORGON_KEYBOARD_KEY_
-#include <gorgon++/core/gorgon_string.hpp>
+#include "../core/string.hpp"
 
 namespace Gorgon{
 namespace Input

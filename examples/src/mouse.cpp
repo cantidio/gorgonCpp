@@ -1,11 +1,12 @@
 #include <gorgon++/gorgon.hpp>
-#include <gorgon++/addon/sdl/mouse_handler.hpp>
-#include <gorgon++/addon/allegro5/mouse_handler.hpp>
+#include <gorgon++/addon/sdl/input/mouse_handler.hpp>
+#include <gorgon++/addon/allegro5/input/mouse_handler.hpp>
 #include <iostream>
 #include <SDL/SDL.h>
 #include <allegro5/allegro.h>
 using namespace Gorgon;
 using namespace Gorgon::Input;
+using namespace Gorgon::Core;
 using namespace Gorgon::Addon;
 using namespace std;
 

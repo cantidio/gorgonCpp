@@ -1,12 +1,13 @@
 #include <gorgon++/gorgon.hpp>
 #include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
-#include <gorgon++/addon/image_loader/sdl/image_loader.hpp>
+#include <gorgon++/addon/sdl/graphic/image_loader.hpp>
 #include <gorgon++/addon/spritepack/spritepack_lua.hpp>
 #include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp>
 const int X=320;
 const int Y=240;
 int zoom=1;
 using namespace Gorgon;
+using namespace Gorgon::Core;
 using namespace Gorgon::Graphic;
 using namespace std;
 
@@ -58,11 +59,12 @@ int main(int argc, char** argv)
 	bool trans = false;
 	try
 	{
-		ImageLoader::setLoader(new ImageLoaderMagick());
+//		ImageLoader::setLoader(new ImageLoaderMagick());
+		ImageLoader::setLoader(new ImageLoaderSDL());
 		ImageLoader::getLoader().setSaveFormat("PNG");
 		//ImageLoader::setLoader(new Gorgon::ImageLoaderAutodetect());
 		Video::init("Teste da classe SpritePack",640,480);
-		//set_color_depth(24);
+		
 		Video		video = Video::get();
 		SpritePack	gspk;
 		if(argc > 2)

@@ -1,5 +1,5 @@
 #include "../include/gorgon_image_loader_unknown.hpp"
-#include <gorgon++/graphic/gorgon_image_exception.hpp>
+#include <gorgon++/graphic/image_exception.hpp>
 
 namespace Gorgon
 {

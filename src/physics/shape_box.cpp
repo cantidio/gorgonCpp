@@ -27,9 +27,14 @@ namespace Physics
 		(
 			Graphic::Image(mWidth, mHeight),
 			0,0,
-			Point(mWidth/2, mHeight/2)
+			Core::Point(mWidth/2, mHeight/2)
 		);
-		box.drawRectangle( Point(0,0), Point(mWidth - 1, mHeight - 1), pColor);
+		box.drawRectangle
+		(
+			Core::Point(0,0),
+			Core::Point(mWidth - 1, mHeight - 1),
+			pColor
+		);
 		pSprite.drawSpriteRotated
 		(
 			box,

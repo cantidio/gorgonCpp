@@ -1,6 +1,6 @@
 #include "mouse.hpp"
-#include <gorgon++/core/gorgon_log.hpp>
-#include <gorgon++/core/gorgon_string.hpp>
+#include <gorgon++/core/log.hpp>
+#include <gorgon++/core/string.hpp>
 #include <allegro5/allegro.h>
 namespace Gorgon{
 namespace Addon
@@ -31,7 +31,7 @@ namespace Addon
 	void MouseAllegro::update()
 	{
 		al_get_mouse_state(mState);
-		mPosition = Point
+		mPosition = Core::Point
 		(
 			al_get_mouse_state_axis(mState, 0),
 			al_get_mouse_state_axis(mState, 1)
@@ -42,7 +42,7 @@ namespace Addon
 	{
 		return al_is_mouse_installed();
 	}
-	Point MouseAllegro::getPosition() const
+	Core::Point MouseAllegro::getPosition() const
 	{
 		return mPosition;
 	}

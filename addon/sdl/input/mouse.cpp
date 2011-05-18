@@ -1,4 +1,5 @@
 #include "mouse.hpp"
+
 namespace Gorgon{
 namespace Addon
 {
@@ -15,7 +16,7 @@ namespace Addon
 		int x,y;
 		SDL_PumpEvents();
 		mState = SDL_GetMouseState(&x, &y);
-		mPosition = Point(x,y);
+		mPosition = Core::Point(x,y);
 	}
 	bool MouseSDL::isOpened() const
 	{
@@ -23,7 +24,7 @@ namespace Addon
 			SDL_EventState(SDL_QUERY, SDL_MOUSEBUTTONDOWN)	&&
 			SDL_EventState(SDL_QUERY, SDL_MOUSEBUTTONUP);
 	}
-	Point MouseSDL::getPosition() const
+	Core::Point MouseSDL::getPosition() const
 	{
 		return mPosition;
 	}

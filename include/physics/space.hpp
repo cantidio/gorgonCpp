@@ -140,9 +140,9 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @param	const Gorgon::Point& pPoint, the gravity value for the x, and the y axis
+			 * @param	const Core::Point& pPoint, the gravity value for the x, and the y axis
 			 */
-			inline void setGravity(const Gorgon::Point& pPoint)
+			inline void setGravity(const Core::Point& pPoint)
 			{
 				mSpace->gravity.x = pPoint.getX();
 				mSpace->gravity.y = pPoint.getY();
@@ -203,16 +203,16 @@ namespace Physics
 			 * @version	06/10/2010
 			 * @param	Body&			pBodyA		, the first body of the constraint
 			 * @param	Body&			pBodyB		, the second body of the constraint
-			 * @param	const Point&	pAnchorA 	, the anchor attached to the first body
-			 * @param	const Point&	pAnchorB	, the anchor attached to the second body
+			 * @param	const Core::Point&	pAnchorA 	, the anchor attached to the first body
+			 * @param	const Core::Point&	pAnchorB	, the anchor attached to the second body
 			 * @return	PinJoint*
 			 */	
 			PinJoint* addConstraintPinJoint
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB
 			);
 			/**
 			 * Method that add and Constraint of type SlideJoint to the space
@@ -222,8 +222,8 @@ namespace Physics
 			 * @version	07/10/2010
 			 * @param	Body&			pBodyA	, the first body of the constraint
 			 * @param	Body&			pBodyB	, the second body of the constraint
-			 * @param	const Point&	pAnchorA, the anchor attached to the first body
-			 * @param	const Point&	pAnchorB, the anchor attached to the second body
+			 * @param	const Core::Point&	pAnchorA, the anchor attached to the first body
+			 * @param	const Core::Point&	pAnchorB, the anchor attached to the second body
 			 * @param	const float&	pMin	, the minimum distance between the anchors
 			 * @param	const float&	pMax	, the maximum distance between the anchors
 			 * @return	SlideJoint*
@@ -233,8 +233,8 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB,
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB,
 				const float& pMin,
 				const float& pMax
 			);
@@ -246,7 +246,7 @@ namespace Physics
 			 * @version	07/10/2010
 			 * @param	Body&			pBodyA	, the first body of the constraint
 			 * @param	Body&			pBodyB	, the second body of the constraint
-			 * @param	const Point&	pPivot	, the pivot point
+			 * @param	const Core::Point&	pPivot	, the pivot point
 			 * @return	PivotJoint*
 			 * @see		PivotJoint
 			 */
@@ -254,7 +254,7 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pPivot
+				const Core::Point& pPivot
 			);
 			/**
 			 * Method that add and Constraint of type PivotJoint to the space
@@ -262,10 +262,10 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
-			 * @param	Body&			pBodyA	, the first body of the constraint
-			 * @param	Body&			pBodyB	, the second body of the constraint
-			 * @param	const Point&	pAnchorA, the anchor attached to the first body
-			 * @param	const Point&	pAnchorB, the anchor attached to the second body
+			 * @param	Body& pBodyA , the first body of the constraint
+			 * @param	Body& pBodyB , the second body of the constraint
+			 * @param	const Core::Point&	pAnchorA, the anchor attached to the first body
+			 * @param	const Core::Point&	pAnchorB, the anchor attached to the second body
 			 * @return	PivotJoint*
 			 * @see		PivotJoint
 			 */
@@ -273,8 +273,8 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB
 			);
 			/**
 			 * Method that add and Constraint of the type GrooveJoint to the space
@@ -284,9 +284,9 @@ namespace Physics
 			 * @version	07/10/2010
 			 * @param	Body&			pBodyA		, the first body of the constraint
 			 * @param	Body&			pBodyB		, the second body of the constraint
-			 * @param	const Point&	pGrooveA 	, first point of the groove in the BodyA
-			 * @param	const Point&	pGrooveB 	, second point of the groove in the BodyA
-			 * @param	const Point&	pAnchorB	, the anchor attached to the second body
+			 * @param	const Core::Point&	pGrooveA 	, first point of the groove in the BodyA
+			 * @param	const Core::Point&	pGrooveB 	, second point of the groove in the BodyA
+			 * @param	const Core::Point&	pAnchorB	, the anchor attached to the second body
 			 * @return	GrooveJoint*
 			 * @see		GrooveJoint
 			 */
@@ -294,9 +294,9 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pGrooveA,
-				const Point& pGrooveB,
-				const Point& pAnchorB
+				const Core::Point& pGrooveA,
+				const Core::Point& pGrooveB,
+				const Core::Point& pAnchorB
 			);
 			/**
 			 * Method that add and Constraint of the type DampedSpring to the space
@@ -306,8 +306,8 @@ namespace Physics
 			 * @version	07/10/2010
 			 * @param	Body& pBodyA			, the first body to be connected
 			 * @param	Body& pBodyB			, the second body to be connected
-			 * @param	const Point& pAnchorA	, the anchor of the first body
-			 * @param	const Point& pAnchorB	, the anchor of the second body
+			 * @param	const Core::Point& pAnchorA	, the anchor of the first body
+			 * @param	const Core::Point& pAnchorB	, the anchor of the second body
 			 * @param	const float& pRestLength, the distance the spring wants to be
 			 * @param	const float& pStiffness	, the spring constant(Young's modulus)
 			 * @param	const float& pDamping	, how soft the damping of the spring
@@ -318,8 +318,8 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB,
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB,
 				const float& pRestLength,
 				const float& pStiffness,
 				const float& pDamping

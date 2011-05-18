@@ -1,8 +1,8 @@
 #include "joystick_handler.hpp"
 #include "joystick.hpp"
 #include <allegro5/allegro.h>
-#include <gorgon++/core/gorgon_log.hpp>
-#include <gorgon++/core/gorgon_string.hpp>
+#include <gorgon++/core/log.hpp>
+#include <gorgon++/core/string.hpp>
 namespace Gorgon{
 namespace Addon
 {
