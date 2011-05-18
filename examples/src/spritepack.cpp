@@ -2,12 +2,14 @@
 #include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
 #include <gorgon++/addon/sdl/graphic/image_loader.hpp>
 #include <gorgon++/addon/spritepack/spritepack_lua.hpp>
+#include <gorgon++/addon/spritepack/spritesheet.hpp>
 #include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp>
 const int X=320;
 const int Y=240;
 int zoom=1;
 using namespace Gorgon;
 using namespace Gorgon::Core;
+using namespace Gorgon::Addon;
 using namespace Gorgon::Graphic;
 using namespace std;
 
@@ -71,7 +73,7 @@ int main(int argc, char** argv)
 		{
 			if(std::string(argv[1]).compare("-image") == 0)
 			{
-				gspk = SpritePack(Image(argv[2]),0xFF0000);
+				gspk = SpriteSheet(Image(argv[2]),0xFF0000);
 			}
 			else if(std::string(argv[1]).compare("-spritepack") == 0)
 			{

@@ -316,6 +316,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/spritepack/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>addon/spritepack/spritepack_lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_lua.cpp</locationURI>
@@ -334,6 +339,36 @@
 			<name>addon/spritepack/spritepack_sff.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_sff.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet_auto.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet_auto.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet_auto.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet_auto.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/tilesheet.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/tilesheet.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/tilesheet.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/tilesheet.hpp</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn</name>
@@ -1441,6 +1476,26 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_handler.hpp</locationURI>
 		</link>
 		<link>
+			<name>addon/spritepack/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/prop-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/tmp</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>examples/src/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/entries</locationURI>
@@ -1924,6 +1979,41 @@
 			<name>addon/sdl/input/.svn/text-base</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/prop-base/spritepack_sff.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/prop-base/spritepack_sff.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_lua.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_lua.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_lua.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_lua.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_sff.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_sff.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_sff.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_sff.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/tmp/spritepack_lua.cpp.tmp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/tmp/spritepack_lua.cpp.tmp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/tmp/spritepack_lua.hpp.tmp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/tmp/spritepack_lua.hpp.tmp</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/prop-base/animation.cpp.svn-base</name>

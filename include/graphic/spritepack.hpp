@@ -65,52 +65,6 @@ namespace Graphic
 			 * Verdadeiro se a paleta for linkada, falso se for interna
 			 */
 			bool mPalLinked;
-		protected:
-			/**
-			 * Método que retira um sprite de um spriteSheet
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	28/02/2009
-			 * @version	28/02/2009
-			 * @see		SpritePack(Image sheet, const int& backgroundColor)
-			 * @param	Image& pImage				, imagem a tirar o sprite
-			 * @param	const int& pPosX			, posição x que começará a recortar o sprite
-			 * @param	const int& pPosY			, posição y que começará a recortar o sprite
-			 * @param	const int& pGroup			, grupo do sprite que será recortado
-			 * @param	const int& pIndex,			, índice do sprite que será recortado
-			 * @param	const int& pBackgorundColor	, cor de fundo, cor a ser ignorada
-			 * @details
-			 *			É esse método que é chamado para auxiliar o construtor que recebe um spriteSheet
-			 */
-			int getSpriteInSpriteSheet
-			(
-				Image&		pImage,
-				const int&	pPosX,
-				const int&	pPosY,
-				const int&	pGroup,
-				const int&	pIndex,
-				const int&	pBackgroundColor
-			);
-			/**
-			 * Método para achar os limites de uma imagem, a partir de um determinado ponto
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	29/09/2009
-			 * @final	29/09/2009
-			 * @param	const Image& pImage
-			 * @param	std::vector<Core::Point>&	pPositions			, vetor com as posições já percorridas pelo método
-			 * @param	Core::Point&				pInit				, posição do ponto superior esquerdo da imagem
-			 * @param	Core::Point&				pEnd				, posição do ponto inferior direito da imagem
-			 * @param	int&						pTransparentColor	, cor transparent da imagem
-			 */
-			void findImageLimits
-			(
-				const Image& pImage,
-				std::vector<Core::Point>&	pPositions,
-				Core::Point&				pInit,
-				Core::Point&				pEnd,
-				const int&					pTransparentColor
-			);
 		public:
 			/**
 			 * Método construtor de classe
@@ -120,52 +74,6 @@ namespace Graphic
 			 * @version	22/01/2009
 			 */
 			SpritePack();
-			/**
-			 * Método construtor de classe, que transforma um para de tiles em um spritePack
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	23/01/2009
-			 * @version	23/01/2009
-			 * @param	const Image&	pImageSheet		, a imagem que possui os tites que deseja adicionar ao sprite pack
-			 * @param	const int&		pWidth			, largura de cada tile
-			 * @param	const int&		pHeight			, altura de cada tile
-			 * @param	const int&		pJumpPixels		, número de pixels a saltar a cada tile
-			 */
-			SpritePack
-			(
-				const Image&	pImageSheet,
-				const int&		pWidth,
-				const int&		pHeight,
-				const int&		pJumpPixels	= 0
-			);
-			/**
-			 * Método Construtor que recebe um spriteSheet e separa as imagens adicionando-as ao pacote
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	29/09/2009
-			 * @version	29/09/2009
-			 * @param	Image		pImageSheet			, imagem a ser recortada e adicionada ao spritepack
-			 * @para	const int&	pBackgroundColor	, cor a ser ignorada
-			 */
-			SpritePack(Image pImageSheet, const int& pBackgroundColor);
-			/**
-			 * Método construtor que recebe  um spritesSheet e o separa
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	28/02/2009
-			 * @version	28/02/2009
-			 * @see		getSpriteInSpriteSheet
-			 * @param	const Image& pImageSheet	, a imagem do spriteSheet
-			 * @param	const int& pBackgroundColor	, cor de fundo do sheet
-			 * @details
-			 *			Esse método funciona da seguinte maneira:
-			 * O método roda a imagem ignorando a backgroundColor, assim que acha uma cor diferente da backgroundColor,
-			 * ele assume que ali começa uma imagem, ou seja as imagens devem estar com uma cor de fundo diferente do
-			 * sheet inteiro, para que o método as possa identificar. Esse método faz a localização da imagem de cima para baixo
-			 * e da esquerda para a direita, ou seja as imagens mais altas serão incluídas primeiro, e das que começam na mesma posição
-			 * em y as mais a esquerda serão incluídas primeiro.
-			 */
-			//SpritePack(Image pImageSheet, const int& pBackgroundColor);
 			/**
 			 * Método Construtor de Cópia
 			 *
