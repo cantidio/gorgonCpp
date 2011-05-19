@@ -1,4 +1,5 @@
 #include <graphic/image.hpp>
+#include <graphic/exception.hpp>
 
 namespace Gorgon{
 namespace Graphic
@@ -151,6 +152,7 @@ namespace Graphic
 		return out.str();
 	}
 
+	/**@todo remover esse método*/
 	void Image::setImg(BITMAP* pBitmap)
 	{
 		if(mData)
@@ -161,7 +163,7 @@ namespace Graphic
 		mImgLinked	= true;
 		updateBuffer();
 	}
-
+	/**@todo remover esse método*/
 	void Image::setType(const char& pImgType)
 	{
 		mImgType = pImgType;
@@ -226,6 +228,7 @@ namespace Graphic
 		return mPalette;
 	}
 
+	/**@todo remover esse método*/
 	BITMAP* Image::getImg() const
 	{
 		return mDataBuffer;
@@ -233,11 +236,7 @@ namespace Graphic
 
 	int Image::getColorDepth() const
 	{
-		if(mData == NULL)
-		{
-			throw ImageException("Trying to get the color depth of a non loaded Image.");
-		}
-		return bitmap_color_depth(mData);
+		return (mData != NULL) ? bitmap_color_depth(mData) : 0;
 	}
 	
 	int Image::getColorNumber() const
@@ -276,9 +275,13 @@ namespace Graphic
 		const bool&	pAbsoluteValue
 	) const
 	{
+		/**@todo remover esse método deixar somente o método abaixo*/
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to get pixel of a non loaded Image.");
+			std::stringstream out;
+			out << "Image::getPixel(" << pPosX << ", " << pPosY << ", ";
+			out << (pAbsoluteValue ? "true" : "false") << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		if(getColorDepth() == 8 && mPalette && !pAbsoluteValue)
 		{
@@ -291,7 +294,10 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to get pixel of a non loaded Image.");
+			std::stringstream out;
+			out << "Image::getPixel(Core::Point(" << pPosition.getX() << "," << pPosition.getY()<< "), ";
+			out << (pAbsoluteValue ? "true" : "false") << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		if(getColorDepth() == 8 && mPalette && !pAbsoluteValue)
 		{
@@ -304,34 +310,29 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to get pixel of a non loaded Image.");
+			std::stringstream out;
+			out << "Image::getColor(" << pPosX << ", " << pPosY << ", ";
+			out << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		if(getColorDepth() == 8 && mPalette)
 		{
 			return Color(getPalette()->getColor(getpixel(mData,pPosX,pPosY)));
 		}
 		return Color(getpixel(mData,pPosX,pPosY));
-
 	}
 
 	unsigned int Image::getWidth() const
 	{
-		if(mData == NULL)
-		{
-			throw ImageException("Trying to get the width of a non loaded Image.");
-		}
-		return mData->w;
+		return (mData != NULL) ? mData->w : 0;
 	}
 
 	unsigned int Image::getHeight() const
 	{
-		if(mData == NULL)
-		{
-			throw ImageException("Trying to get the height of a non loaded Image.");
-		}
-		return mData->h;
+		return (mData != NULL) ? mData->h : 0;
 	}
 
+	/**@todo remover esse método*/
 	char Image::getType() const
 	{
 		return mImgType;
@@ -473,7 +474,9 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to clear a non loaded Image.");
+			std::stringstream out;
+			out << "Image::clear(" << pColor << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		clear_to_color(mData,pColor);
 	}
@@ -488,7 +491,12 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to put a pixel in a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawPixel(" << pPosX << ", " << pPosY << ", ";
+			//out << "Color(" << pColor.getRed() << "," << pColor.getGreen() << "," << pColor.getBlue() << "," << pColor.getAlpha() << ")";
+			out << pColor;
+			out << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		/**
 		 * @todo depois eu posso criar ponteiros para as funções e chamar por lá para evitar o switch
@@ -509,7 +517,11 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to draw a line in a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawLine(Core::Point(" << pPos1.getX() << "," << pPos1.getY() << "), Core::Point(" << pPos2.getX() << "," << pPos2.getY() << "), ";
+			out << "Color(" << pColor.getRed() << "," << pColor.getGreen() << "," << pColor.getBlue() << "," << pColor.getAlpha() << ")";
+			out << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		line
 		(
@@ -530,8 +542,13 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to draw a rectangle in a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawRectangle(Core::Point(" << pPos1.getX() << "," << pPos1.getY() << "), Core::Point(" << pPos2.getX() << "," << pPos2.getY() << "), ";
+			out << "Color(" << pColor.getRed() << "," << pColor.getGreen() << "," << pColor.getBlue() << "," << pColor.getAlpha() << "), ";
+			out << (pFill ? "true" : "false") << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
+
 		if(pFill)
 		{
 			rectfill
@@ -564,7 +581,11 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to draw a circle in a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawCircle(Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pRadius;
+			out << ",Color(" << pColor.getRed() << "," << pColor.getGreen() << "," << pColor.getBlue() << "," << pColor.getAlpha() << "),";
+			out << (pFill ? "true" : "false") << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		if(pFill)
 		{
@@ -601,7 +622,11 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to draw a elipse in a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawEllipse(Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), " << pRadiusX << ", " << pRadiusY << ", ";
+			out << "Color(" << pColor.getRed() << "," << pColor.getGreen() << "," << pColor.getBlue() << "," << pColor.getAlpha() << "), ";
+			out << (pFill ? "true" : "false") << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		if(pFill)
 		{
@@ -641,7 +666,11 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to blit a non loaded Image.");
+			std::stringstream out;
+			out << "Image::blitImage(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY();
+			out << "), Core::Point(" << pSourcePosition.getX() << "," << pSourcePosition.getY() << "), ";
+			out << pWidth << ", " << pHeight << (pMasked ? "true" : "false") << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		int width	= (pWidth	== -1) ? pImage.getWidth()	: pWidth;
 		int height	= (pHeight	== -1) ? pImage.getHeight()	: pHeight;
@@ -690,7 +719,11 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to blit a non loaded Image.");
+			std::stringstream out;
+			out << "Image::blitImageStretched(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << pWidth << ", " << pHeight << ", Core::Point(" << pSourcePosition.getX() << "," << pSourcePosition.getY() << "), ";
+			out << pSourceWidth << ", " << pSourceHeight << (pMasked ? "true" : "false") << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		int width			= (pWidth == -1)		?	getWidth()			: pWidth;
 		int height			= (pHeight == -1)		?	getHeight()			: pHeight;
@@ -735,7 +768,10 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImage(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")";
+			out << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		draw_sprite
 		(
@@ -756,7 +792,10 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImageStretched(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << pWidth << ", " << pHeight << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		stretch_sprite
 		(
@@ -769,90 +808,6 @@ namespace Graphic
 		);
 	}
 
-//	void Image::drawImageFlippedV
-//	(
-//		const Image&	pImage,
-//		const int&		pPosX,
-//		const int&		pPosY
-//	)
-//	{
-//		if(mData == NULL || pImage.mData == NULL)
-//		{
-//			throw ImageException("Trying to draw a non loaded Image.");
-//		}
-//		draw_sprite_v_flip
-//		(
-//			mData,
-//			pImage.mDataBuffer,
-//			pPosX,
-//			pPosY
-//		);
-//	}
-
-//	void Image::drawImageFlippedH
-//	(
-//		const Image&	pImage,
-//		const int&		pPosX,
-//		const int&		pPosY
-//	)
-//	{
-//		if(mData == NULL || pImage.mData == NULL)
-//		{
-//			throw ImageException("Trying to draw a non loaded Image.");
-//		}
-//		draw_sprite_h_flip
-//		(
-//			mData,
-//			pImage.mDataBuffer,
-//			pPosX,
-//			pPosY
-//		);
-//	}
-
-//	void Image::drawImageFlippedVH
-//	(
-//		const Image&	pImage,
-//		const int&		pPosX,
-//		const int&		pPosY
-//	)
-//	{
-//		if(mData == NULL || pImage.mData == NULL)
-//		{
-//			throw ImageException("Trying to draw a non loaded Image.");
-//		}
-//		draw_sprite_vh_flip
-//		(
-//			mData,
-//			pImage.mDataBuffer,
-//			pPosX,
-//			pPosY
-//		);
-//	}
-
-//	void Image::drawImageFlipped
-//	(
-//		const Image&		pImage,
-//		const int&			pPosX,
-//		const int&			pPosY,
-//		const Mirroring&	pMirroring
-//	)
-//	{
-//		if(mData == NULL || pImage.mData == NULL)
-//		{
-//			throw ImageException("Trying to draw a non loaded Image.");
-//		}
-//		switch(pMirroring.getType())
-//		{
-//			case Mirroring::Normal:
-//				drawImage(pImage,pPosX,pPosY);			break;
-//			case Mirroring::VFlip:
-//				drawImageFlippedV(pImage,pPosX,pPosY);	break;
-//			case Mirroring::HFlip:
-//				drawImageFlippedH(pImage,pPosX,pPosY);	break;
-//			case Mirroring::VHFlip:
-//				drawImageFlippedVH(pImage,pPosX,pPosY);	break;
-//		}
-//	}
 	void Image::drawImageFlipped
 	(
 		const Image&		pImage,
@@ -862,7 +817,10 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImageFlipped(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << pMirroring.getType() << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		switch(pMirroring.getType())
 		{
@@ -882,7 +840,10 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mDataBuffer == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImageTrans(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << pTrans << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		set_trans_blender(255, 255, 255, 255*pTrans);
 		drawing_mode(DRAW_MODE_TRANS, NULL, 0, 0);
@@ -899,7 +860,10 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mDataBuffer == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImageTransFlipped(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << pTrans << ", " << pMirroring.getType() << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		Image aux(getWidth(),getHeight());
 		aux.drawImageFlipped(pImage,pPosition,pMirroring);
@@ -917,7 +881,12 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImageAdd(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << "Color(" << pColorAdd.getRed() << "," << pColorAdd.getGreen() << "," << pColorAdd.getBlue() << "," << pColorAdd.getAlpha() << "), ";
+			out << "Color(" << pColorSub.getRed() << "," << pColorSub.getGreen() << "," << pColorSub.getBlue() << "," << pColorSub.getAlpha() << "), ";
+			out << pTrans << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 
 		const int xLimit = (getWidth()	> pImage.getWidth()		+ pPosition.getX()) ? pImage.getWidth()		+ pPosition.getX() : getWidth();
@@ -960,7 +929,10 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImageRotated(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << pAngle << ", Core::Point(" << pAlign.getX() << "," << pAlign.getY() << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		pivot_sprite
 		(
@@ -982,7 +954,10 @@ namespace Graphic
 	{
 		if(mData == NULL || pImage.mData == NULL)
 		{
-			throw ImageException("Trying to draw a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawImageRotatedFlipped(" << (int)&pImage << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << pAngle << ", " << pMirroring.getType() << ", Core::Point(" << pAlign.getX() << "," << pAlign.getY() << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		switch(pMirroring.getType())
 		{
@@ -1025,84 +1000,6 @@ namespace Graphic
 		}
 	}
 
-//	void Image::drawImageRotetedFlippedV
-//	(
-//		const Image&	pImage,
-//		const int&		pPosX,
-//		const int&		pPosY,
-//		const int&		pAngle,
-//		const int&		pXAlign,
-//		const int&		pYAlign
-//	)
-//	{
-//		if(mData == NULL || pImage.mData == NULL)
-//		{
-//			throw ImageException("Trying to draw a non loaded Image.");
-//		}
-//		pivot_sprite_v_flip
-//		(
-//			mData,
-//			pImage.mDataBuffer,
-//			pPosX,
-//			pPosY,
-//			pXAlign,
-//			pYAlign,
-//			itofix(pAngle)
-//		);
-//	}
-
-//	void Image::drawImageRotetedFlippedH
-//	(
-//		const Image&	pImage,
-//		const int&		pPosX,
-//		const int&		pPosY,
-//		const int&		pAngle,
-//		const int&		pXAlign,
-//		const int&		pYAlign
-//	)
-//	{
-//		if(mData == NULL || pImage.mData == NULL)
-//		{
-//			throw ImageException("Trying to draw a non loaded Image.");
-//		}
-//		pivot_sprite_v_flip
-//		(
-//			mData,
-//			pImage.mDataBuffer,
-//			pPosX,
-//			pPosY,
-//			pXAlign,
-//			pYAlign,
-//			itofix(pAngle + 128)
-//		);
-//	}
-//
-//	void Image::drawImageRotetedFlippedVH
-//	(
-//		const Image&	pImage,
-//		const int&		pPosX,
-//		const int&		pPosY,
-//		const int&		pAngle,
-//		const int&		pXAlign,
-//		const int&		pYAlign
-//	)
-//	{
-//		if(mData == NULL || pImage.mData == NULL)
-//		{
-//			throw ImageException("Trying to draw a non loaded Image.");
-//		}
-//		pivot_sprite
-//		(
-//			mData,
-//			pImage.mDataBuffer,
-//			pPosX,
-//			pPosY,
-//			pXAlign,
-//			pYAlign,
-//			itofix(pAngle+128)
-//		);
-//	}
-
 	void Image::drawText
 	(
 		const std::string&	pText,
@@ -1113,7 +1010,12 @@ namespace Graphic
 	{
 		if(mData == NULL)
 		{
-			throw ImageException("Trying to draw Text in a non loaded Image.");
+			std::stringstream out;
+			out << "Image::drawText(" << pText << ", Core::Point(" << pPosition.getX() << "," << pPosition.getY() << "), ";
+			out << "Color(" << pColor.getRed() << "," << pColor.getGreen() << "," << pColor.getBlue() << "," << pColor.getAlpha() << "), ";
+			out << "Color(" << pBgColor.getRed() << "," << pBgColor.getGreen() << "," << pBgColor.getBlue() << "," << pBgColor.getAlpha() << "), ";
+			out << "): Error, trying the access a non loaded image";
+			raiseGraphicException(out.str());
 		}
 		textout_ex
 		(
@@ -1138,27 +1040,13 @@ namespace Graphic
 	{
 		char buf[512];
 		va_list ap;
-		
-		if(mData == NULL)
-		{
-			throw ImageException("Trying to draw Text in a non loaded Image.");
-		}
-		
 		ASSERT(mData);
 		ASSERT(pText);
 		va_start(ap,pText);
 		uvszprintf(buf,sizeof(buf),pText,ap);
 		va_end(ap);
-		textout_ex
-		(
-			mData,
-			font,
-			buf,
-			pPosition.getX(),
-			pPosition.getY(),
-			pColor.get(),
-			pBgColor.get()
-		);
+
+		drawText(buf,pPosition,pColor,pBgColor);
 	}
 
 	bool Image::isEmpty() const

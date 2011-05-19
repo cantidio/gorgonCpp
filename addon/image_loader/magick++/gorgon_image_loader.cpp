@@ -25,7 +25,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw Graphic::ImageException("Unable to load Image: "+pImageName+".");
+			throw Graphic::Exception("Unable to load Image: "+pImageName+".");
 		}
 	}
 
@@ -48,7 +48,7 @@ namespace Gorgon
 			mData		= new unsigned char[mDataLength];
 			if(mData == NULL)
 			{
-				throw Graphic::ImageException("Não foi possível alocar memória.");
+				throw Graphic::Exception("Não foi possível alocar memória.");
 			}
 			pFile.read((char*)mData, mDataLength);
 			magickFile.updateNoCopy(mData, mDataLength);

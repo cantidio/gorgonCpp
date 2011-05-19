@@ -29,14 +29,13 @@
 #include <vector>
 #include <fstream>
 #include "animation.hpp"
-#include "animationpack_exception.hpp"
 #include "animationpack_header.hpp"
 
 namespace Gorgon{
 namespace Graphic
 {
 	/**
-	 * Classe que representa um pacote de animações
+	 * Class that represents an animationpack
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2008
@@ -46,21 +45,12 @@ namespace Graphic
 	class AnimationPack
 	{
 		private:
-			/**
-			 * Header do arquivo do AnimationPack
-			 */
-			AnimationPackHeader mHeader;
-			/**
-			 * Animation que é retornada sempre que uma animação inexistente é requisitada
-			 */
-			static Animation mNotFound;
-			/**
-			 * Vetor que guarda as animações
-			 */
-			std::vector<Animation> mAnimation;
+			AnimationPackHeader mHeader;		/**<< Header of the animationpack file*/
+			static Animation mNotFound;			/**<< empty animation that is returned when some unknown animation is requested*/
+			std::vector<Animation> mAnimation;	/**Vector that stores the animations*/
 		public:
 			/**
-			 * Método construtor vazio
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -68,7 +58,7 @@ namespace Graphic
 			 */
 			AnimationPack();
 			/**
-			 * Método construtor que carrega os dados de um arquivo já aberto
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -77,7 +67,7 @@ namespace Graphic
 			 */
 			AnimationPack(Core::File& pFile);
 			/**
-			 * Método construtor que carrega os dados de um arquivo
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -86,7 +76,7 @@ namespace Graphic
 			 */
 			AnimationPack(const std::string& pFileName);
 			/**
-			 * Método destrutor de classe
+			 * Destructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -94,24 +84,25 @@ namespace Graphic
 			 */
 			~AnimationPack();
 			/**
-			 * Método para otimizar o pacote de animações
+			 * Method that optimizes the animations in the animationpack
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
+			 * @param	const SpritePack*& pSpritePack, the spritepack that will map tha frames of the animations
 			 */
 			void optimize(const SpritePack& pSpritePack);
 			/**
-			 * Método para descrever o pacote de animações
+			 * Method that describes the animationpack
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
-			 * @return	std::string
+			 * @return	Core::String
 			 */
 			std::string describe();
 			/**
-			 * Método para retornar quantas animações estão presentes no pacote
+			 * Method that returns the number of animations in the pack
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -120,7 +111,7 @@ namespace Graphic
 			 */
 			int getSize();
 			/**
-			 * Método para limpar as animações do pacote
+			 * Method that removes all animations in the animationpack
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -129,115 +120,124 @@ namespace Graphic
 			 */
 			void clear();
 			/**
-			 * Método para retornar a posição da primeira animação no pacote com as especificações fornecidas
+			 * Method that returns the index of the first animation that meets the requested parameters
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	02/03/2008
 			 * @version	02/03/2009
-			 * @param	const int& pGroup, grupo da animação
-			 * @param	const int& pIndex, índiceda animação
+			 * @param	const int& pGroup, animation group
+			 * @param	const int& pIndex, animation index
 			 * @return	int
+			 * @details
+			 * 			This method tries to find the animation requested, if not found, it returns -1
 			 */
 			int getAnimationRealIndex(const int& pGroup, const int& pIndex);
 			/**
-			 * Método para adicionar uma animação ao pacote
+			 * Method that inserts a animation into the package
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	const Animation& pAnimation, animação a ser adicionada
+			 * @param	const Animation& pAnimation, animation to be inserted into the animationpack
 			 */
 			void add(const Animation& pAnimation);
 			/**
-			 * Método para adicionar uma animação ao pacote em uma determinada posição
+			 * Method that inserts a animation into the package into a given position
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	02/03/2008
 			 * @version	21/06/2009
-			 * @param	const Animation&	pAnimation	, animação a ser adicionada
-			 * @param	const int&			pPos		, posição a adicionar a animação
+			 * @param	const Animation&	pAnimation	, animation to be inserted into the package
+			 * @param	const int&			pPos		, position to insert the animation into the package
 			 */
 			void add(const Animation& pAnimation, const int& pPos);
 			/**
-			 * Método para remover uma animação do pacote
+			 * Method that removes an animation from the animationpack
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	02/03/2009
 			 * @version	21/06/2009
-			 * @param	const int& pPos, posição que deseja-se remover
+			 * @param	const int& pPos, position(index) of the animation to remove
+			 * @details
+			 * 			This method tries to remove the animation requested, if the animation couldn't be found
+			 * it does nothing
 			 */
 			void remove(const int& pPos);
 			/**
-			 * Método para remover uma animação do pacote
+			 * Method that removes an animation from the animationpack
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	02/03/2009
 			 * @version	02/03/2009
-			 * @param	const int& pGroup, grupo da animação que deseja-se remover
-			 * @param	const int& pIndex, índice da animação que deseja-se remover
+			 * @param	const int& pGroup, group of the animation to remove
+			 * @param	const int& pIndex, index of the animation to remove
 			 * @details
-			 *			Remove a animação de grupo group e indice index do pacote, se por ventura o pacote
-			 * possuir mais de uma animação com o grupo e o índice especificados, remove apenas a primeira animação
-			 * encontrada
+			 * 			This method tries to remove the animation requested, if the animation couldn't be found
+			 * it does nothing. If there is more than one animation with the group and index requested, this method
+			 * will remove just the first occurence
 			 */
 			void remove(const int& pGroup,const int& pIndex);
 			/**
-			 * Método para salvar o pacote de animações em um arquivo já aberto previamente
+			 * Method that saves the animationpack into a file previously opened
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	File& pFile, the file handler that will recive the animationpack data
 			 */
 			void save(Core::File& pFile);
 			/**
-			 * Método para salvar o pacote de animações em um arquivo
+			 * Method that saves the animationpack into a file with the given name
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	std::string pFileName, nome do arquivo a ser salvo os dados do pacote de animações
+			 * @param	std::string pFileName, name of the file that will store the animationpack data
 			 */
 			void save(const std::string& pFileName);
 			/**
-			 * Método para carregar os dados do pacote de animações de um arquivo já aberto
+			 * Method that loads the animationpack data from a previously opened file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	File& pFile, file that holds the animationpack data
 			 */
 			void load(Core::File& pFile);
 			/**
-			 * Método para carregar os dados do pacote de animações de um arquivo
+			 * Method that loads the animationpack from a file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	std::string pFileName, nome do arquivo a ser carregado
+			 * @param	std::string pFileName, name of the file that contains the animationpack data
 			 */
 			void load(const std::string& pFileName);
 			/**
-			 * operador para acessar alguma animação dada sua posição
+			 * Operator to access an animation by its index
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	const int& pPos, a posição que deseja-se selecionar
+			 * @param	const int& pPos, index of the animation in the animationpack
 			 * @return	Animation&
+			 * @details
+			 * 			If the animation you trying to access is out of bounds this method
+			 * will return an empty animation
 			 */
 			Animation& operator [](const int& pPos);
 			/**
-			 * operador para acessar alguma animação dados seu grupo e seu índice
+			 * Operator to access an animation by its group and index
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	const int& pGroup, grupo da animação
-			 * @param	const int& pIndex, índice da animação
+			 * @param	const int& pGroup, group of the desired animation
+			 * @param	const int& pIndex, index of the desired animation
 			 * @return	Animation&
 			 * @details
-			 *			Esse Método pode ser muito custoso dado o tamanho de animações
+			 *			This method will search the entire animationpack for this animation, if the animation couldn't be found
+			 * it will return an empty animation
 			 */
 			Animation& operator ()(const int& pGroup,const int& pIndex);
 	};

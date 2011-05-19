@@ -35,7 +35,7 @@ namespace Gorgon{
 namespace Graphic
 {
 	/**
-	 * Classe que representa um frame de uma animação
+	 * Class that represents an animation frame
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	12/08/2008
@@ -46,17 +46,17 @@ namespace Graphic
 	class AnimationFrame
 	{
 		private:
-			int mGroup;				/**<< Grupo do sprite do frame*/
-			int mIndex;				/**<< Índice do sprite do frame*/
-			int mRealIndex;			/**<< Índice real do sprite do frame no SpritePack*/
-			int mTime;				/**<< Tempo que o frame deve ser exibido*/
-			Core::Point mOffset;	/**<< Offset do frame*/
-			Mirroring mMirroring;	/**<< Espelhamento do sprite do frame*/
-			int mAngle;				/**<< Ângulo do sprite do frame*/
+			int mGroup;				/**<< Group of the frame's sprite*/
+			int mIndex;				/**<< Index of the frame's sprite*/
+			int mRealIndex;			/**<< The real index of the frame's sprite in the spritepack*/
+			int mTime;				/**<< Time that this frame will be displayed*/
+			Core::Point mOffset;	/**<< Offset of the frame*/
+			Mirroring mMirroring;	/**<< Mirroring of the frame's sprite*/
+			int mAngle;				/**<< Angle of the frame's sprite*/
 			//int transparence;
 		public:
 			/**
-			 * método construtor de classe
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
@@ -64,17 +64,17 @@ namespace Graphic
 			 */
 			AnimationFrame();
 			/**
-			 * método construtor de classe
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
 			 * @version	03/05/2011
-			 * @param	const int&			pGroup		, grupo do sprite do frame
-			 * @param	const int&			pIndex		, index do sprite do frame
-			 * @param	const int& 			pTime		, tempo que o frame deve ser exibido
-			 * @param	const Mirroring&	pMirroring	, espelhamento do sprite do frame
-			 * @param	const int&			pAngle		, ângulo do sprite do frame
-			 * @param	const Point&		pOffset		, offset do sprite do frame
+			 * @param	const int&			pGroup		, group of the frame's sprite
+			 * @param	const int&			pIndex		, index of the frame's sprite
+			 * @param	const int& 			pTime		, time that the frame will be displayed
+			 * @param	const Mirroring&	pMirroring	, mirroring of the frame's sprite
+			 * @param	const int&			pAngle		, angle of the frame's sprite
+			 * @param	const Point&		pOffset		, offset of the frame's sprite
 			 */
 			AnimationFrame
 			(
@@ -86,16 +86,16 @@ namespace Graphic
 				const Core::Point&	pOffset		= Core::Point(0,0)
 			);
 			/**
-			 * método construtor que busca as informações em um arquivo já aberto
+			 * Constructor that reveies the frame information from a previously opened file
 			 *
 			 * @author Cantidio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	File& pFile, file that contains the frame information
 			 */
 			AnimationFrame(Core::File& pFile);
 			/**
-			 * método para descrever o frame
+			 * Method that describes the frame
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -104,7 +104,7 @@ namespace Graphic
 			 */
  			std::string describe() const;
 			/**
-			 * método para retornar o grupo do sprite que o frame indica
+			 * Method that returns the group of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
@@ -113,7 +113,7 @@ namespace Graphic
 			 */
 			int getGroup() const;
 			/**
-			 * método para retornar o índice do sprite que o frame indica
+			 * Method that returns the index of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
@@ -122,16 +122,23 @@ namespace Graphic
 			 */
 			int getIndex() const;
 			/**
-			 * método para retornar o índice real do sprite que o frame indica
+			 * Method that returns the realIndex of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
 			 * @version	13/08/2008
 			 * @return	int
+			 * @details
+			 * 			The real index of a frame's sprite, is its position into it's spritepack.
+			 * @example
+			 * 			SpritePack		a("ta.gsp");
+			 * 			AnimatinPack	b("b.gap");
+			 * 			int index = b[0][0].getRealIndex();
+			 * 			a[index] ...
 			 */
 			int getRealIndex() const;
 			/**
-			 * método para retornar o shift no eixo x do sprite que o frame indica
+			 * Method that returns the offset of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
@@ -140,7 +147,7 @@ namespace Graphic
 			 */
 			Core::Point getOffset() const;
 			/**
-			 * método para retornar o tempo que o frame deve ser exibido
+			 * Method that returns the time that this frame is displayed
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
@@ -149,7 +156,7 @@ namespace Graphic
 			 */
 			int getTime() const;
 			/**
-			 * método para retornar o espelhamento do sprite que o frame indica
+			 * Method that returns the mirroring of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
@@ -158,7 +165,7 @@ namespace Graphic
 			 */
 			Mirroring getMirroring() const;
 			/**
-			 * método para retornar o angulo que o sprite deve ser desenhado
+			 * Method that returns the angle of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
@@ -167,111 +174,116 @@ namespace Graphic
 			 */
 			int getAngle() const;
 			/**
-			 * Método para setar o grupo do frame
+			 * Method that sets the group of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/02/2009
 			 * @version	23/02/2009
-			 * @param	const int& pGroup, o grupo do sprite
+			 * @param	const int& pGroup, group of the frame's sprite
 			 */
 			void setGroup(const int& pGroup);
 			/**
-			 * Método para setar o índice do frame
+			 * Method that sets the index of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/02/2009
 			 * @version	23/02/2009
-			 * @param	const int& pIndex, o índice do sprite
+			 * @param	const int& pIndex, index of the frame's sprite
 			 */
 			void setIndex(const int& pIndex);
 			/**
-			 * Método para setar o índice real do sprite que o frame indica
+			 * Method that sets the real index of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	15/10/2008
 			 * @version	23/02/2009
-			 * @param	const int& pIndex, o índice real do sprite
+			 * @param	const int& pIndex, the real index of the frame's sprite
+			 * @see		getRealIndex
 			 */
 			void setRealIndex(const int& pIndex);
 			/**
-			 * Método para setar o tempo de exibição do frame
+			 * Method that sets the time the frame's sprite is displayed
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/02/2009
 			 * @version	23/02/2009
-			 * @param	const int& pTime, o tempo de exibição do frame
+			 * @param	const int& pTime, the time this frame is displayed
 			 */
 			void setTime(const int& pTime);
 			/**
-			 * Método para setar o offset
+			 * Method that sets the offset of the frame's sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/05/2011
 			 * @version	03/05/2011
-			 * @param	const Core::Point& pOffset, offset do frame
+			 * @param	const Core::Point& pOffset, offset of the frame's sprite
 			 */
 			void setOffset(const Core::Point& pOffset);
 			/**
-			 * Método para setar o offset horizontal
+			 * Method that sets the XOffset of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/02/2009
 			 * @version	23/02/2009
-			 * @param	const int& pXOffset, o offset horizontal do sprite
+			 * @param	const int& pXOffset, the horizontal offset of the frame's sprite
 			 */
 			void setXOffset(const int& pXOffset);
 			/**
-			 * Método para setar o offset vertical
+			 * Method that sets the YOffset of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/02/2009
 			 * @version	23/02/2009
-			 * @param	const int& pYOffset, o offset vertical do sprite
+			 * @param	const int& pYOffset, the vertical offset of the frame's sprite
 			 */
 			void setYOffset(const int& pYOffset);
 			/**
-			 * Método para setar o espelhamento do frame
+			 * Method that sets the mirroring of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/02/2009
 			 * @version	23/02/2009
-			 * @param	const Mirroring& pMirroring, o espelhamento do sprite
+			 * @param	const Mirroring& pMirroring, the mirroring of the frame's sprite
 			 */
 			void setMirroring(const Mirroring& pMirroring);
 			/**
-			 * Método para setar o angulo
+			 * Method that sets the angle of the frame's sprite
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/02/2009
 			 * @version	23/02/2009
-			 * @param	const int& pAngle, o angulo do sprite
+			 * @param	const int& pAngle, angle of the frame's sprite
 			 */
 			void setAngle(const int& pAngle);
 			/**
-			 * método para otimizar as operações com o frame, achando o indice real do mesmo
+			 * Method that optimizes the frame operations by finding its real index
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
 			 * @version	23/02/2009
-			 * @param	const SpritePack& pSpritePack, ponteiro para o pacote de sprites, onde a pesquisa será feita
+			 * @param	const SpritePack& pSpritePack, the spritepack of the frame
+			 * @see		getRealIndex setRealIndex
+			 * @details
+			 * 			This method search the given spritepack by the sprite described in the frame by its group and index,
+			 * When it finds the sprite it get the sprite real index and stores it into the frame
 			 */
 			void optimize(const SpritePack& pSpritePack);
 			/**
-			 * método para carregar os dados do frame de um arquivo já aberto
+			 * Method that loads the frame from a previously opened file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	Core::File& pFile, the file that contains the frame data
 			 */
 			void load(Core::File& pFile);
 			/**
-			 * método para salvar o frame em um arquivo já aberto previamente
+			 * Method that saves the frame data into a previously opened file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	Core::File& pFile, the file that the frame data will be written
 			 */
 			void save(Core::File& pFile);
 	};

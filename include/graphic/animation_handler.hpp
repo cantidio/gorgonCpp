@@ -26,6 +26,7 @@
  */
 #ifndef _GORGON_ANIMATION_HANDLER_
 #define _GORGON_ANIMATION_HANDLER_
+#include "../core/string.hpp"
 #include "animationpack.hpp"
 #include "spritepack.hpp"
 #include "mirroring.hpp"
@@ -34,7 +35,7 @@ namespace Gorgon{
 namespace Graphic
 {
 	/**
-	 * Classe que representa o manipulador de animações
+	 * Class that represents the animationHandler
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	15/10/2008
@@ -44,37 +45,16 @@ namespace Graphic
 	class AnimationHandler
 	{
 		private:
-			/**
-			 * A animaçao que está tocando atualmente
-			 */
-			int mAnimationOn;
-			/**
-			 * Tempo atual que o frame atual está sendo exibida
-			 */
-			int	mTimeOn;
-			/**
-			 * Frame atual sendo exibido
-			 */
-			int mFrameOn;
-			/**
-			 * Número de vezes que a animação repetiu
-			 */
-			int	mLoopOn;
-			/**
-			 * Verdadeiro se a animação está pausada
-			 */
-			bool mIsPaused;
-			/**
-			 * Ponteiro para o pacote de sprites da animação
-			 */
-			SpritePack*	mSpritePack;
-			/**
-			 * Ponteiro para o pacote de animações
-			 */
-			AnimationPack* mAnimationPack;
+			int mAnimationOn;				/**<< The index of the animation playing*/
+			int	mTimeOn;					/**<< Actual time of the current frame*/
+			int mFrameOn;					/**<< Current frame of the current animation*/
+			int	mLoopOn;					/**<< Number of loops the current animação passed throught*/
+			bool mIsPaused;					/**<< True if the animation if paused*/
+			SpritePack*	mSpritePack;		/**<< Pointer to the spritepack of the handler*/
+			AnimationPack* mAnimationPack;	/**<< Pointer to the animationpack of the handler*/
 		public:
 			/**
-			 * Método Construtor da Classe AnimationHandler
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	15/10/2008
@@ -82,44 +62,44 @@ namespace Graphic
 			 */
 			AnimationHandler();
 			/**
-			 * Método Construtor da Classe AnimationHandler
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	27/05/2009
-			 * @param	SpritePack&		pSpritePack		, pacote de sprites
-			 * @param	AnimationPack&	pAnimationPack	, pacote de animações
+			 * @param	SpritePack&		pSpritePack		, reference to the spritepack of the handler
+			 * @param	AnimationPack&	pAnimationPack	, reference to the animationpack of the handler
 			 */
 			AnimationHandler(SpritePack& pSpritePack,AnimationPack& pAnimationPack);
 			/**
-			 * Método Construtor de Copia
+			 * Copy Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	27/05/2009
-			 * @param	const AnimationHandler& pOrig , objeto original
+			 * @param	const AnimationHandler& pOrig , original obj
 			 */
 			AnimationHandler(const AnimationHandler& pOrig);
 			/**
-			 * Método para setar o SpritePack
+			 * Method that sets the spritepack of the handler
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	27/05/2009
-			 * @param	SpritePack& pSpritePack,novo SpritePack
+			 * @param	SpritePack& pSpritePack, the spritepack to be used in the handler
 			 */
 			void setSpritePack(SpritePack& pSpritePack);
 			/**
-			 * Método para setar o AnimationPack
+			 * Method that sets the animationpack of the handler
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	27/05/2009
-			 * @param	AnimationPack& pAnimationPack,novo AnimationPack
+			 * @param	AnimationPack& pAnimationPack, the animationpack to be used in the handler
 			 */
 			void setAnimationPack(AnimationPack& pAnimationPack);
 			/**
-			 * Método para retornar o SpritePack
+			 * Method that returns the reference to the spritepack of the handler
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	18/03/2009
@@ -128,7 +108,7 @@ namespace Graphic
 			 */
 			SpritePack& getSpritePack() const;
 			/**
-			 * Método para retornar o AnimationPack
+			 * Method htat returns the reference to the animationpack of the handler
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	18/03/2009
@@ -137,15 +117,16 @@ namespace Graphic
 			 */
 			AnimationPack& getAnimationPack() const;
 			/**
-			 * Método para descrever o estado das variáveis de classe
+			 * Method that describes the animationhandler
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	27/05/2009
+			 * @return	Core::String
 			 */
-			void describe() const;
+			Core::String describe() const;
 			/**
-			 * Método que reinicia as animações
+			 * Method that resets the animation being played
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	24/02/2009
@@ -153,7 +134,7 @@ namespace Graphic
 			 */
 			void reset();
 			/**
-			 * Método para pausar a execução da animação
+			 * Method that pauses the animation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	27/02/2009
@@ -161,7 +142,7 @@ namespace Graphic
 			 */
 			void pause();
 			/**
-			 * Método para continuar a execução da animação se pausada
+			 * Method that resumes the animation if it were paused previously
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	27/02/2009
@@ -169,37 +150,42 @@ namespace Graphic
 			 */
 			void resume();
 			/**
-			 * Método para pular para o frame indicado na animação
+			 * Method that jumps to the requested frame of the current animation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	27/02/2009
 			 * @version	27/05/2009
-			 * @param	const int& pFrameIndex, índice real do frame na animação atual
+			 * @param	const int& pFrameIndex, the real index of the frame in the current animation
+			 * @details
+			 * 			This method will try to change to the requested frame, if the frame isn't found, then it will do nothing
 			 */
 			void jumpToFrame(const int& pFrameIndex);
 			/**
-			 * Método para pausar a execução da animação
+			 * Method that jumps to the requested frame of the current animation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	27/02/2009
 			 * @version	27/05/2009
-			 * @param	const int& pFrameGroup, grupo do frame a pular
-			 * @param	const int& pFrameIndex, índice do frame a pular
+			 * @param	const int& pFrameGroup, group of the frame
+			 * @param	const int& pFrameIndex, index of the frame
+			 *  @details
+			 * 			This method will try to change to the requested frame, if the frame isn't found, then it will do nothing
 			 */
 			void jumpToFrame(const int& pFrameGroup,const int& pFrameIndex);
 			/**
-			 * Método para otimizar a animação
+			 * Method that optimizes the animationhandler frame access throught finding the correct indexes of the frames in the spritepack
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	15/10/2008
 			 * @version	27/05/2008
 			 * @details
-			 *			Esse método é muito importante para otimizar a execução das animações, ele acha os índices verdadeiros dos sprites
-			 * no spritePack e atualiza-os no animationPack, para acesso direto
+			 * 			This method is very important to optimize the animation logic time, it finds the real index of the sprites
+			 * in the spritepack and update their values into the animationpack, for direct access. Run it, every timeyou change something
+			 * into the animationpack or the spritepack
 			 */
 			void optimize();
 			/**
-			 * Método para retornar em qual frame a animação atual está
+			 * Method that returns the index of the current frame in the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	23/10/2008
@@ -208,7 +194,7 @@ namespace Graphic
 			 */
 			int getFrameOn() const;
 			/**
-			 * Método que retorna o tempo atual do frame da animação
+			 * Method that returns the current time of the current frame of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	24/02/2009
@@ -217,25 +203,25 @@ namespace Graphic
 			 */
 			int getTimeOn() const;
 			/**
-			 * Método que retorna a animacao que está sendo executada no momento
+			 * Method that returns the index of the current animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	15/10/2008
 			 * @version	27/05/2009
-			 * @return	int, número da animação que está sendo executada
+			 * @return	int
 			 */
 			int getAnimationOn() const;
 			/**
-			 * Método para retornar o grupo da animação que está tocando
+			 * Method that returns the group of the current animation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/02/2009
 			 * @version	27/05/2009
-			 * @return	const int&
+			 * @return	int
 			 */
 			int getAnimationOnGroup() const;
 			/**
-			 * Método para retornar o índice da animação que está tocando
+			 * Method that returns the index of the current animation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/02/2009
@@ -244,26 +230,26 @@ namespace Graphic
 			 */
 			int getAnimationOnIndex() const;
 			/**
-			 * Método para mudar a animação a ser executada
+			 * Method that chances the animation playing
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	15/10/2008
 			 * @version	27/05/2009
-			 * @param	const int& pAnimationNumber, número da animação a ser mudada
-			 * @param	const bool& pForce, se verdadeiro sempre muda a animação e reseta os contadores,
-			 * se não só muda se a animação for diferente da animação atual
+			 * @param	const int&	pAnimationNumber	, index of the animation to play
+			 * @param	const bool&	pForce				, if true his method will reset the timers and changes to the animation even if the requested animation is already playing,
+			 * if false, the method will just change the animation if the requested animation isn't playing
 			 */
 			void changeAnimation(const int& pAnimationNumber,const bool& pForce=false);
 			/**
-			 * Método para mudar a animação a ser executada
+			 * Method that changes the animation playing
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	27/05/2009
-			 * @param	const int& pGroup, grupo da nova animação a tocar
-			 * @param	const int& pIndex, índice da nova animação a tocar
-			 * @param	const bool& pForce, se verdadeiro sempre muda a animação e reseta os contadores,
-			 * se não só muda se a animação for diferente da animação atual
+			 * @param	const int& pGroup	, the group of the requested animation
+			 * @param	const int& pIndex	, the index of the requested animation
+			 * @param	const bool& pForce	, if true his method will reset the timers and changes to the animation even if the requested animation is already playing,
+			 * if false, the method will just change the animation if the requested animation isn't playing
 			 */
 			void changeAnimation
 			(
@@ -272,7 +258,7 @@ namespace Graphic
 				const bool& pForce=false
 			);
 			/**
-			 * Método para saber se a animação está tocando
+			 * Method that returns true if the animation is still playing
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	15/10/2008
@@ -281,15 +267,16 @@ namespace Graphic
 			 */
 			bool isPlaying();
 			/**
-			 * Método que roda um passo da animação
+			 * Method that executes one step of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	24/02/2009
 			 * @version	09/06/2009
+			 * @todo	rename this method, maybe runStep, playStep, logic,...
 			 */
 			void playByStep();
 			/**
-			 * Método que retorna o sprite do frame corrente na animação
+			 * Method that returns the current sprite of the current frame of the current animation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/02/2009
@@ -298,15 +285,15 @@ namespace Graphic
 			 */
 			const Sprite& getCurrentSprite() const;
 			/**
-			 * Método que desenha a animação em um sprite de destino
+			 * Method that draws the animation current frame into a sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	03/05/2011
-			 * @param	Sprite& pSprite				, sprite onde a animação será desenhada
-			 * @param	const Point& pPosition		, posição que a animação será desenhada
-			 * @param	const Mirroring& pMirroring	, espelhamento a ser usado para desenhar a animação
-			 * @param	const int& pAngle			, angulo a ser usado para desenhar a animação
+			 * @param	Sprite& pSprite				, sprite where the current frame will be drawn
+			 * @param	const Point& pPosition		, position where the frame will be drawn in the sprite
+			 * @param	const Mirroring& pMirroring	, mirroring of the animation
+			 * @param	const int& pAngle			, angle of the animation
 			 */
 			void draw
 			(
@@ -315,10 +302,12 @@ namespace Graphic
 				const Mirroring& pMirroring=Mirroring::Normal,
 				const int& pAngle=0
 			);
+
 			void drawTrans
 			(
 				Sprite& pSprite,
 				const Core::Point& pPosition,
+				const Mirroring& pMirroring=Mirroring::Normal,
 				const float& pTrans = 0.5
 			);
 			//virtual void onFinish();//?

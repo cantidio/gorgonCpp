@@ -561,11 +561,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animation.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/animation_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animation_exception.hpp</locationURI>
-		</link>
-		<link>
 			<name>include/graphic/animation_frame.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animation_frame.hpp</locationURI>
@@ -586,11 +581,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animationpack.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/animationpack_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animationpack_exception.hpp</locationURI>
-		</link>
-		<link>
 			<name>include/graphic/animationpack_header.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animationpack_header.hpp</locationURI>
@@ -599,6 +589,11 @@
 			<name>include/graphic/color.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/color.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/exception.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/exception.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/graphic/graphic.hpp</name>
@@ -611,19 +606,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/image.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/image_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/image_exception.hpp</locationURI>
-		</link>
-		<link>
 			<name>include/graphic/image_loader.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/image_loader.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/image_loader_null.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/image_loader_null.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/graphic/mirroring.hpp</name>
@@ -641,11 +626,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/sprite.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/sprite_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/sprite_exception.hpp</locationURI>
-		</link>
-		<link>
 			<name>include/graphic/sprite_header.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/sprite_header.hpp</locationURI>
@@ -654,11 +634,6 @@
 			<name>include/graphic/spritepack.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/spritepack.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/spritepack_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/spritepack_exception.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/graphic/spritepack_header.hpp</name>
@@ -1026,11 +1001,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animation.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/animation_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animation_exception.cpp</locationURI>
-		</link>
-		<link>
 			<name>src/graphic/animation_frame.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animation_frame.cpp</locationURI>
@@ -1051,11 +1021,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animationpack.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/animationpack_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animationpack_exception.cpp</locationURI>
-		</link>
-		<link>
 			<name>src/graphic/animationpack_header.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animationpack_header.cpp</locationURI>
@@ -1066,24 +1031,19 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/color.cpp</locationURI>
 		</link>
 		<link>
+			<name>src/graphic/exception.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/exception.cpp</locationURI>
+		</link>
+		<link>
 			<name>src/graphic/image.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/image.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/image_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/image_exception.cpp</locationURI>
-		</link>
-		<link>
 			<name>src/graphic/image_loader.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/image_loader.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/image_loader_null.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/image_loader_null.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/graphic/mirroring.cpp</name>
@@ -1101,11 +1061,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/sprite.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/sprite_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/sprite_exception.cpp</locationURI>
-		</link>
-		<link>
 			<name>src/graphic/sprite_header.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/sprite_header.cpp</locationURI>
@@ -1114,11 +1069,6 @@
 			<name>src/graphic/spritepack.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/spritepack.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/spritepack_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/spritepack_exception.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/graphic/spritepack_header.cpp</name>

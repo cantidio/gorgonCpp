@@ -1,4 +1,5 @@
-#include "graphic/animationpack.hpp"
+#include <graphic/animationpack.hpp>
+#include <graphic/exception.hpp>
 #include <sstream>
 
 namespace Gorgon{
@@ -34,7 +35,7 @@ namespace Graphic
 	std::string AnimationPack::describe()
 	{
 		std::stringstream out;
-		out << "Gorgon AnimationPack"	<< std::endl;
+		out << "Gorgon::Graphic::AnimationPack"	<< std::endl;
 		out << "Size: " << getSize()	<< std::endl;
 
 		for(int i = 0; i < getSize(); i++)
@@ -104,28 +105,41 @@ namespace Graphic
 		Core::File file(pFileName,std::ios::out | std::ios::binary);
 		if(file.is_open())
 		{
-			save(file);
+			try
+			{
+				save(file);
+			}
+			catch(Core::Exception& exception)
+			{
+				raiseGraphicExceptionE("AnimationPack::save(\""+pFileName+"\"): Error while saving the AnimationPack",exception);
+			}
 		}
 		else
 		{
-			throw AnimationPackException("Unable to save AnimationPack: "+pFileName+".");
+			raiseGraphicException("AnimationPack::save(\""+pFileName+"\"): Error: could not open the file for writting");
 		}
 	}
 
 	void AnimationPack::load(Core::File& pFile)
 	{
-		mHeader.load(pFile);
-		
-		if(mHeader.isValid())
+		if(pFile.is_open())
 		{
-			for(int i = 0; i < mHeader.getAnimationNumber(); ++i)
+			mHeader.load(pFile);
+			if(mHeader.isValid())
 			{
-				add(Animation(pFile));
+				for(int i = 0; i < mHeader.getAnimationNumber(); ++i)
+				{
+					add(Animation(pFile));
+				}
+			}
+			else
+			{
+				raiseGraphicException("AnimationPack::load(pFile): Error : animationpack header with incorrect format.");
 			}
 		}
 		else
 		{
-			throw AnimationPackException("Unable to load AnimationPack due to incorrect format.");
+			raiseGraphicException("AnimationPack::load(pFile): Error: The file passed as argument isn't opened.");
 		}
 	}
 
@@ -134,11 +148,18 @@ namespace Graphic
 		Core::File file(pFileName,std::ios::in | std::ios::binary);
 		if(file.is_open())
 		{
-			load(file);
+			try
+			{
+				load(file);
+			}
+			catch(Core::Exception& exception)
+			{
+				raiseGraphicExceptionE("AnimationPack::load(\""+pFileName+"\"): Error while loading the AnimationPack from File",exception);
+			}
 		}
 		else
 		{
-			throw AnimationPackException("Unable to load AnimationPack: "+pFileName+".");
+			raiseGraphicException("AnimationPack::load(\""+pFileName+"\"): Error: could not open the file for reading");
 		}
 	}
 
@@ -150,11 +171,6 @@ namespace Graphic
 		}
 		else
 		{
-			/**
-			 * @todo	usar exceptions ?
-			 */
-			//throw AnimationPackException("Unable to load AnimationPack: "+pFileName+".");
-			//printf("Animation %d not found\n",i);
 			return mNotFound;
 		}
 	}

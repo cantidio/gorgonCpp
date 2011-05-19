@@ -1,4 +1,5 @@
 #include <graphic/animation.hpp>
+#include <graphic/exception.hpp>
 #include <sstream>
 
 namespace Gorgon{
@@ -33,12 +34,26 @@ namespace Graphic
 
 	Animation::Animation(Core::File& pFile)
 	{
-		load(pFile);
+		try
+		{
+			load(pFile);
+		}
+		catch(Core::Exception& exception)
+		{
+			raiseGraphicExceptionE("Animation::Animation(pFile): Error: Unable to load Animation.",exception);
+		}
 	}
 
 	Animation::Animation(const std::string& pFileName)
 	{
-		load(pFileName);
+		try
+		{
+			load(pFileName);
+		}
+		catch(Core::Exception& exception)
+		{
+			raiseGraphicExceptionE(Core::String("Animation::Animation(\"") +pFileName+"\"): Error: Unable to load Animation.",exception);
+		}
 	}
 
 	Animation::~Animation()
@@ -99,7 +114,7 @@ namespace Graphic
 		mFrame.insert(mFrame.begin() + pPos,pFrame);
 	}
 
-	void Animation::remove(const unsigned int& pPos)
+	void Animation::remove(const int& pPos)
 	{
 		if(pPos >= 0 && pPos < mFrame.size())
 		{
@@ -197,36 +212,43 @@ namespace Graphic
 		}
 		else
 		{
-			throw AnimationException("Unable to save Animation: "+pFileName+".");
+			raiseGraphicException("Animation::save("+pFileName+"): Error file could not be opened.");
 		}
 	}
 
 	void Animation::load(Core::File& pFile)
 	{
-		mHeader.load(pFile);
+		mHeader.load(pFile);/**@todo fazer alguma coisa sobre isso*/
 		if(mHeader.isValid())
 		{
-			setGroup	(pFile.readInt32());
-			setIndex	(pFile.readInt32());
-			setLooping	(pFile.readBool());
-			if(getLooping())
+			try
 			{
-				setLoopFrame	(pFile.readInt32());
-				setRepeatNumber	(pFile.readInt32());
+				setGroup	(pFile.readInt32());
+				setIndex	(pFile.readInt32());
+				setLooping	(pFile.readBool());
+				if(getLooping())
+				{
+					setLoopFrame	(pFile.readInt32());
+					setRepeatNumber	(pFile.readInt32());
+				}
+				else
+				{
+					setLoopFrame	(-1);
+					setRepeatNumber	(-1);
+				}
+				for(int i = 0; i < mHeader.getFrameNumber(); ++i)
+				{
+					add(AnimationFrame(pFile));
+				}
 			}
-			else
+			catch(Core::Exception& exception)
 			{
-				setLoopFrame	(-1);
-				setRepeatNumber	(-1);
-			}
-			for(int i = 0; i < mHeader.getFrameNumber(); ++i)
-			{
-				add(AnimationFrame(pFile));
+				raiseGraphicExceptionE("Animation::load(pFile): Error while trying to load the animation from File",exception);
 			}
 		}
 		else
 		{
-			throw AnimationException("Unable to load Animation due to incorrect format.");
+			raiseGraphicException("Animation::load(pFile): Error: Unable to load Animation due to incorrect format.");
 		}
 	}
 
@@ -239,13 +261,13 @@ namespace Graphic
 		}
 		else
 		{
-			throw AnimationException("Unable to load Animation: "+pFileName+".");
+			raiseGraphicException("Animation::load(\""+pFileName+"\"): Error: Unable to load Animation.");
 		}
 	}
 
-	AnimationFrame& Animation::operator [](const unsigned int& pPos)
+	AnimationFrame& Animation::operator [](const int& pPos)
 	{
-		if(pPos < mFrame.size())
+		if(pPos >= 0 && pPos < mFrame.size())
 		{
 			return mFrame[pPos];
 		}
@@ -255,9 +277,9 @@ namespace Graphic
 		}
 	}
 
-	const AnimationFrame& Animation::operator [](const unsigned int& pPos) const
+	const AnimationFrame& Animation::operator [](const int& pPos) const
 	{
-		if(pPos < mFrame.size())
+		if(pPos >= 0 && pPos < mFrame.size())
 		{
 			return mFrame[pPos];
 		}

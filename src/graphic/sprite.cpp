@@ -1,4 +1,5 @@
-#include "graphic/sprite.hpp"
+#include <graphic/sprite.hpp>
+#include <graphic/exception.hpp>
 
 namespace Gorgon{
 namespace Graphic
@@ -16,14 +17,14 @@ namespace Graphic
 		mOffset	= pOffset;
 	}
 
-	Sprite::Sprite(const std::string& pSpriteName) : Image()
+	Sprite::Sprite(const std::string& pSpriteName, const ImageLoader& pImageLoader) : Image()
 	{
-		load(pSpriteName);
+		load(pSpriteName,pImageLoader);
 	}
 
-	Sprite::Sprite(Core::File& pFile) : Image()
+	Sprite::Sprite(Core::File& pFile, const ImageLoader& pImageLoader) : Image()
 	{
-		load(pFile);
+		load(pFile,pImageLoader);
 	}
 
 	Sprite::Sprite(const Sprite& pSpriteOrig) : Image(pSpriteOrig)
@@ -33,12 +34,6 @@ namespace Graphic
 		mOffset		= pSpriteOrig.mOffset;
 	}	
 
-	Sprite::~Sprite()
-	{
-		//std::cout << "Group:   " << mGroup	<< std::endl;
-		//std::cout << "Index:   " << mIndex	<< std::endl << std::endl;
-	}
-	
 	std::string Sprite::describe() const
 	{
 		std::stringstream out;
@@ -65,23 +60,26 @@ namespace Graphic
 		setOffset( getOffset() - Core::Point(x,y) );
 	}
 	
-	void Sprite::load(const std::string& pSpriteName)
+	void Sprite::load(const std::string& pSpriteName, const ImageLoader& pImageLoader)
 	{
 		Core::File file(pSpriteName,std::ios::in | std::ios::binary);
 		
 		if(file.is_open())
 		{
-			load(file);
+			load(file, pImageLoader);
 		}
 		else
 		{
-			throw SpriteException("Unable to load Sprite: "+pSpriteName+".");
+			raiseGraphicException("Sprite::load(\""+pSpriteName+"\"): Error, file couldn't be opened.");
 		}
-		
 	}
 
-	void Sprite::load(Core::File& pFile)
+	void Sprite::load(Core::File& pFile, const ImageLoader& pImageLoader)
 	{
+		if(!pFile.is_open())
+		{
+			raiseGraphicException("Sprite::load(pFile): Error, the file isn't opened for reading.");
+		}
 		SpriteHeader header;
 		try
 		{
@@ -91,17 +89,17 @@ namespace Graphic
 			setIndex	(header.getIndex());
 			setOffset	(header.getOffset());
 
-			ImageLoader::getLoader().load
+			pImageLoader.load
 			(
 				*this,
 				pFile,
 				header.getSizeOfData()
 			);
 		}
-		catch(SpriteException& exception)
+		catch(Core::Exception& exception)
 		{
 			header.returnFilePosition(pFile);
-			throw SpriteException("Unable to load Sprite due to incorrect format.");
+			raiseGraphicExceptionE("Sprite::load(pFile): Error loading the Sprite.",exception);
 		}
 	}
 
@@ -115,7 +113,7 @@ namespace Graphic
 		}
 		else
 		{
-			throw SpriteException("Unable to save Sprite: "+pSpriteName+".");
+			raiseGraphicException("Sprite::save(\""+pSpriteName+"\"): Error, the file couldn't be opened fro writting.");
 		}
 	}
 
@@ -142,10 +140,10 @@ namespace Graphic
 			header.save(pFile);//agora salva o header com seu valor verdadeiro
 			pFile.seekp(pos2);//retorna o ponteiro para o seu lugar certo.
 		}
-		catch(SpriteException& e)
+		catch(Core::Exception& exception)
 		{
 			header.returnFilePosition(pFile);
-			throw SpriteException("Unable to save Sprite.");
+			raiseGraphicExceptionE("Sprite::save(pFile): Error while saving Sprite.",exception);
 		}
 	}
 
@@ -332,7 +330,7 @@ namespace Graphic
 		const Core::Point&	pSourcePosition,
 		const int&			pSourceWidth,
 		const int&			pSourceHeight,
-		const bool&		pMasked
+		const bool&			pMasked
 	)
 	{
 		blitImageStretched

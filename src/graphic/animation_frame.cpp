@@ -1,5 +1,6 @@
-#include "graphic/animation_frame.hpp"
 #include <sstream>
+#include <graphic/animation_frame.hpp>
+#include <graphic/exception.hpp>
 
 namespace Gorgon{
 namespace Graphic
@@ -36,13 +37,20 @@ namespace Graphic
 
 	AnimationFrame::AnimationFrame(Core::File& pFile)
 	{
-		load(pFile);
+		try
+		{
+			load(pFile);
+		}
+		catch(Core::Exception& exception)
+		{
+			raiseGraphicExceptionE("AnimationFrame::AnimationFrame(pFile): Error while trying to load the animationFrame from File",exception);
+		}
 	}
 
 	std::string AnimationFrame::describe() const
 	{
 		std::stringstream out;
-		out << "Gorgon AnimationFrame"	<< std::endl;
+		out << "Gorgon::Graphic::AnimationFrame"	<< std::endl;
 		out << "group: "		<< mGroup			<< std::endl;
 		out << "index: "		<< mIndex			<< std::endl;
 		out << "realIndex: "	<< mRealIndex		<< std::endl;
@@ -150,29 +158,41 @@ namespace Graphic
 
 	void AnimationFrame::save(Core::File& pFile)
 	{
-		pFile.writeInt32(getGroup());
-		pFile.writeInt32(getIndex());
-		pFile.writeInt32(getRealIndex());
-		pFile.writeInt32(getOffset().getX());
-		pFile.writeInt32(getOffset().getY());
-		pFile.writeInt32(getTime());
-		pFile.write((char*)&mMirroring.getType(),sizeof(Mirroring::Type));
-		pFile.writeInt32(getAngle());
+		try
+		{
+			pFile.writeInt32(getGroup());
+			pFile.writeInt32(getIndex());
+			pFile.writeInt32(getRealIndex());
+			pFile.writeInt32(getOffset().getX());
+			pFile.writeInt32(getOffset().getY());
+			pFile.writeInt32(getTime());
+			pFile.write((char*)&mMirroring.getType(),sizeof(Mirroring::Type));
+			pFile.writeInt32(getAngle());
+		}
+		catch(Core::Exception& exception)
+		{
+			raiseGraphicExceptionE("AnimationFrame::save(pFile): Error while saving the AnimationFrame into File",exception);
+		}
 	}
 
 	void AnimationFrame::load(Core::File& pFile)
 	{
-		Mirroring::Type mirroring;
-		setGroup	(pFile.readInt32());
-		setIndex	(pFile.readInt32());
-		setRealIndex(pFile.readInt32());
-		setXOffset	(pFile.readInt32());
-		setYOffset	(pFile.readInt32());
-		setTime		(pFile.readInt32());
-
-		pFile.read((char*)&mirroring,sizeof(Mirroring::Type));
-
-		setAngle	(pFile.readInt32());
-		mMirroring = mirroring;
+		try
+		{
+			Mirroring::Type mirroring;
+			setGroup	(pFile.readInt32());
+			setIndex	(pFile.readInt32());
+			setRealIndex(pFile.readInt32());
+			setXOffset	(pFile.readInt32());
+			setYOffset	(pFile.readInt32());
+			setTime		(pFile.readInt32());
+			pFile.read((char*)&mirroring,sizeof(Mirroring::Type));
+			setAngle	(pFile.readInt32());
+			mMirroring = mirroring;
+		}
+		catch(Core::Exception& exception)
+		{
+			raiseGraphicExceptionE("AnimationFrame::load(pFile): Error while loading the AnimationFrame from File",exception);
+		}
 	}
 }}

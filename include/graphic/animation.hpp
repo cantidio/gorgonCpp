@@ -29,34 +29,33 @@
 #include <string>
 #include <vector>
 #include "animation_frame.hpp"
-#include "animation_exception.hpp"
 #include "animation_header.hpp"
 
 namespace Gorgon{
 namespace Graphic
 {
 	/**
-	 * Classe que representa a definição de uma animação
+	 * Class that represents an animation definition
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2008
-	 * @version	21/06/2009
+	 * @version	18/05/2011
 	 * @ingroup	Graphic
 	 */
 	class Animation
 	{
 		private:
-			AnimationHeader mHeader;			/**<< Header do arquivo Animation*/
-			static AnimationFrame mNotFound;	/**<< Frame que é retornando sempre que um frame que não existe é requisitado*/
-			std::vector<AnimationFrame> mFrame;	/**<< Vetor que guarda os frames da animação*/
-			int	mGroup;							/**<< Grupo da animação*/
-			int	mIndex;							/**<< Índice da animação*/
-			bool mLooping;						/**<< Verdadeiro se a animação entra em loop*/
-			int	mLoopFrame;						/**<< frame em que a animação entra em loop*/
-			int mRepeatNumber;					/**<< número de vezes que a animação repetirá*/
+			AnimationHeader mHeader;			/**<< Header of the animation file*/
+			static AnimationFrame mNotFound;	/**<< Frame that is returned when some unkown frame is requested*/
+			std::vector<AnimationFrame> mFrame;	/**<< Vector that stores the animation frames*/
+			int	mGroup;							/**<< Animation Group*/
+			int	mIndex;							/**<< Animation Index*/
+			bool mLooping;						/**<< True if this animation has a loop*/
+			int	mLoopFrame;						/**<< Frame Index that the animation loops*/
+			int mRepeatNumber;					/**<< number of times this animation will repeat*/
 		public:
 			/**
-			 * Método construtor vazio
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -64,45 +63,47 @@ namespace Graphic
 			 */
 			Animation();
 			/**
-			 * Método construtor inicializado
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
-			 * @param	const int&	group		, grupo da animação
-			 * @param	const int&	index		, índice da animação
-			 * @param	const bool&	looping		, se a animação terá loop
-			 * @param	const int&	loopFrame	, número do frame que a animação entrará em loop
-			 * @param	const int&	repeatNumber, número de vezes que a animação repetirá
+			 * @param	const int&	group		, animation group
+			 * @param	const int&	index		, animation index
+			 * @param	const bool&	looping		, true if this animation loops
+			 * @param	const int&	loopFrame	, index of the frame that starts the animation's loop
+			 * @param	const int&	repeatNumber, number of times this animation will repeat, if -1 it will repeat forever
 			 */
 			Animation
 			(
 				const int&	pGroup,
 				const int&	pIndex,
-				const bool&	pLooping	= false,
-				const int&	pLoopFrame	= 0,
+				const bool&	pLooping		= false,
+				const int&	pLoopFrame		= 0,
 				const int&	pRepeatNumber	= -1
 			);
 			/**
-			 * Método construtor que carrefa os dados diretamente de um arquivo já aberto
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	Core::File& pFile, previously opened file
+			 * @details
+			 * 			This method opens the animation stored in the file
 			 */
 			Animation(Core::File& pFile);
 			/**
-			 * Método construtor que carrefa os dados diretamente de um arquivo
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
-			 * @param	const std::string& fileName, nome do arquivo a ser aberto
+			 * @param	const std::string& fileName, name of the file to be open
 			 */
 			Animation(const std::string& pFileName);
 			/**
-			 * Método destrutor de classe
+			 * Destructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -110,16 +111,16 @@ namespace Graphic
 			 */
 			~Animation();
 			/**
-			 * Método para encontrar os índices reais de todos os frames de uma animacão dado o spritepack
+			 * Method that finds the real index of all animation frames given a spritepack
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	15/10/2008
 			 * @version	24/02/2009
-			 * @param	const SpritePack& spritePack, ponteiro para o spritepack
+			 * @param	const SpritePack& spritePack, reference to the spritepack
 			 */
 			void optimize(const SpritePack& pSpritePack);
 			/**
-			 * Método para descrever a animação
+			 * Method that describes the atributes of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -128,54 +129,63 @@ namespace Graphic
 			 */
 			std::string describe();
 			/**
-			 * Método para retornar a posição do primeiro frame na animação com as especificação cedida
+			 * Method that returns que index of the first frame of the animation with the given group and frame
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	02/03/2009
 			 * @version	02/03/2009
-			 * @param	const int& group	, grupo do frame
-			 * @param	const int& index	, índice do frame
+			 * @param	const int& group	, group of the frame
+			 * @param	const int& index	, index of the frame
+			 * @details
+			 * 			This method will try to find the index of the frame requested, if it fails it will return -1
 			 */
 			int getFrameRealIndex(const int& pGroup, const int& pIndex);
 			/**
-			 * Método para adicionar um frame à animação
+			 * Method to insert a frame into the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	const AnimationFrame& pFrame, frame a ser adicionado
+			 * @param	const AnimationFrame& pFrame, the frame to be inserted
 			 */
 			void add(const AnimationFrame& pFrame);
 			/**
-			 * Método para adicionar um frame à animação em uma determinada posição
+			 * Method to insert a frame into the animation in the given position
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	02/03/2009
 			 * @version	21/06/2009
-			 * @param	const AnimationFrame&	pFrame	, frame a ser adicionado
-			 * @param	const int&				pPos	, posição que deverá ser adicionado
+			 * @param	const AnimationFrame&	pFrame	, the frame be be inserted
+			 * @param	const int&				pPos	, the position that the frame will be inserted
 			 */
 			void add(const AnimationFrame& pFrame,const int& pPos);
 			/**
-			 * Método para remover um frame da animação
+			 * Method that removes a frame from the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	02/03/2009
 			 * @version	06/01/2011
-			 * @param	const unsigned int& pos, posição do frame na animação
+			 * @param	const int& pos, the index of the frame in the animation
+			 * @details
+			 * 			This method removes the frame with the given index, if the index is out of bounds,
+			 * index < 0 or index > totalFrames, this method will do nothing
 			 */
-			void remove(const unsigned int& pPos);
+			void remove(const int& pPos);
 			/**
-			 * Método para remover um frame da animação dados o grupo e o índice
+			 * Method that removes a frame from the animation given its group and index
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	02/03/2009
 			 * @version	02/03/2009
-			 * @param	const int& pos, posição do frame na animação
+			 * @param	const int& pos		, the group of the frame
+			 * @param	const int& pIndex	, the index of the frame
+			 * @details
+			 * 			This method removes the frame that matches the search(group,index)
+			 * if the frame couldn't be found, this method do nothing
 			 */
 			void remove(const int& pGroup,const int& pIndex);
 			/**
-			 * Método para retornar o número de frames da animação
+			 * Method that returns the number of frames of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
@@ -184,151 +194,155 @@ namespace Graphic
 			 */
 			int	getSize() const;
 			/**
-			 * Método para retornar o grupo da animação
+			 * Method that returns the group of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
-			 * @return	const int&
+			 * @return	int
 			 */
 			int getGroup() const;
 			/**
-			 * Método para retornar o índice da animação
+			 * Method that returns the index of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
-			 * @return	const int&
+			 * @return	int
 			 */
 			int getIndex() const;
 			/**
-			 * Método para retornar se a animação possui loop
+			 * Method that returns if the animation loops
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	24/02/2009
 			 * @version	25/02/2009
-			 * @return	const bool&
+			 * @return	bool
 			 */
 			bool getLooping() const;
 			/**
-			 * Método para retornar o frame de início do loop
+			 * Method that returns the index of the frame that starts the animation loop
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	24/02/2009
 			 * @version	25/02/2009
-			 * @return	const int&
+			 * @return	int
 			 */
 			int getLoopFrame() const;
 			/**
-			 * Método para retornar o número de repetições da animação
+			 * Method that returns the number of loops of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
-			 * @return	const int&
+			 * @return	int
+			 * @details -1 means that this animation will loop forever, if the loop is true
 			 */
 			int getRepeatNumber() const;
 			/**
-			 * Método para setar o grupo da animação
+			 * Method that sets the group of the animation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2008
-			 * @version	24/02/2009
-			 * @param	const int& group, grupo da animação
+			 * @version	24/02/2009n
+			 * @param	const int& pGroup, group of the animation
 			 */
 			void setGroup(const int& pGroup);
 			/**
-			 * Método para setar o índice da animação
+			 * Method that sets the index of the a-nimation
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	24/02/2009
-			 * @param	const int& group, índice da animação
+			 * @param	const int& pIndex, index of the animation
 			 */
 			void setIndex(const int& pIndex);
 			/**
-			 * Método para setar o looping da animação
+			 * Method that sets if the animation has a loop or not
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/02/2009
 			 * @version	24/02/2009
-			 * @param	const bool& looping, true se a animação terá loop
+			 * @param	const bool& pLooping, true if the animation has a loop
 			 */
 			void setLooping(const bool& pLooping);
 			/**
-			 * Método para setar o frame em que a animação entrará em loop
+			 * Method that sets which frame the animation will start its loop
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/02/2009
 			 * @version	24/02/2009
-			 * @param	const int& loopFrame, frame em que a animação entrará em loop
+			 * @param	const int& pLoopFrame, frame that starts the animation loop
 			 */
 			void setLoopFrame(const int& pLoopFrame);
 			/**
-			 * Método para setar o número de vezes que a animação ficará em loop
+			 * Method that sets the number of times the animation will repeat
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	24/02/2009
 			 * @version	24/02/2009
-			 * @param	const int& repeatNumber, número de vezes que a animação repetirá
+			 * @param	const int& pRepeatNumber, the number of times the animation will repeat
+			 * @details
+			 * 			if the pRepeatNumber is -1, then the animation will loop forever, if the loop is true
 			 */
 			void setRepeatNumber(const int& pRepeatNumber);
 			/**
-			 * Método para salvar a animação em um arquivo já aberto previamente
+			 * Method that saves the animation in a previously opened file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	File& pFile, file to save the animation
 			 */	
 			void save(Core::File& pFile);
 			/**
-			 * Método para salvar a animação em um arquivo
+			 * Method that saves the animation into a file of the given name
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	24/02/2009
 			 * @version	21/06/2009
-			 * @param	const std::string& fileName, nome do arquivo da animação a ser salva
+			 * @param	const std::string& pFileName, the name of the file that the animation will be saved
 			 */	
 			void save(const std::string& pFileName);
 			/**
-			 * Método para carregar os dados da animação de um arquivo já aberto
+			 * Method that loads the animation from a file previously opened
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	File& pFile, the file that holds the animation
 			 */
 			void load(Core::File& pFile);
 			/**
-			 * Método para carregar os dados da animação de um arquivo
+			 * Method that loads the animation from a file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	21/06/2009
-			 * @param	const std::string& fileName, nome do arquivo da animação a ser aberta
+			 * @param	const std::string& pFileName, the name of the file that contains the animation
 			 */
 			void load(const std::string& pFileName);
 			/**
-			 * Operador para acessar algum frame dada sua posição
+			 * Operator to acess some frame given its index
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	13/08/2008
 			 * @version	06/01/2011
-			 * @param	const unsigned int& pPos, a posição que deseja-se selecionar
+			 * @param	const nt& pPos, the index of the frame will want the acess
 			 * @return	AnimationFrame&
+			 *
 			 */
-			AnimationFrame& operator [](const unsigned int& pPos);
+			AnimationFrame& operator [](const int& pPos);
 			/**
-			 * Operador para acessar algum frame dada sua posição de forma constante
+			 * Operator to acess some frame given its index
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	18/06/2009
 			 * @version	06/01/2011
-			 * @param	const unsigned int& pPos, a posição que deseja-se selecionar
+			 * @param	const int& pPos, the index of the frame will want the acess
 			 * @return	AnimationFrame&
 			 */
-			const AnimationFrame& operator [](const unsigned int& pPos) const;
+			const AnimationFrame& operator [](const int& pPos) const;
 	};
 }}
 #endif

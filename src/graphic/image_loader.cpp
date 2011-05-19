@@ -1,11 +1,11 @@
 #include <graphic/image_loader.hpp>
-#include <graphic/image_exception.hpp>
+#include <graphic/exception.hpp>
 
 namespace Gorgon{
 namespace Graphic
 {
-	ImageLoader* ImageLoader::mLoader = NULL;
-	std::string ImageLoader::mSaveFormat = "BMP";
+	ImageLoader* ImageLoader::mLoader		= NULL;
+	std::string ImageLoader::mSaveFormat	= "BMP";
 	ImageLoader& ImageLoader::getLoader()
 	{
 		if(mLoader == NULL)
@@ -26,8 +26,9 @@ namespace Graphic
 
 	void ImageLoader::load(Image& pImage, const std::string& pImageName) const
 	{
-		throw ImageException("Unable to load image, none ImageLoader is being used, please set a loader.");
+		raiseGraphicException("ImageLoader::load(): Error, unable to load image, none imageLoader is being used, please set a loader.");
 	}
+
 	void ImageLoader::load
 	(
 		Image& pImage,
@@ -35,14 +36,16 @@ namespace Graphic
 		const int& pSizeOfImage
 	) const
 	{
-		throw ImageException("Unable to load image, none ImageLoader is being used, please set a loader.");
+		raiseGraphicException("ImageLoader::load(): Error, unable to load image, none imageLoader is being used, please set a loader.");
 	}
+
 	void ImageLoader::save(Image& pImage, Core::File& pFile) const
 	{
-		throw ImageException("Unable to save image, none ImageLoader is being used, please set a loader.");
+		raiseGraphicException("ImageLoader::load(): Error, unable to load image, none imageLoader is being used, please set a loader.");
 	}
+
 	void ImageLoader::save(Image& pImage, const std::string& pImageName) const
 	{
-		throw ImageException("Unable to save image, none ImageLoader is being used, please set a loader.");
+		raiseGraphicException("ImageLoader::load(): Error, unable to load image, none imageLoader is being used, please set a loader.");
 	}
 }}

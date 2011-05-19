@@ -29,37 +29,37 @@
 #include <iostream>
 #include <string>
 #include "image.hpp"
-#include "sprite_exception.hpp"
 #include "sprite_header.hpp"
 
 namespace Gorgon{
 namespace Graphic
 {
 	/**
-	 * Classe responsável por tratar das funções de sprites
+	 * Class that represents a sprite
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	01/05/2008
 	 * @version	03/05/2011
 	 * @ingroup	Graphic
+	 * @todo	Comentar toda a classe em ingles
 	 */
 	class Sprite : public Image
 	{
 		private:
-			int mGroup;				/**<< Guarda o grupo ao qual o sprite pertence*/
-			int mIndex;				/**<< Guarda o índice do sprite no grupo*/
-			Core::Point mOffset;	/**<< Guarda o offset no eixo x do sprite*/
+			int mGroup;				/**<< The group of the sprite*/
+			int mIndex;				/**<< The index of the sprite in its group*/
+			Core::Point mOffset;	/**<< The offset of the image*/
 		public:
 			/**
-			 * Método Construtor
+			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	03/05/2011
-			 * @param	const Image&	pImage	, imagem do sprite
-			 * @param	const int&		pGroup	, grupo do sprite
-			 * @param	const int&		pIndex	, indice do sprite
-			 * @param	const Core::Point&	pOffset	, offset do sprite
+			 * @param	const Image&		pImage	, image of the sprite
+			 * @param	const int&			pGroup	, group of the sprite
+			 * @param	const int&			pIndex	, index of the sprite
+			 * @param	const Core::Point&	pOffset	, offset of the sprite
 			 */
 			Sprite
 			(
@@ -69,16 +69,27 @@ namespace Graphic
 				const Core::Point&	pOffset	= Core::Point(0,0)
 			);
 			/**
-			 * Método Construtor
+			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	21/01/2009
-			 * @param	const std::string& pSpriteName, nome do arquivo com o sprite
+			 * @param	const std::string&	pSpriteName		, name of the file that has the sprite data
+			 * @param	ImageLoader*		pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			Sprite(const std::string& pSpriteName);
+			Sprite(const std::string& pSpriteName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
-			 * Método Construtor de cópia
+			 * Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/08/2008
+			 * @version	21/06/2009
+			 * @param	Core::File&		pFile			, file previously opened that has the sprite data
+			 * @param	ImageLoader*	pImageLoader	, imageLoader responsable for saving the sprites
+			 */
+			Sprite(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			/**
+			 * Copy Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
@@ -87,17 +98,7 @@ namespace Graphic
 			 */
 			Sprite(const Sprite& pSpriteOrig);
 			/**
-			 * Método Construtor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/08/2008
-			 * @version	21/06/2009
-			 * @param	File& pFile, ponteiro para o arquivo já aberto
-			 */
-			Sprite(Core::File& pFile);
-			~Sprite();
-			/**
-			 * Método para descrever o sprite
+			 * Method that describes the sprite
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	22/01/2009
@@ -114,23 +115,25 @@ namespace Graphic
 			 */
 			void trim();
 			/**
-			 * Método para carregar o sprite de um arquivo
+			 * Method that loads the sprite from a file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	21/06/2009
-			 * @param	const std::string& pSpriteName, nome do arquivo a ser aberto
+			 * @param	const std::string&	pSpriteName		, name of the file that have the sprite data
+			 * @param	ImageLoader*		pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			virtual void load(const std::string& pSpriteName);
+			virtual void load(const std::string& pSpriteName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
-			 * Método para carregar o sprite de um arquivo ja aberto
+			 * Method that loads the sprite from a previously opened file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	21/06/2009
-			 * @param	File& pFile, arquivo já aberto
+			 * @param	Core::File&		pFile			, previously opened file that holds the sprite data
+			 * @param	ImageLoader*	pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			virtual void load(Core::File& pFile);
+			virtual void load(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
 			 * Método para salvar o sprite em um arquivo
 			 *

@@ -1,4 +1,6 @@
 #include <graphic/animation_handler.hpp>
+#include <graphic/exception.hpp>
+#include <sstream>
 
 namespace Gorgon{
 namespace Graphic
@@ -48,13 +50,16 @@ namespace Graphic
 		return *mAnimationPack;
 	}
 
-	void AnimationHandler::describe() const
+	Core::String AnimationHandler::describe() const
 	{
-		std::cout << "Gorgon AnimationHandler"			<< std::endl;
-		std::cout << "AnimationOn: " << mAnimationOn	<< std::endl;
-		std::cout << "FrameOn:     " << mFrameOn		<< std::endl;
-		std::cout << "TimeOn:      " << mTimeOn			<< std::endl;
-		std::cout << "LoopOn:      " << mLoopOn			<< std::endl;
+		std::stringstream out;
+		out << "Gorgon::Graphic::AnimationHandler"	<< std::endl;
+		out << "AnimationOn: " << mAnimationOn		<< std::endl;
+		out << "FrameOn:     " << mFrameOn			<< std::endl;
+		out << "TimeOn:      " << mTimeOn			<< std::endl;
+		out << "LoopOn:      " << mLoopOn			<< std::endl;
+
+		return Core::String(out.str());
 	}
 
 	void AnimationHandler::reset()
@@ -77,40 +82,69 @@ namespace Graphic
 
 	void AnimationHandler::jumpToFrame(const int& pFrameIndex)
 	{
-		if(pFrameIndex<(*mAnimationPack)[mAnimationOn].getSize())
+		if(mAnimationPack != NULL)
 		{
-			mTimeOn		= 0;
-			mLoopOn		= 0;
-			mFrameOn	= pFrameIndex;
+			if(pFrameIndex < (*mAnimationPack)[mAnimationOn].getSize())
+			{
+				mTimeOn		= 0;
+				mLoopOn		= 0;
+				mFrameOn	= pFrameIndex;
+			}
+			/*else
+			{
+				throw AnimationException("Unable to change frame due to incorrect index.");
+			}*/
 		}
 		else
 		{
-			throw AnimationException("Unable to change frame due to incorrect index.");
+			std::stringstream out;
+			out << "AnimationHandler::JumpToFrame(" << pFrameIndex << "): Error animationpack is NULL.";
+			raiseGraphicException(out.str());
 		}
 	}
 
 	void AnimationHandler::jumpToFrame(const int& pFrameGroup,const int& pFrameIndex)
 	{
-		int i;
-		/**
-		 * @todo aqui pode ter uma falha de segmentaçao se for acessado sem colocar nada pro animation pack
-		 */
-		Animation& animation = (*mAnimationPack)[mAnimationOn];
-
-		for(i=0; i<animation.getSize(); ++i)
+		if(mAnimationPack != NULL)
 		{
-			if(animation[i].getGroup()==pFrameGroup && animation[i].getIndex()==pFrameIndex)
+			register int i;
+			Animation& animation = (*mAnimationPack)[mAnimationOn];
+
+			for(i = 0; i < animation.getSize(); ++i)
 			{
-				break;
+				if(animation[i].getGroup() == pFrameGroup && animation[i].getIndex() == pFrameIndex)
+				{
+					break;
+				}
 			}
+			jumpToFrame(i);
 		}
-		jumpToFrame(i);
+		else
+		{
+			std::stringstream out;
+			out << "AnimationHandler::JumpToFrame(" << pFrameGroup << "," << pFrameIndex << "): Error animationpack is NULL.";
+			raiseGraphicException(out.str());
+		}
 	}
 
 	void AnimationHandler::optimize()
 	{
-		mAnimationPack->optimize(*mSpritePack);
-		reset();
+		if(mAnimationPack != NULL)
+		{
+			if(mSpritePack != NULL)
+			{
+				mAnimationPack->optimize(*mSpritePack);
+				reset();
+			}
+			else
+			{
+				raiseGraphicException("AnimationHandler::optimize(): Error spritepack is NULL.");
+			}
+		}
+		else
+		{
+			raiseGraphicException("AnimationHandler::optimize(): Error animationpack is NULL.");
+		}
 	}
 
 	int AnimationHandler::getFrameOn() const
@@ -130,27 +164,44 @@ namespace Graphic
 
 	int AnimationHandler::getAnimationOnGroup() const
 	{
-		return (*mAnimationPack)[mAnimationOn].getGroup();
+		if(mAnimationPack != NULL)
+		{
+			return (*mAnimationPack)[mAnimationOn].getGroup();
+		}
+		return -1;
 	}
 
 	int AnimationHandler::getAnimationOnIndex() const
 	{
-		return (*mAnimationPack)[mAnimationOn].getIndex();
+		if(mAnimationPack != NULL)
+		{
+			return (*mAnimationPack)[mAnimationOn].getIndex();
+		}
+		return -1;
 	}
 
-	void AnimationHandler::changeAnimation(const int& pAnimationNumber,const bool& pForce)
+	void AnimationHandler::changeAnimation(const int& pAnimationNumber, const bool& pForce)
 	{
-		if(mAnimationOn != pAnimationNumber || pForce)
+		if(mAnimationPack != NULL)
 		{
-			if(pAnimationNumber < mAnimationPack->getSize())
+			if(mAnimationOn != pAnimationNumber || pForce)
 			{
-				reset();
-				mAnimationOn = pAnimationNumber;
+				if(pAnimationNumber < mAnimationPack->getSize())
+				{
+					reset();
+					mAnimationOn = pAnimationNumber;
+				}
+				/*else
+				{
+					throw AnimationException("Unable to change Animation due to incorrect index.");
+				}*/
 			}
-			else
-			{
-				throw AnimationException("Unable to change Animation due to incorrect index.");
-			}
+		}
+		else
+		{
+			std::stringstream out;
+			out << "AnimationHandler::changeAnimation(" << pAnimationNumber << "," << (pForce ? "true" : "false") << "): Error animationpack is NULL.";
+			raiseGraphicException(out.str());
 		}
 	}
 
@@ -162,87 +213,106 @@ namespace Graphic
 	)
 	{
 		int i;
-		/**
-		 * @todo substituir pela funćão de busca da classe animationpack
-		 */
-		for(i=0; i<mAnimationPack->getSize(); ++i)
+		if(mAnimationPack != NULL)
 		{
-			if
-			(
-				(*mAnimationPack)[i].getGroup() == pGroup &&
-				(*mAnimationPack)[i].getIndex() == pIndex
-			)
-			{
-				break;
-			}
+			changeAnimation( mAnimationPack->getAnimationRealIndex(pGroup, pIndex), pForce);
 		}
-		changeAnimation(i,pForce);
+		else
+		{
+			std::stringstream out;
+			out << "AnimationHandler::changeAnimation(" << pGroup << "," << pIndex << "," << (pForce ? "true" : "false") << "): Error animationpack is NULL.";
+			raiseGraphicException(out.str());
+		}
 	}
 
 	bool AnimationHandler::isPlaying()
 	{
-		if
-		(
-			mFrameOn >= (*mAnimationPack)[mAnimationOn].getSize() - 1 &&
-			mTimeOn >= (*mAnimationPack)[mAnimationOn][mFrameOn].getTime()
-
-		)
+		if(mAnimationPack != NULL)
 		{
-			return false;
+			if
+			(
+				mFrameOn	>= (*mAnimationPack)[mAnimationOn].getSize() - 1 &&
+				mTimeOn		>= (*mAnimationPack)[mAnimationOn][mFrameOn].getTime()
+			)
+			{
+				return false;
+			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	void AnimationHandler::playByStep()
 	{
-		Animation&		animation	= (*mAnimationPack)[mAnimationOn];
-		AnimationFrame&	frame		= animation[mFrameOn];
-
-		if(frame.getTime() > 0)
+		if(mAnimationPack != NULL)
 		{
-			++mTimeOn;
+			Animation&		animation	= (*mAnimationPack)[mAnimationOn];
+			AnimationFrame&	frame		= animation[mFrameOn];
 
-			if(frame.getTime() < mTimeOn)
+			if(frame.getTime() > 0)
 			{
-				++mFrameOn;
-				mTimeOn = 0;
-			}
-			if(animation.getSize() <= mFrameOn + 1 )
-			{
-				if(animation.getLooping())
+				++mTimeOn;
+
+				if(frame.getTime() < mTimeOn)
 				{
-					if(animation.getRepeatNumber() < 0)
+					++mFrameOn;
+					mTimeOn = 0;
+				}
+				if(animation.getSize() <= mFrameOn + 1 )
+				{
+					if(animation.getLooping())
 					{
-						mTimeOn		= 0;
-						mFrameOn	= animation.getLoopFrame();
-					}
-					else if(mLoopOn < animation.getRepeatNumber())
-					{
-						++mLoopOn;
-						mTimeOn		= 0;
-						mFrameOn	= animation.getLoopFrame();
-					}
-					else
-					{
-						//onFinish();
+						if(animation.getRepeatNumber() < 0)
+						{
+							mTimeOn		= 0;
+							mFrameOn	= animation.getLoopFrame();
+						}
+						else if(mLoopOn < animation.getRepeatNumber())
+						{
+							++mLoopOn;
+							mTimeOn		= 0;
+							mFrameOn	= animation.getLoopFrame();
+						}
+						else
+						{
+							//onFinish();
+						}
 					}
 				}
 			}
+		}
+		else
+		{
+			raiseGraphicException("AnimationHandler::playByStep(): Error animationpack is NULL.");
 		}
 	}
 	
 	const Sprite& AnimationHandler::getCurrentSprite() const
 	{
-		Animation&		animation	= (*mAnimationPack)[mAnimationOn];
-		AnimationFrame& frame		= animation[mFrameOn];
-
-		if(frame.getRealIndex()>=0)
+		if(mAnimationPack != NULL)
 		{
-			return (*mSpritePack)[frame.getRealIndex()];
+			Animation&		animation	= (*mAnimationPack)[mAnimationOn];
+			AnimationFrame& frame		= animation[mFrameOn];
+
+			if(mSpritePack != NULL)
+			{
+				if(frame.getRealIndex() >= 0)
+				{
+					return (*mSpritePack)[frame.getRealIndex()];
+				}
+				else
+				{
+					return mSpritePack->getSprite(frame.getGroup(),frame.getIndex());
+				}
+			}
+			else
+			{
+				raiseGraphicException("AnimationHandler::getCurrentSprite(): Error spritepack is NULL.");
+			}
 		}
 		else
 		{
-			return mSpritePack->getSprite(frame.getGroup(),frame.getIndex());
+			raiseGraphicException("AnimationHandler::getCurrentSprite(): Error animationpack is NULL.");
 		}
 	}
 
@@ -254,33 +324,72 @@ namespace Graphic
 		const int& pAngle
 	)
 	{
-		AnimationFrame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
-		pSprite.drawSpriteRotatedFlipped
-		(
-			getCurrentSprite(),
-			frame.getOffset()		+ pPosition,
-			frame.getAngle()		+ pAngle,
-			frame.getMirroring()	+ pMirroring
-		);
+		if(mAnimationPack != NULL)
+		{
+			try
+			{
+				AnimationFrame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
+				pSprite.drawSpriteRotatedFlipped
+				(
+					getCurrentSprite(),
+					frame.getOffset()		+ pPosition,
+					frame.getAngle()		+ pAngle,
+					frame.getMirroring()	+ pMirroring
+				);
+			}
+			catch(Core::Exception& exception)
+			{
+				std::stringstream out;
+				out << "AnimationHandler::draw(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "," << pAngle << "): Error while drawing.";
+				raiseGraphicExceptionE(out.str(),exception);
+			}
+		}
+		else
+		{
+			std::stringstream out;
+			out << "AnimationHandler::draw(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "," << pAngle << "): Error animationpack is NULL.";
+			raiseGraphicException(out.str());
+		}
+
 	}
 	
 	void AnimationHandler::drawTrans
 	(
 		Sprite& pSprite,
 		const Core::Point& pPosition,
+		const Mirroring& pMirroring,
 		const float& pTrans
 	)
 	{
-		/**
-		 * @todo concertar isso
-		 */
-		//Frame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
-
-		pSprite.drawSpriteTrans
-		(
-			getCurrentSprite(),
-			pPosition,
-			pTrans
-		);
+		if(mAnimationPack != NULL)
+		{
+			try
+			{
+				AnimationFrame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
+				/**
+				 * @todo concertar isso, poder colocar o angulo também
+				 */
+				pSprite.drawSpriteTransFlipped
+				(
+					getCurrentSprite(),
+					frame.getOffset() + pPosition,
+					pTrans,
+					frame.getMirroring() + pMirroring
+				);
+			}
+			catch(Core::Exception& exception)
+			{
+				std::stringstream out;
+				out << "AnimationHandler::drawTrans(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "): Error while drawing.";
+				raiseGraphicExceptionE(out.str(),exception);
+			}
+		}
+		else
+		{
+			std::stringstream out;
+			out << "AnimationHandler::drawTrans(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "): Error animationpack is NULL.";
+			raiseGraphicException(out.str());
+		}
 	}
+
 }}

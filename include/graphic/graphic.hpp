@@ -38,6 +38,7 @@
  *				à parte gráfica, desde tipos de imagens, sprites, animações, cores,
  *				objeto de vídeo, entre outros
  */
+#include "exception.hpp"
 #include "animation_frame.hpp"
 #include "animation.hpp"
 #include "animation_handler.hpp"

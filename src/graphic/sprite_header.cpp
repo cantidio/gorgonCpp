@@ -1,5 +1,5 @@
 #include <graphic/sprite_header.hpp>
-#include <graphic/sprite_exception.hpp>
+#include <graphic/exception.hpp>
 #include <iostream>
 
 namespace Gorgon{
@@ -13,61 +13,76 @@ namespace Graphic
 
 	SpriteHeader::SpriteHeader(Core::File& pFile)
 	{
-		load(pFile);
+		try
+		{
+			load(pFile);
+		}
+		catch(Core::Exception& exception)
+		{
+			raiseGraphicExceptionE("SpriteHeader::SpriteHeader(pFile): Error while creating spriteheader.",exception);
+		}
 	}
 
 	void SpriteHeader::save(Core::File& pFile)
 	{
-		mPutPos = pFile.tellp();
-		mGetPos = pFile.tellg();
-		FileHeader::save(pFile);
+		if(pFile.is_open())
+		{
+			mPutPos = pFile.tellp();
+			mGetPos = pFile.tellg();
+			FileHeader::save(pFile);
 
-		pFile.writeString(mGorgonSpriteSignature);
-		pFile.writeInt32(mGorgonSpriteMagicNumber);
-		pFile.writeInt32(mGorgonSpriteVersion);
+			pFile.writeString(mGorgonSpriteSignature);
+			pFile.writeInt32(mGorgonSpriteMagicNumber);
+			pFile.writeInt32(mGorgonSpriteVersion);
 
-		//@todo escrever largura e altura da imagem?
-		pFile.writeInt32(mGroup);
-		pFile.writeInt32(mIndex);
-		pFile.writeInt32(mOffset.getX());
-		pFile.writeInt32(mOffset.getY());
-		pFile.writeInt32(mSizeofData);
+			//@todo escrever largura e altura da imagem?
+			pFile.writeInt32(mGroup);
+			pFile.writeInt32(mIndex);
+			pFile.writeInt32(mOffset.getX());
+			pFile.writeInt32(mOffset.getY());
+			pFile.writeInt32(mSizeofData);
+		}
+		else
+		{
+			raiseGraphicException("SpriteHeader::save(pFile): Error, the file is not opened for writting.");
+		}
 	}
 
 	void SpriteHeader::load(Core::File& pFile)
 	{
-		mPutPos = pFile.tellp();
-		mGetPos = pFile.tellg();
-		FileHeader::load(pFile);
-
-		std::string signature	= pFile.readString(mGorgonSpriteSignature.length());
-		int			magicNumber	= pFile.readInt32();
-		int			version		= pFile.readInt32();
-		/**@todo retornar mensagens de exception adequadas*/
-		if
-		(
-			FileHeader::isValid()
-			&& magicNumber	== mGorgonSpriteMagicNumber
-			&& signature	== mGorgonSpriteSignature
-			&& version		== 1
-		)
+		if(pFile.is_open())
 		{
-			setGroup		(pFile.readInt32());
-			setIndex		(pFile.readInt32());
-			mOffset.setX	(pFile.readInt32());
-			mOffset.setY	(pFile.readInt32());
-			setSizeOfData	(pFile.readInt32());
+			mPutPos = pFile.tellp();
+			mGetPos = pFile.tellg();
+			FileHeader::load(pFile);
 
-			/*std::cout << "Group:    " << mGroup   << std::endl;
-			std::cout << "Index:    " << mIndex   << std::endl;
-			std::cout << "XOffset:  " << mXOffset << std::endl;
-			std::cout << "YOffset:  " << mYOffset << std::endl;
-			std::cout << "DataSize: " << mSizeofData << std::endl;*/
+			std::string signature	= pFile.readString(mGorgonSpriteSignature.length());
+			int			magicNumber	= pFile.readInt32();
+			int			version		= pFile.readInt32();
+
+			/**@todo rbetornar mensagens de exception adequadas*/
+			if
+			(
+				FileHeader::isValid()
+				&& magicNumber	== mGorgonSpriteMagicNumber
+				&& signature	== mGorgonSpriteSignature
+				&& version		== 1
+			)
+			{
+				setGroup		(pFile.readInt32());
+				setIndex		(pFile.readInt32());
+				mOffset.setX	(pFile.readInt32());
+				mOffset.setY	(pFile.readInt32());
+				setSizeOfData	(pFile.readInt32());
+			}
+			else
+			{
+				raiseGraphicException("SpriteHeader::load(pFile): Error, the header is invalid, maybe this isn't a gorgon sprite");
+			}
 		}
 		else
 		{
-			//std::cout << "Not a gorgon sprite." << std::endl;
-			throw SpriteException("Not a gorgon sprite.");
+			raiseGraphicException("SpriteHeader::load(pFile): Error, the file is not opened for reading.");
 		}
 	}
 
@@ -92,10 +107,6 @@ namespace Graphic
 	{
 		mOffset = pOffset;
 	}
-//	void SpriteHeader::setYOffset(const int& pYOffset)
-//	{
-//		mYOffset = pYOffset;
-//	}
 	int SpriteHeader::getSizeOfData() const
 	{
 		return mSizeofData;
@@ -114,6 +125,7 @@ namespace Graphic
 	}
 	int SpriteHeader::getSize()
 	{
+		/**@todo encontrar outra forma de se fazer isso... ou não*/
 		//32 = 8 * 4(sizeof(int))
 		return 32 + mGorgonSpriteSignature.length();
 	}

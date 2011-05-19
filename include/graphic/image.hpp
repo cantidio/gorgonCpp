@@ -32,7 +32,6 @@
 #include <allegro.h>
 #include "../core/point.hpp"
 #include "palette.hpp"
-#include "image_exception.hpp"
 #include "mirroring.hpp"
 #include "color.hpp"
 #include "image_loader.hpp"
