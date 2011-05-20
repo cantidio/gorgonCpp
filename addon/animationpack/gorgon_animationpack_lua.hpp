@@ -28,11 +28,12 @@
 #define _GORGON_ANIMATION_PACK_LUA_
 #include <gorgon++/graphic/animationpack.hpp>
 #include <gorgon++/core/string.hpp>
+
 namespace Gorgon{
 namespace Graphic
 {
 	/**
-	 * Classe que representa um animationpack com loader através de um script lua
+	 * Class that represents an animationpack with a loader by a lua script
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	25/01/2011
@@ -42,7 +43,7 @@ namespace Graphic
 	{
 		public:
 			/**
-			 * Método Construtor
+			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/01/2011
@@ -50,39 +51,39 @@ namespace Graphic
 			 */
 			AnimationPackLua();
 			/**
-			 * Método construtor de cópia
+			 * Copy Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/01/2011
 			 * @version	25/01/2011
-			 * @param	const AnimationPack& pAnimationPack, animationpack já criado
+			 * @param	const AnimationPack& pAnimationPack, original animationpack
 			 */
 			AnimationPackLua(const AnimationPack& pAnimationPack);
 			/**
-			 * Método construtor que carrega os dados de um arquivo
+			 * Constructor
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/01/2011
 			 * @version	25/01/2011
-			 * @param	const std::string& pFileName, nome do arquivo a ser aberto para carregar os dados
+			 * @param	const std::string& pFileName, name of tje script that holds the animationpack data
 			 */
 			AnimationPackLua(const Core::String& pFileName);
 			/**
-			 * Método para salvar o pacote de animações em um arquivo
+			 * Method that saves the animationpack into a lua file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/01/2011
 			 * @version	25/01/2011
-			 * @param	std::string pFileName, nome do arquivo a ser salvo os dados do pacote de animações
+			 * @param	std::string pFileName, name of the file that will store the animationpack script
 			 */
 			void save(const Core::String& pFileName);
 			/**
-			 * Método para carregar os dados do pacote de animações de um arquivo
+			 * Method that loads the animationpack from a lua file
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	25/01/2011
 			 * @version	25/01/2011
-			 * @param	std::string pFileName, nome do arquivo a ser carregado
+			 * @param	std::string pFileName, name of the script to be loaded
 			 */
 			void load(const Core::String& pFileName);
 	};

@@ -27,7 +27,6 @@
 #ifndef _GORGON_IMAGE_FORMAT_BMP_
 #define _GORGON_IMAGE_FORMAT_BMP_
 #include <gorgon++/graphic/image_loader.hpp>
-#include "gorgon_image_loader_bmp_exception.hpp"
 #include "gorgon_image_loader_bmp_header.hpp"
 #include "gorgon_image_loader_bmp_info_header.hpp"
 

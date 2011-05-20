@@ -117,7 +117,7 @@ namespace Graphic
 
 	Sprite& SpritePack::getSprite(const int& pPos)
 	{
-		if(pPos>=0 && pPos < mSprites.size())
+		if(pPos >= 0 && pPos < mSprites.size())
 		{
 			return mSprites[pPos];
 		}
@@ -126,7 +126,7 @@ namespace Graphic
 
 	const Sprite& SpritePack::getSprite(const int& pPos) const
 	{
-		if(pPos>=0 && pPos < mSprites.size())
+		if(pPos >= 0 && pPos < mSprites.size())
 		{
 			return mSprites[pPos];
 		}
@@ -190,7 +190,8 @@ namespace Graphic
 
 	void SpritePack::applyGlobalPalette(const bool& pForce)
 	{
-		for(unsigned int i = 0; i < getSize(); ++i)
+		/**@todo utilizar openmp aqui*/
+		for(register int i = 0; i < getSize(); ++i)
 		{
 			if(!getSprite(i).getPalette() || (getSprite(i).getPalette() && pForce))
 			{

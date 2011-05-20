@@ -1,5 +1,6 @@
 #include "../include/gorgon_image_loader_bmp.hpp"
 #include <gorgon++/graphic/image.hpp>
+#include <gorgon++/graphic/exception.hpp>
 
 namespace Gorgon
 {
@@ -238,7 +239,9 @@ namespace Gorgon
 			case 1:		loadUncompressed1BitData(pImage,pHeader,pInfoHeader,pFile);	break;
 			case 4:		loadUncompressed4BitData(pImage,pHeader,pInfoHeader,pFile);	break;
 			case 8:		loadUncompressed8BitData(pImage,pHeader,pInfoHeader,pFile);	break;
-			case 16:	throw ImageLoaderBmpException("Unable to load ImageLoaderBmp with 16 bpp yet."); break;
+			case 16:
+				raiseGraphicException("ImageLoaderBmp::loadUncompressedData(pImage,pHeader,pInfoHeader,pFile): Error, unable to load BMP with 16 Bpp ");
+				break;
 			case 24:	loadUncompressed24BitData(pImage,pInfoHeader,pFile);		break;
 			case 32:	loadUncompressed32BitData(pImage,pInfoHeader,pFile);		break;
 		}
@@ -264,7 +267,7 @@ namespace Gorgon
 			infoHeader.load(pFile);//carrega o info header
 			if(infoHeader.getVersion() != 3)
 			{
-				throw ImageLoaderBmpException("Unable to load ImageLoaderBmp diferent than 3.x. Until now.");
+				raiseGraphicException("ImageLoaderBmp::load(pImage,pFile,pSizeOfImage): Error, unable to load BMP with version different than 3.x.");
 			}
 			switch(infoHeader.getCompression())
 			{
@@ -273,12 +276,12 @@ namespace Gorgon
 				case BI_RLE4:		loadRLE4CompressedData(pImage,pFile);		break;
 				case BI_BITFIELDS:	loadBitFieldsCompressedData(pImage,pFile);	break;*/
 				default:
-					throw ImageLoaderBmpException("Unable to load ImageLoaderBmp due to unknown compression.");
+					raiseGraphicException("ImageLoaderBmp::load(pImage,pFile,pSizeOfImage): Error, unable to load BMP because of unknown compression");
 			}
 		}
 		else
 		{
-			throw ImageLoaderBmpException("Unable to load ImageLoaderBmp due to incorrect format.");
+			raiseGraphicException("ImageLoaderBmp::load(pImage,pFile,pSizeOfImage): Error, unable to load BMP because the header isn't valid.");
 		}
 	}
 
@@ -292,7 +295,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageLoaderBmpException("Unable to load ImageLoaderBmp: "+pImageName+".");
+			raiseGraphicException("ImageLoaderBmp::load(pImage,\""+pImageName+"\"): Error, the file could not be opened for reading.");
 		}
 	}
 
@@ -505,7 +508,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageLoaderBmpException("Unable to save ImageLoaderBmp: "+pImageName+".");
+			raiseGraphicException("ImageLoaderBmp::save(pImage,\""+pImageName+"\"): Error, unable to open the file for writting");
 		}
 	}
 
@@ -525,7 +528,7 @@ namespace Gorgon
 			case BI_RLE4:		saveRLE4CompressedData(pImage,file);		break;
 			case BI_BITFIELDS:	saveBitFieldsCompressedData(pImage,file);	break;*/
 			default:
-				throw ImageLoaderBmpException("Unable to save ImageLoaderBmp due to unknown compression.");
+				raiseGraphicException("ImageLoaderBmp::save(pImage,pFile): Error, unable to save BMP due to unknown compression");
 		}
 	}
 }

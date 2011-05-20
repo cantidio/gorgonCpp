@@ -1,6 +1,7 @@
 #include "gorgon_image_loader.hpp"
 #include <ImageMagick/Magick++.h>
 #include <gorgon++/graphic/image.hpp>
+#include <gorgon++/graphic/exception.hpp>
 // /usr/include/ImageMagick
 
 namespace Gorgon
@@ -25,7 +26,9 @@ namespace Gorgon
 		}
 		else
 		{
-			throw Graphic::Exception("Unable to load Image: "+pImageName+".");
+			std::stringstream out;
+			out << "ImageLoaderMagick::load(" << (int)&pImage << ", " << pImageName << "): Error, file could not be opened for reading.";
+			raiseGraphicException(out.str());
 		}
 	}
 
@@ -48,7 +51,10 @@ namespace Gorgon
 			mData		= new unsigned char[mDataLength];
 			if(mData == NULL)
 			{
-				throw Graphic::Exception("Não foi possível alocar memória.");
+				/**@todo, talvez esse erro lance uma exception*/
+				std::stringstream out;
+				out << "ImageLoaderMagick::load(" << (int)&pImage << ", " << (int)&pFile << ", " << pDataLength << "): Error, could not allocate memory.";
+				raiseGraphicException(out.str());
 			}
 			pFile.read((char*)mData, mDataLength);
 			magickFile.updateNoCopy(mData, mDataLength);
@@ -59,9 +65,9 @@ namespace Gorgon
 				magickImage.size().width(),
 				magickImage.size().height()
 			);
-			for(register unsigned int h = 0; h < magickImage.size().height(); ++h)
+			for(register int h = 0; h < magickImage.size().height(); ++h)
 			{
-				for(register unsigned int w = 0; w < magickImage.size().width(); ++w)
+				for(register int w = 0; w < magickImage.size().width(); ++w)
 				{
 					magickColor = magickImage.pixelColor ( w, h );
 					gorgonColor.setRed		(magickColor.red()*255);
@@ -80,7 +86,15 @@ namespace Gorgon
 		}
 		catch(Magick::Exception& e)
 		{
-			throw Graphic::ImageException(e.what());
+			std::stringstream out;
+			out << "ImageLoaderMagick::load(" << (int)&pImage << ", " << (int)&pFile << ", " << pDataLength << "): Error, " << e.what();
+			raiseGraphicException(out.str());
+		}
+		catch(Core::Exception& exception)
+		{
+			std::stringstream out;
+			out << "ImageLoaderMagick::load(" << (int)&pImage << ", " << (int)&pFile << ", " << pDataLength << "): Error while loading the image.";
+			raiseGraphicExceptionE(out.str(), exception);
 		}
 		mDataLength	= 0;
 		mData		= NULL;
@@ -119,7 +133,9 @@ namespace Gorgon
 		}
 		catch(Magick::Exception& e)
 		{
-			throw Graphic::ImageException(e.what());
+			std::stringstream out;
+			out << "ImageLoaderMagick::save(" << (int)&pImage << ", " << (int)&pFile << "): Error, " << e.what();
+			raiseGraphicException(out.str());
 		}
 	}
 
@@ -133,7 +149,9 @@ namespace Gorgon
 		}
 		else
 		{
-			throw Graphic::ImageException("Unable to save Image: "+pImageName+".");
+			std::stringstream out;
+			out << "ImageLoaderMagick::save(" << (int)&pImage << ", \"" << pImageName << "\"): Error, could not open the file fro writting.";
+			raiseGraphicException(out.str());
 		}
 	}
 	/**

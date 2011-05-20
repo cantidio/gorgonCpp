@@ -1,5 +1,6 @@
 #include "../include/gorgon_image_loader_pcx.hpp"
 #include <gorgon++/graphic/image.hpp>
+#include <gorgon++/graphic/exception.hpp>
 
 namespace Gorgon
 {
@@ -252,7 +253,7 @@ namespace Gorgon
 			case ImageLoaderPcx8Bit:	loadEncoded8BitData(pImage,pHeader,pFile);	break;
 			case ImageLoaderPcx24Bit:	loadEncoded24BitData(pImage,pHeader,pFile); break;
 			default:
-				throw ImageLoaderPcxException("Unable to load ImageLoaderPcx due to unknown image compression.");
+				raiseGraphicException("ImageLoaderPcx::loadEncodedData(pImage,pHeader,pFile): Error, unable to load PCX due to unknown image compression");
 		}
 	}
 
@@ -293,7 +294,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageLoaderPcxException("Unable to load ImageLoaderPcx: "+pImageName+".");
+			raiseGraphicException("ImageLoaderPcx::load(pImage,\""+pImageName+"\"): Error, unable open file for reading");
 		}
 	}
 
@@ -314,7 +315,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageLoaderPcxException("Unable to load ImageLoaderPcx due to incorrect format.");
+			raiseGraphicException("ImageLoaderPcx::load(pImage,pFile,pSizeOfImage): Error, unable to load PCX because the file header is invalid.");
 		}
 	}
 
@@ -500,7 +501,7 @@ namespace Gorgon
 			case ImageLoaderPcx8Bit:	saveEncoded8BitData(pImage,pFile);			break;
 			case ImageLoaderPcx24Bit:	saveEncoded24BitData(pImage,pFile);			break;
 			default:
-				throw ImageLoaderPcxException("Unable to save ImageLoaderPcx due to unknown image compression.");
+				raiseGraphicException("ImageLoaderPcx::saveEncodedData(pImage,pHeader,pFile): Error, unable to save PCX due to unknown image compression");
 		}
 	}
 
@@ -538,28 +539,40 @@ namespace Gorgon
 		}
 		else
 		{
-			throw ImageLoaderPcxException("Unable to save ImageLoaderPcx: "+pImageName+".");
+			raiseGraphicException("ImageLoaderPcx::save(pImage,\""+pImageName+"\"): Error, unable to open the file for writting.");
 		}
 	}
 
 	void ImageLoaderPcx::save(Graphic::Image& pImage, Core::File& pFile) const
 	{
-		ImageLoaderPcxHeader header;
-		header.fill(pImage);
-		header.save(pFile);
-		/*mHeader.fill(pImage);
-		mHeader.save(pFile);*/
-		saveEncodedData
-		(
-			pImage,
-			header,
-			pFile
-		);
-		savePaletteData
-		(
-			pImage,
-			header,
-			pFile
-		);
+		if(pFile.is_open())
+		{
+			try
+			{
+				ImageLoaderPcxHeader header;
+				header.fill(pImage);
+				header.save(pFile);
+				saveEncodedData
+				(
+					pImage,
+					header,
+					pFile
+				);
+				savePaletteData
+				(
+					pImage,
+					header,
+					pFile
+				);
+			}
+			catch(Core::Exception& exception)
+			{
+				raiseGraphicExceptionE("ImageLoaderPcx::save(pImage,pFile): Error while saving the image.",exception);
+			}
+		}
+		else
+		{
+			raiseGraphicException("ImageLoaderPcx::save(pImage,pFile): Error, the file is not opened for writting.");
+		}
 	}
 }

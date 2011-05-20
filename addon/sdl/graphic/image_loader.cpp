@@ -1,5 +1,6 @@
 #include "image_loader.hpp"
 #include <gorgon++/gorgon.hpp>
+#include <gorgon++/graphic/exception.hpp>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 
@@ -67,7 +68,7 @@ namespace Gorgon
 
 		if((initted&flags) != flags)
 		{
-		    throw Graphic::ImageException("ImageLoaderSDL Error: "+Core::String(IMG_GetError()));
+			raiseGraphicException("ImageLoaderSDL::ImageLoaderSDL(): Error, " + std::string(IMG_GetError()));
 		}
 		IMG_Quit();
 	}
@@ -87,7 +88,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw Graphic::ImageException("Unable to load Image: "+pImageName+".");
+			raiseGraphicException("ImageLoaderSDL::load(pImage,\""+pImageName+"\"): Error, the file could not be opened for reading.");
 		}
 	}
 
@@ -111,13 +112,17 @@ namespace Gorgon
 			mData		= new unsigned char[mDataLength];
 			if(mData == NULL)
 			{
-				throw Graphic::ImageException("Não foi possível alocar memória.");
+				/**@todo talvez acima retorna uma exception, tem que testar manu*/
+				raiseGraphicException("ImageLoaderSDL::load(pImage,pFile,pDataLength): Error, could not allocate memory.");
 			}
 			pFile.read((char*)mData, mDataLength);
 			
 			sdlFile		= SDL_RWFromMem((void*)mData, mDataLength);
 			sdlImage	= IMG_Load_RW(sdlFile, 0);
-			if(sdlImage == NULL) throw Graphic::ImageException(IMG_GetError());
+			if(sdlImage == NULL)
+			{
+				raiseGraphicException(IMG_GetError());
+			}
 			sdlPalette	= sdlImage->format->palette;
 
 			if(sdlImage->format->BitsPerPixel <= 8)
@@ -161,9 +166,9 @@ namespace Gorgon
 			SDL_FreeRW(sdlFile);
 			SDL_FreeSurface(sdlImage);
 		}
-		catch(Core::Exception& e)
+		catch(Core::Exception& exception)
 		{
-			throw Graphic::ImageException(e.what());
+			raiseGraphicExceptionE("ImageLoaderSDL::load(pImage,pFile,pDataLength): Error, while loading the image.",exception);
 		}
 		mDataLength	= 0;
 		mData		= NULL;
@@ -171,13 +176,14 @@ namespace Gorgon
 
 	void ImageLoaderSDL::save(Graphic::Image& pImage, Core::File& pFile) const
 	{
-	/*
+	/**
+	 * @todo implementar pelo menos o método de salvar como BMP
 		SDL_RWops*			sdlFile;
 		SDL_Surface*		sdlImage;
 
 		sdlImage = SDL_createSurface(0,pImage.getWidth(),pImage.getHeight(),pImage.getBpp());
 		SDL_SaveBMP_RW(sdlImage,sdlFile,0);*/
-		throw Graphic::ImageException("SDL imageloader não possui um saver.");
+		raiseGraphicException("ImageLoaderSDL::save(pImage,pFile): Error, SDL imageloader cant save images");
 	}
 
 	void ImageLoaderSDL::save(Graphic::Image& pImage, const std::string& pImageName) const
@@ -190,7 +196,7 @@ namespace Gorgon
 		}
 		else
 		{
-			throw Graphic::ImageException("Unable to save Image: "+pImageName+".");
+			raiseGraphicException("ImageLoaderSDL::ImageLoaderSDL(pImage,\""+pImageName+"\"): Error, the file could not be opened for writting.");
 		}
 	}
 	/**

@@ -1,4 +1,5 @@
 #include "../include/gorgon_image_loader_autodetect.hpp"
+#include <gorgon++/graphic/exception.hpp>
 
 namespace Gorgon
 {
@@ -31,7 +32,7 @@ namespace Gorgon
 			pImageLoader.load(pImage,pFile,0);
 			return true;
 		}
-		catch(const Graphic::ImageException& e)
+		catch(const Core::Exception& exception)
 		{
 			pFile.seekg(initPosition); //retorna o ponteiro
 			return false;
@@ -55,7 +56,7 @@ namespace Gorgon
 			tip->load(pImage,pImageName);
 			delete tip;
 		}
-		catch(const Graphic::ImageException& e) // se não conseguir carregar do formato da extenção, carrega pela força bruta
+		catch(const Core::Exception& e) // se não conseguir carregar do formato da extenção, carrega pela força bruta
 		{
 			delete tip;
 			Core::File file(pImageName,std::ios::binary | std::ios::in);
@@ -86,7 +87,9 @@ namespace Gorgon
 			)
 		)
 		{
-			throw Graphic::ImageException("format unknown.");
+			std::stringstream out;
+			out << "ImageLoaderAutodetect::load(" << (int)&pImage << ", " << (int)&pFile << ", " << pSizeOfImage << "): Error, format of the image is unsuported.";
+			raiseGraphicException(out.str());
 		}
 	}
 
