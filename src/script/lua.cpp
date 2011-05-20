@@ -1,5 +1,6 @@
 #include <script/lua.hpp>
 #include <core/string.hpp>
+#include <script/exception.hpp>
 
 namespace Gorgon{
 namespace Script
@@ -24,12 +25,13 @@ namespace Script
 		mState	= lua_open();
 		mClose	= true;
 		luaL_openlibs(mState);
+
 		if(pScriptName.length())
 		{
 			loadScript(pScriptName);
 		}
 	}
-
+	/**@todo remover esse método*/
 	Lua::Lua(lua_State* pState)
 	{
 		mState	= pState;
@@ -61,19 +63,19 @@ namespace Script
 				break;
 			default:
 				Core::logWrite(std::string("Error: ") + getErrorMsg(mState, status), true, false);
-				throw new LuaException(std::string("Error loading the script: ") + getErrorMsg(mState, status));
+				raiseScriptException("Lua::loadScript(\""+pScriptName+"\"): Error loading the script: " + getErrorMsg(mState, status));
 				break;
 		}
 	}
 
 	void Lua::executeString(const std::string& pValue)
 	{
-		const int status = luaL_dostring(mState,pValue.c_str());
+		const int status = luaL_dostring(mState, pValue.c_str());
 		if(status != 0)
 		{
 			Core::logWrite(Core::String("Gorgon::Script::LUA::executeString(\"")+pValue+ "\"): ", false);
 			Core::logWrite(Core::String("Error: ") + getErrorMsg(mState, status), true, false);
-			throw LuaException(Core::String("Error executing code: ") + getErrorMsg(mState, status));
+			raiseScriptException("Lua::executeString(\""+pValue+"\"): Error executing code: " + getErrorMsg(mState, status));
 		}
 	}
 
@@ -100,6 +102,7 @@ namespace Script
 				Core::String("Gorgon::Script::LUA::function(\"") +
 				pFunctionName + "\"): Error" + getErrorMsg(mState, status)
 			);
+			/**@todo lançar exception aqui*/
 			//throw Exception("Error")
 		}
 		return LuaReturn(mState,pReturnNumber);
@@ -158,17 +161,24 @@ namespace Script
 		luaL_reg pMetatable[]
 	)
 	{
-		luaL_openlib		(mState, pName.c_str(), pMethods, 0);	/* create methods table, add it to the globals */
-		luaL_newmetatable	(mState, pName.c_str());				/* create metatable for UserData, add it to the Lua register */
-		luaL_openlib		(mState, 0, pMetatable, 0);				/* fill metatable */
-		lua_pushliteral		(mState, "__index");
-		lua_pushvalue		(mState, -3);							/* dup methods table*/
-		lua_rawset			(mState, -3);							/* metatable.__index = methods */
-		lua_pushliteral		(mState, "__metatable");
-		lua_pushvalue		(mState, -3);							/* dup methods table*/
-		lua_rawset			(mState, -3);							/* hide metatable: metatable.__metatable = methods */
-		lua_pop				(mState, 1);							/* drop metatable */
-		return 1;													/* return methods on the stack */
+		if(mState != NULL)
+		{
+			luaL_openlib		(mState, pName.c_str(), pMethods, 0);	/* create methods table, add it to the globals */
+			luaL_newmetatable	(mState, pName.c_str());				/* create metatable for UserData, add it to the Lua register */
+			luaL_openlib		(mState, 0, pMetatable, 0);				/* fill metatable */
+			lua_pushliteral		(mState, "__index");
+			lua_pushvalue		(mState, -3);							/* dup methods table*/
+			lua_rawset			(mState, -3);							/* metatable.__index = methods */
+			lua_pushliteral		(mState, "__metatable");
+			lua_pushvalue		(mState, -3);							/* dup methods table*/
+			lua_rawset			(mState, -3);							/* hide metatable: metatable.__metatable = methods */
+			lua_pop				(mState, 1);							/* drop metatable */
+		}
+		else
+		{
+			raiseScriptException("Lua::registerUserData(\""+pName+"\",pMethods,pMetatable): Error, lua state is NULL.");
+		}
+		return 1;
 	}
 
 	void* Lua::getUserData(const std::string& pName, const int& pIndex)

@@ -47,9 +47,9 @@
  * @details	
  * 			Namespace that holds all Lua Scripts related classes
  */
+#include "exception.hpp"
 #include "lua.hpp"
 #include "lua_argument.hpp"
-#include "lua_exception.hpp"
 #include "lua_param.hpp"
 #include "lua_return.hpp"
 #endif

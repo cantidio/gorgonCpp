@@ -836,6 +836,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>include/script/exception.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/exception.hpp</locationURI>
+		</link>
+		<link>
 			<name>include/script/lua.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/script/lua.hpp</locationURI>
@@ -844,11 +849,6 @@
 			<name>include/script/lua_argument.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/script/lua_argument.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/script/lua_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/script/lua_exception.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/script/lua_param.hpp</name>
@@ -1166,6 +1166,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/SConscript</locationURI>
 		</link>
 		<link>
+			<name>src/script/exception.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/exception.cpp</locationURI>
+		</link>
+		<link>
 			<name>src/script/lua.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/lua.cpp</locationURI>
@@ -1174,11 +1179,6 @@
 			<name>src/script/lua_argument.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/lua_argument.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/script/lua_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/script/lua_exception.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/script/lua_param.cpp</name>
@@ -2986,6 +2986,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/physics/.svn/text-base/space.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/script/.svn/prop-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/script/.svn/prop-base/gorgon_lua.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/gorgon_lua.hpp.svn-base</locationURI>
@@ -3044,6 +3049,11 @@
 			<name>include/script/.svn/prop-base/script.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/script.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/text-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/exception.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/script/.svn/text-base/gorgon_lua.hpp.svn-base</name>
@@ -3886,6 +3896,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/physics/.svn/text-base/space.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/script/.svn/prop-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/script/.svn/prop-base/gorgon_lua.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/gorgon_lua.cpp.svn-base</locationURI>
@@ -3939,6 +3954,11 @@
 			<name>src/script/.svn/text-base/SConscript.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/text-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/exception.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/script/.svn/text-base/gorgon_lua.cpp.svn-base</name>

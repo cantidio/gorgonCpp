@@ -1,33 +1,41 @@
 #include <script/lua_return.hpp>
+#include <script/exception.hpp>
 
 namespace Gorgon{
 namespace Script
 {	
-	LuaReturn::LuaReturn(lua_State* pState,const int& pVarNumber)
+	LuaReturn::LuaReturn(lua_State* pState, const int& pVarNumber)
 	{
-		for(int i=0; i<pVarNumber; ++i)
+		if(pState != NULL)
 		{
-			if(lua_isnumber(pState,-1))
+			for(int i = 0; i < pVarNumber; ++i)
 			{
-				mArgs.push_back(LuaArgument((double)(lua_tonumber(pState,-1))));
+				if(lua_isnumber(pState,-1))
+				{
+					mArgs.push_back(LuaArgument((double)(lua_tonumber(pState,-1))));
+				}
+				else if(lua_isstring(pState,-1))
+				{
+					mArgs.push_back(LuaArgument(std::string(lua_tostring(pState,-1))));
+				}
+				else if(lua_isboolean(pState,-1))
+				{
+					mArgs.push_back(LuaArgument((bool)(lua_toboolean(pState,-1))));
+				}
+				else if(lua_isnoneornil(pState,-1))
+				{
+					mArgs.push_back(LuaArgument());
+				}
+				else
+				{
+					raiseScriptException("LuaReturn::LuaReturn(pState,pVarNumber): Error, unable to define argument type.");
+				}
+				lua_pop(pState,1);
 			}
-			else if(lua_isstring(pState,-1))
-			{
-				mArgs.push_back(LuaArgument(std::string(lua_tostring(pState,-1))));
-			}
-			else if(lua_isboolean(pState,-1))
-			{
-				mArgs.push_back(LuaArgument((bool)(lua_toboolean(pState,-1))));
-			}
-			else if(lua_isnoneornil(pState,-1))
-			{
-				mArgs.push_back(LuaArgument());
-			}
-			else
-			{
-				throw LuaException("Unable to define argument type");
-			}
-			lua_pop(pState,1);
+		}
+		else
+		{
+			raiseScriptException("LuaReturn::LuaReturn(pState,pVarNumber): Error, lua state is NULL.");
 		}
 	}
 

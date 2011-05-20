@@ -1,4 +1,5 @@
 #include <script/lua_argument.hpp>
+#include <script/exception.hpp>
 
 namespace Gorgon{
 namespace Script
@@ -66,7 +67,7 @@ namespace Script
 			case LuaArgument::Bool:		lua_pushboolean(pState,mBoolArg);			break;
 			case LuaArgument::Null:		lua_pushnil(pState);						break;
 			default:
-				throw LuaException("Unable to define argument type");
+				raiseScriptException("LuaArgument::push(pState): Error, unable to define argument type.");
 		}
 	}
 }}

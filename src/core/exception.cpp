@@ -69,6 +69,7 @@ namespace Core
 	std::string Exception::what(const int& pTabs) const
 	{
 		std::stringstream out(std::stringstream::in|std::stringstream::out);
+		out << std::endl;
 		tab(out,pTabs);	out << "Exception in Gorgon::"	<< mModule	<< std::endl;
 		tab(out,pTabs);	out << "On file:\t"				<< mFile 	<< std::endl;
 		tab(out,pTabs);	out << "On line:\t"				<< mLine	<< std::endl;

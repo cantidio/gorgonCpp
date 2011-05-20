@@ -1,4 +1,5 @@
 #include <script/lua_param.hpp>
+#include <script/exception.hpp>
 
 namespace Gorgon{
 namespace Script
@@ -10,7 +11,7 @@ namespace Script
 		va_list args;
 		va_start(args,pDesc);
 
-		for(unsigned int i = 0; i < pDesc.length(); ++i)
+		for(int i = 0; i < pDesc.length(); ++i)
 		{
 			switch(pDesc[i])
 			{
@@ -27,7 +28,7 @@ namespace Script
 					push(bool(va_arg(args,char*)));
 					break;
 				default	:
-					throw LuaException("Unable to define argument type");
+					raiseScriptException("LuaParam::LuaParam(\""+pDesc+"\"): Error, unable to define argument type.");
 			}
 		}
 		va_end(args);
@@ -50,7 +51,7 @@ namespace Script
 
 	void LuaParam::pushAll(lua_State* pState) const
 	{
-		for(unsigned int i = 0; i < mArgs.size(); ++i)
+		for(int i = 0; i < mArgs.size(); ++i)
 		{
 			mArgs[i].push(pState);
 		}

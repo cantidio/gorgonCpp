@@ -35,7 +35,6 @@ extern "C"
 #include <iostream>
 #include <string>
 #include <vector>
-#include "lua_exception.hpp"
 #include "lua_argument.hpp"
 
 namespace Gorgon{

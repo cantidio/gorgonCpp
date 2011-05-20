@@ -33,7 +33,6 @@ extern "C"
 	#include <lua5.1/lauxlib.h>
 }
 #include <string>
-#include "lua_exception.hpp"
 
 namespace Gorgon{
 namespace Script
