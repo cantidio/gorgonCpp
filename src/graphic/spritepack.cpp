@@ -9,44 +9,27 @@ namespace Graphic
 
 	SpritePack::SpritePack()
 	{
-		if(mNotFound == NULL)
-		{
-			mNotFound = new Sprite(Image(1,1));
-		}
+		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
 		mGlobalPalette	= new Palette(255,0,255);
 		mPalLinked		= false;
 	}
 
 	SpritePack::SpritePack(const SpritePack& pSpritePackOriginal)
 	{
-		if(mNotFound == NULL)
-		{
-			mNotFound = new Sprite(Image(1,1));
-		}
-		mGlobalPalette	= (pSpritePackOriginal.mGlobalPalette) ? pSpritePackOriginal.mGlobalPalette->copy() : NULL;
+		mGlobalPalette	= NULL;
 		mPalLinked		= false;
-
-		for(int i = 0; i < pSpritePackOriginal.getSize(); ++i)
-		{
-			add(Sprite(pSpritePackOriginal[i]));
-		}
+		(*this) = pSpritePackOriginal;
 	}
 
 	SpritePack::SpritePack(const std::string& pFileName, const ImageLoader& pImageLoader)
 	{
-		if(mNotFound == NULL)
-		{
-			mNotFound = new Sprite(Image(1,1));
-		}
+		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
 		load(pFileName,pImageLoader);
 	}
 
 	SpritePack::SpritePack(Core::File& pFile, const ImageLoader& pImageLoader)
 	{
-		if(mNotFound == NULL)
-		{
-			mNotFound = new Sprite(Image(1,1));
-		}
+		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
 		load(pFile,pImageLoader);
 	}
 
@@ -61,7 +44,7 @@ namespace Graphic
 
 	void SpritePack::setGlobalOffset(const Core::Point& pOffset)
 	{
-		for(unsigned int i = 0; i < getSize(); ++i)
+		for(int i = 0; i < getSize(); ++i)
 		{
 			(*this)[i].setOffset(pOffset);
 		}
@@ -69,7 +52,7 @@ namespace Graphic
 
 	void SpritePack::trimAll()
 	{
-		for(unsigned int i = 0; i < getSize(); ++i)
+		for(int i = 0; i < getSize(); ++i)
 		{
 			(*this)[i].trim();
 		}
@@ -105,7 +88,7 @@ namespace Graphic
 
 	int SpritePack::getSpriteRealIndex(const int& pGroup,const int& pIndex) const
 	{
-		for(register int i = 0; i < mSprites.size(); ++i)
+		for(int i = 0; i < mSprites.size(); ++i)
 		{
 			if(mSprites[i].getGroup() == pGroup && mSprites[i].getIndex() == pIndex)
 			{
@@ -172,7 +155,7 @@ namespace Graphic
 		mSprites.clear();
 		mGlobalPalette	= (pSpritePack.mGlobalPalette) ? pSpritePack.mGlobalPalette->copy() : NULL;
 		mPalLinked		= false;
-		for(unsigned int i = 0; i < pSpritePack.getSize(); ++i)
+		for(register int i = 0; i < pSpritePack.getSize(); ++i)
 		{
 			add(Sprite(pSpritePack[i]));
 		}
@@ -201,7 +184,7 @@ namespace Graphic
 	}
 
 	/**
-	 * Método para criar uma paleta de cores global para todos os sprites do pacote
+	 * Métodbo para criar uma paleta de cores global para todos os sprites do pacote
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	25/08/2008
@@ -240,6 +223,7 @@ namespace Graphic
 			try
 			{
 				save(file,pImageLoader);
+				file.close();
 			}
 			catch(Core::Exception& exception)
 			{
@@ -301,6 +285,7 @@ namespace Graphic
 			try
 			{
 				load(file, pImageLoader);
+				file.close();
 			}
 			catch(Core::Exception& exception)
 			{

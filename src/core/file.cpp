@@ -148,18 +148,21 @@ namespace Core
 		return value;
 	}
 
-	const char* File::readCharString(const int& pStringSize)
+	/*const char* File::readCharString(const int& pStringSize)
 	{
 		char* value;
-		value = new char(pStringSize + 1);
+		value = new char[pStringSize + 1];
 		read(value,pStringSize);
 		value[pStringSize] = '\0';
-		return value;
-	}
+		return aa";
+	}*/
 
 	std::string File::readString(const int& pStringSize)
 	{
-		return std::string(readCharString(pStringSize));
+		char value[pStringSize + 1];
+		read(value,pStringSize);
+		value[pStringSize] = '\0';
+		return std::string(value);
 	}
 
 	void File::readInt8(char& pInt8)

@@ -7,6 +7,7 @@
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
+			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
 					<key>?name?</key>
@@ -30,7 +31,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>${workspace_loc:/Gorgon++/Release}</value>
+					<value>${workspace_loc:/Gorgon++/Debug}</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
@@ -42,7 +43,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
-					<value>true</value>
+					<value>false</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
@@ -376,6 +377,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>examples/src/air_to_gap.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/air_to_gap.cpp</locationURI>
+		</link>
+		<link>
 			<name>examples/src/animation.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/animation.cpp</locationURI>
@@ -391,9 +397,44 @@
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/animationpack.cpp</locationURI>
 		</link>
 		<link>
+			<name>examples/src/animationpack_lua_to_gorgon.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/animationpack_lua_to_gorgon.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/backup.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/backup.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/colisionpack.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/colisionpack.cpp</locationURI>
+		</link>
+		<link>
 			<name>examples/src/image.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/image.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/image_bmp.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/image_bmp.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/image_pcx.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/image_pcx.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/keyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/keyboard.cpp</locationURI>
 		</link>
 		<link>
 			<name>examples/src/lua.cpp</name>
@@ -401,9 +442,19 @@
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/lua.cpp</locationURI>
 		</link>
 		<link>
+			<name>examples/src/mouse.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/mouse.cpp</locationURI>
+		</link>
+		<link>
 			<name>examples/src/physics.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/physics.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/sff_to_gsp.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/sff_to_gsp.cpp</locationURI>
 		</link>
 		<link>
 			<name>examples/src/sprite.cpp</name>
@@ -1981,6 +2032,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/animationpack.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>examples/src/.svn/text-base/animationpack_lua_to_gorgon.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/animationpack_lua_to_gorgon.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/backup.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/backup.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>examples/src/.svn/text-base/colisionpack.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/colisionpack.cpp.svn-base</locationURI>
@@ -2001,9 +2062,24 @@
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/image_pcx.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>examples/src/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>examples/src/.svn/text-base/lua.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/lua.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/mouse.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/mouse.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>examples/src/.svn/text-base/physics.cpp.svn-base</name>

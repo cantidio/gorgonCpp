@@ -2069,7 +2069,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}/../include/&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.so.release.option.optimization.level.326423776" name="Optimization Level" superClass="gnu.cpp.compiler.so.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
-								<option id="gnu.cpp.compiler.so.release.option.debugging.level.1047758697" name="Debug Level" superClass="gnu.cpp.compiler.so.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.so.release.option.debugging.level.1047758697" name="Debug Level" superClass="gnu.cpp.compiler.so.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.493637159" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.so.release.1013722666" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.so.release">
@@ -2087,7 +2087,7 @@
 									<listOptionValue builtIn="false" value="z"/>
 									<listOptionValue builtIn="false" value="chipmunk"/>
 								</option>
-								<option id="gnu.cpp.link.option.flags.512900225" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="`allegro-config --libs --addons`" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.512900225" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="`allegro-config --libs ` `sdl-config --libs` -lSDL_image" valueType="string"/>
 								<option defaultValue="true" id="gnu.cpp.link.so.release.option.shared.424874917" name="Shared (-shared)" superClass="gnu.cpp.link.so.release.option.shared" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.556090407" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -2102,7 +2102,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="examples/src/animation_handler.cpp|examples/src/animation.cpp|examples/src/animationpack.cpp|examples/src/lua.cpp|examples/src/physics.cpp|examples/src/sprite.cpp|examples/src/spritepack.cpp|examples/src/zlib.cpp|addon|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="addon/image_loader/magick++|examples/src/sff_to_gsp.cpp|examples/src/mouse.cpp|examples/src/keyboard.cpp|examples/src/joystick.cpp|examples/src/image.cpp|examples/src/image_pcx.cpp|examples/src/image_bmp.cpp|examples/src/colisionpack.cpp|examples/src/backup.cpp|examples/src/animationpack_lua_to_gorgon.cpp|examples/src/air_to_gap.cpp|examples/src/animation_handler.cpp|examples/src/animation.cpp|examples/src/animationpack.cpp|examples/src/lua.cpp|examples/src/physics.cpp|examples/src/sprite.cpp|examples/src/zlib.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

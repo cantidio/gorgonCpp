@@ -308,7 +308,7 @@ namespace Core
 			 *			Esse método aloca a memória suficiente para o vetor, para desalocar a memória, deve-se
 			 * desaloca-la com delete
 			 */
-			const char* readCharString(const int& pStringSize);
+			//const char* readCharString(const int& pStringSize);
 			/**
 			 * Método para ler um inteiro de 8 bits do arquivo
 			 *

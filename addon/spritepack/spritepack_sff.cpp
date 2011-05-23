@@ -1,9 +1,10 @@
 #include "spritepack_sff.hpp"
-//#include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
+#include <gorgon++/graphic/graphic.hpp>
+#include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
 
 namespace Gorgon{
-namespace Graphic
-{/*
+namespace Addon
+{
 	SpritePackSff::SpritePackSff(){}
 
 	SpritePackSff::SpritePackSff(const std::string& pFileName)
@@ -22,16 +23,17 @@ namespace Graphic
 		if(file.is_open())
 		{
 			load(file);
+			file.close();
 		}
 		else
 		{
-			throw SpritePackException("Unable to load SpritePackSff: "+pFileName+".");
+			raiseGraphicException("SpritePackSff::load(\""+pFileName+"\"): Error, unable to open the file for reading.");
 		}
 	}
 	
-	Sprite SpritePackSff::loadSprite(Core::File& pFile) const
+	Graphic::Sprite SpritePackSff::loadSprite(Core::File& pFile) const
 	{
-		Image imageTmp;
+		//Graphic::Image imageTmp;
 		const int nextSubFile		= pFile.readInt32();
 		const int sizeOfData		= pFile.readInt32();
 		const short xOffset			= pFile.readInt16();
@@ -45,30 +47,28 @@ namespace Graphic
 		if(sizeOfData == 0)
 		{
 			pFile.seekg(pFile.beg + nextSubFile);
-			return Sprite
+			return Graphic::Sprite
 			(
 				(*this)[preIndex],
 				group,
 				index,
-				xOffset,
-				yOffset
+				Core::Point(xOffset,yOffset)
 			);
 		}
 		else
 		{
-			Sprite temp
+			/**@todo talvez utilizar outro loader, ou deixar empty*/
+			Graphic::Sprite temp
 			(
-				Image(pFile, ImageLoaderPcx() ),
+				Graphic::Image(pFile, ImageLoaderPcx() ),
 				group,
 				index,
-				xOffset,
-				yOffset
+				Core::Point(xOffset,yOffset)
 			);
-
 			if(!reusePalette)
 			{
 				pFile.seekg(pFile.beg + nextSubFile - 768);
-				temp.setPalette(new Palette(pFile),true);
+				temp.setPalette(new Graphic::Palette(pFile), true);
 				temp.getPalette()->inverse();
 			}
 			else if(getSize() > 0)
@@ -77,7 +77,6 @@ namespace Graphic
 			}
 			else
 			{
-				//printf("lala\n");
 				temp.setPalette(NULL);
 			}
 			pFile.seekg(pFile.beg + nextSubFile);
@@ -96,12 +95,11 @@ namespace Graphic
 		const int subHeaderSize		= pFile.readInt32();
 		const char paletteType		= pFile.readInt8();
 		pFile.ignore(479);
+/**@todo verificar o header e versão dessa porra.*/
 
-		mPalLinked		= true;
-		mGlobalPalette	= NULL;
 		for(int i = 0; i < imageNumber; ++i)
 		{
 			add(loadSprite(pFile));
 		}
-	}*/
+	}
 }}

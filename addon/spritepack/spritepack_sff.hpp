@@ -29,19 +29,19 @@
 #include <gorgon++/graphic/spritepack.hpp>
 
 namespace Gorgon{
-namespace Graphic
+namespace Addon
 {
 	/**
 	 * @todo verificar se tem algum ponteiro morto por aqui, as vezes dá falha de segmentação ao sair do programa que utiliza essa classe
 	 */
-	class SpritePackSff : public SpritePack
+	class SpritePackSff : public Graphic::SpritePack
 	{
 		public:
 			SpritePackSff();
 			SpritePackSff(const std::string& fileName);
 			SpritePackSff(Core::File& pFile);
 
-			Sprite loadSprite(Core::File& pFile) const;
+			Graphic::Sprite loadSprite(Core::File& pFile) const;
 			void load(const std::string& pSpriteName);
 			void load(Core::File& pFile);
 	};

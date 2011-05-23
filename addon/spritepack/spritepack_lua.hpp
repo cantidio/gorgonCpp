@@ -29,7 +29,7 @@
 #include <gorgon++/graphic/spritepack.hpp>
 
 namespace Gorgon{
-namespace Graphic
+namespace Addon
 {
 	/**
 	 * Classe que representa um spritepack com loader através de um script lua
@@ -38,7 +38,7 @@ namespace Graphic
 	 * @since	25/01/2011
 	 * @version	28/04/2011
 	 */
-	class SpritePackLua : public SpritePack
+	class SpritePackLua : public Graphic::SpritePack
 	{
 		public:
 			/**

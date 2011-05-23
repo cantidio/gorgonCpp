@@ -2,6 +2,7 @@
 #include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
 #include <gorgon++/addon/sdl/graphic/image_loader.hpp>
 #include <gorgon++/addon/spritepack/spritepack_lua.hpp>
+#include <gorgon++/addon/spritepack/spritepack_sff.hpp>
 #include <gorgon++/addon/spritepack/spritesheet.hpp>
 #include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp>
 const int X=320;
@@ -16,9 +17,10 @@ using namespace std;
 void usageMSG()
 {
 	printf("opções Disponíveis:\n");
-	printf("\t-image      [image.bmp]\n");
-	printf("\t-spritepack [spritepack.gspk]\n");
-	printf("\t-script     [script.lua]\n\n");
+	printf("\t-image       [image.bmp]\n");
+	printf("\t-spritepack  [spritepack.gspk]\n");
+	printf("\t-sff         [spritepack.sff]\n");
+	printf("\t-script      [script.lua]\n\n");
 }
 
 void showCommands()
@@ -79,6 +81,10 @@ int main(int argc, char** argv)
 			{
 				gspk.load(argv[2]);
 			}
+			else if(std::string(argv[1]).compare("-sff") == 0)
+			{
+				gspk = SpritePackSff(std::string(argv[2]));
+			}
 			else if(std::string(argv[1]).compare("-script") == 0)
 			{
 				gspk = SpritePackLua(argv[2]);
@@ -92,8 +98,10 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			usageMSG();
-			return 0;
+//			gspk = SpritePackSff("~/mugen/Alucard/Alucard.sff");
+			gspk = SpritePackSff("/home/cantidio/mugen/Alucard/Alucard.sff");
+			/*usageMSG();
+			return 0;*/
 		}
 		showCommands();
 		

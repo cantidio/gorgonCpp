@@ -6,20 +6,24 @@ namespace Graphic
 {
 	Image::Image(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
-		mData		= NULL;
-		mDataBuffer	= NULL;
-		mPalette	= NULL;
-		load(pFileName,pImageLoader);
+		mData			= NULL;
+		mDataBuffer		= NULL;
+		mPalette		= NULL;
+		mImgLinked		= false;
+		mFreePalette	= true;
+		load(pFileName, pImageLoader);
 	}
 
 	Image::Image(Core::File& pFile, const ImageLoader& pImageLoader)
 	{
-		mData		= NULL;
-		mDataBuffer	= NULL;
-		mPalette	= NULL;
-		load(pFile,pImageLoader);
+		mData			= NULL;
+		mDataBuffer		= NULL;
+		mPalette		= NULL;
+		mImgLinked		= false;
+		mFreePalette	= true;
+		load(pFile, pImageLoader);
 	}
-	
+	/**@todo eliminar esse metodo*/
 	Image::Image(BITMAP* pBitmap, Palette *pPalette)
 	{
 		mData			= pBitmap;
@@ -27,7 +31,7 @@ namespace Graphic
 		mPalette		= pPalette;
 		mImgLinked		= true;
 		mFreePalette	= false;
-		setType(imageUnknownCod);
+		//setType(imageUnknownCod);
 		updateBuffer();
 	}
 
@@ -46,11 +50,14 @@ namespace Graphic
 		mFreePalette	= true;
 		clear(pColor);
 		updateBuffer();
-		setType(imageUnknownCod);
+		//setType(imageUnknownCod);
 	}
 
 	Image::Image(const Image& pImage)
 	{
+		mData		= NULL;
+		mDataBuffer	= NULL;
+		mPalette	= NULL;
 		(*this) = pImage;
 	}
 
@@ -61,12 +68,10 @@ namespace Graphic
 			if(!mImgLinked && mData)
 			{
 				destroy_bitmap(mData);
-				mData = NULL;
 			}
 			if(mDataBuffer)
 			{
 				destroy_bitmap(mDataBuffer);
-				mDataBuffer = NULL;
 			}
 		}
 		else
@@ -74,14 +79,11 @@ namespace Graphic
 			if(!mImgLinked && mData)
 			{
 				destroy_bitmap(mData);
-				mData		= NULL;
-				mDataBuffer	= NULL;
 			}
 		}
 		if(mFreePalette && mPalette)
 		{
 			delete mPalette;
-			mPalette = NULL;
 		}
 	}
 
@@ -171,6 +173,10 @@ namespace Graphic
 
 	void Image::setPalette(Palette* pPalette, const bool& pFreeSource)
 	{
+		if(mPalette && mFreePalette)
+		{
+			delete mPalette;
+		}
 		mPalette		= pPalette;
 		mFreePalette	= pFreeSource;
 		updateBuffer();
@@ -1095,37 +1101,27 @@ namespace Graphic
 
 	void Image::operator =(const Image& pImage)
 	{
-		mData		= NULL;
-		mDataBuffer	= NULL;
-		mPalette	= NULL;
-		setType(pImage.getType());
-
-		if(pImage.mPalette)
-		{
-			setPalette(pImage.getPalette()->copy());
-		}
 		if(pImage.mData)
 		{
-			mData = create_bitmap_ex
+			create
 			(
-				pImage.getColorDepth(),
 				pImage.getWidth(),
-				pImage.getHeight()
+				pImage.getHeight(),
+				pImage.getColorDepth()
 			);
 			blit
 			(
 				pImage.mData,
 				mData,
-				0,
-				0,
-				0,
-				0,
+				0,0,0,0,
 				pImage.getWidth(),
 				pImage.getHeight()
 			);
 		}
+		if(pImage.mPalette)
+		{
+			setPalette(pImage.getPalette()->copy(),true);
+		}
 		updateBuffer();
-		mImgLinked	= false;
-		mFreePalette = true;
 	}
 }}

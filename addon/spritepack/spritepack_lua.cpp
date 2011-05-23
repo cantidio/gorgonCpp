@@ -2,7 +2,7 @@
 #include <gorgon++/script/lua.hpp>
 
 namespace Gorgon{
-namespace Graphic
+namespace Addon
 {
 	SpritePackLua::SpritePackLua(){}
 	SpritePackLua::SpritePackLua(const SpritePack& pSpritePack) : SpritePack(pSpritePack) {}
@@ -35,11 +35,11 @@ namespace Graphic
 		if(file.is_open())
 		{
 			file << "spritepack = {\n";
-			for(unsigned int i = 0; i < getSize(); ++i)
+			for(int i = 0; i < getSize(); ++i)
 			{
 				std::stringstream filename;
 				filename << dir << subfilename << "_image_" << i << ".bmp";
-				((Image)(*this)[i]).save(filename.str());
+				((Graphic::Image)(*this)[i]).save(filename.str());
 
 				file << "\t{\n";
 				file << "\t\tgroup   = " << (*this)[i].getGroup()	<< ",\n";
@@ -79,9 +79,9 @@ namespace Graphic
 			image << dir << script.function("getSpriteLocation", Script::LuaParam("i",i),1).getStringValue();
 			this->add
 			(
-				Sprite
+				Graphic::Sprite
 				(
-					Image( image.str() ),
+					Graphic::Image( image.str() ),
 					script.function("getSpriteGroup"	, Script::LuaParam("i",i), 1).getNumericValue(),
 					script.function("getSpriteIndex"	, Script::LuaParam("i",i), 1).getNumericValue(),
 					Core::Point
