@@ -1,5 +1,5 @@
 #include <graphic/palette.hpp>
-
+#include <allegro.h>
 namespace Gorgon{
 namespace Graphic
 {
@@ -61,7 +61,7 @@ namespace Graphic
 		return out.str();
 	}
 
-	Palette* Palette::copy() const
+	Palette* Palette::clone() const
 	{
 		Palette* aux;
 		aux = new Palette();

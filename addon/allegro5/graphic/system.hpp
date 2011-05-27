@@ -24,78 +24,60 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_HANDLER_
-#define _GORGON_JOYSTICK_HANDLER_
+#ifndef _GORGON_GRAPHIC_ADDON_SYSTEM_
+#define _GORGON_GRAPHIC_ADDON_SYSTEM_
+#include <gorgon++/graphic/system.hpp>
 
-namespace Gorgon{
-namespace Input
+namespace Gorgon	{
+namespace Graphic	{
+namespace Addon
 {
-	class JoystickBase;
 	/**
-	 * Class that represents a JoystickHandler
+	 * Class that represents the Graphic System
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	05/05/2011
-	 * @version	05/05/2011
+	 * @since	27/05/2011
+	 * @version	27/05/2011
 	 */
-	class JoystickHandler
+	class System : public Graphic::System
 	{
-		protected:
-			static JoystickHandler* mHandler;/**<< Singleton instance of the class*/
-			/**
-			 * Protected Constructor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 */
-			JoystickHandler();
-			/**
-			 * Protected Destructor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 */
-			virtual ~JoystickHandler();
-			/**
-			 * Method that sets the JoystickHandler
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @param Joystick& pHandler, the Handler
-			 */
-			static void set(JoystickHandler& pHandler);
 		public:
 			/**
-			 * Method that returns the JoystickHandler
+			 * Method that sets the GraphicSystem
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
-			 * @return	JoystickHandler&
+			 * @since	27/05/2011
+			 * @version	27/05/2011
+			 * @param	System& pSystem, the graphic system
 			 */
-			static JoystickHandler& get();
+			static void set();
 			/**
 			 * Method that returns an instance of the current joystickBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	05/05/2011
-			 * @version	05/05/2011
+			 * @since	27/05/2011
+			 * @version	27/05/2011
 			 * @param	const int& pIndex, the index of the Joystick
 			 * @return	JoystickBase*
 			 */
-			virtual JoystickBase* getJoystick(const int& pIndex) const;
+			virtual Graphic::ImageBase* getImage() const;
+		protected:
 			/**
-			 * Method that returns the number of joysticks available on system
+			 * Protected Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @return	int
+			 * @since	27/05/2011
+			 * @version	27/05/2011
 			 */
-			virtual int getJoystickNumber() const;
+			System();
+			/**
+			 * Protected Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	27/05/2011
+			 * @version	27/05/2011
+			 */
+			virtual ~System();
 	};
-}}
+}}}
 #endif

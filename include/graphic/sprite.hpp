@@ -45,10 +45,6 @@ namespace Graphic
 	 */
 	class Sprite : public Image
 	{
-		private:
-			int mGroup;				/**<< The group of the sprite*/
-			int mIndex;				/**<< The index of the sprite in its group*/
-			Core::Point mOffset;	/**<< The offset of the image*/
 		public:
 			/**
 			 * Constructor
@@ -115,6 +111,218 @@ namespace Graphic
 			 */
 			void trim();
 			/**
+			 * Método para setar o grupo do sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	09/08/2008
+			 * @version	24/01/2008
+			 * @param	const int& pGroup, grupo do sprite
+			 */
+			inline void setGroup(const int& pGroup)
+			{
+				mGroup = pGroup;
+			}
+			/**
+			 * Método para setar o índice do sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	09/08/2008
+			 * @version	24/01/2008
+			 * @param	const int& pIndex, índice do sprite
+			 */
+			inline void setIndex(const int& pIndex)
+			{
+				mIndex = pIndex;
+			}
+			/**
+			 * Método para setar o offset do sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/05/2011
+			 * @version	03/05/2011
+			 * @param	const Core::Point& pOffset, offset do sprite
+			 */
+			inline void setOffset(const Core::Point& pOffset)
+			{
+				mOffset = pOffset;
+			}
+			/**
+			 * Método para retornar o grupo do sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	09/08/2008
+			 * @version	21/01/2009
+			 * @return	int
+			 */
+			inline int getGroup() const
+			{
+				return mGroup;
+			}
+			/**
+			 * Método para retornar o indice do sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	09/08/2008
+			 * @version	21/01/2009
+			 * @return	int
+			 */
+			inline int getIndex() const
+			{
+				return mIndex;
+			}
+			/**
+			 * Método para retornar o offset do sprite
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	09/08/2008
+			 * @version	03/05/2011
+			 * @return	Core::Point
+			 */
+			inline Core::Point getOffset() const
+			{
+				return mOffset;
+			}
+			/**
+			 * Method that draws the sprite in the requested position into the current target Image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	26/05/2011
+			 * @param	const Core::Point& pPosition, the position the image will be drawn
+			 *
+			 * @see		Graphic::setTargetImage
+			 */
+			void draw(const Core::Point& pPosition) const;
+			/**
+			 * Method that draws the sprite in the requested position and mirroring
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	26/05/2011
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw this Image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */
+			void draw(const Core::Point& pPosition, const Mirroring& pMirroring) const; //drawFlip
+				/**
+			 * Method that draws the sprite in the requested position and angle
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	27/05/2011
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
+			 * @param	const float&		pAngle		, the angle of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */	
+			void draw( const Core::Point& pPosition, const float& pAngle ) const;//draw rotated
+			/**
+			 * Method that draws the sprite in the requested position, mirroring and angle
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	27/05/2011
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
+			 * @param	const float&		pAngle		, the angle of the image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */	
+			void draw//drawRotatedFlipped
+			(
+				const Core::Point&	pPosition,
+				const float&		pAngle,
+				const Mirroring&	pMirroring
+			) const;
+			/**
+			 * Method that draws the sprite in the requested position and mirroring, scalling it
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	26/05/2011
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw this Image
+			 * @param	const int&			pWidth		, the width of the resulted image
+			 * @param	const int&			pHeight		, the height of the resulted image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */
+			void draw(const Core::Point& pPosition, const int& pWidth, const int& pHeight, const Mirroring& pMirroring) const; //drawScaled
+			/**
+			 * Method that draws the sprite and multiplies all colors in the image with the given color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	03/05/2011
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */
+			void draw(const Core::Point& pPosition, const Color& pTint) const;//drawTinted
+			/**
+			 * Method that draws the sprite and multiplies all colors in the image with the given color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	03/05/2011
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */
+			void draw(const Core::Point& pPosition, const Color& pTint, const Mirroring& pMirroring) const;//draw Tinted fliped
+			/**
+			 * Method that draws the sprite and multiplies all colors in the image with the given color and angle
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	03/05/2011
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const float&		pAngle		, the angle of the image
+			 * @param	const Core::Point&	pCenter		, the center of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */
+			void draw
+			(
+				const Core::Point&	pPosition,
+				const Color&		pTint,
+				const float&		pAngle
+			) const;//drawTinted rotated
+			/**
+			 * Method that draws the sprite and multiplies all colors in the image with the given color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	03/05/2011
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const float&		pAngle		, he angle of the image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */
+			void draw
+			(
+				const Core::Point&	pPosition,
+				const Color&		pTint,
+				const float&		pAngle,
+				const Mirroring&	pMirroring
+			) const;//drawTinted rotated fliped
+//---------------------------------------------------------------------------------------------------------------------------------------
+			/**
 			 * Method that loads the sprite from a file
 			 *
 			 * @author	Cantidio Oliveira Fontes
@@ -135,250 +343,29 @@ namespace Graphic
 			 */
 			virtual void load(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
-			 * Método para salvar o sprite em um arquivo
+			 * Method that saves the sprite into a file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	21/06/2009
-			 * @param	const string& pSpriteName, nome do arquivo a salvar o sprite
-			 * @param	ImageLoader* pImageLoader, ponteiro para o formato de imagem a salvar
+			 * @param	const std::string&	pSpriteName		, name of the file to save the sprite
+			 * @param	const ImageLoader*	pImageLoader	, the imageLoader
 			 */
 			virtual void save(const std::string& pSpriteName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
-			 * Método para salvar o sprite em um arquivo já aberto
+			 * Method that saves the sprite into a previously opened file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	21/06/2009
-			 * @param	File&			pFile			, arquivo já aberto
-			 * @param	ImageLoader*	pImageLoader	, ponteiro para o formato de imagem a salvar
+			 * @param	Core::File&			pFile			, the file to save the sprite
+			 * @param	const ImageLoader*	pImageLoader	, the imageLoader
 			 */
-			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
-			/**
-			 * Método para setar o grupo do sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	09/08/2008
-			 * @version	24/01/2008
-			 * @param	const int& pGroup, grupo do sprite
-			 */
-			void setGroup(const int& pGroup);
-			/**
-			 * Método para setar o índice do sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	09/08/2008
-			 * @version	24/01/2008
-			 * @param	const int& pIndex, índice do sprite
-			 */
-			void setIndex(const int& pIndex);
-			/**
-			 * Método para setar o offset do sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	03/05/2011
-			 * @version	03/05/2011
-			 * @param	const Core::Point& pOffset, offset do sprite
-			 */
-			void setOffset(const Core::Point& pOffset);
-			/**
-			 * Método para retornar o grupo do sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	09/08/2008
-			 * @version	21/01/2009
-			 * @return	int
-			 */
-			int getGroup() const;
-			/**
-			 * Método para retornar o indice do sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	09/08/2008
-			 * @version	21/01/2009
-			 * @return	int
-			 */
-			int getIndex() const;
-			/**
-			 * Método para retornar o offset do sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	09/08/2008
-			 * @version	03/05/2011
-			 * @return	Core::Point
-			 */
-			Core::Point getOffset() const;
-			/**
-			 * Método para desenhar um Sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	01/05/2008
-			 * @version	03/05/2011
-			 * @param	const Image&		pSprite		, sprite a ser desenhada
-			 * @param	const Core::Point&	pPosition	, posição a desenhar o sprite
-			 */
-			void drawSprite(const Sprite& pSprite, const Core::Point& pPosition);
-			/**
-			 * Método para desenhar um Sprite esticado
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2009
-			 * @version	26/01/2011
-			 * @param	const Sprite&		pSprite		, imagem que deseja-se desenhar
-			 * @param	const Core::Point&	pPosition	, posição a desenhar o sprite
-			 * @param	const int&			pXScale		, escala horizontal
-			 * @param	const int&			pYScale		, escala vertical
-			 */
-			void drawSpriteStretched
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const int&			pXScale,
-				const int&			pYScale
-			);
-			/**
-			 * Método para desenhar um Sprite invertido
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	01/05/2008
-			 * @version	03/05/2011
-			 * @param	const Sprite&		pSprite		, sprite que deseja-se desenhar
-			 * @param	const Core::Point&	pPosition	, posição a desenhar o sprite
-			 * @param	const Mirroring&	pMirroring	, tipo de espelhamento
-			 */
-			void drawSpriteFlipped
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const Mirroring&	pMirroring = Mirroring::Normal
-			);
-			/**
-			 * Método para desenhar um Sprite com transparencia ou blender
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2009
-			 * @version	03/05/2011
-			 * @param	const Sprite&		pSprite		, sprite que deseja-se desenhar
-			 * @param	const Core::Point&	pPosition	, posição a desenhar o sprite
-			 * @param	const float&		pTrans		, transparencia do sprite [0 - 1]
-			 */
-			void drawSpriteTrans
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const float&		pTrans = 0.5
-			);
-			/**
-			 * Método para desenhar um Sprite com transparencia ou blender
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/04/2010
-			 * @version	03/05/2011
-			 * @param	const Sprite&		pSprite		, sprite que deseja-se desenhar
-			 * @param	const Core::Point&	pPosition	, posição a desenhar o sprite
-			 * @param	const float&		pTrans		, transparencia do sprite [0 - 1]
-			 * @param	const Mirroring&	pMirroring	, espelhamento
-			 */
-			void drawSpriteTransFlipped
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const float&		pTrans = 0.5,
-				const Mirroring&	pMirroring = Mirroring::Normal
-			);
-			/**
-			 * @todo comentar isso ou excluir
-			 */
-			void drawSpriteAdd
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const Color&		pColorAdd,
-				const Color&		pColorSub,
-				const float&		pTrans = 0.5
-			);
-			/**
-			 * Método para desenhar um Sprite rotacionado
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	01/05/2008
-			 * @version	03/05/2011
-			 * @param	const Sprite&		pSprite	, sprite que deseja-se desenhar
-			 * @param	const Core::Point&	pPosition	, posição no eixo x a desenhar o sprite
-			 * @param	const int&			pAngle	, angulo a desenhar o sprite
-			 */
-			void drawSpriteRotated
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const int&			pAngle
-			);
-			/**
-			 * Método para desenhar um Sprite rotacionada e invertida
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	01/05/2008
-			 * @version	03/05/2011
-			 * @param	const Sprite&		pSprite		, sprite que deseja-se desenhar
-			 * @param	const Core::Point&	pPosition	, posição a desenhar o sprite
-			 * @param	const int&			pAngle		, angulo a desenhar o sprite
-			 * @param	const Mirroring&	pMirroring	, tipo de espelhamento do sprite
-			 */
-			void drawSpriteRotatedFlipped
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosX,
-				const int&			pAngle,
-				const Mirroring&	pMirroring = Mirroring::Normal
-			);
-			/**
-			 * Método para copiar o Sprite
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	02/07/2008
-			 * @version	03/05/2011
-			 * @param	const Sprite&		pSprite			, sprite a ser colado
-			 * @param	const Core::Point&	pPosition		, posição na imagem que irá colar a outra
-			 * @param	const Core::Point&	pSourcePosition	, posição na imagem passada que começará a colar
-			 * @param	const int& 			pWidth			, largura do corte
-			 * @param	const int&			pHeight			, altura do corte
-			 * @param	const bool			pMasked			, se irá permitir transparência ou não
-			 */
-			void blitSprite
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const Core::Point&	pSourcePosition	=  Core::Point(0,0),
-				const int&			pWidth			= -1,
-				const int&			pHeight			= -1,
-				const bool&			pMasked			= false
-			);
-			/**
-			 * Método para copiar um Sprite esticado
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2009
-			 * @version	03/05/2011
-			 * @param	const Sprite&		pSprite			, sprite a ser colado
-			 * @param	const Core::Point&	pPosition		, posição na imagem que irá colar a outra
-			 * @param	const int&			pXScale			, número de vezes que irá multiplicar o tamanho do sprite original no eixo x
-			 * @param	const int&			pYScale			, número de vezes que irá multiplicar o tamanho do sprite original no eixo y
-			 * @param	const Core::Point&	pSourcePosition	, posição na imagem passada que começará a colar
-			 * @param	const int		 	pSourceWidth	, largura do corte na imagem passada
-			 * @param	const int			pSourceHeight	, altura do corte na imagem passada
-			 * @param	const bool			pMasked			, se irá permitir transparência ou não
-			 */
-			void blitSpriteStretched
-			(
-				const Sprite&		pSprite,
-				const Core::Point&	pPosition,
-				const int&			pXScale			= -1,
-				const int&			pYScale			= -1,
-				const Core::Point&	pSourcePosition	=  Core::Point(0,0),
-				const int&			pSourceWidth	= -1,
-				const int&			pSourceHeight	= -1,
-				const bool&			pMasked			= false
-			);
+			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());	
+		protected:
+			int mGroup;				/**<< The group of the sprite*/
+			int mIndex;				/**<< The index of the sprite in its group*/
+			Core::Point mOffset;	/**<< The offset of the image*/
 	};
 }}
 #endif

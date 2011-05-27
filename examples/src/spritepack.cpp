@@ -5,8 +5,8 @@
 #include <gorgon++/addon/spritepack/spritepack_sff.hpp>
 #include <gorgon++/addon/spritepack/spritesheet.hpp>
 #include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp>
-const int X=320;
-const int Y=240;
+const int X=1280;
+const int Y=720;
 int zoom=1;
 using namespace Gorgon;
 using namespace Gorgon::Core;
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
 		ImageLoader::setLoader(new ImageLoaderSDL());
 		ImageLoader::getLoader().setSaveFormat("PNG");
 		//ImageLoader::setLoader(new Gorgon::ImageLoaderAutodetect());
-		Video::init("Teste da classe SpritePack",640,480);
+		Video::init("Teste da classe SpritePack",1280,720);
 		
 		Video		video = Video::get();
 		SpritePack	gspk;
@@ -106,7 +106,7 @@ int main(int argc, char** argv)
 		showCommands();
 		
 
-		Sprite buffer(Image(640,480));
+		Sprite buffer(Image(1280,720));
 		int counter		= 0;
 		int onionIndex	= 0;
 		while(!key[KEY_ESC])
@@ -238,6 +238,7 @@ int main(int argc, char** argv)
 	catch(Core::Exception& e)
 	{
 		cout << e.getMessage() << endl;
+		e.writeInLog();
 	}
 	return 0;
 }

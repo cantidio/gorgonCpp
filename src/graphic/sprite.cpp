@@ -4,6 +4,18 @@
 namespace Gorgon{
 namespace Graphic
 {
+	std::string Sprite::describe() const
+	{
+		std::stringstream out;
+		out << "Gorgon::Graphic::Sprite::describe()\n";
+		out << "Group:   " << mGroup			<< std::endl;
+		out << "Index:   " << mIndex			<< std::endl;
+		out << "xOffset: " << mOffset.getX()	<< std::endl;
+		out << "yOffset: " << mOffset.getY()	<< std::endl;
+		out << Image::describe();
+		return out.str();
+	}
+	
 	Sprite::Sprite
 	(
 		const Image&		pImage,
@@ -17,6 +29,13 @@ namespace Graphic
 		mOffset	= pOffset;
 	}
 
+	Sprite::Sprite(const Sprite& pSpriteOrig) : Image(pSpriteOrig)
+	{
+		mGroup		= pSpriteOrig.mGroup;
+		mIndex		= pSpriteOrig.mIndex;
+		mOffset		= pSpriteOrig.mOffset;
+	}	
+
 	Sprite::Sprite(const std::string& pSpriteName, const ImageLoader& pImageLoader) : Image()
 	{
 		load(pSpriteName,pImageLoader);
@@ -26,29 +45,10 @@ namespace Graphic
 	{
 		load(pFile,pImageLoader);
 	}
-
-	Sprite::Sprite(const Sprite& pSpriteOrig) : Image(pSpriteOrig)
-	{
-		mGroup		= pSpriteOrig.mGroup;
-		mIndex		= pSpriteOrig.mIndex;
-		mOffset		= pSpriteOrig.mOffset;
-	}	
-
-	std::string Sprite::describe() const
-	{
-		std::stringstream out;
-		out << "Gorgon Sprite"					<< std::endl;
-		out << "Group:   " << mGroup			<< std::endl;
-		out << "Index:   " << mIndex			<< std::endl;
-		out << "xOffset: " << mOffset.getX()	<< std::endl;
-		out << "yOffset: " << mOffset.getY()	<< std::endl;
-		out << Image::describe();
-		return out.str();
-	}
 	
 	void Sprite::trim()
 	{
-		int x = getDelimiterLeft();
+		/*int x = getDelimiterLeft();
 		int y = getDelimiterUp();
 		clip
 		(
@@ -57,7 +57,112 @@ namespace Graphic
 			getWidth() - x - getDelimiterRight(),
 			getHeight() - y - getDelimiterDown()
 		);
-		setOffset( getOffset() - Core::Point(x,y) );
+		setOffset( getOffset() - Core::Point(x,y) );*/
+	}
+	void Sprite::draw( const Core::Point& pPosition) const
+	{
+		Image::draw(pPosition - mOffset);
+	}
+	
+	void Sprite::draw(const Core::Point& pPosition, const Mirroring& pMirroring) const//drawFlipped
+	{
+		Core::Point position = pPosition - mOffset;
+		if((pMirroring.getType() & Mirroring::HFlip) == Mirroring::HFlip )
+		{
+			position.setX( position.getX() - (getWidth() - mOffset.getX()) );
+		}
+		if((pMirroring.getType() & Mirroring::VFlip) == Mirroring::VFlip )
+		{
+			position.setY( position.getY() - (getHeight() - mOffset.getY()) );
+		}
+		Image::draw(pPosition, pMirroring);
+	}
+	
+	void Sprite::draw( const Core::Point& pPosition, const float& pAngle ) const//draw rotated
+	{
+		Image::draw(pPosition, pAngle, mOffset);
+	}
+	
+	void Sprite::draw//draw rotated flipped
+	(
+		const Core::Point&	pPosition,
+		const float&		pAngle,
+		const Mirroring&	pMirroring
+	) const
+	{
+		Core::Point offset = mOffset;
+		if(pMirroring.getType() == Mirroring::HFlip || pMirroring.getType() == Mirroring::VFlip)
+		{
+			offset = Core::Point( mOffset.getX(), getHeight() - mOffset.getY() );
+		}
+		Image::draw(pPosition, pAngle, offset, pMirroring);
+	}
+
+	void Sprite::draw
+	(
+		const Core::Point& pPosition,
+		const int& pWidth,
+		const int& pHeight,
+		const Mirroring& pMirroring
+	) const //drawScaled flipped
+	{
+		Image::draw
+		(
+			pPosition - (mOffset * Core::Point( pWidth/getWidth(), pHeight/getHeight() ) ),
+			pWidth,
+			pHeight,
+			pMirroring
+		);
+	}
+	
+	void Sprite::draw(const Core::Point& pPosition, const Color& pTint) const//drawTinted
+	{
+		Image::draw(pPosition - mOffset, pTint);
+	}
+	
+	void Sprite::draw
+	(
+		const Core::Point& pPosition,
+		const Color& pTint,
+		const Mirroring& pMirroring
+	) const//drawTintedFlipped
+	{
+		Core::Point position = pPosition - mOffset;
+		if((pMirroring.getType() & Mirroring::HFlip) == Mirroring::HFlip )
+		{
+			position.setX( position.getX() - (getWidth() - mOffset.getX()) );
+		}
+		if((pMirroring.getType() & Mirroring::VFlip) == Mirroring::VFlip )
+		{
+			position.setY( position.getY() - (getHeight() - mOffset.getY()) );
+		}
+		Image::draw(position,pTint,pMirroring);
+	}
+	
+	void Sprite::draw
+	(
+		const Core::Point&	pPosition,
+		const Color&		pTint,
+		const float&		pAngle
+	) const//drawTinted rotated
+	{
+		Image::draw(pPosition, pTint, pAngle, mOffset);
+	}
+	
+	void Sprite::draw
+	(
+		const Core::Point&	pPosition,
+		const Color&		pTint,
+		const float&		pAngle,
+		const Mirroring&	pMirroring
+	) const//drawTinted rotated fliped
+	{
+		Core::Point offset = mOffset;
+		if(pMirroring.getType() == Mirroring::HFlip || pMirroring.getType() == Mirroring::VFlip)
+		{
+			offset = Core::Point( mOffset.getX(), getHeight() - mOffset.getY() );
+		}
+		Image::draw(pPosition, pTint, pAngle, offset, pMirroring);
 	}
 	
 	void Sprite::load(const std::string& pSpriteName, const ImageLoader& pImageLoader)
@@ -145,204 +250,5 @@ namespace Graphic
 			header.returnFilePosition(pFile);
 			raiseGraphicExceptionE("Sprite::save(pFile): Error while saving Sprite.",exception);
 		}
-	}
-
-	void Sprite::setGroup(const int& pGroup)
-	{
-		mGroup = pGroup;
-	}
-
-	void Sprite::setIndex(const int& pIndex)
-	{
-		mIndex = pIndex;
-	}
-
-	void Sprite::setOffset(const Core::Point& pOffset)
-	{
-		mOffset = pOffset;
-	}
-
-	int Sprite::getGroup() const
-	{
-		return mGroup;
-	}
-
-	int Sprite::getIndex() const
-	{
-		return mIndex;
-	}
-
-	Core::Point Sprite::getOffset() const
-	{
-		return mOffset;
-	}
-
-	void Sprite::drawSprite
-	(
-		const Sprite&	pSprite,
-		const Core::Point&	pPosition
-	)
-	{
-		drawImage(pSprite, pPosition - pSprite.mOffset );
-	}
-
-	void Sprite::drawSpriteStretched
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const int&			pXScale,
-		const int&			pYScale
-	)
-	{
-		drawImageStretched
-		(
-			pSprite,
-			pPosition - (pSprite.getOffset() * Core::Point(pXScale,pYScale)),
-			pSprite.getWidth() * pXScale,
-			pSprite.getHeight() * pYScale
-		);
-	}
-
-	void Sprite::drawSpriteFlipped
-	(
-		const Sprite&			pSprite,
-		const Core::Point&		pPosition,
-		const Mirroring&		pMirroring
-	)
-	{
-		Core::Point position = pPosition - pSprite.mOffset;
-		if((pMirroring.getType() & Mirroring::HFlip) == Mirroring::HFlip )
-		{
-			position.setX( position.getX() - (pSprite.getWidth() - pSprite.mOffset.getX()) );
-		}
-		if((pMirroring.getType() & Mirroring::VFlip) == Mirroring::VFlip )
-		{
-			position.setY( position.getY() - (pSprite.getHeight() - pSprite.mOffset.getY()) );
-		}
-		drawImageFlipped(pSprite, position, pMirroring);
-	}
-
-	void Sprite::drawSpriteTrans
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const float&		pTrans
-	)
-	{
-		drawImageTrans(pSprite, pPosition - pSprite.mOffset, pTrans);
-	}
-
-	void Sprite::drawSpriteTransFlipped
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const float&		pTrans,
-		const Mirroring&	pMirroring
-	)
-	{
-		drawImageTransFlipped
-		(
-			pSprite,
-			pPosition - pSprite.mOffset,
-			pTrans,
-			pMirroring
-		);
-	}
-
-	void Sprite::drawSpriteAdd
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const Color&		pColorAdd,
-		const Color&		pColorSub,
-		const float&		pTrans
-	)
-	{
-		drawImageAdd
-		(
-			pSprite,
-			pPosition - pSprite.mOffset,
-			pColorAdd,
-			pColorSub,
-			pTrans
-		);
-	}
-
-	void Sprite::drawSpriteRotated
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const int&			pAngle
-	)
-	{
-		drawImageRotated
-		(
-			pSprite,
-			pPosition,
-			pAngle,
-			pSprite.mOffset
-		);
-	}
-
-	void Sprite::drawSpriteRotatedFlipped
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const int&			pAngle,
-		const Mirroring&	pMirroring
-	)
-	{
-		Core::Point off = pSprite.mOffset;
-		if(pMirroring.getType() == Mirroring::HFlip || pMirroring.getType() == Mirroring::VFlip)
-		{
-			off = Core::Point( pSprite.mOffset.getX(), pSprite.getHeight() - pSprite.mOffset.getY() );
-		}
-		drawImageRotatedFlipped( pSprite, pPosition, pAngle, pMirroring, off );
-	}
-
-	void Sprite::blitSprite
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const Core::Point&	pSourcePosition,
-		const int&			pWidth,
-		const int&			pHeight,
-		const bool&			pMasked
-	)
-	{
-		blitImage
-		(
-			pSprite,
-			pPosition - pSprite.mOffset,
-			pSourcePosition,
-			pWidth,
-			pHeight,
-			pMasked
-		);
-	}
-
-	void Sprite::blitSpriteStretched
-	(
-		const Sprite&		pSprite,
-		const Core::Point&	pPosition,
-		const int&			pXScale,
-		const int&			pYScale,
-		const Core::Point&	pSourcePosition,
-		const int&			pSourceWidth,
-		const int&			pSourceHeight,
-		const bool&			pMasked
-	)
-	{
-		blitImageStretched
-		(
-			pSprite,
-			pPosition - (Core::Point(pXScale,pYScale)*pSprite.mOffset),
-			pSprite.getWidth() * pXScale,
-			pSprite.getHeight() * pYScale,
-			pSourcePosition,
-			pSourceWidth,
-			pSourceHeight,
-			pMasked
-		);
 	}
 }}

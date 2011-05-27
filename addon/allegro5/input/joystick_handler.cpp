@@ -13,7 +13,7 @@ namespace Addon
 			Core::logWrite(Core::String("JoystickHandlerAllegro::JoystickHandlerAllegro(): Error, could not open Handler."));
 			throw("Couldn't create allegro5 joystick handler.");
 		}
-		Core::logWrite(Core::String("JoystickHandlerAllegro::JoystickHandlerAllegro(): Sucessfull."));
+		Core::logWrite(Core::String("JoystickHandlerAllegro::JoystickHandlerAllegro(): Successful."));
 	}
 
 	JoystickHandlerAllegro::~JoystickHandlerAllegro()

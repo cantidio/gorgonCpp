@@ -318,10 +318,9 @@ namespace Graphic
 
 	void AnimationHandler::draw
 	(
-		Sprite& pSprite,
-		const Core::Point& pPosition,
-		const Mirroring& pMirroring,
-		const int& pAngle
+		const Core::Point&	pPosition,
+		const float&		pAngle,
+		const Mirroring&	pMirroring
 	)
 	{
 		if(mAnimationPack != NULL)
@@ -329,9 +328,8 @@ namespace Graphic
 			try
 			{
 				AnimationFrame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
-				pSprite.drawSpriteRotatedFlipped
+				getCurrentSprite().draw
 				(
-					getCurrentSprite(),
 					frame.getOffset()		+ pPosition,
 					frame.getAngle()		+ pAngle,
 					frame.getMirroring()	+ pMirroring
@@ -340,25 +338,24 @@ namespace Graphic
 			catch(Core::Exception& exception)
 			{
 				std::stringstream out;
-				out << "AnimationHandler::draw(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "," << pAngle << "): Error while drawing.";
+				out << "AnimationHandler::draw(Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "," << pAngle << "): Error while drawing.";
 				raiseGraphicExceptionE(out.str(),exception);
 			}
 		}
 		else
 		{
 			std::stringstream out;
-			out << "AnimationHandler::draw(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "," << pAngle << "): Error animationpack is NULL.";
+			out << "AnimationHandler::draw(Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "," << pAngle << "): Error animationpack is NULL.";
 			raiseGraphicException(out.str());
 		}
-
 	}
 	
-	void AnimationHandler::drawTrans
+	void AnimationHandler::draw//draw tinted
 	(
-		Sprite& pSprite,
-		const Core::Point& pPosition,
-		const Mirroring& pMirroring,
-		const float& pTrans
+		const Core::Point&	pPosition,
+		const Color&		pTint,
+		const float&		pAngle,
+		const Mirroring&	pMirroring
 	)
 	{
 		if(mAnimationPack != NULL)
@@ -366,30 +363,26 @@ namespace Graphic
 			try
 			{
 				AnimationFrame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
-				/**
-				 * @todo concertar isso, poder colocar o angulo também
-				 */
-				pSprite.drawSpriteTransFlipped
+				getCurrentSprite().draw
 				(
-					getCurrentSprite(),
 					frame.getOffset() + pPosition,
-					pTrans,
+					pTint,
+					pAngle,
 					frame.getMirroring() + pMirroring
 				);
 			}
 			catch(Core::Exception& exception)
 			{
 				std::stringstream out;
-				out << "AnimationHandler::drawTrans(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "): Error while drawing.";
+				out << "AnimationHandler::draw(Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "): Error while drawing.";
 				raiseGraphicExceptionE(out.str(),exception);
 			}
 		}
 		else
 		{
 			std::stringstream out;
-			out << "AnimationHandler::drawTrans(" << (int)&pSprite << ",Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "): Error animationpack is NULL.";
+			out << "AnimationHandler::draw(Core::Point(" << pPosition.getX() << "," << pPosition.getY() << ")," << pMirroring.getType() << "): Error animationpack is NULL.";
 			raiseGraphicException(out.str());
 		}
 	}
-
 }}

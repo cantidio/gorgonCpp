@@ -153,7 +153,7 @@ namespace Graphic
 			delete mGlobalPalette;
 		}
 		mSprites.clear();
-		mGlobalPalette	= (pSpritePack.mGlobalPalette) ? pSpritePack.mGlobalPalette->copy() : NULL;
+		mGlobalPalette	= (pSpritePack.mGlobalPalette) ? pSpritePack.mGlobalPalette->clone() : NULL;
 		mPalLinked		= false;
 		for(register int i = 0; i < pSpritePack.getSize(); ++i)
 		{
@@ -178,7 +178,7 @@ namespace Graphic
 		{
 			if(!getSprite(i).getPalette() || (getSprite(i).getPalette() && pForce))
 			{
-				getSprite(i).setPalette(mGlobalPalette);
+				getSprite(i).setPalette(mGlobalPalette,false);
 			}
 		}
 	}

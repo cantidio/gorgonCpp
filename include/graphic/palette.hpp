@@ -130,9 +130,8 @@ namespace Graphic
 			 * @since	08/08/2008
 			 * @version	08/08/2008
 			 * @return	Palette *
-			 * @todo	Retornar referência
 			 */
-			Palette* copy() const;
+			Palette* clone() const;
 			/**
 			 * Método para apagar uma palheta de cores
 			 *

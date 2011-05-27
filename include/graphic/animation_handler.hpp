@@ -44,14 +44,6 @@ namespace Graphic
 	 */
 	class AnimationHandler
 	{
-		private:
-			int mAnimationOn;				/**<< The index of the animation playing*/
-			int	mTimeOn;					/**<< Actual time of the current frame*/
-			int mFrameOn;					/**<< Current frame of the current animation*/
-			int	mLoopOn;					/**<< Number of loops the current animação passed throught*/
-			bool mIsPaused;					/**<< True if the animation if paused*/
-			SpritePack*	mSpritePack;		/**<< Pointer to the spritepack of the handler*/
-			AnimationPack* mAnimationPack;	/**<< Pointer to the animationpack of the handler*/
 		public:
 			/**
 			 * Constructor
@@ -285,32 +277,48 @@ namespace Graphic
 			 */
 			const Sprite& getCurrentSprite() const;
 			/**
-			 * Method that draws the animation current frame into a sprite
+			 * Method that draws the animation current frame into a sprite with an angle and a mirroring
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/02/2009
 			 * @version	03/05/2011
-			 * @param	Sprite& pSprite				, sprite where the current frame will be drawn
 			 * @param	const Point& pPosition		, position where the frame will be drawn in the sprite
-			 * @param	const Mirroring& pMirroring	, mirroring of the animation
 			 * @param	const int& pAngle			, angle of the animation
+			 * @param	const Mirroring& pMirroring	, mirroring of the animation
 			 */
 			void draw
 			(
-				Sprite& pSprite,
-				const Core::Point& pPosition,
-				const Mirroring& pMirroring=Mirroring::Normal,
-				const int& pAngle=0
+				const Core::Point&	pPosition,
+				const float&		pAngle,
+				const Mirroring&	pMirroring
 			);
-
-			void drawTrans
+			/**
+			 * Method that draws the animation current frame into a sprite with an angle and a mirroring multiplying the colors of the sprite the requested color 
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	25/02/2009
+			 * @version	03/05/2011
+			 * @param	const Point&		pPosition	, position where the frame will be drawn in the sprite
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const int&			pAngle		, angle of the animation
+			 * @param	const Mirroring&	pMirroring	, mirroring of the animation
+			 */
+			void draw
 			(
-				Sprite& pSprite,
 				const Core::Point& pPosition,
-				const Mirroring& pMirroring=Mirroring::Normal,
-				const float& pTrans = 0.5
+				const Color& pTint,
+				const float& pAngle,
+				const Mirroring& pMirroring
 			);
 			//virtual void onFinish();//?
+		protected:
+			int mAnimationOn;				/**<< The index of the animation playing*/
+			int	mTimeOn;					/**<< Actual time of the current frame*/
+			int mFrameOn;					/**<< Current frame of the current animation*/
+			int	mLoopOn;					/**<< Number of loops the current animação passed throught*/
+			bool mIsPaused;					/**<< True if the animation if paused*/
+			SpritePack*	mSpritePack;		/**<< Pointer to the spritepack of the handler*/
+			AnimationPack* mAnimationPack;	/**<< Pointer to the animationpack of the handler*/
 	};
 }}
 #endif

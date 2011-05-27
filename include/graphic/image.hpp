@@ -24,91 +24,102 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_IMAGE_
-#define _GORGON_IMAGE_
+#ifndef _GORGON_GRAPHIC_IMAGE_
+#define _GORGON_GRAPHIC_IMAGE_
 #include <fstream>
-#include <vector>
 #include <string>
-#include <allegro.h>
 #include "../core/point.hpp"
 #include "palette.hpp"
 #include "mirroring.hpp"
 #include "color.hpp"
 #include "image_loader.hpp"
-
-//#include "../geometry/gorgon_rectangle.hpp"
+#include "image_base.hpp"
 
 namespace Gorgon{
 namespace Graphic
 {
-	const char imageUnknownCod	= 0;
 	/**
-	 * Classe de Imagem
+	 * Class that represents an Image
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	20/01/2009
-	 * @version	13/12/2009
+	 * @version	26/05/2011
 	 * @todo	implementar os métodos save e load da classe
 	 * @ingroup	Graphic
 	 */
 	class Image
 	{
 		protected:
-
-			BITMAP* mData;/**<< Variável que guarda a imagem em si*/
-			BITMAP* mDataBuffer;/**<< Variável que guarda um buffer da imagem, onde são realizadas todas operacões se mudar a paleta ou a imagem ele deve ser atualizado*/
-			Palette* mPalette;/**<< Ponteiro para a paleta de cores, se a imagem possuir uma*/
-			/**
-			 * Variável que guarda se a imagem é linkada
-			 * Se a imagem for linkada ela não será destruída pelos métodos
-			 */
-			bool mImgLinked;
-			bool mFreePalette;/**<< Variável que guarda se a paleta será desalocada pela classe */
-			/**
-			 * @todo remover essa variável
-			 */
-			char mImgType;
+			ImageBase*	mImage;			/**<< the image data*/
+			Palette*	mPalette;		/**<< Pointer to the color palette, NULL if the image dont have one*/
+			bool		mFreeImage;		/**<< if true the class will destroy the image as requested*/
+			bool		mFreePalette;	/**<< if true the mPalette will be deleted when need by the class*/
 		public:
-			Image(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
-			Image(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
-			 * Método construtor
+			 * Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	27/05/2011
+			 * @version	27/05/2011
+			 */
+			Image();
+			/**
+			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	24/01/2009
-			 * @param	BITMAP*		pBitmap		, ponteiro para a imagem
-			 * @param	Palette*	pPalette	, ponteiro para a palheta de cores
+			 * @param	ImageBase*		pImage		, pointer to the imageBase
+			 * @param	const bool&*	FreeSource	, if true the class will free the image when needed
 			 */
-			Image(BITMAP* bBitmap = NULL, Palette* pPalette = NULL);
+			Image(ImageBase* pImage, const bool& pFreeSource);
 			/**
-			 * Método construtor
+			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	17/02/2009
-			 * @param	const int& pWidth	, largura da noma imagem criada
-			 * @param	const int& pHeight	, altura da noma imagem criada
-			 * @param	const int& pBpp		, bits por pixel da nova imagem criada
-			 * @param	const int& pColor	, cor de fundo da nova imagem criada
-			 * @todo	tirar o desktop_color_depth da li
+			 * @since	26/05/2009
+			 * @version	26/05/2011
+			 * @param	const int&		pWidth	, the width of the image
+			 * @param	const int&		pHeight	, the height of the image
+			 * @param	const int&		pBpp	, the bits per pixel of the image
+			 * @details
+			 *			if this method couldn't create the image, it will return a GraphicException
 			 */
 			Image
 			(
 				const int& pWidth,
 				const int& pHeight,
-				const int& pBpp		= get_color_depth(),
-				const int& pColor	= 0xFF00FF
+				const int& pBpp = 0
 			);
 			/**
-			 * Método construtor de cópia
+			 * Copy Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	21/01/2009
-			 * @version	21/01/2009
-			 * @param	const Image& pImage, imagem original
+			 * @version	27/05/2011
+			 * @param	const Image& pImage, original image
 			 */
 			Image(const Image& pImage);
+			/**
+			 * Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	26/05/2011
+			 * @param	const std::string& pFileName	, the name of the image to be loaded
+			 * @param	const ImageLoader& pImageLoader , the imageLoader
+			 */
+			Image(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			/**
+			 * Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	26/05/2011
+			 * @param	Core::File&			pFile			, the file where the image is stored
+			 * @param	const ImageLoader&	pImageLoader	, the imageLoader
+			 */
+			Image(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
 			/**
 			 * Método destrutor
 			 *
@@ -118,63 +129,81 @@ namespace Graphic
 			 */
 			virtual ~Image();
 			/**
-			 * Método para carregar uma imagem de um arquivo
+			 * Method that recreats the image
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/08/2008
-			 * @version	07/08/2009
-			 * @param	const std::string&	pFileName		, nome do arquivo a ser aberto
-			 * @param	const ImageLoader&	pImageLoader	, formato da imagem a ser aberta
-			 */
-			virtual void load(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
-			/**
-			 * Método para carregar uma imagem de um arquivo ja aberto
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/08/2008
-			 * @version	07/08/2009
-			 * @param	File&				pFile			, arquivo já aberto
-			 * @param	const ImageLoader&	pImageLoader	, formato da imagem a ser aberta
-			 */
-			virtual void load(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
-			/**
-			 * Método para salvar o sprite em um arquivo
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/08/2008
-			 * @version	21/06/2009
-			 * @param	const string& pSpriteName, nome do arquivo a salvar o sprite
-			 * @param	ImageLoader* pImageLoader, ponteiro para o formato de imagem a salvar
-			 */
-			virtual void save(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
-			/**
-			 * Método para salvar o sprite em um arquivo já aberto
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/08/2008
-			 * @version	21/06/2009
-			 * @param	File&			pFile			, arquivo já aberto
-			 * @param	ImageLoader*	pImageLoader	, ponteiro para o formato de imagem a salvar
-			 */
-			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
-			/**
-			 * Método que recria a imagem com as especificações dadas
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	17/02/2009
-			 * @version	17/02/2009
-			 * @param	const int& pWidth	, largura da noma imagem criada
-			 * @param	const int& pHeight	, altura da noma imagem criada
-			 * @param	const int& pBpp		, bits por pixel da nova imagem criada
-			 * @param	const int& pColor	, cor de fundo da nova imagem criada
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @param	const int&		pWidth	, the width of the image
+			 * @param	const int&		pHeight	, the height of the image
+			 * @param	const int&		pBpp	, the bits per pixel of the image
+			 * @details
+			 *			if this method couldn't create the image, it will return a GraphicException
 			 */
 			void create
 			(
 				const int& pWidth,
 				const int& pHeight,
-				const int& pBpp		= get_color_depth(),
-				const int& pColor	= 0xFF00FF
+				const int& pBpp = 0
 			);
+			/**
+			 * Method that sets the ImageBase of the Image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @param	ImageBase *pImage		, pointer to the ImageBase
+			 * @param	const bool& pFreeSource	, if true the class will free the ImageBase when needed
+			 */
+			void setImageBase(ImageBase* pImage, const bool& pFreeSource);
+			/**
+			 * Method that sets the ImageBase of the Image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @param	const ImageBase& pImage, reference to the ImageBase that will be cloned and attached to the image
+			 */
+			void setImageBase(const ImageBase& pImage);
+			/**
+			 * Method that gets the ImageBase of the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @return	ImageBase*
+			 */
+			const ImageBase* getImageBase() const;
+			/**
+			 * Method that sets the color palette of the Image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	26/05/2011
+			 * @param	Palette *pPalette			, pointer to the color palette
+			 * @param	const bool& pFreeSource		, if true the class will free the palette in its destructor
+			 */
+			void setPalette(Palette *pPalette, const bool& pFreeSource);
+			/**
+			 * Method that sets the color palette of the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	02/05/2011
+			 * @version	26/05/2011
+			 * @param	const Palette& pPalette, reference to the palette that will be cloned and attached to the image
+			 * @details
+			 *			This method clones the palette into the image
+			 */
+			void setPalette(const Palette& pPalette);
+			/**
+			 * Method that returns the image internal palette
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/01/2009
+			 * @version	26/05/2011
+			 * @return	Palette*
+			 */
+			const Palette* getPalette() const;
 			/**
 			 * Método para descrever a imagem
 			 *
@@ -185,672 +214,250 @@ namespace Graphic
 			 */
 			std::string describe() const;
 			/**
-			 * Método para setar a imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	20/01/2009
-			 * @param	BITMAP* pBitmap, ponteiro para a imagem
-			 */
-			void setImg(BITMAP* pBitmap);
-			/**
-			 * Método para setar o tipo da imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	23/01/2009
-			 * @version	23/01/2009
-			 * @param	const char& pImgType, tipo da imagem
-			 * @todo 	remover esse método
-			 */
-			void setType(const char& pImgType);
-			/**
-			 * Método para setar a paleta de cores
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	20/01/2009
-			 * @param	Palette *pPalette, ponteiro para a paleta
-			 * @details	a paleta não será desalocada
-			 */
-			void setPalette(Palette *pPalette, const bool& pFreeSource = false);
-			/**
-			 * Método para setar a paleta de cores
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	02/05/2011
-			 * @version	02/05/2011
-			 * @param	const Palette& pPalette, paleta a ser copiada
-			 * @details	esse método copia a paleta para a imagem
-			 */
-			void setPalette(const Palette& pPalette);
-			/**
 			 * Método para usar a paleta
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	20/10/2009
+			 * @todo 	implementar ou deletar?
 			 */
 			void usePalette() const;
 			/**
-			 * Método para atualizar o buffer da imagem
+			 * Method that returns the width of the image
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	25/01/2009
-			 * @details
-			 *			Esse método deve ser chamado logo depois de se desenhar
-			 * alguma coisa em uma imagem de 8 bpp
-			 */
-			void updateBuffer();
-			/**
-			 * Método para pegar a Paleta
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	20/01/2009
-			 * @return	Palette*
-			 */
-			Palette* getPalette() const;
-			/**
-			 * Método para retornar a imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	21/01/2009
-			 * @return	BITMAP*
-			 */
-			BITMAP* getImg() const;
-			/**
-			 * Método para retornar o bpp da imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	13/02/2009
+			 * @since	26/05/2011
+			 * @version	26/05/2011
 			 * @return	int
 			 */
-			int getColorDepth() const;
+			int getWidth() const;
 			/**
-			 * Método para retornar o número de cores usadas na imagem
+			 * Method that returns the height of the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @return	int
+			 */
+			int getHeight() const;
+			/**
+			 * Method that returns the bits per pixel of the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @return	int
+			 */
+			int getBpp() const;
+			/**
+			 * Method that takes this color and makes it transparent into the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	26/05/2011
+			 * @version	27/05/2011
+			 * @param	const Color& pColor, the color that will be converted in transparent
+			 */
+			void setAlphaMask(const Color& pColor);
+			/**
+			 * Method that returns the transparent color of the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	27/05/2011
+			 * @version	27/05/2011
+			 * @return	Color
+			 */				
+			Color getAlphaMask() const;
+			/**
+			 * Method that returns the number of colors used in the image
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	18/01/2009
-			 * @version	18/02/2009
+			 * @version	27/05/2011
 			 * @return	int
 			 */
 			int getColorNumber() const;
 			/**
-			 * Método para retornar um pixel da imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	18/02/2009
-			 * @param	const int&	pPosX			, posicao x do pixel na imagem
-			 * @param	const int&	pPosY			, posicao y do pixel na imagem
-			 * @param	const bool&	pAbsoluteValue	, se verdadeiro sempre retorna
-			 * o valor absoluto do pixel, mesmo esse sendo 8 bits e tendo apenas
-			 * de 1 a 255 para representar sua cor, se estiver falso, realiza a
-			 * conversão e semre retorna o valor exato da cor do pixel, se for 8
-			 * bits busca essa valor na palheta de cores
-			 * @return	int
-			 */
-			int getPixel
-			(
-				const int&	pPosX,
-				const int&	pPosY,
-				const bool&	pAbsoluteValue = false
-			) const;
-
-			int getPixel
-			(
-				const Core::Point& pPosition,
-				const bool& pAbsoluteValue = false
-			) const;
-			/**
-			 * Método para retornar a cor em determinada parte da imagem
+			 * Method that returns the color at the given position in the image
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/06/2009
-			 * @version	25/06/2009
-			 * @param	const int&	pPosX , posicao x do pixel na imagem
-			 * @param	const int&	pPosY , posicao y do pixel na imagem
+			 * @version	26/05/2011
+			 * @param	const Core::Point&	pPosition, the position of the pixel
 			 * @return	Color
 			 */
-			Color getColor(const int& pPosX,const int& pPosY) const;
+			Color getPixel(const Core::Point& pPosition) const;
+			
+			void setAsTarget();
+			
 			/**
-			 * Método para returnar a largura da imagem
+			 * Method that clears the image with the requested color
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	06/01/2011
-			 * @return	unsigned int
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @param	const Color& pColor, the color to paint the image
 			 */
-			unsigned int getWidth() const;
+			void clear(const Color& pColor);
 			/**
-			 * Método para retornar a altura da imagem
+			 * Method that draws the image in the requested position into the current target Image
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	06/01/2011
-			 * @return	unsigned int
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @param	const Core::Point& pPosition, the position the image will be drawn
+			 *
+			 * @see		Graphic::setTargetImage
 			 */
-			unsigned int getHeight() const;
+			void draw(const Core::Point& pPosition) const;
 			/**
-			 * Método para retornar o tipo da imagem
+			 * Method that draws the image in the requested position and mirroring
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	23/01/2008
-			 * @version	23/01/2008
-			 * @return	char
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw this Image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
 			 */
-			char getType() const;
+			void draw(const Core::Point& pPosition, const Mirroring& pMirroring) const; //drawFlip
 			/**
-			 * Método para achar o ponto em y que a imagem comeca, descartando a tranparência
+			 * Method that draws the image in the requested position, and angle
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2008
-			 * @version	24/01/2008
-			 * @return	int
-			 */
-			int getDelimiterUp() const;
-			/**
-			 * Método para achar o ponto em x que a imagem começa, descartando a transparência
+			 * @since
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
+			 * @param	const float&		pAngle		, the angle of the image
+			 * @param	conat Core::Point&	pCenter		, the center of the image	
 			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2008
-			 * @version	24/01/2008
-			 * @return	int
-			 */
-			int getDelimiterLeft() const;
-			/**
-			 * Método para achar o ponto em y que a imagem termina
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2008
-			 * @version	24/01/2008
-			 * @return	int
-			 */
-			int getDelimiterDown() const;
-			/**
-			 * Método para achar o ponto em x que a imagem termina
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2008
-			 * @version	24/01/2008
-			 * @return	int
-			 */
-			int getDelimiterRight() const;
-			/**
-			 * Método para cortar a imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2008
-			 * @version	24/01/2008
-			 * @param	const int& pPosX	, posição no eixo x
-			 * @param	const int& pPosY	, posição no eixo y
-			 * @param	const int& pWidth	, largura
-			 * @param	const int& pHeight	, altura
-			 */
-			void clip
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */	
+			void draw//draw rotated
 			(
-				const int& pPosX,
-				const int& pPosY,
+				const Core::Point&	pPosition,
+				const float&		pAngle,
+				const Core::Point&	pCenter
+			) const;
+			/**
+			 * Method that draws the image in the requested position, mirroring and angle
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
+			 * @param	const float&		pAngle		, the angle of the image
+			 * @param	conat Core::Point&	pCenter		, the center of the image	
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */	
+			void draw//draw rotated flipped
+			(
+				const Core::Point&	pPosition,
+				const float&		pAngle,
+				const Core::Point&	pCenter,
+				const Mirroring&	pMirroring
+			) const;
+			/**
+			 * Method that draws the image in the requested position and mirroring, scalling it
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	26/05/2011
+			 * @version	26/05/2011
+			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw this Image
+			 * @param	const int&			pWidth		, the width of the resulted image
+			 * @param	const int&			pHeight		, the height of the resulted image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
+			 */
+			void draw
+			(
+				const Core::Point& pPosition,
 				const int& pWidth,
-				const int& pHeight
-			);
+				const int& pHeight,
+				const Mirroring& pMirroring
+			) const; //drawScaled
 			/**
-			 * Método para cortar as bordas transparentes da imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	24/01/2008
-			 * @version	25/01/2008
-			 */
-			void clipNoBorder();
-			/**
-			 * Método para limpar a imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const int& pColor, cor a limpar a imagem
-			 * @todo	passar um objeto Color aki
-			 */
-			void clear(const int& pColor = 0);
-			/**
-			 * Método para desenhar um pixel na imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	02/05/2011
-			 * @param	const int& pPosX	, posicao x do pixel na imagem
-			 * @param	const int& pPosY	, posicao y do pixel na imagem
-			 * @param	const int& pColor	, cor do pixel
-			 * @todo	substituir isso pelo objeto de cor
-			 */
-			void drawPixel
-			(
-				const int& pPosX,
-				const int& pPosY,
-				const int& pColor
-			);
-			/**
-			 * Método para desenhar uma linha na imagem
+			 * Method that draws the image and multiplies all colors in the image with the given color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Core::Point& pPosX1	, posição de início da linha
-			 * @param	const Core::Point& pPosX2	, posição de término da linha
-			 * @param	const Color& pColor	, cor da linha
-			 * @todo	substituir pelo objeto Color
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
 			 */
-			void drawLine
-			(
-				const Core::Point& pPos1,
-				const Core::Point& pPos2,
-				const Color& pColor
-			);
+			void draw(const Core::Point& pPosition, const Color& pTint) const;//drawTinted
 			/**
-			 * Método para desenhar um retângulo na imagem
+			 * Method that draws the image and multiplies all colors in the image with the given color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Core::Point& pPos1 , posição de início do retângulo
-			 * @param	const Core::Point& pPos2 , posição de término do retângulo
-			 * @param	const Color& pColor , cor do retângulo
-			 * @param	const bool& pFill , se irá preencher o retangulo com a cor
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
 			 */
-			void drawRectangle
-			(
-				const Core::Point&	pPos1,
-				const Core::Point&	pPos2,
-				const Color&		pColor,
-				const bool&			pFill = false
-			);
+			void draw(const Core::Point& pPosition, const Color& pTint, const Mirroring& pMirroring) const;//drawTinted
 			/**
-			 * Método para desenhar um circulo na imagem
+			 * Method that draws the image and multiplies all colors in the image with the given color and angle
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Core::Point& 	pPosition	, posição do círculo
-			 * @param	const int& 		pRadius		, radio do círculo
-			 * @param	const Color& 	pColor		, cor do círculo
-			 * @param	const bool&		pFill		, se irá preencher o círculo com a cor
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const float&		pAngle		, the angle of the image
+			 * @param	const Core::Point&	pCenter		, the center of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
 			 */
-			void drawCircle
+			void draw
 			(
 				const Core::Point&	pPosition,
-				const int&		pRadius,
-				const Color&	pColor,
-				const bool&		pFill = false
-			);
+				const Color&		pTint,
+				const float&		pAngle,
+				const Core::Point&	pCenter
+			) const;//drawTinted rotated
 			/**
-			 * Método para desenhar uma elipse na imagem
+			 * Method that draws the image and multiplies all colors in the image with the given color, angle and mirroring
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Point& 	pPosition	, posição da elipse
-			 * @param	const int& 		pRadiusX	, raio do eixo x da elipse
-			 * @param	const int& 		pRadiusY	, raio do eixo y da elipse
-			 * @param	const Color& 	pColor		, cor da elipse
-			 * @param	const bool&		pFill		, se irá preencher a elipse toda com a cor
+			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
+			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const float&		pAngle		, the angle of the image
+			 * @param	const Core::Point&	pCenter		, the center of the image
+			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 *
+			 * @see		Graphic::setTargetImage
+			 * @see		Graphic::Mirroring
 			 */
-			void drawEllipse
+			void draw
 			(
 				const Core::Point&	pPosition,
-				const int&		pRadiusX,
-				const int&		pRadiusY,
-				const Color&	pColor,
-				const bool&		pFill = false
-			);
+				const Color&		pTint,
+				const float&		pAngle,
+				const Core::Point&	pCenter,
+				const Mirroring&	pMirroring
+			) const;//drawTinted rotated fliped
 			/**
-			 * Método para desenhar uma imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&	pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&	pPosition	, posição a desenhar a imagem
-			 */
-			void drawImage(const Image& pImage, const Core::Point& pPosition);
-			/**
-			 * Método para desenhar uma imagem esticada
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&	pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&	pPosition	, posição a desenhar a imagem
-			 * @param	const int&		pWidth		, largura a desenhar a imagem
-			 * @param	const int&		pHeight		, altura a desenhar a imagem
-			 */
-			void drawImageStretched
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const int&			pWidth,
-				const int&			pHeight
-			);
-			/**
-			 * Método para desenhar uma imagem invertida verticalmente
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 */
-//			void drawImageFlippedV
-//			(
-//				const Image&	pImage,
-//				const int&		pPosX,
-//				const int&		pPosY
-//			);
-			/**
-			 * Método para desenhar uma imagem invertida horizontalmete
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 */
-//			void drawImageFlippedH
-//			(
-//				const Image&	pImage,
-//				const int&		pPosX,
-//				const int&		pPosY
-//			);
-			/**
-			 * Método para desenhar uma imagem invertida verticalmente e horizontalmente
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 */
-//			void drawImageFlippedVH
-//			(
-//				const Image&	pImage,
-//				const int&		pPosX,
-//				const int&		pPosY
-//			);
-			/**
-			 * Método para desenhar uma imagem invertida
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&		pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&	pPosition	, posição a desenhar a imagem
-			 * @param	const Mirroring&	pMirroring	, espelhamento a aplicar na imagem
-			 */
-			void drawImageFlipped
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const Mirroring&	pMirroring = Mirroring::Normal
-			);
-			/**
-			 * Método para desenhar uma imagem com transparencia
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&		pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&	pPosition	, posição a desenhar a imagem
-			 * @param	const float&		pTrans		, valor da transparência de 0 a 1
-			 * @todo	Otimizar
-			 */
-			void drawImageTrans
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const float&		pTrans = 0.5
-			);
-			/**
-			 * Método para desenhar uma imagem com transparencia e invertida
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/04/2010
-			 * @version	03/05/2011
-			 * @param	const Image&		pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&		pPosition	, posição a desenhar a imagem
-			 * @param	const float&		pTrans		, valor da transparência de 0 a 1
-			 * @param	const Mirroring&	pMirroring	, espelhamento
-			 * @todo	Otimizar
-			 */
-			void drawImageTransFlipped
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const float&		pTrans = 0.5,
-				const Mirroring&	pMirroring = Mirroring::Normal
-			);
-			/**
-			 * Método para desenhar uma imagem com add
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	25/06/2009
-			 * @version	03/05/2011
-			 * @param	const Image&	pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&	pPosition	, posição a desenhar a imagem
-			 * @param	const Color&	pColorAdd	, cor a ser adicionada
-			 * @param	const Color&	pColorSub	, cor a ser subtraída
-			 * @param	const float&	pTrans		, proporção da transparencia
-			 * @todo	Otimizar
-			 */
-			void drawImageAdd
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const Color&		pColorAdd,
-				const Color&		pColorSub,
-				const float&		pTrans = 0.5
-			);
-			/**
-			 * Método para desenhar uma imagem rotacionada
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&	pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&	pPosition	, posição a desenhar a imagem
-			 * @param	const int&		pAangle		, angulo a desenhar a imagem
-			 * @param	const Core::Point&	pAlign		, alinhamento
-			 */
-			void drawImageRotated
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const int&			pAngle,
-				const Core::Point&		pAlign = Core::Point(0,0)
-			);
-			/**
-			 * Método para desenhar uma imagem rotacionada e invertida
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&		pImage		, imagem a ser desenhada
-			 * @param	const Core::Point&		pPosition	, posição a desenhar a imagem
-			 * @param	const int&			pAngle		, angulo a desenhar a imagem
-			 * @param	const Mirroring&	pMirroring	, espelhamento
-			 * @param	const Core::Point&		pAlign		, alinhamento
-
-			 */
-			void drawImageRotatedFlipped
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const int&			pAngle,
-				const Mirroring&	pMirroring	= Mirroring::Normal,
-				const Core::Point&	pAlign		= Core::Point(0,0)
-			);
-			/**
-			 * Método para desenhar uma imagem rotacionada e invertida verticalmente
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 * @param	const int&		pAangle	, angulo a desenhar a imagem
-			 * @param	const int&		pXAlign	, alinhamento no eixo x
-			 * @param	const int&		pYAlign	, alinhamento no eixo y
-			 */
-//			void drawImageRotetedFlippedV
-//			(
-//				const Image&	pImage,
-//				const int&		pPosX,
-//				const int&		pPosY,
-//				const int&		pAngle,
-//				const int&		pXAlign = 0,
-//				const int&		pYAlign = 0
-//			);
-			/**
-			 * Método para desenhar uma imagem rotacionada e invertida horizontalmente
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 * @param	const int&		pAangle	, angulo a desenhar a imagem
-			 * @param	const int&		pXAlign	, alinhamento no eixo x
-			 * @param	const int&		pYAlign	, alinhamento no eixo y
-			 */
-//			void drawImageRotetedFlippedH
-//			(
-//				const Image&	pImage,
-//				const int&		pPosX,
-//				const int&		pPosY,
-//				const int&		pAngle,
-//				const int&		pXAlign = 0,
-//				const int&		pYAlign = 0
-//			);
-			/**
-			 * Método para desenhar uma imagem rotacionada e invertida verticalmente e horizontalmente
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	13/02/2009
-			 * @param	const Image&	pImage	, imagem a ser desenhada
-			 * @param	const int&		pPosX	, posição nom eixo x a desenhar a imagem
-			 * @param	const int&		pPosY	, posição nom eixo y a desenhar a imagem
-			 * @param	const int&		pAangle	, angulo a desenhar a imagem
-			 * @param	const int&		pXAlign	, alinhamento no eixo x
-			 * @param	const int&		pYAlign	, alinhamento no eixo y
-			 */
-//			void drawImageRotetedFlippedVH
-//			(
-//				const Image&	pImage,
-//				const int&		pPosX,
-//				const int&		pPosY,
-//				const int&		pAngle,
-//				const int&		pXAlign = 0,
-//				const int&		pYAlign = 0
-//			);
-			/**
-			 * Método para imprimir std::strings
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	22/01/2009
-			 * @version	03/05/2011
-			 * @param	const std::string&	pText		, texto
-			 * @param	const Core::Point&	pPosition	, posição a imprimir o texto
-			 * @param	const Color&		pColor		, cor a imprimir
-			 * @param	const Color&		pBgColor	, cor de fundo, use -1 para transparente
-			 */
-			void drawText
-			(
-				const std::string&	pText,
-				const Core::Point&	pPosition,
-				const Color&		pColor		= 0,
-				const Color&		pBgColor	= -1
-			);
-			/**
-			 * Método para imprimir std::strings formatadas ao estilo printf
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	22/01/2009
-			 * @version	03/05/2011
-			 * @param	const Core::Point&	pPosition	, posição a imprimir o texto
-			 * @param	const Color&		pColor		, cor a imprimir
-			 * @param	const Color&		pBgColor	, cor de fundo, use -1 para transparente
-			 * @param	const char*			pText		, texto formatado
-			 * @param	...								, as variáveis de formato
-			 */
-			void drawText
-			(
-				const Core::Point&	pPosition,
-				const Color&		pColor,
-				const Color&		pBgColor,
-				const char* 		pText,
-				...
-			);
-			/**
-			 * Método para copiar a imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&		pImage			, imagem a ser colada
-			 * @param	const Core::Point&	pPosition		, posição na imagem que irá colar a outra
-			 * @param	const Core::Point&	pSourcePosition	, posição na imagem passada que começará a colar
-			 * @param	const int& 			pWidth			, largura do corte
-			 * @param	const int&			pHeight			, altura do corte
-			 * @param	bool				pMasked			, se irá permitir transparência ou não
-			 */
-			void blitImage
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const Core::Point&	pSourcePosition	=  Core::Point(0,0),
-				const int&			pWidth			= -1,
-				const int&			pHeight			= -1,
-				const bool&			pMasked			= false
-			);
-			/**
-			 * Método para copiar a imagem
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	20/01/2009
-			 * @version	03/05/2011
-			 * @param	const Image&		pImage			, imagem a ser colada
-			 * @param	const Core::Point&	pPosition		, posição na imagem que irá colar a outra
-			 * @param	const int&			pWidth			, largura que ocupará na imagem
-			 * @param	const int&			pHeight			, altura que ocupará na imagem
-			 * @param	const Core::Point& 	pSourcePosition	, posição na imagem passada que começará a colar
-			 * @param	const int&			pSourceWidth	, largura do corte na imagem passada
-			 * @param	const int&			pSourceHeight	, altura do corte na imagem passada
-			 * @param	const bool&			pMasked			, se irá permitir transparência ou não
-			 */
-			void blitImageStretched
-			(
-				const Image&		pImage,
-				const Core::Point&	pPosition,
-				const int&			pWidth			= -1,
-				const int&			pHeight			= -1,
-				const Core::Point&	pSourcePosition	=  Core::Point(0,0),
-				const int&			pSourceWidth	= -1,
-				const int&			pSourceHeight	= -1,
-				const bool&			pMasked			= false
-			);
-			/**
-			 * Método que retorna se a imagem está vazia, ou sejá preenchida com a cor transparente
+			 * Method that returns if the image is empty
 			 *
 			 * @author  Cantidio Oliveira Fontes
 			 * @since   13/12/2009
-			 * @version 13/12/2009
+			 * @version 26/05/2011
 			 * @return  bool
 			 */
 			bool isEmpty() const;
@@ -865,14 +472,54 @@ namespace Graphic
 			 */
 			bool operator ==(const Image& pImage) const;
 			/**
-			 * Operador de igualdade
+			 * Operator that receives an Image and clone it to this one
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	24/01/2009
-			 * @param	const Image& pImage, imagem a ser atribuída
+			 * @version	26/05/2011
+			 * @param	const ImageAllegro& pImage, the source image
 			 */
 			void operator =(const Image& pImage);
+			/**
+			 * Method that loads the image from a file
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/08/2008
+			 * @version	07/08/2009
+			 * @param	const std::string&	pFileName		, the name of the image file
+			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
+			 */
+			virtual void load(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			/**
+			 * Method that loads the image from a file previously opened
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/08/2008
+			 * @version	07/08/2009
+			 * @param	File&				pFile			, file previously opened
+			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
+			 */
+			virtual void load(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			/**
+			 * Method that saves the image in a file
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/08/2008
+			 * @version	21/06/2009
+			 * @param	const string& pSpriteName, the name of the image file
+			 * @param	const ImageLoader& pImageLoader, the imageLoader
+			 */
+			virtual void save(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			/**
+			 * Method that saves the image in a file previously opened
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/08/2008
+			 * @version	21/06/2009
+			 * @param	Core::File&			pFile			, file previously opened
+			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
+			 */
+			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
 	};
 }}
 #endif
