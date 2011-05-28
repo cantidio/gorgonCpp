@@ -24,8 +24,8 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_KEYBOARD_BASE_
-#define _GORGON_KEYBOARD_BASE_
+#ifndef _GORGON_INPUT_KEYBOARD_BASE_
+#define _GORGON_INPUT_KEYBOARD_BASE_
 #include "keyboard_key.hpp"
 
 namespace Gorgon{
@@ -37,12 +37,10 @@ namespace Input
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	07/05/2011
 	 * @version	07/05/2011
+	 * @ingroup	Input
 	 */
 	class KeyboardBase
 	{
-		protected:
-			static const int mKeysNumber = Key::KEY_LAST;/**<< the numbers of keys in the the keyboard*/
-			int	mKey[Key::KEY_LAST];/**<< the array of the keys*/
 		public:
 			/**
 			 * Method that returns if the keyboard is opened
@@ -71,6 +69,9 @@ namespace Input
 			 * @version	07/05/2011
 			 */
 			virtual void update() = 0;
+		protected:
+			static const int mKeysNumber = Key::KEY_LAST;/**<< the numbers of keys in the the keyboard*/
+			int	mKey[Key::KEY_LAST];/**<< the array of the keys*/
 	};
 }}
 #endif

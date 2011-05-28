@@ -24,135 +24,110 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_
-#define _GORGON_JOYSTICK_
-#include "joystick_base.hpp"
-#include "joystick_handler.hpp"
+#ifndef _GORGON_INPUT_JOYSTICK_
+#define _GORGON_INPUT_JOYSTICK_
+#include <string>
 
 namespace Gorgon{
 namespace Input
 {
+	class Stick;
+	class JoystickBase;
 	/**
 	 * Class that represents a joystick
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	04/05/2011
-	 * @version	05/05/2011
+	 * @version	27/05/2011
+	 * @ingroup	Input
 	 */
 	class Joystick
 	{
-		protected:
-			JoystickBase* mJoystick;/**<< var that stores the joystickBase*/
 		public:
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @param	const int& pIndex, the index of the joystick
 			 */
-			inline Joystick(const int& pIndex = 0)
-			{
-				mJoystick = JoystickHandler::get().getJoystick(pIndex);
-			}
+			Joystick(const int& pIndex = 0);
 			/**
 			 * Method that updates the values of the joystick
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 */
-			inline void update()
-			{
-				mJoystick->update();
-			}
+			void update();
 			/**
 			 * Method that returns if the joystick is opened
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @return	bool
 			 */
-			bool isOpened() const
-			{
-				return mJoystick->isOpened();
-			}
+			bool isOpened() const;
 			/**
 			 * Method that returns the name of the joystick
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @return	Core::String
 			 */
-			inline Core::String getName() const
-			{
-				return mJoystick->getName();
-			}
+			std::string getName() const;
 			/**
 			 * Method that returns the index of the joystick
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @return	int
 			 */
-			inline int getIndex() const
-			{
-				return mJoystick->getIndex();
-			}
+			int getIndex() const;
 			/**
 			 * Method that returns the number of the buttons of the joystick
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @return	int
 			 */
-			inline int getButtonNumber() const
-			{
-				return mJoystick->getButtonNumber();
-			}
+			int getButtonNumber() const;
 			/**
 			 * Method that returns the number of the sticks of the joystick
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @return	int
 			 */
-			inline int getStickNumber() const
-			{
-				return mJoystick->getStickNumber();
-			}
+			int getStickNumber() const;
 			/**
 			 * Method that returns a stick
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @param	const int& pStick, the index of the stick to be retrieved
 			 * @return	Stick
 			 */
-			inline Stick getStick(const int& pStick) const
-			{
-				return mJoystick->getStick(pStick);
-			}
+			Stick getStick(const int& pStick) const;
 			/**
 			 * Method that returns a button
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @version	27/05/2011
 			 * @param	const int& pButton, the index of the button
 			 * @return	float
 			 */
-			inline float getButton(const int& pButton) const
-			{
-				return mJoystick->getButton(pButton);
-			}
+			float getButton(const int& pButton) const;
+		protected:
+			JoystickBase* mJoystick;/**<< var that stores the joystickBase*/
 	};
 }}
 #endif

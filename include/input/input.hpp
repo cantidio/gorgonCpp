@@ -26,11 +26,9 @@
  */
 #ifndef _GORGON_INPUT_
 #define	_GORGON_INPUT_
-#include "joystick_handler.hpp"
+#include "system.hpp"
 #include "joystick.hpp"
-#include "keyboard_base.hpp"
 #include "keyboard.hpp"
-#include "mouse_handler.hpp"
 #include "mouse.hpp"
 
 /**
@@ -38,7 +36,7 @@
  *
  * @author		Cantidio Oliveira Fontes
  * @since		18/08/2008
- * @version		04/05/2011
+ * @version		27/05/2011
  * @details
  * 				This module is responsable for all the input functions,
  * 				like joystick, keyboard and mouse

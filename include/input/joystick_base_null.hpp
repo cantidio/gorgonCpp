@@ -24,8 +24,8 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_BASE_NULL_
-#define _GORGON_JOYSTICK_BASE_NULL_
+#ifndef _GORGON_INPUT_JOYSTICK_BASE_NULL_
+#define _GORGON_INPUT_JOYSTICK_BASE_NULL_
 #include "joystick_base.hpp"
 #include "joystick_stick.hpp"
 
@@ -38,6 +38,7 @@ namespace Input
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	05/05/2010
 	 * @version	05/05/2010
+	 * @ingroup	Input
 	 */
 	class JoystickBaseNull : public JoystickBase
 	{

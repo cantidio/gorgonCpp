@@ -24,83 +24,88 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_ALLEGRO5_JOYSTICK_
-#define _GORGON_ALLEGRO5_JOYSTICK_
-#include <gorgon++/input/joystick.hpp>
+#ifndef _GORGON_INPUT_SYSTEM_ADDON_
+#define	_GORGON_INPUT_SYSTEM_ADDON_
+#include <gorgon++/input/system.hpp>
 
-struct ALLEGRO_JOYSTICK;
-struct ALLEGRO_JOYSTICK_STATE;
-
-namespace Gorgon{
+namespace Gorgon	{
+namespace Input		{
 namespace Addon
-//namespace Allegro5{
 {
 	/**
-	 * Class that represents an allegro5 joystick
+	 * Class that represents the allegro5 implementation of the InputSystem
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	04/05/2011
-	 * @version	05/05/2011
+	 * @since	05/05/2011
+	 * @version	07/05/2011
 	 */
-	class JoystickAllegro : public Input::JoystickBase
+	class System : public Input::System
 	{
-		protected:
-			ALLEGRO_JOYSTICK* mJoystick;			/**<< var that holds the allegro joystick*/
-			ALLEGRO_JOYSTICK_STATE* mJoystickState;	/**<< var that holds the allegro joystick state*/
 		public:
 			/**
-			 * Constructor
+			 * Method that sets the InputSystem
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @verion	05/05/2011
-			 * @param	const int& pIndex, the index of the joystick
+			 * @since	05/05/2011
+			 * @version	27/05/2011
+			 * @param	System* pSystem, the Input System
 			 */
-			JoystickAllegro(const int& pIndex = 0);
+			static void set();
 			/**
-			 * Destructor
+			 * Method that returns an instance of the current KeyboardBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @verion	05/05/2011
+			 * @since	07/05/2011
+			 * @version	27/05/2011
+			 * @return	Input::KeyboardBase*
 			 */
-			virtual ~JoystickAllegro();
+			virtual Input::KeyboardBase* getKeyboard() const;
 			/**
-			 * Method that returns if the joystick is available
+			 * Method that returns an instance of the current MouseBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @since	10/05/2011
+			 * @version	27/05/2011
+			 * @return	Input::MouseBase*
 			 */
-			virtual bool isOpened() const;
+			virtual Input::MouseBase* getMouse() const;
 			/**
-			 * Method that updates the values of the joystick
+			 * Method that returns an instance of the current joystickBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
+			 * @since	05/05/2011
+			 * @version	27/05/2011
+			 * @param	const int& pIndex, the index of the Joystick
+			 * @return	Input::JoystickBase*
 			 */
-			virtual void update();
+			virtual Input::JoystickBase* getJoystick(const int& pIndex) const;
 			/**
-			 * Method that returns a stick of the joystick
+			 * Method that returns the number of joysticks available on system
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @param	const int& pStick, the index of the stick
-			 * @return	Stick
+			 * @version	27/05/2011
+			 * @return	int
 			 */
-			virtual Input::Stick getStick(const int& pStick) const;
+			virtual int getJoystickNumber() const;
+		protected:
 			/**
-			 * Method that returns the value of the button
+			 * Protected Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	04/05/2011
-			 * @version	04/05/2011
-			 * @param	const int& pButton, the index of the button
-			 * @return	float
+			 * @since	05/05/2011
+			 * @version	27/05/2011
 			 */
-			virtual float getButton(const int& pButtonIndex) const;
+			System();
+			/**
+			 * Protected Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	05/05/2011
+			 * @version	27/05/2011
+			 */
+			virtual ~System();
 	};
-}}
+
+}}}
 #endif

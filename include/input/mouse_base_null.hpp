@@ -24,8 +24,8 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_MOUSE_BASE_NULL_
-#define _GORGON_MOUSE_BASE_NULL_
+#ifndef _GORGON_INPUT_MOUSE_BASE_NULL_
+#define _GORGON_INPUT_MOUSE_BASE_NULL_
 #include "mouse_base.hpp"
 
 namespace Gorgon{
@@ -37,6 +37,7 @@ namespace Input
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	10/05/2011
 	 * @version	10/05/2011
+	 * @ingroup	Input
 	 */
 	class MouseBaseNull : public MouseBase
 	{

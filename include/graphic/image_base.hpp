@@ -162,8 +162,11 @@ namespace Graphic
 			 */
 			virtual Color getPixel(const Core::Point& pPosition) const = 0;
 				
-				
+			/**
+			 * @todo Pensar melhor nisso
+			 */	
 			virtual void setAsTarget() = 0;
+			
 			/**
 			 * Method that clears the image with the requested color
 			 *
@@ -249,7 +252,13 @@ namespace Graphic
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
 			 */	
-			virtual void draw(const Core::Point& pPosition, const int& pWidth, const int& pHeight, const Mirroring& pMirroring) const = 0;//drawScaled
+			virtual void draw
+			(
+				const Core::Point& pPosition,
+				const int& pWidth,
+				const int& pHeight,
+				const Mirroring& pMirroring
+			) const = 0;//drawScaled
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color
 			 *
@@ -276,7 +285,12 @@ namespace Graphic
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
 			 */
-			virtual void draw(const Core::Point&	pPosition, const Color& pTint, const Mirroring& pMirroring) const = 0;//draw tint flip
+			virtual void draw
+			(
+				const Core::Point&	pPosition,
+				const Color&		pTint,
+				const Mirroring&	pMirroring
+			) const = 0;//draw tint flip
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color and angle
 			 *
@@ -293,10 +307,10 @@ namespace Graphic
 			 */
 			virtual void draw
 			(
-				const Core::Point& pPosition,
-				const Color& pTint,
-				const float& pAngle,
-				const Core::Point& pCenter
+				const Core::Point&	pPosition,
+				const Color&		pTint,
+				const float&		pAngle,
+				const Core::Point&	pCenter
 			) const = 0;//drawTinted rotated
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color, angle and mirroring
@@ -315,11 +329,11 @@ namespace Graphic
 			 */
 			virtual void draw
 			(
-				const Core::Point& pPosition,
-				const Color& pTint,
-				const float& pAngle,
-				const Core::Point& pCenter,
-				const Mirroring& pMirroring
+				const Core::Point&	pPosition,
+				const Color&		pTint,
+				const float&		pAngle,
+				const Core::Point&	pCenter,
+				const Mirroring&	pMirroring
 			) const = 0;//drawTinted rotated fliped
 			/**
 			 * Method that returns if the image is empty

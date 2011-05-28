@@ -24,8 +24,8 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_BASE_
-#define _GORGON_JOYSTICK_BASE_
+#ifndef _GORGON_INPUT_JOYSTICK_BASE_
+#define _GORGON_INPUT_JOYSTICK_BASE_
 #include "../core/string.hpp"
 #include "joystick_stick.hpp"
 
@@ -38,14 +38,10 @@ namespace Input
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	04/05/2011
 	 * @version	04/05/2011
+	 * @ingroup	Input
 	 */
 	class JoystickBase
 	{
-		protected:
-			int mIndex;			/**<< the index of the joystick*/
-			Core::String mName;	/**<< the name of the joystick*/
-			int mButtonNumber;	/**<< the number of buttons available*/
-			int mStickNumber;	/**<< the number of sticks available */
 		public:
 			/**
 			 * Constructor
@@ -147,6 +143,11 @@ namespace Input
 			 * @return	float
 			 */
 			virtual float getButton(const int& pButton) const = 0;
+		protected:
+			int mIndex;			/**<< the index of the joystick*/
+			std::string mName;	/**<< the name of the joystick*/
+			int mButtonNumber;	/**<< the number of buttons available*/
+			int mStickNumber;	/**<< the number of sticks available */
 	};
 }}
 #endif

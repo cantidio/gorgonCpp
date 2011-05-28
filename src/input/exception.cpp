@@ -1,7 +1,7 @@
-#include <graphic/exception.hpp>
+#include <input/exception.hpp>
 
 namespace Gorgon{
-namespace Graphic
+namespace Input
 {
 	Exception::Exception
 	(
@@ -9,7 +9,7 @@ namespace Graphic
 		const std::string&	pFile,
 		const std::string&	pFunction,
 		const int&			pLine
-	) : Core::Exception(pMessage,"Graphic",pFile,pFunction,pLine) {}
+	) : Core::Exception(pMessage,"Input",pFile,pFunction,pLine) {}
 
 	Exception::Exception
 	(
@@ -18,5 +18,5 @@ namespace Graphic
 		const std::string&		pFile,
 		const std::string&		pFunction,
 		const int& 				pLine
-	) : Core::Exception(pException,pMessage,"Graphic",pFile,pFunction,pLine) {}
+	) : Core::Exception(pException,pMessage,"Input",pFile,pFunction,pLine) {}
 }}

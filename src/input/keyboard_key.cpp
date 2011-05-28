@@ -110,9 +110,9 @@ namespace Input
 		"UNKNOWN"
 	};
 	
-	Core::String Key::getName() const
+	std::string Key::getName() const
 	{
-		return Core::String( (mValue < KEY_LAST) ? mKeyName[mValue] : mKeyName[KEY_LAST] );
+		return std::string( (mValue < KEY_LAST) ? mKeyName[mValue] : mKeyName[KEY_LAST] );
 	}
 	
 }}

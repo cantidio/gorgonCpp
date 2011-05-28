@@ -24,8 +24,8 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_JOYSTICK_STICK_
-#define _GORGON_JOYSTICK_STICK_
+#ifndef _GORGON_INPUT_JOYSTICK_STICK_
+#define _GORGON_INPUT_JOYSTICK_STICK_
 
 namespace Gorgon{
 namespace Input
@@ -36,6 +36,7 @@ namespace Input
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	04/05/2011
 	 * @version	04/05/2011
+	 * @ingroup	Input
 	 */
 	class Stick
 	{

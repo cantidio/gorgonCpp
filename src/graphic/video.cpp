@@ -36,7 +36,7 @@ namespace Graphic
 		{
 			Core::logWrite(Core::String("Error: unable to set video mode."),true,false);
 		}
-		Video::mScreen = new Image(screen);
+		//Video::mScreen = new Image(screen);
 		setWindowTitle(pWindowTitle);
 		Core::logWrite(Core::String("Sucessfull."),true,false);
 	}
@@ -85,11 +85,6 @@ namespace Graphic
 
 	void Video::show()
 	{
-		mScreen->blitImage
-		(
-			*this,
-			0,
-			0
-		);
+		
 	}
 }}

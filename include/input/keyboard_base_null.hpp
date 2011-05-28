@@ -24,8 +24,8 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_KEYBOARD_BASE_NULL_
-#define _GORGON_KEYBOARD_BASE_NULL_
+#ifndef _GORGON_INPUT_KEYBOARD_BASE_NULL_
+#define _GORGON_INPUT_KEYBOARD_BASE_NULL_
 #include "keyboard_base.hpp"
 #include "keyboard_key.hpp"
 
@@ -38,6 +38,7 @@ namespace Input
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	07/05/2010
 	 * @version	07/05/2010
+	 * @ingroup	Input
 	 */
 	class KeyboardBaseNull : public KeyboardBase
 	{

@@ -24,9 +24,9 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_KEYBOARD_KEY_
-#define _GORGON_KEYBOARD_KEY_
-#include "../core/string.hpp"
+#ifndef _GORGON_INPUT_KEYBOARD_KEY_
+#define _GORGON_INPUT_KEYBOARD_KEY_
+#include <string>
 
 namespace Gorgon{
 namespace Input
@@ -37,6 +37,7 @@ namespace Input
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	07/05/2011
 	 * @version	07/05/2011
+	 * @ingroup	Input
 	 */
 	class Key
 	{
@@ -112,9 +113,9 @@ namespace Input
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
 			 * @version	07/05/2011
-			 * @return	Core::String
+			 * @return	std::string
 			 */
-			Core::String getName() const;
+			std::string getName() const;
 			/**
 			 * Method that returns if the 2 keys are equal
 			 *

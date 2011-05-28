@@ -24,84 +24,71 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_KEYBOARD_
-#define _GORGON_KEYBOARD_
-#include "keyboard_base.hpp"
-#include "keyboard_handler.hpp"
+#ifndef _GORGON_INPUT_KEYBOARD_
+#define _GORGON_INPUT_KEYBOARD_
+#include "keyboard_key.hpp"
 
 namespace Gorgon{
 namespace Input
 {
+	class KeyboardBase;
+	class Key;
 	/**
 	 * Class that represents the keyboard
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	07/05/2011
-	 * @version	07/05/2011
+	 * @version	27/05/2011
+	 * @ingroup	Input
 	 */
 	class Keyboard
 	{
-		protected:
-			KeyboardBase* mKeyboard;/**<< The implementation of the keyboard*/
 		public:
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @version	27/05/2011
 			 */
-			Keyboard()
-			{
-				mKeyboard = KeyboardHandler::get().getKeyboard();
-			}
+			Keyboard();
 			/**
 			 * Destructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @version	27/05/2011
 			 */
-			~Keyboard()
-			{
-				if(mKeyboard != NULL) delete mKeyboard;
-			}
+			~Keyboard();
 			/**
 			 * Method that returns the "state" of the key
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @version	27/05/2011
 			 * @param	const int& pKey, the value of the key
 			 * @return	Key
 			 */
-			inline Key getKey(const int& pKey) const
-			{
-				return mKeyboard->getKey(pKey);
-			}
+			Key getKey(const int& pKey) const;
 			/**
 			 * Method that updates the values of the keyboard
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @version	27/05/2011
 			 */
-			inline void update()
-			{
-				mKeyboard->update();
-			}
+			void update();
 			/**
 			 * Method that returns if the keyboard is opened
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @version	27/05/2011
 			 * @return	bool
 			 */
-			inline bool isOpened() const
-			{
-				mKeyboard->isOpened();
-			}
+			bool isOpened() const;
+		protected:
+			KeyboardBase* mKeyboard;/**<< The implementation of the keyboard*/
 	};
 }}
 #endif

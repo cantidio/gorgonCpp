@@ -24,69 +24,83 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_ALLEGRO_KEYBOARD_
-#define _GOROGN_ALLEGRO_KEYBOARD_
-#include <gorgon++/input/keyboard_base.hpp>
-struct ALLEGRO_KEYBOARD_STATE;
-namespace Gorgon{
+#ifndef _GORGON_INPUT_ADDON_MOUSE_BASE_
+#define _GORGON_INPUT_ADDON_MOUSE_BASE_
+#include <gorgon++/input/mouse_base.hpp>
+#include <gorgon++/core/point.hpp>
+
+struct ALLEGRO_MOUSE_STATE;
+
+namespace Gorgon	{
+namespace Input		{
 namespace Addon
 {
 	/**
-	 * Class that represents the keyboard implementation with allegro5
+	 * Class that represents the mouse implementation with Allegro
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	07/05/2011
-	 * @version	07/05/2011
+	 * @since	11/05/2011
+	 * @version	11/05/2011
 	 */
-	class KeyboardAllegro : public Input::KeyboardBase
+	class MouseBase : public Input::MouseBase
 	{
-		protected:
-			ALLEGRO_KEYBOARD_STATE* mState;/**<< var that stores the state of the keyboard*/
 		public:
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @since	11/05/2011
+			 * @version	11/05/2011
 			 */
-			KeyboardAllegro();
+			MouseBase();
 			/**
-			 * Virtual Destructor
+			 * Destructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @since	11/05/2011
+			 * @version	11/05/2011
 			 */
-			virtual ~KeyboardAllegro();
+			virtual ~MouseBase();
 			/**
-			 * Method that returns if the keyboard driver is opened
+			 * Method that updates the values of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @since	11/05/2011
+			 * @version	11/05/2011
+			 */
+			virtual void update();
+			/**
+			 * Method that returns if the mouse is opened
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	11/05/2011
+			 * @version	11/05/2011
 			 * @return	bool
 			 */
 			virtual bool isOpened() const;
 			/**
-			 * Method that updates the state of the keyboard
+			 * Method that returns the position of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 * @details
-			 * 			This method must be called every cycle of the game
+			 * @since	11/05/2011
+			 * @version	11/05/2011
+			 * @return	Core::Point
 			 */
-			virtual void update();
+			virtual Core::Point getPosition() const;
 			/**
-			 * Method that returns the key
+			 * Method that returns the state of a button
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 * @return	Input::Key
+			 * @since	11/05/2011
+			 * @version	11/05/2011
+			 * @param	const Mouse::Button& pButton, the button
+			 * @return	bool
 			 */
-			virtual Input::Key getKey(const int& pKeyValue) const;
+			virtual bool getButton(const Input::MouseBase::Button& pButton) const;
+		protected:
+			ALLEGRO_MOUSE_STATE*	mState;					/**<< var that stores the state of the mouse*/
+			Core::Point				mPosition;				/**<< var that stores the position of the mouse*/
+			int						mButton[LAST_BUTTON];	/**<< array of the buttons*/
 	};
-}}
+}}}
 #endif

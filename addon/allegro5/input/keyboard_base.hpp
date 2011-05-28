@@ -24,68 +24,72 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_MOUSE_HANDLER_
-#define _GORGON_MOUSE_HANDLER_
+#ifndef _GORGON_INPUT_ADDON_KEYBOARD_BASE_
+#define _GORGON_INPUT_ADDON_KEYBOARD_BASE_
+#include <gorgon++/input/keyboard_base.hpp>
 
-namespace Gorgon{
-namespace Input
+struct ALLEGRO_KEYBOARD_STATE;
+
+namespace Gorgon	{
+namespace Input		{	
+namespace Addon
 {
-	class MouseBase;
 	/**
-	 * Class that represents a MouseHandler
+	 * Class that represents the keyboard implementation with allegro5
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	10/05/2011
-	 * @version	10/05/2011
+	 * @since	07/05/2011
+	 * @version	07/05/2011
 	 */
-	class MouseHandler
+	class KeyboardBase : public Input::KeyboardBase
 	{
-		protected:
-			static MouseHandler* mHandler;/**<< Singleton instance of the class*/
-			/**
-			 * Protected Constructor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	10/05/2011
-			 * @version	10/05/2011
-			 */
-			MouseHandler();
-			/**
-			 * Protected Destructor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	10/05/2011
-			 * @version	10/05/2011
-			 */
-			virtual ~MouseHandler();
-			/**
-			 * Method that sets the JoystickHandler
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	10/05/2011
-			 * @version	10/05/2011
-			 * @param	MouseHandler& pHandler, the Handler
-			 */
-			static void set(MouseHandler& pHandler);
 		public:
 			/**
-			 * Method that returns the MouseHandler
+			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	10/05/2011
-			 * @version	10/05/2011
-			 * @return	MouseHandler&
+			 * @since	07/05/2011
+			 * @version	07/05/2011
 			 */
-			static MouseHandler& get();
+			KeyboardBase();
 			/**
-			 * Method that returns an instance of the current MouseBase
+			 * Virtual Destructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	10/05/2011
-			 * @version	10/05/2011
-			 * @return	MouseBase*
+			 * @since	07/05/2011
+			 * @version	07/05/2011
 			 */
-			virtual MouseBase* getMouse() const;
+			virtual ~KeyboardBase();
+			/**
+			 * Method that returns if the keyboard driver is opened
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/05/2011
+			 * @version	07/05/2011
+			 * @return	bool
+			 */
+			virtual bool isOpened() const;
+			/**
+			 * Method that updates the state of the keyboard
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/05/2011
+			 * @version	07/05/2011
+			 * @details
+			 * 			This method must be called every cycle of the game
+			 */
+			virtual void update();
+			/**
+			 * Method that returns the key
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	07/05/2011
+			 * @version	07/05/2011
+			 * @return	Input::Key
+			 */
+			virtual Input::Key getKey(const int& pKeyValue) const;
+		protected:
+			ALLEGRO_KEYBOARD_STATE* mState;/**<< var that stores the state of the keyboard*/
 	};
-}}
+}}}
 #endif

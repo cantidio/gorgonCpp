@@ -24,25 +24,25 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_MOUSE_
-#define _GORGON_MOUSE_
+#ifndef _GORGON_INPUT_MOUSE_
+#define _GORGON_INPUT_MOUSE_
+#include <gorgon++/core/point.hpp>
 #include "mouse_base.hpp"
-#include "mouse_handler.hpp"
 
 namespace Gorgon{
 namespace Input
 {
+	class MouseBase;
 	/**
 	 * Class that represents the mouse
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	10/05/2011
 	 * @version	10/05/2011
+	 * @ingroup	Input
 	 */
 	class Mouse
 	{
-		protected:
-			MouseBase* mMouse;/**<< The implementation of the mouse*/
 		public:
 			/**
 			 * Constructor
@@ -51,10 +51,7 @@ namespace Input
 			 * @since	10/05/2011
 			 * @version	10/05/2011
 			 */
-			Mouse()
-			{
-				mMouse = MouseHandler::get().getMouse();
-			}
+			Mouse();
 			/**
 			 * Destructor
 			 *
@@ -62,13 +59,7 @@ namespace Input
 			 * @since	10/05/2011
 			 * @version	10/05/2011
 			 */
-			~Mouse()
-			{
-				if(mMouse != NULL)
-				{
-					delete mMouse;
-				}
-			}
+			~Mouse();
 			/**
 			 * Method that updates the values of the mouse
 			 *
@@ -76,10 +67,7 @@ namespace Input
 			 * @since	10/05/2011
 			 * @version	10/05/2011
 			 */
-			inline void update()
-			{
-				mMouse->update();
-			}
+			void update();
 			/**
 			 * Method that returns if the mouse is opened
 			 *
@@ -88,10 +76,7 @@ namespace Input
 			 * @version	10/05/2011
 			 * @return	bool
 			 */
-			inline bool isOpened() const
-			{
-				return mMouse->isOpened();
-			}
+			bool isOpened() const;
 			/**
 			 * Method that returns the position of the mouse
 			 *
@@ -100,10 +85,7 @@ namespace Input
 			 * @version	10/05/2011
 			 * @return	Core::Point
 			 */
-			inline Core::Point getPosition() const
-			{
-				return mMouse->getPosition();
-			}
+			Core::Point getPosition() const;
 			/**
 			 * Method that returns the state of a button
 			 *
@@ -113,10 +95,10 @@ namespace Input
 			 * @param	const int& pButton, the button
 			 * @return	bool
 			 */
-			inline bool getButton(const MouseBase::Button& pButton) const
-			{
-				return mMouse->getButton(pButton);
-			}
+			bool getButton(const MouseBase::Button& pButton) const;
+		protected:
+			MouseBase* mMouse;/**<< The implementation of the mouse*/
 	};
 }}
+
 #endif

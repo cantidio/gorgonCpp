@@ -10,7 +10,8 @@ namespace Addon
 {
 	System::System()
 	{
-		if(!al_init())
+		
+		if(! al_install_system(ALLEGRO_VERSION_INT, NULL) )
 		{
 			Core::logWrite(Core::String("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 lib."));
 			raiseGraphicException("System::System(): Error when initializing allegro5 lib.");
