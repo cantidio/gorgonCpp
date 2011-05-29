@@ -1,269 +1,194 @@
 #include <graphic/palette.hpp>
-#include <allegro.h>
+#include <graphic/exception.hpp>
+#include <sstream>
+
 namespace Gorgon{
 namespace Graphic
 {
 	Palette::Palette()
 	{
-		erase();
+		mColors			= NULL;
+		mColorNumber	= 0;
 	}
 
-	Palette::Palette
-	(
-		const int& pRed,
-		const int& pGreen,
-		const int& pBlue
-	)
+	Palette::Palette(const int& pColorNumber)
 	{
-		for(int i = 0; i < 256; ++i)
+		try
 		{
-			setRed(pRed,i);
-			setGreen(pGreen,i);
-			setBlue(pBlue,i);
+			mColorNumber	= pColorNumber;
+			mColors			= new float[mColorNumber * 3];
+		}
+		catch(std::exception& exception)
+		{
+			std::stringstream out;
+			out << "Palette::Palette(" << pColorNumber << "): Error, could not allocate memory for the colors.";
+			raiseGraphicException( out.str() );
 		}
 	}
-
-	Palette::Palette(const std::string& pPaletteName)
+	
+	Palette::Palette( const std::string& pPaletteName, const int& pColorNumber, const int& pJumpBytes)
 	{
-		erase();
-		load(pPaletteName,256);
+		try
+		{
+			mColorNumber	= pColorNumber;
+			mColors			= new float[mColorNumber * 3];
+
+			load(pPaletteName, pColorNumber, pJumpBytes);
+		}
+		catch(std::exception& exception)
+		{
+			std::stringstream out;
+			out << "Palette::Palette(\"" << pPaletteName << "\", "<< pColorNumber << ", " << pJumpBytes << "): Error, could not allocate memory for the colors.";
+
+			raiseGraphicException( out.str() );
+		}
+		catch(Core::Exception& exception)
+		{
+			std::stringstream out;
+			out << "Palette::Palette(\"" << pPaletteName << "\", "<< pColorNumber << ", " << pJumpBytes << "): Error, could not allocate memory for the colors.";
+
+			raiseGraphicExceptionE( out.str() , exception );
+		}
+		
 	}
 
-	Palette::Palette
-	(
-		Core::File&	pFile,
-		const int&	pColorNumber,
-		const int&	pJumpBytes
-	)
+	Palette::Palette( Core::File& pFile, const int& pColorNumber, const int& pJumpBytes )
 	{
-		erase();
-		load
-		(
-			pFile,
-			pColorNumber,
-			pJumpBytes
-		);
+		try
+		{
+			mColorNumber	= pColorNumber;
+			mColors			= new float[mColorNumber * 3];
+	
+			load( pFile, pColorNumber, pJumpBytes );
+		}
+		catch(std::exception& exception)
+		{
+			std::stringstream out;
+			out << "Palette::Palette(" << (int)&pFile << ", " << pColorNumber << ", " << pJumpBytes << "): Error, could not allocate memory for the colors.";
+
+			raiseGraphicException( out.str() );
+		}
+		catch(Core::Exception& exception)
+		{
+			std::stringstream out;
+			out << "Palette::Palette(\"" << (int)&pFile << ", "<< pColorNumber << ", " << pJumpBytes << "): Error, could not allocate memory for the colors.";
+
+			raiseGraphicExceptionE( out.str() , exception );
+		}
 	}
 
 	Palette::~Palette()
 	{
-		erase();
+		if(mColors != NULL)
+		{
+			delete mColors;
+		}
 	}
 
 	std::string Palette::describe() const
 	{
+		const int allColors = mColorNumber * 3 ;
+		
 		std::stringstream out;
-		out << "Palette Descriptor\n";
-		for(int i=0; i<256; ++i)
+		out << "Graphic::Palette::describe()"	<< std::endl;
+		out << "ColorNumber: " << mColorNumber	<< std::endl;
+		for(register int i = 0; i < allColors ; i += 3)
 		{
-			out << i << "\tr:" << (int)mPal[i].r << "\tg: " << (int)mPal[i].g << "\tb: " << (int)mPal[i].b << "\n";
+			out << "[" << i << "]";
+			out << " R: " << (int)(mColors[i + 0] * 255.0f);
+			out << " G: " << (int)(mColors[i + 1] * 255.0f);
+			out << " B: " << (int)(mColors[i + 2] * 255.0f);
+			out << std::endl;
 		}
 		return out.str();
 	}
 
 	Palette* Palette::clone() const
 	{
-		Palette* aux;
-		aux = new Palette();
+		Palette* aux = new Palette( mColorNumber );
 
-		for(int i = 0; i < 256; ++i)
+		for(register int i = (mColorNumber * 3) - 1; i >= 0 ; --i)
 		{
-			aux->setColor
-			(
-				getRed(i),
-				getGreen(i),
-				getBlue(i),
-				i
-			);
+			aux->mColors[i] = mColors[i];
 		}
 		return aux;
 	}
 
 	void Palette::erase()
 	{
-		for(int i=0; i<256; i++)
+		for(register int i = (mColorNumber * 3) - 1; i >= 0 ; --i)
 		{
-			mPal2[i].r = mPal[i].r = 0;
-			mPal2[i].g = mPal[i].g = 0;
-			mPal2[i].b = mPal[i].b = 0;
+			mColors[i] = 0.0f;
 		}
 	}
 
 	void Palette::set() const
 	{
-		set_palette(mPal2);
+		printf("Graphic::Palette::set() this method dont do nothing;\n");
 	}
 
-	void Palette::get()
+	void Palette::inverse()
 	{
-		get_palette(mPal2);
+		const int middle 	= (mColorNumber * 3) / 2;
+		float colorComponent;
 
-		for(int i = 0; i < 256; ++i)
+		for(register int i = 0, j = (mColorNumber * 3) - 1; i < middle; i+=3, j-=3)
 		{
-			mPal[i].r = mPal2[i].r * 4;
-			mPal[i].g = mPal2[i].g * 4;
-			mPal[i].b = mPal2[i].b * 4;
+			colorComponent = mColors[i + 0];//red
+			mColors[i + 0] = mColors[j + 0];
+			mColors[j + 0] = colorComponent;
+			
+			colorComponent = mColors[i + 1];//green
+			mColors[i + 1] = mColors[j + 1];
+			mColors[j + 1] = colorComponent;
+			
+			colorComponent = mColors[i + 2];//blue
+			mColors[i + 2] = mColors[j + 2];
+			mColors[j + 2] = colorComponent;
 		}
 	}
 
-	void Palette::inverse(const int& pColorNumber)
+	void Palette::swapRedForGreen()
 	{
-		RGB aux;
-		for(int i=0, j = pColorNumber-1; i <= (pColorNumber/2)-1; ++i,--j)
+		float green;
+		for(register int i = mColorNumber*3 - 1; i >= 0 ; i-=3)
 		{
-			aux			= mPal[i];
-			mPal[i]		= mPal[j];
-			mPal[j]		= aux;
-			aux			= mPal2[i];
-			mPal2[i]	= mPal2[j];
-			mPal2[j]	= aux;
+			green			= mColors[i + 1];
+			mColors[i + 1]	= mColors[i + 0];
+			mColors[i + 0] = green;
 		}
 	}
-
-	void Palette::switchBlueForRed()
+	
+	void Palette::swapGreenForBlue()
 	{
-		unsigned char red;
-		for(int i = 0; i < 256; ++i)
+		float blue;
+		for(register int i = mColorNumber*3 - 1; i >= 0 ; i-=3)
 		{
-			red = getRed(i);
-			setRed(getBlue(i),i);
-			setBlue(red,i);
+			blue			= mColors[i + 2];
+			mColors[i + 2]	= mColors[i + 1];
+			mColors[i + 1]	= blue;
 		}
 	}
-
-	void Palette::switchBlueForGreen()
+	
+	void Palette::swapBlueForRed()
 	{
-		unsigned char green;
-		for(int i = 0; i < 256; ++i)
+		float red;
+		for(register int i = mColorNumber*3 - 1; i >= 0 ; i-=3)
 		{
-			green = getGreen(i);
-			setGreen(getBlue(i),i);
-			setBlue(green,i);
+			red				= mColors[i + 0];
+			mColors[i + 0]	= mColors[i + 2];
+			mColors[i + 2]	= red;
 		}
 	}
 
-	void Palette::switchRedForGreen()
-	{
-		unsigned char green;
-		for(int i = 0; i < 256; ++i)
-		{
-			green = getGreen(i);
-			setGreen(getRed(i),i);
-			setRed(green,i);
-		}
-	}
-
-	int Palette::getColor(const int& pPos) const
-	{
-		if(pPos<256)
-			return makecol
-			(
-				mPal[pPos].r,
-				mPal[pPos].g,
-				mPal[pPos].b
-			);
-		else
-	 		return 0xFF00FF;// makecol(255,0,255);
-	}
-
-	int Palette::getRed(const int& pPos) const
-	{
-		if(pPos < 256)
-		{
-			return mPal[pPos].r;
-		}
-		else
-		{
-			/**
-			 * @todo	retornar excessão ?
-			 */
-			return 0;
-		}
-	}
-
-	int Palette::getGreen(const int& pPos) const
-	{
-		if(pPos < 256)
-		{
-			return mPal[pPos].g;
-		}
-		else
-		{
-			/**
-			 * @todo	retornar excessão ?
-			 */
-			return 0;
-		}
-	}
-
-	int Palette::getBlue(const int& pPos) const
-	{
-		if(pPos < 256)
-		{
-			return mPal[pPos].b;
-		}
-		else
-		{
-			/**
-			 * @todo	retornar excessão ?
-			 */
-			return 0;
-		}
-	}
-
-	void Palette::setColor
-	(
-		const int& pRed,
-		const int& pGreen,
-		const int& pBlue,
-		const int& pPos
-	)
-	{
-		setRed(pRed, pPos);
-		setGreen(pGreen, pPos);
-		setBlue(pBlue, pPos);
-	}
-
-	void Palette::setRed(const int& pRed,const int& pPos)
-	{
-		if(pPos < 256 && pPos >= 0)
-		{
-			mPal[pPos].r	= pRed;
-			mPal2[pPos].r	= pRed/4;
-		}
-	}
-
-	void Palette::setGreen(const int& pGreen,const int& pPos)
-	{
-		if(pPos < 256 && pPos >= 0)
-		{
-			mPal[pPos].g	= pGreen;
-			mPal2[pPos].g	= pGreen/4;
-		}
-	}
-
-	void Palette::setBlue(const int& pBlue,const int& pPos)
-	{
-		if(pPos < 256 && pPos >= 0)
-		{
-			mPal[pPos].b	= pBlue;
-			mPal2[pPos].b	= pBlue/4;
-		}
-	}
-
-	void Palette::save
-	(
-		Core::File&	pFile,
-		const int&	pColorNumber,
-		const int&	pJumpBytes
-	) const
+	void Palette::save( Core::File& pFile, const int& pColorNumber, const int& pJumpBytes ) const
 	{
 		unsigned char filler = 0;
-		for(int i = pColorNumber -1; i >= 0; i--)
+		for(register int i = pColorNumber - 1; i >= 0; i--)
 		{
-			pFile.writeInt8(getRed(i));
-			pFile.writeInt8(getGreen(i));
-			pFile.writeInt8(getBlue(i));
+			pFile.writeInt8(getRed(i)	* 255.0f);
+			pFile.writeInt8(getGreen(i)	* 255.0f);
+			pFile.writeInt8(getBlue(i)	* 255.0f);
 
 			if(pJumpBytes > 0)
 			{
@@ -272,17 +197,12 @@ namespace Graphic
 		}
 	}
 
-	void Palette::save(const std::string& pPaletteName, const int& pColorNumber) const
+	void Palette::save( const std::string& pPaletteName, const int& pColorNumber, const int& pJumpBytes ) const
 	{
 		Core::File file(pPaletteName,std::ios::out | std::ios::binary);
 		if(file.is_open())
 		{
-			save
-			(
-				file,
-				pColorNumber,
-				0
-			);
+			save( file, pColorNumber, pJumpBytes );
 		}
 		else
 		{
@@ -290,18 +210,14 @@ namespace Graphic
 		}
 	}
 
-	void Palette::load
-	(
-		Core::File&	pFile,
-		const int&	pColorNumber,
-		const int&	pJumpBytes
-	)
+	void Palette::load( Core::File&	pFile, const int& pColorNumber, const int& pJumpBytes )
 	{
-		for(int i = (pColorNumber-1); i >= 0; --i)
+		for(register int i = (pColorNumber-1); i >= 0; --i)
 		{
-			setRed	(pFile.readUnsignedInt8(), i);
-			setGreen(pFile.readUnsignedInt8(), i);
-			setBlue	(pFile.readUnsignedInt8(), i);
+			mColors[i + 0] = pFile.readUnsignedInt8() / 255.0f ;
+			mColors[i + 1] = pFile.readUnsignedInt8() / 255.0f ;
+			mColors[i + 2] = pFile.readUnsignedInt8() / 255.0f ;
+		
 			if(pJumpBytes > 0)
 			{
 				pFile.ignore(pJumpBytes);
@@ -309,22 +225,19 @@ namespace Graphic
 		}
 	}
 
-	void Palette::load(const std::string& pPaletteName,const int& pColorNumber)
+	void Palette::load(const std::string& pPaletteName,const int& pColorNumber, const int& pJumpBytes )
 	{
 		Core::File file(pPaletteName,std::ios::in|std::ios::binary);
 		if(file.is_open())
 		{
-			load
-			(
-				file,
-				pColorNumber,
-				0
-			);
+			load( file, pColorNumber, pJumpBytes );
 		}
 		else
 		{
-			throw Core::Exception("Unable to load palette: "+pPaletteName+".");
+			std::stringstream out;
+			out << "Graphic::Palette::load(\"" << pPaletteName << "\", " << pColorNumber << ", " << pJumpBytes << "): Error, could not open the file for reading.";
+			raiseGraphicException( out.str() );
 		}
-		
 	}
 }}
+

@@ -41,7 +41,7 @@ namespace Physics
 			),0,0,
 			(mMaximum - mMinimum)/2
 		);
-		if( getVerticesNumber() > 2)
+/*		if( getVerticesNumber() > 2)
 		{
 			for(register int i = getVerticesNumber() - 1; i > 0; --i)
 			{
@@ -65,5 +65,5 @@ namespace Physics
 			mBody->getPosition(),
 			360/256 * mBody->getAngle()
 		);
-	}
+*/	}
 }}

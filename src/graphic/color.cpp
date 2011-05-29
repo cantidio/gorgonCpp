@@ -1,267 +1,147 @@
 #include "graphic/color.hpp"
+#include <sstream>
 
 namespace Gorgon{
 namespace Graphic
 {
+	Color::Color()
+	{
+		mRed   = 0.0f;
+		mGreen = 0.0f;
+		mBlue  = 0.0f;
+		mAlpha = 0.0f;
+	}
+	
 	Color::Color
 	(
-		const int& pRed,
-		const int& pGreen,
-		const int& pBlue,
-		const int& pAlpha
+		const float& pRed,
+		const float& pGreen,
+		const float& pBlue,
+		const float& pAlpha
 	)
 	{
-		set
-		(
-			pRed,
-			pGreen,
-			pBlue,
-			pAlpha
-		);
+		setRed		( pRed   );
+		setGreen	( pGreen );
+		setBlue		( pBlue  );
+		setAlpha	( pAlpha );
 	}
-
+	
 	Color::Color(const Color& pColor)
 	{
-		set
-		(
-			pColor.getRed(),
-			pColor.getGreen(),
-			pColor.getBlue(),
-			pColor.getAlpha()
-		);
-	}
-
-	Color::Color(const int& pColor)
-	{
-		setRed		((pColor >> 16) & 255);
-		setGreen	((pColor >> 8) & 255);
-		setBlue		((pColor) & 255);
-		setAlpha	((pColor >> 24) & 255);
-	}
-
-	Color::~Color()
-	{
+		mRed	= pColor.mRed;
+		mGreen	= pColor.mGreen;
+		mAlpha	= pColor.mBlue;
+		mAlpha	= pColor.mAlpha;
 	}
 
 	std::string Color::describe()
 	{
 		std::stringstream out;
-		out << "Color Descriptor"		<< std::endl;
-		out << "Red:   " << getRed()	<< std::endl;
-		out << "Green: " << getGreen()	<< std::endl;
-		out << "Blue:  " << getBlue()	<< std::endl;
-		out << "alpha:  " << getAlpha()	<< std::endl;
+		out << "Graphic::Color::describe()"				<< std::endl;
+		out << "Red:   " << (int)(getRed()   * 255.0f)	<< std::endl;
+		out << "Green: " << (int)(getGreen() * 255.0f)	<< std::endl;
+		out << "Blue:  " << (int)(getBlue()  * 255.0f)	<< std::endl;
+		out << "Alpha: " << (int)(getAlpha() * 255.0f) 	<< std::endl;
 		return out.str();
 	}
 	
-	void Color::setRed(const int& pRed)
-	{
-		if(pRed >= 0)
-		{
-			if(pRed <= 255)
-			{
-				mRed = pRed;
-			}
-			else
-			{
-				mRed = 510 - pRed;
-			}
-		}
-		else
-		{
-			mRed = 0;
-		}
-	}
-
-	void Color::setGreen(const int& pGreen)
-	{
-		if(pGreen >= 0)
-		{
-			if(pGreen <= 255)
-			{
-				mGreen = pGreen;
-			}
-			else
-			{
-				mGreen = 510 - pGreen;
-			}
-		}
-		else
-		{
-			mGreen = 0;
-		}
-	}
-
-	void Color::setBlue(const int& pBlue)
-	{
-		if(pBlue >= 0)
-		{
-			if(pBlue <= 255)
-			{
-				mBlue = pBlue;
-			}
-			else
-			{
-				mBlue = 510 - pBlue;
-			}
-		}
-		else
-		{
-			mBlue = 0;
-		}
-	}
-
-	void Color::setAlpha(const int& pAlpha)
-	{
-		if(pAlpha >= 0)
-		{
-			if(pAlpha <= 255)
-			{
-				mAlpha = pAlpha;
-			}
-			else
-			{
-				mAlpha = 510 - pAlpha;
-			}
-		}
-		else
-		{
-			mAlpha = 0;
-		}
-	}
-
-	void Color::set
-	(
-		const int& pRed,
-		const int& pGreen,
-		const int& pBlue,
-		const int& pAlpha
-	)
-	{
-		setRed(pRed);
-		setGreen(pGreen);
-		setBlue(pBlue);
-		setAlpha(pAlpha);
-	}
-
-	int Color::getRed() const
-	{
-		return mRed;
-	}
-
-	int Color::getGreen() const
-	{
-		return mGreen;
-	}
-
-	int Color::getBlue() const
-	{
-		return mBlue;
-	}
-
-	int Color::getAlpha() const
-	{
-		return mAlpha;
-	}
-
-	int Color::get() const
-	{
-		/**
-		 * @todo verificar little endian
-		 */
-		return
-		(
-			(getBlue()	<< 0)	|
-			(getGreen()	<< 8)	|
-			(getRed()	<< 16)	|
-			(getAlpha()	<< 24)
-		);
-	}
 
 	Color Color::operator +(const Color& pColor) const
-	{//tentar outra coisa... return *color
+	{
 		return Color
 		(
-			getRed()	+ pColor.getRed(),
-			getGreen()	+ pColor.getGreen(),
-			getBlue()	+ pColor.getBlue(),
-			getAlpha()	+ pColor.getAlpha()
+			mRed   + pColor.mRed   ,
+			mGreen + pColor.mGreen ,
+			mBlue  + pColor.mBlue  ,
+			mAlpha + pColor.mAlpha
 		);
 	}
 
 	void Color::operator +=(const Color& pColor)
 	{
-		set
-		(
-			getRed()	+ pColor.getRed(),
-			getGreen()	+ pColor.getGreen(),
-			getBlue()	+ pColor.getBlue(),
-			getAlpha()	+ pColor.getAlpha()
-		);
+		setRed   ( mRed   + pColor.mRed   );
+		setGreen ( mGreen + pColor.mGreen );
+		setBlue  ( mBlue  + pColor.mBlue  );
+		setAlpha ( mAlpha + pColor.mAlpha );
 	}
 
 	Color Color::operator -(const Color& pColor) const
 	{
 		return Color
 		(
-			getRed()	- pColor.getRed(),
-			getGreen()	- pColor.getGreen(),
-			getBlue()	- pColor.getBlue(),
-			getAlpha()	- pColor.getAlpha()
+			mRed   - pColor.mRed   ,
+			mGreen - pColor.mGreen ,
+			mBlue  - pColor.mBlue  ,
+			mAlpha - pColor.mAlpha
 		);
 	}
 
 	void Color::operator -=(const Color& pColor)
 	{
-		set
-		(
-			getRed()	- pColor.getRed(),
-			getGreen()	- pColor.getGreen(),
-			getBlue()	- pColor.getBlue(),
-			getAlpha()	- pColor.getAlpha()
-		);
+		setRed   ( mRed   - pColor.mRed   );
+		setGreen ( mGreen - pColor.mGreen );
+		setBlue  ( mBlue  - pColor.mBlue  );
+		setAlpha ( mAlpha - pColor.mAlpha );
 	}
 
-	Color Color::operator *(const double& pValue) const
+	Color Color::operator *(const Color& pColor) const
 	{
 		return Color
 		(
-			getRed()	* pValue,
-			getGreen()	* pValue,
-			getBlue()	* pValue,
-			getAlpha()	* pValue
+			mRed   * pColor.mRed   ,
+			mGreen * pColor.mGreen ,
+			mBlue  * pColor.mBlue  ,
+			mAlpha * pColor.mAlpha
 		);
 	}
+	
+	void Color::operator *=(const Color& pColor)
+	{
+		setRed   ( mRed   * pColor.mRed   );
+		setGreen ( mGreen * pColor.mGreen );
+		setBlue  ( mBlue  * pColor.mBlue  );
+		setAlpha ( mAlpha * pColor.mAlpha );
+	}
 
-	Color Color::operator /(const double& pValue) const
+	Color Color::operator /(const Color& pColor) const
 	{
 		return Color
 		(
-			getRed()	/ pValue,
-			getGreen()	/ pValue,
-			getBlue()	/ pValue,
-			getAlpha()	/ pValue
+			mRed   / pColor.mRed   ,
+			mGreen / pColor.mGreen ,
+			mBlue  / pColor.mBlue  ,
+			mAlpha / pColor.mAlpha
 		);
+	}
+	
+	void Color::operator /=(const Color& pColor)
+	{
+		setRed   ( mRed   / pColor.mRed   );
+		setGreen ( mGreen / pColor.mGreen );
+		setBlue  ( mBlue  / pColor.mBlue  );
+		setAlpha ( mAlpha / pColor.mAlpha );
 	}
 	
 	bool Color::operator ==(const Color& pColor) const
 	{
 		return
 		(
-			getRed()	== pColor.getRed()		&&
-			getGreen()	== pColor.getGreen()	&&
-			getBlue()	== pColor.getBlue()		&&
-			getAlpha()	== pColor.getAlpha()
+			mRed   == pColor.mRed   &&
+			mGreen == pColor.mGreen &&
+			mBlue  == pColor.mBlue  &&
+			mAlpha == pColor.mAlpha
 		);
 	}
+	
 	bool Color::operator !=(const Color& pColor) const
 	{
 		return
 		!(
-			getRed()	== pColor.getRed()		&&
-			getGreen()	== pColor.getGreen()	&&
-			getBlue()	== pColor.getBlue()		&&
-			getAlpha()	== pColor.getAlpha()
+			mRed   == pColor.mRed   &&
+			mGreen == pColor.mGreen &&
+			mBlue  == pColor.mBlue  &&
+			mAlpha == pColor.mAlpha
 		);
 	}
 }}
+

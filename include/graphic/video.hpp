@@ -26,7 +26,6 @@
  */
 #ifndef _GORGON_VIDEO_
 #define	_GORGON_VIDEO_
-#include <allegro.h>
 #include "sprite.hpp"
 #include "../core/log.hpp"
 
@@ -79,7 +78,7 @@ namespace Graphic
 		public:
 			/**
 			 * Método para iniciar a classe, caso a mesma não esteje inicializada
-			 *
+			 7*
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	16/07/2008
 			 * @version	21/06/2009

@@ -8,7 +8,7 @@ namespace Graphic
 		mWidth			= 0;
 		mHeight			= 0;
 		mBpp			= 0;
-		mAlphaMask		= Graphic::Color(0,0,0,0);
+		mAlphaMask		= Graphic::Color(0.0, 0.0, 0.0, 0.0);
 	}
 	
 	ImageBase::~ImageBase()

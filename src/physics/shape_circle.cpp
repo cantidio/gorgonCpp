@@ -32,7 +32,7 @@ namespace Physics
 			0,0,
 			Core::Point( getRadius(),	getRadius() )
 		);
-		a.drawCircle
+		/*a.drawCircle
 		(
 			getRadius() - 1,
 			getRadius() - 1,
@@ -58,5 +58,5 @@ namespace Physics
 			mBody->getPosition(),
 			360/256 * mBody->getAngle()
 		);
-	}
+*/	}
 }}

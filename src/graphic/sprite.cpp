@@ -1,5 +1,6 @@
 #include <graphic/sprite.hpp>
 #include <graphic/exception.hpp>
+#include <sstream>
 
 namespace Gorgon{
 namespace Graphic

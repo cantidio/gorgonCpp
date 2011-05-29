@@ -2,6 +2,7 @@
 #include <graphic/system.hpp>
 #include <graphic/exception.hpp>
 #include <vector>
+#include <sstream>
 
 namespace Gorgon{
 namespace Graphic

@@ -10,7 +10,7 @@ namespace Graphic
 	SpritePack::SpritePack()
 	{
 		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
-		mGlobalPalette	= new Palette(255,0,255);
+		mGlobalPalette	= new Palette(256);
 		mPalLinked		= false;
 	}
 

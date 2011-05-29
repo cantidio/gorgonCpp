@@ -37,7 +37,7 @@ namespace Addon
 	 */
 	inline ALLEGRO_COLOR gorgonColort2AllegroColor(const Color& pColor)
 	{
-		return al_map_rgba(pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha());
+		return al_map_rgba_f(pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha());
 	}
 	/**
 	 * Function that converts an Allegro Color to a Gorgon one
@@ -50,16 +50,16 @@ namespace Addon
 	 */
 	inline Color allegroColor2GorgonColor(const ALLEGRO_COLOR& pColor)
 	{
-		unsigned char r, g, b, a;
-		al_unmap_rgba(pColor, &r, &g, &b, &a);
+		float r, g, b, a;
+		al_unmap_rgba_f(pColor, &r, &g, &b, &a);
 		return Color(r,g,b,a);
 	}
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 	void ImageBase::create
 	(
-		const int&		pWidth,
-		const int&		pHeight,
-		const int&		pBpp
+		const int& pWidth,
+		const int& pHeight,
+		const int& pBpp
 	)
 	{
 		if(mData != NULL)
@@ -83,9 +83,9 @@ namespace Addon
 	
 	ImageBase::ImageBase
 	(
-		const int&		pWidth,
-		const int&		pHeight,
-		const int&		pBpp
+		const int& pWidth,
+		const int& pHeight,
+		const int& pBpp
 	)
 	{
 		mData = NULL;
@@ -304,8 +304,7 @@ namespace Addon
 	
 	Graphic::ImageBase* ImageBase::clone() const
 	{
-		Graphic::ImageBase* out;
-		out = new ImageBase(*this);
+		return new ImageBase(*this);
 	}
 }}}
 

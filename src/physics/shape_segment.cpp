@@ -23,11 +23,11 @@ namespace Physics
 	
 	void ShapeSegment::draw(Graphic::Sprite& pSprite, const int& pColor) const
 	{
-		pSprite.drawLine
+/*		pSprite.drawLine
 		(
 			getPointA(),
 			getPointB(),
 			pColor
 		);
-	}
+*/	}
 }}

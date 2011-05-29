@@ -29,7 +29,6 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <allegro.h>
 #include "../core/point.hpp"
 #include "palette.hpp"
 #include "mirroring.hpp"

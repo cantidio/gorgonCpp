@@ -29,7 +29,7 @@ namespace Physics
 			0,0,
 			Core::Point(mWidth/2, mHeight/2)
 		);
-		box.drawRectangle
+/*		box.drawRectangle
 		(
 			Core::Point(0,0),
 			Core::Point(mWidth - 1, mHeight - 1),
@@ -41,5 +41,5 @@ namespace Physics
 			mBody->getPosition(),
 			360/256 * mBody->getAngle()
 		);
-	}
+*/	}
 }} 

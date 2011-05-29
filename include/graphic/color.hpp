@@ -27,268 +27,282 @@
 #ifndef _GORGON_GRAPHIC_COLOR_
 #define	_GORGON_GRAPHIC_COLOR_
 #include <string>
-#include <sstream>
 
 namespace Gorgon{
 namespace Graphic
 {
 	/**
-	 * Classe responsável por representar uma cor
+	 * Class that represents a color
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	29/05/2009
-	 * @version	25/06/2009
+	 * @version	29/05/2011
 	 * @ingroup	Graphic
 	 */
 	class Color
 	{
-		private:
-			/**
-			 * Componente vermelho da cor
-			 */
-			unsigned char mRed;
-			/**
-			 * Componente verde da cor
-			 */
-			unsigned char mGreen;
-			/**
-			 * Componente azul da cor
-			 */
-			unsigned char mBlue;
-			/**
-			 * Componente alpha da cor
-			 */
-			unsigned char mAlpha;
 		public:
 			/**
-			 * Método Construtor
+			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const int& pRed		, valor do componente vermelho da cor
-			 * @param	const int& pGreen	, valor do componente verde da cor
-			 * @param	const int& pBlue	, valor do componente azul da cor
-			 * @param	const int& pAlpha	, valor do componente alpha da cor
+			 * @version	29/05/2011
+			 */
+			Color();
+			/**
+			 * Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	29/05/2009
+			 * @version	29/05/2011
+			 * @param	const float& pRed	, the value of the red component of the color
+			 * @param	const float& pGreen	, the value of the green component of the color
+			 * @param	const float& pBlue	, the value of the blue component of the color
+			 * @param	const float& pAlpha	, the value of the alpha component of the color
+			 * @details
+			 *			the range of the component are from 0.0, to 1.0
 			 */
 			Color
 			(
-				const int& pRed,
-				const int& pGreen,
-				const int& pBlue,
-				const int& pAlpha = 0
+				const float& pRed,
+				const float& pGreen,
+				const float& pBlue,
+				const float& pAlpha = 0
 			);
 			/**
-			 * Método Construtor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	25/06/2009
-			 * @version	25/06/2009
-			 * @param	const int& pColor, valor da cor
-			 */
-			Color(const int& pColor = 0);
-			/**
-			 * Método Construtor de Cópia
+			 * Copy Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const Color& pColor, objeto Color que será copiado para o objeto atual
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, source color object
 			 */
 			Color(const Color& pColor);
 			/**
-			 * Método Destrutor
+			 * Method that describes the color components in the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 */
-			virtual ~Color();
-			/**
-			 * Método responsável por descrever os valores da classe
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	29/05/2009
-			 * @version	29/05/2009
+			 * @version	29/05/2011
 			 * @return	std::string
 			 */
 			std::string describe();
 			/**
-			 * Método para setar o componente vermelho da cor
+			 * Method that sets the red component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const int& pRed, valor do componente vermelho
+			 * @version	29/05/2011
+			 * @param	const int& pRed, value of the red component of the color
 			 */
-			void setRed(const int& pRed);
+			inline void setRed(const float& pRed)
+			{
+				mRed = (pRed > 1.0) ? 1.0 : ( (pRed < 0.0) ? 0.0 : pRed);
+			}
 			/**
-			 * Método para setar o componente verde da cor
+			 * Method that sets the green component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const int& pGreen, valor do componente verde
+			 * @version	29/05/2011
+			 * @param	const int& pGreen, the value of the green component of the color
 			 */
-			void setGreen(const int& pGreen);
+			inline void setGreen(const float& pGreen)
+			{
+				mGreen = (pGreen > 1.0) ? 1.0 : ( (pGreen < 0.0) ? 0.0 : pGreen);
+			}
 			/**
-			 * Método para setar o componente azul da cor
+			 * Method that sets the blue component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const int& pBlue, valor do componente azul
+			 * @version	29/05/2011
+			 * @param	const int& pBlue, value of the blue component of the color
 			 */
-			void setBlue(const int& pBlue);
+			inline void setBlue(const float& pBlue)
+			{
+				mBlue = (pBlue > 1.0) ? 1.0 : ( (pBlue < 0.0) ? 0.0 : pBlue);
+			}
 			/**
-			 * Método para setar o componente alpha da cor
+			 * Method that sets the alpha component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const int& palpha, valor do componente alpha
+			 * @version	29/05/2011
+			 * @param	const int& pAlpha, value of the alpha component of the color
 			 */
-			void setAlpha(const int& palpha);
+			inline void setAlpha(const float& pAlpha)
+			{
+				mAlpha = (pAlpha > 1.0) ? 1.0 : ( (pAlpha < 0.0) ? 0.0 : pAlpha);
+			}
 			/**
-			 * Método para setar os atributos da classe
+			 * Method that sets the components of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const int& pRed		, valor do componente vermelho da cor
-			 * @param	const int& pGreen	, valor do componente verde da cor
-			 * @param	const int& pBlue	, valor do componente azul da cor
-			 * @param	const int& pAlpha	, valor do componente alpha da cor
+			 * @version	29/05/2011
+			 * @param	const float& pRed	, valor do componente vermelho da cor
+			 * @param	const float& pGreen	, valor do componente verde da cor
+			 * @param	const float& pBlue	, valor do componente azul da cor
+			 * @param	const float& pAlpha	, valor do componente alpha da cor
 			 */
-			void set
-			(
-				const int& pRed		= 0,
-				const int& pGreen	= 0,
-				const int& pBlue	= 0,
-				const int& pAlpha	= 0
-			);
+			inline void set( const float& pRed, const float& pGreen, const float& pBlue, const float& pAlpha )
+			{
+				mRed   = (pRed   > 1.0) ? 1.0 : ( (pRed   < 0.0) ? 0.0 : pRed   );
+				mGreen = (pGreen > 1.0) ? 1.0 : ( (pGreen < 0.0) ? 0.0 : pGreen );
+				mBlue  = (pBlue  > 1.0) ? 1.0 : ( (pBlue  < 0.0) ? 0.0 : pBlue  );
+				mAlpha = (pAlpha > 1.0) ? 1.0 : ( (pAlpha < 0.0) ? 0.0 : pAlpha );
+			}
 			/**
-			 * Método para pegar o valor do componente vermelho da cor
+			 * Method that returns the red component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
+			 * @version	29/05/2011
 			 * @return	int
 			 */
-			int getRed() const;
+			inline float getRed() const
+			{
+				return mRed;
+			}
 			/**
-			 * Método para pegar o valor do componente verde da cor
+			 * Method that returns the green component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
+			 * @version	29/05/2011
 			 * @return	int
 			 */
-			int getGreen() const;
+			inline int getGreen() const
+			{
+				return mGreen;
+			}
 			/**
-			 * Método para pegar o valor do componente azul da cor
+			 * Method that returns the blue component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
+			 * @version	29/05/2011
 			 * @return	int
 			 */
-			int getBlue() const;
+			inline int getBlue() const
+			{
+				return mBlue;
+			}
 			/**
-			 * Método para pegar o valor do componente alpha da cor
+			 * Method that returns the alpha component of the color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
+			 * @version	29/05/2011
 			 * @return	int
 			 */
-			int getAlpha() const;
+			inline int getAlpha() const
+			{
+				return mAlpha;
+			}
 			/**
-			 * Método para retornar o valor da cor
+			 * Operator that adds this color components with the color components of the requested color and returns another color with the result
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @return	int
-			 */
-			int get() const;
-			/**
-			 * Operador de soma
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const Color& pColor, cor a somar
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to add
 			 * @return	Color
 			 */
 			Color operator +(const Color& pColor) const;
 			/**
-			 * Operador de soma
+			 * Operator that adds the color components of the object with the requested color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const Color& pColor, cor a ser somada
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to add
 			 */
 			void operator +=(const Color& pColor);
 			/**
-			 * Operador de subtração
+			 * Operator that subtracts this color components with the color components of the requested color and returns another color with the result
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const Color& pColor, cor a subtraír
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to subtract
+			 * @return	Color
 			 */
 			Color operator -(const Color& pColor) const;
 			/**
-			 * Operador de subtração
+			 * Operator that subtracts the color components of the object with the requested color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2009
-			 * @version	29/05/2009
-			 * @param	const Color& pColor, cor a ser subtraída
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to sub
 			 */
 			void operator -=(const Color& pColor);
 			/**
-			 * Operador de divisão
+			 * Operator that divides this color components with the color components of the requested color and returns another color with the result
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	25/06/2009
-			 * @version	25/06/2009
-			 * @param	const double& pValue, valor a dividir a cor
+			 * @since	29/05/2009
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to divide
 			 * @return	Color
 			 */
-			Color operator /(const double& pValue) const;
+			Color operator /(const Color& pValue) const;
 			/**
-			 * Operador de multiplicação
+			 * Operator that divides the color components of the object with the requested color
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	25/06/2009
-			 * @version	25/06/2009
-			 * @param	const double& pValue, valor a multiplicar a cor
+			 * @since	29/05/2011
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to divide
+			 */
+			 void operator /=(const Color& pValue);
+			/**
+			 * Operator that multiplies this color components with the color components of the requested color and returns another color with the result
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	29/05/2009
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to multiply
 			 * @return	Color
 			 */
-			Color operator *(const double& pValue) const;
+			Color operator *(const Color& pValue) const;
 			/**
-			 * Operador de igualdade
+			 * Operator that multiplies the color components of the object with the requested color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	29/05/2011
+			 * @version	29/05/2011
+			 * @param	const Color& pColor, color to multiply
+			 */
+			 void operator *=(const Color& pValue);
+			/**
+			 * Operator that returns ture if two colors have the same color components
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/06/2009
 			 * @version	25/06/2009
-			 * @param	const Color& pColor, cor a verificar a igualdade
+			 * @param	const Color& pColor, color to be tested
 			 * @return	bool
 			 */
 			bool operator ==(const Color& pColor) const;
 			/**
-			 * Operador de diferença
+			 * Operator that returns ture if two colors don't have the same color components
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/06/2009
 			 * @version	25/06/2009
-			 * @param	const Color& pColor, cor a verificar a diferença
+			 * @param	const Color& pColor, color to be tested
 			 * @return	bool
 			 */
 			bool operator !=(const Color& pColor) const;
+		protected:
+			float mRed;		/**<< The red component of the color*/
+			float mGreen;	/**<< The green component of the color*/
+			float mBlue;	/**<< The blue component of the color*/
+			float mAlpha;	/**<< The aplpha component of the color*/
 	};
 }}
 #endif

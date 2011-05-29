@@ -1,6 +1,6 @@
-#include <allegro5/allegro.h>
 #include <gorgon++/graphic/exception.hpp>
 #include <gorgon++/core/log.hpp>
+#include <allegro5/allegro.h>
 #include "system.hpp"
 #include "image_base.hpp"
 
@@ -10,13 +10,15 @@ namespace Addon
 {
 	System::System()
 	{
-		
-		if(! al_install_system(ALLEGRO_VERSION_INT, NULL) )
+		if(!al_init())
 		{
-			Core::logWrite(Core::String("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 lib."));
+			Core::logWrite("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 lib.");
 			raiseGraphicException("System::System(): Error when initializing allegro5 lib.");
 		}
-		Core::logWrite(Core::String("Gorgon::Graphic::Addon::System::System(): Successful."));
+		else
+		{
+			Core::logWrite("Gorgon::Graphic::Addon::System::System(): Successful.");
+		}
 	}
 	
 	System::~System()
@@ -33,5 +35,5 @@ namespace Addon
 	{
 		return new ImageBase();
 	}
-
 }}}
+

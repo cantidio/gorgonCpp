@@ -212,7 +212,6 @@ namespace Graphic
 		const bool& pForce
 	)
 	{
-		int i;
 		if(mAnimationPack != NULL)
 		{
 			changeAnimation( mAnimationPack->getAnimationRealIndex(pGroup, pIndex), pForce);

@@ -1,8 +1,6 @@
-#include "graphic/video.hpp"
+/*#include "graphic/video.hpp"
 #include <core/string.hpp>
-/*
- * @todo mudar o nome do método show para swapBuffers, e mudar o nome do método updateBuffer da classe Image para swapBuffers tbm
- */
+
 namespace Gorgon{
 namespace Graphic
 {
@@ -87,4 +85,4 @@ namespace Graphic
 	{
 		
 	}
-}}
+}}*/
