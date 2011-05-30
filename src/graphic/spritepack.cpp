@@ -257,7 +257,7 @@ namespace Graphic
 					spriteSize = pFile.readInt32();
 					for(int i = 0; i < spriteSize; ++i)
 					{
-						mSprites.push_back(Sprite(pFile,pImageLoader));
+						mSprites.push_back( Sprite(pFile,pImageLoader) );
 					}
 					mPalLinked = false;
 				}

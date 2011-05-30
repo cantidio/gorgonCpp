@@ -95,6 +95,7 @@ namespace Addon
 	
 	ImageBase::ImageBase(const ImageBase& pImage)
 	{
+		mData = NULL;
 		(*this) = pImage;
 	}
 	
@@ -102,6 +103,10 @@ namespace Addon
 	{
 		if(mData != NULL)
 		{
+			if( al_get_target_bitmap() == mData )
+			{
+				al_set_target_bitmap(NULL);
+			}
 			al_destroy_bitmap(mData);
 		}
 	}
@@ -115,7 +120,7 @@ namespace Addon
 	}
 	void ImageBase::lock()
 	{
-		al_lock_bitmap(mData,  al_get_bitmap_format(mData), ALLEGRO_LOCK_WRITEONLY);
+		al_lock_bitmap(mData, al_get_bitmap_format(mData), ALLEGRO_LOCK_WRITEONLY);
 	}
 
 	void ImageBase::unlock()

@@ -195,12 +195,7 @@ namespace Graphic
 			setIndex	(header.getIndex());
 			setOffset	(header.getOffset());
 
-			pImageLoader.load
-			(
-				*this,
-				pFile,
-				header.getSizeOfData()
-			);
+			pImageLoader.load( *this, pFile, header.getSizeOfData() );
 		}
 		catch(Core::Exception& exception)
 		{
