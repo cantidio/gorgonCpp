@@ -1,9 +1,10 @@
-#include "mouse.hpp"
+#include "mouse_base.hpp"
 
-namespace Gorgon{
+namespace Gorgon {
+namespace Input  {
 namespace Addon
 {
-	MouseSDL::MouseSDL()
+	MouseBase::MouseBase()
 	{
 		mButton[Input::MouseBase::LEFT]			= SDL_BUTTON_LEFT;
 		mButton[Input::MouseBase::MIDDLE]		= SDL_BUTTON_MIDDLE;
@@ -11,24 +12,28 @@ namespace Addon
 		mButton[Input::MouseBase::WHEEL_UP]		= SDL_BUTTON_WHEELUP;
 		mButton[Input::MouseBase::WHEEL_DOWN]	= SDL_BUTTON_WHEELDOWN;
 	}
-	void MouseSDL::update()
+
+	void MouseBase::update()
 	{
 		int x,y;
 		SDL_PumpEvents();
 		mState = SDL_GetMouseState(&x, &y);
 		mPosition = Core::Point(x,y);
 	}
-	bool MouseSDL::isOpened() const
+
+	bool MouseBase::isOpened() const
 	{
 		return SDL_EventState(SDL_QUERY, SDL_MOUSEMOTION)	&&
 			SDL_EventState(SDL_QUERY, SDL_MOUSEBUTTONDOWN)	&&
 			SDL_EventState(SDL_QUERY, SDL_MOUSEBUTTONUP);
 	}
-	Core::Point MouseSDL::getPosition() const
+
+	Core::Point MouseBase::getPosition() const
 	{
 		return mPosition;
 	}
-	bool MouseSDL::getButton(const Input::MouseBase::Button& pButton) const
+
+	bool MouseBase::getButton(const Input::MouseBase::Button& pButton) const
 	{
 		if(pButton < (Input::MouseBase::LAST_BUTTON))
 		{
@@ -36,4 +41,4 @@ namespace Addon
 		}
 		return false;
 	}
-}}
+}}}

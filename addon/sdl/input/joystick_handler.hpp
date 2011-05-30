@@ -27,6 +27,7 @@
 #ifndef _GORGON_SDL_JOYSTICK_HANDLER_
 #define _GORGON_SDL_JOYSTICK_HANDLER_
 #include <gorgon++/input/joystick_handler.hpp>
+
 namespace Gorgon{
 namespace Addon
 {

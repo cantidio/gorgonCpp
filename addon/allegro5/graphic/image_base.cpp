@@ -37,6 +37,7 @@ namespace Addon
 	 */
 	inline ALLEGRO_COLOR gorgonColort2AllegroColor(const Color& pColor)
 	{
+		std::cout << pColor.describe();
 		return al_map_rgba_f(pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha());
 	}
 	/**
@@ -112,6 +113,16 @@ namespace Addon
 			al_convert_mask_to_alpha(mData, gorgonColort2AllegroColor(mAlphaMask));
 		}
 	}
+	void ImageBase::lock()
+	{
+		al_lock_bitmap(mData,  al_get_bitmap_format(mData), ALLEGRO_LOCK_WRITEONLY);
+	}
+
+	void ImageBase::unlock()
+	{
+		al_unlock_bitmap(mData);
+	}
+
 	void ImageBase::setAsTarget()
 	{
 		 al_set_target_bitmap(mData);
@@ -119,8 +130,10 @@ namespace Addon
 	
 	void ImageBase::clear(const Color& pColor) const
 	{
-		//al_clear_to_color(ALLEGRO_COLOR color)
-		/**@todo implementar isso? */
+		ALLEGRO_BITMAP* aux = al_get_target_bitmap();			//pega o target anterior
+		al_set_target_bitmap(mData);							//seta como novo target
+		al_clear_to_color( gorgonColort2AllegroColor(pColor) );	//limpa com a cor desejada
+		al_set_target_bitmap(aux);								//seta o target antigo
 	}
 	
 	void ImageBase::draw(const Core::Point& pPosition) const //draw

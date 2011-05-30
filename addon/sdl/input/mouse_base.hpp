@@ -24,70 +24,67 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_SDL_KEYBOARD_
-#define _GOROGN_SDL_KEYBOARD_
-#include <gorgon++/input/keyboard_base.hpp>
+#ifndef _GORGON_INPUT_MOUSE_BASE_ADDON_
+#define _GORGON_INPUT_MOUSE_BASE_ADDON_
+#include <gorgon++/input/mouse_base.hpp>
+#include <gorgon++/core/point.hpp>
 #include <SDL/SDL.h>
-namespace Gorgon{
+
+namespace Gorgon {
+namespace Input  {
 namespace Addon
 {
 	/**
-	 * Class that represents the keyboard implementation with SDL
+	 * Class that represents the mouse implementation with SDL
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since	07/05/2011
-	 * @version	07/05/2011
+	 * @since	10/05/2011
+	 * @version	10/05/2011
 	 */
-	class KeyboardSDL : public Input::KeyboardBase
+	class MouseBase : public Input::MouseBase
 	{
 		protected:
-			Uint8 *mState;		/**<< var that stores the state of the keyboard*/
-			SDLMod mModState;	/**<< var that stores the state of the mod keys of the keyboard*/
+			Uint8		mState;					/**<< var that stores the state of the keyboard*/
+			Core::Point	mPosition;				/**<< var that stores the position of the mouse*/
+			int			mButton[LAST_BUTTON];
 		public:
+			MouseBase();
 			/**
-			 * Constructor
+			 * Method that updates the values of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 */
-			KeyboardSDL();
+			virtual void update();
 			/**
-			 * Virtual Destructor
+			 * Method that returns if the mouse is opened
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 */
-			virtual ~KeyboardSDL();
-			/**
-			 * Method that returns if the keyboard driver is opened
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
+			 * @since	10/05/2011
+			 * @version	10/05/2011
 			 * @return	bool
 			 */
 			virtual bool isOpened() const;
 			/**
-			 * Method that updates the state of the keyboard
+			 * Method that returns the position of the mouse
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 * @details
-			 * 			This method must be called every cycle of the game
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @return	Core::Point
 			 */
-			virtual void update();
+			virtual Core::Point getPosition() const;
 			/**
-			 * Method that returns the key
+			 * Method that returns the state of a button
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/05/2011
-			 * @version	07/05/2011
-			 * @return	Input::Key
+			 * @since	10/05/2011
+			 * @version	10/05/2011
+			 * @param	const Mouse::Button& pButton, the button
+			 * @return	bool
 			 */
-			virtual Input::Key getKey(const int& pKeyValue) const;
+			virtual bool getButton(const Input::MouseBase::Button& pButton) const;
 	};
-}}
+}}}
 #endif

@@ -1,13 +1,14 @@
-#include "keyboard.hpp"
 #include <SDL/SDL.h>
 #include <SDL/SDL_keyboard.h>
 #include <gorgon++/core/log.hpp>
+#include "keyboard_base.hpp"
 
-namespace Gorgon{
+namespace Gorgon {
+namespace Input  {
 namespace Addon
 {
 	//SDLMod* mModState = NULL;
-	KeyboardSDL::KeyboardSDL()
+	KeyboardBase::KeyboardBase()
 	{
 		SDL_EnableUNICODE( 1 );
 		//SDL_WM_GrabInput(SDL_GRAB_ON);
@@ -128,22 +129,22 @@ namespace Addon
 		}
 		else
 		{
-			throw ("KeyboardSDL::KeyboardSDL(): Error: could not install the keyboard driver.");
+			throw ("KeyboardBase::KeyboardBase(): Error: could not install the keyboard driver.");
 		}
 	}
 
-	KeyboardSDL::~KeyboardSDL()
+	KeyboardBase::~KeyboardBase()
 	{
 
 	}
 
-	bool KeyboardSDL::isOpened() const
+	bool KeyboardBase::isOpened() const
 	{
 		return SDL_EventState(SDL_QUERY , SDL_KEYUP) && SDL_EventState(SDL_QUERY , SDL_KEYDOWN);
 		//return (SDL_WM_GrabInput( SDL_GRAB_QUERY ) == SDL_GRAB_ON) ? true : false;
 	}
 
-	void KeyboardSDL::update()
+	void KeyboardBase::update()
 	{
 		SDL_PumpEvents();
 		mState		= SDL_GetKeyState(NULL);//SDL1.2
@@ -151,7 +152,7 @@ namespace Addon
 		mModState	= SDL_GetModState();
 	}
 
-	Input::Key KeyboardSDL::getKey(const int& pKeyValue) const
+	Input::Key KeyboardBase::getKey(const int& pKeyValue) const
 	{
 		switch(pKeyValue)
 		{
@@ -171,4 +172,4 @@ namespace Addon
 				}
 		}
 	}
-}}
+}}}

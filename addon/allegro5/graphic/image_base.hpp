@@ -84,6 +84,8 @@ namespace Addon
 				const int&		pHeight,
 				const int&		pBpp
 			);
+			virtual void lock();
+			virtual void unlock();
 			virtual void setAsTarget();
 			/**
 			 * Method that clears the image with the requested color

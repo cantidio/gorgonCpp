@@ -287,6 +287,8 @@ namespace Graphic
 			 */
 			Color getPixel(const Core::Point& pPosition) const;
 			
+			void lock();
+			void unlock();
 			void setAsTarget();
 			
 			/**

@@ -34,21 +34,23 @@
  * @since		01/05/2008
  * @version		10/07/2009
  * @details
- *				O módulo Graphic engloba todas as funcionalidades relacionadas
- *				à parte gráfica, desde tipos de imagens, sprites, animações, cores,
- *				objeto de vídeo, entre outros
+ *				The Graphic module contains all functions related to graphics manipulation
+ *				from images, sprites, animations, colors, displays, and so on
  */
-#include "exception.hpp"
+
 #include "animation_frame.hpp"
 #include "animation.hpp"
 #include "animation_handler.hpp"
 #include "animationpack.hpp"
 #include "color.hpp"
+#include "display.hpp"
+#include "exception.hpp"
 #include "image.hpp"
+#include "image_loader.hpp"
 #include "mirroring.hpp"
 #include "palette.hpp"
 #include "sprite.hpp"
 #include "spritepack.hpp"
-#include "video.hpp"
+#include "system.hpp"
 
 #endif

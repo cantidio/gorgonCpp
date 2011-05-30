@@ -27,9 +27,10 @@
 #ifndef _GORGON_GRAPHIC_ADDON_SYSTEM_
 #define _GORGON_GRAPHIC_ADDON_SYSTEM_
 #include <gorgon++/graphic/system.hpp>
-
+//#include <gorgon++/graphic/display_base.hpp>
 namespace Gorgon	{
 namespace Graphic	{
+	class DisplayBase;
 namespace Addon
 {
 	/**
@@ -52,15 +53,37 @@ namespace Addon
 			 */
 			static void set();
 			/**
-			 * Method that returns an instance of the current joystickBase
+			 * Method that returns an instance of the current ImageBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	27/05/2011
 			 * @version	27/05/2011
-			 * @param	const int& pIndex, the index of the Joystick
-			 * @return	JoystickBase*
+			 * @return	ImageBase*
 			 */
 			virtual Graphic::ImageBase* getImage() const;
+			/**
+			 * Method that returns an instance of the display
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	29/05/2011
+			 * @version	29/05/2011
+			 * @param	const std::string&	pWindowTitle , the title of the display's window
+			 * @param	const int&			pWidth       , the width of the display
+			 * @param	const int&			pHeight      , the height of the display
+			 * @param	const bool&			pFullScreen  , if the display will begin in fullscreen
+			 * @param	const bool&			pResizeable  , if the display is resizeable
+			 * @return	Graphic::DisplayBase*
+			 */
+			virtual Graphic::DisplayBase* getDisplay
+			(
+				const std::string& pWindowTitle,
+				const int& pWidth,
+				const int& pHeight,
+				const bool& pFullScreen = false,
+				const bool& pResizeable = false
+			) const;
+
+			virtual void drawPixel(const Core::Point& pPosition, const Color& pColor);
 		protected:
 			/**
 			 * Protected Constructor

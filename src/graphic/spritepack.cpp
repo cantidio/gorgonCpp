@@ -70,7 +70,7 @@ namespace Graphic
 
 	void SpritePack::remove(const int& pPos)
 	{
-		if(pPos >= 0 && pPos < mSprites.size())
+		if(pPos >= 0 && pPos < (int)mSprites.size())
 		{
 			mSprites.erase(mSprites.begin() + pPos);
 		}
@@ -88,7 +88,7 @@ namespace Graphic
 
 	int SpritePack::getSpriteRealIndex(const int& pGroup,const int& pIndex) const
 	{
-		for(int i = 0; i < mSprites.size(); ++i)
+		for(int i = 0; i < (int)mSprites.size(); ++i)
 		{
 			if(mSprites[i].getGroup() == pGroup && mSprites[i].getIndex() == pIndex)
 			{
@@ -100,7 +100,7 @@ namespace Graphic
 
 	Sprite& SpritePack::getSprite(const int& pPos)
 	{
-		if(pPos >= 0 && pPos < mSprites.size())
+		if(pPos >= 0 && pPos < (int)mSprites.size())
 		{
 			return mSprites[pPos];
 		}
@@ -109,7 +109,7 @@ namespace Graphic
 
 	const Sprite& SpritePack::getSprite(const int& pPos) const
 	{
-		if(pPos >= 0 && pPos < mSprites.size())
+		if(pPos >= 0 && pPos < (int)mSprites.size())
 		{
 			return mSprites[pPos];
 		}

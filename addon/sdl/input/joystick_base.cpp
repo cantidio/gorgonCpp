@@ -1,9 +1,10 @@
-#include "joystick.hpp"
+#include "joystick_base.hpp"
 
-namespace Gorgon{
+namespace Gorgon {
+namespace Input  {
 namespace Addon
 {
-	JoystickSDL::JoystickSDL(const int& pIndex)
+	JoystickBase::JoystickBase(const int& pIndex)
 	{
 		//SDL_JoystickEventState(SDL_ENABLE);//habilita receber eventos dos joysticks
 		mJoystick = SDL_JoystickOpen(mIndex);
@@ -23,7 +24,7 @@ namespace Addon
 		}
 	}
 
-	JoystickSDL::~JoystickSDL()
+	JoystickBase::~JoystickBase()
 	{
 		if(isOpened())
 		{
@@ -31,17 +32,17 @@ namespace Addon
 		}
 	}
 
-	bool JoystickSDL::isOpened() const
+	bool JoystickBase::isOpened() const
 	{
 		return SDL_JoystickOpened(mIndex) ? true : false;
 	}
 
-	void JoystickSDL::update()
+	void JoystickBase::update()
 	{
 		SDL_JoystickUpdate();
 	}
 
-	Input::Stick JoystickSDL::getStick(const int& pStick) const
+	Input::Stick JoystickBase::getStick(const int& pStick) const
 	{
 		const int hats	 = SDL_JoystickNumHats(mJoystick);
 		const int sticks = SDL_JoystickNumAxes(mJoystick)/2;
@@ -73,8 +74,8 @@ namespace Addon
 		}
 	}
 
-	float JoystickSDL::getButton(const int& pButtonIndex) const
+	float JoystickBase::getButton(const int& pButtonIndex) const
 	{
 		return (pButtonIndex < mButtonNumber) ? SDL_JoystickGetButton(mJoystick, pButtonIndex) : 0;
 	}
-}}
+}}}

@@ -26,12 +26,16 @@
  */
 #ifndef _GORGON_GRAPHIC_SYSTEM_
 #define _GORGON_GRAPHIC_SYSTEM_
+#include <string>
+#include "../core/point.hpp"
 
 namespace Gorgon{
 namespace Graphic
 {
+	class DisplayBase;
 	class ImageBase;
 	class Image;
+	class Color;
 	/**
 	 * Class that represents the Graphic System
 	 *
@@ -51,6 +55,13 @@ namespace Graphic
 			 * @return	System&
 			 */
 			static System& get();
+			/**
+			 * Method that halts the graphic system
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	27/05/2011
+			 * @version	27/05/2011
+			 */
 			static void halt();
 			/**
 			 * Method that returns an instance of the current joystickBase
@@ -63,6 +74,27 @@ namespace Graphic
 			 */
 			virtual ImageBase* getImage() const = 0;
 			/**
+			 * Method that returns an instance of the display
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	29/05/2011
+			 * @version	29/05/2011
+			 * @param	const std::string&	pWindowTitle , the title of the display's window
+			 * @param	const int&			pWidth       , the width of the display
+			 * @param	const int&			pHeight      , the height of the display
+			 * @param	const bool&			pFullScreen  , if the display will begin in fullscreen
+			 * @param	const bool&			pResizeable  , if the display is resizeable
+			 * @return	Graphic::DisplayBase*
+			 */
+			virtual Graphic::DisplayBase* getDisplay
+			(
+				const std::string& pWindowTitle,
+				const int& pWidth,
+				const int& pHeight,
+				const bool& pFullScreen = false,
+				const bool& pResizeable = false
+			) const = 0;
+			/**
 			 * Method that sets the target Image
 			 *
 			 * @author	Cantidio Oliveira Fontes
@@ -71,7 +103,18 @@ namespace Graphic
 			 * @param	Image& pImage, the image that will receive the next draw operations
 			 */
 			void setTargetImage(Image& pImage);
+			/**
+			 * Method that returns the target Image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	27/05/2011
+			 * @version	27/05/2011
+			 * @param	Image& pImage, the image that will receive the next draw operations
+			 */
 			Image& getTargetImage();
+
+
+			virtual void drawPixel(const Core::Point& pPosition, const Color& pColor) = 0;
 		protected:
 			/**
 			 * Protected Constructor

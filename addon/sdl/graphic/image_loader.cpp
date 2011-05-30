@@ -31,14 +31,15 @@ namespace Gorgon
 		} // switch
 	}
 
-	int getPixel(SDL_Surface *surface, int x, int y)
+	Graphic::Color getPixel(SDL_Surface *surface, int x, int y)
 	{
-		Uint8 r=0, g=0, b=0, a=0;
+		Uint8 r=0, g=0, b=0, a=255;
 		Uint32 pixel = getpixel(surface,x,y);
 		switch(surface->format->BytesPerPixel)
 		{
 			case 1:
-				return pixel;
+				//return pixel;
+				r = g = b = pixel;
 			case 2:
 			case 3:
 				SDL_GetRGB
@@ -58,7 +59,7 @@ namespace Gorgon
 				break;
 		}
 		//printf("r:%d,g:%d,b:%d,a:%d\n",r,g,b,a);
-		return Graphic::Color(r,g,b,a).get();
+		return Graphic::Color(r/255.0f , g/255.0f, b/255.0f, a/255.0f);
 	}
 
 	ImageLoaderSDL::ImageLoaderSDL()
@@ -134,29 +135,26 @@ namespace Gorgon
 				pImage.create(sdlImage->w, sdlImage->h);
 				sdlPalette = NULL;
 			}
-
+			pImage.lock();
+			pImage.setAsTarget();
 			for(register int h = 0; h < sdlImage->h; ++h)
 			{
 				for(register int w = 0; w < sdlImage->w; ++w)
 				{
-					pImage.drawPixel
-					(
-						w,
-						h,
-						getPixel(sdlImage, w, h)
-					);
+					Graphic::System::get().drawPixel( Core::Point(w, h), getPixel(sdlImage, w, h) );
 				}
 			}
+			pImage.unlock();
 			if(sdlPalette != NULL)
 			{
-				gorgonPalette = new Graphic::Palette();
+				gorgonPalette = new Graphic::Palette(sdlPalette->ncolors);
 				for(register int i = sdlPalette->ncolors - 1; i >=0; --i)
 				{
 					gorgonPalette->setColor
 					(
-						sdlPalette->colors[i].r,
-						sdlPalette->colors[i].g,
-						sdlPalette->colors[i].b,
+						sdlPalette->colors[i].r / 255.0f,
+						sdlPalette->colors[i].g / 255.0f,
+						sdlPalette->colors[i].b / 255.0f,
 						i
 					);
 				}

@@ -9,7 +9,6 @@ namespace Core
 		const double& pY
 	)
 	{
-		int a;
 		setX(pX);
 		setY(pY);
 	}

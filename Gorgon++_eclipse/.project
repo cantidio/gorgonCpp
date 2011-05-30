@@ -642,6 +642,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/color.hpp</locationURI>
 		</link>
 		<link>
+			<name>include/graphic/display.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/display.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/display_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/display_base.hpp</locationURI>
+		</link>
+		<link>
 			<name>include/graphic/exception.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/exception.hpp</locationURI>
@@ -700,11 +710,6 @@
 			<name>include/graphic/system.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/system.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/video.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/video.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/input/.svn</name>
@@ -1087,6 +1092,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/color.cpp</locationURI>
 		</link>
 		<link>
+			<name>src/graphic/display.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/display.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/display_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/display_base.cpp</locationURI>
+		</link>
+		<link>
 			<name>src/graphic/exception.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/exception.cpp</locationURI>
@@ -1140,11 +1155,6 @@
 			<name>src/graphic/system.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/system.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/video.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/video.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/input/.svn</name>
@@ -1282,6 +1292,16 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/graphic/display_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/display_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/display_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/display_base.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/allegro5/graphic/image_base.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/image_base.cpp</locationURI>
@@ -1300,16 +1320,6 @@
 			<name>addon/allegro5/graphic/system.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/system.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/graphic/video.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/video.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/allegro5/graphic/video.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/video.hpp</locationURI>
 		</link>
 		<link>
 			<name>addon/allegro5/input/.svn</name>
@@ -1442,64 +1452,44 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/joystick.cpp</name>
+			<name>addon/sdl/input/joystick_base.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_base.cpp</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/joystick.hpp</name>
+			<name>addon/sdl/input/joystick_base.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_base.hpp</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/joystick_handler.cpp</name>
+			<name>addon/sdl/input/keyboard_base.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_handler.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_base.cpp</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/joystick_handler.hpp</name>
+			<name>addon/sdl/input/keyboard_base.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_handler.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_base.hpp</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/keyboard.cpp</name>
+			<name>addon/sdl/input/mouse_base.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_base.cpp</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/keyboard.hpp</name>
+			<name>addon/sdl/input/mouse_base.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_base.hpp</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/keyboard_handler.cpp</name>
+			<name>addon/sdl/input/system.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_handler.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/system.cpp</locationURI>
 		</link>
 		<link>
-			<name>addon/sdl/input/keyboard_handler.hpp</name>
+			<name>addon/sdl/input/system.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_handler.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/input/mouse.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/input/mouse.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse.hpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/input/mouse_handler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_handler.cpp</locationURI>
-		</link>
-		<link>
-			<name>addon/sdl/input/mouse_handler.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_handler.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/system.hpp</locationURI>
 		</link>
 		<link>
 			<name>addon/spritepack/.svn/entries</name>
@@ -4427,6 +4417,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>addon/sdl/input/.svn/text-base/joystick_handler.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
@@ -4447,6 +4447,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>addon/sdl/input/.svn/text-base/keyboard_handler.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
@@ -4465,6 +4475,16 @@
 			<name>addon/sdl/input/.svn/text-base/mouse.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_base.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>addon/sdl/input/.svn/text-base/mouse_handler.cpp.svn-base</name>

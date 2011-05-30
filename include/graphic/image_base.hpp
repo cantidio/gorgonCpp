@@ -160,7 +160,9 @@ namespace Graphic
 			 * @return	Color
 			 */
 			virtual Color getPixel(const Core::Point& pPosition) const = 0;
-				
+
+			virtual void lock()=0;
+			virtual void unlock()=0;
 			/**
 			 * @todo Pensar melhor nisso
 			 */	

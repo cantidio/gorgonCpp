@@ -61,14 +61,15 @@ namespace Graphic
 			 * @param	const float& pBlue	, the value of the blue component of the color
 			 * @param	const float& pAlpha	, the value of the alpha component of the color
 			 * @details
-			 *			the range of the component are from 0.0, to 1.0
+			 *			the range of the component are from 0.0, to 1.0.
+			 *			1.0 of alpha means that the color dont have transparence.
 			 */
 			Color
 			(
 				const float& pRed,
 				const float& pGreen,
 				const float& pBlue,
-				const float& pAlpha = 0
+				const float& pAlpha = 1.0f
 			);
 			/**
 			 * Copy Constructor
@@ -87,7 +88,7 @@ namespace Graphic
 			 * @version	29/05/2011
 			 * @return	std::string
 			 */
-			std::string describe();
+			std::string describe() const;
 			/**
 			 * Method that sets the red component of the color
 			 *
@@ -174,7 +175,7 @@ namespace Graphic
 			 * @version	29/05/2011
 			 * @return	int
 			 */
-			inline int getGreen() const
+			inline float getGreen() const
 			{
 				return mGreen;
 			}
@@ -186,7 +187,7 @@ namespace Graphic
 			 * @version	29/05/2011
 			 * @return	int
 			 */
-			inline int getBlue() const
+			inline float getBlue() const
 			{
 				return mBlue;
 			}
@@ -198,7 +199,7 @@ namespace Graphic
 			 * @version	29/05/2011
 			 * @return	int
 			 */
-			inline int getAlpha() const
+			inline float getAlpha() const
 			{
 				return mAlpha;
 			}

@@ -1,5 +1,6 @@
 #include <graphic/system.hpp>
 #include <graphic/image_base.hpp>
+#include <graphic/image.hpp>
 #include <graphic/exception.hpp>
 #include <core/log.hpp>
 
@@ -46,7 +47,7 @@ namespace Graphic
 	void System::setTargetImage(Image& pImage)
 	{
 		mTargetImage = &pImage;
-		//pImage.setAsTarget();
+		pImage.setAsTarget();
 	}
 	
 	Image& System::getTargetImage()

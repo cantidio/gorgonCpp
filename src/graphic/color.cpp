@@ -34,7 +34,7 @@ namespace Graphic
 		mAlpha	= pColor.mAlpha;
 	}
 
-	std::string Color::describe()
+	std::string Color::describe() const
 	{
 		std::stringstream out;
 		out << "Graphic::Color::describe()"				<< std::endl;

@@ -208,6 +208,22 @@ namespace Graphic
 		return (mImage != NULL) ? mImage->getPixel(pPosition) : Color(0,0,0,0);
 	}
 	
+	void Image::lock()
+	{
+		if(mImage != NULL)
+		{
+			mImage->lock();
+		}
+	}
+
+	void Image::unlock()
+	{
+		if(mImage != NULL)
+		{
+			mImage->unlock();
+		}
+	}
+
 	void Image::setAsTarget()
 	{
 		if(mImage != NULL)

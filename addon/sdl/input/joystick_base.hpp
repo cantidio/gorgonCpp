@@ -24,14 +24,14 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_SDL_JOYSTICK_
-#define _GORGON_SDL_JOYSTICK_
+#ifndef _GORGON_GRAPHIC_JOYSTICK_BASE_ADDON_
+#define _GORGON_GRAPHIC_JOYSTICK_BASE_ADDON_
 #include <gorgon++/input/joystick_base.hpp>
 #include <SDL/SDL.h>
 
-namespace Gorgon{
+namespace Gorgon {
+namespace Input  {
 namespace Addon
-//namespace SDL{
 {
 	/**
 	 * Class that represents an SDL joystick
@@ -40,7 +40,7 @@ namespace Addon
 	 * @since	06/05/2011
 	 * @version	06/05/2011
 	 */
-	class JoystickSDL : public Input::JoystickBase
+	class JoystickBase : public Input::JoystickBase
 	{
 		protected:
 			SDL_Joystick*	mJoystick; /**<< var that holds the SDL joystick*/
@@ -53,7 +53,7 @@ namespace Addon
 			 * @version	06/05/2011
 			 * @param	const int& pIndex, the index of the joystick
 			 */
-			JoystickSDL(const int& pIndex = 0);
+			JoystickBase(const int& pIndex = 0);
 			/**
 			 * Destructor
 			 *
@@ -61,7 +61,7 @@ namespace Addon
 			 * @since	04/05/2011
 			 * @version	04/05/2011
 			 */
-			virtual ~JoystickSDL();
+			virtual ~JoystickBase();
 			/**
 			 * Method that returns if the joystick is available
 			 *
@@ -99,5 +99,5 @@ namespace Addon
 			 */
 			virtual float getButton(const int& pButtonIndex) const;
 	};
-}}
+}}}
 #endif
