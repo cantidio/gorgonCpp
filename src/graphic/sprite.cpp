@@ -114,13 +114,30 @@ namespace Graphic
 		const int& pWidth,
 		const int& pHeight,
 		const Mirroring& pMirroring
-	) const //drawScaled flipped
+	) const //draw scaled flipped
 	{
-		Core::Point pP = pPosition - (mOffset + Core::Point( pWidth - getWidth(), pHeight - getHeight() )/Core::Point(2,2) );
+		Core::Point scaleFactor( pWidth / (float)getWidth(), pHeight / (float)getHeight() );//float necessário pois os operandos são int,  se não não retorna numeros quebrados
+		Core::Point position;
 
+		if((pMirroring.getType() & Mirroring::HFlip) == Mirroring::HFlip )
+		{
+			position.setX( pPosition.getX() - ( pWidth - mOffset.getX()*scaleFactor.getX() ));
+		}
+		else
+		{
+			position.setX( pPosition.getX() - mOffset.getX()*scaleFactor.getX() );
+		}
+		if((pMirroring.getType() & Mirroring::VFlip) == Mirroring::VFlip )
+		{
+			position.setY( pPosition.getY() - ( pHeight - mOffset.getY()*scaleFactor.getY() ));
+		}
+		else
+		{
+			position.setY( pPosition.getY() - mOffset.getY()*scaleFactor.getY() );
+		}
 		Image::draw
 		(
-				pP,
+			position,
 			pWidth,
 			pHeight,
 			pMirroring

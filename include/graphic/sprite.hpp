@@ -225,7 +225,7 @@ namespace Graphic
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
-			 */	
+			 */
 			void draw( const Core::Point& pPosition, const float& pAngle ) const;//draw rotated
 			/**
 			 * Method that draws the sprite in the requested position, mirroring and angle
@@ -239,7 +239,7 @@ namespace Graphic
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
-			 */	
+			 */
 			void draw//drawRotatedFlipped
 			(
 				const Core::Point&	pPosition,
@@ -251,7 +251,7 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
-			 * @version	26/05/2011
+			 * @version	01/06/2011
 			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw this Image
 			 * @param	const int&			pWidth		, the width of the resulted image
 			 * @param	const int&			pHeight		, the height of the resulted image
@@ -369,7 +369,7 @@ namespace Graphic
 			 * @param	Core::File&			pFile			, the file to save the sprite
 			 * @param	const ImageLoader*	pImageLoader	, the imageLoader
 			 */
-			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());	
+			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
 		protected:
 			int mGroup;				/**<< The group of the sprite*/
 			int mIndex;				/**<< The index of the sprite in its group*/

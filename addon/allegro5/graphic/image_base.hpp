@@ -12,7 +12,7 @@ namespace Addon
 	 *
 	 * @author	Cantidio	Oliveira Fontes
 	 * @since	26/05/2011
-	 * @version	27/05/2011
+	 * @version	01/06/2011
 	 * @see		Graphic::Image
 	 * @ingroup	Graphic::Addon
 	 */
@@ -61,8 +61,8 @@ namespace Addon
 			 * Destructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since		26/05/2011
-			 * @version	26/05/2011
+			 * @since	26/05/2011
+			 * @version	01/06/2011
 			 */
 			virtual ~ImageBase();
 			/**
@@ -84,6 +84,7 @@ namespace Addon
 				const int&		pHeight,
 				const int&		pBpp
 			);
+			//todo ver oq fazer com isso. kkkk
 			virtual void lock();
 			virtual void unlock();
 			virtual void setAsTarget();
@@ -127,11 +128,11 @@ namespace Addon
 			 * @since
 			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
 			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	conat Core::Point&	pCenter		, the center of the image	
+			 * @param	conat Core::Point&	pCenter		, the center of the image
 			 *
 			 * @see		System::setTargetImage
 			 * @see		Mirroring
-			 */	
+			 */
 			virtual void draw
 			(
 				const Core::Point&	pPosition,
@@ -145,12 +146,12 @@ namespace Addon
 			 * @since
 			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
 			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	conat Core::Point&	pCenter		, the center of the image	
+			 * @param	conat Core::Point&	pCenter		, the center of the image
 			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		System::setTargetImage
 			 * @see		Mirroring
-			 */	
+			 */
 			virtual void draw
 			(
 				const Core::Point&	pPosition,
@@ -274,7 +275,7 @@ namespace Addon
 			 * @return  bool
 			 * @todo	implement this method
 			 */
-			virtual bool isEmpty() const;	
+			virtual bool isEmpty() const;
 			/**
 			 * Operator that receives an Image and clone it to this one
 			 *
