@@ -23,7 +23,7 @@ namespace Graphic
 		}
 		return out.str();
 	}
-	
+
 	void Image::create
 	(
 		const int&		pWidth,
@@ -43,7 +43,7 @@ namespace Graphic
 		}
 		setPalette(NULL, true);
 	}
-	
+
 	Image::Image()
 	{
 		mImage			= NULL;
@@ -51,7 +51,7 @@ namespace Graphic
 		mFreeImage		= true;
 		mFreePalette	= true;
 	}
-	
+
 	Image::Image
 	(
 		const int&		pWidth,
@@ -74,7 +74,7 @@ namespace Graphic
 		mFreePalette	= true;
 		(*this) = pImage;
 	}
-	
+
 	Image::Image(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
 		mImage			= NULL;
@@ -96,7 +96,7 @@ namespace Graphic
 		if(mImage	!= NULL && mFreeImage)		delete mImage;
 		if(mPalette	!= NULL && mFreePalette)	delete mPalette;
 	}
-	
+
 	void Image::setImageBase(ImageBase* pImage, const bool& pFreeSource)
 	{
 		if(mImage != NULL && mFreeImage)
@@ -106,17 +106,17 @@ namespace Graphic
 		mImage		= pImage;
 		mFreeImage	= pFreeSource;
 	}
-	
+
 	void Image::setImageBase(const ImageBase& pImage)
 	{
 		setImageBase(pImage.clone(),true);
 	}
-	
+
 	const ImageBase* Image::getImageBase() const
 	{
 		return mImage;
 	}
-	
+
 	void Image::setPalette(Palette *pPalette, const bool& pFreeSource)
 	{
 		if(mPalette != NULL && mFreePalette)
@@ -126,17 +126,17 @@ namespace Graphic
 		mPalette		= pPalette;
 		mFreePalette	= pFreeSource;
 	}
-	
+
 	void Image::setPalette(const Palette& pPalette)
 	{
 		setPalette( pPalette.clone(), true );
 	}
-	
+
 	const Palette* Image::getPalette() const
 	{
 		return mPalette;
 	}
-	
+
 	void Image::usePalette() const
 	{
 		if(mPalette)
@@ -144,22 +144,22 @@ namespace Graphic
 			mPalette->set();
 		}
 	}
-	
+
 	int Image::getWidth() const
 	{
 		return (mImage != NULL) ? mImage->getWidth() : 0;
 	}
-	
+
 	int Image::getHeight() const
 	{
 		return (mImage != NULL) ? mImage->getHeight() : 0;
 	}
-	
+
 	int Image::getBpp() const
 	{
 		return (mImage != NULL) ? mImage->getBpp() : 0;
 	}
-	
+
 	void Image::setAlphaMask(const Color& pColor)
 	{
 		if(mImage != NULL)
@@ -167,12 +167,12 @@ namespace Graphic
 			mImage->setAlphaMask(pColor);
 		}
 	}
-	
+
 	Color Image::getAlphaMask() const
 	{
 		return (mImage != NULL) ? mImage->getAlphaMask() : Color(0,0,0,0);
 	}
-	
+
 	int Image::getColorNumber() const
 	{
 		std::vector<int> colors;
@@ -180,7 +180,7 @@ namespace Graphic
 		int color		= 0;
 		unsigned int x,y,k;
 		bool exists;
-		
+
 		for(y = 0; y < getHeight(); ++y)
 		{
 			for(x = 0; x < getWidth(); ++x)
@@ -202,12 +202,12 @@ namespace Graphic
 		}*/
 		return colors.size();
 	}
-	
+
 	Color Image::getPixel(const Core::Point& pPosition) const
 	{
 		return (mImage != NULL) ? mImage->getPixel(pPosition) : Color(0,0,0,0);
 	}
-	
+
 	void Image::lock()
 	{
 		if(mImage != NULL)
@@ -247,7 +247,7 @@ namespace Graphic
 			mImage->draw(pPosition);
 		}
 	}
-	
+
 	void Image::draw(const Core::Point& pPosition, const Mirroring& pMirroring) const
 	{
 		if(mImage != NULL)
@@ -255,7 +255,7 @@ namespace Graphic
 			mImage->draw(pPosition, pMirroring);
 		}
 	}
-	
+
 	void Image::draw//draw rotated
 	(
 		const Core::Point&	pPosition,
@@ -268,7 +268,7 @@ namespace Graphic
 			mImage->draw(pPosition, pAngle, pCenter);
 		}
 	}
-	
+
 	void Image::draw//draw rotated flipped
 	(
 		const Core::Point&	pPosition,
@@ -282,7 +282,7 @@ namespace Graphic
 			mImage->draw(pPosition, pAngle, pCenter, pMirroring);
 		}
 	}
-	
+
 	void Image::draw
 	(
 		const Core::Point& pPosition,
@@ -296,7 +296,7 @@ namespace Graphic
 			mImage->draw(pPosition,pWidth,pHeight,pMirroring);
 		}
 	}
-	
+
 	void Image::draw(const Core::Point& pPosition, const Color& pTint) const//drawTinted
 	{
 		if(mImage != NULL)
@@ -304,7 +304,7 @@ namespace Graphic
 			mImage->draw(pPosition,pTint);
 		}
 	}
-	
+
 	void Image::draw
 	(
 		const Core::Point& pPosition,
@@ -317,7 +317,7 @@ namespace Graphic
 			mImage->draw(pPosition, pTint, pMirroring);
 		}
 	}
-	
+
 	void Image::draw
 	(
 		const Core::Point& pPosition,
@@ -331,7 +331,7 @@ namespace Graphic
 			mImage->draw(pPosition, pTint, pAngle, pCenter);
 		}
 	}
-	
+
 	void Image::draw
 	(
 		const Core::Point&	pPosition,
@@ -346,7 +346,7 @@ namespace Graphic
 			mImage->draw(pPosition, pTint, pAngle, pCenter, pMirroring);
 		}
 	}
-			
+
 	bool Image::isEmpty() const
 	{
 		register Core::Point pos;
@@ -396,17 +396,17 @@ namespace Graphic
 		setImageBase	((pImage.mImage		!= NULL) ? pImage.mImage->clone()	: NULL, true);
 		setPalette		((pImage.mPalette	!= NULL) ? pImage.mPalette->clone()	: NULL, true);
 	}
-	
+
 	void Image::load(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
-		setImageBase(System::get().getImage(),true);
-		pImageLoader.load(*this,pFileName);
+
+		pImageLoader.load(*this, pFileName);
 	}
 
 	void Image::load(Core::File& pFile, const ImageLoader& pImageLoader)
 	{
-		setImageBase(System::get().getImage(),true);
-		pImageLoader.load(*this,pFile);
+		setImageBase(System::get().getImage(), true);
+		pImageLoader.load(*this, pFile);
 	}
 
 	void Image::save(const std::string& pFileName,const ImageLoader& pImageLoader)

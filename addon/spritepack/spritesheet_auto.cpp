@@ -38,7 +38,7 @@ namespace Addon
 		if(current.getX() < pInit.getX())	pInit.setX(current.getX());
 		if(current.getX() > pEnd.getX())	pEnd.setX(current.getX());
 		if(current.getY() > pEnd.getY())	pEnd.setY(current.getY());
-
+/*
 		if //cima
 		(
 			current.getY() - 1  > pInit.getY()
@@ -111,26 +111,26 @@ namespace Addon
 		(
 			current.getY() - 1 > pInit.getY()
 			&& current.getX() + 1 < pImage.getWidth()
-			&& pImage.getColor(current.getX() + 1,current.getY() - 1) != pTransparentColor
-			&& !positionInVector(pPositions,Core::Point(current.getX() + 1,current.getY() - 1))
+			&& pImage.getColor(current + Core::Point(1,-1) ) != pTransparentColor
+			&& !positionInVector(pPositions,current + Core::Point(1,-1) )
 		)
 		{
 //			printf("direita-cima\n");
-			pPositions.push_back(Core::Point(current.getX() + 1,current.getY() - 1));
+			pPositions.push_back( current + Core::Point(1,-1) );
 			findImageLimits(pImage,pPositions,pInit,pEnd,pTransparentColor);
 		}
 		if //direita baixo
 		(
 			current.getY() + 1 < pImage.getHeight()
 			&& current.getX() + 1 < pImage.getWidth()
-			&& pImage.getColor(current.getX() + 1, current.getY() + 1) != pTransparentColor
-			&& !positionInVector(pPositions,Core::Point(current.getX() + 1,current.getY() + 1))
+			&& pImage.getPixel(current + Core::Point(1,1)) != pTransparentColor
+			&& !positionInVector(pPositions, current + Core::Point(1,1))
 		)
 		{
 //			printf("direita-baixo\n");
 			pPositions.push_back(Core::Point(current.getX() + 1,current.getY() + 1));
 			findImageLimits(pImage,pPositions,pInit,pEnd,pTransparentColor);
-		}
+		}*/
 	}
 
 	SpriteSheetAuto::SpriteSheetAuto(const Graphic::Image pImageSheet,const Graphic::Color& pTransparentColor)
@@ -143,7 +143,7 @@ namespace Addon
 		{
 			for(pos.setX(0); pos.getX() < imageSheet.getWidth(); pos.addX(1))
 			{
-				if(imageSheet.getColor(pos.getX(),pos.getY()) != pTransparentColor)
+				if(imageSheet.getPixel(pos) != pTransparentColor)
 				{
 					init = end = pos;
 					positions.clear();
@@ -166,33 +166,22 @@ namespace Addon
 							(
 								width,
 								height,
-								imageSheet.getColorDepth()
+								imageSheet.getBpp()
 							),
 							0,
 							0
 						)
-					);
+					);/*
 					(*this)[getSize() - 1].blitImage(imageSheet,Core::Point(0,0),init,width,height);
 					(*this)[getSize() - 1].updateBuffer();
 
-					/**
-					 * @todo verificar o erro abaixo, axo que é por causa da paleta de cores, quando tem uma
-					 */
+
 					imageSheet.drawRectangle
 					(
 						init,
 						init + Core::Point(width, height),
 						pTransparentColor,
 						true
-					);
-					/*rectfill
-					(
-						pImageSheet.getImg(),
-						init.getX(),
-						init.getY(),
-						end.getX(),
-						end.getY(),
-						pTransparentColor
 					);*/
 				}
 			}

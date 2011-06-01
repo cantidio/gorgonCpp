@@ -2,6 +2,8 @@
 #include <graphic/exception.hpp>
 #include <sstream>
 
+#include <core/debug.hpp>
+
 namespace Gorgon{
 namespace Graphic
 {
@@ -16,7 +18,14 @@ namespace Graphic
 		out << Image::describe();
 		return out.str();
 	}
-	
+
+	Sprite::Sprite()
+	{
+		mGroup	= 0;
+		mIndex	= 0;
+		mOffset	= Core::Point(0,0);
+	}
+
 	Sprite::Sprite
 	(
 		const Image&		pImage,
@@ -35,7 +44,7 @@ namespace Graphic
 		mGroup		= pSpriteOrig.mGroup;
 		mIndex		= pSpriteOrig.mIndex;
 		mOffset		= pSpriteOrig.mOffset;
-	}	
+	}
 
 	Sprite::Sprite(const std::string& pSpriteName, const ImageLoader& pImageLoader) : Image()
 	{
@@ -46,7 +55,7 @@ namespace Graphic
 	{
 		load(pFile,pImageLoader);
 	}
-	
+
 	void Sprite::trim()
 	{
 		/*int x = getDelimiterLeft();
@@ -64,7 +73,7 @@ namespace Graphic
 	{
 		Image::draw(pPosition - mOffset);
 	}
-	
+
 	void Sprite::draw(const Core::Point& pPosition, const Mirroring& pMirroring) const//drawFlipped
 	{
 		Core::Point position = pPosition - mOffset;
@@ -78,12 +87,12 @@ namespace Graphic
 		}
 		Image::draw(pPosition, pMirroring);
 	}
-	
+
 	void Sprite::draw( const Core::Point& pPosition, const float& pAngle ) const//draw rotated
 	{
 		Image::draw(pPosition, pAngle, mOffset);
 	}
-	
+
 	void Sprite::draw//draw rotated flipped
 	(
 		const Core::Point&	pPosition,
@@ -107,20 +116,22 @@ namespace Graphic
 		const Mirroring& pMirroring
 	) const //drawScaled flipped
 	{
+		Core::Point pP = pPosition - (mOffset + Core::Point( pWidth - getWidth(), pHeight - getHeight() )/Core::Point(2,2) );
+
 		Image::draw
 		(
-			pPosition - (mOffset * Core::Point( pWidth/getWidth(), pHeight/getHeight() ) ),
+				pP,
 			pWidth,
 			pHeight,
 			pMirroring
 		);
 	}
-	
+
 	void Sprite::draw(const Core::Point& pPosition, const Color& pTint) const//drawTinted
 	{
 		Image::draw(pPosition - mOffset, pTint);
 	}
-	
+
 	void Sprite::draw
 	(
 		const Core::Point& pPosition,
@@ -139,7 +150,7 @@ namespace Graphic
 		}
 		Image::draw(position,pTint,pMirroring);
 	}
-	
+
 	void Sprite::draw
 	(
 		const Core::Point&	pPosition,
@@ -149,7 +160,7 @@ namespace Graphic
 	{
 		Image::draw(pPosition, pTint, pAngle, mOffset);
 	}
-	
+
 	void Sprite::draw
 	(
 		const Core::Point&	pPosition,
@@ -165,11 +176,11 @@ namespace Graphic
 		}
 		Image::draw(pPosition, pTint, pAngle, offset, pMirroring);
 	}
-	
+
 	void Sprite::load(const std::string& pSpriteName, const ImageLoader& pImageLoader)
 	{
 		Core::File file(pSpriteName,std::ios::in | std::ios::binary);
-		
+
 		if(file.is_open())
 		{
 			load(file, pImageLoader);

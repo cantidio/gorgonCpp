@@ -17,7 +17,7 @@ namespace Addon
 		{
 			for(j = pPosition.getX(); j < pImage.getWidth(); ++j)
 			{
-				if( pImage.getColor(j,i) == pBGCol || j == (pImage.getWidth() - 1) )
+				if( pImage.getPixel( Core::Point(j,i)) == pBGCol || j == (pImage.getWidth() - 1) )
 				{
 					if(j - pPosition.getX() > width)
 					{
@@ -36,7 +36,10 @@ namespace Addon
 		{
 			return 1;
 		}
-		Graphic::Sprite sprite(Graphic::Image(width,height,pImage.getColorDepth()),pGroup,pIndex);
+		/*Graphic::Sprite sprite(Graphic::Image(width,height,pImage.getBpp()),pGroup,pIndex);
+		sprite.setAsTarget();
+		pImage.draw(Core::Point(0,0))
+
 		sprite.blitImage(pImage,Core::Point(0,0), pPosition, width, height);
 		sprite.updateBuffer();
 		if(!sprite.isEmpty())
@@ -49,7 +52,7 @@ namespace Addon
 			pPosition + Core::Point(width,height),
 			pBGCol,
 			true
-		);
+		);*/
 		return width;
 	}
 
@@ -68,7 +71,7 @@ namespace Addon
 		{
 			for(pos.setX(0), index = 0; pos.getX() < imageSheet.getWidth(); pos.addX(1))
 			{
-				if(imageSheet.getColor(pos.getX(),pos.getY()) != pBackgroundColor)
+				if(imageSheet.getPixel(pos) != pBackgroundColor)
 				{
 					const int offset = getSpriteInSpriteSheet
 					(
@@ -90,11 +93,11 @@ namespace Addon
 		mPalLinked = false;
 		if(imageSheet.getPalette())
 		{
-			mGlobalPalette	= imageSheet.getPalette()->copy();
+			mGlobalPalette	= imageSheet.getPalette()->clone();
 		}
 		else
 		{
-			mGlobalPalette	= new Graphic::Palette(255,0,255);
+			mGlobalPalette	= new Graphic::Palette();
 		}
 		applyGlobalPalette();
 	}

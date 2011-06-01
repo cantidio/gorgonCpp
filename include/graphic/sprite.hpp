@@ -50,8 +50,16 @@ namespace Graphic
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
+			 * @since	30/05/2011
+			 * @version	30/05/2011
+			 */
+			Sprite();
+			/**
+			 * Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	03/05/2011
+			 * @version	30/05/2011
 			 * @param	const Image&		pImage	, image of the sprite
 			 * @param	const int&			pGroup	, group of the sprite
 			 * @param	const int&			pIndex	, index of the sprite

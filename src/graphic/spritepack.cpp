@@ -9,13 +9,15 @@ namespace Graphic
 
 	SpritePack::SpritePack()
 	{
-		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
+		if(mNotFound == NULL)	mNotFound = new Sprite( Image(1, 1) );
 		mGlobalPalette	= new Palette(256);
 		mPalLinked		= false;
 	}
 
 	SpritePack::SpritePack(const SpritePack& pSpritePackOriginal)
 	{
+		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
+/*@todo desalocar antes de receber*/
 		mGlobalPalette	= NULL;
 		mPalLinked		= false;
 		(*this) = pSpritePackOriginal;

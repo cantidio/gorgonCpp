@@ -39,7 +39,7 @@ namespace Physics
 				mMaximum.getX() - mMinimum.getX() + 1,
 				mMaximum.getY() - mMinimum.getY() + 1
 			),0,0,
-			(mMaximum - mMinimum)/2
+			(mMaximum - mMinimum) / Core::Point(2,2)
 		);
 /*		if( getVerticesNumber() > 2)
 		{

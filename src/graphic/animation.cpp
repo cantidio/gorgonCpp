@@ -116,7 +116,7 @@ namespace Graphic
 
 	void Animation::remove(const int& pPos)
 	{
-		if(pPos >= 0 && pPos < mFrame.size())
+		if(pPos >= 0 && pPos < (int)mFrame.size())
 		{
 			mFrame.erase(mFrame.begin() + pPos);
 		}
@@ -146,7 +146,7 @@ namespace Graphic
 	{
 		return mLooping;
 	}
-	
+
 	int Animation::getLoopFrame() const
 	{
 		return mLoopFrame;
@@ -189,7 +189,7 @@ namespace Graphic
 		pFile.writeInt32(getGroup());
 		pFile.writeInt32(getIndex());
 		pFile.writeBool(getLooping());
-		
+
 		if(getLooping())
 		{
 			pFile.writeInt32(getLoopFrame());
@@ -201,7 +201,7 @@ namespace Graphic
 			mFrame[i].save(pFile);
 		}
 	}
-	
+
 	void Animation::save(const std::string& pFileName)
 	{
 		Core::File file(pFileName,std::ios::out | std::ios::binary);
@@ -267,7 +267,7 @@ namespace Graphic
 
 	AnimationFrame& Animation::operator [](const int& pPos)
 	{
-		if(pPos >= 0 && pPos < mFrame.size())
+		if(pPos >= 0 && pPos < (int)mFrame.size())
 		{
 			return mFrame[pPos];
 		}
@@ -279,7 +279,7 @@ namespace Graphic
 
 	const AnimationFrame& Animation::operator [](const int& pPos) const
 	{
-		if(pPos >= 0 && pPos < mFrame.size())
+		if(pPos >= 0 && pPos < (int)mFrame.size())
 		{
 			return mFrame[pPos];
 		}

@@ -24,24 +24,24 @@ namespace Addon
 						(
 							pWidth,
 							pHeight,
-							pImageSheet.getColorDepth()
+							pImageSheet.getBpp()
 						),
 						group,
 						index
 					)
 				);
-				(*this)[getSize()-1].clear();
-				(*this)[getSize()-1].blitImage(pImageSheet,Core::Point(0,0),Core::Point(i,j),pWidth,pHeight);
+//				(*this)[getSize()-1].clear();
+//				(*this)[getSize()-1].blitImage(pImageSheet,Core::Point(0,0),Core::Point(i,j),pWidth,pHeight);
 			}
 		}
 		mPalLinked = false;
 		if(pImageSheet.getPalette())
 		{
-			mGlobalPalette	= pImageSheet.getPalette()->copy();
+			mGlobalPalette	= pImageSheet.getPalette()->clone();
 		}
 		else
 		{
-			mGlobalPalette	= new Graphic::Palette(255,0,255);
+			mGlobalPalette	= new Graphic::Palette();
 		}
 		applyGlobalPalette();
 	}

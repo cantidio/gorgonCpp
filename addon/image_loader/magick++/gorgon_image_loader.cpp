@@ -2,6 +2,8 @@
 #include <ImageMagick/Magick++.h>
 #include <gorgon++/graphic/image.hpp>
 #include <gorgon++/graphic/exception.hpp>
+#include <gorgon++/graphic/system.hpp>
+#include <sstream>
 // /usr/include/ImageMagick
 
 namespace Gorgon
@@ -65,24 +67,22 @@ namespace Gorgon
 				magickImage.size().width(),
 				magickImage.size().height()
 			);
+			//pImage.setAsTarget();
+			pImage.lock();
 			for(register int h = 0; h < magickImage.size().height(); ++h)
 			{
 				for(register int w = 0; w < magickImage.size().width(); ++w)
 				{
 					magickColor = magickImage.pixelColor ( w, h );
-					gorgonColor.setRed		(magickColor.red()*255);
-					gorgonColor.setGreen	(magickColor.green()*255);
-					gorgonColor.setBlue		(magickColor.blue()*255);
-					gorgonColor.setAlpha	((magickColor.alpha() >= 0 ) ? 0 : magickColor.alpha()*255);//feito pare eliminar lixo
+					gorgonColor.setRed		(magickColor.red());
+					gorgonColor.setGreen	(magickColor.green());
+					gorgonColor.setBlue		(magickColor.blue());
+					gorgonColor.setAlpha	(1.0f - magickColor.alpha());//feito pare eliminar lixo
 
-					pImage.drawPixel
-					(
-						w,
-						h,
-						gorgonColor.get()
-					);
+					Graphic::System::get().drawPixel( Core::Point(w, h), gorgonColor );
 				}
 			}
+			pImage.unlock();
 		}
 		catch(Magick::Exception& e)
 		{
@@ -106,6 +106,7 @@ namespace Gorgon
 		Magick::Image		magickImage;
 		Magick::ColorRGB	magickColor;
 		Magick::Blob		magickBlob;
+		Graphic::Color		gorgonColor;
 		try
 		{
 			magickSize.width	( pImage.getWidth()  );
@@ -121,10 +122,11 @@ namespace Gorgon
 			{
 				for(unsigned int w = 0; w < pImage.getWidth(); ++w)
 				{
-					magickColor.red		( pImage.getColor(w,h).getRed()		/ (double)255);
-					magickColor.green	( pImage.getColor(w,h).getGreen()	/ (double)255);
-					magickColor.blue	( pImage.getColor(w,h).getBlue()	/ (double)255);
-					magickColor.alpha	( pImage.getColor(w,h).getAlpha()	/ (double)255);
+					gorgonColor = pImage.getPixel(Core::Point(w,h));
+					magickColor.red		( gorgonColor.getRed());
+					magickColor.green	( gorgonColor.getGreen());
+					magickColor.blue	( gorgonColor.getBlue());
+					magickColor.alpha	( gorgonColor.getAlpha());
 					magickImage.pixelColor (w, h, magickColor );
 				}
 			}

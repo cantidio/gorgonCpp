@@ -30,6 +30,14 @@
 namespace Gorgon{
 namespace Graphic
 {
+
+	/*struct MirrorType {
+		char Type;
+	};
+	struct HFLlip : MirrorType
+	{
+		HFlip();
+	}*/
 	/**
 	 * Classe para tratar de espelhamento
 	 *
@@ -41,6 +49,7 @@ namespace Graphic
 	class Mirroring
 	{
 		public:
+			//typedef char MType ;
 			/**
 			 * Tipos de espelhamento
 			 */

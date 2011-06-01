@@ -3116,7 +3116,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="addon/allegro5|addon/sdl|src|examples" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="addon/spritepack|addon/image_loader/gorgon++|addon/allegro5|addon/sdl|src|examples" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -4117,7 +4117,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.so.release.1378870142" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.so.release">
 								<option id="gnu.cpp.link.option.libs.424054654" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs"/>
-								<option id="gnu.cpp.link.option.flags.1691007488" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="`pkg-config allegro-5.0 --libs `" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.1691007488" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="" valueType="string"/>
 								<option defaultValue="true" id="gnu.cpp.link.so.release.option.shared.1302733573" name="Shared (-shared)" superClass="gnu.cpp.link.so.release.option.shared" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.989298429" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>

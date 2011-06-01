@@ -1,8 +1,15 @@
 #include "core/point.hpp"
+#include <sstream>
 
 namespace Gorgon{
 namespace Core
 {
+	Point::Point()
+	{
+		setX(0);
+		setY(0);
+	}
+
 	Point::Point
 	(
 		const double& pX,
@@ -13,22 +20,19 @@ namespace Core
 		setY(pY);
 	}
 
-	Point::Point(const double& pValue)
-	{
-		setX(pValue);
-		setY(pValue);
-	}
-	
 	Point::Point(const Point& pPoint)
 	{
 		setX(pPoint.getX());
 		setY(pPoint.getY());
 	}
 	
-	void Point::describe() const
+	std::string Point::describe() const
 	{
-		std::cout << "x: " << getX() << std::endl;
-		std::cout << "y: " << getY() << std::endl;
+		std::stringstream out;
+		out << "Gorgon::Core::Point::describe()" << std::endl;
+		out << "x: " << getX() << std::endl;
+		out << "y: " << getY() << std::endl;
+		return out.str();
 	}
 	
 	bool Point::operator == (const Point& pPoint) const

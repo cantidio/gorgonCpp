@@ -68,19 +68,19 @@ namespace Addon
 			if(!reusePalette)
 			{
 				pFile.seekg(pFile.beg + nextSubFile - 768);
-				temp.setPalette(new Graphic::Palette(pFile), true);
-				temp.getPalette()->inverse();
+				Graphic::Palette* palette = new Graphic::Palette(pFile);
+				palette->inverse();
+				temp.setPalette(palette, true);
 			}
 			else if(getSize() > 0)
 			{
-				temp.setPalette( (*this)[getSize()-1].getPalette()->copy() , true);
+				temp.setPalette( (*this)[getSize()-1].getPalette()->clone() , true);
 			}
 			else
 			{
 				temp.setPalette(NULL);
 			}
 			pFile.seekg(pFile.beg + nextSubFile);
-			temp.updateBuffer();
 			return temp;
 		}
 	}

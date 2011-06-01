@@ -40,6 +40,7 @@ namespace Gorgon
 			case 1:
 				//return pixel;
 				r = g = b = pixel;
+				break;
 			case 2:
 			case 3:
 				SDL_GetRGB
@@ -117,7 +118,7 @@ namespace Gorgon
 				raiseGraphicException("ImageLoaderSDL::load(pImage,pFile,pDataLength): Error, could not allocate memory.");
 			}
 			pFile.read((char*)mData, mDataLength);
-			
+
 			sdlFile		= SDL_RWFromMem((void*)mData, mDataLength);
 			sdlImage	= IMG_Load_RW(sdlFile, 0);
 			if(sdlImage == NULL)
@@ -135,8 +136,9 @@ namespace Gorgon
 				pImage.create(sdlImage->w, sdlImage->h);
 				sdlPalette = NULL;
 			}
-			pImage.lock();
 			pImage.setAsTarget();
+			pImage.lock();
+
 			for(register int h = 0; h < sdlImage->h; ++h)
 			{
 				for(register int w = 0; w < sdlImage->w; ++w)
@@ -144,6 +146,7 @@ namespace Gorgon
 					Graphic::System::get().drawPixel( Core::Point(w, h), getPixel(sdlImage, w, h) );
 				}
 			}
+
 			pImage.unlock();
 			if(sdlPalette != NULL)
 			{

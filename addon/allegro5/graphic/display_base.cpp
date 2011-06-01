@@ -26,7 +26,7 @@ namespace Addon
 		);
 
 		mData			= al_create_display(pWidth, pHeight);
-		
+
 		if(mData == NULL)
 		{
 			std::stringstream out;
@@ -34,7 +34,7 @@ namespace Addon
 			out << (pFullScreen ? "true" : "false") << ", " << (pResizeable ? "true" : "false") << "): Error, could not create the display.";
 			raiseGraphicException( out.str() );
 		}
-		
+
 		setWindowTitle(pWindowTitle);
 		Core::logWriteFormatted
 		(
@@ -46,7 +46,7 @@ namespace Addon
 			(pResizeable ? "true" : "false")
 		);
 	}
-	
+
 	DisplayBase::~DisplayBase()
 	{
 		if( mData )
@@ -65,12 +65,13 @@ namespace Addon
 		mFullScreen = !mFullScreen;
 		return al_toggle_display_flag( mData, ALLEGRO_FULLSCREEN_WINDOW, mFullScreen );
 	}
-	
+
 	//al_resize_display
-	
+
 	void DisplayBase::setAsTarget()
 	{
-		al_set_target_backbuffer(mData);
+	    al_set_target_bitmap(al_get_backbuffer(mData));
+		//al_set_target_backbuffer(mData);
 	}
 
 	void DisplayBase::clear(const Color& pColor)

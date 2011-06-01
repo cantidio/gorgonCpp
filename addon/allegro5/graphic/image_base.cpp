@@ -1,6 +1,8 @@
 #include <allegro5/allegro.h>
 #include <gorgon++/graphic/exception.hpp>
 #include "image_base.hpp"
+#include <iostream>
+#include <typeinfo>
 
 namespace Gorgon	{
 namespace Graphic	{
@@ -37,7 +39,6 @@ namespace Addon
 	 */
 	inline ALLEGRO_COLOR gorgonColort2AllegroColor(const Color& pColor)
 	{
-		std::cout << pColor.describe();
 		return al_map_rgba_f(pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha());
 	}
 	/**
@@ -65,23 +66,31 @@ namespace Addon
 	{
 		if(mData != NULL)
 		{
+			if( al_get_target_bitmap() == mData )
+			{
+				al_set_target_bitmap(NULL);
+			}
 			al_destroy_bitmap(mData);
 		}
 		mData	= al_create_bitmap(pWidth, pHeight);
 		mBpp	= (mData != NULL) ? al_get_pixel_format_bits(al_get_bitmap_format(mData)) : 0;
 		mWidth	= pWidth;
 		mHeight	= pHeight;
+
 		if(mData == NULL)
 		{
 			raiseGraphicException("ImageBase::create(): Error, could not create the image data.");
 		}
 	}
-		
+
 	ImageBase::ImageBase()
 	{
-		mData = NULL;
+		mData   = NULL;
+		mWidth  = 0;
+		mHeight = 0;
+		mBpp    = 0;
 	}
-	
+
 	ImageBase::ImageBase
 	(
 		const int& pWidth,
@@ -92,25 +101,26 @@ namespace Addon
 		mData = NULL;
 		create(pWidth, pHeight, pBpp);
 	}
-	
+
 	ImageBase::ImageBase(const ImageBase& pImage)
 	{
 		mData = NULL;
 		(*this) = pImage;
 	}
-	
+
 	ImageBase::~ImageBase()
 	{
 		if(mData != NULL)
 		{
-			if( al_get_target_bitmap() == mData )
+			/*if( al_get_target_bitmap() == mData )
 			{
 				al_set_target_bitmap(NULL);
-			}
+			}*/
 			al_destroy_bitmap(mData);
+			mData = NULL;
 		}
 	}
-	
+
 	void ImageBase::applyAlphaMask()
 	{
 		if(mData != NULL)
@@ -118,9 +128,10 @@ namespace Addon
 			al_convert_mask_to_alpha(mData, gorgonColort2AllegroColor(mAlphaMask));
 		}
 	}
+
 	void ImageBase::lock()
 	{
-		al_lock_bitmap(mData, al_get_bitmap_format(mData), ALLEGRO_LOCK_WRITEONLY);
+		al_lock_bitmap(mData, al_get_bitmap_format(mData), ALLEGRO_LOCK_READWRITE);
 	}
 
 	void ImageBase::unlock()
@@ -132,7 +143,7 @@ namespace Addon
 	{
 		 al_set_target_bitmap(mData);
 	}
-	
+
 	void ImageBase::clear(const Color& pColor) const
 	{
 		ALLEGRO_BITMAP* aux = al_get_target_bitmap();			//pega o target anterior
@@ -140,7 +151,7 @@ namespace Addon
 		al_clear_to_color( gorgonColort2AllegroColor(pColor) );	//limpa com a cor desejada
 		al_set_target_bitmap(aux);								//seta o target antigo
 	}
-	
+
 	void ImageBase::draw(const Core::Point& pPosition) const //draw
 	{
 		al_draw_bitmap
@@ -151,7 +162,7 @@ namespace Addon
 			0
 		);
 	}
-	
+
 	void ImageBase::draw(const Core::Point& pPosition, const Mirroring& pMirroring) const //drawFlip
 	{
 		al_draw_bitmap
@@ -161,7 +172,7 @@ namespace Addon
 			gorgonMirroring2AllegroMirroring(pMirroring)
 		);
 	}
-	
+
 	void ImageBase::draw
 	(
 		const Core::Point&	pPosition,
@@ -178,7 +189,7 @@ namespace Addon
    			0
    		);
 	}
-	
+
 	void ImageBase::draw
 	(
 		const Core::Point&	pPosition,
@@ -196,7 +207,7 @@ namespace Addon
    			gorgonMirroring2AllegroMirroring(pMirroring)
    		);
 	}
-	
+
 	void ImageBase::draw
 	(
 		const Core::Point& pPosition,
@@ -215,7 +226,7 @@ namespace Addon
 			gorgonMirroring2AllegroMirroring(pMirroring)
 		);
 	}
-	
+
 	void ImageBase::draw(const Core::Point&	pPosition, const Color& pTint) const //draw tinted
 	{
 		al_draw_tinted_bitmap
@@ -226,7 +237,7 @@ namespace Addon
 			0
 		);
 	}
-	
+
 	void ImageBase::draw
 	(
 		const Core::Point& pPosition,
@@ -281,7 +292,7 @@ namespace Addon
    			gorgonMirroring2AllegroMirroring(pMirroring)
    		);
 	}
-	
+
 	Color ImageBase::getPixel(const Core::Point& pPosition) const
 	{
 		return allegroColor2GorgonColor
@@ -294,32 +305,34 @@ namespace Addon
 			)
 		);
 	}
-	
+
 	bool ImageBase::isEmpty() const
 	{
 		return false;
 	}
-	
+
 	void ImageBase::operator =(const ImageBase& pImage)
 	{
 		if(mData != NULL)
 		{
 			al_destroy_bitmap(mData);
 		}
-		mData			= (pImage.mData != NULL)	? al_clone_bitmap(pImage.mData)							: NULL;
-		mBpp			= (mData != NULL)			? al_get_pixel_format_bits(al_get_bitmap_format(mData))	: 0;
+		mData   = (pImage.mData != NULL) ? al_clone_bitmap(pImage.mData) : NULL;
+		mBpp    = pImage.mBpp;
+		mWidth  = pImage.mWidth;
+		mHeight = pImage.mHeight;
 
 		if(mData == NULL && pImage.mData != NULL)
 		{
 			raiseGraphicException("ImageBase::operator = () : Error, could not clone the data.");
 		}
 	}
-	
+
 	bool ImageBase::operator ==(const Graphic::ImageBase& pImage) const
 	{
 		return false;
 	}
-	
+
 	Graphic::ImageBase* ImageBase::clone() const
 	{
 		return new ImageBase(*this);

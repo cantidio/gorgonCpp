@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_CORE_POINT_
 #define _GORGON_CORE_POINT_
-#include <iostream>
+#include <string>
 
 namespace Gorgon{
 namespace Core
@@ -57,20 +57,19 @@ namespace Core
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	12/11/2008
+			 * @version	30/05/2011
+			 */
+			Point();
+			/**
+			 * Constructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	12/11/2008
 			 * @version	05/10/2010
 			 * @param	const double&	pX	, the value of the x axis of the point
 			 * @param	const double&	pY	, the value of the y axis of the point
 			 */
 			Point(const double&	pX, const double& pY);
-			/**
-			 * Constructor
-			 *
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	07/08/2009
-			 * @version	05/10/2010
-			 * @param	const double& pValue , the value of the x and y axis of the point
-			 */
-			Point(const double& pValue = 0);
 			/**
 			 * Copy Constructor
 			 * 
@@ -85,10 +84,10 @@ namespace Core
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	12/11/2008
-			 * @version	05/10/2010
-			 * @todo	maybe return a string like all the others describers 
+			 * @version	30/05/2011
+			 * @returns	std::string
 			 */
-			void describe() const;
+			std::string describe() const;
 			/**
 			 * Method to set the x axis of the point
 			 *
