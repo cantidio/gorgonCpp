@@ -40,7 +40,7 @@ namespace Graphic
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	22/01/2009
-	 * @version	06/01/2011
+	 * @version	03/06/2011
 	 * @ingroup	Graphic
 	 */
 	class SpritePack
@@ -185,7 +185,7 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	01/06/2011
-			 * @version	01/06/2011
+			 * @version	03/06/2011
 			 * @param	const Color& pColor, the color that will be converted in transparent
 			 */
 			void setAlphaMask(const Color& pColor);

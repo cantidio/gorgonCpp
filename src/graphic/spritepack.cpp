@@ -53,7 +53,7 @@ namespace Graphic
 
 	void SpritePack::setAlphaMask(const Color& pColor)
 	{
-		for(register int i = getSize() - 1; i >=0 ;  ++i)
+		for(register int i = getSize() - 1; i >=0 ;  --i)
 		{
 			mSprites[i].setAlphaMask(pColor);
 		}

@@ -132,7 +132,6 @@ namespace Addon
 	{
 		if(mData != NULL)
 		{
-			printf("buceta\n");
 			al_convert_mask_to_alpha(mData, gorgonColort2AllegroColor(mAlphaMask));
 		}
 	}
