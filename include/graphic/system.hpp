@@ -111,7 +111,7 @@ namespace Graphic
 			 * @version	27/05/2011
 			 * @param	Image& pImage, the image that will receive the next draw operations
 			 */
-			Image& getTargetImage();
+			Image* getTargetImage();
 
 
 			virtual void drawPixel(const Core::Point& pPosition, const Color& pColor) = 0;
@@ -141,7 +141,7 @@ namespace Graphic
 			 * @param	System* pSystem, pointer the graphic system
 			 */
 			static void set(System* pSystem);
-		private:	
+		private:
 			static System*	mSingleton;		/**<< Singleton instance of the class*/
 			bool			mInit;			/**<< True if the graphic system is running, false otherwise*/
 			Image*			mTargetImage;	/**<< The targetImage, this stores the image that will receive all the draw operations*/

@@ -53,8 +53,8 @@ namespace Graphic
 		pImage.applyAsTarget();
 	}
 
-	Image& System::getTargetImage()
+	Image* System::getTargetImage()
 	{
-		return *mTargetImage;
+		return mTargetImage;
 	}
 }}
