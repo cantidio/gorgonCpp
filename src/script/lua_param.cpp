@@ -5,13 +5,13 @@ namespace Gorgon{
 namespace Script
 {
 	LuaParam::LuaParam(){}
-	
+
 	LuaParam::LuaParam(const std::string& pDesc, ...)
 	{
 		va_list args;
 		va_start(args,pDesc);
 
-		for(int i = 0; i < pDesc.length(); ++i)
+		for(unsigned int i = 0; i < pDesc.length(); ++i)
 		{
 			switch(pDesc[i])
 			{
@@ -51,7 +51,7 @@ namespace Script
 
 	void LuaParam::pushAll(lua_State* pState) const
 	{
-		for(int i = 0; i < mArgs.size(); ++i)
+		for(unsigned int i = 0; i < mArgs.size(); ++i)
 		{
 			mArgs[i].push(pState);
 		}

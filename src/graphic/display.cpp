@@ -1,4 +1,5 @@
 #include <graphic/display.hpp>
+#include <graphic/image.hpp>
 #include <graphic/system.hpp>
 #include <graphic/display_base.hpp>
 #include <sstream>
@@ -15,7 +16,9 @@ namespace Graphic
 		const bool& pResizeable
 	)
 	{
-		mDisplay = System::get().getDisplay( pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable );
+		mDisplay	= System::get().getDisplay( pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable );
+		mBackBuffer	= new Image( mDisplay->getBackBuffer(), false );
+		System::get().setTargetImage(*mBackBuffer);
 	}
 
 	Display::~Display()
@@ -37,55 +40,61 @@ namespace Graphic
 		out << "Resizeable: " << (isResizeable() ? "true" : "false")	<< std::endl;
 		return out.str();
 	}
-	
+
 	std::string Display::getWindowTitle() const
 	{
 		return mDisplay->getWindowTitle();
 	}
-	
+
 	int Display::getWidth() const
 	{
 		return mDisplay->getWidth();
 	}
-	
+
 	int Display::getHeight() const
 	{
 		return mDisplay->getHeight();
 	}
-	
+
 	bool Display::isFullScreen() const
 	{
 		return mDisplay->isFullScreen();
 	}
-	
+
 	bool Display::isResizeable() const
 	{
 		return mDisplay->isFullScreen();
 	}
-	
+
 	bool Display::toogleFullScreen()
 	{
 		return mDisplay->toogleFullScreen();
 	}
-	
+
 	void Display::setAsTarget()
 	{
-		mDisplay->setAsTarget();
+		System::get().setTargetImage(*mBackBuffer);
+		//mDisplay->setAsTarget();
 	}
-	
+
 	void Display::clear(const Color& pColor)
 	{
 		mDisplay->clear(pColor);
 	}
-	
+
 	void Display::swapBuffers()
 	{
 		mDisplay->swapBuffers();
 	}
-	
+
 	void Display::setLogo(const Image& pImage)
 	{
 		mDisplay->setLogo(pImage);
+	}
+
+	Image& Display::getBackBuffer()
+	{
+		return *mBackBuffer;
 	}
 }}
 

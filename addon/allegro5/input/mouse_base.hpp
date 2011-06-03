@@ -93,14 +93,14 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/05/2011
 			 * @version	11/05/2011
-			 * @param	const Mouse::Button& pButton, the button
+			 * @param	const MouseButton& pButton, the button
 			 * @return	bool
 			 */
-			virtual bool getButton(const Input::MouseBase::Button& pButton) const;
+			virtual bool getButton(const MouseButton::Id& pButton) const;
 		protected:
 			ALLEGRO_MOUSE_STATE*	mState;					/**<< var that stores the state of the mouse*/
 			Core::Point				mPosition;				/**<< var that stores the position of the mouse*/
-			int						mButton[LAST_BUTTON];	/**<< array of the buttons*/
+			int						mButton[MouseButton::LAST_BUTTON];	/**<< array of the buttons*/
 	};
 }}}
 #endif

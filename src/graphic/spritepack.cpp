@@ -17,7 +17,6 @@ namespace Graphic
 	SpritePack::SpritePack(const SpritePack& pSpritePackOriginal)
 	{
 		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
-/*@todo desalocar antes de receber*/
 		mGlobalPalette	= NULL;
 		mPalLinked		= false;
 		(*this) = pSpritePackOriginal;
@@ -46,9 +45,17 @@ namespace Graphic
 
 	void SpritePack::setGlobalOffset(const Core::Point& pOffset)
 	{
-		for(int i = 0; i < getSize(); ++i)
+		for(register int i = getSize() - 1; i >=0 ;  ++i)
 		{
-			(*this)[i].setOffset(pOffset);
+			mSprites[i].setOffset(pOffset);
+		}
+	}
+
+	void SpritePack::setAlphaMask(const Color& pColor)
+	{
+		for(register int i = getSize() - 1; i >=0 ;  ++i)
+		{
+			mSprites[i].setAlphaMask(pColor);
 		}
 	}
 
@@ -202,13 +209,13 @@ namespace Graphic
 		const int spriteSize	= mSprites.size();
 		bool globPal			= (mGlobalPalette) ? true : false;
 		SpritePackHeader::save(pFile);
-		
+
 		pFile.writeBool(globPal);
 		if(globPal)
 		{
 			mGlobalPalette->save(pFile);
 		}
-		
+
 		pFile.writeInt32(spriteSize);
 		for(int i = 0; i < spriteSize; ++i)
 		{

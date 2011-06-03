@@ -10,7 +10,7 @@ namespace Input
 	{
 		mKeyboard = System::get().getKeyboard();
 	}
-	
+
 	Keyboard::~Keyboard()
 	{
 		if(mKeyboard != NULL)
@@ -18,19 +18,19 @@ namespace Input
 			delete mKeyboard;
 		}
 	}
-	
+
 	Key Keyboard::getKey(const int& pKey) const
 	{
 		return mKeyboard->getKey(pKey);
 	}
-	
+
 	void Keyboard::update()
 	{
 		mKeyboard->update();
 	}
-	
+
 	bool Keyboard::isOpened() const
 	{
-		mKeyboard->isOpened();
+		return mKeyboard->isOpened();
 	}
 }}

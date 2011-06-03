@@ -75,6 +75,14 @@ namespace Graphic
 		(*this) = pImage;
 	}
 
+	Image::Image(ImageBase* pImage, const bool& pFreeSource)
+	{
+		mImage			= pImage;
+		mPalette		= NULL;
+		mFreeImage		= pFreeSource;
+		mFreePalette	= true;
+	}
+
 	Image::Image(const std::string& pFileName,const ImageLoader& pImageLoader)
 	{
 		mImage			= NULL;
@@ -224,12 +232,17 @@ namespace Graphic
 		}
 	}
 
-	void Image::setAsTarget()
+	void Image::applyAsTarget()
 	{
 		if(mImage != NULL)
 		{
-			mImage->setAsTarget();
+			mImage->applyAsTarget();
 		}
+	}
+
+	void Image::setAsTarget()
+	{
+		System::get().setTargetImage(*this);
 	}
 
 	void Image::clear(const Color& pColor)

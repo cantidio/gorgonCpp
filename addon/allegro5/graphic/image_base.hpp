@@ -18,8 +18,6 @@ namespace Addon
 	 */
 	class ImageBase : public Graphic::ImageBase
 	{
-		protected:
-			ALLEGRO_BITMAP *mData;/**<< The allegro image data*/
 		public:
 			/**
 			 * Constructor
@@ -29,6 +27,7 @@ namespace Addon
 			 * @version	26/05/2011
 			 */
 			ImageBase();
+			ImageBase(ALLEGRO_BITMAP* pImage, const bool& pFreeSource);
 			/**
 			 * Constructor
 			 *
@@ -87,7 +86,7 @@ namespace Addon
 			//todo ver oq fazer com isso. kkkk
 			virtual void lock();
 			virtual void unlock();
-			virtual void setAsTarget();
+			virtual void applyAsTarget();
 			/**
 			 * Method that clears the image with the requested color
 			 *
@@ -316,6 +315,8 @@ namespace Addon
 			 * @version	27/05/2011
 			 */
 			virtual void applyAlphaMask();
+			ALLEGRO_BITMAP *mData;/**<< The allegro image data*/
+			bool mFreeSource;
 	};
 }}}
 #endif

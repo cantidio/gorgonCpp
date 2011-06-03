@@ -53,7 +53,7 @@ namespace Graphic
 			int				mHeight;	/**<< the height of the image*/
 			int				mBpp;		/**<< the bpp of the image*/
 			Graphic::Color	mAlphaMask;	/**<< the image transparent color*/
-				
+
 			/**
 			 * Method that applies the alplha mask into the Image
 			 *
@@ -138,18 +138,18 @@ namespace Graphic
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/05/2011
 			 * @version	27/05/2011
-			 * @param	const Graphic::Color& pColor, the color that will be converted in transparent
+			 * @param	const Color& pColor, the color that will be converted in transparent
 			 */
-			void setAlphaMask(const Graphic::Color& pColor);
+			void setAlphaMask(const Color& pColor);
 			/**
 			 * Method that returns the transparent color of the image
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	27/05/2011
 			 * @version	27/05/2011
-			 * @return	Graphic::Color
-			 */				
-			Graphic::Color getAlphaMask() const;
+			 * @return	Color
+			 */
+			Color getAlphaMask() const;
 			/**
 			 * Method that returns the color at the given position in the image
 			 *
@@ -165,9 +165,9 @@ namespace Graphic
 			virtual void unlock()=0;
 			/**
 			 * @todo Pensar melhor nisso
-			 */	
-			virtual void setAsTarget() = 0;
-			
+			 */
+			virtual void applyAsTarget() = 0;
+
 			/**
 			 * Method that clears the image with the requested color
 			 *
@@ -208,11 +208,11 @@ namespace Graphic
 			 * @since
 			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
 			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	conat Core::Point&	pCenter		, the center of the image	
+			 * @param	conat Core::Point&	pCenter		, the center of the image
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
-			 */	
+			 */
 			virtual void draw//draw rotated
 			(
 				const Core::Point&	pPosition,
@@ -226,12 +226,12 @@ namespace Graphic
 			 * @since
 			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
 			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	conat Core::Point&	pCenter		, the center of the image	
+			 * @param	conat Core::Point&	pCenter		, the center of the image
 			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
-			 */	
+			 */
 			virtual void draw//draw rotated flipped
 			(
 				const Core::Point&	pPosition,
@@ -252,7 +252,7 @@ namespace Graphic
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
-			 */	
+			 */
 			virtual void draw
 			(
 				const Core::Point& pPosition,

@@ -6,6 +6,7 @@ namespace Gorgon{
 namespace Graphic
 {
 	class Image;
+	class ImageBase;
 	class Color;
 	/**
 	 * Class that represents a Display implementation
@@ -29,10 +30,10 @@ namespace Graphic
 			DisplayBase
 			(
 				const std::string& pWindowtitle,
-				const int& pWidth,
-				const int& pHeight,
-				const bool& pFullScreen = false,
-				const bool& pResizeable = false
+				const int&	pWidth,
+				const int&	pHeight,
+				const bool&	pFullScreen = false,
+				const bool&	pResizeable = false
 			);
 			/**
 			 * Method that returns the title of the display
@@ -150,13 +151,25 @@ namespace Graphic
 			 * @param	const std::string& pWindowTitle, the new tile
 			 */
 			virtual void setWindowTitle(const std::string& pWindowTitle) = 0;
-
+			/**
+			 * Method that returns the current backbuffer of the display
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @return	ImageBase*
+			 */
+			inline virtual ImageBase* getBackBuffer()
+			{
+				return mBackBuffer;
+			}
 		protected:
-			std::string	mWindowTitle;
-			int			mWidth;
-			int			mHeight;
-			bool		mFullScreen;
-			bool		mResizeable;
+			std::string		mWindowTitle;
+			int				mWidth;
+			int				mHeight;
+			bool			mFullScreen;
+			bool			mResizeable;
+			ImageBase*		mBackBuffer;	/**<< the backbuffer of the display*/
 	};
 }}
 #endif

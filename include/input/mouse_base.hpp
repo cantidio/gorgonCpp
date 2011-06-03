@@ -27,6 +27,7 @@
 #ifndef _GORGON_INPUT_MOUSE_BASE_
 #define _GORGON_INPUT_MOUSE_BASE_
 #include "../core/point.hpp"
+#include "mouse_button.hpp"
 
 namespace Gorgon{
 namespace Input
@@ -36,21 +37,13 @@ namespace Input
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	10/05/2011
-	 * @version	10/05/2011
+	 * @version	01/06/2011
 	 * @ingroup	Input
 	 */
 	class MouseBase
 	{
 		public:
-			enum Button
-			{
-				LEFT,
-				MIDDLE,
-				RIGHT,
-				WHEEL_UP,
-				WHEEL_DOWN,
-				LAST_BUTTON
-			};/**<< enum that stores the buttons of the mouse*/
+
 			/**
 			 * Method that updates the values of the mouse
 			 *
@@ -82,11 +75,11 @@ namespace Input
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	10/05/2011
-			 * @version	10/05/2011
+			 * @version	01/06/2011
 			 * @param	const int& pButton, the button
 			 * @return	bool
 			 */
-			virtual bool getButton(const MouseBase::Button& pButton) const = 0;
+			virtual bool getButton(const MouseButton::Id& pButton) const = 0;
 	};
 }}
 #endif

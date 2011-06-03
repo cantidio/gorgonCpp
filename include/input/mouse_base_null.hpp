@@ -79,11 +79,11 @@ namespace Input
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	10/05/2011
-			 * @version	10/05/2011
+			 * @version	01/06/2011
 			 * @param	const int& pButton, the button
 			 * @return	bool
 			 */
-			inline virtual bool getButton(const MouseBase::Button& pButton) const
+			inline virtual bool getButton(const MouseButton::Id& pButton) const
 			{
 				return false;
 			}

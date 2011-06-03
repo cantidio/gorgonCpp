@@ -8,13 +8,12 @@ namespace Graphic
 	class DisplayBase;
 	class Color;
 	class Image;
-
 	/**
 	 * Class that represents a Display
 	 *
 	 * @author	Cantidio Oliveira Fontes
-	 * @since
-	 * @version
+	 * @since	22/01/2009
+	 * @version	03/06/2011
 	 * @ingroup	Graphic
 	 */
 	class Display
@@ -155,9 +154,18 @@ namespace Graphic
 			 * @param	const std::string& pWindowTitle, the new tile
 			 */
 			void setWindowTitle(const std::string& pWindowTitle);
-			
+			/**
+			 * Method that returns the display backbuffer
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @return	Image
+			 */
+			Image& getBackBuffer();
 		protected:
-			DisplayBase* mDisplay;/**<< The implementation of the display*/
+			DisplayBase* mDisplay;	/**<< The implementation of the display*/
+			Image* mBackBuffer;		/**<< The display back buffer*/
 	};
 }}
 #endif

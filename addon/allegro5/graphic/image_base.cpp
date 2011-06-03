@@ -72,10 +72,11 @@ namespace Addon
 			}
 			al_destroy_bitmap(mData);
 		}
-		mData	= al_create_bitmap(pWidth, pHeight);
-		mBpp	= (mData != NULL) ? al_get_pixel_format_bits(al_get_bitmap_format(mData)) : 0;
-		mWidth	= pWidth;
-		mHeight	= pHeight;
+		mData		= al_create_bitmap(pWidth, pHeight);
+		mBpp		= (mData != NULL) ? al_get_pixel_format_bits(al_get_bitmap_format(mData)) : 0;
+		mWidth		= pWidth;
+		mHeight		= pHeight;
+		mFreeSource	= true;
 
 		if(mData == NULL)
 		{
@@ -85,10 +86,20 @@ namespace Addon
 
 	ImageBase::ImageBase()
 	{
-		mData   = NULL;
-		mWidth  = 0;
-		mHeight = 0;
-		mBpp    = 0;
+		mData		= NULL;
+		mFreeSource	= true;
+		mWidth		= 0;
+		mHeight		= 0;
+		mBpp		= 0;
+	}
+
+	ImageBase::ImageBase(ALLEGRO_BITMAP* pImage, const bool& pFreeSource)
+	{
+		mData		= pImage;
+		mFreeSource	= pFreeSource;
+		mWidth		= (mData != NULL) ? al_get_bitmap_width(mData) : 0;
+		mHeight		= (mData != NULL) ? al_get_bitmap_height(mData) : 0;
+		mBpp		= (mData != NULL) ? al_get_pixel_format_bits(al_get_bitmap_format(mData)) : 0;
 	}
 
 	ImageBase::ImageBase
@@ -110,21 +121,18 @@ namespace Addon
 
 	ImageBase::~ImageBase()
 	{
-		if(mData != NULL)
+		if(mFreeSource && mData != NULL)
 		{
-			/*if( al_get_target_bitmap() == mData )
-			{
-				al_set_target_bitmap(NULL);
-			}*/
 			al_destroy_bitmap(mData);
-			mData = NULL;
 		}
+		mData = NULL;
 	}
 
 	void ImageBase::applyAlphaMask()
 	{
 		if(mData != NULL)
 		{
+			printf("buceta\n");
 			al_convert_mask_to_alpha(mData, gorgonColort2AllegroColor(mAlphaMask));
 		}
 	}
@@ -139,9 +147,9 @@ namespace Addon
 		al_unlock_bitmap(mData);
 	}
 
-	void ImageBase::setAsTarget()
+	void ImageBase::applyAsTarget()
 	{
-		 al_set_target_bitmap(mData);
+		al_set_target_bitmap(mData);
 	}
 
 	void ImageBase::clear(const Color& pColor) const

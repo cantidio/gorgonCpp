@@ -46,7 +46,7 @@ namespace Addon
 		protected:
 			Uint8		mState;					/**<< var that stores the state of the keyboard*/
 			Core::Point	mPosition;				/**<< var that stores the position of the mouse*/
-			int			mButton[LAST_BUTTON];
+			int			mButton[MouseButton::LAST_BUTTON];
 		public:
 			MouseBase();
 			/**
@@ -84,7 +84,7 @@ namespace Addon
 			 * @param	const Mouse::Button& pButton, the button
 			 * @return	bool
 			 */
-			virtual bool getButton(const Input::MouseBase::Button& pButton) const;
+			virtual bool getButton(const MouseButton::Id& pButton) const;
 	};
 }}}
 #endif

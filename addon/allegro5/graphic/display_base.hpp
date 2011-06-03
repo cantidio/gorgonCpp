@@ -13,8 +13,8 @@ namespace Addon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	29/05/2011
-	 * @version	29/05/2011
-	 * @ingroup	Graphic
+	 * @version	03/06/2011
+	 * @ingroup	Graphic::Addon
 	 */
 	class DisplayBase : public Graphic::DisplayBase
 	{
@@ -104,7 +104,8 @@ namespace Addon
 			 */
 			virtual void setWindowTitle(const std::string& pWindowTitle);
 		protected:
-			ALLEGRO_DISPLAY* mData; /**<< the display data*/
+			ALLEGRO_DISPLAY*	mDisplay;		/**<< the display data*/
+
 	};
 }}}
 #endif

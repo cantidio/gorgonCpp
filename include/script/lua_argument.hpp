@@ -54,7 +54,7 @@ namespace Script
 			enum Type
 			{
 				Double	= 0,	/**< receive a double value	*/
-				Bool	= 1,	/**< receive a bool value	*/
+				Boolean	= 1,	/**< receive a bool value	*/
 				String	= 2,	/**< receive a String value	*/
 				Null	= 3		/**< receive a NULL value	*/
 			};

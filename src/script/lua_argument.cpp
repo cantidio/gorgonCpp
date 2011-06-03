@@ -27,7 +27,7 @@ namespace Script
 	{
 		clear();
 		mBoolArg	= pArg;
-		mMyType		= LuaArgument::Bool;
+		mMyType		= LuaArgument::Boolean;
 	}
 
 	void LuaArgument::clear()
@@ -64,7 +64,7 @@ namespace Script
 		{
 			case LuaArgument::Double:	lua_pushnumber(pState, mDoubleArg);			break;
 			case LuaArgument::String:	lua_pushstring(pState, mStringArg.c_str());	break;
-			case LuaArgument::Bool:		lua_pushboolean(pState,mBoolArg);			break;
+			case LuaArgument::Boolean:	lua_pushboolean(pState,mBoolArg);			break;
 			case LuaArgument::Null:		lua_pushnil(pState);						break;
 			default:
 				raiseScriptException("LuaArgument::push(pState): Error, unable to define argument type.");

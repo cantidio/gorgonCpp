@@ -4,6 +4,7 @@
 #include <allegro5/allegro.h>
 #include <sstream>
 #include "display_base.hpp"
+#include "image_base.hpp"
 
 namespace Gorgon	{
 namespace Graphic	{
@@ -25,9 +26,9 @@ namespace Addon
 			| (pResizeable ? ALLEGRO_RESIZABLE         : 0)
 		);
 
-		mData			= al_create_display(pWidth, pHeight);
+		mDisplay = al_create_display(pWidth, pHeight);
 
-		if(mData == NULL)
+		if(mDisplay == NULL)
 		{
 			std::stringstream out;
 			out << "Graphic::Addon::DisplayBase::DisplayBase(\"" << pWindowTitle << "\", " << pWidth << ", " << pHeight << ", ";
@@ -45,13 +46,15 @@ namespace Addon
 			(pFullScreen ? "true" : "false"),
 			(pResizeable ? "true" : "false")
 		);
+		mBackBuffer = new ImageBase( al_get_backbuffer(mDisplay), false);
 	}
 
 	DisplayBase::~DisplayBase()
 	{
-		if( mData )
+		if( mDisplay )
 		{
-			al_destroy_display( mData );
+			al_destroy_display( mDisplay );
+			delete mBackBuffer;
 			Core::logWrite("Gorgon::Graphic::Addon::Display::~Display(): Successfull.");
 		}
 		else
@@ -63,15 +66,15 @@ namespace Addon
 	bool DisplayBase::toogleFullScreen()
 	{
 		mFullScreen = !mFullScreen;
-		return al_toggle_display_flag( mData, ALLEGRO_FULLSCREEN_WINDOW, mFullScreen );
+		return al_toggle_display_flag( mDisplay, ALLEGRO_FULLSCREEN_WINDOW, mFullScreen );
 	}
 
 	//al_resize_display
 
 	void DisplayBase::setAsTarget()
 	{
-	    al_set_target_bitmap(al_get_backbuffer(mData));
-		//al_set_target_backbuffer(mData);
+	    al_set_target_bitmap(al_get_backbuffer(mDisplay));
+		//al_set_target_backbuffer(mDisplay);
 	}
 
 	void DisplayBase::clear(const Color& pColor)
@@ -82,7 +85,7 @@ namespace Addon
 
 		ALLEGRO_BITMAP * aux = al_get_target_bitmap();	//pega o target anterior
 
-		al_set_target_bitmap(al_get_backbuffer(mData));
+		al_set_target_bitmap(al_get_backbuffer(mDisplay));
 
 		al_clear_to_color
 		(
@@ -105,12 +108,12 @@ namespace Addon
 	void DisplayBase::setLogo(const Image& pImage)
 	{
 		/**@todo implementar*/
-//		al_set_display_icon(mData, pImage.mImage.mData);
+//		al_set_display_icon(mDisplay, pImage.mImage.mDisplay);
 	}
 
 	void DisplayBase::setWindowTitle(const std::string& pWindowTitle)
 	{
 		mWindowTitle = pWindowTitle;
-		al_set_window_title(mData, mWindowTitle.c_str());
+		al_set_window_title(mDisplay, mWindowTitle.c_str());
 	}
 }}}

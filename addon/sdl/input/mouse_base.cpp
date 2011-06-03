@@ -6,11 +6,11 @@ namespace Addon
 {
 	MouseBase::MouseBase()
 	{
-		mButton[Input::MouseBase::LEFT]			= SDL_BUTTON_LEFT;
-		mButton[Input::MouseBase::MIDDLE]		= SDL_BUTTON_MIDDLE;
-		mButton[Input::MouseBase::RIGHT]		= SDL_BUTTON_RIGHT;
-		mButton[Input::MouseBase::WHEEL_UP]		= SDL_BUTTON_WHEELUP;
-		mButton[Input::MouseBase::WHEEL_DOWN]	= SDL_BUTTON_WHEELDOWN;
+		mButton[MouseButton::LEFT]			= SDL_BUTTON_LEFT;
+		mButton[MouseButton::MIDDLE]		= SDL_BUTTON_MIDDLE;
+		mButton[MouseButton::RIGHT]			= SDL_BUTTON_RIGHT;
+		mButton[MouseButton::WHEEL_UP]		= SDL_BUTTON_WHEELUP;
+		mButton[MouseButton::WHEEL_DOWN]	= SDL_BUTTON_WHEELDOWN;
 	}
 
 	void MouseBase::update()
@@ -33,9 +33,9 @@ namespace Addon
 		return mPosition;
 	}
 
-	bool MouseBase::getButton(const Input::MouseBase::Button& pButton) const
+	bool MouseBase::getButton(const MouseButton::Id& pButton) const
 	{
-		if(pButton < (Input::MouseBase::LAST_BUTTON))
+		if(pButton < (MouseButton::LAST_BUTTON))
 		{
 			return (mState & SDL_BUTTON( mButton[pButton] ));
 		}

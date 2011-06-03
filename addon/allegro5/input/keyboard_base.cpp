@@ -3,7 +3,7 @@
 #include <gorgon++/core/log.hpp>
 
 namespace Gorgon	{
-namespace Input		{	
+namespace Input		{
 namespace Addon
 {
 	KeyboardBase::KeyboardBase()
@@ -84,7 +84,7 @@ namespace Addon
 		mKey[Input::Key::PRINT_SCREEN]	= ALLEGRO_KEY_PRINTSCREEN;
 		mKey[Input::Key::PAUSE]			= ALLEGRO_KEY_PAUSE;
 		mKey[Input::Key::INSERT]		= ALLEGRO_KEY_INSERT;
-		mKey[Input::Key::DELETE]		= ALLEGRO_KEY_DELETE;
+//		mKey[Input::Key::DELETE]		= ALLEGRO_KEY_DELETE;
 		mKey[Input::Key::HOME]			= ALLEGRO_KEY_HOME;
 		mKey[Input::Key::END]			= ALLEGRO_KEY_END;
 		mKey[Input::Key::PAGE_UP]		= ALLEGRO_KEY_PGUP;

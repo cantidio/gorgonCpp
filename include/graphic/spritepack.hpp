@@ -181,6 +181,15 @@ namespace Graphic
 			 */
 			void setGlobalOffset(const Core::Point& pOffset);
 			/**
+			 * Method that takes this color and makes it transparent for all the images in the spritesheet
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	01/06/2011
+			 * @version	01/06/2011
+			 * @param	const Color& pColor, the color that will be converted in transparent
+			 */
+			void setAlphaMask(const Color& pColor);
+			/**
 			 * Method that removes all transparent borders from all sprites in the pack
 			 *
 			 * @author	Cantidio Oliveira Fontes

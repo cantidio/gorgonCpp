@@ -8,8 +8,11 @@ namespace Gorgon{
 namespace Graphic
 {
 	System* System::mSingleton = NULL;
-		
-	System::System()	{}
+
+	System::System()
+	{
+		mTargetImage = NULL;
+	}
 	System::~System()	{}
 
 	System& System::get()
@@ -30,8 +33,8 @@ namespace Graphic
 			raiseGraphicException("Graphic::System::set(pSystem): Error, a NULL Graphic System was passed.");
 		}
 	}
-	
-	void System::halt()	
+
+	void System::halt()
 	{
 		if(mSingleton != NULL)
 		{
@@ -43,13 +46,13 @@ namespace Graphic
 			Core::logWrite(Core::String("Gorgon::Graphic::System::halt(): There wasn't any Graphic System to be halted."));
 		}
 	}
-	
+
 	void System::setTargetImage(Image& pImage)
 	{
 		mTargetImage = &pImage;
-		pImage.setAsTarget();
+		pImage.applyAsTarget();
 	}
-	
+
 	Image& System::getTargetImage()
 	{
 		return *mTargetImage;

@@ -27,7 +27,7 @@
 #ifndef _GORGON_INPUT_MOUSE_
 #define _GORGON_INPUT_MOUSE_
 #include <gorgon++/core/point.hpp>
-#include "mouse_base.hpp"
+#include "mouse_button.hpp"
 
 namespace Gorgon{
 namespace Input
@@ -38,7 +38,7 @@ namespace Input
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	10/05/2011
-	 * @version	10/05/2011
+	 * @version	01/06/2011
 	 * @ingroup	Input
 	 */
 	class Mouse
@@ -91,11 +91,11 @@ namespace Input
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	10/05/2011
-			 * @version	10/05/2011
+			 * @version	01/06/2011
 			 * @param	const int& pButton, the button
 			 * @return	bool
 			 */
-			bool getButton(const MouseBase::Button& pButton) const;
+			bool getButton(const MouseButton::Id& pButton) const;
 		protected:
 			MouseBase* mMouse;/**<< The implementation of the mouse*/
 	};

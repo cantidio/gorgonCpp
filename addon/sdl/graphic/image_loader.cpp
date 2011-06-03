@@ -136,7 +136,9 @@ namespace Gorgon
 				pImage.create(sdlImage->w, sdlImage->h);
 				sdlPalette = NULL;
 			}
-			pImage.setAsTarget();
+			Graphic::Image target = Graphic::System::get().getTargetImage();
+			Graphic::System::get().setTargetImage(pImage);
+			//pImage.setAsTarget();
 			pImage.lock();
 
 			for(register int h = 0; h < sdlImage->h; ++h)
@@ -148,6 +150,7 @@ namespace Gorgon
 			}
 
 			pImage.unlock();
+			Graphic::System::get().setTargetImage(target);
 			if(sdlPalette != NULL)
 			{
 				gorgonPalette = new Graphic::Palette(sdlPalette->ncolors);

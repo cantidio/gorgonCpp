@@ -54,6 +54,8 @@ namespace Graphic
 			Palette*	mPalette;		/**<< Pointer to the color palette, NULL if the image dont have one*/
 			bool		mFreeImage;		/**<< if true the class will destroy the image as requested*/
 			bool		mFreePalette;	/**<< if true the mPalette will be deleted when need by the class*/
+			void applyAsTarget();
+			friend class System;
 		public:
 			/**
 			 * Constructor
@@ -265,7 +267,7 @@ namespace Graphic
 			 * @since	27/05/2011
 			 * @version	27/05/2011
 			 * @return	Color
-			 */				
+			 */
 			Color getAlphaMask() const;
 			/**
 			 * Method that returns the number of colors used in the image
@@ -286,11 +288,11 @@ namespace Graphic
 			 * @return	Color
 			 */
 			Color getPixel(const Core::Point& pPosition) const;
-			
+
 			void lock();
 			void unlock();
 			void setAsTarget();
-			
+
 			/**
 			 * Method that clears the image with the requested color
 			 *
@@ -331,11 +333,11 @@ namespace Graphic
 			 * @since
 			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
 			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	conat Core::Point&	pCenter		, the center of the image	
+			 * @param	conat Core::Point&	pCenter		, the center of the image
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
-			 */	
+			 */
 			void draw//draw rotated
 			(
 				const Core::Point&	pPosition,
@@ -349,12 +351,12 @@ namespace Graphic
 			 * @since
 			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
 			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	conat Core::Point&	pCenter		, the center of the image	
+			 * @param	conat Core::Point&	pCenter		, the center of the image
 			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
-			 */	
+			 */
 			void draw//draw rotated flipped
 			(
 				const Core::Point&	pPosition,

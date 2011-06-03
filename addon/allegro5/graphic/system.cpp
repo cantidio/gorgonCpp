@@ -18,7 +18,7 @@ namespace Addon
 			Core::logWrite("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 lib.");
 			raiseGraphicException("System::System(): Error when initializing allegro5 lib.");
 		}
-		al_set_new_bitmap_flags(ALLEGRO_KEEP_INDEX | ALLEGRO_VIDEO_BITMAP);
+		al_set_new_bitmap_flags(/*ALLEGRO_KEEP_INDEX | */ALLEGRO_VIDEO_BITMAP);
 		//al_set_new_bitmap_format(ALLEGRO_PIXEL_FORMAT_LUMINANCE_8);
 		Core::logWrite("Gorgon::Graphic::Addon::System::System(): Successful.");
 	}
