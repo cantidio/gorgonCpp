@@ -13,7 +13,7 @@ namespace Physics
 		  * @todo	remover a variável mStatic body, e guardar o corpo estático na primeira posićão do vetor
 		  */
 	}
-	
+
 	Space::~Space()
 	{
 		printf("Deleting the Space: %d\n",(int)this);
@@ -27,7 +27,7 @@ namespace Physics
 		}
 		cpSpaceFree(mSpace);
 	}
-	
+
 	Body* Space::addBody(const float& pMass, const float& pMoment)
 	{
 		Body* body = new Body(pMass, pMoment, *this);
@@ -35,19 +35,19 @@ namespace Physics
 		cpSpaceAddBody(mSpace, body->mBody);
 		return body;
 	}
-	
+
 	void Space::addShape(Shape* pShape)
 	{
 		cpSpaceAddShape(mSpace, pShape->mShape);
 	}
-	
+
 	Constraint* Space::addConstraint(Constraint* pConstraint)
 	{
 		mConstraints.push_back(pConstraint);
 		cpSpaceAddConstraint(mSpace, pConstraint->mConstraint);
 		return pConstraint;
 	}
-	
+
 	PinJoint* Space::addConstraintPinJoint
 	(
 		Body& pBodyA,
@@ -64,7 +64,7 @@ namespace Physics
 			pAnchorB
 		));
 	}
-	
+
 	SlideJoint* Space::addConstraintSlideJoint
 	(
 		Body& pBodyA,
@@ -85,7 +85,7 @@ namespace Physics
 			pMax
 		));
 	}
-	
+
 	PivotJoint* Space::addConstraintPivotJoint
 	(
 		Body& pBodyA,
@@ -100,7 +100,7 @@ namespace Physics
 			pPivot
 		));
 	}
-	
+
 	PivotJoint* Space::addConstraintPivotJoint
 	(
 		Body& pBodyA,
@@ -117,7 +117,7 @@ namespace Physics
 			pAnchorB
 		));
 	}
-	
+
 	GrooveJoint* Space::addConstraintGrooveJoint
 	(
 		Body& pBodyA,
@@ -136,7 +136,7 @@ namespace Physics
 			pAnchorB
 		));
 	}
-	
+
 	DampedSpring* Space::addConstraintDampedSpring
 	(
 		Body& pBodyA,
@@ -156,7 +156,7 @@ namespace Physics
 			pDamping
 		));
 	}
-	
+
 	DampedRotarySpring* Space::addConstraintDampedRotarySpring
 	(
 		Body& pBodyA,
@@ -175,7 +175,7 @@ namespace Physics
 			pDamping
 		));
 	}
-	
+
 	RotaryLimitJoint* Space::addConstraintRotaryLimitJoint
 	(
 		Body& pBodyA,
@@ -192,7 +192,7 @@ namespace Physics
 			pMax
 		));
 	}
-	
+
 	RatchetJoint* Space::addConstraintRatchetJoint
 	(
 		Body& pBodyA,
@@ -248,7 +248,7 @@ namespace Physics
 			pCount
 		);
 	}
-	
+
 	void Space::resizeActiveHash(const float& pDim, const int& pCount)
 	{
 		cpSpaceResizeActiveHash
@@ -258,29 +258,35 @@ namespace Physics
 			pCount
 		);
 	}
-	
-	int Space::getColor(const int& pBase) const
+
+	Graphic::Color Space::getColor(const int& pBase) const
 	{
 		int val = pBase;
-		val = (val+0x7ed55d16) + (val<<12);
-		val = (val^0xc761c23c) ^ (val>>19);
-		val = (val+0x165667b1) + (val<<5);
-		val = (val+0xd3a2646c) ^ (val<<9);
-		val = (val+0xfd7046c5) + (val<<3);
-		val = (val^0xb55a4f09) ^ (val>>16);
-		return val;
+		val = ( val + 0x7ed55d16 ) + ( val << 12 );
+		val = ( val ^ 0xc761c23c ) ^ ( val >> 19 );
+		val = ( val + 0x165667b1 ) + ( val << 5  );
+		val = ( val + 0xd3a2646c ) ^ ( val << 9  );
+		val = ( val + 0xfd7046c5 ) + ( val << 3  );
+		val = ( val ^ 0xb55a4f09 ) ^ ( val >> 16 );
+
+		return Graphic::Color
+		(
+			((val >> 16 ) & 255)/255.f,
+			((val >> 8  ) & 255)/255.f,
+			((val       ) & 255)/255.f
+		);
 	}
-	
-	void Space::draw(Graphic::Sprite& pSprite) const
+
+	void Space::draw() const
 	{
 		for(int i = mBodies.size() - 1; i >= 0; --i)
 		{
-			mBodies[i]->draw(pSprite,getColor((int)mBodies[i]));
+			mBodies[i]->draw(getColor((int)mBodies[i]));
 		}
 		for(int i = mConstraints.size() - 1; i >= 0; --i)
 		{
-			mConstraints[i]->draw(pSprite,getColor((int)mConstraints[i]));
+			mConstraints[i]->draw( getColor((int)mConstraints[i]) );
 		}
-		mStaticBody->draw(pSprite,getColor((int)mStaticBody));
+		mStaticBody->draw(getColor( (int)mStaticBody) );
 	}
 }}

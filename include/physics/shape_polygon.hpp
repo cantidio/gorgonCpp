@@ -44,11 +44,11 @@ namespace Physics
 		protected:
 			/**
 			 * Variable that holds the mininum x,y position of the polygon
-			 */ 
+			 */
 			Core::Point mMinimum;
 			/**
 			 * Variable that holds the maximum x,y position of the polygon
-			 */ 
+			 */
 			Core::Point mMaximum;
 		public:
 			/**
@@ -74,10 +74,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	int
 			 */
-			inline int getVerticesNumber() const
-			{
-				return cpPolyShapeGetNumVerts(mShape);
-			}
+			int getVerticesNumber() const;
 			/**
 			 * Method that returns a vertice from the polygon
 			 *
@@ -87,24 +84,16 @@ namespace Physics
 			 * @param	const int& pIndex, the index of the vertice you want to get
 			 * @return	Gorgon::Point
 			 */
-			Core::Point getVertice(const int& pIndex) const
-			{
-				return Core::Point
-				(
-					cpPolyShapeGetVert(mShape, pIndex).x,
-					cpPolyShapeGetVert(mShape, pIndex).y
-				);
-			}
+			Core::Point getVertice(const int& pIndex) const;
 			/**
 			 * Method that draws the polygon with some color
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	03/10/2010
-			 * @param	Graphic::Sprite& pSprite , the sprite the polygon will be draw
-			 * @param	const int& pColor , the color to draw the polygon
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor , the color to draw the polygon
 			 */
-			virtual	void draw(Graphic::Sprite& pSprite,const int& pColor) const;
+			virtual void draw(const Graphic::Color& pColor) const;
 	};
 }}
 #endif

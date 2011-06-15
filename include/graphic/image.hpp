@@ -111,7 +111,7 @@ namespace Graphic
 			 * @param	const std::string& pFileName	, the name of the image to be loaded
 			 * @param	const ImageLoader& pImageLoader , the imageLoader
 			 */
-			Image(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			Image(const std::string& pFileName);
 			/**
 			 * Constructor
 			 *
@@ -121,7 +121,7 @@ namespace Graphic
 			 * @param	Core::File&			pFile			, the file where the image is stored
 			 * @param	const ImageLoader&	pImageLoader	, the imageLoader
 			 */
-			Image(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			Image(Core::File& pFile, const int& pDataLength);
 			/**
 			 * Método destrutor
 			 *
@@ -302,6 +302,18 @@ namespace Graphic
 			 * @param	const Color& pColor, the color to paint the image
 			 */
 			void clear(const Color& pColor);
+			/**
+			 * Method that copies a rectangular area of this image to the TargetImage
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	11/06/2011
+			 * @version	11/06/2011
+			 * @param	const Core::Point& pPosition		, the position in the destination Image
+			 * @param	const Core::Point& pSourcePosition	, the position in this Image where it will get to draw
+			 * @param	const int& pWidth					, the width of the cut in the image
+			 * @param	const int& pHeight					, the height of the cut in the image
+			 */
+			void blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const;
 			/**
 			 * Method that draws the image in the requested position into the current target Image
 			 *
@@ -485,6 +497,14 @@ namespace Graphic
 			 */
 			void operator =(const Image& pImage);
 			/**
+			 * Convert the current image to the display format, for fast drawing
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	14/06/2011
+			 * @version	14/06/2011
+			 */
+			void convertToDisplayFormat();
+			/**
 			 * Method that loads the image from a file
 			 *
 			 * @author	Cantidio Oliveira Fontes
@@ -493,7 +513,7 @@ namespace Graphic
 			 * @param	const std::string&	pFileName		, the name of the image file
 			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
 			 */
-			virtual void load(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void load(const std::string& pFileName);
 			/**
 			 * Method that loads the image from a file previously opened
 			 *
@@ -503,7 +523,7 @@ namespace Graphic
 			 * @param	File&				pFile			, file previously opened
 			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
 			 */
-			virtual void load(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void load(Core::File& pFile, const int& pDataLength);
 			/**
 			 * Method that saves the image in a file
 			 *

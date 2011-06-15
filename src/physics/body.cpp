@@ -15,7 +15,7 @@ namespace Physics
 		mLocal	= false;
 		mSpace	= &pSpace;
 	}
-	
+
 	Body::Body(const float& pMass, const float& pMoment, Space& pSpace)
 	{
 		printf("Creating the Body: %d\n",(int)this);
@@ -23,7 +23,7 @@ namespace Physics
 		mSpace	= &pSpace;
 		mLocal	= true;
 	}
-	
+
 	Body::~Body()
 	{
 		printf("Deleting the Body: %d\n",(int)this);
@@ -36,7 +36,7 @@ namespace Physics
 			cpBodyFree(mBody);
 		}
 	}
-	
+
 	ShapeCircle* Body::addShapeCircle(const float& pRadius, const Core::Point& pOffset)
 	{
 		ShapeCircle* circle = new ShapeCircle
@@ -44,12 +44,12 @@ namespace Physics
 			pRadius,
 			pOffset,
 			*this
-		); 
+		);
 		mShapes.push_back(circle);
 		mSpace->addShape(circle);
 		return circle;
 	}
-	
+
 	ShapeBox* Body::addShapeBox(const int& pWidth, const int& pHeight)
 	{
 		ShapeBox* box = new ShapeBox
@@ -62,7 +62,7 @@ namespace Physics
 		mSpace->addShape(box);
 		return box;
 	}
-	
+
 	ShapePolygon* Body::addShapePolygon
 	(
 		const std::vector<Core::Point>& pVerts,
@@ -77,9 +77,9 @@ namespace Physics
 		);
 		mShapes.push_back(polygon);
 		mSpace->addShape(polygon);
-		return polygon; 
+		return polygon;
 	}
-	
+
 	ShapeSegment* Body::addShapeSegment
 	(
 		const Core::Point& pPointA,
@@ -96,7 +96,7 @@ namespace Physics
 		);
 		mShapes.push_back(segment);
 		mSpace->addShape(segment);
-		return segment; 
+		return segment;
 	}
 //------------------------------------------------------------------------------------------
 	float Body::getMomentForCircle
@@ -115,7 +115,7 @@ namespace Physics
 			cpv(pOffset.getX(), pOffset.getY())
 		);
 	}
-	
+
 	float Body::getMomentForBox
 	(
 		const float& pMass,
@@ -130,7 +130,7 @@ namespace Physics
 			pHeight
 		);
 	}
-	
+
 	float Body::getMomentForSegment
 	(
 		const float& pMass,
@@ -145,7 +145,7 @@ namespace Physics
 			cpv(pPointB.getX(), pPointB.getY())
 		);
 	}
-	
+
 	float Body::getMomentForPolygon
 	(
 		const float& pMass,
@@ -166,16 +166,12 @@ namespace Physics
 			cpv(pOffset.getX(),pOffset.getY())
 		);
 	}
-	
-	void Body::draw(Graphic::Sprite& pSprite, const int& pColor) const
+
+	void Body::draw(const Graphic::Color& pColor) const
 	{
 		for(int i = getShapeNumber() - 1; i >= 0; --i)
 		{
-			mShapes[i]->draw
-			(
-				pSprite,
-				pColor
-			);
+			mShapes[i]->draw( pColor );
 		}
 	}
 }}

@@ -6,7 +6,7 @@ namespace Core
 {
 	File::File()
 	{}
-	
+
 	File::File(const std::string& pFileName,std::ios_base::openmode pMode) : std::fstream(pFileName.c_str(),pMode)
 	{}
 
@@ -25,7 +25,7 @@ namespace Core
 		seekg(pos);
 		return length;
 	}
-	
+
 	void File::writeInt8(const char& pInt8)
 	{
 		write((char*)&pInt8,1);
@@ -77,7 +77,7 @@ namespace Core
 		read((char*)&value,1);
 		return value;
 	}
-	
+
 	unsigned char File::readUnsignedInt8()
 	{
 		unsigned char value = 0;
@@ -249,22 +249,22 @@ namespace Core
 			pFileName.length() - 1
 		) == pExtension;
 	}
-	
+
 	void File::compressZlib()
 	{
-		std::stringstream a;
+		/*std::stringstream a;
 		std::stringstream b;
 		Zlib::passBuffer(*this,a);//copy this to "a"
 		Zlib::compress(a,b,7);
 		Zlib::passBuffer(a,*this);//copy "a" to this
-	}
+	*/}
 
 	void File::decompressZlib()
 	{
-		std::stringstream a;
+/*		std::stringstream a;
 		std::stringstream b;
 		Zlib::passBuffer(*this,a);//copy this to "a"
 		Zlib::decompress(a,b);
 		Zlib::passBuffer(a,*this);//copy "a" to this
-	}
+	*/}
 }}

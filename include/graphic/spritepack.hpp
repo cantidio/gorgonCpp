@@ -364,6 +364,14 @@ namespace Graphic
 			 * @param	const SpritePack& pSpritePack
 			 */
 			void operator =(const SpritePack& pSpritePack);
+			/**
+			 * Convert all sprites to the display format, for fast drawing
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	14/06/2011
+			 * @version	14/06/2011
+			 */
+			void convertToDisplayFormat();
 	};
 }}
 #endif

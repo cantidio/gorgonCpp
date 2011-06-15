@@ -112,9 +112,179 @@ namespace Graphic
 			 * @param	Image& pImage, the image that will receive the next draw operations
 			 */
 			Image* getTargetImage();
-
-
+			/**
+			 * Method that draws a pixel into the current target bitmap
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	27/05/2011
+			 * @version	27/05/2011
+			 * @param	const Core::Point&	pPosition	, the position of the pixel
+			 * @param	const Color&		pColor		, the color of the pixel
+			 */
 			virtual void drawPixel(const Core::Point& pPosition, const Color& pColor) = 0;
+			/**
+			 * Method that draws a line into the current target bitmap
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPointA	, the first point of the line
+			 * @param	const Core::Point&	pPointB	, the second point of the line
+			 * @param	const Color&		pColor	, the color of the line
+			 * @param	const float&		pThickness	, the thickness of the line
+			 */
+			virtual void drawLine
+			(
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
+				const Color& pColor,
+				const float& pThickness = 1.0f
+			) = 0;
+			/**
+			 * Method that draws a triangle into the current target bitmap
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPointA		, the first point of the triangle
+			 * @param	const Core::Point&	pPointB		, the second point of the triangle
+			 * @param	const Core::Point&	pPointC		, the third point of the triangle
+			 * @param	const Color&		pColor		, the color of the triangle
+			 * @param	const float&		pThickness	, the thickness of the triangle
+			 */
+			virtual void drawTriangle
+			(
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
+				const Core::Point& pPointC,
+				const Color& pColor,
+				const float& pThickness = 1.0f
+			) = 0;
+			/**
+			 * Method that draws a triangle into the current target bitmap, filled with color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPointA		, the first point of the triangle
+			 * @param	const Core::Point&	pPointB		, the second point of the triangle
+			 * @param	const Core::Point&	pPointC		, the third point of the triangle
+			 * @param	const Color&		pColor		, the color of the triangle
+			 */
+			virtual void drawTriangleFilled
+			(
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
+				const Core::Point& pPointC,
+				const Color& pColor
+			) = 0;
+			/**
+			 * Method that draws a rectangle into the current target bitmap
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPointA		, the first point of the diagonal of the rectangle
+			 * @param	const Core::Point&	pPointB		, the second point of the diagonal of the rectangle
+			 * @param	const Color&		pColor		, the color of the rectangle
+			 * @param	const float&		pThickness	, the thickness of the rectangle
+			 */
+			virtual void drawRectangle
+			(
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
+				const Color& pColor,
+				const float& pThickness = 1.0f
+			) = 0;
+			/**
+			 * Method that draws a rectangle into the current target bitmap, filled with color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPointA		, the first point of the diagonal of the rectangle
+			 * @param	const Core::Point&	pPointB		, the second point of the diagonal of the rectangle
+			 * @param	const Color&		pColor		, the color of the rectangle
+			 */
+			virtual void drawRectangleFilled
+			(
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
+				const Color& pColor
+			) = 0;
+			/**
+			 * Method that draws a circle into the current target bitmap
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPosition	, the position of the circle
+			 * @param	const float&		pRadius		, the radius of the circle
+			 * @param	const Color&		pColor		, the color of the circle
+			 * @param	const float&		pThickness	, the thickness of the circle
+			 */
+			virtual void drawCircle
+			(
+				const Core::Point& pPosition,
+				const float& pRadius,
+				const Color& pColor,
+				const float& pThickness = 1.0f
+			) = 0;
+			/**
+			 * Method that draws a circle into the current target bitmap, filled with color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPosition	, the position of the circle
+			 * @param	const float&		pRadius		, the radius of the circle
+			 * @param	const Color&		pColor		, the color of the circle
+			 */
+			virtual void drawCircleFilled
+			(
+				const Core::Point& pPosition,
+				const float& pRadius,
+				const Color& pColor
+			) = 0;
+			/**
+			 * Method that draws an ellipse into the current target bitmap
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPosition	, the position of the ellipse
+			 * @param	const float&		pRadiusX	, the horizontal radius of the ellipse
+			 * @param	const float&		pRadiusY	, the vertical radius of the ellipse
+			 * @param	const Color&		pColor		, the color of the ellipse
+			 * @param	const float&		pThickness	, the thickness of the ellipse
+			 */
+			virtual void drawEllipse
+			(
+				const Core::Point& pPosition,
+				const float& pRadiusX,
+				const float& pRadiusY,
+				const Color& pColor,
+				const float& pThickness = 1.0f
+			) = 0;
+			/**
+			 * Method that draws an ellipse into the current target bitmap, filled with color
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/06/2011
+			 * @version	03/06/2011
+			 * @param	const Core::Point&	pPosition	, the position of the ellipse
+			 * @param	const float&		pRadiusX	, the horizontal radius of the ellipse
+			 * @param	const float&		pRadiusY	, the vertical radius of the ellipse
+			 * @param	const Color&		pColor		, the color of the ellipse
+			 */
+			virtual void drawEllipseFilled
+			(
+				const Core::Point& pPosition,
+				const float& pRadiusX,
+				const float& pRadiusY,
+				const Color& pColor
+			) = 0;
+
 		protected:
 			/**
 			 * Protected Constructor

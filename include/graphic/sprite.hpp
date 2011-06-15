@@ -79,9 +79,8 @@ namespace Graphic
 			 * @since	07/08/2008
 			 * @version	21/01/2009
 			 * @param	const std::string&	pSpriteName		, name of the file that has the sprite data
-			 * @param	ImageLoader*		pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			Sprite(const std::string& pSpriteName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			Sprite( const std::string& pSpriteName );
 			/**
 			 * Constructor
 			 *
@@ -89,9 +88,8 @@ namespace Graphic
 			 * @since	07/08/2008
 			 * @version	21/06/2009
 			 * @param	Core::File&		pFile			, file previously opened that has the sprite data
-			 * @param	ImageLoader*	pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			Sprite(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			Sprite( Core::File& pFile );
 			/**
 			 * Copy Constructor
 			 *
@@ -335,21 +333,19 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	21/06/2009
+			 * @version	13/06/2011
 			 * @param	const std::string&	pSpriteName		, name of the file that have the sprite data
-			 * @param	ImageLoader*		pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			virtual void load(const std::string& pSpriteName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void load(const std::string& pSpriteName);
 			/**
 			 * Method that loads the sprite from a previously opened file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	21/06/2009
+			 * @version	13/06/2011
 			 * @param	Core::File&		pFile			, previously opened file that holds the sprite data
-			 * @param	ImageLoader*	pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			virtual void load(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void load(Core::File& pFile);
 			/**
 			 * Method that saves the sprite into a file
 			 *

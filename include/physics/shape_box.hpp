@@ -33,7 +33,7 @@ namespace Physics
 {
 	/**
 	 * Class that represents a Box shape
-	 * 
+	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	03/10/2010
 	 * @version	04/10/2010
@@ -53,7 +53,7 @@ namespace Physics
 		public:
 			/**
 			 * Constructor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	04/10/2010
@@ -64,14 +64,13 @@ namespace Physics
 			ShapeBox(const int& pWidth, const int& pHeight, Body& pBody);
 			/**
 			 * Method that draws the box with some color
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @param	Gorgon::Sprite& pSprite , the sprite the box will be draw
-			 * @param	const int& pColor , the color to draw the box
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor , the color to draw the box
 			 */
-			virtual void draw(Graphic::Sprite& pSprite, const int& pColor) const;
+			virtual void draw(const Graphic::Color& pColor) const;
 	};
 }}
-#endif 
+#endif

@@ -3,9 +3,13 @@
 #include <gorgon++/core/point.hpp>
 #include <gorgon++/core/log.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_image.h>
+
 #include "system.hpp"
 #include "image_base.hpp"
 #include "display_base.hpp"
+#include "common.hpp"
 
 namespace Gorgon	{
 namespace Graphic	{
@@ -15,17 +19,29 @@ namespace Addon
 	{
 		if(!al_init())
 		{
-			Core::logWrite("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 lib.");
+			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 lib."));
 			raiseGraphicException("System::System(): Error when initializing allegro5 lib.");
 		}
-		al_set_new_bitmap_flags(/*ALLEGRO_KEEP_INDEX | */ALLEGRO_VIDEO_BITMAP);
+		if(!al_init_primitives_addon())
+		{
+			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 primitives addon."));
+			raiseGraphicException("System::System(): Error when initializing allegro5 primitives addon.");
+		}
+		if(!al_init_image_addon())
+		{
+			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 image I/O addon."));
+			raiseGraphicException("System::System(): Error when initializing allegro5 image I/O addon.");
+		}
+		//al_set_new_bitmap_flags(/*ALLEGRO_KEEP_INDEX | */ALLEGRO_VIDEO_BITMAP);
+		al_set_new_bitmap_flags(ALLEGRO_MEMORY_BITMAP | ALLEGRO_KEEP_INDEX | ALLEGRO_PIXEL_FORMAT_LUMINANCE_8);
 		//al_set_new_bitmap_format(ALLEGRO_PIXEL_FORMAT_LUMINANCE_8);
 		Core::logWrite("Gorgon::Graphic::Addon::System::System(): Successful.");
 	}
 
 	System::~System()
 	{
-		Core::logWrite(Core::String("Gorgon::Graphic::Addon::System::~System(): Successful."));
+		al_shutdown_primitives_addon();
+		Core::logWrite(std::string("Gorgon::Graphic::Addon::System::~System(): Successful."));
 	}
 
 	void System::set()
@@ -52,7 +68,166 @@ namespace Addon
 
 	void System::drawPixel(const Core::Point& pPosition,const  Color& pColor)
 	{
-		al_put_pixel( pPosition.getX(), pPosition.getY(), al_map_rgba_f(pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha()) );
+		al_put_pixel
+		(
+			pPosition.getX(),
+			pPosition.getY(),
+			gorgonColort2AllegroColor(pColor)
+		);
 	}
+
+	void System::drawLine
+	(
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
+		const Color& pColor,
+		const float& pThickness
+	)
+	{
+		al_draw_line
+		(
+			pPointA.getX(), pPointA.getY(),
+			pPointB.getX(), pPointB.getY(),
+			gorgonColort2AllegroColor(pColor),
+			pThickness
+		);
+	}
+
+	void System::drawTriangle
+	(
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
+		const Core::Point& pPointC,
+		const Color& pColor,
+		const float& pThickness
+	)
+	{
+		al_draw_triangle
+		(
+			pPointA.getX(), pPointA.getY(),
+			pPointB.getX(), pPointB.getY(),
+			pPointC.getX(), pPointC.getY(),
+			gorgonColort2AllegroColor(pColor),
+			pThickness
+		);
+	}
+
+	void System::drawTriangleFilled
+	(
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
+		const Core::Point& pPointC,
+		const Color& pColor
+	)
+	{
+		al_draw_filled_triangle
+		(
+			pPointA.getX(), pPointA.getY(),
+			pPointB.getX(), pPointB.getY(),
+			pPointC.getX(), pPointC.getY(),
+			gorgonColort2AllegroColor(pColor)
+		);
+	}
+
+	void System::drawRectangle
+	(
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
+		const Color& pColor,
+		const float& pThickness
+	)
+	{
+		al_draw_rectangle
+		(
+			pPointA.getX(), pPointA.getY(),
+			pPointB.getX(), pPointB.getY(),
+			gorgonColort2AllegroColor(pColor),
+			pThickness
+		);
+	}
+
+	void System::drawRectangleFilled
+	(
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
+		const Color& pColor
+	)
+	{
+		al_draw_filled_rectangle
+		(
+			pPointA.getX(), pPointA.getY(),
+			pPointB.getX(), pPointB.getY(),
+			gorgonColort2AllegroColor(pColor)
+		);
+	}
+
+	void System::drawCircle
+	(
+		const Core::Point& pPosition,
+		const float& pRadius,
+		const Color& pColor,
+		const float& pThickness
+	)
+	{
+		al_draw_circle
+		(
+			pPosition.getX(), pPosition.getY(),
+			pRadius,
+			gorgonColort2AllegroColor(pColor),
+			pThickness
+		);
+	}
+
+	void System::drawCircleFilled
+	(
+		const Core::Point& pPosition,
+		const float& pRadius,
+		const Color& pColor
+	)
+	{
+		al_draw_filled_circle
+		(
+			pPosition.getX(), pPosition.getY(),
+			pRadius,
+			gorgonColort2AllegroColor(pColor)
+		);
+	}
+
+	void System::drawEllipse
+	(
+		const Core::Point& pPosition,
+		const float& pRadiusX,
+		const float& pRadiusY,
+		const Color& pColor,
+		const float& pThickness
+	)
+	{
+		al_draw_ellipse
+		(
+			pPosition.getX(), pPosition.getY(),
+			pRadiusX,
+			pRadiusY,
+			gorgonColort2AllegroColor(pColor),
+			pThickness
+		);
+	}
+
+	void System::drawEllipseFilled
+	(
+		const Core::Point& pPosition,
+		const float& pRadiusX,
+		const float& pRadiusY,
+		const Color& pColor
+	)
+	{
+		al_draw_filled_ellipse
+		(
+			pPosition.getX(), pPosition.getY(),
+			pRadiusX,
+			pRadiusY,
+			gorgonColort2AllegroColor(pColor)
+		);
+	}
+
 }}}
 

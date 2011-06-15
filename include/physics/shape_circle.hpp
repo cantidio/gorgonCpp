@@ -50,7 +50,7 @@ namespace Physics
 			 * @version	04/10/2010
 			 * @param	const float&			pRadius , the radius of the circle
 			 * @param	const Core::Point&	pOffset , the offset from the body's center of gravity
-			 * @param	Body&					pBody	, the body thw Shape is attached				
+			 * @param	Body&					pBody	, the body thw Shape is attached
 			 */
 			ShapeCircle
 			(
@@ -66,14 +66,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	Gorgon::Point
 			 */
-			inline Core::Point getOffset() const
-			{
-				return Core::Point
-				(
-					cpCircleShapeGetOffset(mShape).x,
-					cpCircleShapeGetOffset(mShape).y
-				);
-			}
+			Core::Point getOffset() const;
 			/**
 			 * Method that returns the radius of the circle
 			 *
@@ -81,21 +74,17 @@ namespace Physics
 			 * @since	03/10/2010
 			 * @version	03/10/2010
 			 */
-			inline float getRadius() const
-			{
-				return cpCircleShapeGetRadius(mShape);
-			}
+			float getRadius() const;
 			/**
 			 * Method that draws the circle in the sprite with some color
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @param	Graphic::Sprite& pSprite , the sprite the circle will be draw
-			 * @param	const int& pColor , the color to draw the circle
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor , the color to draw the circle
 			 * @todo	optmize this method
 			 */
-			virtual void draw(Graphic::Sprite& pSprite, const int& pColor) const;
+			virtual void draw(const Graphic::Color& pColor) const;
 	};
 }}
 #endif

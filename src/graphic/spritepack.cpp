@@ -192,6 +192,13 @@ namespace Graphic
 		}
 	}
 
+	void SpritePack::convertToDisplayFormat()
+	{
+		for(register int i = getSize() -1; i >= 0; --i)
+		{
+			mSprites[i].convertToDisplayFormat();
+		}
+	}
 	/**
 	 * Métodbo para criar uma paleta de cores global para todos os sprites do pacote
 	 *
@@ -224,7 +231,7 @@ namespace Graphic
 	}
 
 	void SpritePack::save(const std::string& pFileName, const ImageLoader& pImageLoader)
-	{;
+	{
 		Core::File file(pFileName,std::ios::out | std::ios::binary);
 
 		if(file.is_open())
@@ -266,7 +273,7 @@ namespace Graphic
 					spriteSize = pFile.readInt32();
 					for(int i = 0; i < spriteSize; ++i)
 					{
-						mSprites.push_back( Sprite(pFile,pImageLoader) );
+						mSprites.push_back( Sprite( pFile ) );
 					}
 					mPalLinked = false;
 				}

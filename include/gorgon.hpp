@@ -29,9 +29,8 @@
 
 #include "audio/audio.hpp"
 #include "core/core.hpp"
-#include "collision/gorgon_collisionpack.hpp"
-
-#include "geometry/gorgon_geometry.hpp"
+//#include "collision/gorgon_collisionpack.hpp"
+//#include "geometry/gorgon_geometry.hpp"
 #include "graphic/graphic.hpp"
 #include "input/input.hpp"
 #include "physics/physics.hpp"

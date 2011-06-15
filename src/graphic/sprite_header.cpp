@@ -69,11 +69,11 @@ namespace Graphic
 				&& version		== 1
 			)
 			{
-				setGroup		(pFile.readInt32());
-				setIndex		(pFile.readInt32());
-				mOffset.setX	(pFile.readInt32());
-				mOffset.setY	(pFile.readInt32());
-				setSizeOfData	(pFile.readInt32());
+				setGroup		( pFile.readInt32() );
+				setIndex		( pFile.readInt32() );
+				mOffset.setX	( pFile.readInt32() );
+				mOffset.setY	( pFile.readInt32() );
+				setSizeOfData	( pFile.readInt32() );
 			}
 			else
 			{

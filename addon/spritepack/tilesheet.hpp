@@ -26,9 +26,10 @@
  */
 #ifndef _GORGON_SPRITEPACK_TILESHEET_
 #define _GORGON_SPRITEPACK_TILESHEET_
-#include<gorgon++/graphic/spritepack.hpp>
+#include <gorgon++/graphic/spritepack.hpp>
 
-namespace Gorgon{
+namespace Gorgon  {
+namespace Graphic {
 namespace Addon
 {
 	/**
@@ -36,11 +37,11 @@ namespace Addon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	23/01/2009
-	 * @version	18/05/2011
+	 * @version	15/06/2011
 	 * @details
 	 * 			This class opens a tilesheet and stores it like a spritepack
 	 */
-	class TileSheet : public Graphic::SpritePack
+	class TileSheet : public SpritePack
 	{
 		public:
 			/**
@@ -49,7 +50,7 @@ namespace Addon
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	23/01/2009
-			 * @version	18/05/2011
+			 * @version	15/06/2011
 			 * @param	const Graphic::Image&	pImageSheet	, the image that stores the tilesheet
 			 * @param	const int&				pWidth		, the width of the tiles
 			 * @param	const int&				pHeight		, the height of the tiles
@@ -59,12 +60,12 @@ namespace Addon
 			 */
 			TileSheet
 			(
-				const Graphic::Image&	pImageSheet,
-				const int&				pWidth,
-				const int&				pHeight,
-				const int&				pJumpPixels	= 0
+				const Image&	pImageSheet,
+				const int&		pWidth,
+				const int&		pHeight,
+				const int&		pJumpPixels	= 0
 			);
 	};
 
-}}
+}}}
 #endif

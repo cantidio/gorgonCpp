@@ -28,7 +28,7 @@
 #define _GORGON_PHYSICS_SHAPE_SEGMENT_
 #include "shape.hpp"
 
-namespace Gorgon{
+namespace Gorgon {
 namespace Physics
 {
 	/**
@@ -67,14 +67,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	Core::Point
 			 */
-			inline Core::Point getPointA() const
-			{
-				return Core::Point
-				(
-					cpSegmentShapeGetA(mShape).x,
-					cpSegmentShapeGetA(mShape).y
-				);
-			}
+			Core::Point getPointA() const;
 			/**
 			 * Method that returns the second Point of the segment
 			 *
@@ -83,14 +76,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	Core::Point
 			 */
-			inline Core::Point getPointB() const
-			{
-				return Core::Point
-				(
-					cpSegmentShapeGetB(mShape).x,
-					cpSegmentShapeGetB(mShape).y
-				);
-			}
+			Core::Point getPointB() const;
 			/**
 			 * Method that returns the NormalPoint of the segment
 			 *
@@ -99,14 +85,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	Core::Point
 			 */
-			inline Core::Point getNormal() const
-			{
-				return Core::Point
-				(
-					cpSegmentShapeGetNormal(mShape).x,
-					cpSegmentShapeGetNormal(mShape).y
-				);
-			}
+			Core::Point getNormal() const;
 			/**
 			 * Method that returns the radius of the segment
 			 *
@@ -115,20 +94,16 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	float
 			 */
-			inline float getRadius() const
-			{
-				return cpSegmentShapeGetRadius(mShape);
-			}
+			float getRadius() const;
 			/**
 			 * Method that draws the segment in the sprite with some color
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @param	Graphic::Sprite&	pSprite	, the sprite the segment will be draw
-			 * @param	const int&			pColor	, the color to draw the segment
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor, the color to draw the segment
 			 */
-			virtual void draw(Graphic::Sprite& pSprite, const int& pColor) const;
+			virtual void draw(const Graphic::Color& pColor) const;
 	};
 }}
 #endif

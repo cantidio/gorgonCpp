@@ -46,14 +46,14 @@ namespace Graphic
 		mOffset		= pSpriteOrig.mOffset;
 	}
 
-	Sprite::Sprite(const std::string& pSpriteName, const ImageLoader& pImageLoader) : Image()
+	Sprite::Sprite(const std::string& pSpriteName) : Image()
 	{
-		load(pSpriteName,pImageLoader);
+		load( pSpriteName );
 	}
 
-	Sprite::Sprite(Core::File& pFile, const ImageLoader& pImageLoader) : Image()
+	Sprite::Sprite( Core::File& pFile ) : Image()
 	{
-		load(pFile,pImageLoader);
+		load( pFile );
 	}
 
 	void Sprite::trim()
@@ -194,13 +194,13 @@ namespace Graphic
 		Image::draw(pPosition, pTint, pAngle, offset, pMirroring);
 	}
 
-	void Sprite::load(const std::string& pSpriteName, const ImageLoader& pImageLoader)
+	void Sprite::load( const std::string& pSpriteName )
 	{
 		Core::File file(pSpriteName,std::ios::in | std::ios::binary);
 
 		if(file.is_open())
 		{
-			load(file, pImageLoader);
+			load( file );
 		}
 		else
 		{
@@ -208,7 +208,7 @@ namespace Graphic
 		}
 	}
 
-	void Sprite::load(Core::File& pFile, const ImageLoader& pImageLoader)
+	void Sprite::load( Core::File& pFile )
 	{
 		if(!pFile.is_open())
 		{
@@ -219,11 +219,11 @@ namespace Graphic
 		{
 			header.load(pFile);
 
-			setGroup	(header.getGroup());
-			setIndex	(header.getIndex());
-			setOffset	(header.getOffset());
+			setGroup	( header.getGroup()  );
+			setIndex	( header.getIndex()  );
+			setOffset	( header.getOffset() );
 
-			pImageLoader.load( *this, pFile, header.getSizeOfData() );
+			Image::load( pFile, header.getSizeOfData() );
 		}
 		catch(Core::Exception& exception)
 		{

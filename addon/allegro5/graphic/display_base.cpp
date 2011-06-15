@@ -5,6 +5,7 @@
 #include <sstream>
 #include "display_base.hpp"
 #include "image_base.hpp"
+#include "common.hpp"
 
 namespace Gorgon	{
 namespace Graphic	{
@@ -74,30 +75,14 @@ namespace Addon
 	void DisplayBase::setAsTarget()
 	{
 	    al_set_target_bitmap(al_get_backbuffer(mDisplay));
-		//al_set_target_backbuffer(mDisplay);
 	}
 
 	void DisplayBase::clear(const Color& pColor)
 	{
-		/*Image target = Graphic::System::getTargetImage();
-
-		Graphic::System::setTargetImage(target);*/
-
-		ALLEGRO_BITMAP * aux = al_get_target_bitmap();	//pega o target anterior
-
-		al_set_target_bitmap(al_get_backbuffer(mDisplay));
-
-		al_clear_to_color
-		(
-			al_map_rgba_f
-			(
-				pColor.getRed(),
-				pColor.getGreen(),
-				pColor.getBlue(),
-				pColor.getAlpha()
-			)
-		);												//limpa com a cor desejada
-		al_set_target_bitmap(aux);						//seta o target antigo
+		ALLEGRO_BITMAP * aux = al_get_target_bitmap();			//pega o target anterior
+		al_set_target_bitmap(al_get_backbuffer(mDisplay));		//seta o novo target
+		al_clear_to_color( gorgonColort2AllegroColor(pColor) );	//limpa com a cor desejada
+		al_set_target_bitmap(aux);								//seta o target antigo
 	}
 
 	void DisplayBase::swapBuffers()

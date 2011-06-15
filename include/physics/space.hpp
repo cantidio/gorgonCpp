@@ -55,7 +55,7 @@ namespace Physics
 	class Space
 	{
 		friend class Body;
-		
+
 		protected:
 			cpSpace						*mSpace;		/**< Variable that holds the chipmunk's space */
 			Body						*mStaticBody;	/**< Variable that holds the staticBody */
@@ -72,7 +72,7 @@ namespace Physics
 			void addShape(Shape* pShape);
 			/**
 			 * Method that puts a Constraint into the simulated space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -148,7 +148,7 @@ namespace Physics
 				mSpace->gravity.y = pPoint.getY();
 			}
 			/**
-			 * Method that sets the damping of the simulated space	
+			 * Method that sets the damping of the simulated space
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
@@ -162,7 +162,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the number of bodies in the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -185,7 +185,7 @@ namespace Physics
 			Body* addBody(const float& pMass, const float& pMoment);
 			/**
 			 * Method that returns the number of constraints in the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -197,7 +197,7 @@ namespace Physics
 			}
 			/**
 			 * Method that add an ConstraintPinJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -206,7 +206,7 @@ namespace Physics
 			 * @param	const Core::Point&	pAnchorA 	, the anchor attached to the first body
 			 * @param	const Core::Point&	pAnchorB	, the anchor attached to the second body
 			 * @return	PinJoint*
-			 */	
+			 */
 			PinJoint* addConstraintPinJoint
 			(
 				Body& pBodyA,
@@ -216,7 +216,7 @@ namespace Physics
 			);
 			/**
 			 * Method that add and Constraint of type SlideJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -240,7 +240,7 @@ namespace Physics
 			);
 			/**
 			 * Method that add and Constraint of type PivotJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -258,7 +258,7 @@ namespace Physics
 			);
 			/**
 			 * Method that add and Constraint of type PivotJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -278,7 +278,7 @@ namespace Physics
 			);
 			/**
 			 * Method that add and Constraint of the type GrooveJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -300,7 +300,7 @@ namespace Physics
 			);
 			/**
 			 * Method that add and Constraint of the type DampedSpring to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -326,7 +326,7 @@ namespace Physics
 			);
 			/**
 			 * Method that add and Constraint of the type DampedRotarySpring to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -348,7 +348,7 @@ namespace Physics
 			);
 			/**
 			 * Method tha add a Constraint of the type RotaryLimitJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/10/2010
 			 * @version	07/10/2010
@@ -422,27 +422,26 @@ namespace Physics
 			void resizeActiveHash(const float& pDim = 100, const int& pCount = 1000);
 			/**
 			 * Method that returns a color based in a base number
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
+			 * @version	11/06/2011
 			 * @param	const int& pBase, the base number
-			 * @return	int
+			 * @return	Graphic::Color
 			 */
-			int getColor(const int& pBase) const;
+			Graphic::Color getColor(const int& pBase) const;
 			/**
 			 * Method that draws the entire space in a Gorgon::Sprite
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @param	Graphic::Sprite& pSprite, sprite to be draw
+			 * @version	11/06/2011
 			 * @details
 			 * 			This method generates some colors to the shapes,
 			 * based in their pointers
 			 * @see		getColor
 			 */
-			void draw(Graphic::Sprite& pSprite) const;
+			void draw() const;
 	};
 }}
 #endif

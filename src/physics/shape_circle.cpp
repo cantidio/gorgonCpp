@@ -1,5 +1,6 @@
 #include <physics/shape_circle.hpp>
 #include <physics/body.hpp>
+#include <chipmunk/chipmunk.h>
 
 namespace Gorgon{
 namespace Physics
@@ -18,10 +19,23 @@ namespace Physics
 			cpv(pOffset.getX(),pOffset.getY())
 		);
 	}
-	
-	void ShapeCircle::draw(Graphic::Sprite& pSprite, const int& pColor) const
+
+	Core::Point ShapeCircle::getOffset() const
 	{
-		Graphic::Image a(getRadius() * 2 - 1, getRadius() * 2 - 1);
+		return Core::Point
+		(
+			cpCircleShapeGetOffset(mShape).x,
+			cpCircleShapeGetOffset(mShape).y
+		);
+	}
+
+	float ShapeCircle::getRadius() const
+	{
+		return cpCircleShapeGetRadius(mShape);
+	}
+
+	void ShapeCircle::draw(const Graphic::Color& pColor) const
+	{
 		Graphic::Sprite image
 		(
 			Graphic::Image
@@ -30,33 +44,27 @@ namespace Physics
 				getRadius() * 2
 			),
 			0,0,
-			Core::Point( getRadius(),	getRadius() )
+			Core::Point( getRadius(), getRadius() )
 		);
-		/*a.drawCircle
+
+		Graphic::Image* aux = Graphic::System::get().getTargetImage();
+		Graphic::System::get().setTargetImage(image);
+
+		Graphic::System::get().drawCircle
 		(
-			getRadius() - 1,
-			getRadius() - 1,
-			getRadius() - 1,
-			pColor
+			Core::Point( getRadius() , getRadius()),
+			getRadius()-2,
+			pColor,2
 		);
-		a.drawLine
+		Graphic::System::get().drawLine
 		(
-			Core::Point(getRadius()			, getRadius() - 1),
-			Core::Point(getRadius()*2 - 1	, getRadius() - 1),
-			pColor
+			Core::Point( getRadius() , getRadius() ),
+			Core::Point( getRadius() , getRadius() * 2),
+			pColor,2
 		);
-		image.drawImageStretched
-		(
-			a,
-			Core::Point(0,0),
-			getRadius() * 2,
-			getRadius() * 2
-		);
-		pSprite.drawSpriteRotated
-		(
-			image,
-			mBody->getPosition(),
-			360/256 * mBody->getAngle()
-		);
-*/	}
+
+		Graphic::System::get().setTargetImage(*aux);
+
+		image.draw( mBody->getPosition(), mBody->getAngle()/360.0f );
+	}
 }}

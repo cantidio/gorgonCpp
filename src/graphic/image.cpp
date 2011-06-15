@@ -83,20 +83,22 @@ namespace Graphic
 		mFreePalette	= true;
 	}
 
-	Image::Image(const std::string& pFileName,const ImageLoader& pImageLoader)
+	Image::Image(const std::string& pFileName)
 	{
 		mImage			= NULL;
 		mPalette		= NULL;
 		mFreeImage		= true;
 		mFreePalette	= true;
-		load(pFileName, pImageLoader);
+		load(pFileName);
 	}
 
-	Image::Image(Core::File& pFile, const ImageLoader& pImageLoader)
+	Image::Image(Core::File& pFile, const int& pDataLength)
 	{
-		setImageBase(NULL, true);
-		setPalette	(NULL, true);
-		load(pFile, pImageLoader);
+		mImage			= NULL;
+		mPalette		= NULL;
+		mFreeImage		= true;
+		mFreePalette	= true;
+		load(pFile, pDataLength);
 	}
 
 	Image::~Image()
@@ -250,6 +252,14 @@ namespace Graphic
 		if(mImage != NULL)
 		{
 			mImage->clear(pColor);
+		}
+	}
+
+	void Image::blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const
+	{
+		if(mImage != NULL)
+		{
+			mImage->blit(pPosition, pSourcePosition, pWidth, pHeight);
 		}
 	}
 
@@ -410,19 +420,32 @@ namespace Graphic
 		setPalette		((pImage.mPalette	!= NULL) ? pImage.mPalette->clone()	: NULL, true);
 	}
 
-	void Image::load(const std::string& pFileName,const ImageLoader& pImageLoader)
+	void Image::convertToDisplayFormat()
 	{
-
-		pImageLoader.load(*this, pFileName);
+		if(mImage)
+		{
+			mImage->convertToDisplayFormat();
+		}
 	}
 
-	void Image::load(Core::File& pFile, const ImageLoader& pImageLoader)
+	void Image::load(const std::string& pFileName)
+	{
+		Core::File file(pFileName, std::ios::in | std::ios::binary);
+
+		if(file.is_open())
+		{
+			load( file, file.getSize() );
+		}
+		file.close();
+	}
+
+	void Image::load(Core::File& pFile, const int& pDataLength)
 	{
 		setImageBase(System::get().getImage(), true);
-		pImageLoader.load(*this, pFile);
+		mImage->load(pFile, pDataLength);
 	}
 
-	void Image::save(const std::string& pFileName,const ImageLoader& pImageLoader)
+	void Image::save(const std::string& pFileName, const ImageLoader& pImageLoader)
 	{
 		pImageLoader.save(*this,pFileName);
 	}

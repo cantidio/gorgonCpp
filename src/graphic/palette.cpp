@@ -25,7 +25,7 @@ namespace Graphic
 			raiseGraphicException( out.str() );
 		}
 	}
-	
+
 	Palette::Palette( const std::string& pPaletteName, const int& pColorNumber, const int& pJumpBytes)
 	{
 		try
@@ -49,7 +49,7 @@ namespace Graphic
 
 			raiseGraphicExceptionE( out.str() , exception );
 		}
-		
+
 	}
 
 	Palette::Palette( Core::File& pFile, const int& pColorNumber, const int& pJumpBytes )
@@ -57,8 +57,8 @@ namespace Graphic
 		try
 		{
 			mColorNumber	= pColorNumber;
-			mColors			= new float[mColorNumber * 3];
-	
+			mColors			= new float[ mColorNumber * 3 ];
+
 			load( pFile, pColorNumber, pJumpBytes );
 		}
 		catch(std::exception& exception)
@@ -88,7 +88,7 @@ namespace Graphic
 	std::string Palette::describe() const
 	{
 		const int allColors = mColorNumber * 3 ;
-		
+
 		std::stringstream out;
 		out << "Graphic::Palette::describe()"	<< std::endl;
 		out << "ColorNumber: " << mColorNumber	<< std::endl;
@@ -132,16 +132,16 @@ namespace Graphic
 		const int middle 	= (mColorNumber * 3) / 2;
 		float colorComponent;
 
-		for(register int i = 0, j = (mColorNumber * 3) - 1; i < middle; i+=3, j-=3)
+		for(register int i = 0, j = (mColorNumber * 3) - 3; i < middle; i+=3, j-=3)
 		{
 			colorComponent = mColors[i + 0];//red
 			mColors[i + 0] = mColors[j + 0];
 			mColors[j + 0] = colorComponent;
-			
+
 			colorComponent = mColors[i + 1];//green
 			mColors[i + 1] = mColors[j + 1];
 			mColors[j + 1] = colorComponent;
-			
+
 			colorComponent = mColors[i + 2];//blue
 			mColors[i + 2] = mColors[j + 2];
 			mColors[j + 2] = colorComponent;
@@ -158,7 +158,7 @@ namespace Graphic
 			mColors[i + 0] = green;
 		}
 	}
-	
+
 	void Palette::swapGreenForBlue()
 	{
 		float blue;
@@ -169,7 +169,7 @@ namespace Graphic
 			mColors[i + 1]	= blue;
 		}
 	}
-	
+
 	void Palette::swapBlueForRed()
 	{
 		float red;
@@ -212,12 +212,12 @@ namespace Graphic
 
 	void Palette::load( Core::File&	pFile, const int& pColorNumber, const int& pJumpBytes )
 	{
-		for(register int i = (pColorNumber-1); i >= 0; --i)
+		for( register int i = (pColorNumber * 3 - 3); i >= 0; i -= 3 )
 		{
 			mColors[i + 0] = pFile.readUnsignedInt8() / 255.0f ;
 			mColors[i + 1] = pFile.readUnsignedInt8() / 255.0f ;
 			mColors[i + 2] = pFile.readUnsignedInt8() / 255.0f ;
-		
+
 			if(pJumpBytes > 0)
 			{
 				pFile.ignore(pJumpBytes);

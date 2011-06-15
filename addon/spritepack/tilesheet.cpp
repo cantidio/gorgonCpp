@@ -1,39 +1,44 @@
 #include "tilesheet.hpp"
-namespace Gorgon{
+#include <gorgon++/graphic/system.hpp>
+
+namespace Gorgon  {
+namespace Graphic {
 namespace Addon
 {
 	TileSheet::TileSheet
 	(
-		const Graphic::Image&	pImageSheet,
-		const int&				pWidth,
-		const int&				pHeight,
-		const int&				pJumpPixels
+		const Image&	pImageSheet,
+		const int&		pWidth,
+		const int&		pHeight,
+		const int&		pJumpPixels
 	)
 	{
-		int group,index;
-		unsigned int j,i;
-		for(group = 0, j = pJumpPixels; j < pImageSheet.getHeight(); j += pHeight + pJumpPixels,++group)
+		register int group,index;
+		register int j,i;
+		Image* aux = System::get().getTargetImage();
+
+		for( group = 0, j = pJumpPixels; j < pImageSheet.getHeight(); j += pHeight + pJumpPixels, ++group )
 		{
-			for(index = 0, i = pJumpPixels; i < pImageSheet.getWidth(); i += pWidth + pJumpPixels,++index)
+			for( index = 0, i = pJumpPixels; i < pImageSheet.getWidth(); i += pWidth + pJumpPixels, ++index )
 			{
 				add
 				(
-					Graphic::Sprite
+					Sprite
 					(
-						Graphic::Image
-						(
-							pWidth,
-							pHeight,
-							pImageSheet.getBpp()
-						),
+						Image( pWidth, pHeight ),
 						group,
 						index
 					)
 				);
-//				(*this)[getSize()-1].clear();
-//				(*this)[getSize()-1].blitImage(pImageSheet,Core::Point(0,0),Core::Point(i,j),pWidth,pHeight);
+
+				(*this)[ getSize() - 1 ].clear( Color(0, 0, 0, 0) );
+
+				System::get().setTargetImage( (*this)[ getSize() - 1 ] );
+				pImageSheet.blit( Core::Point(0,0), Core::Point(i,j), pWidth, pHeight );
 			}
 		}
+
+		System::get().setTargetImage( *aux );
 		mPalLinked = false;
 		if(pImageSheet.getPalette())
 		{
@@ -41,8 +46,8 @@ namespace Addon
 		}
 		else
 		{
-			mGlobalPalette	= new Graphic::Palette();
+			mGlobalPalette	= new Palette();
 		}
 		applyGlobalPalette();
 	}
-}}
+}}}

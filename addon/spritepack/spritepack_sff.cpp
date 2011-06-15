@@ -2,7 +2,8 @@
 #include <gorgon++/graphic/graphic.hpp>
 #include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
 
-namespace Gorgon{
+namespace Gorgon  {
+namespace Graphic {
 namespace Addon
 {
 	SpritePackSff::SpritePackSff(){}
@@ -30,9 +31,10 @@ namespace Addon
 			raiseGraphicException("SpritePackSff::load(\""+pFileName+"\"): Error, unable to open the file for reading.");
 		}
 	}
-	
+
 	Graphic::Sprite SpritePackSff::loadSprite(Core::File& pFile) const
 	{
+		const int loc = pFile.tellg();
 		//Graphic::Image imageTmp;
 		const int nextSubFile		= pFile.readInt32();
 		const int sizeOfData		= pFile.readInt32();
@@ -47,7 +49,7 @@ namespace Addon
 		if(sizeOfData == 0)
 		{
 			pFile.seekg(pFile.beg + nextSubFile);
-			return Graphic::Sprite
+			return Sprite
 			(
 				(*this)[preIndex],
 				group,
@@ -57,24 +59,27 @@ namespace Addon
 		}
 		else
 		{
-			/**@todo talvez utilizar outro loader, ou deixar empty*/
-			Graphic::Sprite temp
+			Sprite temp
 			(
-				Graphic::Image(pFile, ImageLoaderPcx() ),
+				Image( pFile, sizeOfData ),
 				group,
 				index,
 				Core::Point(xOffset,yOffset)
 			);
+
 			if(!reusePalette)
 			{
 				pFile.seekg(pFile.beg + nextSubFile - 768);
-				Graphic::Palette* palette = new Graphic::Palette(pFile);
+				Palette* palette = new Palette(pFile);
 				palette->inverse();
 				temp.setPalette(palette, true);
 			}
 			else if(getSize() > 0)
 			{
-				temp.setPalette( (*this)[getSize()-1].getPalette()->clone() , true);
+				if( (*this)[ getSize() - 1 ].getPalette() != NULL )
+				{
+					temp.setPalette( (*this)[getSize()-1].getPalette()->clone() , true);
+				}
 			}
 			else
 			{
@@ -95,11 +100,12 @@ namespace Addon
 		const int subHeaderSize		= pFile.readInt32();
 		const char paletteType		= pFile.readInt8();
 		pFile.ignore(479);
-/**@todo verificar o header e versão dessa porra.*/
+
+		/**@todo verificar o header e versão dessa porra.*/
 
 		for(int i = 0; i < imageNumber; ++i)
 		{
-			add(loadSprite(pFile));
+			add( loadSprite(pFile) );
 		}
 	}
-}}
+}}}

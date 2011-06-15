@@ -1,62 +1,12 @@
-#include <allegro5/allegro.h>
 #include <gorgon++/graphic/exception.hpp>
 #include "image_base.hpp"
-#include <iostream>
-#include <typeinfo>
+#include "common.hpp"
+#include <sstream>
 
 namespace Gorgon	{
 namespace Graphic	{
 namespace Addon
 {
-	/**
-	 * Function that transforms a Mirroring into an Allegro draw Flag
-	 *
-	 * @author	Cantidio Oliveira Fontes
-	 * @since	26/05/2011
-	 * @version	26/05/2011
-	 * @param	const Mirroring& pMirroring, the mirroring obj  to transform
-	 * @return	int
-	 */
-	inline int gorgonMirroring2AllegroMirroring(const Mirroring& pMirroring)
-	{
-		switch(pMirroring.getType())
-		{
-			case Mirroring::HFlip:	return ALLEGRO_FLIP_HORIZONTAL;
-			case Mirroring::VFlip:	return ALLEGRO_FLIP_VERTICAL;
-			case Mirroring::HVFlip:	return ALLEGRO_FLIP_VERTICAL|ALLEGRO_FLIP_HORIZONTAL;
-			default:
-				return 0;
-		}
-	}
-	/**
-	 * Function that converts a Gorgon Color to a allegro one
-	 *
-	 * @author	Cantidio Oliveira Fontes
-	 * @since	26/05/2011
-	 * @version	26/05/2011
-	 * @param	const Color& pColor, the color to be converted
-	 * @return	ALLEGRO_COLOR
-	 */
-	inline ALLEGRO_COLOR gorgonColort2AllegroColor(const Color& pColor)
-	{
-		return al_map_rgba_f(pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha());
-	}
-	/**
-	 * Function that converts an Allegro Color to a Gorgon one
-	 *
-	 * @author	Cantidio Oliveira Fontes
-	 * @since	26/05/2011
-	 * @version	26/05/2011
-	 * @param	const ALLEGRO_COLOR& pColor, the color to be converted
-	 * @return	Color
-	 */
-	inline Color allegroColor2GorgonColor(const ALLEGRO_COLOR& pColor)
-	{
-		float r, g, b, a;
-		al_unmap_rgba_f(pColor, &r, &g, &b, &a);
-		return Color(r,g,b,a);
-	}
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 	void ImageBase::create
 	(
 		const int& pWidth,
@@ -157,6 +107,18 @@ namespace Addon
 		al_set_target_bitmap(mData);							//seta como novo target
 		al_clear_to_color( gorgonColort2AllegroColor(pColor) );	//limpa com a cor desejada
 		al_set_target_bitmap(aux);								//seta o target antigo
+	}
+
+	void ImageBase::blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const
+	{
+		al_draw_bitmap_region
+		(
+			mData,
+			pSourcePosition.getX(),	pSourcePosition.getY(),
+			pWidth,					pHeight,
+			pPosition.getX(),		pPosition.getY(),
+			0
+		);
 	}
 
 	void ImageBase::draw(const Core::Point& pPosition) const //draw
@@ -344,5 +306,77 @@ namespace Addon
 	{
 		return new ImageBase(*this);
 	}
+
+	void ImageBase::load(Core::File& pFile, const int& pDataLength)
+	{
+		ALLEGRO_FILE*	fake_file		= NULL;
+		unsigned char*	data			= NULL;
+		bool			isTarget		= false;
+		char const*		extensions[]	= { ".png", ".pcx", ".bmp", ".gif",".tga", ".tif", ".tiff", ".jpg", ".jpeg", NULL };
+
+		try
+		{
+			if( mData != NULL )
+			{
+				isTarget = ( al_get_target_bitmap() == mData ) ? true : false;
+				if( mFreeSource )
+				{
+					al_set_target_bitmap(NULL);
+					al_destroy_bitmap( mData );
+				}
+			}
+
+			data = new unsigned char[pDataLength];
+			pFile.read( (char*)data, pDataLength );
+
+			fake_file = al_open_memfile((void*) data, pDataLength, "rb" );
+
+			for(register int i = 0; extensions[i] != NULL; ++i )
+			{
+				al_fseek( fake_file, 0, ALLEGRO_SEEK_SET);//volta o ponteiro para a primeira posição do "arquivo"
+				mData = al_load_bitmap_f( fake_file, extensions[i] );
+				if( mData != NULL ) //se encontar a imagem sai do loop.
+				{
+					break;
+				}
+			}
+			if(mData != NULL)
+			{
+				mBpp		= al_get_pixel_format_bits(al_get_bitmap_format(mData)) ;
+				mWidth		= al_get_bitmap_width(mData);
+				mHeight		= al_get_bitmap_height(mData);
+				mFreeSource	= true;
+			}
+			else
+			{
+				std::stringstream out;
+				out << "ImageBase::load(" << &pFile << ", " << pDataLength << "): Error while loading the image.";
+				raiseGraphicException( out.str() );
+			}
+
+			al_fclose( fake_file );		//fecha o arquivo
+			delete data;				//delata os dados
+
+			if(isTarget) applyAsTarget();
+		}
+		catch(std::exception& e)
+		{
+			std::stringstream out;
+			out << "ImageBase::load(" << &pFile << ", " << pDataLength << "): Error in loading the image, couldn't allocate memory for image.";
+			raiseGraphicException( out.str() );
+		}
+	}
+
+	void ImageBase::convertToDisplayFormat()
+	{
+		al_set_new_bitmap_flags(ALLEGRO_VIDEO_BITMAP);
+
+		ALLEGRO_BITMAP* aux = al_clone_bitmap(mData);
+		al_destroy_bitmap(mData);
+		mData = aux;
+
+		al_set_new_bitmap_flags(ALLEGRO_MEMORY_BITMAP);
+	}
+
 }}}
 

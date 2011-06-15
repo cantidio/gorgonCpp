@@ -54,7 +54,7 @@ namespace Physics
 	{
 		friend class Space;
 		friend class Shape;
-		
+
 		protected:
 			Space*				mSpace; /**< Variable that holds a reference to the body's space */
 			cpBody*				mBody;	/**< Variable that holds a chipmunk's body */
@@ -94,7 +94,7 @@ namespace Physics
 		public:
 			/**
 			 * Method that returns the basic cpBody of the object
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -428,7 +428,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the number of shapes in the body
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -440,7 +440,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns a shape by it index
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -453,7 +453,7 @@ namespace Physics
 			}
 			/**
 			 * Method that add a ShapeCircle to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
@@ -464,18 +464,18 @@ namespace Physics
 			ShapeCircle* addShapeCircle(const float& pRadius, const Core::Point& pOffset);
 			/**
 			 * Method that add a ShapeBox to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
 			 * @param	const int& pWidth, the width of the box
-			 * @param	const int& pHeight, the height of the box 
+			 * @param	const int& pHeight, the height of the box
 			 * @return	ShapeBox*
 			 */
 			ShapeBox* addShapeBox(const int& pWidth, const int& pHeight);
 			/**
 			 * Method that add a ShapePolygon to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
@@ -490,13 +490,13 @@ namespace Physics
 			);
 			/**
 			 * Method that add a ShapeSegment to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
 			 * @param	const Core::Point& pPointA, the first point of the Segment
 			 * @param	const Core::Point& pPointB, the second point of the Segment
-			 * @param	cosnt float& pRadius, the radius of the segment 
+			 * @param	cosnt float& pRadius, the radius of the segment
 			 * @return	ShapeSegment*
 			 */
 			ShapeSegment* addShapeSegment
@@ -581,14 +581,13 @@ namespace Physics
 			);
 			/**
 			 * Method to draw the body in a sprite
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
-			 * @version	05/10/2010
-			 * @param	Sprite&		pSprite , the sprite to draw to body into
-			 * @param	const int&	pColor	, the color to draw the body
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor , the color to draw the body
 			 */
-			void draw(Graphic::Sprite& pSprite, const int& pColor) const;
+			void draw(const Graphic::Color& pColor) const;
 	};
 }}
 #endif

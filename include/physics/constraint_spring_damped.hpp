@@ -33,7 +33,7 @@ namespace Physics
 {
 	/**
 	 * Class that represents a damped spring
-	 * 
+	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	06/10/2010
 	 * @version	07/10/2010
@@ -42,11 +42,11 @@ namespace Physics
 	class DampedSpring : public Constraint
 	{
 		friend class Space;
-		
+
 		protected:
 			/**
 			 * Constructor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -84,7 +84,7 @@ namespace Physics
 		public:
 			/**
 			 * Method that returns the anchor of the first body
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -100,7 +100,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the anchor of the second body
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -116,7 +116,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the length of the spring when in rest
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -124,11 +124,11 @@ namespace Physics
 			 */
 			inline float getRestLength() const
 			{
-				return cpDampedSpringGetRestLength(mConstraint);	
+				return cpDampedSpringGetRestLength(mConstraint);
 			}
 			/**
 			 * Method that sets the length of the spring when in rest
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -136,11 +136,11 @@ namespace Physics
 			 */
 			inline void setRestLength(const float& pRestLength) const
 			{
-				cpDampedSpringSetRestLength(mConstraint,pRestLength);	
+				cpDampedSpringSetRestLength(mConstraint,pRestLength);
 			}
 			/**
 			 * Method that returns the the stiffness(spring constant(Young's modulus)) of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -153,7 +153,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the stiffness of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -166,7 +166,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the damping of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -178,7 +178,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the damping of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -189,14 +189,13 @@ namespace Physics
 				cpDampedSpringSetDamping(mConstraint,pDamping);
 			}
 
-			inline void draw(Graphic::Sprite& pSprite, const int& pColor)// const
+			inline void draw(const Graphic::Color& pColor)// const
 			{
 				Core::Point a = getAnchorA() + getBodyA().getPosition();
 				Core::Point b = getAnchorB() + getBodyB().getPosition();
-/*				pSprite.drawLine(a,b,pColor);
-				pSprite.drawLine(a + Core::Point(1,0), b + Core::Point(1,0), pColor);
-				pSprite.drawLine(a - Core::Point(1,0), b - Core::Point(1,0), pColor);
-*/			}
+
+				Graphic::System::get().drawLine(a,b,pColor,2);
+			}
 	};
 }}
 #endif

@@ -97,6 +97,18 @@ namespace Addon
 			 */
 			virtual void clear(const Color& pColor) const;
 			/**
+			 * Method that copies a rectangular area of this image to the TargetImage
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	11/06/2011
+			 * @version	11/06/2011
+			 * @param	const Core::Point& pPosition		, the position in the destination Image
+			 * @param	const Core::Point& pSourcePosition	, the position in this Image where it will get to draw
+			 * @param	const int& pWidth					, the width of the cut in the image
+			 * @param	const int& pHeight					, the height of the cut in the image
+			 */
+			virtual void blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const;
+			/**
 			 * Method that draws the image in the requested position into the current target Image
 			 *
 			 * @author	Cantidio Oliveira Fontes
@@ -307,6 +319,15 @@ namespace Addon
 			 * you must handly free it
 			 */
 			virtual Graphic::ImageBase* clone() const;
+			/**
+			 * Convert the current image to the display format, for fast drawing
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	14/06/2011
+			 * @version	14/06/2011
+			 */
+			virtual void convertToDisplayFormat();
+			virtual void load(Core::File& pFile, const int& pDataLength);
 		protected:
 			/**
 			 * Method that applies the alplha mask into the Image
@@ -315,6 +336,7 @@ namespace Addon
 			 * @version	27/05/2011
 			 */
 			virtual void applyAlphaMask();
+
 			ALLEGRO_BITMAP *mData;/**<< The allegro image data*/
 			bool mFreeSource;
 	};
