@@ -2,7 +2,7 @@
 #include <graphic/exception.hpp>
 #include <sstream>
 
-#include <core/debug.hpp>
+//#include <core/debug.hpp>
 
 namespace Gorgon{
 namespace Graphic
