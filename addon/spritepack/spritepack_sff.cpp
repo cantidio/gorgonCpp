@@ -34,8 +34,6 @@ namespace Addon
 
 	Graphic::Sprite SpritePackSff::loadSprite(Core::File& pFile) const
 	{
-		const int loc = pFile.tellg();
-		//Graphic::Image imageTmp;
 		const int nextSubFile		= pFile.readInt32();
 		const int sizeOfData		= pFile.readInt32();
 		const short xOffset			= pFile.readInt16();

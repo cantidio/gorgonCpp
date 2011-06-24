@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="GorgonFramework" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="libgorgon" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="libgorgon" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="audiere" />
+					<Add library="lua5.1" />
+					<Add library="z" />
+					<Add library="chipmunk" />
+				</Linker>
+			</Target>
+			<Target title="Addon">
+				<Option output="libgorgon_addon" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+			</Target>
+			<Target title="Addon_sdl">
+				<Option output="libgorgon_addon_sdl" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="SDL_image" />
+				</Linker>
+			</Target>
+			<Target title="Addon_allegro">
+				<Option output="libgorgon_addon_allegro5" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="`pkg-config allegro_main-debug-5.1 --libs`" />
+				</Linker>
+			</Target>
+			<Target title="TESTE">
+				<Option output="teste" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="`pkg-config allegro-5.1 --libs allegro_primitives-5.1 allegro_memfile-5.1 allegro_image-5.1`" />
+					<Add library="audiere" />
+					<Add library="lua5.1" />
+					<Add library="z" />
+					<Add library="chipmunk" />
+				</Linker>
+			</Target>
+			<Target title="TESTE_WIN">
+				<Option output="teste.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="../" />
+				<Option object_output=".objs_win" />
+				<Option type="1" />
+				<Option compiler="mingw32_compiler" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-lmingw32" />
+					<Add option="-lallegro-5.0.3-monolith-mt" />
+					<Add option="-lz" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-O3" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="/home/cantidio/Development/gorgon++_plugin/include" />
+		</Compiler>
+		<Unit filename="../addon/allegro5/graphic/common.hpp" />
+		<Unit filename="../addon/allegro5/graphic/display_base.cpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/graphic/display_base.hpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/graphic/image_base.cpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/graphic/image_base.hpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/graphic/system.cpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/graphic/system.hpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/joystick_base.cpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/joystick_base.hpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/keyboard_base.cpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/keyboard_base.hpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/mouse_base.cpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/mouse_base.hpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/system.cpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/allegro5/input/system.hpp">
+			<Option target="Addon_allegro" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../addon/animationpack/gorgon_animationpack_lua.cpp" />
+		<Unit filename="../addon/animationpack/gorgon_animationpack_lua.hpp" />
+		<Unit filename="../addon/sdl/graphic/image.cpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/graphic/image.hpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/graphic/image_loader.cpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/graphic/image_loader.hpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/graphic/video.cpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/graphic/video.hpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/joystick_base.cpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/joystick_base.hpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/keyboard_base.cpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/keyboard_base.hpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/mouse_base.cpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/mouse_base.hpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/system.cpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/sdl/input/system.hpp">
+			<Option target="Addon_sdl" />
+		</Unit>
+		<Unit filename="../addon/spritepack/spritepack_lua.cpp" />
+		<Unit filename="../addon/spritepack/spritepack_lua.hpp" />
+		<Unit filename="../addon/spritepack/spritepack_sff.cpp" />
+		<Unit filename="../addon/spritepack/spritepack_sff.hpp" />
+		<Unit filename="../addon/spritepack/spritesheet.cpp" />
+		<Unit filename="../addon/spritepack/spritesheet.hpp" />
+		<Unit filename="../addon/spritepack/spritesheet_auto.cpp" />
+		<Unit filename="../addon/spritepack/spritesheet_auto.hpp" />
+		<Unit filename="../addon/spritepack/tilesheet.cpp" />
+		<Unit filename="../addon/spritepack/tilesheet.hpp" />
+		<Unit filename="../include/audio/audio.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/audio/sound.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/audio/sound_exception.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/audio/sound_system.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/audio/sound_system_exception.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/collision/gorgon_collision.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/collision/gorgon_collision_frame.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/collision/gorgon_collisionpack.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/core/core.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/exception.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/file.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/file_header.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/game.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/log.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/point.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/string.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/core/zlib.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/geometry/gorgon_geometry.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/geometry/gorgon_rectangle.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/gorgon.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/animation.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/animation_frame.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/animation_handler.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/animation_header.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/animationpack.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/animationpack_header.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/color.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/display.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/display_base.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/exception.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/graphic.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/image.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/image_base.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/image_loader.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/mirroring.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/palette.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/sprite.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/sprite_header.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/spritepack.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/spritepack_header.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/graphic/system.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/exception.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/input.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/joystick.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/joystick_base.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/joystick_base_null.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/joystick_stick.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/keyboard.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/keyboard_base.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/keyboard_base_null.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/keyboard_key.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/mouse.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/mouse_base.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/mouse_base_null.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/input/system.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../include/physics/body.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_joint_gear.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_joint_groove.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_joint_pin.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_joint_pivot.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_joint_ratchet.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_joint_rotary_limit.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_joint_slide.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_motor_simple.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_spring_damped.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/constraint_spring_damped_rotary.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/physics.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/shape.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/shape_box.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/shape_circle.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/shape_polygon.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/shape_segment.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/physics/space.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/script/exception.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/script/lua.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/script/lua_argument.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/script/lua_param.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/script/lua_return.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../include/script/script.hpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/audio/sound.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/audio/sound_exception.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/audio/sound_system.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/audio/sound_system_exception.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/collision/gorgon_collision.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/collision/gorgon_collision_frame.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/collision/gorgon_collisionpack.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/core/exception.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/core/file.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/core/file_header.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/core/log.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/core/point.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/core/string.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/core/zlib.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/geometry/gorgon_rectangle.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/graphic/animation.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/animation_frame.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/animation_handler.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/animation_header.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/animationpack.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/animationpack_header.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/color.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/display.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/display_base.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/exception.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/image.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/image_base.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/image_loader.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/mirroring.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/palette.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/sprite.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/sprite_header.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/spritepack.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/spritepack_header.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/graphic/system.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/input/exception.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/input/joystick.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/input/keyboard.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/input/keyboard_key.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/input/mouse.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/input/system.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Unit filename="../src/physics/body.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/physics/shape.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/physics/shape_box.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/physics/shape_circle.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/physics/shape_polygon.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/physics/shape_segment.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/physics/space.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/script/exception.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/script/lua.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/script/lua_argument.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/script/lua_param.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../src/script/lua_return.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TESTE" />
+		</Unit>
+		<Unit filename="../teste.cpp">
+			<Option target="TESTE" />
+			<Option target="TESTE_WIN" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
