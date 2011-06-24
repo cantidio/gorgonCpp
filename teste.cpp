@@ -7,6 +7,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
+#if 0
 using namespace Gorgon;
 using namespace Gorgon::Graphic;
 using namespace Gorgon::Graphic::Addon;
@@ -16,17 +17,12 @@ using namespace Gorgon::Input;
 const int width = 1280;
 const int height = 720;
 
-Graphic::Image getImage(std::string name)
-{
-	return Graphic::Image(name);
-}
 int main()
 {
 	try
 	{
 		Graphic::Addon::System::set();
 		Input::Addon::System::set();
-//		ImageLoader::setLoader( new ImageLoaderSDL() );
 
 		Display display("TESTE GORGON Framework rev 211", width, height);
 
@@ -99,7 +95,15 @@ int main()
 	Graphic::System::halt();
 	return 0;
 }
-
+#endif
+int main()
+{
+    al_init();
+    al_set_new_display_flags(ALLEGRO_OPENGL);
+    al_install_keyboard();
+    ALLEGRO_DISPLAY * display = al_create_display(320,240);
+    return 0;
+}
 /*
 #include <gorgon++/addon/sdl/graphic/image_loader.hpp>
 #include <gorgon++/addon/allegro5/graphic/system.hpp>

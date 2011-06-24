@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Linux_Debug">
-				<Option output="libgorgon" prefix_auto="1" extension_auto="1" />
+				<Option output="Linux/Debug/libgorgon" prefix_auto="1" extension_auto="1" />
 				<Option object_output="Linux/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -15,6 +15,7 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="../include" />
 				</Compiler>
 			</Target>
 			<Target title="Linux_Release">
@@ -60,7 +61,7 @@
 				</Linker>
 			</Target>
 			<Target title="Linux_Addon_allegro">
-				<Option output="libgorgon_addon_allegro5" prefix_auto="1" extension_auto="1" />
+				<Option output="Linux/Addon_Allegro/libgorgon_addon_allegro5" prefix_auto="1" extension_auto="1" />
 				<Option object_output="Linux/Addon_Allegro" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -81,6 +82,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="../include" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config allegro-5.1 --libs allegro_primitives-5.1 allegro_memfile-5.1 allegro_image-5.1`" />
@@ -114,8 +116,6 @@
 		</Compiler>
 		<Unit filename="../addon/allegro5/graphic/common.hpp">
 			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
@@ -193,16 +193,12 @@
 		<Unit filename="../addon/animationpack/gorgon_animationpack_lua.cpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/animationpack/gorgon_animationpack_lua.hpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
@@ -251,80 +247,60 @@
 		<Unit filename="../addon/spritepack/spritepack_lua.cpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/spritepack_lua.hpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/spritepack_sff.cpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/spritepack_sff.hpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/spritesheet.cpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/spritesheet.hpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/spritesheet_auto.cpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/spritesheet_auto.hpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/tilesheet.cpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="../addon/spritepack/tilesheet.hpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 		</Unit>

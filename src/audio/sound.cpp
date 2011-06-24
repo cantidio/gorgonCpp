@@ -1,5 +1,5 @@
-#include "audio/sound.hpp"
-#include "core/string.hpp"
+#include <audio/sound.hpp>
+#include <core/string.hpp>
 namespace Gorgon{
 namespace Audio
 {

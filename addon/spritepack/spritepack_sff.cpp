@@ -23,6 +23,7 @@ namespace Addon
 		Core::File file(pFileName,std::ios::in | std::ios::binary);
 		if(file.is_open())
 		{
+		    printf("doido\n");
 			load(file);
 			file.close();
 		}
