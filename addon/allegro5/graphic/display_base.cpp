@@ -33,14 +33,14 @@ namespace Addon
 		{
 			std::stringstream out;
 			out << "Graphic::Addon::DisplayBase::DisplayBase(\"" << pWindowTitle << "\", " << pWidth << ", " << pHeight << ", ";
-			out << (pFullScreen ? "true" : "false") << ", " << (pResizeable ? "true" : "false") << "): Error, could not create the display.";
+			out << (pFullScreen ? "true" : "false") << ", " << (pResizeable ? "true" : "false") << "): Error, could not create the display.\n";
 			raiseGraphicException( out.str() );
 		}
 
 		setWindowTitle(pWindowTitle);
 		Core::logWriteFormatted
 		(
-			Core::String("Gorgon::Graphic::Addon::Display::Display(\"%s\",%d,%d,%s,%s): Successful."),
+			Core::String("Gorgon::Graphic::Addon::Display::Display(\"%s\",%d,%d,%s,%s): Successful.\n"),
 			pWindowTitle.c_str(),
 			pWidth,
 			pHeight,
@@ -56,11 +56,11 @@ namespace Addon
 		{
 			al_destroy_display( mDisplay );
 			delete mBackBuffer;
-			Core::logWrite("Gorgon::Graphic::Addon::Display::~Display(): Successfull.");
+			Core::logWrite(std::string("Gorgon::Graphic::Addon::Display::~Display(): Successfull."));
 		}
 		else
 		{
-			Core::logWrite("Gorgon::Graphic::Addon::Display::~Display(): There isn't a display to destroy.");
+			Core::logWrite(std::string("Gorgon::Graphic::Addon::Display::~Display(): There isn't a display to destroy."));
 		}
 	}
 

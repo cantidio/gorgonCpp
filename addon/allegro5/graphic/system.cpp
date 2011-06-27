@@ -32,9 +32,7 @@ namespace Addon
 			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 image I/O addon."));
 			raiseGraphicException("System::System(): Error when initializing allegro5 image I/O addon.");
 		}
-		//al_set_new_bitmap_flags(/*ALLEGRO_KEEP_INDEX | */ALLEGRO_VIDEO_BITMAP);
 		al_set_new_bitmap_flags(ALLEGRO_MEMORY_BITMAP | ALLEGRO_KEEP_INDEX | ALLEGRO_PIXEL_FORMAT_LUMINANCE_8);
-		//al_set_new_bitmap_format(ALLEGRO_PIXEL_FORMAT_LUMINANCE_8);
 		Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Successful."));
 	}
 

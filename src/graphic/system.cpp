@@ -22,7 +22,7 @@ namespace Graphic
 
 	void System::set(System* pSystem)
 	{
-		Core::logWriteFormatted("Gorgon::Graphic::System::set(): %d, Successful.\n",(int)pSystem);
+		Core::logWriteFormatted("Gorgon::Graphic::System::set(%d): Successful.\n",(int)pSystem);
 		if(mSingleton != NULL)
 		{
 			delete mSingleton;
@@ -43,7 +43,7 @@ namespace Graphic
 		}
 		else
 		{
-			Core::logWrite(Core::String("Gorgon::Graphic::System::halt(): There wasn't any Graphic System to be halted."));
+			Core::logWrite(std::string("Gorgon::Graphic::System::halt(): There wasn't any Graphic System to be halted."));
 		}
 	}
 
