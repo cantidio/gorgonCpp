@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_INPUT_MOUSE_
 #define _GORGON_INPUT_MOUSE_
-#include <core/point.hpp>
+#include "../core/point.hpp"
 #include "mouse_button.hpp"
 
 namespace Gorgon{

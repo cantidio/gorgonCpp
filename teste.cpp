@@ -7,7 +7,6 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
-#if 0
 using namespace Gorgon;
 using namespace Gorgon::Graphic;
 using namespace Gorgon::Graphic::Addon;
@@ -32,11 +31,11 @@ int main()
 		time_t starttime, endtime;
 		time( &starttime );
 		//SpritePack sprites("caveira_vermelha.gspk");
-		//SpritePack sprites("foxy.gsp");
+		SpritePack sprites("/home/cantidio/Dropbox/mugen/char/foxy.gsp");
 
 		//TileSheet sprites(Image("/home/cantidio/Development/gorgon++_plugin/examples/resources/klona_48x48.png"),46,46,1);
 
-		SpritePackSff sprites("/home/cantidio/mugen/god_orochi/Mizuchi.sff");
+		//SpritePackSff sprites("/home/cantidio/god_orochi (2)/Mizuchi.sff");
 		time(&endtime);
 		printf("load time: %ld s \n",endtime-starttime);
 
@@ -95,15 +94,7 @@ int main()
 	Graphic::System::halt();
 	return 0;
 }
-#endif
-int main()
-{
-    al_init();
-    al_set_new_display_flags(ALLEGRO_OPENGL);
-    al_install_keyboard();
-    ALLEGRO_DISPLAY * display = al_create_display(320,240);
-    return 0;
-}
+
 /*
 #include <gorgon++/addon/sdl/graphic/image_loader.hpp>
 #include <gorgon++/addon/allegro5/graphic/system.hpp>
