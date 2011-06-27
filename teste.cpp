@@ -50,9 +50,9 @@ int main()
 		printf("convert time: %ld s \n",endtime-starttime);
 
 		Point position(550,350);
-		int ang = 0;
+		float ang = 0;
 
-		float zoom = 10;
+		float zoom = 5;
 		int index = 0;
 
 		while(1)
@@ -73,10 +73,13 @@ int main()
 			if(zoom < 0 ) zoom = 0;
 			display.clear(Graphic::Color(1,1,1));	//limpa a tela
 
-			sprites[index].draw( position, sprites[index].getWidth()*zoom, sprites[index].getHeight()*zoom, Graphic::Mirroring::HFlip);
+			//sprites[index].draw( position, sprites[index].getWidth()*zoom, sprites[index].getHeight()*zoom, Graphic::Mirroring::HFlip);
+
+			sprites[index].Sprite::draw( position,	ang, Graphic::Mirroring::Normal );
+
 			Graphic::System::get().drawCircleFilled( position, 10, Graphic::Color( 0, 1, 0, 0.1 ) );
 
-			ang += 5;
+			//ang += 0.1;
 			index++;
 
 			if(index >= sprites.getSize()) index=0;

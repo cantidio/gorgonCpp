@@ -15,7 +15,7 @@ namespace Graphic
 		setSpritePack(pSpritePack);
 		setAnimationPack(pAnimationPack);
 	}
-	
+
 	AnimationHandler::AnimationHandler(const AnimationHandler& pOrig)
 	{
 		setSpritePack(pOrig.getSpritePack());
@@ -285,7 +285,7 @@ namespace Graphic
 			raiseGraphicException("AnimationHandler::playByStep(): Error animationpack is NULL.");
 		}
 	}
-	
+
 	const Sprite& AnimationHandler::getCurrentSprite() const
 	{
 		if(mAnimationPack != NULL)
@@ -329,7 +329,7 @@ namespace Graphic
 				AnimationFrame& frame = (*mAnimationPack)[mAnimationOn][mFrameOn];
 				getCurrentSprite().draw
 				(
-					frame.getOffset()		+ pPosition,
+					pPosition,
 					frame.getAngle()		+ pAngle,
 					frame.getMirroring()	+ pMirroring
 				);
@@ -348,7 +348,7 @@ namespace Graphic
 			raiseGraphicException(out.str());
 		}
 	}
-	
+
 	void AnimationHandler::draw//draw tinted
 	(
 		const Core::Point&	pPosition,

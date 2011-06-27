@@ -101,9 +101,13 @@ namespace Graphic
 	) const
 	{
 		Core::Point offset = mOffset;
-		if(pMirroring.getType() == Mirroring::HFlip || pMirroring.getType() == Mirroring::VFlip)
+		if( (pMirroring.getType() & Mirroring::HFlip) == Mirroring::HFlip )
 		{
-			offset = Core::Point( mOffset.getX(), getHeight() - mOffset.getY() );
+			offset.setX( getWidth() - mOffset.getX() );
+		}
+		if( (pMirroring.getType() & Mirroring::VFlip) == Mirroring::VFlip )
+		{
+			offset.setY( getHeight() - mOffset.getY() );
 		}
 		Image::draw(pPosition, pAngle, offset, pMirroring);
 	}

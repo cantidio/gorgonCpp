@@ -71,7 +71,7 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add option="`pkg-config allegro_main-debug-5.1 --libs`" />
+					<Add option="`pkg-config allegro-5.1 --libs allegro_primitives-5.1 allegro_memfile-5.1 allegro_image-5.1`" />
 				</Linker>
 			</Target>
 			<Target title="Linux_TESTE">
