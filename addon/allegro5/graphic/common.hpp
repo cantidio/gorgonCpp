@@ -26,10 +26,16 @@
  */
 #ifndef _GORGON_GRAPHIC_ADDON_COMMON_
 #define _GORGON_GRAPHIC_ADDON_COMMON_
+
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_memfile.h>
+
+#include <gorgon++/core/point.hpp>
+#include <gorgon++/core/log.hpp>
 #include <gorgon++/graphic/color.hpp>
+#include <gorgon++/graphic/image_base.hpp>
 #include <gorgon++/graphic/mirroring.hpp>
+#include <gorgon++/graphic/exception.hpp>
 
 namespace Gorgon	{
 namespace Graphic	{

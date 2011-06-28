@@ -31,7 +31,7 @@
 struct ALLEGRO_KEYBOARD_STATE;
 
 namespace Gorgon	{
-namespace Input		{	
+namespace Input		{
 namespace Addon
 {
 	/**

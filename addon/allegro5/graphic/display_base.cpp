@@ -1,6 +1,5 @@
-#include <gorgon++/graphic/exception.hpp>
-#include <gorgon++/graphic/image.hpp>
-
+#include "../../../include/graphic/exception.hpp"
+#include "../../../include/graphic/image.hpp"
 #include <allegro5/allegro.h>
 #include <sstream>
 #include "display_base.hpp"

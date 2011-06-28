@@ -1,7 +1,3 @@
-#include <gorgon++/graphic/exception.hpp>
-#include <gorgon++/graphic/color.hpp>
-#include <gorgon++/core/point.hpp>
-#include <gorgon++/core/log.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>

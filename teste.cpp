@@ -31,11 +31,11 @@ int main()
 		time_t starttime, endtime;
 		time( &starttime );
 		//SpritePack sprites("caveira_vermelha.gspk");
-		SpritePack sprites("/home/cantidio/Dropbox/mugen/char/foxy.gsp");
+		//SpritePack sprites("spritepacks/foxy.gsp");
 
 		//TileSheet sprites(Image("/home/cantidio/Development/gorgon++_plugin/examples/resources/klona_48x48.png"),46,46,1);
 
-		//SpritePackSff sprites("/home/cantidio/god_orochi (2)/Mizuchi.sff");
+		SpritePackSff sprites("mugen/Foxy.sff");
 		time(&endtime);
 		printf("load time: %ld s \n",endtime-starttime);
 
@@ -73,9 +73,9 @@ int main()
 			if(zoom < 0 ) zoom = 0;
 			display.clear(Graphic::Color(1,1,1));	//limpa a tela
 
-			//sprites[index].draw( position, sprites[index].getWidth()*zoom, sprites[index].getHeight()*zoom, Graphic::Mirroring::HFlip);
+			sprites[index].draw( position, sprites[index].getWidth()*zoom, sprites[index].getHeight()*zoom, Graphic::Mirroring::HFlip);
 
-			sprites[index].Sprite::draw( position,	ang, Graphic::Mirroring::Normal );
+			//sprites[index].Sprite::draw( position,	ang, Graphic::Mirroring::Normal );
 
 			Graphic::System::get().drawCircleFilled( position, 10, Graphic::Color( 0, 1, 0, 0.1 ) );
 
