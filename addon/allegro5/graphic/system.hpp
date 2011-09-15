@@ -62,6 +62,15 @@ namespace Addon
 			 */
 			virtual Graphic::ImageBase* getImage() const;
 			/**
+			 * Method that returns an instance of the font
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	14/09/2011
+			 * @version	14/09/2011
+			 * @return	FontBase*, an instance of the implementation of the font using the current addon backend
+			 */
+			virtual Graphic::FontBase* getFont() const;
+			/**
 			 * Method that returns an instance of the display
 			 *
 			 * @author	Cantidio Oliveira Fontes

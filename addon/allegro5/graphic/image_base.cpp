@@ -329,22 +329,22 @@ namespace Addon
 			data = new unsigned char[pDataLength];
 			pFile.read( (char*)data, pDataLength );
 
-			fake_file = al_open_memfile((void*) data, pDataLength, "rb" );
+			fake_file = al_open_memfile( (void*)data, pDataLength, "rb" );
 
-			for(register int i = 0; extensions[i] != NULL; ++i )
+			for( register int i = 0; extensions[i] != NULL; ++i )
 			{
-				al_fseek( fake_file, 0, ALLEGRO_SEEK_SET);//volta o ponteiro para a primeira posição do "arquivo"
+				al_fseek( fake_file, 0, ALLEGRO_SEEK_SET ); //return the file position to its start
 				mData = al_load_bitmap_f( fake_file, extensions[i] );
-				if( mData != NULL ) //se encontar a imagem sai do loop.
+				if( mData != NULL ) //if the image could be loaded quit the loop
 				{
 					break;
 				}
 			}
-			if(mData != NULL)
+			if( mData != NULL )
 			{
-				mBpp		= al_get_pixel_format_bits(al_get_bitmap_format(mData)) ;
-				mWidth		= al_get_bitmap_width(mData);
-				mHeight		= al_get_bitmap_height(mData);
+				mBpp		= al_get_pixel_format_bits( al_get_bitmap_format( mData ) ) ;
+				mWidth		= al_get_bitmap_width( mData );
+				mHeight		= al_get_bitmap_height( mData );
 				mFreeSource	= true;
 			}
 			else
@@ -357,9 +357,9 @@ namespace Addon
 			al_fclose( fake_file );		//fecha o arquivo
 			delete data;				//delata os dados
 
-			if(isTarget) applyAsTarget();
+			if( isTarget ) applyAsTarget();
 		}
-		catch(std::exception& e)
+		catch( std::exception& e )
 		{
 			std::stringstream out;
 			out << "ImageBase::load(" << &pFile << ", " << pDataLength << "): Error in loading the image, couldn't allocate memory for image.";

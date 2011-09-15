@@ -200,6 +200,18 @@
 			<Option target="Windows_TESTE" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
+		<Unit filename="..\addon\allegro5\graphic\font_base.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\addon\allegro5\graphic\font_base.hpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
 		<Unit filename="..\addon\allegro5\graphic\image_base.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
@@ -612,6 +624,20 @@
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+		</Unit>
+		<Unit filename="..\include\graphic\font.hpp">
+			<Option target="Linux_Debug" />
+			<Option target="Linux_Release" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Release" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\include\graphic\font_base.hpp">
+			<Option target="Linux_Debug" />
+			<Option target="Linux_Release" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Release" />
+			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="..\include\graphic\graphic.hpp">
 			<Option target="Linux_Debug" />
@@ -1127,6 +1153,20 @@
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+		</Unit>
+		<Unit filename="..\src\graphic\font.cpp">
+			<Option target="Linux_Debug" />
+			<Option target="Linux_Release" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Release" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\graphic\font_base.cpp">
+			<Option target="Linux_Debug" />
+			<Option target="Linux_Release" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Release" />
+			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="..\src\graphic\image.cpp">
 			<Option target="Linux_Debug" />

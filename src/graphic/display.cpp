@@ -18,12 +18,12 @@ namespace Graphic
 	{
 		mDisplay	= System::get().getDisplay( pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable );
 		mBackBuffer	= new Image( mDisplay->getBackBuffer(), false );
-		System::get().setTargetImage(*mBackBuffer);
+		System::get().setTargetImage( *mBackBuffer );
 	}
 
 	Display::~Display()
 	{
-		if(mDisplay != NULL)
+		if( mDisplay != NULL )
 		{
 			delete mDisplay;
 		}
@@ -73,13 +73,13 @@ namespace Graphic
 
 	void Display::setAsTarget()
 	{
-		System::get().setTargetImage(*mBackBuffer);
+		System::get().setTargetImage( *mBackBuffer );
 		//mDisplay->setAsTarget();
 	}
 
-	void Display::clear(const Color& pColor)
+	void Display::clear( const Color& pColor )
 	{
-		mDisplay->clear(pColor);
+		mDisplay->clear( pColor );
 	}
 
 	void Display::swapBuffers()
@@ -87,9 +87,9 @@ namespace Graphic
 		mDisplay->swapBuffers();
 	}
 
-	void Display::setLogo(const Image& pImage)
+	void Display::setLogo( const Image& pImage )
 	{
-		mDisplay->setLogo(pImage);
+		mDisplay->setLogo( pImage );
 	}
 
 	Image& Display::getBackBuffer()

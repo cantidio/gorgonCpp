@@ -15,7 +15,7 @@ namespace Graphic
 		out << "Have Palette: " 	<< (mPalette		? "Yes" : "No") << std::endl;
 		out << "Free Image:   " 	<< (mFreeImage		? "Yes" : "No") << std::endl;
 		out << "Free Palette  " 	<< (mFreePalette	? "Yes" : "No")	<< std::endl;
-		if(mImage)
+		if( mImage )
 		{
 			out << "Image Width:  " 	<< getWidth() 	<< std::endl;
 			out << "Image Height: " 	<< getHeight() 	<< std::endl;
@@ -26,22 +26,22 @@ namespace Graphic
 
 	void Image::create
 	(
-		const int&		pWidth,
-		const int&		pHeight,
-		const int&		pBpp
+		const int&	pWidth,
+		const int&	pHeight,
+		const int&	pBpp
 	)
 	{
-		if(mImage != NULL && mFreeImage) //tem objeto e o mesmo é interno
+		if( mImage != NULL && mFreeImage ) //tem objeto e o mesmo é interno
 		{
-			mImage->create(pWidth,pHeight,pBpp);
+			mImage->create( pWidth, pHeight, pBpp );
 		}
 		else//se o objeto aponta para fora da classe ou, não tem objeto cria um novo
 		{
 			ImageBase* image = System::get().getImage();
-			image->create(pWidth, pHeight, pBpp);
-			setImageBase(image,true);
+			image->create( pWidth, pHeight, pBpp );
+			setImageBase( image, true );
 		}
-		setPalette(NULL, true);
+		setPalette( NULL, true );
 	}
 
 	Image::Image()
@@ -63,7 +63,7 @@ namespace Graphic
 		mPalette		= NULL;
 		mFreeImage		= true;
 		mFreePalette	= true;
-		create(pWidth,pHeight,pBpp);
+		create( pWidth, pHeight, pBpp );
 	}
 
 	Image::Image(const Image& pImage)
@@ -89,7 +89,7 @@ namespace Graphic
 		mPalette		= NULL;
 		mFreeImage		= true;
 		mFreePalette	= true;
-		load(pFileName);
+		load( pFileName );
 	}
 
 	Image::Image(Core::File& pFile, const int& pDataLength)
@@ -98,16 +98,16 @@ namespace Graphic
 		mPalette		= NULL;
 		mFreeImage		= true;
 		mFreePalette	= true;
-		load(pFile, pDataLength);
+		load( pFile, pDataLength );
 	}
 
 	Image::~Image()
 	{
-		if(mImage	!= NULL && mFreeImage)		delete mImage;
-		if(mPalette	!= NULL && mFreePalette)	delete mPalette;
+		if( mImage	!= NULL && mFreeImage )		delete mImage;
+		if( mPalette!= NULL && mFreePalette )	delete mPalette;
 	}
 
-	void Image::setImageBase(ImageBase* pImage, const bool& pFreeSource)
+	void Image::setImageBase( ImageBase* pImage, const bool& pFreeSource )
 	{
 		if(mImage != NULL && mFreeImage)
 		{
@@ -117,9 +117,9 @@ namespace Graphic
 		mFreeImage	= pFreeSource;
 	}
 
-	void Image::setImageBase(const ImageBase& pImage)
+	void Image::setImageBase( const ImageBase& pImage )
 	{
-		setImageBase(pImage.clone(),true);
+		setImageBase( pImage.clone(),true );
 	}
 
 	const ImageBase* Image::getImageBase() const
@@ -127,9 +127,9 @@ namespace Graphic
 		return mImage;
 	}
 
-	void Image::setPalette(Palette *pPalette, const bool& pFreeSource)
+	void Image::setPalette( Palette *pPalette, const bool& pFreeSource )
 	{
-		if(mPalette != NULL && mFreePalette)
+		if( mPalette != NULL && mFreePalette )
 		{
 			delete mPalette;
 		}
@@ -137,7 +137,7 @@ namespace Graphic
 		mFreePalette	= pFreeSource;
 	}
 
-	void Image::setPalette(const Palette& pPalette)
+	void Image::setPalette( const Palette& pPalette )
 	{
 		setPalette( pPalette.clone(), true );
 	}
@@ -149,7 +149,7 @@ namespace Graphic
 
 	void Image::usePalette() const
 	{
-		if(mPalette)
+		if( mPalette )
 		{
 			mPalette->set();
 		}
@@ -157,30 +157,30 @@ namespace Graphic
 
 	int Image::getWidth() const
 	{
-		return (mImage != NULL) ? mImage->getWidth() : 0;
+		return ( mImage != NULL ) ? mImage->getWidth() : 0;
 	}
 
 	int Image::getHeight() const
 	{
-		return (mImage != NULL) ? mImage->getHeight() : 0;
+		return ( mImage != NULL ) ? mImage->getHeight() : 0;
 	}
 
 	int Image::getBpp() const
 	{
-		return (mImage != NULL) ? mImage->getBpp() : 0;
+		return ( mImage != NULL ) ? mImage->getBpp() : 0;
 	}
 
 	void Image::setAlphaMask(const Color& pColor)
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
-			mImage->setAlphaMask(pColor);
+			mImage->setAlphaMask( pColor );
 		}
 	}
 
 	Color Image::getAlphaMask() const
 	{
-		return (mImage != NULL) ? mImage->getAlphaMask() : Color(0,0,0,0);
+		return ( mImage != NULL ) ? mImage->getAlphaMask() : Color( 0, 0, 0, 0 );
 	}
 
 	int Image::getColorNumber() const
@@ -213,14 +213,14 @@ namespace Graphic
 		return colors.size();
 	}
 
-	Color Image::getPixel(const Core::Point& pPosition) const
+	Color Image::getPixel( const Core::Point& pPosition ) const
 	{
-		return (mImage != NULL) ? mImage->getPixel(pPosition) : Color(0,0,0,0);
+		return ( mImage != NULL ) ? mImage->getPixel( pPosition ) : Color( 0, 0, 0, 0 );
 	}
 
 	void Image::lock()
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
 			mImage->lock();
 		}
@@ -228,7 +228,7 @@ namespace Graphic
 
 	void Image::unlock()
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
 			mImage->unlock();
 		}
@@ -236,7 +236,7 @@ namespace Graphic
 
 	void Image::applyAsTarget()
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
 			mImage->applyAsTarget();
 		}
@@ -244,38 +244,38 @@ namespace Graphic
 
 	void Image::setAsTarget()
 	{
-		System::get().setTargetImage(*this);
+		System::get().setTargetImage( *this );
 	}
 
-	void Image::clear(const Color& pColor)
+	void Image::clear( const Color& pColor )
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
-			mImage->clear(pColor);
+			mImage->clear( pColor );
 		}
 	}
 
-	void Image::blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const
+	void Image::blit( const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight ) const
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
-			mImage->blit(pPosition, pSourcePosition, pWidth, pHeight);
+			mImage->blit( pPosition, pSourcePosition, pWidth, pHeight );
 		}
 	}
 
-	void Image::draw(const Core::Point& pPosition) const
+	void Image::draw( const Core::Point& pPosition ) const
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
-			mImage->draw(pPosition);
+			mImage->draw( pPosition );
 		}
 	}
 
-	void Image::draw(const Core::Point& pPosition, const Mirroring& pMirroring) const
+	void Image::draw( const Core::Point& pPosition, const Mirroring& pMirroring ) const
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
-			mImage->draw(pPosition, pMirroring);
+			mImage->draw( pPosition, pMirroring );
 		}
 	}
 
@@ -286,9 +286,9 @@ namespace Graphic
 		const Core::Point&	pCenter
 	) const
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
-			mImage->draw(pPosition, pAngle, pCenter);
+			mImage->draw( pPosition, pAngle, pCenter );
 		}
 	}
 
@@ -302,7 +302,7 @@ namespace Graphic
 	{
 		if(mImage != NULL)
 		{
-			mImage->draw(pPosition, pAngle, pCenter, pMirroring);
+			mImage->draw( pPosition, pAngle, pCenter, pMirroring );
 		}
 	}
 
@@ -314,17 +314,17 @@ namespace Graphic
 		const Mirroring& pMirroring
 	) const//drawScaled
 	{
-		if(mImage != NULL)
+		if( mImage != NULL )
 		{
-			mImage->draw(pPosition,pWidth,pHeight,pMirroring);
+			mImage->draw( pPosition, pWidth, pHeight, pMirroring );
 		}
 	}
 
-	void Image::draw(const Core::Point& pPosition, const Color& pTint) const//drawTinted
+	void Image::draw( const Core::Point& pPosition, const Color& pTint ) const//drawTinted
 	{
 		if(mImage != NULL)
 		{
-			mImage->draw(pPosition,pTint);
+			mImage->draw( pPosition,pTint );
 		}
 	}
 
@@ -337,7 +337,7 @@ namespace Graphic
 	{
 		if(mImage != NULL)
 		{
-			mImage->draw(pPosition, pTint, pMirroring);
+			mImage->draw( pPosition, pTint, pMirroring );
 		}
 	}
 
@@ -351,7 +351,7 @@ namespace Graphic
 	{
 		if(mImage != NULL)
 		{
-			mImage->draw(pPosition, pTint, pAngle, pCenter);
+			mImage->draw( pPosition, pTint, pAngle, pCenter );
 		}
 	}
 
@@ -366,18 +366,18 @@ namespace Graphic
 	{
 		if(mImage != NULL)
 		{
-			mImage->draw(pPosition, pTint, pAngle, pCenter, pMirroring);
+			mImage->draw( pPosition, pTint, pAngle, pCenter, pMirroring );
 		}
 	}
 
 	bool Image::isEmpty() const
 	{
 		register Core::Point pos;
-		for(pos.setY(getHeight() - 1); pos.getY() > -1; pos.subY(1))
+		for( pos.setY( getHeight() - 1 ); pos.getY() > -1; pos.subY( 1 ) )
 		{
-			for(pos.setX(getWidth() - 1); pos.getX() > -1; pos.subX(1))
+			for( pos.setX( getWidth() - 1 ); pos.getX() > -1; pos.subX( 1 ) )
 			{
-				if(getPixel(pos) != getAlphaMask())//será que isso funciona?
+				if( getPixel( pos ) != getAlphaMask() )/**@todo será que isso funciona?*/
 				{
 					return false;
 				}
@@ -386,7 +386,7 @@ namespace Graphic
 		return true;
 	}
 
-	bool Image::operator ==(const Image& pImage) const
+	bool Image::operator ==( const Image& pImage ) const
 	{
 		/*register int h,w;
 		for(h = getHeight() - 1; h > -1; --h)
@@ -414,7 +414,7 @@ namespace Graphic
 		return false;
 	}
 
-	void Image::operator =(const Image& pImage)
+	void Image::operator =( const Image& pImage )
 	{
 		setImageBase	((pImage.mImage		!= NULL) ? pImage.mImage->clone()	: NULL, true);
 		setPalette		((pImage.mPalette	!= NULL) ? pImage.mPalette->clone()	: NULL, true);
@@ -422,7 +422,7 @@ namespace Graphic
 
 	void Image::convertToDisplayFormat()
 	{
-		if(mImage)
+		if( mImage )
 		{
 			mImage->convertToDisplayFormat();
 		}
@@ -430,28 +430,28 @@ namespace Graphic
 
 	void Image::load(const std::string& pFileName)
 	{
-		Core::File file(pFileName, std::ios::in | std::ios::binary);
+		Core::File file( pFileName, std::ios::in | std::ios::binary );
 
-		if(file.is_open())
+		if( file.is_open() )
 		{
 			load( file, file.getSize() );
 		}
 		file.close();
 	}
 
-	void Image::load(Core::File& pFile, const int& pDataLength)
+	void Image::load( Core::File& pFile, const int& pDataLength )
 	{
-		setImageBase(System::get().getImage(), true);
-		mImage->load(pFile, pDataLength);
+		setImageBase( System::get().getImage(), true );
+		mImage->load( pFile, pDataLength );
 	}
 
-	void Image::save(const std::string& pFileName, const ImageLoader& pImageLoader)
+	void Image::save( const std::string& pFileName, const ImageLoader& pImageLoader )
 	{
-		pImageLoader.save(*this,pFileName);
+		pImageLoader.save( *this, pFileName );
 	}
 
-	void Image::save(Core::File& pFile, const ImageLoader& pImageLoader)
+	void Image::save( Core::File& pFile, const ImageLoader& pImageLoader )
 	{
-		pImageLoader.load(*this,pFile);
+		pImageLoader.load (*this, pFile );
 	}
 }}

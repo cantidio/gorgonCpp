@@ -4,6 +4,7 @@
 
 #include "system.hpp"
 #include "image_base.hpp"
+#include "font_base.hpp"
 #include "display_base.hpp"
 #include "common.hpp"
 
@@ -46,6 +47,11 @@ namespace Addon
 	Graphic::ImageBase* System::getImage() const
 	{
 		return new ImageBase();
+	}
+
+	Graphic::FontBase* System::getFont() const
+	{
+		return new FontBase();
 	}
 
 	Graphic::DisplayBase* System::getDisplay

@@ -28,12 +28,15 @@
 #define _GORGON_GRAPHIC_ADDON_COMMON_
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_memfile.h>
 
 #include <gorgon++/core/point.hpp>
 #include <gorgon++/core/log.hpp>
 #include <gorgon++/graphic/color.hpp>
 #include <gorgon++/graphic/image_base.hpp>
+#include <gorgon++/graphic/font_base.hpp>
 #include <gorgon++/graphic/mirroring.hpp>
 #include <gorgon++/graphic/exception.hpp>
 
@@ -41,6 +44,26 @@ namespace Gorgon	{
 namespace Graphic	{
 namespace Addon
 {
+	/**
+	 * Function that transforms a Font::Alignment into a allegro alignment flag
+	 *
+	 * @author	Cantidio Oliveira Fontes
+	 * @since	14/09/2011
+	 * @version	14/09/2011
+	 * @param	const Font::Alignment& pAlignment, the alignment that will be converted into an allegro's text alignment flag
+	 * @return	int, allegro's text alignment flag
+	 */
+	inline int gorgonFontAlignment2AllegroAlignment( const Font::Alignment& pAlignment )
+	{
+		switch( pAlignment )
+		{
+			case Font::AlignLeft:	return ALLEGRO_ALIGN_LEFT;
+			case Font::AlignRight:	return ALLEGRO_ALIGN_RIGHT;
+			case Font::AlignCenter:	return ALLEGRO_ALIGN_CENTRE;
+			default:
+				return 0;
+		}
+	}
 	/**
 	 * Function that transforms a Mirroring into an Allegro draw Flag
 	 *
@@ -50,9 +73,9 @@ namespace Addon
 	 * @param	const Mirroring& pMirroring, the mirroring obj  to transform
 	 * @return	int
 	 */
-	inline int gorgonMirroring2AllegroMirroring(const Mirroring& pMirroring)
+	inline int gorgonMirroring2AllegroMirroring( const Mirroring& pMirroring )
 	{
-		switch(pMirroring.getType())
+		switch( pMirroring.getType() )
 		{
 			case Mirroring::HFlip:	return ALLEGRO_FLIP_HORIZONTAL;
 			case Mirroring::VFlip:	return ALLEGRO_FLIP_VERTICAL;
@@ -70,9 +93,9 @@ namespace Addon
 	 * @param	const Color& pColor, the color to be converted
 	 * @return	ALLEGRO_COLOR
 	 */
-	inline ALLEGRO_COLOR gorgonColort2AllegroColor(const Color& pColor)
+	inline ALLEGRO_COLOR gorgonColort2AllegroColor( const Color& pColor )
 	{
-		return al_map_rgba_f(pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha());
+		return al_map_rgba_f( pColor.getRed(), pColor.getGreen(), pColor.getBlue(), pColor.getAlpha() );
 	}
 	/**
 	 * Function that converts an Allegro Color to a Gorgon one
@@ -83,11 +106,11 @@ namespace Addon
 	 * @param	const ALLEGRO_COLOR& pColor, the color to be converted
 	 * @return	Color
 	 */
-	inline Color allegroColor2GorgonColor(const ALLEGRO_COLOR& pColor)
+	inline Color allegroColor2GorgonColor( const ALLEGRO_COLOR& pColor )
 	{
 		float r, g, b, a;
-		al_unmap_rgba_f(pColor, &r, &g, &b, &a);
-		return Color(r,g,b,a);
+		al_unmap_rgba_f( pColor, &r, &g, &b, &a );
+		return Color( r, g, b, a );
 	}
 }}}
 #endif

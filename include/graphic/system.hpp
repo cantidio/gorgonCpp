@@ -34,6 +34,7 @@ namespace Graphic
 {
 	class DisplayBase;
 	class ImageBase;
+	class FontBase;
 	class Image;
 	class Color;
 	/**
@@ -94,6 +95,15 @@ namespace Graphic
 				const bool& pFullScreen = false,
 				const bool& pResizeable = false
 			) const = 0;
+			/**
+			 * Method that returns an instance of the font
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	14/09/2011
+			 * @version	14/09/2011
+			 * @return	FontBase*, an instance of the implementation of the font using the current addon backend
+			 */
+			virtual Graphic::FontBase* getFont() const = 0;
 			/**
 			 * Method that sets the target Image
 			 *
