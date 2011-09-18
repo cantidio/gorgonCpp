@@ -150,6 +150,8 @@
 					<Add option="-lallegro_image" />
 					<Add option="-lallegro_primitives" />
 					<Add option="-lallegro_memfile" />
+					<Add option="-lallegro_font" />
+					<Add option="-lallegro_ttf" />
 				</Linker>
 			</Target>
 			<Target title="Windows_TESTE">
