@@ -1,10 +1,10 @@
-#include "../../../include/graphic/exception.hpp"
-#include "../../../include/graphic/image.hpp"
+#include <addon/allegro5/graphic/display_base.hpp>
+#include <addon/allegro5/graphic/image_base.hpp>
+#include <addon/allegro5/graphic/common.hpp>
+#include <graphic/exception.hpp>
+#include <graphic/image.hpp>
 #include <allegro5/allegro.h>
 #include <sstream>
-#include "display_base.hpp"
-#include "image_base.hpp"
-#include "common.hpp"
 
 namespace Gorgon	{
 namespace Graphic	{

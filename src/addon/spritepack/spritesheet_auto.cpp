@@ -1,4 +1,4 @@
-#include "spritesheet_auto.hpp"
+#include <addon/spritepack/spritesheet_auto.hpp>
 
 namespace Gorgon{
 namespace Addon

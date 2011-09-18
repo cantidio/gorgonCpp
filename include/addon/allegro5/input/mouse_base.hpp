@@ -26,8 +26,8 @@
  */
 #ifndef _GORGON_INPUT_ADDON_MOUSE_BASE_
 #define _GORGON_INPUT_ADDON_MOUSE_BASE_
-#include <gorgon++/input/mouse_base.hpp>
-#include <gorgon++/core/point.hpp>
+#include "../../../input/mouse_base.hpp"
+#include "../../../core/point.hpp"
 
 struct ALLEGRO_MOUSE_STATE;
 

@@ -2,11 +2,11 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 
-#include "system.hpp"
-#include "image_base.hpp"
-#include "font_base.hpp"
-#include "display_base.hpp"
-#include "common.hpp"
+#include <addon/allegro5/graphic/system.hpp>
+#include <addon/allegro5/graphic/image_base.hpp>
+#include <addon/allegro5/graphic/font_base.hpp>
+#include <addon/allegro5/graphic/display_base.hpp>
+#include <addon/allegro5/graphic/common.hpp>
 
 namespace Gorgon	{
 namespace Graphic	{

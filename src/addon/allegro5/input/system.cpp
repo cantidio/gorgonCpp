@@ -1,9 +1,10 @@
-#include "system.hpp"
-#include "mouse_base.hpp"
-#include "keyboard_base.hpp"
-#include "joystick_base.hpp"
+#include <addon/allegro5/input/system.hpp>
+#include <addon/allegro5/input/mouse_base.hpp>
+#include <addon/allegro5/input/keyboard_base.hpp>
+#include <addon/allegro5/input/joystick_base.hpp>
+
 #include <allegro5/allegro.h>
-#include <gorgon++/input/exception.hpp>
+#include <input/exception.hpp>
 
 namespace Gorgon	{
 namespace Input		{

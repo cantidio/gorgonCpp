@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_GRAPHIC_JOYSTICK_BASE_ADDON_
 #define _GORGON_GRAPHIC_JOYSTICK_BASE_ADDON_
-#include <gorgon++/input/joystick_base.hpp>
+#include "../../../input/joystick_base.hpp"
 #include <SDL/SDL.h>
 
 namespace Gorgon {

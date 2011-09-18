@@ -1,6 +1,6 @@
-#include <gorgon++/graphic/exception.hpp>
-#include "image_base.hpp"
-#include "common.hpp"
+#include <graphic/exception.hpp>
+#include <addon/allegro5/graphic/image_base.hpp>
+#include <addon/allegro5/graphic/common.hpp>
 #include <sstream>
 
 namespace Gorgon	{

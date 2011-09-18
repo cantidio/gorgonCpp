@@ -1,4 +1,4 @@
-#include "image_loader.hpp"
+//#include "image_loader.hpp"
 #include <gorgon++/gorgon.hpp>
 #include <gorgon++/graphic/exception.hpp>
 #include <SDL/SDL.h>

@@ -1,6 +1,6 @@
-#include "gorgon_animationpack_lua.hpp"
-#include <gorgon++/script/lua.hpp>
-#include <gorgon++/graphic/exception.hpp>
+#include <addon/animationpack/gorgon_animationpack_lua.hpp>
+#include <script/lua.hpp>
+#include <graphic/exception.hpp>
 
 namespace Gorgon{
 namespace Graphic

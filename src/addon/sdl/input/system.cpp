@@ -1,10 +1,10 @@
 #include <gorgon++/input/exception.hpp>
 #include <SDL/SDL.h>
 
-#include "system.hpp"
-#include "mouse_base.hpp"
-#include "keyboard_base.hpp"
-#include "joystick_base.hpp"
+#include <addon/sdl/input/system.hpp>
+#include <addon/sdl/input/mouse_base.hpp>
+#include <addon/sdl/input/keyboard_base.hpp>
+#include <addon/sdl/input/joystick_base.hpp>
 
 namespace Gorgon	{
 namespace Input		{

@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_SFF_SPRITEPACK_
 #define	_GORGON_SFF_SPRITEPACK_
-#include <gorgon++/graphic/spritepack.hpp>
+#include "../../graphic/spritepack.hpp"
 
 namespace Gorgon  {
 namespace Graphic {

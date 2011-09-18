@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_INPUT_KEYBOARD_BASE_ADDON_
 #define _GOROGN_INPUT_KEYBOARD_BASE_ADDON_
-#include <gorgon++/input/keyboard_base.hpp>
+#include "../../../input/keyboard_base.hpp"
 #include <SDL/SDL.h>
 
 namespace Gorgon {

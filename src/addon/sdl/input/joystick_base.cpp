@@ -1,4 +1,4 @@
-#include "joystick_base.hpp"
+#include <addon/sdl/input/joystick_base.hpp>
 
 namespace Gorgon {
 namespace Input  {

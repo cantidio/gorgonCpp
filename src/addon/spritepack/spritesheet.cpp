@@ -1,4 +1,4 @@
-#include "spritesheet.hpp"
+#include <addon/spritepack/spritesheet.hpp>
 
 namespace Gorgon{
 namespace Addon

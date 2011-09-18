@@ -36,7 +36,7 @@ namespace Gorgon
 	 * @since	18/09/2011
 	 * @version	18/09/2011
 	 */
-	inline setAllegroAddon()
+	inline void setAllegroAddon()
 	{
 		Graphic::Addon::System::set();
 		Input::Addon::System::set();

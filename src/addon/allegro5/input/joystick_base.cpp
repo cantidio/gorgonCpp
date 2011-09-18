@@ -1,5 +1,5 @@
-#include "joystick_base.hpp"
-#include <gorgon++/input/exception.hpp>
+#include <addon/allegro5/input/joystick_base.hpp>
+#include <input/exception.hpp>
 #include <allegro5/allegro.h>
 #include <stdio.h>
 

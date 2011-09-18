@@ -26,8 +26,8 @@
  */
 #ifndef _GORGON_INPUT_MOUSE_BASE_ADDON_
 #define _GORGON_INPUT_MOUSE_BASE_ADDON_
-#include <gorgon++/input/mouse_base.hpp>
-#include <gorgon++/core/point.hpp>
+#include "../../../input/mouse_base.hpp"
+#include "../../../core/point.hpp"
 #include <SDL/SDL.h>
 
 namespace Gorgon {

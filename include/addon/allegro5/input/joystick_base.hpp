@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_INPUT_ADDON_JOYSTICK_BASE_
 #define _GORGON_INPUT_ADDON_JOYSTICK_BASE_
-#include <gorgon++/input/joystick_base.hpp>
+#include "../../../input/joystick_base.hpp"
 
 struct ALLEGRO_JOYSTICK;
 struct ALLEGRO_JOYSTICK_STATE;

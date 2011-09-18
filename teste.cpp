@@ -1,9 +1,9 @@
 #include <iostream>
-#include <gorgon++/addon/allegro5/graphic/system.hpp>
-#include <gorgon++/addon/allegro5/input/system.hpp>
-#include <gorgon++/addon/spritepack/tilesheet.hpp>
-#include <gorgon++/addon/spritepack/spritepack_sff.hpp>
-#include <gorgon++/gorgon.hpp>
+#include <addon/allegro5/allegro.hpp>
+#include <addon/spritepack/tilesheet.hpp>
+#include <addon/spritepack/spritepack_sff.hpp>
+#include <gorgon.hpp>
+
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
@@ -20,10 +20,8 @@ int main()
 {
 	try
 	{
-		Graphic::Addon::System::set();
-		Input::Addon::System::set();
-
-		Display display("TESTE GORGON Framework rev 211", width, height);
+		Gorgon::setAllegroAddon();
+		Display display( "TESTE GORGON Framework rev 211", width, height );
 
 		Keyboard keyboard;
 		Mouse mouse;
@@ -50,7 +48,7 @@ int main()
 		printf("convert time: %ld s \n",endtime-starttime);
 
 		Point position(550,350);
-		float ang = 0;
+//		float ang = 0;
 
 		float zoom = 5;
 		int index = 0;

@@ -1,5 +1,5 @@
-#include "spritepack_lua.hpp"
-#include <gorgon++/script/lua.hpp>
+#include <addon/spritepack/spritepack_lua.hpp>
+#include <script/lua.hpp>
 #include <sstream>
 
 namespace Gorgon{

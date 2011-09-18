@@ -1,4 +1,4 @@
-#include "mouse_base.hpp"
+#include <addon/allegro5/input/mouse_base.hpp>
 #include <allegro5/allegro.h>
 
 namespace Gorgon	{

@@ -1,5 +1,5 @@
-#include "spritepack_sff.hpp"
-#include <gorgon++/graphic/graphic.hpp>
+#include <addon/spritepack/spritepack_sff.hpp>
+#include <graphic/graphic.hpp>
 //#include <gorgon++/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp>
 
 namespace Gorgon  {

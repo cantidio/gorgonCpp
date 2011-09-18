@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_INPUT_SYSTEM_ADDON_
 #define	_GORGON_INPUT_SYSTEM_ADDON_
-#include <gorgon++/input/system.hpp>
+#include "../../../input/system.hpp"
 
 namespace Gorgon	{
 namespace Input		{

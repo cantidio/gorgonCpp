@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_GRAPHIC_ADDON_SYSTEM_
 #define _GORGON_GRAPHIC_ADDON_SYSTEM_
-#include <gorgon++/graphic/system.hpp>
+#include "../../../graphic/system.hpp"
 
 namespace Gorgon	{
 namespace Graphic	{

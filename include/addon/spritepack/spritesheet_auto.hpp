@@ -24,9 +24,9 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#include <gorgon++/graphic/spritepack.hpp>
 #ifndef _GORGON_SPRITEPACK_SPRITESHEET_AUTO_
 #define _GORGON_SPRITEPACK_SPRITESHEET_AUTO_
+#include "../../graphic/spritepack.hpp"
 
 namespace Gorgon{
 namespace Addon

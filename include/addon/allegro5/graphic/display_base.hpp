@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_GRAPHIC_DISPLAY_BASE_ADDON_
 #define _GORGON_GRAPHIC_DISPLAY_BASE_ADDON_
-#include <gorgon++/graphic/display_base.hpp>
+#include "../../../graphic/display_base.hpp"
 #include <string>
 
 struct ALLEGRO_DISPLAY;

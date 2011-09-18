@@ -1,5 +1,5 @@
-#include "tilesheet.hpp"
-#include <gorgon++/graphic/system.hpp>
+#include <addon/spritepack/tilesheet.hpp>
+#include <graphic/system.hpp>
 
 namespace Gorgon  {
 namespace Graphic {

@@ -26,8 +26,7 @@
  */
 #ifndef _GORGON_GRAPHIC_FONT_BASE_ADDON_
 #define _GORGON_GRAPHIC_FONT_BASE_ADDON_
-#include <gorgon++/graphic/font_base.hpp>
-
+#include "../../../graphic/font_base.hpp"
 #include <string>
 
 struct ALLEGRO_FONT;

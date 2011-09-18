@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_SPRITEPACK_TILESHEET_
 #define _GORGON_SPRITEPACK_TILESHEET_
-#include <gorgon++/graphic/spritepack.hpp>
+#include "../../graphic/spritepack.hpp"
 
 namespace Gorgon  {
 namespace Graphic {

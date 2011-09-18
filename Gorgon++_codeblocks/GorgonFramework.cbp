@@ -119,6 +119,13 @@
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
+				<Compiler>
+					<Add directory="..\include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lgorgon" />
+					<Add directory="Windows\Release" />
+				</Linker>
 			</Target>
 			<Target title="Windows_Addon_sdl">
 				<Option platforms="Windows;" />
@@ -143,6 +150,9 @@
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
+				<Compiler>
+					<Add directory="..\include" />
+				</Compiler>
 				<Linker>
 					<Add option="-lgorgon" />
 					<Add option="-lallegro" />
@@ -152,6 +162,7 @@
 					<Add option="-lallegro_memfile" />
 					<Add option="-lallegro_font" />
 					<Add option="-lallegro_ttf" />
+					<Add directory="Windows\Release" />
 				</Linker>
 			</Target>
 			<Target title="Windows_TESTE">
@@ -174,6 +185,8 @@
 					<Add option="-lallegro_image" />
 					<Add option="-lallegro_primitives" />
 					<Add option="-lallegro_memfile" />
+					<Add option="-lallegro_font" />
+					<Add option="-lallegro_ttf" />
 				</Linker>
 			</Target>
 		</Build>
@@ -183,254 +196,135 @@
 			<Add option="-fexceptions" />
 			<Add directory="\home\cantidio\Development\gorgon++_plugin\include" />
 		</Compiler>
-		<Unit filename="..\addon\allegro5\allegro.hpp">
-			<Option target="Linux_Addon_allegro" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
-		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\common.hpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\allegro.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\display_base.cpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\graphic\common.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\display_base.hpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\graphic\display_base.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\font_base.cpp">
-			<Option target="Linux_Addon_allegro" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
-		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\font_base.hpp">
-			<Option target="Linux_Addon_allegro" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
-		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\image_base.cpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\graphic\font_base.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\image_base.hpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\graphic\image_base.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\system.cpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\graphic\system.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\graphic\system.hpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\input\joystick_base.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\input\joystick_base.cpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\input\keyboard_base.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\input\joystick_base.hpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\input\mouse_base.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\input\keyboard_base.cpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\allegro5\input\system.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
 		</Unit>
-		<Unit filename="..\addon\allegro5\input\keyboard_base.hpp">
-			<Option target="Linux_Addon_allegro" />
+		<Unit filename="..\include\addon\animationpack\gorgon_animationpack_lua.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-		</Unit>
-		<Unit filename="..\addon\allegro5\input\mouse_base.cpp">
-			<Option target="Linux_Addon_allegro" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-		</Unit>
-		<Unit filename="..\addon\allegro5\input\mouse_base.hpp">
-			<Option target="Linux_Addon_allegro" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-		</Unit>
-		<Unit filename="..\addon\allegro5\input\system.cpp">
-			<Option target="Linux_Addon_allegro" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-		</Unit>
-		<Unit filename="..\addon\allegro5\input\system.hpp">
-			<Option target="Linux_Addon_allegro" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon_allegro" />
-		</Unit>
-		<Unit filename="..\addon\animationpack\gorgon_animationpack_lua.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
+			<Option target="Windows_Addon" />
+			<Option target="Windows_Release" />
+		</Unit>
+		<Unit filename="..\include\addon\sdl\graphic\image.hpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\include\addon\sdl\graphic\image_loader.hpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\include\addon\sdl\graphic\video.hpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\include\addon\sdl\input\joystick_base.hpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\include\addon\sdl\input\keyboard_base.hpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\include\addon\sdl\input\mouse_base.hpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\include\addon\sdl\input\system.hpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\include\addon\spritepack\spritepack_lua.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\animationpack\gorgon_animationpack_lua.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
+			<Option target="Windows_Addon" />
+			<Option target="Windows_Release" />
+		</Unit>
+		<Unit filename="..\include\addon\spritepack\spritepack_sff.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\sdl\graphic\image.cpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\graphic\image.hpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\graphic\image_loader.cpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\graphic\image_loader.hpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\graphic\video.cpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\graphic\video.hpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\joystick_base.cpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\joystick_base.hpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\keyboard_base.cpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\keyboard_base.hpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\mouse_base.cpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\mouse_base.hpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\system.cpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\sdl\input\system.hpp">
-			<Option target="Linux_Addon_sdl" />
-			<Option target="Windows_Addon_sdl" />
-		</Unit>
-		<Unit filename="..\addon\spritepack\spritepack_lua.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Addon" />
+			<Option target="Windows_Release" />
 		</Unit>
-		<Unit filename="..\addon\spritepack\spritepack_lua.hpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
+		<Unit filename="..\include\addon\spritepack\spritesheet.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
+			<Option target="Windows_Release" />
 		</Unit>
-		<Unit filename="..\addon\spritepack\spritepack_sff.cpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
+		<Unit filename="..\include\addon\spritepack\spritesheet_auto.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
+			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
+			<Option target="Windows_Release" />
 		</Unit>
-		<Unit filename="..\addon\spritepack\spritepack_sff.hpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
+		<Unit filename="..\include\addon\spritepack\tilesheet.hpp">
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\spritepack\spritesheet.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\spritepack\spritesheet.hpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\spritepack\spritesheet_auto.cpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\spritepack\spritesheet_auto.hpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\spritepack\tilesheet.cpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
-		</Unit>
-		<Unit filename="..\addon\spritepack\tilesheet.hpp">
-			<Option target="Linux_Debug" />
-			<Option target="Linux_Addon" />
-			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
-			<Option target="Windows_Addon" />
+			<Option target="Windows_Release" />
 		</Unit>
 		<Unit filename="..\include\audio\audio.hpp">
 			<Option target="Linux_Debug" />
@@ -995,6 +889,117 @@
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\graphic\display_base.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\graphic\font_base.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\graphic\image_base.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\graphic\system.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\input\joystick_base.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\input\keyboard_base.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\input\mouse_base.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\allegro5\input\system.cpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\animationpack\gorgon_animationpack_lua.cpp">
+			<Option target="Linux_Addon" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon" />
+		</Unit>
+		<Unit filename="..\src\addon\sdl\graphic\image.cpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\src\addon\sdl\graphic\image_loader.cpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\src\addon\sdl\graphic\video.cpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\src\addon\sdl\input\joystick_base.cpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\src\addon\sdl\input\keyboard_base.cpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\src\addon\sdl\input\mouse_base.cpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\src\addon\sdl\input\system.cpp">
+			<Option target="Linux_Addon_sdl" />
+			<Option target="Windows_Addon_sdl" />
+		</Unit>
+		<Unit filename="..\src\addon\spritepack\spritepack_lua.cpp">
+			<Option target="Linux_Addon" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\spritepack\spritepack_sff.cpp">
+			<Option target="Linux_Addon" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\spritepack\spritesheet.cpp">
+			<Option target="Linux_Addon" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\spritepack\spritesheet_auto.cpp">
+			<Option target="Linux_Addon" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon" />
+			<Option target="Windows_TESTE" />
+		</Unit>
+		<Unit filename="..\src\addon\spritepack\tilesheet.cpp">
+			<Option target="Linux_Addon" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Unit filename="..\src\audio\sound.cpp">

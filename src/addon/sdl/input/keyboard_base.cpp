@@ -1,7 +1,7 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_keyboard.h>
-#include <gorgon++/core/log.hpp>
-#include "keyboard_base.hpp"
+#include <core/log.hpp>
+#include <addon/sdl/input/keyboard_base.hpp>
 
 namespace Gorgon {
 namespace Input  {

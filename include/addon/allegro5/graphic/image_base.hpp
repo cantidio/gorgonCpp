@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_IMAGE_ALLEGRO_
 #define _GORGON_IMAGE_ALLEGRO_
-#include <gorgon++/graphic/image_base.hpp>
+#include "../../../graphic/image_base.hpp"
 
 struct ALLEGRO_BITMAP;
 namespace Gorgon	{

@@ -1,6 +1,6 @@
-#include "font_base.hpp"
-#include "common.hpp"
-#include <gorgon++/core/file.hpp>
+#include <addon/allegro5/graphic/font_base.hpp>
+#include <addon/allegro5/graphic/common.hpp>
+#include <core/file.hpp>
 #include <sstream>
 
 

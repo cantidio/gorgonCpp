@@ -26,7 +26,7 @@
  */
 #ifndef _GORGON_INPUT_ADDON_KEYBOARD_BASE_
 #define _GORGON_INPUT_ADDON_KEYBOARD_BASE_
-#include <gorgon++/input/keyboard_base.hpp>
+#include "../../../input/keyboard_base.hpp"
 
 struct ALLEGRO_KEYBOARD_STATE;
 

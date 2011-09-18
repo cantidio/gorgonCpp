@@ -1,6 +1,6 @@
-#include "keyboard_base.hpp"
+#include <addon/allegro5/input/keyboard_base.hpp>
 #include <allegro5/allegro.h>
-#include <gorgon++/core/log.hpp>
+#include <core/log.hpp>
 
 namespace Gorgon	{
 namespace Input		{

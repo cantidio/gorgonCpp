@@ -1,4 +1,4 @@
-#include "mouse_base.hpp"
+#include <addon/sdl/input/mouse_base.hpp>
 
 namespace Gorgon {
 namespace Input  {
