@@ -183,6 +183,12 @@
 			<Add option="-fexceptions" />
 			<Add directory="\home\cantidio\Development\gorgon++_plugin\include" />
 		</Compiler>
+		<Unit filename="..\addon\allegro5\allegro.hpp">
+			<Option target="Linux_Addon_allegro" />
+			<Option target="Linux_TESTE" />
+			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_TESTE" />
+		</Unit>
 		<Unit filename="..\addon\allegro5\graphic\common.hpp">
 			<Option target="Linux_Debug" />
 			<Option target="Linux_Addon_allegro" />
