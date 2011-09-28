@@ -14,22 +14,28 @@ namespace Addon
 {
 	System::System()
 	{
-		if(!al_init())
+		if( !al_init() )
 		{
 			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 lib."));
 			raiseGraphicException("System::System(): Error when initializing allegro5 lib.");
 		}
-		if(!al_init_primitives_addon())
+		if( !al_init_primitives_addon() )
 		{
 			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 primitives addon."));
 			raiseGraphicException("System::System(): Error when initializing allegro5 primitives addon.");
 		}
-		if(!al_init_image_addon())
+		if( !al_init_image_addon() )
 		{
 			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 image I/O addon."));
 			raiseGraphicException("System::System(): Error when initializing allegro5 image I/O addon.");
 		}
-		al_set_new_bitmap_flags(ALLEGRO_MEMORY_BITMAP | ALLEGRO_KEEP_INDEX | ALLEGRO_PIXEL_FORMAT_LUMINANCE_8);
+		al_init_font_addon();
+		if( !al_init_ttf_addon() )
+		{
+			Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Error, could not initialize allegro5 font addon."));
+			raiseGraphicException("System::System(): Error when initializing allegro5 font addon.");
+		}
+		al_set_new_bitmap_flags( ALLEGRO_MEMORY_BITMAP | ALLEGRO_KEEP_INDEX | ALLEGRO_PIXEL_FORMAT_LUMINANCE_8 );
 		Core::logWrite(std::string("Gorgon::Graphic::Addon::System::System(): Successful."));
 	}
 
@@ -228,6 +234,5 @@ namespace Addon
 			gorgonColort2AllegroColor(pColor)
 		);
 	}
-
 }}}
 

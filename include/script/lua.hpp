@@ -26,13 +26,6 @@
  */
 #ifndef _GORGON_LUA_
 #define _GORGON_LUA_
-
-extern "C"
-{
-	#include <lua5.1/lua.h>
-	#include <lua5.1/lualib.h>
-	#include <lua5.1/lauxlib.h>
-}
 #include "lua_param.hpp"
 #include "lua_return.hpp"
 
@@ -40,6 +33,8 @@ extern "C"
 #include <string>
 #include <vector>
 
+struct lua_State;
+struct luaL_reg;
 namespace Gorgon{
 namespace Script
 {

@@ -1,6 +1,7 @@
 #include <addon/allegro5/input/keyboard_base.hpp>
-#include <allegro5/allegro.h>
+#include <input/keyboard_key.hpp>
 #include <core/log.hpp>
+#include <allegro5/allegro.h>
 
 namespace Gorgon	{
 namespace Input		{
@@ -84,7 +85,7 @@ namespace Addon
 		mKey[Input::Key::PRINT_SCREEN]	= ALLEGRO_KEY_PRINTSCREEN;
 		mKey[Input::Key::PAUSE]			= ALLEGRO_KEY_PAUSE;
 		mKey[Input::Key::INSERT]		= ALLEGRO_KEY_INSERT;
-//		mKey[Input::Key::DELETE]		= ALLEGRO_KEY_DELETE;
+		mKey[Input::Key::DEL]			= ALLEGRO_KEY_DELETE;
 		mKey[Input::Key::HOME]			= ALLEGRO_KEY_HOME;
 		mKey[Input::Key::END]			= ALLEGRO_KEY_END;
 		mKey[Input::Key::PAGE_UP]		= ALLEGRO_KEY_PGUP;
@@ -116,7 +117,7 @@ namespace Addon
 
 	KeyboardBase::~KeyboardBase()
 	{
-		if(mState)
+		if( mState )
 		{
 			delete mState;
 		}
@@ -125,15 +126,15 @@ namespace Addon
 	bool KeyboardBase::isOpened() const
 	{
 		return al_is_keyboard_installed();
-	};
+	}
 
 	void KeyboardBase::update()
 	{
-		al_get_keyboard_state(mState);
+		al_get_keyboard_state( mState );
 	}
 
-	Input::Key KeyboardBase::getKey(const int& pKeyValue) const
+	Input::Key KeyboardBase::getKey( const int& pKeyValue ) const
 	{
-		return Input::Key(pKeyValue, al_key_down(mState, mKey[pKeyValue]));
+		return Input::Key( pKeyValue, al_key_down( mState, mKey[pKeyValue] ) );
 	}
 }}}

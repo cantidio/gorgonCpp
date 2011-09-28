@@ -29,11 +29,11 @@ int main()
 		time_t starttime, endtime;
 		time( &starttime );
 		//SpritePack sprites("caveira_vermelha.gspk");
-		SpritePack sprites("spritepacks/foxy.gsp");
+		//SpritePack sprites("spritepacks/foxy.gsp");
 
 		//TileSheet sprites(Image("/home/cantidio/Development/gorgon++_plugin/examples/resources/klona_48x48.png"),46,46,1);
 
-		//SpritePackSff sprites("mugen/Foxy.sff");
+		SpritePackSff sprites("mugen/Foxy.sff");
 		time(&endtime);
 		printf("load time: %ld s \n",endtime-starttime);
 

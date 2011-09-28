@@ -40,12 +40,12 @@ namespace Addon
 		al_uninstall_keyboard();
 		al_uninstall_joystick();
 		al_uninstall_mouse();
-		Core::logWrite(std::string("Input::Addon::System::~System(): Sucessfull"));
+		Core::logWrite( std::string("Input::Addon::System::~System(): Sucessfull") );
 	}
 
 	void System::set()
 	{
-		Input::System::set(new System());
+		Input::System::set( new System() );
 	}
 
 	Input::KeyboardBase* System::getKeyboard() const
@@ -59,9 +59,9 @@ namespace Addon
 		return new MouseBase();
 	}
 
-	Input::JoystickBase* System::getJoystick(const int& pIndex) const
+	Input::JoystickBase* System::getJoystick( const int& pIndex ) const
 	{
-		return new JoystickBase(pIndex);
+		return new JoystickBase( pIndex );
 	}
 
 	int System::getJoystickNumber() const

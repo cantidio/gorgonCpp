@@ -26,14 +26,9 @@
  */
 #ifndef _GORGON_LUA_ARGUMENT_
 #define	_GORGON_LUA_ARGUMENT_
-extern "C"
-{
-	#include <lua5.1/lua.h>
-	#include <lua5.1/lualib.h>
-	#include <lua5.1/lauxlib.h>
-}
 #include <string>
 
+struct lua_State;
 namespace Gorgon{
 namespace Script
 {
@@ -163,7 +158,7 @@ namespace Script
 			 * @version	14/03/2009
 			 * @param	lua_State* pState, estado lua
 			 */
-			void push(lua_State* pState) const;
+			void push( lua_State* pState ) const;
 	};
 }}
 #endif

@@ -218,7 +218,7 @@ namespace Input
 				PRINT_SCREEN,
 				PAUSE,
 				INSERT,
-				DELETE,
+				DEL,
 				HOME,
 				END,
 				PAGE_UP,

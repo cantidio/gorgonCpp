@@ -26,12 +26,6 @@
  */
 #ifndef _GORGON_LUA_PARAM_
 #define _GORGON_LUA_PARAM_
-extern "C"
-{
-	#include <lua5.1/lua.h>
-	#include <lua5.1/lualib.h>
-	#include <lua5.1/lauxlib.h>
-}
 #include "lua_argument.hpp"
 #include <string>
 #include <vector>

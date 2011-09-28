@@ -320,7 +320,7 @@ namespace Graphic
 			 * @version	27/05/2011
 			 * @param	System* pSystem, pointer the graphic system
 			 */
-			static void set(System* pSystem);
+			static void set( System* pSystem );
 		private:
 			static System*	mSingleton;		/**<< Singleton instance of the class*/
 			bool			mInit;			/**<< True if the graphic system is running, false otherwise*/

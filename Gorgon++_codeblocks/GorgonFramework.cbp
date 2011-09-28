@@ -102,6 +102,10 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="..\include" />
+					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\include" />
+					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\include" />
+					<Add directory="..\..\..\..\lab\lua-5.1.4\include" />
+					<Add directory="..\..\..\..\lab\zlib-1.2.3\include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -109,6 +113,10 @@
 					<Add option="-llua5.1" />
 					<Add option="-lz" />
 					<Add option="-lchipmunk" />
+					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\build_win\src" />
+					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\lib" />
+					<Add directory="..\..\..\..\lab\lua-5.1.4\lib" />
+					<Add directory="..\..\..\..\lab\zlib-1.2.3\lib" />
 				</Linker>
 			</Target>
 			<Target title="Windows_Addon">
@@ -152,6 +160,7 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add directory="..\include" />
+					<Add directory="..\..\..\..\lab\allegro5.1\build_win\include" />
 				</Compiler>
 				<Linker>
 					<Add option="-lgorgon" />
@@ -163,6 +172,7 @@
 					<Add option="-lallegro_font" />
 					<Add option="-lallegro_ttf" />
 					<Add directory="Windows\Release" />
+					<Add directory="..\..\..\..\lab\allegro5.1\build_win\lib" />
 				</Linker>
 			</Target>
 			<Target title="Windows_TESTE">
@@ -174,6 +184,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add directory="..\include" />
+					<Add directory="..\..\..\..\lab\allegro5.1\build_win\include" />
+					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\include" />
+					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\include" />
+					<Add directory="..\..\..\..\lab\lua-5.1.4\include" />
 				</Compiler>
 				<Linker>
 					<Add option="-laudiere" />
@@ -187,6 +201,11 @@
 					<Add option="-lallegro_memfile" />
 					<Add option="-lallegro_font" />
 					<Add option="-lallegro_ttf" />
+					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\lib" />
+					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\build_win\src" />
+					<Add directory="..\..\..\..\lab\lua-5.1.4\lib" />
+					<Add directory="..\..\..\..\lab\zlib-1.2.3\lib" />
+					<Add directory="..\..\..\..\lab\allegro5.1\build_win\lib" />
 				</Linker>
 			</Target>
 		</Build>

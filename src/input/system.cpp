@@ -27,9 +27,9 @@ namespace Input
 		return *mSingleton;
 	}
 
-	void System::set(System* pSystem)
+	void System::set( System* pSystem )
 	{
-		if(mSingleton != NULL)
+		if( mSingleton != NULL )
 		{
 			delete mSingleton;
 		}
@@ -38,7 +38,7 @@ namespace Input
 
 	void System::halt()
 	{
-		set(NULL);
+		set( NULL );
 		Core::logWrite(std::string("Input::System::halt(): Successful."));
 	}
 
@@ -52,9 +52,9 @@ namespace Input
 		return new MouseBaseNull();
 	}
 
-	JoystickBase* System::getJoystick(const int& pIndex) const
+	JoystickBase* System::getJoystick( const int& pIndex ) const
 	{
-		return new JoystickBaseNull(pIndex);
+		return new JoystickBaseNull( pIndex );
 	}
 
 	int System::getJoystickNumber() const

@@ -17,12 +17,12 @@ namespace Addon
 		const int& pHeight,
 		const bool& pFullScreen,
 		const bool& pResizeable
-	) : Graphic::DisplayBase(pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable)
+	) : Graphic::DisplayBase( pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable )
 	{
 		al_set_new_display_flags
 		(
-			ALLEGRO_OPENGL
-			| (pFullScreen ? ALLEGRO_FULLSCREEN_WINDOW : 0)
+			ALLEGRO_OPENGL_3_0 |
+			 (pFullScreen ? ALLEGRO_FULLSCREEN_WINDOW : 0)
 			| (pResizeable ? ALLEGRO_RESIZABLE         : 0)
 		);
 

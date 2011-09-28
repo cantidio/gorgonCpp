@@ -32,19 +32,20 @@
  *
  * @author		Cantidio Oliveira Fontes
  * @since		01/05/2008
- * @version		10/07/2009
+ * @version		21/09/2011
  * @details
  *				The Graphic module contains all functions related to graphics manipulation
  *				from images, sprites, animations, colors, displays, and so on
  */
 
-#include "animation_frame.hpp"
 #include "animation.hpp"
+#include "animation_frame.hpp"
 #include "animation_handler.hpp"
 #include "animationpack.hpp"
 #include "color.hpp"
 #include "display.hpp"
 #include "exception.hpp"
+#include "font.hpp"
 #include "image.hpp"
 #include "image_loader.hpp"
 #include "mirroring.hpp"

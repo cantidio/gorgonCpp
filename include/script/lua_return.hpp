@@ -26,12 +26,6 @@
  */
 #ifndef _GORGON_LUA_RETURN_
 #define _GORGON_LUA_RETURN_
-extern "C"
-{
-	#include <lua5.1/lua.h>
-	#include <lua5.1/lualib.h>
-	#include <lua5.1/lauxlib.h>
-}
 #include <iostream>
 #include <string>
 #include <vector>

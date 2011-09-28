@@ -33,6 +33,7 @@
 #include "../../../graphic/font_base.hpp"
 #include "../../../graphic/mirroring.hpp"
 #include "../../../graphic/exception.hpp"
+
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
