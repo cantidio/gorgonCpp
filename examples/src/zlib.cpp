@@ -15,5 +15,6 @@ int main(int argc, char **argv)
 
 	file.close();
 	file2.close();
+	return 0;
 }
 

@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Cantidio Oliveira Fontes
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,9 +28,9 @@
 #define _GORGON_COLLISION_FRAME_
 #include <vector>
 #include <sstream>
-#include "../core/gorgon_file.hpp"
+#include "../core/file.hpp"
 #include "../geometry/gorgon_rectangle.hpp"
-#include "../graphic/gorgon_image.hpp"
+#include "../graphic/image.hpp"
 
 namespace Gorgon
 {
@@ -86,11 +86,16 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	19/06/2009
 			 * @version	19/06/2009
-			 * @param	const Point&	pPosition	, posição em que a colisão será desenhada
-			 * @param	const Color&	pColor		, cor em que a colisão será desenhada
-			 * @param	Image&			pImage		, imagem de destino que a colisão será desenhada
+			 * @param	const Core::Point&	pPosition	, posição em que a colisão será desenhada
+			 * @param	const Color&		pColor		, cor em que a colisão será desenhada
+			 * @param	Image&				pImage		, imagem de destino que a colisão será desenhada
 			 */
-			void draw(const Point& pPosition,const Color& pColor,Image& pImage) const;
+			void draw
+			(
+				const Core::Point& pPosition,
+				const Graphic::Color& pColor,
+				Graphic::Image& pImage
+			) const;
 			/**
 			 * Método para saber se uma determinada caixa de colisão colidiu com a outra
 			 *
@@ -98,15 +103,15 @@ namespace Gorgon
 			 * @since	12/08/2008
 			 * @version	13/04/2009
 			 * @param	const CollisionFrame& collision, ponteiro para a caixa de colisão
-			 * @param	const Point& absolutePosition, posição em que a colisão da classe se localiza no espaço
-			 * @param	const Point& absoluteCollisionFramePosition, posição em que a colisão que está-se testando está
+			 * @param	const Core::Point& absolutePosition, posição em que a colisão da classe se localiza no espaço
+			 * @param	const Core::Point& absoluteCollisionFramePosition, posição em que a colisão que está-se testando está
 			 * @return	bool
 			 */
 			bool colide
 			(
 				const CollisionFrame&	pCollisionFrame,
-				const Point&			pAbsolutePosition			= Point(0,0),
-				const Point&			pAbsoluteColisionPosition	= Point(0,0)
+				const Core::Point&		pAbsolutePosition			= Core::Point(0,0),
+				const Core::Point&		pAbsoluteColisionPosition	= Core::Point(0,0)
 			) const;
 			/**
 			 * método para salvar a caixa de colisão em um arquivo já aberto previamente

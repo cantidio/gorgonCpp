@@ -1,7 +1,7 @@
 #include <gorgon++/gorgon.hpp>
 #include <chipmunk/chipmunk.h>
 #define print() printf("debug: %d\n",__LINE__)
-#include <gorgon++/include/physics/physics.hpp>
+#include <gorgon++/physics/physics.hpp>
 #include <math.h>
 
 int main()

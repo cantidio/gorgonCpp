@@ -31,7 +31,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>${workspace_loc:/Gorgon++/Release}</value>
+					<value>${workspace_loc:/Gorgon++/Linux_TESTE}</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
@@ -87,6 +87,16 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>create_deb.sh</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/create_deb.sh</locationURI>
+		</link>
+		<link>
+			<name>examples</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>include</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -97,12 +107,42 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>teste.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/teste.cpp</locationURI>
+		</link>
+		<link>
 			<name>addon/.svn</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/animationpack</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>addon/image_loader</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>examples/src</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -222,7 +262,42 @@
 			<locationURI>PARENT-1-PROJECT_LOC/addon/.svn/entries</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/animationpack/gorgon_animationpack_lua.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/animationpack/gorgon_animationpack_lua.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/animationpack/gorgon_animationpack_lua.hpp</locationURI>
+		</link>
+		<link>
 			<name>addon/image_loader/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/allegro5</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -230,6 +305,176 @@
 			<name>addon/image_loader/magick++</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_lua.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_lua.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_lua.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_lua.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_sff.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_sff.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritepack_sff.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritepack_sff.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet_auto.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet_auto.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/spritesheet_auto.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/spritesheet_auto.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/tilesheet.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/tilesheet.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/tilesheet.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/tilesheet.hpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>examples/src/air_to_gap.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/air_to_gap.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/animation.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/animation.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/animation_handler.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/animation_handler.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/animationpack.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/animationpack.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/animationpack_lua_to_gorgon.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/animationpack_lua_to_gorgon.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/backup.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/backup.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/colisionpack.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/colisionpack.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/image.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/image.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/image_bmp.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/image_bmp.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/image_pcx.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/image_pcx.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/keyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/keyboard.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/lua.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/lua.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/mouse.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/mouse.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/physics.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/physics.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/sff_to_gsp.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/sff_to_gsp.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/sprite.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/sprite.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/spritepack.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/spritepack.cpp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/zlib.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/zlib.cpp</locationURI>
 		</link>
 		<link>
 			<name>include/.svn/entries</name>
@@ -252,29 +497,29 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>include/audio/gorgon_audio.hpp</name>
+			<name>include/audio/audio.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/audio/gorgon_audio.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/audio.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/audio/gorgon_sound.hpp</name>
+			<name>include/audio/sound.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/audio/gorgon_sound.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/sound.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/audio/gorgon_sound_exception.hpp</name>
+			<name>include/audio/sound_exception.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/audio/gorgon_sound_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/sound_exception.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/audio/gorgon_sound_system.hpp</name>
+			<name>include/audio/sound_system.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/audio/gorgon_sound_system.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/sound_system.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/audio/gorgon_sound_system_exception.hpp</name>
+			<name>include/audio/sound_system_exception.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/audio/gorgon_sound_system_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/sound_system_exception.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/collision/.svn</name>
@@ -302,44 +547,49 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>include/core/core.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/core.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/core/exception.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/exception.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/core/file.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/file.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/core/file_header.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/file_header.hpp</locationURI>
+		</link>
+		<link>
 			<name>include/core/game.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/core/game.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/core/gorgon_binary.hpp</name>
+			<name>include/core/log.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_binary.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/log.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/core/gorgon_core.hpp</name>
+			<name>include/core/point.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_core.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/point.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/core/gorgon_exception.hpp</name>
+			<name>include/core/string.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/string.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/core/gorgon_file.hpp</name>
+			<name>include/core/zlib.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_file.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/core/gorgon_file_header.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_file_header.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/core/gorgon_log.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_log.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/core/gorgon_zlib.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/core/gorgon_zlib.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/zlib.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/geometry/.svn</name>
@@ -352,11 +602,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/geometry/gorgon_geometry.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/geometry/gorgon_point.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/geometry/gorgon_point.hpp</locationURI>
-		</link>
-		<link>
 			<name>include/geometry/gorgon_rectangle.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/geometry/gorgon_rectangle.hpp</locationURI>
@@ -367,164 +612,109 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_animation.hpp</name>
+			<name>include/graphic/animation.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_animation.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animation.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_animation_exception.hpp</name>
+			<name>include/graphic/animation_frame.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_animation_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animation_frame.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_animation_handler.hpp</name>
+			<name>include/graphic/animation_handler.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_animation_handler.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animation_handler.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_animation_header.hpp</name>
+			<name>include/graphic/animation_header.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_animation_header.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animation_header.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_animationpack.hpp</name>
+			<name>include/graphic/animationpack.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_animationpack.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animationpack.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_animationpack_exception.hpp</name>
+			<name>include/graphic/animationpack_header.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_animationpack_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/animationpack_header.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_animationpack_header.hpp</name>
+			<name>include/graphic/color.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_animationpack_header.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/color.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_color.hpp</name>
+			<name>include/graphic/display.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_color.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/display.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_frame.hpp</name>
+			<name>include/graphic/display_base.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_frame.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/display_base.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_graphic.hpp</name>
+			<name>include/graphic/exception.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_graphic.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/exception.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image.hpp</name>
+			<name>include/graphic/graphic.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/graphic.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_exception.hpp</name>
+			<name>include/graphic/image.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/image.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format.hpp</name>
+			<name>include/graphic/image_base.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/image_base.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_autodetect.hpp</name>
+			<name>include/graphic/image_loader.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_autodetect.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/image_loader.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_bmp.hpp</name>
+			<name>include/graphic/mirroring.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_bmp.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/mirroring.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_bmp_exception.hpp</name>
+			<name>include/graphic/palette.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_bmp_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/palette.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_bmp_header.hpp</name>
+			<name>include/graphic/sprite.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_bmp_header.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/sprite.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_bmp_info_header.hpp</name>
+			<name>include/graphic/sprite_header.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_bmp_info_header.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/sprite_header.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_pcx.hpp</name>
+			<name>include/graphic/spritepack.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_pcx.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/spritepack.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_pcx_exception.hpp</name>
+			<name>include/graphic/spritepack_header.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_pcx_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/spritepack_header.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/graphic/gorgon_image_format_pcx_header.hpp</name>
+			<name>include/graphic/system.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_pcx_header.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_image_format_unknown.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_image_format_unknown.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_mirroring.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_mirroring.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_palette.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_palette.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_sff_spritepack.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_sff_spritepack.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_sprite.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_sprite.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_sprite_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_sprite_exception.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_sprite_header.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_sprite_header.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_spritepack.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_spritepack.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_spritepack_exception.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_spritepack_exception.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_spritepack_header.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_spritepack_header.hpp</locationURI>
-		</link>
-		<link>
-			<name>include/graphic/gorgon_video.hpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/gorgon_video.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/system.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/input/.svn</name>
@@ -532,9 +722,19 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>include/input/gorgon_input.hpp</name>
+			<name>include/input/SConscript</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/input/gorgon_input.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/SConscript</locationURI>
+		</link>
+		<link>
+			<name>include/input/exception.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/exception.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/input.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/input.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/input/joystick.hpp</name>
@@ -542,14 +742,59 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/input/key.hpp</name>
+			<name>include/input/joystick_base.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/input/key.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/joystick_base_null.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick_base_null.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/joystick_stick.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/joystick_stick.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/input/keyboard.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/keyboard.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/keyboard_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/keyboard_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/keyboard_base_null.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/keyboard_base_null.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/keyboard_key.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/keyboard_key.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/mouse.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/mouse.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/mouse_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/mouse_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/mouse_base_null.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/mouse_base_null.hpp</locationURI>
+		</link>
+		<link>
+			<name>include/input/system.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/system.hpp</locationURI>
 		</link>
 		<link>
 			<name>include/physics/.svn</name>
@@ -657,34 +902,34 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>include/script/gorgon_lua.hpp</name>
+			<name>include/script/exception.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/script/gorgon_lua.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/exception.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/script/gorgon_lua_argument.hpp</name>
+			<name>include/script/lua.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/script/gorgon_lua_argument.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/lua.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/script/gorgon_lua_exception.hpp</name>
+			<name>include/script/lua_argument.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/script/gorgon_lua_exception.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/lua_argument.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/script/gorgon_lua_param.hpp</name>
+			<name>include/script/lua_param.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/script/gorgon_lua_param.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/lua_param.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/script/gorgon_lua_return.hpp</name>
+			<name>include/script/lua_return.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/script/gorgon_lua_return.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/lua_return.hpp</locationURI>
 		</link>
 		<link>
-			<name>include/script/gorgon_script.hpp</name>
+			<name>include/script/script.hpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/script/gorgon_script.hpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/script.hpp</locationURI>
 		</link>
 		<link>
 			<name>src/.svn/entries</name>
@@ -707,24 +952,24 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/audio/SConscript</locationURI>
 		</link>
 		<link>
-			<name>src/audio/gorgon_sound.cpp</name>
+			<name>src/audio/sound.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/audio/gorgon_sound.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/sound.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/audio/gorgon_sound_exception.cpp</name>
+			<name>src/audio/sound_exception.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/audio/gorgon_sound_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/sound_exception.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/audio/gorgon_sound_system.cpp</name>
+			<name>src/audio/sound_system.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/audio/gorgon_sound_system.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/sound_system.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/audio/gorgon_sound_system_exception.cpp</name>
+			<name>src/audio/sound_system_exception.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/audio/gorgon_sound_system_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/sound_system_exception.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/collision/.svn</name>
@@ -752,49 +997,49 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>src/core/CMakeLists.txt</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/core/CMakeLists.txt</locationURI>
-		</link>
-		<link>
 			<name>src/core/SConscript</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/SConscript</locationURI>
 		</link>
 		<link>
-			<name>src/core/gorgon_exception.cpp</name>
+			<name>src/core/exception.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/core/gorgon_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/exception.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/core/gorgon_file.cpp</name>
+			<name>src/core/file.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/core/gorgon_file.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/file.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/core/gorgon_file_header.cpp</name>
+			<name>src/core/file_header.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/core/gorgon_file_header.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/file_header.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/core/gorgon_log.cpp</name>
+			<name>src/core/log.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/core/gorgon_log.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/log.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/core/gorgon_zlib.cpp</name>
+			<name>src/core/point.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/core/gorgon_zlib.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/point.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/core/string.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/string.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/core/zlib.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/zlib.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/geometry/.svn</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>src/geometry/gorgon_point.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/geometry/gorgon_point.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/geometry/gorgon_rectangle.cpp</name>
@@ -817,154 +1062,104 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/SConscript</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_animation.cpp</name>
+			<name>src/graphic/animation.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_animation.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animation.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_animation_exception.cpp</name>
+			<name>src/graphic/animation_frame.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_animation_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animation_frame.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_animation_handler.cpp</name>
+			<name>src/graphic/animation_handler.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_animation_handler.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animation_handler.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_animation_header.cpp</name>
+			<name>src/graphic/animation_header.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_animation_header.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animation_header.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_animationpack.cpp</name>
+			<name>src/graphic/animationpack.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_animationpack.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animationpack.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_animationpack_exception.cpp</name>
+			<name>src/graphic/animationpack_header.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_animationpack_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/animationpack_header.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_animationpack_header.cpp</name>
+			<name>src/graphic/color.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_animationpack_header.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/color.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_color.cpp</name>
+			<name>src/graphic/display.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_color.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/display.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_frame.cpp</name>
+			<name>src/graphic/display_base.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_frame.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/display_base.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image.cpp</name>
+			<name>src/graphic/exception.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/exception.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_exception.cpp</name>
+			<name>src/graphic/image.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/image.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_autodetect.cpp</name>
+			<name>src/graphic/image_base.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_autodetect.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/image_base.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_bmp.cpp</name>
+			<name>src/graphic/image_loader.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_bmp.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/image_loader.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_bmp_exception.cpp</name>
+			<name>src/graphic/mirroring.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_bmp_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/mirroring.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_bmp_header.cpp</name>
+			<name>src/graphic/palette.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_bmp_header.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/palette.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_bmp_info_header.cpp</name>
+			<name>src/graphic/sprite.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_bmp_info_header.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/sprite.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_pcx.cpp</name>
+			<name>src/graphic/sprite_header.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_pcx.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/sprite_header.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_pcx_exception.cpp</name>
+			<name>src/graphic/spritepack.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_pcx_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/spritepack.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_pcx_header.cpp</name>
+			<name>src/graphic/spritepack_header.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_pcx_header.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/spritepack_header.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/graphic/gorgon_image_format_unknown.cpp</name>
+			<name>src/graphic/system.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_image_format_unknown.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_mirroring.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_mirroring.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_palette.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_palette.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_sff_spritepack.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_sff_spritepack.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_sprite.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_sprite.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_sprite_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_sprite_exception.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_sprite_header.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_sprite_header.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_spritepack.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_spritepack.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_spritepack_exception.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_spritepack_exception.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_spritepack_header.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_spritepack_header.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/graphic/gorgon_video.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/gorgon_video.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/system.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/input/.svn</name>
@@ -975,6 +1170,36 @@
 			<name>src/input/SConscript</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/input/SConscript</locationURI>
+		</link>
+		<link>
+			<name>src/input/exception.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/exception.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/input/joystick.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/joystick.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/input/keyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/keyboard.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/input/keyboard_key.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/keyboard_key.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/input/mouse.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/mouse.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/input/system.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/system.cpp</locationURI>
 		</link>
 		<link>
 			<name>src/physics/.svn</name>
@@ -1032,34 +1257,144 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/SConscript</locationURI>
 		</link>
 		<link>
-			<name>src/script/gorgon_lua.cpp</name>
+			<name>src/script/exception.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/script/gorgon_lua.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/exception.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/script/gorgon_lua_argument.cpp</name>
+			<name>src/script/lua.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/script/gorgon_lua_argument.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/lua.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/script/gorgon_lua_exception.cpp</name>
+			<name>src/script/lua_argument.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/script/gorgon_lua_exception.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/lua_argument.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/script/gorgon_lua_param.cpp</name>
+			<name>src/script/lua_param.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/script/gorgon_lua_param.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/lua_param.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/script/gorgon_lua_return.cpp</name>
+			<name>src/script/lua_return.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/src/script/gorgon_lua_return.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/lua_return.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/display_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/display_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/display_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/display_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/image_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/image_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/image_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/image_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/system.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/system.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/system.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/system.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/joystick_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/joystick_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/joystick_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/joystick_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/keyboard_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/keyboard_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/keyboard_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/keyboard_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/mouse_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/mouse_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/mouse_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/mouse_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/system.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/system.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/system.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/system.hpp</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader/.svn/entries</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/allegro5/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>addon/image_loader/magick++/gorgon_image_loader.cpp</name>
@@ -1070,6 +1405,131 @@
 			<name>addon/image_loader/magick++/gorgon_image_loader.hpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/magick++/gorgon_image_loader.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/image.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/image.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/image.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/image.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/image_loader.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/image_loader.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/image_loader.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/image_loader.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/video.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/video.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/video.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/video.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/joystick_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/joystick_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/joystick_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/keyboard_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/keyboard_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/keyboard_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/mouse_base.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_base.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/mouse_base.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/mouse_base.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/system.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/system.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/system.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/system.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/prop-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/tmp</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/prop-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>include/.svn/prop-base/gorgon.hpp.svn-base</name>
@@ -1317,6 +1777,366 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>addon/allegro5/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/joystick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/prop-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/allegro5/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/allegro5/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/gorgon_image_loader_autodetect.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/gorgon_image_loader_bmp.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/gorgon_image_loader_bmp.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/gorgon_image_loader_bmp_header.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/gorgon_image_loader_bmp_header.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/gorgon_image_loader_bmp_info_header.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/gorgon_image_loader_bmp_info_header.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/gorgon_image_loader_pcx_header.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/gorgon_image_loader_pcx_header.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/gorgon_image_loader_unknown.hpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/gorgon_image_loader_unknown.hpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_autodetect.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_autodetect.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_bmp.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_bmp.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_bmp_header.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_bmp_header.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_bmp_info_header.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_bmp_info_header.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_pcx.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_pcx.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_pcx_header.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_pcx_header.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/gorgon_image_loader_unknown.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/gorgon_image_loader_unknown.cpp</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/joystick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/prop-base/spritepack_sff.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/prop-base/spritepack_sff.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_lua.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_lua.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_lua.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_lua.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_sff.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_sff.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/text-base/spritepack_sff.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/text-base/spritepack_sff.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/tmp/spritepack_lua.cpp.tmp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/tmp/spritepack_lua.cpp.tmp</locationURI>
+		</link>
+		<link>
+			<name>addon/spritepack/.svn/tmp/spritepack_lua.hpp.tmp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/spritepack/.svn/tmp/spritepack_lua.hpp.tmp</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/prop-base/animation.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/prop-base/animation.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/prop-base/animationpack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/prop-base/animationpack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/prop-base/colisionpack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/prop-base/colisionpack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/prop-base/lua.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/prop-base/lua.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/animation.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/animation.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/animation_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/animation_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/animationpack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/animationpack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/animationpack_lua_to_gorgon.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/animationpack_lua_to_gorgon.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/backup.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/backup.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/colisionpack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/colisionpack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/image.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/image.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/image_bmp.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/image_bmp.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/image_pcx.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/image_pcx.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/lua.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/lua.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/mouse.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/mouse.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/physics.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/physics.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/sprite.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/sprite.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/spritepack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/spritepack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>examples/src/.svn/text-base/zlib.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/examples/src/.svn/text-base/zlib.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/prop-base/audio.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/prop-base/audio.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/audio/.svn/prop-base/gorgon_audio.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/prop-base/gorgon_audio.hpp.svn-base</locationURI>
@@ -1342,6 +2162,31 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/prop-base/gorgon_sound_system_exception.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/audio/.svn/prop-base/sound.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/prop-base/sound.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/prop-base/sound_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/prop-base/sound_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/prop-base/sound_system.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/prop-base/sound_system.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/prop-base/sound_system_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/prop-base/sound_system_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/text-base/audio.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/text-base/audio.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/audio/.svn/text-base/gorgon_audio.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/text-base/gorgon_audio.hpp.svn-base</locationURI>
@@ -1365,6 +2210,26 @@
 			<name>include/audio/.svn/text-base/gorgon_sound_system_exception.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/text-base/gorgon_sound_system_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/text-base/sound.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/text-base/sound.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/text-base/sound_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/text-base/sound_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/text-base/sound_system.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/text-base/sound_system.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/audio/.svn/text-base/sound_system_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/audio/.svn/text-base/sound_system_exception.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/collision/.svn/prop-base/gorgon_collision.hpp.svn-base</name>
@@ -1397,6 +2262,26 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/collision/.svn/text-base/gorgon_collisionpack.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/core/.svn/prop-base/core.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/core.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/prop-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/prop-base/file.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/file.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/prop-base/file_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/file_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/core/.svn/prop-base/gorgon_binary.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/gorgon_binary.hpp.svn-base</locationURI>
@@ -1425,6 +2310,36 @@
 			<name>include/core/.svn/prop-base/gorgon_log.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/gorgon_log.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/prop-base/log.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/log.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/prop-base/point.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/prop-base/point.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/core.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/core.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/file.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/file.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/file_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/file_header.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/core/.svn/text-base/game.hpp.svn-base</name>
@@ -1462,9 +2377,34 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/gorgon_log.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/core/.svn/text-base/gorgon_string.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/gorgon_string.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/core/.svn/text-base/gorgon_zlib.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/gorgon_zlib.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/log.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/log.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/point.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/point.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/string.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/string.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/core/.svn/text-base/zlib.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/core/.svn/text-base/zlib.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/geometry/.svn/prop-base/gorgon_point.hpp.svn-base</name>
@@ -1490,6 +2430,51 @@
 			<name>include/geometry/.svn/text-base/gorgon_rectangle.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/geometry/.svn/text-base/gorgon_rectangle.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animation.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animation.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animation_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animation_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animation_frame.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animation_frame.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animation_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animation_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animation_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animation_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animationpack.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animationpack.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animationpack_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animationpack_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/animationpack_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/animationpack_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/color.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/color.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/graphic/.svn/prop-base/gorgon_animation.hpp.svn-base</name>
@@ -1612,6 +2597,101 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/gorgon_video.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/graphic/.svn/prop-base/graphic.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/graphic.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/image_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/image_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/mirroring.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/mirroring.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/palette.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/palette.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/sprite_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/sprite_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/sprite_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/sprite_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/spritepack_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/spritepack_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/spritepack_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/spritepack_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/prop-base/video.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/prop-base/video.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animation.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animation.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animation_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animation_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animation_frame.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animation_frame.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animation_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animation_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animation_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animation_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animationpack.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animationpack.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animationpack_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animationpack_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/animationpack_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/animationpack_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/color.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/color.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/graphic/.svn/text-base/gorgon_animation.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/gorgon_animation.hpp.svn-base</locationURI>
@@ -1722,6 +2802,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/gorgon_image_format_unknown.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/graphic/.svn/text-base/gorgon_image_loader.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/gorgon_image_loader.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/gorgon_image_loader_null.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/gorgon_image_loader_null.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/graphic/.svn/text-base/gorgon_mirroring.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/gorgon_mirroring.hpp.svn-base</locationURI>
@@ -1772,14 +2862,129 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/gorgon_video.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/graphic/.svn/text-base/graphic.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/graphic.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/image.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/image.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/image_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/image_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/image_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/image_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/image_loader.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/image_loader.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/image_loader_null.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/image_loader_null.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/mirroring.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/mirroring.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/palette.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/palette.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/sprite.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/sprite.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/sprite_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/sprite_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/sprite_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/sprite_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/spritepack.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/spritepack.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/spritepack_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/spritepack_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/spritepack_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/spritepack_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/system.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/system.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/graphic/.svn/text-base/video.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/graphic/.svn/text-base/video.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/SConscript.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/input/.svn/text-base/gorgon_input.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/gorgon_input.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/input/.svn/text-base/input.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/input.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/input/.svn/text-base/joystick.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/joystick_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/joystick_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/joystick_base_null.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/joystick_base_null.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/joystick_stick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/joystick_stick.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/input/.svn/text-base/key.hpp.svn-base</name>
@@ -1790,6 +2995,46 @@
 			<name>include/input/.svn/text-base/keyboard.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/keyboard_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/keyboard_base_null.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_base_null.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/keyboard_key.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/keyboard_key.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/mouse.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/mouse.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/mouse_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/mouse_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/mouse_base_null.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/mouse_base_null.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/input/.svn/text-base/system.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/input/.svn/text-base/system.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/physics/.svn/text-base/body.hpp.svn-base</name>
@@ -1887,6 +3132,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/physics/.svn/text-base/space.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/script/.svn/prop-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>include/script/.svn/prop-base/gorgon_lua.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/gorgon_lua.hpp.svn-base</locationURI>
@@ -1915,6 +3165,41 @@
 			<name>include/script/.svn/prop-base/gorgon_script.hpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/gorgon_script.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/prop-base/lua.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/lua.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/prop-base/lua_argument.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/lua_argument.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/prop-base/lua_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/lua_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/prop-base/lua_param.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/lua_param.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/prop-base/lua_return.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/lua_return.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/prop-base/script.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/prop-base/script.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/text-base/exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/exception.hpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>include/script/.svn/text-base/gorgon_lua.hpp.svn-base</name>
@@ -1947,6 +3232,36 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/gorgon_script.hpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>include/script/.svn/text-base/lua.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/lua.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/text-base/lua_argument.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/lua_argument.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/text-base/lua_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/lua_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/text-base/lua_param.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/lua_param.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/text-base/lua_return.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/lua_return.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>include/script/.svn/text-base/script.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/include/script/.svn/text-base/script.hpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/audio/.svn/prop-base/gorgon_sound.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/prop-base/gorgon_sound.cpp.svn-base</locationURI>
@@ -1965,6 +3280,26 @@
 			<name>src/audio/.svn/prop-base/gorgon_sound_system_exception.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/prop-base/gorgon_sound_system_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/prop-base/sound.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/prop-base/sound.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/prop-base/sound_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/prop-base/sound_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/prop-base/sound_system.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/prop-base/sound_system.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/prop-base/sound_system_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/prop-base/sound_system_exception.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/audio/.svn/text-base/SConscript.svn-base</name>
@@ -1990,6 +3325,26 @@
 			<name>src/audio/.svn/text-base/gorgon_sound_system_exception.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/text-base/gorgon_sound_system_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/text-base/sound.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/text-base/sound.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/text-base/sound_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/text-base/sound_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/text-base/sound_system.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/text-base/sound_system.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/audio/.svn/text-base/sound_system_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/audio/.svn/text-base/sound_system_exception.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/collision/.svn/prop-base/gorgon_collision.cpp.svn-base</name>
@@ -2022,6 +3377,21 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/collision/.svn/text-base/gorgon_collisionpack.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/core/.svn/prop-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/prop-base/exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/prop-base/file.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/prop-base/file.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/prop-base/file_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/prop-base/file_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/core/.svn/prop-base/gorgon_exception.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/prop-base/gorgon_exception.cpp.svn-base</locationURI>
@@ -2042,9 +3412,34 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/prop-base/gorgon_log.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/core/.svn/prop-base/log.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/prop-base/log.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/prop-base/point.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/prop-base/point.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/core/.svn/text-base/SConscript.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/text-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/text-base/file.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/file.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/text-base/file_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/file_header.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/core/.svn/text-base/gorgon_exception.cpp.svn-base</name>
@@ -2067,9 +3462,34 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/gorgon_log.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/core/.svn/text-base/gorgon_string.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/gorgon_string.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/core/.svn/text-base/gorgon_zlib.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/gorgon_zlib.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/text-base/log.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/log.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/text-base/point.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/point.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/text-base/string.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/string.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/core/.svn/text-base/zlib.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/core/.svn/text-base/zlib.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/geometry/.svn/prop-base/gorgon_point.cpp.svn-base</name>
@@ -2090,6 +3510,51 @@
 			<name>src/geometry/.svn/text-base/gorgon_rectangle.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/geometry/.svn/text-base/gorgon_rectangle.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animation.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animation.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animation_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animation_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animation_frame.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animation_frame.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animation_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animation_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animation_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animation_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animationpack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animationpack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animationpack_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animationpack_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/animationpack_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/animationpack_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/color.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/color.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/graphic/.svn/prop-base/gorgon_animation.cpp.svn-base</name>
@@ -2202,9 +3667,99 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/gorgon_video.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/graphic/.svn/prop-base/image_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/image_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/mirroring.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/mirroring.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/palette.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/palette.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/sprite_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/sprite_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/sprite_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/sprite_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/spritepack_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/spritepack_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/spritepack_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/spritepack_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/prop-base/video.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/prop-base/video.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/graphic/.svn/text-base/SConscript.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animation.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animation.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animation_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animation_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animation_frame.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animation_frame.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animation_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animation_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animation_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animation_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animationpack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animationpack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animationpack_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animationpack_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/animationpack_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/animationpack_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/color.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/color.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/exception.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/graphic/.svn/text-base/gorgon_animation.cpp.svn-base</name>
@@ -2307,6 +3862,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/gorgon_image_format_unknown.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/graphic/.svn/text-base/gorgon_image_loader.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/gorgon_image_loader.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/gorgon_image_loader_null.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/gorgon_image_loader_null.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/graphic/.svn/text-base/gorgon_mirroring.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/gorgon_mirroring.cpp.svn-base</locationURI>
@@ -2357,9 +3922,124 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/gorgon_video.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/graphic/.svn/text-base/image.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/image.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/image_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/image_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/image_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/image_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/image_loader.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/image_loader.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/image_loader_null.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/image_loader_null.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/mirroring.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/mirroring.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/palette.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/palette.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/sprite.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/sprite.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/sprite_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/sprite_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/sprite_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/sprite_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/spritepack.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/spritepack.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/spritepack_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/spritepack_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/spritepack_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/spritepack_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/system.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/system.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/graphic/.svn/text-base/video.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/graphic/.svn/text-base/video.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/input/.svn/text-base/SConscript.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/keyboard_key.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/keyboard_key.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/mouse.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/mouse.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/input/.svn/text-base/system.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/input/.svn/text-base/system.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/physics/.svn/text-base/body.cpp.svn-base</name>
@@ -2397,6 +4077,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/physics/.svn/text-base/space.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/script/.svn/prop-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/script/.svn/prop-base/gorgon_lua.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/gorgon_lua.cpp.svn-base</locationURI>
@@ -2422,9 +4107,39 @@
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/gorgon_lua_return.cpp.svn-base</locationURI>
 		</link>
 		<link>
+			<name>src/script/.svn/prop-base/lua.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/lua.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/prop-base/lua_argument.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/lua_argument.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/prop-base/lua_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/lua_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/prop-base/lua_param.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/lua_param.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/prop-base/lua_return.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/prop-base/lua_return.cpp.svn-base</locationURI>
+		</link>
+		<link>
 			<name>src/script/.svn/text-base/SConscript.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/SConscript.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/text-base/exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/exception.cpp.svn-base</locationURI>
 		</link>
 		<link>
 			<name>src/script/.svn/text-base/gorgon_lua.cpp.svn-base</name>
@@ -2450,6 +4165,571 @@
 			<name>src/script/.svn/text-base/gorgon_lua_return.cpp.svn-base</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/gorgon_lua_return.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/text-base/lua.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/lua.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/text-base/lua_argument.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/lua_argument.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/text-base/lua_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/lua_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/text-base/lua_param.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/lua_param.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>src/script/.svn/text-base/lua_return.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/src/script/.svn/text-base/lua_return.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/text-base/image_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/text-base/image_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/text-base/image_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/text-base/image_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/text-base/system.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/text-base/system.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/text-base/system.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/text-base/system.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/text-base/video.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/text-base/video.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/graphic/.svn/text-base/video.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/graphic/.svn/text-base/video.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/prop-base/joystick_base.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/prop-base/joystick_base.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/prop-base/keyboard_base.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/prop-base/keyboard_base.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/prop-base/mouse_base.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/prop-base/mouse_base.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/prop-base/system.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/prop-base/system.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick_base.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick_base.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard_base.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard_base.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse_base.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse_base.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/mouse_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/mouse_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/system.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/system.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/system.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/system.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/allegro5/input/.svn/text-base/system.o.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/allegro5/input/.svn/text-base/system.o.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/prop-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/entries</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/entries</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/prop-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn/text-base/image.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/.svn/text-base/image.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn/text-base/image.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/.svn/text-base/image.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn/text-base/image_loader.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/.svn/text-base/image_loader.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/graphic/.svn/text-base/image_loader.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/graphic/.svn/text-base/image_loader.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/joystick_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/joystick_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/keyboard_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/keyboard_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_base.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_base.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_base.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_base.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_handler.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_handler.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/sdl/input/.svn/text-base/mouse_handler.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/sdl/input/.svn/text-base/mouse_handler.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_bmp_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_bmp_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_bmp_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_bmp_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_bmp_info_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_bmp_info_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_pcx_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_pcx_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_pcx_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/prop-base/gorgon_image_loader_pcx_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_autodetect.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_autodetect.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp_info_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_bmp_info_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_pcx.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_pcx.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_pcx_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_pcx_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_pcx_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_pcx_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_unknown.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_format_unknown.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_autodetect.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_autodetect.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp_info_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_bmp_info_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_pcx.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_pcx.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_pcx_exception.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_pcx_exception.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_pcx_header.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_pcx_header.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_unknown.hpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/include/.svn/text-base/gorgon_image_loader_unknown.hpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_bmp_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_bmp_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_bmp_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_bmp_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_bmp_info_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_bmp_info_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_pcx_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_pcx_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_pcx_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/prop-base/gorgon_image_loader_pcx_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_autodetect.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_autodetect.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp_info_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_bmp_info_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_pcx.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_pcx.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_pcx_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_pcx_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_pcx_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_pcx_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_unknown.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_format_unknown.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_autodetect.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_autodetect.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp_info_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_bmp_info_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_pcx.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_pcx.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_pcx_exception.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_pcx_exception.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_pcx_header.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_pcx_header.cpp.svn-base</locationURI>
+		</link>
+		<link>
+			<name>addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_unknown.cpp.svn-base</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/addon/image_loader/gorgon++/src/.svn/text-base/gorgon_image_loader_unknown.cpp.svn-base</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

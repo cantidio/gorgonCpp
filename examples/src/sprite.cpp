@@ -1,18 +1,22 @@
 #include <gorgon++/gorgon.hpp>
+#include <gorgon++/addon/image_loader/magick++/gorgon_image_loader.hpp>
+
 using namespace Gorgon;
 using namespace std;
 int main()
 {
 	allegro_init();
 	install_keyboard();
-	Video::init("Teste da classe Sprite");
-	Video video = Video::get();
-	
-	int angle1 = 0;
-	int angle2 = 0;
-	Sprite normal1(Image("../resources/pcx24bits.pcx"),0,0,12,47);
 	try
 	{
+		ImageLoader::setLoader(new ImageLoaderMagick());
+		Video::init("Teste da classe Sprite");
+		Video video = Video::get();
+		Sprite normal(Image("../resources/pcx24bits.pcx"),0,0,12,47);
+		normal.save("sprite.gspr");
+		Sprite normal1("sprite.gspr");
+		int angle1 = 0;
+		int angle2 = 0;
 		while(!key[KEY_ESC])
 		{
 			video.clear();
@@ -41,7 +45,7 @@ int main()
 			if(angle1>=255)	angle1 = 0;
 		}
 	}
-	catch(Exception e)
+	catch(Core::Exception& e)
 	{
 		cout << e.what();
 	}

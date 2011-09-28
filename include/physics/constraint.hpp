@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ namespace Physics
 {
 	/**
 	 * Class that represents the constraints
-	 * 
+	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	06/10/2010
 	 * @version	06/10/2010
@@ -46,10 +46,10 @@ namespace Physics
 			cpConstraint*	mConstraint;	/**< variable that holds the chipmunk constraint*/
 			Body*			mBodyA;			/**< variable that holds the pointer to the first body linked by the constraint*/
 			Body*			mBodyB;			/**< variable that holds the pointer to the second body linked by the constraint*/
-			
+
 			/**
 			 * Constructor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -64,7 +64,7 @@ namespace Physics
 			}
 			/**
 			 * Destructor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -76,7 +76,7 @@ namespace Physics
 		public:
 			/**
 			 * Method that sets the first body to be linked by the constraint
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -88,7 +88,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the first body linked by the constraint
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -100,7 +100,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the second body linked by the constraint
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -112,7 +112,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the second body linked by the constraint
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -124,7 +124,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the max force
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -141,7 +141,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the maxForce the constraint can use
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -154,7 +154,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the percentage of errors corrected each space's step
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -171,7 +171,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the percentage of errors corrected each space's step
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -183,7 +183,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the maximum error correction speed
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -199,7 +199,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the maximum error correction speed allowed
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -209,7 +209,7 @@ namespace Physics
 			{
 				return mConstraint->maxBias;
 			}
-			virtual void draw(Sprite& pSprite, const int& pColor) {}
+			virtual void draw(const Graphic::Color& pColor) {}
 	};
 }}
 #endif

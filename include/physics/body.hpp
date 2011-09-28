@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 #ifndef _GORGON_PHYSICS_BODY_
 #define _GORGON_PHYSICS_BODY_
 #include <chipmunk/chipmunk.h>
-#include "../graphic/gorgon_graphic.hpp"
+#include "../graphic/graphic.hpp"
 #include "shape.hpp"
 
 namespace Gorgon{
@@ -54,7 +54,7 @@ namespace Physics
 	{
 		friend class Space;
 		friend class Shape;
-		
+
 		protected:
 			Space*				mSpace; /**< Variable that holds a reference to the body's space */
 			cpBody*				mBody;	/**< Variable that holds a chipmunk's body */
@@ -94,7 +94,7 @@ namespace Physics
 		public:
 			/**
 			 * Method that returns the basic cpBody of the object
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -189,9 +189,9 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	Gorgon::Point
 			 */
-			inline Point getPosition() const
+			inline Core::Point getPosition() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpBodyGetPos(mBody).x,
 					cpBodyGetPos(mBody).y
@@ -203,9 +203,9 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @param	const Gorgon::Point& pPosition, the new position of the body
+			 * @param	const Core::Point& pPosition, the new position of the body
 			 */
-			inline void setPosition(const Point& pPosition)
+			inline void setPosition(const Core::Point& pPosition)
 			{
 				mBody->p.x = pPosition.getX();
 				mBody->p.y = pPosition.getY();
@@ -216,11 +216,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	float
+			 * @return	Core::Point
 			 */
-			inline Point getVelocity() const
+			inline Core::Point getVelocity() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpBodyGetVel(mBody).x,
 					cpBodyGetVel(mBody).y
@@ -232,9 +232,9 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @param	const Gorgon::Point& pVelocity, the new velocity of the body in the x and y axis
+			 * @param	const Core::Point& pVelocity, the new velocity of the body in the x and y axis
 			 */
-			inline void setVelocity(const Point& pVelocity)
+			inline void setVelocity(const Core::Point& pVelocity)
 			{
 				mBody->v.x = pVelocity.getX();
 				mBody->v.y = pVelocity.getY();
@@ -318,11 +318,11 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getForce() const
+			inline Core::Point getForce() const
 			{
-				return Point(mBody->f.x, mBody->f.y);
+				return Core::Point(mBody->f.x, mBody->f.y);
 			}
 			/**
 			 * Method that sets the force applied on the body
@@ -332,7 +332,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @param	const Point& pForce, the force applied on the Body, x and y axis
 			 */
-			inline void setForce(const Point& pForce)
+			inline void setForce(const Core::Point& pForce)
 			{
 				mBody->f.x = pForce.getX();
 				mBody->f.y = pForce.getY();
@@ -343,13 +343,13 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @param	const Point& pForce		, force the be applied into the body
-			 * @param	const Point& pOffset	, the relative offset
+			 * @param	const Core::Point& pForce	, force the be applied into the body
+			 * @param	const Core::Point& pOffset	, the relative offset
 			 * @details
 			 *			This method applies(accumulate) the force pForce into the body at a
 			 * relative offset pOffset from the center of gravity
 			 */
-			inline void applyForce(const Point& pForce, const Point& pOffset)
+			inline void applyForce(const Core::Point& pForce, const Core::Point& pOffset)
 			{
 				cpBodyApplyForce
 				(
@@ -364,13 +364,13 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @param	const Point& pImpulse	, impulse the be applied into the body
-			 * @param	const Point& pOffset	, the relative offset
+			 * @param	const Core::Point& pImpulse	, impulse the be applied into the body
+			 * @param	const Core::Point& pOffset	, the relative offset
 			 * @details
 			 *			This method applies the impulse pImpulse to the body at a
 			 * relative offset pOffset from the center of gravity
 			 */
-			inline void applyImpulse(const Point& pImpulse, const Point& pOffset)
+			inline void applyImpulse(const Core::Point& pImpulse, const Core::Point& pOffset)
 			{
 				cpBodyApplyImpulse
 				(
@@ -428,7 +428,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the number of shapes in the body
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -440,7 +440,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns a shape by it index
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -453,52 +453,56 @@ namespace Physics
 			}
 			/**
 			 * Method that add a ShapeCircle to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
 			 * @param	const float& pRadius, the radius of the circle
-			 * @param	const Point& pOffset, the offset to the balance point 
+			 * @param	const Core::Point& pOffset, the offset to the balance point
 			 * @return	ShapeCircle*
 			 */
-			ShapeCircle* addShapeCircle(const float& pRadius, const Point& pOffset);
+			ShapeCircle* addShapeCircle(const float& pRadius, const Core::Point& pOffset);
 			/**
 			 * Method that add a ShapeBox to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
 			 * @param	const int& pWidth, the width of the box
-			 * @param	const int& pHeight, the height of the box 
+			 * @param	const int& pHeight, the height of the box
 			 * @return	ShapeBox*
 			 */
 			ShapeBox* addShapeBox(const int& pWidth, const int& pHeight);
 			/**
 			 * Method that add a ShapePolygon to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
-			 * @param	const std::vector<Point>& pVerts, the vertices of the polygon
-			 * @param	const Point& pOffset, the offset to the balance point 
+			 * @param	const std::vector<Core::Point>& pVerts, the vertices of the polygon
+			 * @param	const Core::Point& pOffset, the offset to the balance point
 			 * @return	ShapePolygon*
 			 */
-			ShapePolygon* addShapePolygon(const std::vector<Point>& pVerts, const Point& pOffset=Point(0,0));
+			ShapePolygon* addShapePolygon
+			(
+				const std::vector<Core::Point>& pVerts,
+				const Core::Point& pOffset=Core::Point(0,0)
+			);
 			/**
 			 * Method that add a ShapeSegment to the body, and returns an reference
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	04/10/2010
 			 * @version	04/10/2010
-			 * @param	const Point& pPointA, the first point of the Segment
-			 * @param	const Point& pPointB, the second point of the Segment
-			 * @param	cosnt float& pRadius, the radius of the segment 
+			 * @param	const Core::Point& pPointA, the first point of the Segment
+			 * @param	const Core::Point& pPointB, the second point of the Segment
+			 * @param	cosnt float& pRadius, the radius of the segment
 			 * @return	ShapeSegment*
 			 */
 			ShapeSegment* addShapeSegment
 			(
-				const Point& pPointA,
-				const Point& pPointB,
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
 				const float& pRadius
 			);
 			/**
@@ -510,7 +514,7 @@ namespace Physics
 			 * @param	const float& pMass			, the mass of the body
 			 * @param	const float& pDiameter		, the diameter of the body
 			 * @param	const float& pInnerDiameter	, the inner diameter of the body (A solid circle has an inner diameter of 0)
-			 * @param	const Point& pOffset		, the offset of the body
+			 * @param	const Core::Point& pOffset		, the offset of the body
 			 * @see		setMoment
 			 * @see		Body
 			 */
@@ -519,7 +523,7 @@ namespace Physics
 				const float& pMass,
 				const float& pDiameter,
 				const float& pInnerDiameter,
-				const Point& pOffset = Point(0,0)
+				const Core::Point& pOffset = Core::Point(0,0)
 			);
 			/**
 			 * Method that returns the moment of inertia for boxes
@@ -546,16 +550,16 @@ namespace Physics
 			 * @since	03/10/2010
 			 * @version	03/10/2010
 			 * @param	const float& pMass			, the mass of the body
-			 * @param	const Point& pPointA		, the first point of the segment
-			 * @param	const Point& pPointB		, the second point of the segment
+			 * @param	const Core::Point& pPointA		, the first point of the segment
+			 * @param	const Core::Point& pPointB		, the second point of the segment
 			 * @see		setMoment
 			 * @see		Body
 			 */
 			static float getMomentForSegment
 			(
 				const float& pMass,
-				const Point& pPointA,
-				const Point& pPointB
+				const Core::Point& pPointA,
+				const Core::Point& pPointB
 			);
 			/**
 			 * Method that returns the moment of inertia for polygons
@@ -564,7 +568,7 @@ namespace Physics
 			 * @since	03/10/2010
 			 * @version	03/10/2010
 			 * @param	const float&				pMass	, the mass of the body
-			 * @param	const std::vector<Point>&	pVerts	, the vertices of the polygon
+			 * @param	const std::vector<Core::Point>&	pVerts	, the vertices of the polygon
 			 * @param	const Point&				pOffset	, the offset of the body
 			 * @see		setMoment
 			 * @see		Body
@@ -572,19 +576,18 @@ namespace Physics
 			static float getMomentForPolygon
 			(
 				const float& pMass,
-				const std::vector<Point>& pVerts,
-				const Point& pOffset
+				const std::vector<Core::Point>& pVerts,
+				const Core::Point& pOffset
 			);
 			/**
 			 * Method to draw the body in a sprite
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
-			 * @version	05/10/2010
-			 * @param	Sprite&		pSprite , the sprite to draw to body into
-			 * @param	const int&	pColor	, the color to draw the body
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor , the color to draw the body
 			 */
-			void draw(Sprite& pSprite, const int& pColor) const;
+			void draw(const Graphic::Color& pColor) const;
 	};
 }}
 #endif

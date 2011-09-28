@@ -26,9 +26,10 @@
  */
 #ifndef _GORGON_GEOMETRY_RECTANGLE_
 #define _GORGON_GEOMETRY_RECTANGLE_
-#include "gorgon_point.hpp"
+#include "../core/point.hpp"
 #include <string>
 #include <sstream>
+
 namespace Gorgon
 {
 	/**
@@ -53,7 +54,7 @@ namespace Gorgon
 			/**
 			 * Posição do retângulo no espaço
 			 */
-			Point mPosition;
+			Core::Point mPosition;
 		public:
 			/**
 			 * Método Construtor
@@ -61,15 +62,15 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	27/03/2009
 			 * @version	31/03/2009
-			 * @param	const int&		pWidth		, largura do retângulo
-			 * @param	const int&		pHeight		, altura do retângulo
-			 * @param	const Point&	pPosition	, posição do retângulo
+			 * @param	const int&			pWidth		, largura do retângulo
+			 * @param	const int&			pHeight		, altura do retângulo
+			 * @param	const Core::Point&	pPosition	, posição do retângulo
 			 */
 			Rectangle
 			(
-				const int&		pWidth		= 0,
-				const int&		pHeight		= 0,
-				const Point&	pPosition	= Point(0,0)
+				const int&			pWidth		= 0,
+				const int&			pHeight		= 0,
+				const Core::Point&	pPosition	= Core::Point(0,0)
 			);
 			/**
 			 * Método para descrever os atributos do retângulo
@@ -104,9 +105,9 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	31/03/2009
 			 * @version	31/03/2009
-			 * @param	const Point& pPosition, posição do retângulo
+			 * @param	const Core::Point& pPosition, posição do retângulo
 			 */
-			void setPosition(const Point& pPosition);
+			void setPosition(const Core::Point& pPosition);
 			/**
 			 * Método para retornar a largura do retângulo
 			 *
@@ -131,9 +132,9 @@ namespace Gorgon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	31/03/2009
 			 * @version	31/03/2009
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			Point getPosition() const;
+			Core::Point getPosition() const;
 			/**
 			 * Método retorna verdadeiro se houve interceção entre 2 retângulos
 			 *
@@ -141,15 +142,15 @@ namespace Gorgon
 			 * @since	27/03/2009
 			 * @version	31/03/2009
 			 * @param	const Rectangle&	pRectangle					, retangulo que deseja-se verificar se houve a interceção
-			 * @param	const Point&		pAbsolutePosition			, posição atual do retangulo que chamou o método
-			 * @param	const Point&		pAbsoluteRectanglePosition	, posição atual do outro retangulo
+			 * @param	const Core::Point&	pAbsolutePosition			, posição atual do retangulo que chamou o método
+			 * @param	const Core::Point&	pAbsoluteRectanglePosition	, posição atual do outro retangulo
 			 * @return	bool
 			 */
 			bool intersect
 			(
 				const Rectangle& pRectangle,
-				const Point& pAbsolutePosition			= Point(0,0),
-				const Point& pAbsoluteRectanglePosition	= Point(0,0)
+				const Core::Point& pAbsolutePosition			= Core::Point(0,0),
+				const Core::Point& pAbsoluteRectanglePosition	= Core::Point(0,0)
 			) const;
 	};
 }

@@ -1,7 +1,37 @@
 #!/bin/sh
+PROJECT_IN_USE='codeblocks'
 PACKAGE_DIR='DEB_PACKAGE/'
-#LIB_LOCATION='Gorgon++_linux/dist/Debug/GNU-Linux-x86/libgorgon.so'
-LIB_LOCATION='Gorgon++_eclipse/Release/libgorgon.so'
+LIB_LOCATION=' '
+ADDON_LOCATION=' '
+ADDON_ALLEGRO5=' '
+ADDON_SDL=' '
+
+case $PROJECT_IN_USE in
+
+	eclipse )
+
+		echo "Eclipse project"
+		LIB_LOCATION='Gorgon++_eclipse/build_release/libgorgon.so'
+		ADDON_LOCATION='Gorgon++_eclipse/build_addon/libgorgon_addon.so'
+		ADDON_ALLEGRO5='Gorgon++_eclipse/build_addon_allegro5/libgorgon_addon_allegro5.so'
+		ADDON_SDL='Gorgon++_eclipse/build_addon_sdl/libgorgon_addon_sdl.so'
+		;;
+	
+	codeblocks )
+
+		echo "Codeblocks project"
+		LIB_LOCATION='Gorgon++_codeblocks/Linux/Release/libgorgon.so'
+		ADDON_LOCATION='Gorgon++_codeblocks/Linux/Addon/libgorgon_addon.so'
+		ADDON_ALLEGRO5='Gorgon++_codeblocks/Linux/Addon_Allegro/libgorgon_addon_allegro5.so'
+		ADDON_SDL='Gorgon++_codeblocks/Linux/Addon_SDL/libgorgon_addon_sdl.so'
+		;;
+	
+	* )
+		echo "Select a valid project: 'codeblocks' or 'eclipse'"
+		exit 0
+		;;
+esac
+
 #
 # Funćão que cria o script de configuraćão da biblioteca Gorgon
 #
@@ -23,6 +53,10 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--prefix]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--version]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\t[--libs]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addons]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addon_sdl]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addon_magick]\n'
+	GORGON_CONFIG=$GORGON_CONFIG'	\t[--addon_allegro5]\n'
 	GORGON_CONFIG=$GORGON_CONFIG'EOF\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\texit $1\n'
 	GORGON_CONFIG=$GORGON_CONFIG'}\n\n'
@@ -35,18 +69,39 @@ CREATE_GORGON_CONFIG()
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t*) optarg= ;;\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\tesac\n\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\tcase $1 in\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--prefix)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo /usr\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--version)\n'
 	GORGON_CONFIG=$GORGON_CONFIG"			\t\t\techo 'rev_$1'\n"
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--libs)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon -lpthread\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addons)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon_addon\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addon_sdl)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon_addon_sdl\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addon_allegro5)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo -L/usr${exec_prefix}/lib -lgorgon_addon_allegro5\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
+	GORGON_CONFIG=$GORGON_CONFIG'		\t\t--addon_magick)\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\techo `Magick++-config --cppflags --cxxflags --ldflags --libs`\n'
+	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+	
 	GORGON_CONFIG=$GORGON_CONFIG'		\t\t*)\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\tusage 1 1>& 2\n'
 	GORGON_CONFIG=$GORGON_CONFIG'			\t\t\t;;\n'
+
 	GORGON_CONFIG=$GORGON_CONFIG'	\tesac\n'
 	GORGON_CONFIG=$GORGON_CONFIG'	\tshift\n'
 	GORGON_CONFIG=$GORGON_CONFIG'done\n'
@@ -63,6 +118,7 @@ CREATE_GORGON_CONFIG()
 #
 CREATE_PACKAGE_CONTROL()
 {
+#libsdl1.2-dev, libsdl-image1.2-dev, liballegro4.2-dev, libmagick++-dev
 	echo "\tCriando arquivo de controle do pacote"
 	CONTROL=""
 	CONTROL=$CONTROL"Package:		\t\tlibgorgon-dev\n"
@@ -71,7 +127,7 @@ CREATE_PACKAGE_CONTROL()
 	CONTROL=$CONTROL"Version:		\t\t$1\n"
 	CONTROL=$CONTROL"Section:		\t\tlibdevel\n"
 	CONTROL=$CONTROL"Architecture:	\ti386\n"
-	CONTROL=$CONTROL"Depends:		\t\tliballegro4.2-dev, libaudiere-dev, liblua5.1-0-dev, libz-dev\n"
+	CONTROL=$CONTROL"Depends:		\t\tliblua5.1-0-dev, libz-dev\n"
 	CONTROL=$CONTROL"Maintainer:	\tCantídio Oliveira Fontes <aniquilatorbloody@gmail.com>\n"
 	CONTROL=$CONTROL"Description:	\tBiblioteca de desenvolvimento de games.\n"
 	CONTROL=$CONTROL" Este pacote contém os includes e libs dinâmicas necessárias para construir programas que usem a gorgon.\n"
@@ -119,6 +175,7 @@ CREATE_DIR_INCLUDE()
 {
 	echo "\tCriando o diretório INCLUDE"
 	cp -r include/* $PACKAGE_DIR/usr/include/gorgon++/
+	cp -r addon $PACKAGE_DIR/usr/include/gorgon++/
 }
 #
 # Funcão para criar o diretório libs do pacote
@@ -131,6 +188,9 @@ CREATE_DIR_LIB()
 {
 	echo "\tCriando o diretório LIB"
 	cp $LIB_LOCATION $PACKAGE_DIR/usr/lib/
+	cp $ADDON_LOCATION $PACKAGE_DIR/usr/lib/
+	cp $ADDON_ALLEGRO5 $PACKAGE_DIR/usr/lib/
+	cp $ADDON_SDL $PACKAGE_DIR/usr/lib/
 }
 #
 # Funcão para criar o diretório Share do pacote

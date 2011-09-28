@@ -4,9 +4,9 @@ namespace Gorgon
 {
 	Rectangle::Rectangle
 	(
-		const int&		pWidth,
-		const int&		pHeight,
-		const Point&	pPosition
+		const int&			pWidth,
+		const int&			pHeight,
+		const Core::Point&	pPosition
 	)
 	{
 		setWidth(pWidth);
@@ -35,7 +35,7 @@ namespace Gorgon
 		mHeight = pHeight;
 	}
 
-	void Rectangle::setPosition(const Point& pPosition)
+	void Rectangle::setPosition(const Core::Point& pPosition)
 	{
 		mPosition = pPosition;
 	}
@@ -50,7 +50,7 @@ namespace Gorgon
 		return mHeight;
 	}
 
-	Point Rectangle::getPosition() const
+	Core::Point Rectangle::getPosition() const
 	{
 		return mPosition;
 	}
@@ -58,8 +58,8 @@ namespace Gorgon
 	bool Rectangle::intersect
 	(
 		const Rectangle&	pRectangle,
-		const Point&		pAbsolutePosition,
-		const Point&		pAbsoluteRectanglePosition
+		const Core::Point&	pAbsolutePosition,
+		const Core::Point&	pAbsoluteRectanglePosition
 	) const
 	{
 		if

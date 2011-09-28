@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -60,8 +60,8 @@ namespace Physics{
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB,
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB,
 				const float& pMin,
 				const float& pMax
 			) : Constraint(pBodyA, pBodyB)
@@ -83,11 +83,11 @@ namespace Physics{
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getAnchorA() const
+			inline Core::Point getAnchorA() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpSlideJointGetAnchr1(mConstraint).x,
 					cpSlideJointGetAnchr1(mConstraint).y
@@ -99,11 +99,11 @@ namespace Physics{
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getAnchorB() const
+			inline Core::Point getAnchorB() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpSlideJointGetAnchr2(mConstraint).x,
 					cpSlideJointGetAnchr2(mConstraint).y

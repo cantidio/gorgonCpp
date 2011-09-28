@@ -30,12 +30,17 @@ namespace Gorgon
 		return out.str();
 	}
 	
-	void CollisionFrame::draw(const Point& pPosition,const Color& pColor,Image& pImage) const
+	void CollisionFrame::draw
+	(
+		const Core::Point& pPosition,
+		const Graphic::Color& pColor,
+		Graphic::Image& pImage
+	) const
 	{
 		const int rectangleNumber = getSize();
 		for(register int i = 0; i < rectangleNumber; ++i)
 		{
-			pImage.drawRectangle(pPosition, mBoxes[i], pColor);
+			//pImage.drawRectangle(pPosition, mBoxes[i], pColor);
 		}
 	}
 
@@ -45,8 +50,8 @@ namespace Gorgon
 	bool CollisionFrame::colide
 	(
 		const CollisionFrame&	pCollisionFrame,
-		const Point&			pAbsolutePosition,
-		const Point&			pAbsoluteColisionPosition
+		const Core::Point&		pAbsolutePosition,
+		const Core::Point&		pAbsoluteColisionPosition
 	) const
 	{
 		const int collisionSize = pCollisionFrame.getSize() - 1;
@@ -92,7 +97,7 @@ namespace Gorgon
 		{
 			aux.setWidth(pFile.readInt32());
 			aux.setHeight(pFile.readInt32());
-			aux.setPosition(Point(pFile.readDouble(),pFile.readDouble()));
+			aux.setPosition(Core::Point(pFile.readDouble(),pFile.readDouble()));
 			add(aux);
 		}
 	}

@@ -3,24 +3,24 @@
 namespace Gorgon
 {
 	CollisionFrame Collision::notFound = CollisionFrame();
-	
-	
+
+
 	Collision::Collision(const int& pGroup,const int& pIndex)
 	{
 		setGroup(pGroup);
 		setIndex(pIndex);
 	}
-	
+
 	Collision::Collision(Core::File& pFile)
 	{
 		load(pFile);
 	}
-	
+
 	Collision::Collision(const std::string& pFileName)
 	{
 		load(pFileName);
 	}
-	
+
 	Collision::~Collision()
 	{
 		mCollisions.clear();
@@ -60,25 +60,25 @@ namespace Gorgon
 		}
 		return out.str();
 	}
-	
+
 	int Collision::getSize() const
 	{
 		return mCollisions.size();
 	}
-	
+
 	void Collision::add(const CollisionFrame& pCollisionFrame)
 	{
 		mCollisions.push_back(pCollisionFrame);
 	}
-	
+
 	void Collision::remove(const int& pPos)
 	{
-		if(pPos >= 0 && pPos < mCollisions.size())
+		if(pPos >= 0 && pPos < (int)mCollisions.size())
 		{
 			mCollisions.erase(mCollisions.begin() + pPos);
 		}
 	}
-	
+
 	void Collision::save(Core::File& pFile) const
 	{
 		const int collisionFrameSize = getSize();
@@ -90,13 +90,13 @@ namespace Gorgon
 			(*this)[i].save(pFile);
 		}
 	}
-	
+
 	void Collision::save(const std::string& pFileName) const
 	{
 		Core::File file(pFileName,std::ios::out | std::ios::binary);
 		save(file);
 	}
-	
+
 	void Collision::load(Core::File& pFile)
 	{
 		setGroup(pFile.readInt32());
@@ -107,13 +107,13 @@ namespace Gorgon
 			add(CollisionFrame(pFile));
 		}
 	}
-	
+
 	void Collision::load(const std::string& pFileName)
 	{
 		Core::File file(pFileName,std::ios::in | std::ios::binary);
 		load(file);
 	}
-	
+
 	CollisionFrame& Collision::operator[](const unsigned int& pPos)
 	{
 		if(pPos >= 0 && pPos < mCollisions.size())

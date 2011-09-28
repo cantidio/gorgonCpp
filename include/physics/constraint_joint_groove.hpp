@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -51,17 +51,17 @@ namespace Physics{
 			 * @version	06/10/2010
 			 * @param	Body&			pBodyA		, the first body of the constraint
 			 * @param	Body&			pBodyB		, the second body of the constraint
-			 * @param	const Point&	pGrooveA 	, first point of the groove in the BodyA
-			 * @param	const Point&	pGrooveB 	, second point of the groove in the BodyA
-			 * @param	const Point&	pAnchorB	, the anchor attached to the second body
+			 * @param	const Core::Point&	pGrooveA 	, first point of the groove in the BodyA
+			 * @param	const Core::Point&	pGrooveB 	, second point of the groove in the BodyA
+			 * @param	const Core::Point&	pAnchorB	, the anchor attached to the second body
 			 */
 			GrooveJoint
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pGrooveA,
-				const Point& pGrooveB,
-				const Point& pAnchorB
+				const Core::Point& pGrooveA,
+				const Core::Point& pGrooveB,
+				const Core::Point& pAnchorB
 			) : Constraint(pBodyA, pBodyB)
 			{
 				mConstraint = cpGrooveJointNew
@@ -80,11 +80,11 @@ namespace Physics{
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getGrooveA() const
+			inline Core::Point getGrooveA() const
 			{
-				return Point
+				return Core::Point
 				(
 					((cpGrooveJoint*)mConstraint)->grv_a.x,
 					((cpGrooveJoint*)mConstraint)->grv_a.y
@@ -98,9 +98,9 @@ namespace Physics{
 			 * @version	06/10/2010
 			 * @return	Point
 			 */
-			inline Point getGrooveB() const
+			inline Core::Point getGrooveB() const
 			{
-				return Point
+				return Core::Point
 				(
 					((cpGrooveJoint*)mConstraint)->grv_b.x,
 					((cpGrooveJoint*)mConstraint)->grv_b.y
@@ -114,9 +114,9 @@ namespace Physics{
 			 * @version	06/10/2010
 			 * @return	Point
 			 */
-			inline Point getAnchorB() const
+			inline Core::Point getAnchorB() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpGrooveJointGetAnchr2(mConstraint).x,
 					cpGrooveJointGetAnchr2(mConstraint).y

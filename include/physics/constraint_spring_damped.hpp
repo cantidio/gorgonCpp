@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ namespace Physics
 {
 	/**
 	 * Class that represents a damped spring
-	 * 
+	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	06/10/2010
 	 * @version	07/10/2010
@@ -42,11 +42,11 @@ namespace Physics
 	class DampedSpring : public Constraint
 	{
 		friend class Space;
-		
+
 		protected:
 			/**
 			 * Constructor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -63,8 +63,8 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB,
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB,
 				const float& pRestLength,
 				const float& pStiffness,
 				const float& pDamping
@@ -84,15 +84,15 @@ namespace Physics
 		public:
 			/**
 			 * Method that returns the anchor of the first body
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getAnchorA() const
+			inline Core::Point getAnchorA() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpDampedSpringGetAnchr1(mConstraint).x,
 					cpDampedSpringGetAnchr1(mConstraint).y
@@ -100,15 +100,15 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the anchor of the second body
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getAnchorB() const
+			inline Core::Point getAnchorB() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpDampedSpringGetAnchr2(mConstraint).x,
 					cpDampedSpringGetAnchr2(mConstraint).y
@@ -116,7 +116,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the length of the spring when in rest
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -124,11 +124,11 @@ namespace Physics
 			 */
 			inline float getRestLength() const
 			{
-				return cpDampedSpringGetRestLength(mConstraint);	
+				return cpDampedSpringGetRestLength(mConstraint);
 			}
 			/**
 			 * Method that sets the length of the spring when in rest
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -136,11 +136,11 @@ namespace Physics
 			 */
 			inline void setRestLength(const float& pRestLength) const
 			{
-				cpDampedSpringSetRestLength(mConstraint,pRestLength);	
+				cpDampedSpringSetRestLength(mConstraint,pRestLength);
 			}
 			/**
 			 * Method that returns the the stiffness(spring constant(Young's modulus)) of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -153,7 +153,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the stiffness of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -166,7 +166,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the damping of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -178,7 +178,7 @@ namespace Physics
 			}
 			/**
 			 * Method that sets the damping of the spring
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -189,14 +189,12 @@ namespace Physics
 				cpDampedSpringSetDamping(mConstraint,pDamping);
 			}
 
-			inline void draw(Sprite& pSprite, const int& pColor)// const
+			inline void draw(const Graphic::Color& pColor)// const
 			{
-				Point a = getAnchorA() + getBodyA().getPosition();
-				Point b = getAnchorB() + getBodyB().getPosition();
-				pSprite.drawLine(a.getX(), a.getY(), b.getX(), b.getY(), pColor);
-				pSprite.drawLine(a.getX()+1, a.getY(), b.getX()+1, b.getY(), pColor);
-				pSprite.drawLine(a.getX()-1, a.getY(), b.getX()-1, b.getY(), pColor);
+				Core::Point a = getAnchorA() + getBodyA().getPosition();
+				Core::Point b = getAnchorB() + getBodyB().getPosition();
 
+				Graphic::System::get().drawLine(a,b,pColor,2);
 			}
 	};
 }}

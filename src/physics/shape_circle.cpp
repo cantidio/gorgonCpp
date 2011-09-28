@@ -1,5 +1,6 @@
 #include <physics/shape_circle.hpp>
 #include <physics/body.hpp>
+#include <chipmunk/chipmunk.h>
 
 namespace Gorgon{
 namespace Physics
@@ -7,7 +8,7 @@ namespace Physics
 	ShapeCircle::ShapeCircle
 	(
 		const float& pRadius,
-		const Gorgon::Point& pOffset,
+		const Core::Point& pOffset,
 		Body& pBody
 	) : Shape(pBody)
 	{
@@ -18,50 +19,52 @@ namespace Physics
 			cpv(pOffset.getX(),pOffset.getY())
 		);
 	}
-	
-	void ShapeCircle::draw(Gorgon::Sprite& pSprite, const int& pColor) const
+
+	Core::Point ShapeCircle::getOffset() const
 	{
-		Gorgon::Image a(getRadius() * 2 - 1, getRadius() * 2 - 1);
-		Gorgon::Sprite image
+		return Core::Point
 		(
-			Gorgon::Image
+			cpCircleShapeGetOffset(mShape).x,
+			cpCircleShapeGetOffset(mShape).y
+		);
+	}
+
+	float ShapeCircle::getRadius() const
+	{
+		return cpCircleShapeGetRadius(mShape);
+	}
+
+	void ShapeCircle::draw(const Graphic::Color& pColor) const
+	{
+		Graphic::Sprite image
+		(
+			Graphic::Image
 			(
 				getRadius() * 2,
 				getRadius() * 2
 			),
-			0,
-			0,
-			getRadius(),
-			getRadius()
+			0,0,
+			Core::Point( getRadius(), getRadius() )
 		);
-		a.drawCircle
+
+		Graphic::Image* aux = Graphic::System::get().getTargetImage();
+		Graphic::System::get().setTargetImage(image);
+
+		Graphic::System::get().drawCircle
 		(
-			getRadius() - 1,
-			getRadius() - 1,
-			getRadius() - 1,
-			pColor
+			Core::Point( getRadius() , getRadius()),
+			getRadius()-2,
+			pColor,2
 		);
-		a.drawLine
+		Graphic::System::get().drawLine
 		(
-			getRadius(),
-			getRadius() - 1,
-			getRadius() * 2 - 1,
-			getRadius() - 1,
-			pColor
+			Core::Point( getRadius() , getRadius() ),
+			Core::Point( getRadius() , getRadius() * 2),
+			pColor,2
 		);
-		image.drawImageStretched
-		(
-			a,
-			0,0,//x,y
-			getRadius() * 2,
-			getRadius() * 2
-		);
-		pSprite.drawSpriteRoteted
-		(
-			image,
-			mBody->getPosition().getX(),
-			mBody->getPosition().getY(),
-			360/256 * mBody->getAngle()
-		);
+
+		Graphic::System::get().setTargetImage(*aux);
+
+		image.draw( mBody->getPosition(), mBody->getAngle()/360.0f );
 	}
 }}

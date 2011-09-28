@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -26,8 +26,10 @@
  */
 #ifndef _GORGON_PHYSICS_SHAPE_
 #define _GORGON_PHYSICS_SHAPE_
-#include <chipmunk/chipmunk.h>
-#include "../graphic/gorgon_graphic.hpp"
+#include "../graphic/graphic.hpp"
+
+struct cpShape;
+struct cpBody;
 
 namespace Gorgon{
 namespace Physics
@@ -44,14 +46,10 @@ namespace Physics
 	class Shape
 	{
 		protected:
-			/**
-			 * Variable that holds a chipmunk's shape
-			 */
-			cpShape *mShape;
-			/**
-			 * Variable that holds the reference to the body of the shape
-			 */
-			Body* mBody;
+
+			cpShape *mShape;/**<< Variable that holds a chipmunk's shape*/
+			Body* mBody;/**<< Variable that holds the reference to the body of the shape*/
+
 			/**
 			 * Constructor
 			 *
@@ -60,17 +58,6 @@ namespace Physics
 			 * @version	04/10/2010
 			 */
 			Shape(Body& pBody);
-			/**
-			 * Method to return the body internal's body
-			 * 
-			 * @author	Cantidio Oliveira Fontes
-			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @return	cpBody*
-			 */
-			cpBody* getInternalBody() const;
-		public:
-			friend class Space;
 			/**
 			 * Destructor
 			 *
@@ -82,6 +69,18 @@ namespace Physics
 			 */
 			virtual ~Shape();
 			/**
+			 * Method to return the body internal's body
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	03/10/2010
+			 * @version	04/10/2010
+			 * @return	cpBody*
+			 */
+			cpBody* getInternalBody() const;
+		public:
+			friend class Space;
+			friend class Body;
+			/**
 			 * Method that tells if this shape is a sensor
 			 *
 			 * @author	Cantidio Oliveira Fontes
@@ -89,10 +88,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	bool
 			 */
-			inline bool isSensor() const
-			{
-				return mShape->sensor;
-			}
+			bool isSensor() const;
 			/**
 			 * Method to return the elasticity of the shape
 			 *
@@ -101,10 +97,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	float
 			 */
-			inline float getElasticity() const
-			{
-				return mShape->e;
-			}
+			float getElasticity() const;
 			/**
 			 * Method that sets the elasticity of the shape
 			 *
@@ -113,10 +106,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @param	const float& pElasticity, the elasticity of the shape
 			 */
-			inline void setElasticity(const float& pElasticity)
-			{
-				mShape->e = pElasticity;
-			}
+			void setElasticity(const float& pElasticity);
 			/**
 			 * Method that returns the friction coefficient of the shape
 			 *
@@ -125,10 +115,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	float
 			 */
-			inline float getFriction()
-			{
-				return mShape->u;
-			}
+			float getFriction();
 			/**
 			 * Method to set the friction coefficient of the shape
 			 *
@@ -136,62 +123,45 @@ namespace Physics
 			 * @since
 			 * @version
 			 */
-			inline void setFriction(const float& pCoefficient)
-			{
-				mShape->u = pCoefficient;
-			}
+			void setFriction(const float& pCoefficient);
 			/**
 			 * Method that returns the surface's velocity
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getSurfaceVelocity() const
-			{
-				return Gorgon::Point
-				(
-					mShape->surface_v.x,
-					mShape->surface_v.y
-				);
-			}
+			Core::Point getSurfaceVelocity() const;
 			/**
 			 * Method that sets the group of the shape
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
 			 * @param	const unsigned& pGroup, the new group
-			 * @details	
+			 * @details
 			 * 			if shapes have the same group, they won't collide
 			 */
-			inline void setGroup(const unsigned int& pGroup)
-			{
-				mShape->group = pGroup;
-			}
+			void setGroup(const unsigned int& pGroup);
 			/**
 			 * Method that returns the group of the shape
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @return	unsigned int
 			 */
-			inline unsigned int getGroup() const
-			{
-				return mShape->group;
-			}
+			unsigned int getGroup() const;
 			/**
 			 * Method that draws the shape in the Sprite with some color
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	04/10/2010
-			 * @param	Gorgon::Sprite&	pSprite	, the sprite the Shape will be draw
-			 * @param	const int&		pColor	, the color to draw the Shape
+			 * @param	const Graphic::Color& pColor , the color to draw the Shape
 			 * @details	Each new shape implemented, must implement this method
 			 */
-			virtual void draw(Gorgon::Sprite& pSprite, const int& pColor) const = 0;
+			virtual void draw(const Graphic::Color& pColor) const = 0;
 	};
 }}
 #endif

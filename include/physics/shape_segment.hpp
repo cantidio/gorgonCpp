@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 #define _GORGON_PHYSICS_SHAPE_SEGMENT_
 #include "shape.hpp"
 
-namespace Gorgon{
+namespace Gorgon {
 namespace Physics
 {
 	/**
@@ -48,14 +48,14 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	04/10/2010
-			 * @param	const Gorgon::Point&	pPointA , the first point of the segment
-			 * @param	const Gorgon::Point&	pPointB , the second point of the segment
-			 * @param	const float&			pRadius , the radius of the segment
+			 * @param	const Core::Point&	pPointA , the first point of the segment
+			 * @param	const Core::Point&	pPointB , the second point of the segment
+			 * @param	const float&		pRadius , the radius of the segment
 			 */
 			ShapeSegment
 			(
-				const Gorgon::Point& pPointA,
-				const Gorgon::Point& pPointB,
+				const Core::Point& pPointA,
+				const Core::Point& pPointB,
 				const float& pRadius,
 				Body& pBody
 			);
@@ -65,48 +65,27 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getPointA() const
-			{
-				return Gorgon::Point
-				(
-					cpSegmentShapeGetA(mShape).x,
-					cpSegmentShapeGetA(mShape).y
-				);
-			}
+			Core::Point getPointA() const;
 			/**
 			 * Method that returns the second Point of the segment
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getPointB() const
-			{
-				return Gorgon::Point
-				(
-					cpSegmentShapeGetB(mShape).x,
-					cpSegmentShapeGetB(mShape).y
-				);
-			}
+			Core::Point getPointB() const;
 			/**
 			 * Method that returns the NormalPoint of the segment
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @return	Gorgon::Point
+			 * @return	Core::Point
 			 */
-			inline Gorgon::Point getNormal() const
-			{
-				return Gorgon::Point
-				(
-					cpSegmentShapeGetNormal(mShape).x,
-					cpSegmentShapeGetNormal(mShape).y
-				);
-			}
+			Core::Point getNormal() const;
 			/**
 			 * Method that returns the radius of the segment
 			 *
@@ -115,20 +94,16 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	float
 			 */
-			inline float getRadius() const
-			{
-				return cpSegmentShapeGetRadius(mShape);
-			}
+			float getRadius() const;
 			/**
 			 * Method that draws the segment in the sprite with some color
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @param	Gorgon::Sprite&	pSprite	, the sprite the segment will be draw
-			 * @param	const int&		pColor	, the color to draw the segment
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor, the color to draw the segment
 			 */
-			virtual void draw(Gorgon::Sprite& pSprite, const int& pColor) const;
+			virtual void draw(const Graphic::Color& pColor) const;
 	};
 }}
 #endif

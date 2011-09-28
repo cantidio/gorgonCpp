@@ -38,6 +38,5 @@
  *				à parte de geometria primitiva, como classes de pontos, linhas
  *				entre outros
  */
-#include "gorgon_point.hpp"
 #include "gorgon_rectangle.hpp"
 #endif

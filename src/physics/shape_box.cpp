@@ -20,23 +20,27 @@ namespace Physics
 			mHeight
 		);
 	}
-	
-	void ShapeBox::draw(Gorgon::Sprite& pSprite, const int& pColor) const 
+
+	void ShapeBox::draw(const Graphic::Color& pColor) const
 	{
-		Gorgon::Sprite box
+		Graphic::Sprite box
 		(
-			Gorgon::Image(mWidth,mHeight),
-			0,0,//x,y
-			(mWidth / 2),
-			(mHeight / 2) 
+			Graphic::Image(mWidth, mHeight),
+			0,0,
+			Core::Point( mWidth/2.0f, mHeight/2.0f )
 		);
-		box.drawRectangle(0, 0, mWidth - 1, mHeight - 1, pColor);
-		pSprite.drawSpriteRoteted
+
+		Graphic::Image* aux = Graphic::System::get().getTargetImage();
+		Graphic::System::get().setTargetImage(box);
+
+		Graphic::System::get().drawRectangle
 		(
-			box,
-			mBody->getPosition().getX(),
-			mBody->getPosition().getY(),
-			360/256 * mBody->getAngle()
+			Core::Point(0,0) + Core::Point(2,2),
+			Core::Point(mWidth, mHeight) - Core::Point(2,2),
+			pColor,
+			2
 		);
+		Graphic::System::get().setTargetImage(*aux);
+		box.draw( mBody->getPosition(), mBody->getAngle() / 360.0f );
 	}
-}} 
+}}

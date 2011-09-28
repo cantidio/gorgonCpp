@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -49,13 +49,13 @@ namespace Physics
 			 * @since	03/10/2010
 			 * @version	04/10/2010
 			 * @param	const float&			pRadius , the radius of the circle
-			 * @param	const Gorgon::Point&	pOffset , the offset from the body's center of gravity
-			 * @param	Body&					pBody	, the body thw Shape is attached				
+			 * @param	const Core::Point&	pOffset , the offset from the body's center of gravity
+			 * @param	Body&					pBody	, the body thw Shape is attached
 			 */
 			ShapeCircle
 			(
 				const float& pRadius,
-				const Gorgon::Point& pOffset,
+				const Core::Point& pOffset,
 				Body& pBody
 			);
 			/**
@@ -66,14 +66,7 @@ namespace Physics
 			 * @version	03/10/2010
 			 * @return	Gorgon::Point
 			 */
-			inline Gorgon::Point getOffset() const
-			{
-				return Gorgon::Point
-				(
-					cpCircleShapeGetOffset(mShape).x,
-					cpCircleShapeGetOffset(mShape).y
-				);
-			}
+			Core::Point getOffset() const;
 			/**
 			 * Method that returns the radius of the circle
 			 *
@@ -81,21 +74,17 @@ namespace Physics
 			 * @since	03/10/2010
 			 * @version	03/10/2010
 			 */
-			inline float getRadius() const
-			{
-				return cpCircleShapeGetRadius(mShape);
-			}
+			float getRadius() const;
 			/**
 			 * Method that draws the circle in the sprite with some color
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @param	Gorgon::Sprite& pSprite , the sprite the circle will be draw
-			 * @param	const int& pColor , the color to draw the circle
+			 * @version	11/06/2011
+			 * @param	const Graphic::Color& pColor , the color to draw the circle
 			 * @todo	optmize this method
 			 */
-			virtual void draw(Gorgon::Sprite& pSprite, const int& pColor) const;
+			virtual void draw(const Graphic::Color& pColor) const;
 	};
 }}
 #endif

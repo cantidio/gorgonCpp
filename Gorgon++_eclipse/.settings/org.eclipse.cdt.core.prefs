@@ -1,3 +1,11 @@
-#Sun Oct 03 18:57:04 ART 2010
+#Thu May 05 12:35:01 BRT 2011
 eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/CWD/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/CWD/operation=replace
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/CWD/value=/home/cantidio/Development/gorgon++_plugin/Gorgon++_eclipse/Build/Release
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/PWD/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/PWD/operation=replace
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/PWD/value=/home/cantidio/Development/gorgon++_plugin/Gorgon++_eclipse/Build/Release
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/append=true
+environment/project/cdt.managedbuild.config.gnu.so.release.1081583948/appendContributed=true
 indexerId=org.eclipse.cdt.core.fastIndexer

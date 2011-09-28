@@ -15,7 +15,7 @@ namespace Physics
 		mLocal	= false;
 		mSpace	= &pSpace;
 	}
-	
+
 	Body::Body(const float& pMass, const float& pMoment, Space& pSpace)
 	{
 		printf("Creating the Body: %d\n",(int)this);
@@ -23,7 +23,7 @@ namespace Physics
 		mSpace	= &pSpace;
 		mLocal	= true;
 	}
-	
+
 	Body::~Body()
 	{
 		printf("Deleting the Body: %d\n",(int)this);
@@ -36,20 +36,20 @@ namespace Physics
 			cpBodyFree(mBody);
 		}
 	}
-	
-	ShapeCircle* Body::addShapeCircle(const float& pRadius, const Point& pOffset)
+
+	ShapeCircle* Body::addShapeCircle(const float& pRadius, const Core::Point& pOffset)
 	{
 		ShapeCircle* circle = new ShapeCircle
 		(
 			pRadius,
 			pOffset,
 			*this
-		); 
+		);
 		mShapes.push_back(circle);
 		mSpace->addShape(circle);
 		return circle;
 	}
-	
+
 	ShapeBox* Body::addShapeBox(const int& pWidth, const int& pHeight)
 	{
 		ShapeBox* box = new ShapeBox
@@ -62,8 +62,12 @@ namespace Physics
 		mSpace->addShape(box);
 		return box;
 	}
-	
-	ShapePolygon* Body::addShapePolygon(const std::vector<Point>& pVerts, const Point& pOffset)
+
+	ShapePolygon* Body::addShapePolygon
+	(
+		const std::vector<Core::Point>& pVerts,
+		const Core::Point& pOffset
+	)
 	{
 		ShapePolygon* polygon = new ShapePolygon
 		(
@@ -73,13 +77,13 @@ namespace Physics
 		);
 		mShapes.push_back(polygon);
 		mSpace->addShape(polygon);
-		return polygon; 
+		return polygon;
 	}
-	
+
 	ShapeSegment* Body::addShapeSegment
 	(
-		const Point& pPointA,
-		const Point& pPointB,
+		const Core::Point& pPointA,
+		const Core::Point& pPointB,
 		const float& pRadius = 0.0f
 	)
 	{
@@ -92,7 +96,7 @@ namespace Physics
 		);
 		mShapes.push_back(segment);
 		mSpace->addShape(segment);
-		return segment; 
+		return segment;
 	}
 //------------------------------------------------------------------------------------------
 	float Body::getMomentForCircle
@@ -100,7 +104,7 @@ namespace Physics
 		const float& pMass,
 		const float& pDiameter,
 		const float& pInnerDiameter,
-		const Point& pOffset
+		const Core::Point& pOffset
 	)
 	{
 		return cpMomentForCircle
@@ -111,7 +115,7 @@ namespace Physics
 			cpv(pOffset.getX(), pOffset.getY())
 		);
 	}
-	
+
 	float Body::getMomentForBox
 	(
 		const float& pMass,
@@ -126,12 +130,12 @@ namespace Physics
 			pHeight
 		);
 	}
-	
+
 	float Body::getMomentForSegment
 	(
 		const float& pMass,
-		const Point& pPointA,
-		const Point& pPointB
+		const Core::Point& pPointA,
+		const Core::Point& pPointB
 	)
 	{
 		return cpMomentForSegment
@@ -141,12 +145,12 @@ namespace Physics
 			cpv(pPointB.getX(), pPointB.getY())
 		);
 	}
-	
+
 	float Body::getMomentForPolygon
 	(
 		const float& pMass,
-		const std::vector<Point>& pVerts,
-		const Point& pOffset
+		const std::vector<Core::Point>& pVerts,
+		const Core::Point& pOffset
 	)
 	{
 		cpVect verts[ pVerts.size() ];
@@ -162,16 +166,12 @@ namespace Physics
 			cpv(pOffset.getX(),pOffset.getY())
 		);
 	}
-	
-	void Body::draw(Gorgon::Sprite& pSprite, const int& pColor) const
+
+	void Body::draw(const Graphic::Color& pColor) const
 	{
 		for(int i = getShapeNumber() - 1; i >= 0; --i)
 		{
-			mShapes[i]->draw
-			(
-				pSprite,
-				pColor
-			);
+			mShapes[i]->draw( pColor );
 		}
 	}
 }}

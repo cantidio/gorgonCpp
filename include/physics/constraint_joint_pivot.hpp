@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -29,7 +29,8 @@
 #include "constraint.hpp"
 
 namespace Gorgon{
-namespace Physics{
+namespace Physics
+{
 	/**
 	 * Class that represents the constraints of the type PivotJoint
 	 * 
@@ -59,8 +60,8 @@ namespace Physics{
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB
 			) : Constraint(pBodyA, pBodyB)
 			{
 				mConstraint = cpPivotJointNew2
@@ -79,13 +80,13 @@ namespace Physics{
 			 * @version	06/10/2010
 			 * @param	Body&			pBodyA		, the first body of the constraint
 			 * @param	Body&			pBodyB		, the second body of the constraint
-			 * @param	const Point&	pPivot		, the pivot point
+			 * @param	const Core::Point&	pPivot		, the pivot point
 			 */
 			PivotJoint
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pPivot
+				const Core::Point& pPivot
 			) : Constraint(pBodyA, pBodyB)
 			{
 				mConstraint = cpPivotJointNew
@@ -102,11 +103,11 @@ namespace Physics{
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
-			 * @return	Point
+			 * @return	Core::Point
 			 */
-			inline Point getAnchorA() const
+			inline Core::Point getAnchorA() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpPivotJointGetAnchr1(mConstraint).x,
 					cpPivotJointGetAnchr1(mConstraint).y
@@ -120,9 +121,9 @@ namespace Physics{
 			 * @version	06/10/2010
 			 * @return	Point
 			 */
-			inline Point getAnchorB() const
+			inline Core::Point getAnchorB() const
 			{
-				return Point
+				return Core::Point
 				(
 					cpPivotJointGetAnchr2(mConstraint).x,
 					cpPivotJointGetAnchr2(mConstraint).y

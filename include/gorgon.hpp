@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,16 +24,16 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
-#ifndef _GORGON_LIB_
-#define _GORGON_LIB_
+#ifndef _GORGON_FRAMEWORK_
+#define _GORGON_FRAMEWORK_
 
-#include "audio/gorgon_audio.hpp"
-#include "collision/gorgon_collisionpack.hpp"
-#include "core/gorgon_core.hpp"
-#include "geometry/gorgon_geometry.hpp"
-#include "graphic/gorgon_graphic.hpp"
-#include "input/gorgon_input.hpp"
+#include "audio/audio.hpp"
+#include "core/core.hpp"
+//#include "collision/gorgon_collisionpack.hpp"
+//#include "geometry/gorgon_geometry.hpp"
+#include "graphic/graphic.hpp"
+#include "input/input.hpp"
 #include "physics/physics.hpp"
-#include "script/gorgon_script.hpp"
+#include "script/script.hpp"
 
 #endif

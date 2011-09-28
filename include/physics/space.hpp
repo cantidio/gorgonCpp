@@ -8,7 +8,7 @@
  *    /\____/              /\____/
  *    \_/__/               \_/__/
  *
- *  Copyright (C) 2008-2010  Gorgon Team
+ *  Copyright (C) 2008-2011  Cantidio Oliveira Fontes
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ namespace Physics
 	class Space
 	{
 		friend class Body;
-		
+
 		protected:
 			cpSpace						*mSpace;		/**< Variable that holds the chipmunk's space */
 			Body						*mStaticBody;	/**< Variable that holds the staticBody */
@@ -72,7 +72,7 @@ namespace Physics
 			void addShape(Shape* pShape);
 			/**
 			 * Method that puts a Constraint into the simulated space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -140,15 +140,15 @@ namespace Physics
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
 			 * @version	03/10/2010
-			 * @param	const Gorgon::Point& pPoint, the gravity value for the x, and the y axis
+			 * @param	const Core::Point& pPoint, the gravity value for the x, and the y axis
 			 */
-			inline void setGravity(const Gorgon::Point& pPoint)
+			inline void setGravity(const Core::Point& pPoint)
 			{
 				mSpace->gravity.x = pPoint.getX();
 				mSpace->gravity.y = pPoint.getY();
 			}
 			/**
-			 * Method that sets the damping of the simulated space	
+			 * Method that sets the damping of the simulated space
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
@@ -162,7 +162,7 @@ namespace Physics
 			}
 			/**
 			 * Method that returns the number of bodies in the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -185,7 +185,7 @@ namespace Physics
 			Body* addBody(const float& pMass, const float& pMoment);
 			/**
 			 * Method that returns the number of constraints in the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
@@ -197,33 +197,33 @@ namespace Physics
 			}
 			/**
 			 * Method that add an ConstraintPinJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	06/10/2010
 			 * @param	Body&			pBodyA		, the first body of the constraint
 			 * @param	Body&			pBodyB		, the second body of the constraint
-			 * @param	const Point&	pAnchorA 	, the anchor attached to the first body
-			 * @param	const Point&	pAnchorB	, the anchor attached to the second body
+			 * @param	const Core::Point&	pAnchorA 	, the anchor attached to the first body
+			 * @param	const Core::Point&	pAnchorB	, the anchor attached to the second body
 			 * @return	PinJoint*
-			 */	
+			 */
 			PinJoint* addConstraintPinJoint
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB
 			);
 			/**
 			 * Method that add and Constraint of type SlideJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
 			 * @param	Body&			pBodyA	, the first body of the constraint
 			 * @param	Body&			pBodyB	, the second body of the constraint
-			 * @param	const Point&	pAnchorA, the anchor attached to the first body
-			 * @param	const Point&	pAnchorB, the anchor attached to the second body
+			 * @param	const Core::Point&	pAnchorA, the anchor attached to the first body
+			 * @param	const Core::Point&	pAnchorB, the anchor attached to the second body
 			 * @param	const float&	pMin	, the minimum distance between the anchors
 			 * @param	const float&	pMax	, the maximum distance between the anchors
 			 * @return	SlideJoint*
@@ -233,20 +233,20 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB,
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB,
 				const float& pMin,
 				const float& pMax
 			);
 			/**
 			 * Method that add and Constraint of type PivotJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
 			 * @param	Body&			pBodyA	, the first body of the constraint
 			 * @param	Body&			pBodyB	, the second body of the constraint
-			 * @param	const Point&	pPivot	, the pivot point
+			 * @param	const Core::Point&	pPivot	, the pivot point
 			 * @return	PivotJoint*
 			 * @see		PivotJoint
 			 */
@@ -254,18 +254,18 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pPivot
+				const Core::Point& pPivot
 			);
 			/**
 			 * Method that add and Constraint of type PivotJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
-			 * @param	Body&			pBodyA	, the first body of the constraint
-			 * @param	Body&			pBodyB	, the second body of the constraint
-			 * @param	const Point&	pAnchorA, the anchor attached to the first body
-			 * @param	const Point&	pAnchorB, the anchor attached to the second body
+			 * @param	Body& pBodyA , the first body of the constraint
+			 * @param	Body& pBodyB , the second body of the constraint
+			 * @param	const Core::Point&	pAnchorA, the anchor attached to the first body
+			 * @param	const Core::Point&	pAnchorB, the anchor attached to the second body
 			 * @return	PivotJoint*
 			 * @see		PivotJoint
 			 */
@@ -273,20 +273,20 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB
 			);
 			/**
 			 * Method that add and Constraint of the type GrooveJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
 			 * @param	Body&			pBodyA		, the first body of the constraint
 			 * @param	Body&			pBodyB		, the second body of the constraint
-			 * @param	const Point&	pGrooveA 	, first point of the groove in the BodyA
-			 * @param	const Point&	pGrooveB 	, second point of the groove in the BodyA
-			 * @param	const Point&	pAnchorB	, the anchor attached to the second body
+			 * @param	const Core::Point&	pGrooveA 	, first point of the groove in the BodyA
+			 * @param	const Core::Point&	pGrooveB 	, second point of the groove in the BodyA
+			 * @param	const Core::Point&	pAnchorB	, the anchor attached to the second body
 			 * @return	GrooveJoint*
 			 * @see		GrooveJoint
 			 */
@@ -294,20 +294,20 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pGrooveA,
-				const Point& pGrooveB,
-				const Point& pAnchorB
+				const Core::Point& pGrooveA,
+				const Core::Point& pGrooveB,
+				const Core::Point& pAnchorB
 			);
 			/**
 			 * Method that add and Constraint of the type DampedSpring to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
 			 * @param	Body& pBodyA			, the first body to be connected
 			 * @param	Body& pBodyB			, the second body to be connected
-			 * @param	const Point& pAnchorA	, the anchor of the first body
-			 * @param	const Point& pAnchorB	, the anchor of the second body
+			 * @param	const Core::Point& pAnchorA	, the anchor of the first body
+			 * @param	const Core::Point& pAnchorB	, the anchor of the second body
 			 * @param	const float& pRestLength, the distance the spring wants to be
 			 * @param	const float& pStiffness	, the spring constant(Young's modulus)
 			 * @param	const float& pDamping	, how soft the damping of the spring
@@ -318,15 +318,15 @@ namespace Physics
 			(
 				Body& pBodyA,
 				Body& pBodyB,
-				const Point& pAnchorA,
-				const Point& pAnchorB,
+				const Core::Point& pAnchorA,
+				const Core::Point& pAnchorB,
 				const float& pRestLength,
 				const float& pStiffness,
 				const float& pDamping
 			);
 			/**
 			 * Method that add and Constraint of the type DampedRotarySpring to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	06/10/2010
 			 * @version	07/10/2010
@@ -348,7 +348,7 @@ namespace Physics
 			);
 			/**
 			 * Method tha add a Constraint of the type RotaryLimitJoint to the space
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/10/2010
 			 * @version	07/10/2010
@@ -422,27 +422,26 @@ namespace Physics
 			void resizeActiveHash(const float& pDim = 100, const int& pCount = 1000);
 			/**
 			 * Method that returns a color based in a base number
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
+			 * @version	11/06/2011
 			 * @param	const int& pBase, the base number
-			 * @return	int
+			 * @return	Graphic::Color
 			 */
-			int getColor(const int& pBase) const;
+			Graphic::Color getColor(const int& pBase) const;
 			/**
 			 * Method that draws the entire space in a Gorgon::Sprite
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	03/10/2010
-			 * @version	04/10/2010
-			 * @param	Gorgon::Sprite& pSprite, sprite to be draw
+			 * @version	11/06/2011
 			 * @details
 			 * 			This method generates some colors to the shapes,
 			 * based in their pointers
 			 * @see		getColor
 			 */
-			void draw(Gorgon::Sprite& pSprite) const;
+			void draw() const;
 	};
 }}
 #endif
