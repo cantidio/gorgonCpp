@@ -43,15 +43,15 @@ namespace Graphic
 		mSprites.clear();
 	}
 
-	void SpritePack::setGlobalOffset(const Core::Point& pOffset)
+	void SpritePack::setGlobalOffset( const Core::Point& pOffset )
 	{
-		for(register int i = getSize() - 1; i >=0 ;  ++i)
+		for( register int i = getSize() - 1; i >=0 ;  --i )
 		{
-			mSprites[i].setOffset(pOffset);
+			mSprites[i].setOffset( pOffset );
 		}
 	}
 
-	void SpritePack::setAlphaMask(const Color& pColor)
+	void SpritePack::setAlphaMask( const Color& pColor )
 	{
 		for(register int i = getSize() - 1; i >=0 ;  --i)
 		{
@@ -61,9 +61,9 @@ namespace Graphic
 
 	void SpritePack::trimAll()
 	{
-		for(int i = 0; i < getSize(); ++i)
+		for(register int i = getSize() - 1; i >=0 ;  --i)
 		{
-			(*this)[i].trim();
+			mSprites[i].trim();
 		}
 	}
 

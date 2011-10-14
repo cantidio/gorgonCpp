@@ -31,18 +31,18 @@
 
 struct ALLEGRO_FONT;
 namespace Gorgon	{
-namespace Graphic	{
-namespace Addon
+namespace Allegro5	{
+namespace Graphic
 {
 	/**
 	 * Class that represents a Font implementation in Allegro5
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	29/05/2011
-	 * @version	03/06/2011
-	 * @ingroup	Graphic::Addon
+	 * @version	11/10/2011
+	 * @ingroup	Graphic::Allegro5
 	 */
-	class FontBase : public Graphic::FontBase
+	class FontBase : public Gorgon::Graphic::FontBase
 	{
 		public:
 			/**
@@ -53,6 +53,14 @@ namespace Addon
 			 * @version	14/09/2011
 			 */
 			FontBase();
+			/**
+			 * Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	11/10/2011
+			 * @version	11/10/2011
+			 */
+			virtual ~FontBase();
 			/**
 			 * Method that returns the width of the text with the font
 			 *
@@ -76,9 +84,9 @@ namespace Addon
 			 */
 			virtual void drawText
 			(
-				const Core::Point&		pPosition,
-				const Color&			pColor,
-				const Font::Alignment&	pAlignment,
+				const Gorgon::Core::Point&		pPosition,
+				const Gorgon::Graphic::Color&			pColor,
+				const Gorgon::Graphic::Font::Alignment&	pAlignment,
 				const std::string&		pText
 			) const;
 			/**
@@ -95,10 +103,10 @@ namespace Addon
 			 */
 			virtual void drawTextJustified
 			(
-				const Core::Point&		pPosition,
+				const Gorgon::Core::Point&		pPosition,
 				const int&				pLineWidth,
-				const Color&			pColor,
-				const Font::Alignment&	pAlignment,
+				const Gorgon::Graphic::Color&			pColor,
+				const Gorgon::Graphic::Font::Alignment&	pAlignment,
 				const std::string&		pText
 			) const;
 			/**

@@ -31,8 +31,8 @@
 struct ALLEGRO_KEYBOARD_STATE;
 
 namespace Gorgon	{
-namespace Input		{
-namespace Addon
+namespace Allegro5	{
+namespace Input
 {
 	/**
 	 * Class that represents the keyboard implementation with allegro5
@@ -41,7 +41,7 @@ namespace Addon
 	 * @since	07/05/2011
 	 * @version	07/05/2011
 	 */
-	class KeyboardBase : public Input::KeyboardBase
+	class KeyboardBase : public Gorgon::Input::KeyboardBase
 	{
 		public:
 			/**
@@ -85,9 +85,9 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
 			 * @version	07/05/2011
-			 * @return	Input::Key
+			 * @return	Gorgon::Input::Key
 			 */
-			virtual Input::Key getKey(const int& pKeyValue) const;
+			virtual Gorgon::Input::Key getKey( const int& pKeyValue ) const;
 		protected:
 			ALLEGRO_KEYBOARD_STATE* mState;/**<< var that stores the state of the keyboard*/
 	};

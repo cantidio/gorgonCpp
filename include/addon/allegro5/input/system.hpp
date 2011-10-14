@@ -29,8 +29,8 @@
 #include "../../../input/system.hpp"
 
 namespace Gorgon	{
-namespace Input		{
-namespace Addon
+namespace Allegro5	{
+namespace Input
 {
 	/**
 	 * Class that represents the allegro5 implementation of the InputSystem
@@ -39,7 +39,7 @@ namespace Addon
 	 * @since	05/05/2011
 	 * @version	07/05/2011
 	 */
-	class System : public Input::System
+	class System : public Gorgon::Input::System
 	{
 		public:
 			/**
@@ -57,18 +57,18 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/05/2011
 			 * @version	27/05/2011
-			 * @return	Input::KeyboardBase*
+			 * @return	Gorgon::Input::KeyboardBase*
 			 */
-			virtual Input::KeyboardBase* getKeyboard() const;
+			virtual Gorgon::Input::KeyboardBase* getKeyboard() const;
 			/**
 			 * Method that returns an instance of the current MouseBase
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	10/05/2011
 			 * @version	27/05/2011
-			 * @return	Input::MouseBase*
+			 * @return	Gorgon::Input::MouseBase*
 			 */
-			virtual Input::MouseBase* getMouse() const;
+			virtual Gorgon::Input::MouseBase* getMouse() const;
 			/**
 			 * Method that returns an instance of the current joystickBase
 			 *
@@ -76,9 +76,9 @@ namespace Addon
 			 * @since	05/05/2011
 			 * @version	27/05/2011
 			 * @param	const int& pIndex, the index of the Joystick
-			 * @return	Input::JoystickBase*
+			 * @return	Gorgon::Input::JoystickBase*
 			 */
-			virtual Input::JoystickBase* getJoystick(const int& pIndex) const;
+			virtual Gorgon::Input::JoystickBase* getJoystick( const int& pIndex ) const;
 			/**
 			 * Method that returns the number of joysticks available on system
 			 *

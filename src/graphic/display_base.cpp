@@ -20,4 +20,9 @@ namespace Graphic
 		mResizeable		= pResizeable;
 	}
 
+	DisplayBase::~DisplayBase()
+	{
+
+	}
+
 }}

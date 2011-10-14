@@ -1,11 +1,19 @@
 #include <iostream>
 #include <addon/allegro5/allegro.hpp>
+
+#include <addon/allegro5/graphic/image_base.hpp>
+
 #include <addon/spritepack/tilesheet.hpp>
 #include <addon/spritepack/spritepack_sff.hpp>
-#include <gorgon.hpp>
+#include <graphic/graphic.hpp>
+#include <input/input.hpp>
 
+#include <time.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 using namespace Gorgon;
 using namespace Gorgon::Graphic;
@@ -13,17 +21,75 @@ using namespace Gorgon::Graphic::Addon;
 using namespace Gorgon::Core;
 using namespace Gorgon::Input;
 
-const int width = 1280;
-const int height = 720;
+const int width		= 1280;
+const int height	= 720;
 
 int main()
 {
 	try
 	{
-		Gorgon::setAllegroAddon();
+		Gorgon::Allegro5::setAddon();
+
 		Display display( "TESTE GORGON Framework rev 211", width, height );
 
+		//Font a( "font.ttf", 50 );
+
 		Keyboard keyboard;
+		Gorgon::Graphic::Image a;
+		Gorgon::Graphic::Font f("font.ttf",50);
+
+		SpritePack sprites("spritepacks/foxy.gsp");
+		sprites.setAlphaMask( Color(1,0,1) );
+		sprites.convertToDisplayFormat();
+		int i=0;
+
+	//al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );
+
+		while( !keyboard.getKey(Key::ESCAPE).isPressed() )
+		{
+			keyboard.update();
+
+			display.clear( Color(255,0,0) );
+
+
+			sprites[i].draw( Point(150,150) );
+
+			f.drawText(Point(550,350),Color(0,255,0),Font::AlignLeft,"TEXTO");
+			f.drawText(Point(550,400),Color(0,255,0),Font::AlignLeft,"TEXTO");
+			f.drawText(Point(550,450),Color(0,255,0),Font::AlignLeft,"TEXTO");
+			f.drawText(Point(550,500),Color(0,255,0),Font::AlignLeft,"TEXTO");
+			f.drawText(Point(550,550),Color(0,255,0),Font::AlignLeft,"TEXTO");
+
+			display.swapBuffers();
+
+			i = (i + 1 ) % sprites.getSize();
+			printf("i: %d\n",i);
+		}
+
+	/*	ALLEGRO_BITMAP* mData		= al_create_bitmap( 320, 240 );
+		int mBpp		= ( mData != NULL ) ? al_get_pixel_format_bits( al_get_bitmap_format( mData ) ) : 0;
+*/
+
+
+		//printf( "width: %d\nheight: %d\n", a->getWidth(), a->getHeight() );
+		//delete a;
+		//
+
+		//Gorgon::Allegro5::Graphic::DisplayBase display( "TESTE GORGON Framework rev 211", width, height );
+
+
+	}
+	catch(Core::Exception& exception)
+	{
+		exception.writeInLog();
+		std::cout << "exception" << exception.what() << std::endl;
+	}
+	Gorgon::Graphic::System::halt();
+
+	printf("good bye\n");
+	return 0;
+}
+		/*Keyboard keyboard;
 		Mouse mouse;
 
 		time_t starttime, endtime;

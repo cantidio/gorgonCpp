@@ -60,7 +60,7 @@ namespace Core
 			 * @param	const std::string& logFile	, name of the log file to be created
 			 * @param	const bool& append			, if the log will append to the previous log, or overwrite it
 			 */
-			Log(const std::string& logFile, const bool& append);
+			Log( const std::string& logFile, const bool& append );
 			/**
 			 * Protected Destructor
 			 *
@@ -79,7 +79,7 @@ namespace Core
 			 * @param	const std::string& logFile	, name of the log file to be created
 			 * @param	const bool& append			, if the log will append to the previous log, or overwrite it
 			 */
-			static void init(const std::string& logFile = "log.txt",const bool& append = false);
+			static void init( const std::string& logFile = "log.txt", const bool& append = false );
 			/**
 			 * Method that returns an instance of the class
 			 *
@@ -106,7 +106,7 @@ namespace Core
 			 * @param	const string& message	, messege to be registered
 			 * @param	const bool& pNewLine	, if the message will generate a newline
 			 */
-			void write(const std::string& message,const bool& newLine=true,const bool& pWriteTimeStamp=true);
+			void write( const std::string& message, const bool& newLine = true, const bool& pWriteTimeStamp = true );
 			/**
 			 * Method that registers a number into the log
 			 *
@@ -116,7 +116,7 @@ namespace Core
 			 * @param	const long& number		, number to be registered
 			 * @param	const bool& pNewline	, if true puts a new line after the number
 			 */
-			void write(const long& number,const bool& newLine=true,const bool& pWriteTimeStamp=true);
+			void write( const long& number, const bool& newLine = true, const bool& pWriteTimeStamp = true );
 			/**
 			 * Method that registers a double into the log
 			 *
@@ -126,7 +126,7 @@ namespace Core
 			 * @param	const double& number	, double to be registered
 			 * @param	const bool& pNewline	, if true puts a new line after the double
 			 */
-			void write(const double& number,const bool& newLine=true,const bool& pWriteTimeStamp=true);
+			void write( const double& number, const bool& newLine = true, const bool& pWriteTimeStamp = true );
 			/**
 			 * Method that registers a boolean into the log
 			 *
@@ -136,7 +136,7 @@ namespace Core
 			 * @param	const bool& boolean		, boolean to be registered
 			 * @param	const bool& pNewline	, if true puts a new line after the boolean
 			 */
-			void write(const bool& boolean,const bool& newLine=true,const bool& pWriteTimeStamp=true);
+			void write( const bool& boolean, const bool& newLine = true, const bool& pWriteTimeStamp = true );
 			/**
 			 * Method that registers a string formatted like printf into the log
 			 *
@@ -146,7 +146,7 @@ namespace Core
 			 * @param	const char* text	, formatted string like printf
 			 * @param	va_list& ap			, parameters list
 			 */
-			void writeFormatted(const char* text,va_list& ap);
+			void writeFormatted( const char* text,va_list& ap );
 			/**
 			 * Method that registers a string formatted like printf into the log
 			 *
@@ -156,7 +156,7 @@ namespace Core
 			 * @param	const char* text	, formatted strinf like printf
 			 * @param	... 				, all parameters
 			 */
-			void writeFormatted(const char* text, ...);
+			void writeFormatted( const char* text, ... );
 	};
 	/**
 	 * Inline Function that registers a string formatted like printf into the current log
@@ -167,7 +167,7 @@ namespace Core
 	 * @param	const std::string& str, string com o formato a ser registrada,
 	 * @param	... os argumentos a serem substituídos na string formatada
 	 */
-	inline void logWriteFormatted(const std::string& str, ...)
+	inline void logWriteFormatted( const std::string& str, ... )
 	{
 		#ifdef	_USE_LOG_
 		va_list ap;
@@ -184,7 +184,7 @@ namespace Core
 	 * @version	05/05/2011
 	 * @param	const long& number, valor long a ser registrado
 	 */
-	inline void logWrite(const std::string& pString, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
+	inline void logWrite( const std::string& pString, const bool& pNewline = true,const bool& pWriteTimeStamp=true )
 	{
 		#ifdef	_USE_LOG_
 		Log::get().write(pString, pNewline, pWriteTimeStamp);
@@ -198,7 +198,7 @@ namespace Core
 	 * @version	05/05/2011
 	 * @param	const long& number, valor long a ser registrado
 	 */
-	inline void logWrite(const long& number, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
+	inline void logWrite( const long& number, const bool& pNewline = true,const bool& pWriteTimeStamp=true )
 	{
 		#ifdef	_USE_LOG_
 		Log::get().write(number, pNewline, pWriteTimeStamp);
@@ -212,7 +212,7 @@ namespace Core
 	 * @version	05/05/2011
 	 * @param	const double& number, valor double a ser registrado
 	 */
-	inline void logWrite(const double& number, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
+	inline void logWrite( const double& number, const bool& pNewline = true,const bool& pWriteTimeStamp=true )
 	{
 		#ifdef	_USE_LOG_
 		Log::get().write(number, pNewline, pWriteTimeStamp);
@@ -227,7 +227,7 @@ namespace Core
 	 * @param	const bool& boolean, valor booleano a ser registrado
 	 * @param
 	 */
-	inline void logWrite(const bool& boolean, const bool& pNewline = true,const bool& pWriteTimeStamp=true)
+	inline void logWrite( const bool& boolean, const bool& pNewline = true,const bool& pWriteTimeStamp=true )
 	{
 		#ifdef	_USE_LOG_
 		Log::get().write(boolean, pNewline, pWriteTimeStamp);

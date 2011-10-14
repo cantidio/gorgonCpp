@@ -20,26 +20,27 @@ namespace Graphic
 		return *mSingleton;
 	}
 
-	void System::set(System* pSystem)
+	void System::set( System* pSystem )
 	{
-		Core::logWriteFormatted("Gorgon::Graphic::System::set(%d): Successful.\n",(int)pSystem);
-		if(mSingleton != NULL)
+		if( mSingleton != NULL )
 		{
 			delete mSingleton;
 		}
 		mSingleton = pSystem;
-		if(mSingleton == NULL)
+		if( mSingleton == NULL )
 		{
 			raiseGraphicException("Graphic::System::set(pSystem): Error, a NULL Graphic System was passed.");
 		}
+		Core::logWriteFormatted("Gorgon::Graphic::System::set(%p): Successful.\n",pSystem);
 	}
 
 	void System::halt()
 	{
-		if(mSingleton != NULL)
+		if( mSingleton != NULL )
 		{
-			Core::logWriteFormatted("Gorgon::Graphic::System::halt(): %d, Successful.\n",(int)mSingleton);
 			delete mSingleton;
+			mSingleton = NULL;
+			Core::logWriteFormatted( "Gorgon::Graphic::System::halt(): %p, Successful.\n", mSingleton );
 		}
 		else
 		{
@@ -47,7 +48,7 @@ namespace Graphic
 		}
 	}
 
-	void System::setTargetImage(Image& pImage)
+	void System::setTargetImage( Image& pImage )
 	{
 		mTargetImage = &pImage;
 		pImage.applyAsTarget();

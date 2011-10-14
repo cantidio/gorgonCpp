@@ -1,4 +1,5 @@
 #include <input/system.hpp>
+#include <input/exception.hpp>
 #include <input/mouse_base_null.hpp>
 #include <input/keyboard_base_null.hpp>
 #include <input/joystick_base_null.hpp>
@@ -34,12 +35,25 @@ namespace Input
 			delete mSingleton;
 		}
 		mSingleton = pSystem;
+		if( mSingleton == NULL )
+		{
+			raiseInputException("Gorgon::Input::System::set(pSystem): Error, a NULL Input System was passed.");
+		}
+		Core::logWriteFormatted("Gorgon::Input::System::set( %p ): Successful.\n", mSingleton );
 	}
 
 	void System::halt()
 	{
-		set( NULL );
-		Core::logWrite(std::string("Input::System::halt(): Successful."));
+		if( mSingleton != NULL )
+		{
+			delete mSingleton;
+			mSingleton = NULL;
+			Core::logWriteFormatted( "Gorgon::Input::System::halt(): %p, Successful.\n", mSingleton );
+		}
+		else
+		{
+			Core::logWrite(std::string("Gorgon::Input::System::halt(): There wasn't any Input System to be halted."));
+		}
 	}
 
 	KeyboardBase* System::getKeyboard() const

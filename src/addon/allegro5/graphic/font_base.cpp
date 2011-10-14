@@ -5,17 +5,35 @@
 
 
 namespace Gorgon	{
-namespace Graphic	{
-namespace Addon
+namespace Allegro5	{
+namespace Graphic
 {
 	FontBase::FontBase()
 	{
 		mFont = NULL;
 	}
 
+	FontBase::~FontBase()
+	{
+		if( mFont != NULL )
+		{
+			al_destroy_font( mFont );
+		}
+	}
+
 	void FontBase::load( const std::string& pFileName, const int& pSize )
 	{
+		printf( "blabla\n" );
+
+		const int flags = al_get_new_bitmap_flags();
+		al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );
+
 		mFont = al_load_font( pFileName.c_str(), pSize, 0 );
+		drawText( Gorgon::Core::Point(-100,-100), Gorgon::Graphic::Color(0,0,0,0), Gorgon::Graphic::Font::AlignLeft,"A");
+		/**@todo is this right?*/
+
+		al_set_new_bitmap_flags( flags );
+
 		if( mFont )
 		{
 			mSize		= pSize;
@@ -76,10 +94,10 @@ namespace Addon
 
 	void FontBase::drawText
 	(
-		const Core::Point&		pPosition,
-		const Color&			pColor,
-		const Font::Alignment&	pAlignment,
-		const std::string&		pText
+		const Gorgon::Core::Point&				pPosition,
+		const Gorgon::Graphic::Color&			pColor,
+		const Gorgon::Graphic::Font::Alignment&	pAlignment,
+		const std::string&						pText
 	) const
 	{
 		if( mFont != NULL )
@@ -98,11 +116,11 @@ namespace Addon
 
 	void FontBase::drawTextJustified
 	(
-		const Core::Point&		pPosition,
-		const int&				pLineWidth,
-		const Color&			pColor,
-		const Font::Alignment&	pAlignment,
-		const std::string&		pText
+		const Gorgon::Core::Point&				pPosition,
+		const int&								pLineWidth,
+		const Gorgon::Graphic::Color&			pColor,
+		const Gorgon::Graphic::Font::Alignment&	pAlignment,
+		const std::string&						pText
 	) const
 	{
 		if( mFont != NULL )

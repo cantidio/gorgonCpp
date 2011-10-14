@@ -4,8 +4,8 @@
 #include <sstream>
 
 namespace Gorgon	{
-namespace Graphic	{
-namespace Addon
+namespace Allegro5	{
+namespace Graphic
 {
 	void ImageBase::create
 	(
@@ -14,21 +14,21 @@ namespace Addon
 		const int& pBpp
 	)
 	{
-		if(mData != NULL)
+		if( mData != NULL )
 		{
 			if( al_get_target_bitmap() == mData )
 			{
-				al_set_target_bitmap(NULL);
+				al_set_target_bitmap( NULL );
 			}
-			al_destroy_bitmap(mData);
+			al_destroy_bitmap( mData );
 		}
-		mData		= al_create_bitmap(pWidth, pHeight);
-		mBpp		= (mData != NULL) ? al_get_pixel_format_bits(al_get_bitmap_format(mData)) : 0;
+		mData		= al_create_bitmap( pWidth, pHeight );
+		mBpp		= ( mData != NULL ) ? al_get_pixel_format_bits( al_get_bitmap_format( mData ) ) : 0;
 		mWidth		= pWidth;
 		mHeight		= pHeight;
 		mFreeSource	= true;
 
-		if(mData == NULL)
+		if( mData == NULL )
 		{
 			raiseGraphicException("ImageBase::create(): Error, could not create the image data.");
 		}
@@ -43,13 +43,13 @@ namespace Addon
 		mBpp		= 0;
 	}
 
-	ImageBase::ImageBase(ALLEGRO_BITMAP* pImage, const bool& pFreeSource)
+	ImageBase::ImageBase( ALLEGRO_BITMAP* pImage, const bool& pFreeSource )
 	{
 		mData		= pImage;
 		mFreeSource	= pFreeSource;
-		mWidth		= (mData != NULL) ? al_get_bitmap_width(mData) : 0;
-		mHeight		= (mData != NULL) ? al_get_bitmap_height(mData) : 0;
-		mBpp		= (mData != NULL) ? al_get_pixel_format_bits(al_get_bitmap_format(mData)) : 0;
+		mWidth		= ( mData != NULL ) ? al_get_bitmap_width( mData ) : 0;
+		mHeight		= ( mData != NULL ) ? al_get_bitmap_height( mData ) : 0;
+		mBpp		= ( mData != NULL ) ? al_get_pixel_format_bits( al_get_bitmap_format( mData ) ) : 0;
 	}
 
 	ImageBase::ImageBase
@@ -60,10 +60,10 @@ namespace Addon
 	)
 	{
 		mData = NULL;
-		create(pWidth, pHeight, pBpp);
+		create( pWidth, pHeight, pBpp );
 	}
 
-	ImageBase::ImageBase(const ImageBase& pImage)
+	ImageBase::ImageBase( const ImageBase& pImage )
 	{
 		mData = NULL;
 		(*this) = pImage;
@@ -71,45 +71,51 @@ namespace Addon
 
 	ImageBase::~ImageBase()
 	{
-		if(mFreeSource && mData != NULL)
+		if( mFreeSource && mData != NULL )
 		{
-			al_destroy_bitmap(mData);
+			al_destroy_bitmap( mData );
 		}
 		mData = NULL;
 	}
 
 	void ImageBase::applyAlphaMask()
 	{
-		if(mData != NULL)
+		if( mData != NULL )
 		{
-			al_convert_mask_to_alpha(mData, gorgonColort2AllegroColor(mAlphaMask));
+			al_convert_mask_to_alpha( mData, gorgonColort2AllegroColor( mAlphaMask ) );
 		}
 	}
 
 	void ImageBase::lock()
 	{
-		al_lock_bitmap(mData, al_get_bitmap_format(mData), ALLEGRO_LOCK_READWRITE);
+		al_lock_bitmap( mData, al_get_bitmap_format( mData ), ALLEGRO_LOCK_READWRITE );
 	}
 
 	void ImageBase::unlock()
 	{
-		al_unlock_bitmap(mData);
+		al_unlock_bitmap( mData );
 	}
 
 	void ImageBase::applyAsTarget()
 	{
-		al_set_target_bitmap(mData);
+		al_set_target_bitmap( mData );
 	}
 
-	void ImageBase::clear(const Color& pColor) const
+	void ImageBase::clear( const Gorgon::Graphic::Color& pColor ) const
 	{
-		ALLEGRO_BITMAP* aux = al_get_target_bitmap();			//pega o target anterior
-		al_set_target_bitmap(mData);							//seta como novo target
-		al_clear_to_color( gorgonColort2AllegroColor(pColor) );	//limpa com a cor desejada
-		al_set_target_bitmap(aux);								//seta o target antigo
+		ALLEGRO_BITMAP* aux = al_get_target_bitmap();				//pega o target anterior
+		al_set_target_bitmap( mData );								//seta como novo target
+		al_clear_to_color( gorgonColort2AllegroColor( pColor ) );	//limpa com a cor desejada
+		al_set_target_bitmap( aux );								//seta o target antigo
 	}
 
-	void ImageBase::blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const
+	void ImageBase::blit
+	(
+		const Gorgon::Core::Point&	pPosition,
+		const Gorgon::Core::Point&	pSourcePosition,
+		const int&					pWidth,
+		const int& 					pHeight
+	) const
 	{
 		al_draw_bitmap_region
 		(
@@ -121,7 +127,7 @@ namespace Addon
 		);
 	}
 
-	void ImageBase::draw(const Core::Point& pPosition) const //draw
+	void ImageBase::draw( const Core::Point& pPosition ) const //draw
 	{
 		al_draw_bitmap
 		(
@@ -132,21 +138,21 @@ namespace Addon
 		);
 	}
 
-	void ImageBase::draw(const Core::Point& pPosition, const Mirroring& pMirroring) const //drawFlip
+	void ImageBase::draw( const Gorgon::Core::Point& pPosition, const Gorgon::Graphic::Mirroring& pMirroring ) const //drawFlip
 	{
 		al_draw_bitmap
 		(
 			mData,
 			pPosition.getX(), pPosition.getY(),
-			gorgonMirroring2AllegroMirroring(pMirroring)
+			gorgonMirroring2AllegroMirroring( pMirroring )
 		);
 	}
 
 	void ImageBase::draw
 	(
-		const Core::Point&	pPosition,
-		const float&		pAngle,
-		const Core::Point&	pCenter
+		const Gorgon::Core::Point&	pPosition,
+		const float&				pAngle,
+		const Gorgon::Core::Point&	pCenter
 	) const//draw rotated
 	{
 		al_draw_rotated_bitmap
@@ -161,10 +167,10 @@ namespace Addon
 
 	void ImageBase::draw
 	(
-		const Core::Point&	pPosition,
-		const float&		pAngle,
-		const Core::Point&	pCenter,
-		const Mirroring&	pMirroring
+		const Gorgon::Core::Point&			pPosition,
+		const float&						pAngle,
+		const Gorgon::Core::Point&			pCenter,
+		const Gorgon::Graphic::Mirroring&	pMirroring
 	) const //draw rotated
 	{
 		al_draw_rotated_bitmap
@@ -173,16 +179,16 @@ namespace Addon
 			pCenter.getX()	, pCenter.getY(),
    			pPosition.getX(), pPosition.getY(),
    			pAngle,
-   			gorgonMirroring2AllegroMirroring(pMirroring)
+   			gorgonMirroring2AllegroMirroring( pMirroring )
    		);
 	}
 
 	void ImageBase::draw
 	(
-		const Core::Point& pPosition,
-		const int& pWidth,
-		const int& pHeight,
-		const Mirroring& pMirroring
+		const Gorgon::Core::Point&			pPosition,
+		const int&							pWidth,
+		const int&							pHeight,
+		const Gorgon::Graphic::Mirroring&	pMirroring
 	) const //drawScaled
 	{
 		al_draw_scaled_bitmap
@@ -192,16 +198,16 @@ namespace Addon
 			mWidth,				mHeight,
 			pPosition.getX(),	pPosition.getY(),
 			pWidth, 			pHeight,
-			gorgonMirroring2AllegroMirroring(pMirroring)
+			gorgonMirroring2AllegroMirroring( pMirroring )
 		);
 	}
 
-	void ImageBase::draw(const Core::Point&	pPosition, const Color& pTint) const //draw tinted
+	void ImageBase::draw( const Core::Point& pPosition, const Gorgon::Graphic::Color& pTint ) const //draw tinted
 	{
 		al_draw_tinted_bitmap
 		(
 			mData,
-			gorgonColort2AllegroColor(pTint),
+			gorgonColort2AllegroColor( pTint ),
 			pPosition.getX(), pPosition.getY(),
 			0
 		);
@@ -209,32 +215,32 @@ namespace Addon
 
 	void ImageBase::draw
 	(
-		const Core::Point& pPosition,
-		const Color& pTint,
-		const Mirroring& pMirroring
+		const Gorgon::Core::Point&			pPosition,
+		const Gorgon::Graphic::Color&		pTint,
+		const Gorgon::Graphic::Mirroring&	pMirroring
 	) const //draw tinted
 	{
 		al_draw_tinted_bitmap
 		(
 			mData,
-			gorgonColort2AllegroColor(pTint),
+			gorgonColort2AllegroColor( pTint ),
 			pPosition.getX(), pPosition.getY(),
-			gorgonMirroring2AllegroMirroring(pMirroring)
+			gorgonMirroring2AllegroMirroring( pMirroring )
 		);
 	}
 
 	void ImageBase::draw
 	(
-		const Core::Point&	pPosition,
-		const Color&		pTint,
-		const float&		pAngle,
-		const Core::Point&	pCenter
+		const Gorgon::Core::Point&		pPosition,
+		const Gorgon::Graphic::Color&	pTint,
+		const float&					pAngle,
+		const Gorgon::Core::Point&		pCenter
 	) const//drawTinted rotated
 	{
 		al_draw_tinted_rotated_bitmap
 		(
 			mData,
-			gorgonColort2AllegroColor(pTint),
+			gorgonColort2AllegroColor( pTint ),
    			pCenter.getX()	, pCenter.getY(),
    			pPosition.getX(), pPosition.getY(),
    			pAngle,
@@ -244,25 +250,25 @@ namespace Addon
 
 	void ImageBase::draw
 	(
-		const Core::Point&	pPosition,
-		const Color&		pTint,
-		const float&		pAngle,
-		const Core::Point&	pCenter,
-		const Mirroring&	pMirroring
+		const Gorgon::Core::Point&			pPosition,
+		const Gorgon::Graphic::Color&		pTint,
+		const float&						pAngle,
+		const Gorgon::Core::Point&			pCenter,
+		const Gorgon::Graphic::Mirroring&	pMirroring
 	) const//drawTinted rotated fliped
 	{
 		al_draw_tinted_rotated_bitmap
 		(
 			mData,
-   			gorgonColort2AllegroColor(pTint),
+   			gorgonColort2AllegroColor( pTint ),
    			pCenter.getX()	, pCenter.getY(),
    			pPosition.getX(), pPosition.getY(),
    			pAngle,
-   			gorgonMirroring2AllegroMirroring(pMirroring)
+   			gorgonMirroring2AllegroMirroring( pMirroring )
    		);
 	}
 
-	Color ImageBase::getPixel(const Core::Point& pPosition) const
+	Gorgon::Graphic::Color ImageBase::getPixel( const Gorgon::Core::Point& pPosition ) const
 	{
 		return allegroColor2GorgonColor
 		(
@@ -280,34 +286,34 @@ namespace Addon
 		return false;
 	}
 
-	void ImageBase::operator =(const ImageBase& pImage)
+	void ImageBase::operator =( const ImageBase& pImage )
 	{
 		if(mData != NULL)
 		{
-			al_destroy_bitmap(mData);
+			al_destroy_bitmap( mData );
 		}
-		mData   = (pImage.mData != NULL) ? al_clone_bitmap(pImage.mData) : NULL;
+		mData   = ( pImage.mData != NULL ) ? al_clone_bitmap( pImage.mData ) : NULL;
 		mBpp    = pImage.mBpp;
 		mWidth  = pImage.mWidth;
 		mHeight = pImage.mHeight;
 
-		if(mData == NULL && pImage.mData != NULL)
+		if( mData == NULL && pImage.mData != NULL )
 		{
 			raiseGraphicException("ImageBase::operator = () : Error, could not clone the data.");
 		}
 	}
 
-	bool ImageBase::operator ==(const Graphic::ImageBase& pImage) const
+	bool ImageBase::operator ==( const Gorgon::Graphic::ImageBase& pImage ) const
 	{
 		return false;
 	}
 
-	Graphic::ImageBase* ImageBase::clone() const
+	Gorgon::Graphic::ImageBase* ImageBase::clone() const
 	{
-		return new ImageBase(*this);
+		return new ImageBase( *this );
 	}
 
-	void ImageBase::load(Core::File& pFile, const int& pDataLength)
+	void ImageBase::load( Gorgon::Core::File& pFile, const int& pDataLength )
 	{
 		ALLEGRO_FILE*	fake_file		= NULL;
 		unsigned char*	data			= NULL;
@@ -321,7 +327,7 @@ namespace Addon
 				isTarget = ( al_get_target_bitmap() == mData ) ? true : false;
 				if( mFreeSource )
 				{
-					al_set_target_bitmap(NULL);
+					al_set_target_bitmap( NULL );
 					al_destroy_bitmap( mData );
 				}
 			}
@@ -369,13 +375,13 @@ namespace Addon
 
 	void ImageBase::convertToDisplayFormat()
 	{
-		al_set_new_bitmap_flags(ALLEGRO_VIDEO_BITMAP);
+		al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );
 
 		ALLEGRO_BITMAP* aux = al_clone_bitmap(mData);
-		al_destroy_bitmap(mData);
+		al_destroy_bitmap( mData );
 		mData = aux;
 
-		al_set_new_bitmap_flags(ALLEGRO_MEMORY_BITMAP);
+		al_set_new_bitmap_flags( ALLEGRO_MEMORY_BITMAP );
 	}
 
 }}}

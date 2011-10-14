@@ -102,10 +102,10 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="..\include" />
-					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\include" />
-					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\include" />
-					<Add directory="..\..\..\..\lab\lua-5.1.4\include" />
-					<Add directory="..\..\..\..\lab\zlib-1.2.3\include" />
+					<Add directory="..\..\..\lab\chipmunk-5.3.4\include" />
+					<Add directory="..\..\..\lab\audiere-1.9.4\build_win\include" />
+					<Add directory="..\..\..\lab\lua-5.1.4\include" />
+					<Add directory="..\..\..\lab\zlib-1.2.3\include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -113,10 +113,10 @@
 					<Add option="-llua5.1" />
 					<Add option="-lz" />
 					<Add option="-lchipmunk" />
-					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\build_win\src" />
-					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\lib" />
-					<Add directory="..\..\..\..\lab\lua-5.1.4\lib" />
-					<Add directory="..\..\..\..\lab\zlib-1.2.3\lib" />
+					<Add directory="..\..\..\lab\chipmunk-5.3.4\build_win\src" />
+					<Add directory="..\..\..\lab\audiere-1.9.4\build_win\lib" />
+					<Add directory="..\..\..\lab\lua-5.1.4\lib" />
+					<Add directory="..\..\..\lab\zlib-1.2.3\lib" />
 				</Linker>
 			</Target>
 			<Target title="Windows_Addon">
@@ -159,20 +159,16 @@
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
+					<Add option="-O3" />
 					<Add directory="..\include" />
-					<Add directory="..\..\..\..\lab\allegro5.1\build_win\include" />
+					<Add directory="..\..\..\allegro-5.0.4-mingw-4.5.2\include" />
 				</Compiler>
 				<Linker>
+					<Add option="-s" />
 					<Add option="-lgorgon" />
-					<Add option="-lallegro" />
-					<Add option="-lallegro_color" />
-					<Add option="-lallegro_image" />
-					<Add option="-lallegro_primitives" />
-					<Add option="-lallegro_memfile" />
-					<Add option="-lallegro_font" />
-					<Add option="-lallegro_ttf" />
+					<Add option="-lallegro-5.0.4-monolith-mt" />
 					<Add directory="Windows\Release" />
-					<Add directory="..\..\..\..\lab\allegro5.1\build_win\lib" />
+					<Add directory="..\..\..\allegro-5.0.4-mingw-4.5.2\lib" />
 				</Linker>
 			</Target>
 			<Target title="Windows_TESTE">
@@ -183,29 +179,47 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-O3" />
 					<Add directory="..\include" />
-					<Add directory="..\..\..\..\lab\allegro5.1\build_win\include" />
-					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\include" />
-					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\include" />
-					<Add directory="..\..\..\..\lab\lua-5.1.4\include" />
+					<Add directory="..\..\..\allegro-5.0.4-mingw-4.5.2\include" />
 				</Compiler>
 				<Linker>
+					<Add option="-s" />
+					<Add option="-lgorgon_monolith_allegro" />
+					<Add option="-lallegro-5.0.4-monolith-mt" />
+					<Add directory="Windows\Release" />
+					<Add directory="..\..\..\allegro-5.0.4-mingw-4.5.2\lib" />
+				</Linker>
+			</Target>
+			<Target title="Windows_Monolith_Allegro">
+				<Option platforms="Windows;" />
+				<Option output="Windows\Release\libgorgon_monolith_allegro" prefix_auto="1" extension_auto="1" />
+				<Option object_output="Windows\Release\" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="..\include" />
+					<Add directory="..\..\..\lab\chipmunk-5.3.4\include" />
+					<Add directory="..\..\..\lab\audiere-1.9.4\build_win\include" />
+					<Add directory="..\..\..\lab\lua-5.1.4\include" />
+					<Add directory="..\..\..\lab\zlib-1.2.3\include" />
+					<Add directory="..\..\..\allegro-5.0.4-mingw-4.5.2\include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
 					<Add option="-laudiere" />
 					<Add option="-llua5.1" />
 					<Add option="-lz" />
 					<Add option="-lchipmunk" />
-					<Add option="-lallegro" />
-					<Add option="-lallegro_color" />
-					<Add option="-lallegro_image" />
-					<Add option="-lallegro_primitives" />
-					<Add option="-lallegro_memfile" />
-					<Add option="-lallegro_font" />
-					<Add option="-lallegro_ttf" />
-					<Add directory="..\..\..\..\lab\audiere-1.9.4\build_win\lib" />
-					<Add directory="..\..\..\..\lab\chipmunk-5.3.4\build_win\src" />
-					<Add directory="..\..\..\..\lab\lua-5.1.4\lib" />
-					<Add directory="..\..\..\..\lab\zlib-1.2.3\lib" />
-					<Add directory="..\..\..\..\lab\allegro5.1\build_win\lib" />
+					<Add option="-lallegro-5.0.4-monolith-mt" />
+					<Add directory="..\..\..\lab\chipmunk-5.3.4\build_win\src" />
+					<Add directory="..\..\..\lab\audiere-1.9.4\build_win\lib" />
+					<Add directory="..\..\..\lab\lua-5.1.4\lib" />
+					<Add directory="..\..\..\lab\zlib-1.2.3\lib" />
+					<Add directory="..\..\..\allegro-5.0.4-mingw-4.5.2\lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -217,1187 +231,1097 @@
 		</Compiler>
 		<Unit filename="..\include\addon\allegro5\allegro.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\graphic\common.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\graphic\display_base.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\graphic\font_base.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\graphic\image_base.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\graphic\system.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\input\joystick_base.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\input\keyboard_base.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\input\mouse_base.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\allegro5\input\system.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Windows_Addon_allegro" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\animationpack\gorgon_animationpack_lua.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\sdl\graphic\image.hpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\sdl\graphic\image_loader.hpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\sdl\graphic\video.hpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\sdl\input\joystick_base.hpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\sdl\input\keyboard_base.hpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\sdl\input\mouse_base.hpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\sdl\input\system.hpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\spritepack\spritepack_lua.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\spritepack\spritepack_sff.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\spritepack\spritesheet.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\spritepack\spritesheet_auto.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\addon\spritepack\tilesheet.hpp">
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Linux_Addon" />
 			<Option target="Windows_Addon" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\include\audio\audio.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\audio\sound.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\audio\sound_exception.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\audio\sound_system.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\audio\sound_system_exception.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\collision\gorgon_collision.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_TESTE" />
 		</Unit>
 		<Unit filename="..\include\collision\gorgon_collision_frame.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_TESTE" />
 		</Unit>
 		<Unit filename="..\include\collision\gorgon_collisionpack.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_TESTE" />
 		</Unit>
 		<Unit filename="..\include\core\core.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\exception.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\file.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\file_header.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\game.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\log.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\point.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\string.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\core\zlib.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\geometry\gorgon_geometry.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\geometry\gorgon_rectangle.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\gorgon.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\animation.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\animation_frame.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\animation_handler.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\animation_header.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\animationpack.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\animationpack_header.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\color.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\display.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\display_base.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\exception.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\font.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\font_base.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\graphic.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\image.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\image_base.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\image_loader.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\mirroring.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\palette.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\sprite.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\sprite_header.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\spritepack.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\spritepack_header.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\graphic\system.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\exception.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\input.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\joystick.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\joystick_base.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\joystick_base_null.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\joystick_stick.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\keyboard.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\keyboard_base.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\keyboard_base_null.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\keyboard_key.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\mouse.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\mouse_base.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\mouse_base_null.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\input\system.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\body.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_joint_gear.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_joint_groove.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_joint_pin.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_joint_pivot.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_joint_ratchet.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_joint_rotary_limit.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_joint_slide.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_motor_simple.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_spring_damped.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\constraint_spring_damped_rotary.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\physics.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\shape.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\shape_box.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\shape_circle.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\shape_polygon.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\shape_segment.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\physics\space.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\script\exception.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\script\lua.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\script\lua_argument.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\script\lua_param.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\script\lua_return.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\include\script\script.hpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\graphic\display_base.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\graphic\font_base.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\graphic\image_base.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\graphic\system.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\input\joystick_base.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\input\keyboard_base.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\input\mouse_base.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\allegro5\input\system.cpp">
 			<Option target="Linux_Addon_allegro" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon_allegro" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\animationpack\gorgon_animationpack_lua.cpp">
 			<Option target="Linux_Addon" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\sdl\graphic\image.cpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\sdl\graphic\image_loader.cpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\sdl\graphic\video.cpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\sdl\input\joystick_base.cpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\sdl\input\keyboard_base.cpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\sdl\input\mouse_base.cpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\sdl\input\system.cpp">
 			<Option target="Linux_Addon_sdl" />
 			<Option target="Windows_Addon_sdl" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\spritepack\spritepack_lua.cpp">
 			<Option target="Linux_Addon" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\spritepack\spritepack_sff.cpp">
 			<Option target="Linux_Addon" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\spritepack\spritesheet.cpp">
 			<Option target="Linux_Addon" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\spritepack\spritesheet_auto.cpp">
 			<Option target="Linux_Addon" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\addon\spritepack\tilesheet.cpp">
 			<Option target="Linux_Addon" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Addon" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
+			<Option target="Linux_Debug" />
 		</Unit>
 		<Unit filename="..\src\audio\sound.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\audio\sound_exception.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\audio\sound_system.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\audio\sound_system_exception.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\collision\gorgon_collision.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_TESTE" />
 		</Unit>
 		<Unit filename="..\src\collision\gorgon_collision_frame.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_TESTE" />
 		</Unit>
 		<Unit filename="..\src\collision\gorgon_collisionpack.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_TESTE" />
 		</Unit>
 		<Unit filename="..\src\core\exception.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\core\file.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\core\file_header.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\core\log.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\core\point.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\core\string.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\core\zlib.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\geometry\gorgon_rectangle.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\animation.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\animation_frame.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\animation_handler.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\animation_header.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\animationpack.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\animationpack_header.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\color.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\display.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\display_base.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\exception.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\font.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\font_base.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\image.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\image_base.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\image_loader.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\mirroring.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\palette.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\sprite.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\sprite_header.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\spritepack.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\spritepack_header.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\graphic\system.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\input\exception.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\input\joystick.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\input\keyboard.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\input\keyboard_key.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\input\mouse.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\input\system.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
-			<Option target="Windows_TESTE" />
 			<Option target="Windows_Release" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\physics\body.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\physics\shape.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\physics\shape_box.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\physics\shape_circle.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\physics\shape_polygon.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\physics\shape_segment.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\physics\space.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\script\exception.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\script\lua.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\script\lua_argument.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\script\lua_param.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\src\script\lua_return.cpp">
-			<Option target="Linux_Debug" />
 			<Option target="Linux_Release" />
 			<Option target="Linux_TESTE" />
 			<Option target="Windows_Release" />
-			<Option target="Windows_TESTE" />
+			<Option target="Windows_Monolith_Allegro" />
 		</Unit>
 		<Unit filename="..\teste.cpp">
 			<Option target="Linux_TESTE" />
+			<Option target="Linux_Debug" />
 			<Option target="Windows_TESTE" />
 		</Unit>
 		<Extensions>

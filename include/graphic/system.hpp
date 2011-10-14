@@ -29,7 +29,7 @@
 #include <string>
 #include "../core/point.hpp"
 
-namespace Gorgon{
+namespace Gorgon {
 namespace Graphic
 {
 	class DisplayBase;
@@ -112,7 +112,7 @@ namespace Graphic
 			 * @version	27/05/2011
 			 * @param	Image& pImage, the image that will receive the next draw operations
 			 */
-			void setTargetImage(Image& pImage);
+			void setTargetImage( Image& pImage );
 			/**
 			 * Method that returns the target Image
 			 *

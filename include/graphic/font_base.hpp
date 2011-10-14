@@ -42,7 +42,7 @@ namespace Graphic
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	29/05/2011
-	 * @version	29/05/2011
+	 * @version	11/10/2011
 	 * @ingroup	Graphic
 	 */
 	class FontBase
@@ -56,6 +56,14 @@ namespace Graphic
 			 * @version	14/09/2011
 			 */
 			FontBase();
+			/**
+			 * Virtual Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	11/10/2011
+			 * @version	11/10/2011
+			 */
+			virtual ~FontBase();
 			/**
 			 * Method that returns the size of the font in pixels
 			 *

@@ -30,8 +30,8 @@
 
 struct ALLEGRO_BITMAP;
 namespace Gorgon	{
-namespace Graphic	{
-namespace Addon
+namespace Allegro5	{
+namespace Graphic
 {
 	/**
 	 * Class that represents the implementation of the ImageBase in Allegro5
@@ -40,9 +40,9 @@ namespace Addon
 	 * @since	26/05/2011
 	 * @version	01/06/2011
 	 * @see		Graphic::Image
-	 * @ingroup	Graphic::Addon
+	 * @ingroup	Graphic::Allegro5
 	 */
-	class ImageBase : public Graphic::ImageBase
+	class ImageBase : public Gorgon::Graphic::ImageBase
 	{
 		public:
 			/**
@@ -63,7 +63,6 @@ namespace Addon
 			 * @param	const int&		pWidth	, the width of the image
 			 * @param	const int&		pHeight	, the height of the image
 			 * @param	const int&		pBpp	, the bits per pixel of the image
-			 * @param	const Color&	pColor	, the color the fill the image
 			 * @details
 			 *			if this method couldn't create the image, it will return a GraphicException
 			 */
@@ -81,7 +80,7 @@ namespace Addon
 			 * @version	26/05/2011
 			 * @param	const ImageAllegro& pImage, the source image
 			 */
-			ImageBase(const ImageBase& pImage);
+			ImageBase( const ImageBase& pImage );
 			/**
 			 * Destructor
 			 *
@@ -96,10 +95,10 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/05/2011
 			 * @version	26/05/2011
-			 * @param	const int&		pWidth	, the width of the image
-			 * @param	const int&		pHeight	, the height of the image
-			 * @param	const int&		pBpp	, the bits per pixel of the image
-			 * @param	const Color&	pColor	, the color the fill the image
+			 * @param	const int&						pWidth	, the width of the image
+			 * @param	const int&						pHeight	, the height of the image
+			 * @param	const int&						pBpp	, the bits per pixel of the image
+			 * @param	const Gorgon::Graphic::Color&	pColor	, the color the fill the image
 			 * @details
 			 *			if this method couldn't create the image, it will return a GraphicException
 			 */
@@ -119,45 +118,51 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/05/2011
 			 * @version	26/05/2011
-			 * @param	const Color& pColor, the color to paint the image
+			 * @param	const Gorgon::Graphic::Color& pColor, the color to paint the image
 			 */
-			virtual void clear(const Color& pColor) const;
+			virtual void clear( const Gorgon::Graphic::Color& pColor ) const;
 			/**
 			 * Method that copies a rectangular area of this image to the TargetImage
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/06/2011
 			 * @version	11/06/2011
-			 * @param	const Core::Point& pPosition		, the position in the destination Image
-			 * @param	const Core::Point& pSourcePosition	, the position in this Image where it will get to draw
-			 * @param	const int& pWidth					, the width of the cut in the image
-			 * @param	const int& pHeight					, the height of the cut in the image
+			 * @param	const Gorgon::Core::Point& pPosition		, the position in the destination Image
+			 * @param	const Gorgon::Core::Point& pSourcePosition	, the position in this Image where it will get to draw
+			 * @param	const int& pWidth							, the width of the cut in the image
+			 * @param	const int& pHeight							, the height of the cut in the image
 			 */
-			virtual void blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const;
+			virtual void blit
+			(
+				const Gorgon::Core::Point& pPosition,
+				const Gorgon::Core::Point& pSourcePosition,
+				const int& pWidth,
+				const int& pHeight
+			) const;
 			/**
 			 * Method that draws the image in the requested position into the current target Image
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/05/2011
 			 * @version	26/05/2011
-			 * @param	const Core::Point& pPosition, the position the image will be drawn
+			 * @param	const Gorgon::Core::Point& pPosition, the position the image will be drawn
 			 *
 			 * @see		System::setTargetImage
 			 */
-			virtual void draw(const Core::Point& pPosition) const;
+			virtual void draw( const Gorgon::Core::Point& pPosition ) const;
 			/**
 			 * Method that draws the image in the requested position and mirroring
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/05/2011
 			 * @version	26/05/2011
-			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw this Image
-			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 * @param	const Gorgon::Core::Point&			pPosition	, the position in the target Image to draw this Image
+			 * @param	const Gorgon::Graphic::Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		System::setTargetImage
 			 * @see		Mirroring
 			 */
-			virtual void draw(const Core::Point& pPosition, const Mirroring& pMirroring) const; //drawFlip
+			virtual void draw( const Gorgon::Core::Point& pPosition, const Gorgon::Graphic::Mirroring& pMirroring ) const; //drawFlip
 			/**
 			 * Method that draws the image in the requested position and angle
 			 *
@@ -172,29 +177,29 @@ namespace Addon
 			 */
 			virtual void draw
 			(
-				const Core::Point&	pPosition,
-				const float&		pAngle,
-				const Core::Point&	pCenter
+				const Gorgon::Core::Point&	pPosition,
+				const float&				pAngle,
+				const Gorgon::Core::Point&	pCenter
 			) const;//draw rotated
 			/**
 			 * Method that draws the image in the requested position, mirroring and angle
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since
-			 * @param	const Core::Point&	pPosition	, the position in the target Image to draw
-			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	conat Core::Point&	pCenter		, the center of the image
-			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 * @param	const Core::Point&					pPosition	, the position in the target Image to draw
+			 * @param	const float&						pAngle		, the angle of the image
+			 * @param	conat Core::Point&					pCenter		, the center of the image
+			 * @param	const Gorgon::Graphic::Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		System::setTargetImage
 			 * @see		Mirroring
 			 */
 			virtual void draw
 			(
-				const Core::Point&	pPosition,
-				const float&		pAngle,
-				const Core::Point&	pCenter,
-				const Mirroring&	pMirroring
+				const Gorgon::Core::Point&			pPosition,
+				const float&						pAngle,
+				const Gorgon::Core::Point&			pCenter,
+				const Gorgon::Graphic::Mirroring&	pMirroring
 			) const; //draw rotated flipped
 			/**
 			 * Method that draws the image in the requested position and mirroring, scalling it
@@ -202,20 +207,20 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/05/2011
 			 * @version	26/05/2011
-			 * @param	const Core::Point&			pPosition	, the position in the target Image to draw this Image
-			 * @param	const int&					pWidth		, the width of the resulted image
-			 * @param	const int&					pHeight		, the height of the resulted image
-			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 * @param	const Gorgon::Core::Point&			pPosition	, the position in the target Image to draw this Image
+			 * @param	const int&							pWidth		, the width of the resulted image
+			 * @param	const int&							pHeight		, the height of the resulted image
+			 * @param	const Gorgon::Graphic::Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		System::setTargetImage
 			 * @see		Mirroring
 			 */
 			virtual void draw
 			(
-				const Core::Point& pPosition,
-				const int& pWidth,
-				const int& pHeight,
-				const Mirroring& pMirroring
+				const Gorgon::Core::Point&			pPosition,
+				const int&							pWidth,
+				const int&							pHeight,
+				const Gorgon::Graphic::Mirroring&	pMirroring
 			) const; //drawScaled
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color
@@ -223,31 +228,31 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
-			 * @param	const Color&		pTint		, the color that will tint the image
+			 * @param	const Gorgon::Core::Point&		pPosition	, position in the target Image to draw this Image
+			 * @param	const Gorgon::Graphic::Color&	pTint		, the color that will tint the image
 			 *
 			 * @see		System::setTargetImage
 			 * @see		Mirroring
 			 */
-			virtual void draw(const Core::Point& pPosition, const Color& pTint) const;//drawTinted
+			virtual void draw( const Gorgon::Core::Point& pPosition, const Gorgon::Graphic::Color& pTint ) const;//drawTinted
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
-			 * @param	const Color&		pTint		, the color that will tint the image
-			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 * @param	const Gorgon::Core::Point&			pPosition	, position in the target Image to draw this Image
+			 * @param	const Gorgon::Graphic::Color&		pTint		, the color that will tint the image
+			 * @param	const Gorgon::Graphic::Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		System:setTargetImage
 			 * @see		Mirroring
 			 */
 			virtual void draw
 			(
-				const Core::Point& pPosition,
-				const Color& pTint,
-				const Mirroring& pMirroring
+				const Gorgon::Core::Point&			pPosition,
+				const Gorgon::Graphic::Color&		pTint,
+				const Gorgon::Graphic::Mirroring&	pMirroring
 			) const;//drawTinted
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color and angle
@@ -255,20 +260,20 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
-			 * @param	const Color&		pTint		, the color that will tint the image
-			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	const Core::Point&	pCenter		, the center of the image
+			 * @param	const Gorgon::Core::Point&		pPosition	, position in the target Image to draw this Image
+			 * @param	const Gorgon::Graphic::Color&	pTint		, the color that will tint the image
+			 * @param	const float&					pAngle		, the angle of the image
+			 * @param	const Gorgon::Core::Point&		pCenter		, the center of the image
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
 			 */
 			virtual void draw
 			(
-				const Core::Point& pPosition,
-				const Color& pTint,
-				const float& pAngle,
-				const Core::Point& pCenter
+				const Gorgon::Core::Point&		pPosition,
+				const Gorgon::Graphic::Color&	pTint,
+				const float&					pAngle,
+				const Gorgon::Core::Point&		pCenter
 			) const;//drawTinted rotated
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color, angle and mirroring
@@ -276,22 +281,22 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	03/05/2011
-			 * @param	const Core::Point&	pPosition	, position in the target Image to draw this Image
-			 * @param	const Color&		pTint		, the color that will tint the image
-			 * @param	const float&		pAngle		, the angle of the image
-			 * @param	const Core::Point&	pCenter		, the center of the image
-			 * @param	const Mirroring&	pMirroring	, the mirroring of the image
+			 * @param	const Gorgon::Core::Point&			pPosition	, position in the target Image to draw this Image
+			 * @param	const Gorgon::Graphic::Color&		pTint		, the color that will tint the image
+			 * @param	const float&						pAngle		, the angle of the image
+			 * @param	const Gorgon::Core::Point&			pCenter		, the center of the image
+			 * @param	const Gorgon::Graphic::Mirroring&	pMirroring	, the mirroring of the image
 			 *
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
 			 */
 			virtual void draw
 			(
-				const Core::Point&	pPosition,
-				const Color&		pTint,
-				const float&		pAngle,
-				const Core::Point&	pCenter,
-				const Mirroring&	pMirroring
+				const Gorgon::Core::Point&			pPosition,
+				const Gorgon::Graphic::Color&		pTint,
+				const float&						pAngle,
+				const Gorgon::Core::Point&			pCenter,
+				const Gorgon::Graphic::Mirroring&	pMirroring
 			) const;//drawTinted rotated fliped
 			/**
 			 * Method that returns the color at the given position in the image
@@ -299,10 +304,10 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/06/2009
 			 * @version	26/05/2011
-			 * @param	const Core::Point&	pPosition, the position of the pixel
-			 * @return	Color
+			 * @param	const Gorgon::Core::Point&	pPosition, the position of the pixel
+			 * @return	Gorgon::Graphic::Color
 			 */
-			virtual Color getPixel(const Core::Point& pPosition) const;
+			virtual Gorgon::Graphic::Color getPixel( const Gorgon::Core::Point& pPosition ) const;
 			/**
 			 * Method that returns if the image is empty
 			 *
@@ -321,7 +326,7 @@ namespace Addon
 			 * @version	26/05/2011
 			 * @param	const ImageBase& pImage, the source image
 			 */
-			virtual void operator =(const ImageBase& pImage);
+			virtual void operator =( const ImageBase& pImage );
 			/**
 			 * Operator that returns true if the images have the same colors
 			 *
@@ -332,19 +337,19 @@ namespace Addon
 			 * @return	bool
 			 * @todo	implement this method
 			 */
-			virtual bool operator ==(const Graphic::ImageBase& pImage) const;
+			virtual bool operator ==( const Gorgon::Graphic::ImageBase& pImage ) const;
 			/**
 			 * Method that clones the image and return a pointer to the cloned image
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	26/05/2011
 			 * @version	27/05/2011
-			 * @return	Graphic::ImageBase*
+			 * @return	Gorgon::Graphic::ImageBase*
 			 * @details
 			 *			The pointer of the ImageBase isn't deleted by this object,
 			 * you must handly free it
 			 */
-			virtual Graphic::ImageBase* clone() const;
+			virtual Gorgon::Graphic::ImageBase* clone() const;
 			/**
 			 * Convert the current image to the display format, for fast drawing
 			 *
@@ -353,7 +358,16 @@ namespace Addon
 			 * @version	14/06/2011
 			 */
 			virtual void convertToDisplayFormat();
-			virtual void load(Core::File& pFile, const int& pDataLength);
+			/**
+			 * Method that loads the image from a file
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	14/06/2011
+			 * @version	14/06/2011
+			 * @param	Gorgon::Core::File&	pFile		, the reference to the file that contains the image data
+			 * @param	const int&			pDataLength	, the length of the image data
+			 */
+			virtual void load( Gorgon::Core::File& pFile, const int& pDataLength );
 		protected:
 			/**
 			 * Method that applies the alplha mask into the Image
@@ -363,8 +377,8 @@ namespace Addon
 			 */
 			virtual void applyAlphaMask();
 
-			ALLEGRO_BITMAP *mData;/**<< The allegro image data*/
-			bool mFreeSource;
+			ALLEGRO_BITMAP *mData;	/**<< The allegro image data*/
+			bool mFreeSource;		/**<< True if this object is allowed to free the source*/
 	};
 }}}
 #endif

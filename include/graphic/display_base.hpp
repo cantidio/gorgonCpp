@@ -39,7 +39,7 @@ namespace Graphic
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	29/05/2011
-	 * @version	29/05/2011
+	 * @version	11/10/2011
 	 * @ingroup	Graphic
 	 */
 	class DisplayBase
@@ -51,7 +51,11 @@ namespace Graphic
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2011
 			 * @version	29/05/2011
-			 *
+			 * @param	const std::string& pWindowtitle,
+			 * @param	const int&	pWidth		, the width of the display
+			 * @param	const int&	pHeight		, the height of the display
+			 * @param	const bool&	pFullScreen	, if the display will be fullscreen
+			 * @param	const bool&	pResizeable	, if the display will be resisable
 			 */
 			DisplayBase
 			(
@@ -61,6 +65,14 @@ namespace Graphic
 				const bool&	pFullScreen = false,
 				const bool&	pResizeable = false
 			);
+			/**
+			 * Virtual Destructor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	11/10/2011
+			 * @version	11/10/2011
+			 */
+			virtual ~DisplayBase();
 			/**
 			 * Method that returns the title of the display
 			 *

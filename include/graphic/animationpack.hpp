@@ -44,10 +44,6 @@ namespace Graphic
 	 */
 	class AnimationPack
 	{
-		private:
-			AnimationPackHeader mHeader;		/**<< Header of the animationpack file*/
-			static Animation mNotFound;			/**<< empty animation that is returned when some unknown animation is requested*/
-			std::vector<Animation> mAnimation;	/**Vector that stores the animations*/
 		public:
 			/**
 			 * Constructor
@@ -65,7 +61,7 @@ namespace Graphic
 			 * @version	21/06/2009
 			 * @param	File& pFile, arquivo já aberto
 			 */
-			AnimationPack(Core::File& pFile);
+			AnimationPack( Core::File& pFile );
 			/**
 			 * Constructor
 			 *
@@ -74,7 +70,7 @@ namespace Graphic
 			 * @version	24/02/2009
 			 * @param	const std::string& pFileName, nome do arquivo a ser aberto para carregar os dados
 			 */
-			AnimationPack(const std::string& pFileName);
+			AnimationPack( const std::string& pFileName );
 			/**
 			 * Destructor
 			 *
@@ -91,7 +87,7 @@ namespace Graphic
 			 * @version	24/02/2009
 			 * @param	const SpritePack*& pSpritePack, the spritepack that will map tha frames of the animations
 			 */
-			void optimize(const SpritePack& pSpritePack);
+			void optimize( const SpritePack& pSpritePack );
 			/**
 			 * Method that describes the animationpack
 			 *
@@ -131,7 +127,7 @@ namespace Graphic
 			 * @details
 			 * 			This method tries to find the animation requested, if not found, it returns -1
 			 */
-			int getAnimationRealIndex(const int& pGroup, const int& pIndex);
+			int getAnimationRealIndex( const int& pGroup, const int& pIndex );
 			/**
 			 * Method that inserts a animation into the package
 			 *
@@ -140,7 +136,7 @@ namespace Graphic
 			 * @version	21/06/2009
 			 * @param	const Animation& pAnimation, animation to be inserted into the animationpack
 			 */
-			void add(const Animation& pAnimation);
+			void add( const Animation& pAnimation );
 			/**
 			 * Method that inserts a animation into the package into a given position
 			 *
@@ -150,7 +146,7 @@ namespace Graphic
 			 * @param	const Animation&	pAnimation	, animation to be inserted into the package
 			 * @param	const int&			pPos		, position to insert the animation into the package
 			 */
-			void add(const Animation& pAnimation, const int& pPos);
+			void add( const Animation& pAnimation, const int& pPos );
 			/**
 			 * Method that removes an animation from the animationpack
 			 *
@@ -162,7 +158,7 @@ namespace Graphic
 			 * 			This method tries to remove the animation requested, if the animation couldn't be found
 			 * it does nothing
 			 */
-			void remove(const int& pPos);
+			void remove( const int& pPos );
 			/**
 			 * Method that removes an animation from the animationpack
 			 *
@@ -176,7 +172,7 @@ namespace Graphic
 			 * it does nothing. If there is more than one animation with the group and index requested, this method
 			 * will remove just the first occurence
 			 */
-			void remove(const int& pGroup,const int& pIndex);
+			void remove( const int& pGroup, const int& pIndex );
 			/**
 			 * Method that saves the animationpack into a file previously opened
 			 *
@@ -185,7 +181,7 @@ namespace Graphic
 			 * @version	21/06/2009
 			 * @param	File& pFile, the file handler that will recive the animationpack data
 			 */
-			void save(Core::File& pFile);
+			void save( Core::File& pFile );
 			/**
 			 * Method that saves the animationpack into a file with the given name
 			 *
@@ -194,7 +190,7 @@ namespace Graphic
 			 * @version	21/06/2009
 			 * @param	std::string pFileName, name of the file that will store the animationpack data
 			 */
-			void save(const std::string& pFileName);
+			void save( const std::string& pFileName );
 			/**
 			 * Method that loads the animationpack data from a previously opened file
 			 *
@@ -203,7 +199,7 @@ namespace Graphic
 			 * @version	21/06/2009
 			 * @param	File& pFile, file that holds the animationpack data
 			 */
-			void load(Core::File& pFile);
+			void load( Core::File& pFile );
 			/**
 			 * Method that loads the animationpack from a file
 			 *
@@ -212,7 +208,7 @@ namespace Graphic
 			 * @version	21/06/2009
 			 * @param	std::string pFileName, name of the file that contains the animationpack data
 			 */
-			void load(const std::string& pFileName);
+			void load( const std::string& pFileName );
 			/**
 			 * Operator to access an animation by its index
 			 *
@@ -225,7 +221,7 @@ namespace Graphic
 			 * 			If the animation you trying to access is out of bounds this method
 			 * will return an empty animation
 			 */
-			Animation& operator [](const int& pPos);
+			Animation& operator []( const int& pPos );
 			/**
 			 * Operator to access an animation by its group and index
 			 *
@@ -239,7 +235,11 @@ namespace Graphic
 			 *			This method will search the entire animationpack for this animation, if the animation couldn't be found
 			 * it will return an empty animation
 			 */
-			Animation& operator ()(const int& pGroup,const int& pIndex);
+			Animation& operator ()( const int& pGroup,const int& pIndex );
+		protected:
+			AnimationPackHeader mHeader;		/**<< Header of the animationpack file*/
+			static Animation mNotFound;			/**<< empty animation that is returned when some unknown animation is requested*/
+			std::vector<Animation> mAnimation;	/**Vector that stores the animations*/
 	};
 }}
 #endif

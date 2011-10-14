@@ -32,8 +32,8 @@ struct ALLEGRO_JOYSTICK;
 struct ALLEGRO_JOYSTICK_STATE;
 
 namespace Gorgon	{
-namespace Input		{
-namespace Addon
+namespace Allegro5	{
+namespace Input
 {
 	/**
 	 * Class that represents an allegro5 joystick
@@ -42,11 +42,8 @@ namespace Addon
 	 * @since	04/05/2011
 	 * @version	05/05/2011
 	 */
-	class JoystickBase : public Input::JoystickBase
+	class JoystickBase : public Gorgon::Input::JoystickBase
 	{
-		protected:;
-			ALLEGRO_JOYSTICK* mJoystick;			/**<< var that holds the allegro joystick*/
-			ALLEGRO_JOYSTICK_STATE* mJoystickState;	/**<< var that holds the allegro joystick state*/
 		public:
 			/**
 			 * Constructor
@@ -56,7 +53,7 @@ namespace Addon
 			 * @verion	05/05/2011
 			 * @param	const int& pIndex, the index of the joystick
 			 */
-			JoystickBase(const int& pIndex = 0);
+			JoystickBase( const int& pIndex = 0 );
 			/**
 			 * Destructor
 			 *
@@ -88,9 +85,9 @@ namespace Addon
 			 * @since	04/05/2011
 			 * @version	04/05/2011
 			 * @param	const int& pStick, the index of the stick
-			 * @return	Stick
+			 * @return	Gorgon::Input::Stick
 			 */
-			virtual Input::Stick getStick(const int& pStick) const;
+			virtual Gorgon::Input::Stick getStick( const int& pStick ) const;
 			/**
 			 * Method that returns the value of the button
 			 *
@@ -100,7 +97,10 @@ namespace Addon
 			 * @param	const int& pButton, the index of the button
 			 * @return	float
 			 */
-			virtual float getButton(const int& pButtonIndex) const;
+			virtual float getButton( const int& pButtonIndex ) const;
+		protected:
+			ALLEGRO_JOYSTICK*		mJoystick;		/**<< var that holds the allegro joystick*/
+			ALLEGRO_JOYSTICK_STATE*	mJoystickState;	/**<< var that holds the allegro joystick state*/
 	};
 }}}
 #endif

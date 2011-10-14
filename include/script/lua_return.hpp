@@ -59,7 +59,7 @@ namespace Script
 			 * @param	lua_State* pState, ponteiro para o estado lua
 			 * @param	const int& pVarNumber, número de váriáveis retornadas
 			 */
-			LuaReturn(lua_State* pState,const int& pVarNumber=1);
+			LuaReturn( lua_State* pState, const int& pVarNumber = 1 );
 			/**
 			 * Método que retorna o valor numérico do retorno
 			 *
@@ -68,7 +68,7 @@ namespace Script
 			 * @version	13/03/2009
 			 * @param	const int& pPos, posição de retorno, default 0
 			 */
-			double getNumericValue(const int& pPos=0) const;
+			double getNumericValue( const int& pPos = 0 ) const;
 			/**
 			 * Método que retorna o valor de string do retorno
 			 *
@@ -77,7 +77,7 @@ namespace Script
 			 * @version	13/03/2009
 			 * @param	const int& pPos, posição de retorno, default 0
 			 */
-			std::string getStringValue(const int& pPos=0) const;
+			std::string getStringValue( const int& pPos = 0 ) const;
 			/**
 			 * Método que retorna o valor booleano do retorno
 			 *
@@ -86,7 +86,7 @@ namespace Script
 			 * @version	13/03/2009
 			 * @param	const int& pPos, posição de retorno, default 0
 			 */
-			bool getBoolValue(const int& pPos=0) const;
+			bool getBoolValue( const int& pPos = 0 ) const;
 			/**
 			 * Método que retorna o número de argumentos retornados
 			 *

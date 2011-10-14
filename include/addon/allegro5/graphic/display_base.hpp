@@ -31,8 +31,8 @@
 
 struct ALLEGRO_DISPLAY;
 namespace Gorgon	{
-namespace Graphic	{
-namespace Addon
+namespace Allegro5	{
+namespace Graphic
 {
 	/**
 	 * Class that represents a Display implementation in Allegro5
@@ -40,9 +40,9 @@ namespace Addon
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	29/05/2011
 	 * @version	03/06/2011
-	 * @ingroup	Graphic::Addon
+	 * @ingroup	Graphic::Allegro5
 	 */
-	class DisplayBase : public Graphic::DisplayBase
+	class DisplayBase : public Gorgon::Graphic::DisplayBase
 	{
 		public:
 			/**
@@ -59,11 +59,11 @@ namespace Addon
 			 */
 			DisplayBase
 			(
-				const std::string& pWindowTitle,
-				const int& pWidth,
-				const int& pHeight,
-				const bool& pFullScreen = false,
-				const bool& pResizeable = false
+				const std::string&	pWindowTitle,
+				const int&			pWidth,
+				const int&			pHeight,
+				const bool&			pFullScreen = false,
+				const bool&			pResizeable = false
 			);
 			/**
 			 * Destructor
@@ -96,9 +96,9 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2011
 			 * @version	29/05/2011
-			 *
+			 * @param	Gorgon::Graphic::Color& pColor, the color the clean the display
 			 */
-			virtual void clear(const Color& pColor);
+			virtual void clear( const Gorgon::Graphic::Color& pColor );
 			/**
 			 * Method that swap the buffers of the display
 			 *
@@ -115,11 +115,11 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	29/05/2011
 			 * @version	29/05/2011
-			 * @param	const Image& pImage, the image to be used as a logo
+			 * @param	const Gorgon::Graphic::Image& pImage, the image to be used as a logo
 			 * @details
 			 *			If the image is too big, it will be resized
 			 */
-			virtual void setLogo(const Image& pImage);
+			virtual void setLogo( const Gorgon::Graphic::Image& pImage );
 			/**
 			 * Method that sets the window title
 			 *
@@ -128,9 +128,9 @@ namespace Addon
 			 * @version	29/05/2011
 			 * @param	const std::string& pWindowTitle, the new tile
 			 */
-			virtual void setWindowTitle(const std::string& pWindowTitle);
+			virtual void setWindowTitle( const std::string& pWindowTitle );
 		protected:
-			ALLEGRO_DISPLAY*	mDisplay;		/**<< the display data*/
+			ALLEGRO_DISPLAY* mDisplay; /**<< the display data*/
 
 	};
 }}}

@@ -28,7 +28,9 @@
 #define	_GORGON_INPUT_
 #include "system.hpp"
 #include "joystick.hpp"
+#include "joystick_stick.hpp"
 #include "keyboard.hpp"
+#include "keyboard_key.hpp"
 #include "mouse.hpp"
 
 /**

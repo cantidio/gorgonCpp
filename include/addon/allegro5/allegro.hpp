@@ -26,19 +26,24 @@
  */
 #include "graphic/system.hpp"
 #include "input/system.hpp"
-
-namespace Gorgon
+#include "../../core/log.hpp"
+namespace Gorgon {
+namespace Allegro5
 {
+
 	/**
 	 * Function that sets the Allegro addon
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	18/09/2011
-	 * @version	18/09/2011
+	 * @version	11/10/2011
 	 */
-	inline void setAllegroAddon()
+	inline void setAddon()
 	{
-		Graphic::Addon::System::set();
-		Input::Addon::System::set();
+		Gorgon::Input::System::halt();
+		Gorgon::Graphic::System::halt();
+
+		Graphic::System::set();
+		Input::System::set();
 	}
-}
+}}

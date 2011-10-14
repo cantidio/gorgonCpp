@@ -32,8 +32,8 @@
 struct ALLEGRO_MOUSE_STATE;
 
 namespace Gorgon	{
-namespace Input		{
-namespace Addon
+namespace Allegro5	{
+namespace Input
 {
 	/**
 	 * Class that represents the mouse implementation with Allegro
@@ -42,7 +42,7 @@ namespace Addon
 	 * @since	11/05/2011
 	 * @version	11/05/2011
 	 */
-	class MouseBase : public Input::MouseBase
+	class MouseBase : public Gorgon::Input::MouseBase
 	{
 		public:
 			/**
@@ -84,23 +84,24 @@ namespace Addon
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/05/2011
 			 * @version	11/05/2011
-			 * @return	Core::Point
+			 * @return	Gorgon::Core::Point
 			 */
-			virtual Core::Point getPosition() const;
+			virtual Gorgon::Core::Point getPosition() const;
 			/**
 			 * Method that returns the state of a button
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/05/2011
 			 * @version	11/05/2011
-			 * @param	const MouseButton& pButton, the button
+			 * @param	const Gorgon::Input::MouseButton& pButton, the button
 			 * @return	bool
 			 */
-			virtual bool getButton(const MouseButton::Id& pButton) const;
+			virtual bool getButton(const Gorgon::Input::MouseButton::Id& pButton) const;
+
 		protected:
-			ALLEGRO_MOUSE_STATE*	mState;					/**<< var that stores the state of the mouse*/
-			Core::Point				mPosition;				/**<< var that stores the position of the mouse*/
-			int						mButton[MouseButton::LAST_BUTTON];	/**<< array of the buttons*/
+			ALLEGRO_MOUSE_STATE*	mState;												/**<< var that stores the state of the mouse*/
+			Core::Point				mPosition;											/**<< var that stores the position of the mouse*/
+			int						mButton[Gorgon::Input::MouseButton::LAST_BUTTON];	/**<< array of the buttons*/
 	};
 }}}
 #endif

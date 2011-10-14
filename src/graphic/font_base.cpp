@@ -8,4 +8,9 @@ namespace Graphic
 		mSize		= 0;
 		mLineHeight	= 0;
 	}
+
+	FontBase::~FontBase()
+	{
+
+	}
 }}

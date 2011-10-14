@@ -38,6 +38,15 @@ namespace Graphic
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	25/01/2011
 	 * @version	29/04/2011
+	 * @example
+	 * content of script.lua
+	 *
+	 *
+	 *
+	 *
+	 * AnimationPackLua* a= new AnimationPackLua("script.lua");
+	 *
+	 *
 	 */
 	class AnimationPackLua : public Graphic::AnimationPack
 	{

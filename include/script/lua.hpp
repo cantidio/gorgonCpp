@@ -64,7 +64,7 @@ namespace Script
 			 * 			When created by this method, the object will close
 			 * the script in the destructor
 			 */
-			Lua(const std::string& pScriptName="");
+			Lua( const std::string& pScriptName = "" );
 			/**
 			 * Constructor
 			 *
@@ -76,7 +76,7 @@ namespace Script
 			 * 			When created by this method, the object will NOT close
 			 * the script in the destructor
 			 */
-			Lua(lua_State* pState);
+			Lua( lua_State* pState );
 			/**
 			 * Destructor
 			 *
@@ -93,7 +93,7 @@ namespace Script
 			 * @version	11/03/2009
 			 * @param	const std::string& pScriptName, the name of the script
 			 */
-			void loadScript(const std::string& pScriptName);
+			void loadScript( const std::string& pScriptName );
 			/**
 			 * Método para executar um comando em lua
 			 *
@@ -102,7 +102,7 @@ namespace Script
 			 * @version	12/03/2009
 			 * @param	const std::string& pValue, comando a ser executado em lua
 			 */
-			void executeString(const std::string& pValue);
+			void executeString( const std::string& pValue );
 			/**
 			 * Método para rodar um método de lua
 			 *
@@ -129,7 +129,7 @@ namespace Script
 			 * @param	const std::string& pFunctionName, nome da função em lua
 			 * @param	int (*pFunction)(lua_State*), ponteiro para a função em c
 			 */
-			void registerFunction(const std::string& pFunctionName,int (*pFunction)(lua_State*));
+			void registerFunction( const std::string& pFunctionName,int (*pFunction)(lua_State*) );
 			/**
 			 * Método que retorna o valor de uma variável numérica em lua
 			 *
@@ -139,7 +139,7 @@ namespace Script
 			 * @param	const std::string& pVarName, nome da variável
 			 * @return	double
 			 */
-			double getNumericVar(const std::string& pVarName);
+			double getNumericVar( const std::string& pVarName );
 			/**
 			 * Método que retorna o valor de uma string em lua
 			 *
@@ -149,7 +149,7 @@ namespace Script
 			 * @param	const std::string& pVarName, nome da variável
 			 * @return	std::string
 			 */
-			std::string getStringVar(const std::string& pVarName);
+			std::string getStringVar( const std::string& pVarName );
 			/**
 			 * Método para retornar o valor de um booleano em lua
 			 *
@@ -158,7 +158,7 @@ namespace Script
 			 * @version	23/03/2009
 			 * @param	const std::string& pVarName,  nome da variável
 			 */
-			bool getBooleanVar(const std::string& pVarName);
+			bool getBooleanVar( const std::string& pVarName );
 
 			/**
 			 * Method that register a userdata into the lua state
@@ -212,7 +212,7 @@ namespace Script
 			 * @param	const std::string&	pName	, the name of the userData
 			 * @param	const int&			pIndex	, the index of it in the stack, default 1
 			 */
-			void* getUserData(const std::string& pName, const int& pIndex = 1);
+			void* getUserData( const std::string& pName, const int& pIndex = 1 );
 			/**
 			 * Method that allocs a new userData into the lua interpreter
 			 *

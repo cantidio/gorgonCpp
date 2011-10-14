@@ -7,23 +7,23 @@
 #include <sstream>
 
 namespace Gorgon	{
-namespace Graphic	{
-namespace Addon
+namespace Allegro5	{
+namespace Graphic
 {
 	DisplayBase::DisplayBase
 	(
-		const std::string& pWindowTitle,
-		const int& pWidth,
-		const int& pHeight,
-		const bool& pFullScreen,
-		const bool& pResizeable
-	) : Graphic::DisplayBase( pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable )
+		const std::string&	pWindowTitle,
+		const int&			pWidth,
+		const int&			pHeight,
+		const bool&			pFullScreen,
+		const bool&			pResizeable
+	) : Gorgon::Graphic::DisplayBase( pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable )
 	{
 		al_set_new_display_flags
 		(
 			ALLEGRO_OPENGL_3_0 |
-			 (pFullScreen ? ALLEGRO_FULLSCREEN_WINDOW : 0)
-			| (pResizeable ? ALLEGRO_RESIZABLE         : 0)
+			 ( pFullScreen ? ALLEGRO_FULLSCREEN_WINDOW : 0 )
+			| ( pResizeable ? ALLEGRO_RESIZABLE         : 0 )
 		);
 
 		mDisplay = al_create_display(pWidth, pHeight);
@@ -31,7 +31,7 @@ namespace Addon
 		if(mDisplay == NULL)
 		{
 			std::stringstream out;
-			out << "Graphic::Addon::DisplayBase::DisplayBase(\"" << pWindowTitle << "\", " << pWidth << ", " << pHeight << ", ";
+			out << "Graphic::Allegro5::DisplayBase::DisplayBase(\"" << pWindowTitle << "\", " << pWidth << ", " << pHeight << ", ";
 			out << (pFullScreen ? "true" : "false") << ", " << (pResizeable ? "true" : "false") << "): Error, could not create the display.\n";
 			raiseGraphicException( out.str() );
 		}
@@ -39,7 +39,7 @@ namespace Addon
 		setWindowTitle(pWindowTitle);
 		Core::logWriteFormatted
 		(
-			Core::String("Gorgon::Graphic::Addon::Display::Display(\"%s\",%d,%d,%s,%s): Successful.\n"),
+			Core::String("Gorgon::Graphic::Allegro5::Display::Display(\"%s\",%d,%d,%s,%s): Successful.\n"),
 			pWindowTitle.c_str(),
 			pWidth,
 			pHeight,
@@ -55,11 +55,11 @@ namespace Addon
 		{
 			al_destroy_display( mDisplay );
 			delete mBackBuffer;
-			Core::logWrite(std::string("Gorgon::Graphic::Addon::Display::~Display(): Successfull."));
+			Core::logWrite(std::string("Gorgon::Graphic::Allegro5::Display::~Display(): Successfull."));
 		}
 		else
 		{
-			Core::logWrite(std::string("Gorgon::Graphic::Addon::Display::~Display(): There isn't a display to destroy."));
+			Core::logWrite(std::string("Gorgon::Graphic::Allegro5::Display::~Display(): There isn't a display to destroy."));
 		}
 	}
 
@@ -76,12 +76,12 @@ namespace Addon
 	    al_set_target_bitmap(al_get_backbuffer(mDisplay));
 	}
 
-	void DisplayBase::clear(const Color& pColor)
+	void DisplayBase::clear( const Gorgon::Graphic::Color& pColor )
 	{
-		ALLEGRO_BITMAP * aux = al_get_target_bitmap();			//pega o target anterior
-		al_set_target_bitmap(al_get_backbuffer(mDisplay));		//seta o novo target
-		al_clear_to_color( gorgonColort2AllegroColor(pColor) );	//limpa com a cor desejada
-		al_set_target_bitmap(aux);								//seta o target antigo
+		ALLEGRO_BITMAP * aux = al_get_target_bitmap();				//pega o target anterior
+		al_set_target_bitmap( al_get_backbuffer( mDisplay ) );		//seta o novo target
+		al_clear_to_color( gorgonColort2AllegroColor( pColor ) );	//limpa com a cor desejada
+		al_set_target_bitmap( aux );								//seta o target antigo
 	}
 
 	void DisplayBase::swapBuffers()
@@ -89,15 +89,15 @@ namespace Addon
 		al_flip_display();
 	}
 
-	void DisplayBase::setLogo(const Image& pImage)
+	void DisplayBase::setLogo( const Gorgon::Graphic::Image& pImage )
 	{
 		/**@todo implementar*/
 //		al_set_display_icon(mDisplay, pImage.mImage.mDisplay);
 	}
 
-	void DisplayBase::setWindowTitle(const std::string& pWindowTitle)
+	void DisplayBase::setWindowTitle( const std::string& pWindowTitle )
 	{
 		mWindowTitle = pWindowTitle;
-		al_set_window_title(mDisplay, mWindowTitle.c_str());
+		al_set_window_title( mDisplay, mWindowTitle.c_str() );
 	}
 }}}
