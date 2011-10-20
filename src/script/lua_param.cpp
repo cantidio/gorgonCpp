@@ -6,7 +6,7 @@ namespace Script
 {
 	LuaParam::LuaParam(){}
 
-	LuaParam::LuaParam(const std::string& pDesc, ...)
+	LuaParam::LuaParam( const std::string& pDesc, ... )
 	{
 		va_list args;
 		va_start(args,pDesc);
@@ -18,14 +18,14 @@ namespace Script
 				case 'd':	case 'D':
 				case 'i':	case 'I':
 				case 'n':	case 'N':
-					push((double)va_arg(args,int));
+					push ( (double)va_arg( args, int ) );
 					break;
 				case 's': 	case 'S':
-					push(std::string(va_arg(args,char*)));
+					push( std::string( va_arg( args, char* ) ) );
 					break;
 				case 'b':
 				case 'B':
-					push(bool(va_arg(args,char*)));
+					push( bool( va_arg( args, char* ) ) );
 					break;
 				default	:
 					raiseScriptException("LuaParam::LuaParam(\""+pDesc+"\"): Error, unable to define argument type.");

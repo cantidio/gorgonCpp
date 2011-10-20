@@ -9,29 +9,29 @@ namespace Graphic
 
 	SpritePack::SpritePack()
 	{
-		if(mNotFound == NULL)	mNotFound = new Sprite( Image(1, 1) );
+		if( mNotFound == NULL )	mNotFound = new Sprite( Image( 1, 1 ) );
 		mGlobalPalette	= new Palette(256);
 		mPalLinked		= false;
 	}
 
-	SpritePack::SpritePack(const SpritePack& pSpritePackOriginal)
+	SpritePack::SpritePack( const SpritePack& pSpritePackOriginal )
 	{
-		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
+		if( mNotFound == NULL )	mNotFound = new Sprite( Image( 1, 1 ) );
 		mGlobalPalette	= NULL;
 		mPalLinked		= false;
-		(*this) = pSpritePackOriginal;
+		(*this)			= pSpritePackOriginal;
 	}
 
-	SpritePack::SpritePack(const std::string& pFileName, const ImageLoader& pImageLoader)
+	SpritePack::SpritePack( const std::string& pFileName )
 	{
-		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
-		load(pFileName,pImageLoader);
+		if( mNotFound == NULL )	mNotFound = new Sprite(Image(1,1));
+		load( pFileName );
 	}
 
-	SpritePack::SpritePack(Core::File& pFile, const ImageLoader& pImageLoader)
+	SpritePack::SpritePack( Core::File& pFile )
 	{
-		if(mNotFound == NULL)	mNotFound = new Sprite(Image(1,1));
-		load(pFile,pImageLoader);
+		if( mNotFound == NULL )	mNotFound = new Sprite(Image(1,1));
+		load( pFile );
 	}
 
 	SpritePack::~SpritePack()
@@ -61,33 +61,33 @@ namespace Graphic
 
 	void SpritePack::trimAll()
 	{
-		for(register int i = getSize() - 1; i >=0 ;  --i)
+		for( register int i = getSize() - 1; i >= 0 ;  --i )
 		{
 			mSprites[i].trim();
 		}
 	}
 
-	void SpritePack::add(const Sprite& pSprite)
+	void SpritePack::add( const Sprite& pSprite )
 	{
-		mSprites.push_back(pSprite);
+		mSprites.push_back( pSprite );
 	}
 
-	void SpritePack::add(const Sprite& pSprite,const int& pPos)
+	void SpritePack::add( const Sprite& pSprite, const int& pPos )
 	{
-		mSprites.insert(mSprites.begin() + pPos, pSprite);
+		mSprites.insert( mSprites.begin() + pPos, pSprite );
 	}
 
-	void SpritePack::remove(const int& pPos)
+	void SpritePack::remove( const int& pPos )
 	{
-		if(pPos >= 0 && pPos < (int)mSprites.size())
+		if( pPos >= 0 && pPos < (int)mSprites.size() )
 		{
-			mSprites.erase(mSprites.begin() + pPos);
+			mSprites.erase( mSprites.begin() + pPos );
 		}
 	}
 
-	void SpritePack::remove(const int& pGroup,const int& pIndex)
+	void SpritePack::remove( const int& pGroup, const int& pIndex )
 	{
-		remove(getSpriteRealIndex(pGroup,pIndex));
+		remove( getSpriteRealIndex( pGroup, pIndex ) );
 	}
 
 	int SpritePack::getSize()	const
@@ -95,11 +95,11 @@ namespace Graphic
 		return mSprites.size();
 	}
 
-	int SpritePack::getSpriteRealIndex(const int& pGroup,const int& pIndex) const
+	int SpritePack::getSpriteRealIndex( const int& pGroup, const int& pIndex ) const
 	{
-		for(int i = 0; i < (int)mSprites.size(); ++i)
+		for( int i = 0; i < (int)mSprites.size(); ++i )
 		{
-			if(mSprites[i].getGroup() == pGroup && mSprites[i].getIndex() == pIndex)
+			if( mSprites[i].getGroup() == pGroup && mSprites[i].getIndex() == pIndex )
 			{
 				return i;
 			}
@@ -107,72 +107,72 @@ namespace Graphic
 		return -1;
 	}
 
-	Sprite& SpritePack::getSprite(const int& pPos)
+	Sprite& SpritePack::getSprite( const int& pPos )
 	{
-		if(pPos >= 0 && pPos < (int)mSprites.size())
+		if( pPos >= 0 && pPos < (int)mSprites.size() )
 		{
 			return mSprites[pPos];
 		}
 		return *mNotFound;
 	}
 
-	const Sprite& SpritePack::getSprite(const int& pPos) const
+	const Sprite& SpritePack::getSprite( const int& pPos ) const
 	{
-		if(pPos >= 0 && pPos < (int)mSprites.size())
+		if( pPos >= 0 && pPos < (int)mSprites.size() )
 		{
 			return mSprites[pPos];
 		}
 		return *mNotFound;
 	}
 
-	Sprite& SpritePack::getSprite(const int& group,const int& index)
+	Sprite& SpritePack::getSprite( const int& group,const int& index )
 	{
-		return getSprite(getSpriteRealIndex(group,index));
+		return getSprite( getSpriteRealIndex( group, index ) );
 	}
 
-	const Sprite& SpritePack::getSprite(const int& group,const int& index) const
+	const Sprite& SpritePack::getSprite( const int& group, const int& index ) const
 	{
-		return getSprite(getSpriteRealIndex(group,index));
+		return getSprite( getSpriteRealIndex( group, index ) );
 	}
 
-	Sprite& SpritePack::operator [](const int& pPos)
+	Sprite& SpritePack::operator []( const int& pPos )
 	{
-		return getSprite(pPos);
+		return getSprite( pPos );
 	}
 
-	const Sprite& SpritePack::operator [](const int& pPos) const
+	const Sprite& SpritePack::operator []( const int& pPos ) const
 	{
-		return getSprite(pPos);
+		return getSprite( pPos );
 	}
 
-	Sprite& SpritePack::operator ()(const int& pGroup,const int& pIndex)
+	Sprite& SpritePack::operator ()( const int& pGroup, const int& pIndex )
 	{
-		return getSprite(pGroup,pIndex);
+		return getSprite( pGroup, pIndex );
 	}
 
-	const Sprite& SpritePack::operator ()(const int& pGroup,const int& pIndex) const
+	const Sprite& SpritePack::operator ()( const int& pGroup, const int& pIndex ) const
 	{
-		return getSprite(pGroup,pIndex);
+		return getSprite( pGroup, pIndex );
 	}
 
-	void SpritePack::operator =(const SpritePack& pSpritePack)
+	void SpritePack::operator =( const SpritePack& pSpritePack )
 	{
-		if(!mPalLinked && mGlobalPalette)
+		if( !mPalLinked && mGlobalPalette )
 		{
 			delete mGlobalPalette;
 		}
 		mSprites.clear();
-		mGlobalPalette	= (pSpritePack.mGlobalPalette) ? pSpritePack.mGlobalPalette->clone() : NULL;
+		mGlobalPalette	= ( pSpritePack.mGlobalPalette ) ? pSpritePack.mGlobalPalette->clone() : NULL;
 		mPalLinked		= false;
-		for(register int i = 0; i < pSpritePack.getSize(); ++i)
+		for( register int i = 0; i < pSpritePack.getSize(); ++i )
 		{
-			add(Sprite(pSpritePack[i]));
+			add( Sprite( pSpritePack[i] ) );
 		}
 	}
 
-	void SpritePack::setGlobalPalette(Palette* pPalette)
+	void SpritePack::setGlobalPalette( Palette* pPalette )
 	{
-		if(!mPalLinked && mGlobalPalette)
+		if( !mPalLinked && mGlobalPalette )
 		{
 			delete mGlobalPalette;
 		}
@@ -180,21 +180,21 @@ namespace Graphic
 		mPalLinked		= true;
 	}
 
-	void SpritePack::applyGlobalPalette(const bool& pForce)
+	void SpritePack::applyGlobalPalette( const bool& pForce )
 	{
 		/**@todo utilizar openmp aqui*/
-		for(register int i = 0; i < getSize(); ++i)
+		for( register int i = 0; i < getSize(); ++i )
 		{
-			if(!getSprite(i).getPalette() || (getSprite(i).getPalette() && pForce))
+			if( !getSprite(i).getPalette() || ( getSprite(i).getPalette() && pForce ) )
 			{
-				getSprite(i).setPalette(mGlobalPalette,false);
+				getSprite(i).setPalette( mGlobalPalette, false );
 			}
 		}
 	}
 
 	void SpritePack::convertToDisplayFormat()
 	{
-		for(register int i = getSize() -1; i >= 0; --i)
+		for( register int i = getSize() -1; i >= 0; --i )
 		{
 			mSprites[i].convertToDisplayFormat();
 		}
@@ -211,106 +211,106 @@ namespace Graphic
 		for(int i=0; i<this->size(); (*this)[i]->getOtimizedPalette(red,green,blue,this->globalPalette),++i);
 	}*/
 
-	void SpritePack::save(Core::File& pFile,const ImageLoader& pImageLoader)
+	void SpritePack::save( Core::File& pFile,const std::string& pFormat )
 	{
 		const int spriteSize	= mSprites.size();
-		bool globPal			= (mGlobalPalette) ? true : false;
-		SpritePackHeader::save(pFile);
+		bool globPal			= ( mGlobalPalette ) ? true : false;
+		SpritePackHeader::save( pFile );
 
-		pFile.writeBool(globPal);
-		if(globPal)
+		pFile.writeBool( globPal );
+		if( globPal )
 		{
-			mGlobalPalette->save(pFile);
+			mGlobalPalette->save( pFile );
 		}
 
-		pFile.writeInt32(spriteSize);
+		pFile.writeInt32( spriteSize );
 		for(int i = 0; i < spriteSize; ++i)
 		{
-			mSprites[i].save(pFile,pImageLoader);
+			mSprites[i].save( pFile, pFormat );
 		}
 	}
 
-	void SpritePack::save(const std::string& pFileName, const ImageLoader& pImageLoader)
+	void SpritePack::save( const std::string& pFileName, const std::string& pFormat )
 	{
-		Core::File file(pFileName,std::ios::out | std::ios::binary);
+		Core::File file( pFileName,std::ios::out | std::ios::binary );
 
-		if(file.is_open())
+		if( file.is_open() )
 		{
 			try
 			{
-				save(file,pImageLoader);
+				save( file, pFormat );
 				file.close();
 			}
-			catch(Core::Exception& exception)
+			catch( Core::Exception& exception )
 			{
-				raiseGraphicExceptionE("SpritePack::save(\""+pFileName+"\"): Error while saving the spritepack.",exception);
+				raiseGraphicExceptionE( "SpritePack::save(\""+pFileName+"\"): Error while saving the spritepack.", exception );
 			}
 		}
 		else
 		{
-			raiseGraphicException("SpritepPack::save(\""+pFileName+"\"): Error, the file could not be opened for writting.");
+			raiseGraphicException( "SpritepPack::save(\""+pFileName+"\"): Error, the file could not be opened for writting." );
 		}
 	}
 
 	/**
 	 * @todo tentar usar o algoritmo da zlib aqui
 	 */
-	void SpritePack::load(Core::File& pFile, const ImageLoader& pImageLoader)
+	void SpritePack::load( Core::File& pFile )
 	{
-		if(pFile.is_open())
+		if( pFile.is_open() )
 		{
 			int					spriteSize;
 			SpritePackHeader	header(pFile);
 
-			if(header.isValid())
+			if( header.isValid() )
 			{
 				try
 				{
-					if(pFile.readBool())
+					if( pFile.readBool() )
 					{
 						mGlobalPalette = new Palette(pFile);
 					}
 					spriteSize = pFile.readInt32();
-					for(int i = 0; i < spriteSize; ++i)
+					for( int i = 0; i < spriteSize; ++i )
 					{
 						mSprites.push_back( Sprite( pFile ) );
 					}
 					mPalLinked = false;
 				}
-				catch(Core::Exception& exception)
+				catch( Core::Exception& exception )
 				{
-					raiseGraphicExceptionE("SpritePack::load(pFile): Error while loading the sprites into the spritepack.",exception);
+					raiseGraphicExceptionE( "SpritePack::load(pFile): Error while loading the sprites into the spritepack.", exception );
 				}
 			}
 			else
 			{
-				raiseGraphicException("SpritePack::load(pFile): Error, spritepack header seems to be invalid, maybe this isn't a gorgon spritepack");
+				raiseGraphicException( "SpritePack::load(pFile): Error, spritepack header seems to be invalid, maybe this isn't a gorgon spritepack" );
 			}
 		}
 		else
 		{
-			raiseGraphicException("SpritePack::load(pFile):Error, file is not opened for reading.");
+			raiseGraphicException( "SpritePack::load(pFile):Error, file is not opened for reading." );
 		}
 	}
 
-	void SpritePack::load(const std::string& pFileName, const ImageLoader& pImageLoader)
+	void SpritePack::load( const std::string& pFileName )
 	{
-		Core::File file(pFileName,std::ios::in | std::ios::binary);
-		if(file.is_open())
+		Core::File file( pFileName, std::ios::in | std::ios::binary );
+		if( file.is_open() )
 		{
 			try
 			{
-				load(file, pImageLoader);
+				load( file );
 				file.close();
 			}
-			catch(Core::Exception& exception)
+			catch( Core::Exception& exception )
 			{
-				raiseGraphicExceptionE("SpritePack::load(\""+pFileName+"\"): Error while loading the spritepack",exception);
+				raiseGraphicExceptionE( "SpritePack::load(\""+pFileName+"\"): Error while loading the spritepack", exception );
 			}
 		}
 		else
 		{
-			raiseGraphicException("SpritePack::load(\""+pFileName+"\"): Error, the file couldn't be opened for reading.");
+			raiseGraphicException( "SpritePack::load(\""+pFileName+"\"): Error, the file couldn't be opened for reading." );
 		}
 	}
 }}

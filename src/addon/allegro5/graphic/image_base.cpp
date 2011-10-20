@@ -373,6 +373,35 @@ namespace Graphic
 		}
 	}
 
+	void ImageBase::save( Gorgon::Core::File& pFile, const std::string& pFormat )
+	{
+		ALLEGRO_FILE*	fake_file	= NULL;
+		unsigned char*	data		= NULL;
+		const long int	dataLength	= getWidth()*getHeight()*4; // this will work? never know
+		try
+		{
+			data		= new unsigned char[ dataLength ];
+			fake_file	= al_open_memfile( (void*)data, dataLength, "wb" );
+
+			if( !al_save_bitmap_f( fake_file, pFormat.c_str(), mData ) )
+			{
+				std::stringstream out;
+				out << "ImageBase::save(" << &pFile << ", " << pFormat << "): Error while saving the image.";
+				raiseGraphicException( out.str() );
+			}
+			pFile.write( (char*)data, al_ftell( fake_file ) );
+
+			al_fclose( fake_file );		//fecha o arquivo
+			delete data;				//delata os dados
+		}
+		catch( std::exception& e )
+		{
+			std::stringstream out;
+			out << "ImageBase::save(" << &pFile << ", " << pFormat << "): Error in saving the image, couldn't allocate memory for image.";
+			raiseGraphicException( out.str() );
+		}
+	}
+
 	void ImageBase::convertToDisplayFormat()
 	{
 		al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );

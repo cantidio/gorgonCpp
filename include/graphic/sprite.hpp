@@ -352,20 +352,20 @@ namespace Graphic
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	21/06/2009
-			 * @param	const std::string&	pSpriteName		, name of the file to save the sprite
-			 * @param	const ImageLoader*	pImageLoader	, the imageLoader
+			 * @param	const std::string& pSpriteName	, name of the file to save the sprite
+			 * @param	const std::string& pFormat		, the format of the image( the extension with the dot like ".png" )
 			 */
-			virtual void save(const std::string& pSpriteName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void save( const std::string& pSpriteName, const std::string& pFormat );
 			/**
 			 * Method that saves the sprite into a previously opened file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
 			 * @version	21/06/2009
-			 * @param	Core::File&			pFile			, the file to save the sprite
-			 * @param	const ImageLoader*	pImageLoader	, the imageLoader
+			 * @param	Core::File&			pFile	, the file to save the sprite
+			 * @param	const std::string& pFormat	, the format of the image( the extension with the dot like ".png" )
 			 */
-			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void save( Core::File& pFile, const std::string& pFormat );
 		protected:
 			int mGroup;				/**<< The group of the sprite*/
 			int mIndex;				/**<< The index of the sprite in its group*/

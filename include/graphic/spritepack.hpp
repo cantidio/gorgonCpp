@@ -45,11 +45,6 @@ namespace Graphic
 	 */
 	class SpritePack
 	{
-		protected:
-			std::vector<Sprite> mSprites;	/**<< Vector will all sprites*/
-			Palette* mGlobalPalette;		/**<< The global color table*/
-			static Sprite* mNotFound;		/**<< Empty sprite that is returned every time an unknown sprited is requested*/
-			bool mPalLinked;				/**<< True if the palette is linked, false otherwise*/
 		public:
 			/**
 			 * Constructor
@@ -67,27 +62,25 @@ namespace Graphic
 			 * @version	22/01/2009
 			 * @param	const SpritePack& pSpritePackOriginal, original spritepack
 			 */
-			SpritePack(const SpritePack& pSpritePackOriginal);
+			SpritePack( const SpritePack& pSpritePackOriginal );
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/08/2008
-			 * @version	20/05/2009
-			 * @param	const std::string&	pFileName		, name of the file that contains the spritepack data
-			 * @param	ImageLoader*		pImageLoader	, imageLoader responsable for saving the sprites
+			 * @version	19/10/2011
+			 * @param	const std::string& pFileName, name of the file that contains the spritepack data
 			 */
-			SpritePack(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			SpritePack( const std::string& pFileName );
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	11/08/2008
-			 * @version	21/06/2009
-			 * @param	Core::File&		pFile			, file previously opened that contains the spritepack data
-			 * @param	ImageLoader*	pImageLoader	, imageLoader responsable for saving the sprites
+			 * @version	19/10/2011
+			 * @param	Core::File& pFile, file previously opened that contains the spritepack data
 			 */
-			SpritePack(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			SpritePack( Core::File& pFile );
 			/**
 			 * Destructor
 			 *
@@ -111,7 +104,7 @@ namespace Graphic
 			 * @version	21/06/2009
 			 * @param	const Sprite& pSprite , sprite that will be inserted into the package
 			 */
-			void add(const Sprite& pSprite);
+			void add( const Sprite& pSprite );
 			/**
 			 * Method that inserts a sprite into the spritepack in a given position
 			 *
@@ -121,7 +114,7 @@ namespace Graphic
 			 * @param	const Sprite&	pSprite	, sprite that will be inserted into the package
 			 * @param	const int&		pPos	, position that the sprite will be inserted
 			 */
-			void add(const Sprite& pSprite,const int& pPos);
+			void add( const Sprite& pSprite, const int& pPos );
 			/**
 			 * Method that removes a sprite from the spritepack
 			 *
@@ -133,7 +126,7 @@ namespace Graphic
 			 * 			This method will try to remove the sprite at the given index,
 			 * if the index is out ou bounds, this method does nothing
 			 */
-			void remove(const int& pPos);
+			void remove( const int& pPos );
 			/**
 			 * Method that removes a sprite from the spritepack given its group and index
 			 *
@@ -147,7 +140,7 @@ namespace Graphic
 			 * If there's more than 1 sprite with the given group and index, this method will just remove one of them.
 			 * If no sprite is found, them this method does nothing
 			 */
-			void remove(const int& pGroup, const int& pIndex);
+			void remove( const int& pGroup, const int& pIndex );
 			/**
 			 * Method that returns the number of sprites in the spritepack
 			 *
@@ -170,7 +163,7 @@ namespace Graphic
 			 * 			This Method tries to find the requested sprite and returns its index,
 			 * if the sprited couldn't be localized then this method returns -1
 			 */
-			int getSpriteRealIndex(const int& pGroup,const int& pIndex) const;
+			int getSpriteRealIndex( const int& pGroup, const int& pIndex ) const;
 			/**
 			 * Method that sets a global offset to all sprites in the spritepack
 			 *
@@ -179,7 +172,7 @@ namespace Graphic
 			 * @version	04/05/2011
 			 * @param	const Core::Point& pOffset, offset
 			 */
-			void setGlobalOffset(const Core::Point& pOffset);
+			void setGlobalOffset( const Core::Point& pOffset );
 			/**
 			 * Method that takes this color and makes it transparent for all the images in the spritesheet
 			 *
@@ -188,7 +181,7 @@ namespace Graphic
 			 * @version	03/06/2011
 			 * @param	const Color& pColor, the color that will be converted in transparent
 			 */
-			void setAlphaMask(const Color& pColor);
+			void setAlphaMask( const Color& pColor );
 			/**
 			 * Method that removes all transparent borders from all sprites in the pack
 			 *
@@ -211,7 +204,7 @@ namespace Graphic
 			 * 			This method tries to get the requested sprite, but if the sprite requested is out of bounds
 			 * this method returns an empty sprite
 			 */
-			Sprite&	getSprite(const int& pPos);
+			Sprite&	getSprite( const int& pPos );
 			/**
 			 * Method that returns the sprite of the requested position
 			 *
@@ -224,7 +217,7 @@ namespace Graphic
 			 * 			This method tries to get the requested sprite, but if the sprite requested is out of bounds
 			 * this method returns an empty sprite.
 			 */
-			const Sprite& getSprite(const int& pPos) const;
+			const Sprite& getSprite( const int& pPos ) const;
 			/**
 			 * Method that returns the sprite requested by its group and index
 			 *
@@ -235,7 +228,7 @@ namespace Graphic
 			 * @param	const int& pIndex, sprite's index
 			 * @return	Sprite&
 			 */
-			Sprite&	getSprite(const int& pGroup,const int& pIndex);
+			Sprite&	getSprite( const int& pGroup, const int& pIndex );
 			/**
 			 * Method that returns the sprite requested by its group and index
 			 *
@@ -246,7 +239,7 @@ namespace Graphic
 			 * @param	const int& pIndex, sprite's index
 			 * @return	const Sprite&
 			 */
-			const Sprite& getSprite(const int& pGroup,const int& pIndex) const;
+			const Sprite& getSprite( const int& pGroup, const int& pIndex ) const;
 			/**
 			 * Method that sets the global palette
 			 *
@@ -256,7 +249,7 @@ namespace Graphic
 			 * @param	Palette* pPalette, pointer tho the global palette
 			 * @todo	colocar a parada bacana aqui se vai liberar a memória e talz
 			 */
-			void setGlobalPalette(Palette* pPalette);
+			void setGlobalPalette( Palette* pPalette );
 			/**
 			 * Method that applies the global palette to all sprites in the spritepack
 			 *
@@ -265,7 +258,7 @@ namespace Graphic
 			 * @version	23/01/2009
 			 * @param	const bool& pForce, if false this method will just swap the palettes of the sprites that dont have a color palette
 			 */
-			void applyGlobalPalette(const bool& pForce = false);
+			void applyGlobalPalette( const bool& pForce = false );
 			/**
 			 * Método para criar uma paleta de cores global para o pacote de sprites
 			 *
@@ -279,20 +272,20 @@ namespace Graphic
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/08/2008
 			 * @version	07/08/2009
-			 * @param	const std::string&	pFileName		, name of the file that will store the spritepack
-			 * @param	ImageLoader*		pImageLoader	, imageLoader responsable for saving the sprites
+			 * @param	const std::string& pFileName	, name of the file that will store the spritepack
+			 * @param	const std::string& pFormat		, imageLoader responsable for saving the sprites
 			 */
-			virtual void save(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void save( const std::string& pFileName, const std::string& pFormat );
 			/**
 			 * Method that saves the spritepak into a previously opened file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/08/2008
 			 * @version	07/01/2011
-			 * @param	Core::File&		pFile			, reference to the file that will store the spritepack
-			 * @param	ImageLoader*	pImageLoader	, imageLoader responsable for saving the sprites
+			 * @param	Core::File&			pFile	, reference to the file that will store the spritepack
+			 * @param	const std::string&	pFormat	, imageLoader responsable for saving the sprites
 			 */
-			virtual void save(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void save( Core::File& pFile, const std::string& pFormat );
 			/**
 			 * Method that loads the spritepack from a file
 			 *
@@ -300,9 +293,8 @@ namespace Graphic
 			 * @since	25/08/2008
 			 * @version	07/01/2011
 			 * @param	const std::string&	pFileName		, the name of the file that stores the spritepack data
-			 * @param	ImageLoader*		pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			virtual void load(const std::string& pFileName, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void load( const std::string& pFileName );
 			/**
 			 * Método para carregar os sprites de um arquivo já aberto
 			 *
@@ -310,9 +302,8 @@ namespace Graphic
 			 * @since	25/08/2008
 			 * @version	21/06/2009
 			 * @param	Core::File&		pFile			, the name of the file that stores the spritepack data
-			 * @param	ImageLoader*	pImageLoader	, imageLoader responsable for saving the sprites
 			 */
-			virtual void load(Core::File& pFile, const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void load( Core::File& pFile );
 			/**
 			 * Operator that access the spritepack and returns the sprite of the requested position
 			 *
@@ -322,7 +313,7 @@ namespace Graphic
 			 * @param	const int& pPos, the position of the requested sprite
 			 * @return	Sprite&
 			 */
-			Sprite& operator [](const int& pPos);
+			Sprite& operator []( const int& pPos );
 			/**
 			 * Operator that access the spritepack and returns the sprite of the requested position
 			 *
@@ -332,7 +323,7 @@ namespace Graphic
 			 * @param	const int& pPos, the position of the requested sprite
 			 * @return	const Sprite&
 			 */
-			const Sprite& operator [](const int& pPos) const;
+			const Sprite& operator []( const int& pPos ) const;
 			/**
 			 * Operator that access the spritepack and returns the requested sprite
 			 *
@@ -343,7 +334,7 @@ namespace Graphic
 			 * @param	const int& pIndex, the sprite's index
 			 * @return	Sprite&
 			 */
-			Sprite& operator ()(const int& pGroup,const int& pIndex);
+			Sprite& operator ()( const int& pGroup, const int& pIndex );
 			/**
 			 * Operator that access the spritepack and returns the requested sprite
 			 *
@@ -354,7 +345,7 @@ namespace Graphic
 			 * @param	const int& pIndex, the sprite's index
 			 * @return	const Sprite&
 			 */
-			const Sprite& operator ()(const int& pGroup,const int& pIndex) const;
+			const Sprite& operator ()( const int& pGroup, const int& pIndex ) const;
 			/**
 			 * Operator that returns true if the 2 spritepacks have the same values
 			 *
@@ -363,7 +354,7 @@ namespace Graphic
 			 * @version	24/01/2011
 			 * @param	const SpritePack& pSpritePack
 			 */
-			void operator =(const SpritePack& pSpritePack);
+			void operator =( const SpritePack& pSpritePack );
 			/**
 			 * Convert all sprites to the display format, for fast drawing
 			 *
@@ -372,6 +363,11 @@ namespace Graphic
 			 * @version	14/06/2011
 			 */
 			void convertToDisplayFormat();
+		protected:
+			std::vector<Sprite>	mSprites;			/**<< Vector will all sprites*/
+			Palette*			mGlobalPalette;		/**<< The global color table*/
+			static Sprite*		mNotFound;			/**<< Empty sprite that is returned every time an unknown sprited is requested*/
+			bool				mPalLinked;			/**<< True if the palette is linked, false otherwise*/
 	};
 }}
 #endif

@@ -387,7 +387,29 @@ namespace Graphic
 			 * @version	14/06/2011
 			 */
 			virtual void convertToDisplayFormat() = 0;
-			virtual void load(Core::File& pFile, const int& pDataLength) = 0;
+			/**
+			 * Method that loads the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	14/06/2011
+			 * @version	14/06/2011
+			 * @param	Core::File&	pFile		, the reference to the file that contains the image data
+			 * @param	const int&	pDataLength	, the length of the image data in bytes
+			 */
+			virtual void load( Core::File& pFile, const int& pDataLength ) = 0;
+			/**
+			 * Method that saves the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	19/10/2011
+			 * @version	19/10/2011
+			 * @param	Core::File&			pFile	, the reference to the file that will receive the image
+			 * @param	const std::string&	pFormat , the format that the image will be saved, ( the extension, with the dot )
+			 * @example
+			 *			Image a;
+			 *			a.load( file, ".png" );
+			 */
+			virtual void save( Core::File& pFile, const std::string& pFormat ) = 0;
 	};
 }}
 #endif

@@ -229,20 +229,20 @@ namespace Graphic
 
 			Image::load( pFile, header.getSizeOfData() );
 		}
-		catch(Core::Exception& exception)
+		catch( Core::Exception& exception )
 		{
-			header.returnFilePosition(pFile);
-			raiseGraphicExceptionE("Sprite::load(pFile): Error loading the Sprite.",exception);
+			header.returnFilePosition( pFile );
+			raiseGraphicExceptionE("Sprite::load(pFile): Error loading the Sprite.", exception );
 		}
 	}
 
-	void Sprite::save(const std::string& pSpriteName,const ImageLoader& pImageLoader)
+	void Sprite::save( const std::string& pSpriteName, const std::string& pFormat )
 	{
-		Core::File file(pSpriteName,std::ios::out | std::ios::binary);
+		Core::File file( pSpriteName, std::ios::out | std::ios::binary );
 
-		if(file.is_open())
+		if( file.is_open() )
 		{
-			save(file,pImageLoader);
+			save( file, pFormat );
 		}
 		else
 		{
@@ -250,18 +250,21 @@ namespace Graphic
 		}
 	}
 
-	void Sprite::save(Core::File& pFile,const ImageLoader& pImageLoader)
+	void Sprite::save( Core::File& pFile, const std::string& pFormat )
 	{
 		SpriteHeader header;
 		try
 		{
+			std::streampos pos1;
+			std::streampos pos2;
 			//escreve o header vazio...
 			header.save(pFile);
-			std::streampos pos1 = pFile.tellp();
+			pos1 = pFile.tellp();
 
-			pImageLoader.save(static_cast<Image&>(*this), pFile);
+			//pImageLoader.save(static_cast<Image&>(*this), pFile);
+			Image::save( pFile, pFormat );
 
-			std::streampos pos2 = pFile.tellp();
+			pos2 = pFile.tellp();
 
 			header.returnFilePosition(pFile);
 

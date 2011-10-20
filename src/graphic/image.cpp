@@ -445,13 +445,36 @@ namespace Graphic
 		mImage->load( pFile, pDataLength );
 	}
 
-	void Image::save( const std::string& pFileName, const ImageLoader& pImageLoader )
+	void Image::save( const std::string& pFileName, const std::string& pFormat )
 	{
-		pImageLoader.save( *this, pFileName );
+		Core::File file( pFileName, std::ios::out | std::ios::binary );
+
+		if( file.is_open() )
+		{
+			save( file, pFormat );
+		}
+		file.close();
+		//pImageLoader.save( *this, pFileName );
 	}
 
-	void Image::save( Core::File& pFile, const ImageLoader& pImageLoader )
+	void Image::save( Core::File& pFile, const std::string& pFormat )
 	{
-		pImageLoader.load (*this, pFile );
+		if( pFile.is_open() )
+		{
+			try
+			{
+				mImage->save( pFile, pFormat );
+			}
+			catch( Core::Exception& pException )
+			{
+				raiseGraphicExceptionE( "Error saving the image.", pException );
+			}
+		}
+		else
+		{
+			raiseGraphicException( "Error saving the image. The File must be open before calling this method." );
+		}
+
+		//pImageLoader.load (*this, pFile );
 	}
 }}

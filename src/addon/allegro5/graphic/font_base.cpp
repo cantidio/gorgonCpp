@@ -3,7 +3,6 @@
 #include <core/file.hpp>
 #include <sstream>
 
-
 namespace Gorgon	{
 namespace Allegro5	{
 namespace Graphic
@@ -23,8 +22,6 @@ namespace Graphic
 
 	void FontBase::load( const std::string& pFileName, const int& pSize )
 	{
-		printf( "blabla\n" );
-
 		const int flags = al_get_new_bitmap_flags();
 		al_set_new_bitmap_flags( ALLEGRO_VIDEO_BITMAP );
 

@@ -12,7 +12,7 @@ namespace Addon
 		const Graphic::Color&	pBGCol
 	)
 	{
-		unsigned int i,j,width = 0,height = 0;
+		int i,j,width = 0,height = 0;
 		for(i = pPosition.getY(); i < pImage.getHeight(); ++i)
 		{
 			for(j = pPosition.getX(); j < pImage.getWidth(); ++j)
@@ -63,7 +63,7 @@ namespace Addon
 	)
 	{
 		int group, index;
-		int x, y;
+		//int x, y;
 		Core::Point pos;
 		Graphic::Image imageSheet = pImageSheet;
 

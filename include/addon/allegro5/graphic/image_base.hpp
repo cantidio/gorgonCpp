@@ -368,6 +368,19 @@ namespace Graphic
 			 * @param	const int&			pDataLength	, the length of the image data
 			 */
 			virtual void load( Gorgon::Core::File& pFile, const int& pDataLength );
+			/**
+			 * Method that saves the image
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	19/10/2011
+			 * @version	19/10/2011
+			 * @param	Core::File&			pFile	, the reference to the file that will receive the image
+			 * @param	const std::string&	pFormat , the format that the image will be saved, ( the extension, with the dot )
+			 * @example
+			 *			Image a;
+			 *			a.load( file, ".png" );
+			 */
+			virtual void save( Core::File& pFile, const std::string& pFormat );
 		protected:
 			/**
 			 * Method that applies the alplha mask into the Image

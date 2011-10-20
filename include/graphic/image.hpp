@@ -49,13 +49,6 @@ namespace Graphic
 	 */
 	class Image
 	{
-		protected:
-			ImageBase*	mImage;			/**<< the image data*/
-			Palette*	mPalette;		/**<< Pointer to the color palette, NULL if the image dont have one*/
-			bool		mFreeImage;		/**<< if true the class will destroy the image as requested*/
-			bool		mFreePalette;	/**<< if true the mPalette will be deleted when need by the class*/
-			void applyAsTarget();
-			friend class System;
 		public:
 			/**
 			 * Constructor
@@ -74,7 +67,7 @@ namespace Graphic
 			 * @param	ImageBase*		pImage		, pointer to the imageBase
 			 * @param	const bool&*	FreeSource	, if true the class will free the image when needed
 			 */
-			Image(ImageBase* pImage, const bool& pFreeSource);
+			Image( ImageBase* pImage, const bool& pFreeSource );
 			/**
 			 * Constructor
 			 *
@@ -101,7 +94,7 @@ namespace Graphic
 			 * @version	27/05/2011
 			 * @param	const Image& pImage, original image
 			 */
-			Image(const Image& pImage);
+			Image( const Image& pImage );
 			/**
 			 * Constructor
 			 *
@@ -109,19 +102,18 @@ namespace Graphic
 			 * @since	20/01/2009
 			 * @version	26/05/2011
 			 * @param	const std::string& pFileName	, the name of the image to be loaded
-			 * @param	const ImageLoader& pImageLoader , the imageLoader
 			 */
-			Image(const std::string& pFileName);
+			Image( const std::string& pFileName );
 			/**
 			 * Constructor
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	26/05/2011
-			 * @param	Core::File&			pFile			, the file where the image is stored
-			 * @param	const ImageLoader&	pImageLoader	, the imageLoader
+			 * @param	Core::File&	pFile		, the file where the image is stored
+			 * @param	const int&	pDataLength	, the length of the data
 			 */
-			Image(Core::File& pFile, const int& pDataLength);
+			Image( Core::File& pFile, const int& pDataLength );
 			/**
 			 * Método destrutor
 			 *
@@ -157,7 +149,7 @@ namespace Graphic
 			 * @param	ImageBase *pImage		, pointer to the ImageBase
 			 * @param	const bool& pFreeSource	, if true the class will free the ImageBase when needed
 			 */
-			void setImageBase(ImageBase* pImage, const bool& pFreeSource);
+			void setImageBase( ImageBase* pImage, const bool& pFreeSource );
 			/**
 			 * Method that sets the ImageBase of the Image
 			 *
@@ -166,7 +158,7 @@ namespace Graphic
 			 * @version	26/05/2011
 			 * @param	const ImageBase& pImage, reference to the ImageBase that will be cloned and attached to the image
 			 */
-			void setImageBase(const ImageBase& pImage);
+			void setImageBase( const ImageBase& pImage );
 			/**
 			 * Method that gets the ImageBase of the image
 			 *
@@ -185,7 +177,7 @@ namespace Graphic
 			 * @param	Palette *pPalette			, pointer to the color palette
 			 * @param	const bool& pFreeSource		, if true the class will free the palette in its destructor
 			 */
-			void setPalette(Palette *pPalette, const bool& pFreeSource);
+			void setPalette( Palette *pPalette, const bool& pFreeSource );
 			/**
 			 * Method that sets the color palette of the image
 			 *
@@ -196,7 +188,7 @@ namespace Graphic
 			 * @details
 			 *			This method clones the palette into the image
 			 */
-			void setPalette(const Palette& pPalette);
+			void setPalette( const Palette& pPalette );
 			/**
 			 * Method that returns the image internal palette
 			 *
@@ -259,7 +251,7 @@ namespace Graphic
 			 * @version	27/05/2011
 			 * @param	const Color& pColor, the color that will be converted in transparent
 			 */
-			void setAlphaMask(const Color& pColor);
+			void setAlphaMask( const Color& pColor );
 			/**
 			 * Method that returns the transparent color of the image
 			 *
@@ -287,7 +279,7 @@ namespace Graphic
 			 * @param	const Core::Point&	pPosition, the position of the pixel
 			 * @return	Color
 			 */
-			Color getPixel(const Core::Point& pPosition) const;
+			Color getPixel( const Core::Point& pPosition ) const;
 
 			void lock();
 			void unlock();
@@ -301,7 +293,7 @@ namespace Graphic
 			 * @version	26/05/2011
 			 * @param	const Color& pColor, the color to paint the image
 			 */
-			void clear(const Color& pColor);
+			void clear( const Color& pColor );
 			/**
 			 * Method that copies a rectangular area of this image to the TargetImage
 			 *
@@ -313,7 +305,7 @@ namespace Graphic
 			 * @param	const int& pWidth					, the width of the cut in the image
 			 * @param	const int& pHeight					, the height of the cut in the image
 			 */
-			void blit(const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight) const;
+			void blit( const Core::Point& pPosition, const Core::Point& pSourcePosition, const int& pWidth, const int& pHeight ) const;
 			/**
 			 * Method that draws the image in the requested position into the current target Image
 			 *
@@ -324,7 +316,7 @@ namespace Graphic
 			 *
 			 * @see		Graphic::setTargetImage
 			 */
-			void draw(const Core::Point& pPosition) const;
+			void draw( const Core::Point& pPosition ) const;
 			/**
 			 * Method that draws the image in the requested position and mirroring
 			 *
@@ -337,7 +329,7 @@ namespace Graphic
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
 			 */
-			void draw(const Core::Point& pPosition, const Mirroring& pMirroring) const; //drawFlip
+			void draw( const Core::Point& pPosition, const Mirroring& pMirroring ) const; //drawFlip
 			/**
 			 * Method that draws the image in the requested position, and angle
 			 *
@@ -409,7 +401,7 @@ namespace Graphic
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
 			 */
-			void draw(const Core::Point& pPosition, const Color& pTint) const;//drawTinted
+			void draw( const Core::Point& pPosition, const Color& pTint ) const;//drawTinted
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color
 			 *
@@ -423,7 +415,7 @@ namespace Graphic
 			 * @see		Graphic::setTargetImage
 			 * @see		Graphic::Mirroring
 			 */
-			void draw(const Core::Point& pPosition, const Color& pTint, const Mirroring& pMirroring) const;//drawTinted
+			void draw( const Core::Point& pPosition, const Color& pTint, const Mirroring& pMirroring ) const;//drawTinted
 			/**
 			 * Method that draws the image and multiplies all colors in the image with the given color and angle
 			 *
@@ -483,10 +475,10 @@ namespace Graphic
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	20/01/2009
 			 * @version	13/12/2009
-			 * @param	const Image& pImage, imagem a se comparar
+			 * @param	const Image& pImage, image to compare to
 			 * @return	bool
 			 */
-			bool operator ==(const Image& pImage) const;
+			bool operator ==( const Image& pImage ) const;
 			/**
 			 * Operator that receives an Image and clone it to this one
 			 *
@@ -495,7 +487,7 @@ namespace Graphic
 			 * @version	26/05/2011
 			 * @param	const ImageAllegro& pImage, the source image
 			 */
-			void operator =(const Image& pImage);
+			void operator =( const Image& pImage );
 			/**
 			 * Convert the current image to the display format, for fast drawing
 			 *
@@ -509,41 +501,48 @@ namespace Graphic
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	07/08/2009
+			 * @version	14/06/2011
 			 * @param	const std::string&	pFileName		, the name of the image file
-			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
 			 */
-			virtual void load(const std::string& pFileName);
+			virtual void load( const std::string& pFileName );
 			/**
 			 * Method that loads the image from a file previously opened
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	07/08/2009
-			 * @param	File&				pFile			, file previously opened
-			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
+			 * @version	14/06/2011
+			 * @param	Core::File&	pFile		, file previously opened
+			 * @param	const int&	pDataLength	, the length of the image data
 			 */
-			virtual void load(Core::File& pFile, const int& pDataLength);
+			virtual void load( Core::File& pFile, const int& pDataLength );
 			/**
 			 * Method that saves the image in a file
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	21/06/2009
-			 * @param	const string& pSpriteName, the name of the image file
-			 * @param	const ImageLoader& pImageLoader, the imageLoader
+			 * @version	18/10/2011
+			 * @param	const std::string& pSpriteName	, the name of the image file
+			 * @param	const std::string& pFormat		, the format of the image( the extension of the file, including the dot )
 			 */
-			virtual void save(const std::string& pFileName,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void save( const std::string& pFileName, const std::string& pFormat );
 			/**
 			 * Method that saves the image in a file previously opened
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	07/08/2008
-			 * @version	21/06/2009
-			 * @param	Core::File&			pFile			, file previously opened
-			 * @param	const ImageLoader&	pImageLoader	, the ImageLoader
+			 * @version	18/10/2011
+			 * @param	Core::File&			pFile	, file previously opened
+			 * @param	const std::string&	pFormat	, the format of the image( the extension of the file, including the dot )
 			 */
-			virtual void save(Core::File& pFile,const ImageLoader& pImageLoader = ImageLoader::getLoader());
+			virtual void save( Core::File& pFile, const std::string& pFormat );
+		protected:
+			ImageBase*	mImage;			/**<< the image data*/
+			Palette*	mPalette;		/**<< Pointer to the color palette, NULL if the image dont have one*/
+			bool		mFreeImage;		/**<< if true the class will destroy the image as requested*/
+			bool		mFreePalette;	/**<< if true the mPalette will be deleted when need by the class*/
+
+			void applyAsTarget();
+			friend class System;
 	};
 }}
 #endif
