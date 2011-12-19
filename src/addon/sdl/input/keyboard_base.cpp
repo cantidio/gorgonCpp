@@ -14,12 +14,12 @@ namespace Addon
 		//SDL_WM_GrabInput(SDL_GRAB_ON);
 	//	mModState = new SDLMod;
 
-		SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
+		SDL_EnableKeyRepeat( SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL );
 		//SDL_EventState(SDL_ENABLE , SDL_KEYDOWN);
 		//SDL_EventState(SDL_ENABLE , SDL_KEYUP);
 
 		mState = NULL;
-		if(isOpened())//SDL_WM_GrabInput( SDL_GRAB_QUERY ) == SDL_GRAB_ON)
+		if( isOpened() )//SDL_WM_GrabInput( SDL_GRAB_QUERY ) == SDL_GRAB_ON)
 		{
 			mKey[Input::Key::A]				= SDLK_a;
 			mKey[Input::Key::B]				= SDLK_b;
@@ -147,28 +147,28 @@ namespace Addon
 	void KeyboardBase::update()
 	{
 		SDL_PumpEvents();
-		mState		= SDL_GetKeyState(NULL);//SDL1.2
+		mState		= SDL_GetKeyState( NULL );//SDL1.2
 		//mState		= SDL_GetKeyboardState(NULL);//SDL1.3
 		mModState	= SDL_GetModState();
 	}
 
-	Input::Key KeyboardBase::getKey(const int& pKeyValue) const
+	Input::Key KeyboardBase::getKey( const int& pKeyValue ) const
 	{
-		switch(pKeyValue)
+		switch( pKeyValue )
 		{
 			case Input::Key::LEFT_CONTROL:	case Input::Key::RIGHT_CONTROL:
 			case Input::Key::LEFT_SHIFT:	case Input::Key::RIGHT_SHIFT:
 			case Input::Key::LEFT_ALT:		case Input::Key::RIGHT_ALT:
 			case Input::Key::CAPS_LOCK:		case Input::Key::NUM_LOCK:
-				return  Input::Key(pKeyValue, (((mModState & pKeyValue) == pKeyValue) ? true : false));
+				return  Input::Key( pKeyValue, ( ( ( mModState & pKeyValue ) == pKeyValue ) ? true : false ) );
 			default:
-				if(mState != NULL)
+				if( mState != NULL )
 				{
-					return  Input::Key(pKeyValue, (mState[mKey[pKeyValue]] ? true : false));
+					return  Input::Key( pKeyValue, ( mState[mKey[pKeyValue]] ? true : false ) );
 				}
 				else
 				{
-					return Input::Key(pKeyValue,false);
+					return Input::Key( pKeyValue, false );
 				}
 		}
 	}

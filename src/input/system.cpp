@@ -5,8 +5,7 @@
 #include <input/joystick_base_null.hpp>
 #include <core/log.hpp>
 
-namespace Gorgon{
-namespace Input
+namespace Gorgon { namespace Input
 {
 	System* System::mSingleton = NULL;
 	System::System()

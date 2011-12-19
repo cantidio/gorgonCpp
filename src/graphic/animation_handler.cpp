@@ -10,31 +10,32 @@ namespace Graphic
 		reset();
 	}
 
-	AnimationHandler::AnimationHandler(SpritePack& pSpritePack,AnimationPack& pAnimationPack)
+	AnimationHandler::AnimationHandler(SpritePack& pSpritePack, AnimationPack& pAnimationPack)
 	{
-		setSpritePack(pSpritePack);
-		setAnimationPack(pAnimationPack);
+		setSpritePack( pSpritePack );
+		setAnimationPack( pAnimationPack );
 	}
 
-	AnimationHandler::AnimationHandler(const AnimationHandler& pOrig)
+	AnimationHandler::AnimationHandler( const AnimationHandler& pOrig )
 	{
-		setSpritePack(pOrig.getSpritePack());
-		setAnimationPack(pOrig.getAnimationPack());
+		setSpritePack( pOrig.getSpritePack() );
+		setAnimationPack( pOrig.getAnimationPack() );
 
 		mAnimationOn	= pOrig.mAnimationOn;
 		mFrameOn		= pOrig.mFrameOn;
 		mLoopOn			= pOrig.mLoopOn;
 		mIsPaused		= pOrig.mIsPaused;
 		mTimeOn			= pOrig.mTimeOn;
+		mIsRunning		= pOrig.mIsRunning;
 	}
 
-	void AnimationHandler::setSpritePack(SpritePack& pSpritePack)
+	void AnimationHandler::setSpritePack( SpritePack& pSpritePack )
 	{
 		mSpritePack=&pSpritePack;
 		reset();
 	}
 
-	void AnimationHandler::setAnimationPack(AnimationPack& pAnimationPack)
+	void AnimationHandler::setAnimationPack( AnimationPack& pAnimationPack )
 	{
 		mAnimationPack=&pAnimationPack;
 		reset();
@@ -58,12 +59,16 @@ namespace Graphic
 		out << "FrameOn:     " << mFrameOn			<< std::endl;
 		out << "TimeOn:      " << mTimeOn			<< std::endl;
 		out << "LoopOn:      " << mLoopOn			<< std::endl;
+		out << "IsPause:     " << (mIsPaused ? "true" : "false")	<< std::endl;
+		out << "IsRunning:   " << (mIsRunning ? "true" : "false")	<< std::endl;
 
 		return Core::String(out.str());
 	}
 
 	void AnimationHandler::reset()
 	{
+		mIsPaused		= false;
+		mIsRunning		= true;
 		mAnimationOn	= 0;
 		mFrameOn		= 0;
 		mTimeOn			= 0;
@@ -80,11 +85,11 @@ namespace Graphic
 		mIsPaused = false;
 	}
 
-	void AnimationHandler::jumpToFrame(const int& pFrameIndex)
+	void AnimationHandler::jumpToFrame( const int& pFrameIndex )
 	{
-		if(mAnimationPack != NULL)
+		if( mAnimationPack != NULL )
 		{
-			if(pFrameIndex < (*mAnimationPack)[mAnimationOn].getSize())
+			if( pFrameIndex < (*mAnimationPack)[mAnimationOn].getSize() )
 			{
 				mTimeOn		= 0;
 				mLoopOn		= 0;
@@ -103,16 +108,16 @@ namespace Graphic
 		}
 	}
 
-	void AnimationHandler::jumpToFrame(const int& pFrameGroup,const int& pFrameIndex)
+	void AnimationHandler::jumpToFrame( const int& pFrameGroup, const int& pFrameIndex )
 	{
-		if(mAnimationPack != NULL)
+		if( mAnimationPack != NULL )
 		{
 			register int i;
 			Animation& animation = (*mAnimationPack)[mAnimationOn];
 
-			for(i = 0; i < animation.getSize(); ++i)
+			for( i = 0; i < animation.getSize(); ++i )
 			{
-				if(animation[i].getGroup() == pFrameGroup && animation[i].getIndex() == pFrameIndex)
+				if( animation[i].getGroup() == pFrameGroup && animation[i].getIndex() == pFrameIndex )
 				{
 					break;
 				}
@@ -129,11 +134,11 @@ namespace Graphic
 
 	void AnimationHandler::optimize()
 	{
-		if(mAnimationPack != NULL)
+		if( mAnimationPack != NULL )
 		{
-			if(mSpritePack != NULL)
+			if( mSpritePack != NULL )
 			{
-				mAnimationPack->optimize(*mSpritePack);
+				mAnimationPack->optimize( *mSpritePack );
 				reset();
 			}
 			else
@@ -224,49 +229,41 @@ namespace Graphic
 		}
 	}
 
-	bool AnimationHandler::isPlaying()
+	bool AnimationHandler::isPlaying() const
 	{
-		if(mAnimationPack != NULL)
-		{
-			if
-			(
-				mFrameOn	>= (*mAnimationPack)[mAnimationOn].getSize() - 1 &&
-				mTimeOn		>= (*mAnimationPack)[mAnimationOn][mFrameOn].getTime()
-			)
-			{
-				return false;
-			}
-			return true;
-		}
-		return false;
+		return mIsRunning;
 	}
 
-	void AnimationHandler::playByStep()
+	void AnimationHandler::logic()
 	{
-		if(mAnimationPack != NULL)
+		if( mIsPaused ) return;
+		if( mAnimationPack != NULL )
 		{
 			Animation&		animation	= (*mAnimationPack)[mAnimationOn];
 			AnimationFrame&	frame		= animation[mFrameOn];
 
-			if(frame.getTime() > 0)
+			mIsRunning = true;
+
+			if( frame.getTime() > 0 )
 			{
 				++mTimeOn;
 
-				if(frame.getTime() < mTimeOn)
+				if( frame.getTime() < mTimeOn ) //frame time is over
 				{
-					++mFrameOn;
 					mTimeOn = 0;
+					++mFrameOn;
 				}
-				if(animation.getSize() <= mFrameOn + 1 )
+				if( mFrameOn >= animation.getSize() ) //animation is over
 				{
-					if(animation.getLooping())
+					if( animation.getLooping() )
 					{
-						if(animation.getRepeatNumber() < 0)
+						if( animation.getRepeatNumber() < 0 )			//infinity
 						{
+							mIsRunning	= false;
 							mTimeOn		= 0;
 							mFrameOn	= animation.getLoopFrame();
 						}
-						else if(mLoopOn < animation.getRepeatNumber())
+						else if( mLoopOn < animation.getRepeatNumber() )
 						{
 							++mLoopOn;
 							mTimeOn		= 0;
@@ -274,7 +271,9 @@ namespace Graphic
 						}
 						else
 						{
-							//onFinish();
+							--mFrameOn;
+							mTimeOn		= 0;
+							mIsRunning	= false;
 						}
 					}
 				}

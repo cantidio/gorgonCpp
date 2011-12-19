@@ -10,7 +10,7 @@ namespace Graphic
 	SpritePack::SpritePack()
 	{
 		if( mNotFound == NULL )	mNotFound = new Sprite( Image( 1, 1 ) );
-		mGlobalPalette	= new Palette(256);
+		mGlobalPalette	= new Palette( 256 );
 		mPalLinked		= false;
 	}
 
@@ -24,23 +24,37 @@ namespace Graphic
 
 	SpritePack::SpritePack( const std::string& pFileName )
 	{
-		if( mNotFound == NULL )	mNotFound = new Sprite(Image(1,1));
+		if( mNotFound == NULL )	mNotFound = new Sprite( Image( 1, 1 ) );
 		load( pFileName );
 	}
 
 	SpritePack::SpritePack( Core::File& pFile )
 	{
-		if( mNotFound == NULL )	mNotFound = new Sprite(Image(1,1));
+		if( mNotFound == NULL )	mNotFound = new Sprite( Image( 1, 1 ) );
 		load( pFile );
 	}
 
 	SpritePack::~SpritePack()
 	{
-		if(!mPalLinked && mGlobalPalette)
+		if( !mPalLinked && mGlobalPalette )
 		{
 			delete mGlobalPalette;
 		}
 		mSprites.clear();
+	}
+
+	std::string SpritePack::describe()
+	{
+		std::stringstream out;
+		out << "Gorgon::Graphic::SpritePack::describe()" << std::endl;
+		out << "SpriteNumber: "	 << mSprites.size() << std::endl;
+		out << "globalPalette: " << (mGlobalPalette ? "true" : "false") << std::endl;
+
+		for( unsigned int i = 0; i < mSprites.size(); ++i )
+		{
+			out << mSprites[i].describe();
+		}
+		return out.str();
 	}
 
 	void SpritePack::setGlobalOffset( const Core::Point& pOffset )
@@ -53,9 +67,9 @@ namespace Graphic
 
 	void SpritePack::setAlphaMask( const Color& pColor )
 	{
-		for(register int i = getSize() - 1; i >=0 ;  --i)
+		for( register int i = getSize() - 1; i >= 0 ;  --i )
 		{
-			mSprites[i].setAlphaMask(pColor);
+			mSprites[i].setAlphaMask( pColor );
 		}
 	}
 

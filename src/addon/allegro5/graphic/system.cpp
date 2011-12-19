@@ -77,7 +77,7 @@ namespace Graphic
 		return new DisplayBase( pWindowTitle, pWidth, pHeight, pFullScreen, pResizeable );
 	}
 
-	void System::drawPixel( const Gorgon::Core::Point& pPosition,const  Gorgon::Graphic::Color& pColor )
+	void System::drawPixel( const Gorgon::Core::Point& pPosition, const  Gorgon::Graphic::Color& pColor )
 	{
 		al_put_pixel
 		(

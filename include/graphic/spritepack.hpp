@@ -90,6 +90,15 @@ namespace Graphic
 			 */
 			virtual ~SpritePack();
 			/**
+			 * Method that describes the animationpack
+			 *
+			 * @author	Cantídio Oliveira Fontes
+			 * @since	28/10/2011
+			 * @version	28/10/2011
+			 * @return	Core::String
+			 */
+			std::string describe();
+			/**
 			 * Method that sorts the sprites in the package
 			 *
 			 * @author	Cantidio Oliveira Fontes

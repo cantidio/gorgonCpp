@@ -57,8 +57,7 @@ Or an alternate version using unions (based on Harbison & Steele):
   }
  */
 
-namespace Gorgon{
-namespace Core
+namespace Gorgon { namespace Core
 {
 	/**
 	 * Classe responsável por lidar com arquivos em suma binários
@@ -87,7 +86,7 @@ namespace Core
 			 * @param	const std::string&		pFileName	, nome do arquivo a ser aberto
 			 * @param	std::ios_base::openmode	pMode		, modo de abertura do arquivo
 			 */
-			File(const std::string& pFileName,std::ios_base::openmode pMode);
+			File( const std::string& pFileName, std::ios_base::openmode pMode );
 			/**
 			 * Método Destrutor
 			 *

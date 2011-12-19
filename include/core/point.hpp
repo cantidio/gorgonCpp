@@ -42,7 +42,7 @@ namespace Core
 	 */
 	class Point
 	{
-		private:
+		protected:
 			/**
 			 * Position of the point in the x axis
 			 */
@@ -72,7 +72,7 @@ namespace Core
 			Point(const double&	pX, const double& pY);
 			/**
 			 * Copy Constructor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	05/10/2010
 			 * @version	05/10/2010
@@ -242,6 +242,7 @@ namespace Core
 			 * @return	bool
 			 */
 			bool operator == (const Point& pPoint) const;
+			//bool operator != (const Point& pPoint) const;
 			/**
 			 * Decrement operator
 			 *

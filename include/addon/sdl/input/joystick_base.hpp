@@ -42,8 +42,6 @@ namespace Addon
 	 */
 	class JoystickBase : public Input::JoystickBase
 	{
-		protected:
-			SDL_Joystick*	mJoystick; /**<< var that holds the SDL joystick*/
 		public:
 			/**
 			 * Constructor
@@ -53,7 +51,7 @@ namespace Addon
 			 * @version	06/05/2011
 			 * @param	const int& pIndex, the index of the joystick
 			 */
-			JoystickBase(const int& pIndex = 0);
+			JoystickBase( const int& pIndex = 0 );
 			/**
 			 * Destructor
 			 *
@@ -87,7 +85,7 @@ namespace Addon
 			 * @param	const int& pStick, the index of the stick
 			 * @return	Stick
 			 */
-			virtual Input::Stick getStick(const int& pStick) const;
+			virtual Input::Stick getStick( const int& pStick ) const;
 			/**
 			 * Method that returns the value of the button
 			 *
@@ -97,7 +95,9 @@ namespace Addon
 			 * @param	const int& pButton, the index of the button
 			 * @return	float
 			 */
-			virtual float getButton(const int& pButtonIndex) const;
+			virtual float getButton( const int& pButtonIndex ) const;
+		protected:
+			SDL_Joystick*	mJoystick; /**<< var that holds the SDL joystick*/
 	};
 }}}
 #endif

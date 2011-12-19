@@ -39,7 +39,7 @@ namespace Graphic
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	15/10/2008
-	 * @version	09/06/2009
+	 * @version	01/11/2011
 	 * @ingroup	Graphic
 	 */
 	class AnimationHandler
@@ -62,7 +62,7 @@ namespace Graphic
 			 * @param	SpritePack&		pSpritePack		, reference to the spritepack of the handler
 			 * @param	AnimationPack&	pAnimationPack	, reference to the animationpack of the handler
 			 */
-			AnimationHandler(SpritePack& pSpritePack,AnimationPack& pAnimationPack);
+			AnimationHandler( SpritePack& pSpritePack, AnimationPack& pAnimationPack );
 			/**
 			 * Copy Constructor
 			 *
@@ -71,7 +71,7 @@ namespace Graphic
 			 * @version	27/05/2009
 			 * @param	const AnimationHandler& pOrig , original obj
 			 */
-			AnimationHandler(const AnimationHandler& pOrig);
+			AnimationHandler( const AnimationHandler& pOrig );
 			/**
 			 * Method that sets the spritepack of the handler
 			 *
@@ -80,7 +80,7 @@ namespace Graphic
 			 * @version	27/05/2009
 			 * @param	SpritePack& pSpritePack, the spritepack to be used in the handler
 			 */
-			void setSpritePack(SpritePack& pSpritePack);
+			void setSpritePack( SpritePack& pSpritePack );
 			/**
 			 * Method that sets the animationpack of the handler
 			 *
@@ -89,7 +89,7 @@ namespace Graphic
 			 * @version	27/05/2009
 			 * @param	AnimationPack& pAnimationPack, the animationpack to be used in the handler
 			 */
-			void setAnimationPack(AnimationPack& pAnimationPack);
+			void setAnimationPack( AnimationPack& pAnimationPack );
 			/**
 			 * Method that returns the reference to the spritepack of the handler
 			 *
@@ -151,7 +151,7 @@ namespace Graphic
 			 * @details
 			 * 			This method will try to change to the requested frame, if the frame isn't found, then it will do nothing
 			 */
-			void jumpToFrame(const int& pFrameIndex);
+			void jumpToFrame( const int& pFrameIndex );
 			/**
 			 * Method that jumps to the requested frame of the current animation
 			 *
@@ -163,7 +163,7 @@ namespace Graphic
 			 *  @details
 			 * 			This method will try to change to the requested frame, if the frame isn't found, then it will do nothing
 			 */
-			void jumpToFrame(const int& pFrameGroup,const int& pFrameIndex);
+			void jumpToFrame( const int& pFrameGroup, const int& pFrameIndex );
 			/**
 			 * Method that optimizes the animationhandler frame access throught finding the correct indexes of the frames in the spritepack
 			 *
@@ -231,7 +231,7 @@ namespace Graphic
 			 * @param	const bool&	pForce				, if true his method will reset the timers and changes to the animation even if the requested animation is already playing,
 			 * if false, the method will just change the animation if the requested animation isn't playing
 			 */
-			void changeAnimation(const int& pAnimationNumber,const bool& pForce=false);
+			void changeAnimation( const int& pAnimationNumber, const bool& pForce = false );
 			/**
 			 * Method that changes the animation playing
 			 *
@@ -245,9 +245,9 @@ namespace Graphic
 			 */
 			void changeAnimation
 			(
-				const int& pGroup,
-				const int& pIndex,
-				const bool& pForce=false
+				const int&	pGroup,
+				const int&	pIndex,
+				const bool&	pForce = false
 			);
 			/**
 			 * Method that returns true if the animation is still playing
@@ -257,16 +257,15 @@ namespace Graphic
 			 * @version	09/06/2009
 			 * @return	bool
 			 */
-			bool isPlaying();
+			bool isPlaying() const;
 			/**
-			 * Method that executes one step of the animation
+			 * Method that executes one step logic of the animation
 			 *
 			 * @author	Cantídio Oliveira Fontes
 			 * @since	24/02/2009
-			 * @version	09/06/2009
-			 * @todo	rename this method, maybe runStep, playStep, logic,...
+			 * @version	01/11/2011
 			 */
-			void playByStep();
+			void logic();
 			/**
 			 * Method that returns the current sprite of the current frame of the current animation
 			 *
@@ -293,7 +292,7 @@ namespace Graphic
 				const Mirroring&	pMirroring
 			);
 			/**
-			 * Method that draws the animation current frame into a sprite with an angle and a mirroring multiplying the colors of the sprite the requested color 
+			 * Method that draws the animation current frame into a sprite with an angle and a mirroring multiplying the colors of the sprite the requested color
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	25/02/2009
@@ -305,18 +304,18 @@ namespace Graphic
 			 */
 			void draw
 			(
-				const Core::Point& pPosition,
-				const Color& pTint,
-				const float& pAngle,
-				const Mirroring& pMirroring
+				const Core::Point&	pPosition,
+				const Color&		pTint,
+				const float&		pAngle,
+				const Mirroring&	pMirroring
 			);
-			//virtual void onFinish();//?
 		protected:
 			int mAnimationOn;				/**<< The index of the animation playing*/
 			int	mTimeOn;					/**<< Actual time of the current frame*/
 			int mFrameOn;					/**<< Current frame of the current animation*/
 			int	mLoopOn;					/**<< Number of loops the current animação passed throught*/
-			bool mIsPaused;					/**<< True if the animation if paused*/
+			bool mIsPaused;					/**<< True if the animation is paused*/
+			bool mIsRunning;				/**<< True if the animation is running*/
 			SpritePack*	mSpritePack;		/**<< Pointer to the spritepack of the handler*/
 			AnimationPack* mAnimationPack;	/**<< Pointer to the animationpack of the handler*/
 	};

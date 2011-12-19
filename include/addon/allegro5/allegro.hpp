@@ -40,10 +40,10 @@ namespace Allegro5
 	 */
 	inline void setAddon()
 	{
-		Gorgon::Input::System::halt();
-		Gorgon::Graphic::System::halt();
+		Gorgon::Input::System::halt();		//close the input addon previously used
+		Gorgon::Graphic::System::halt();	//close the graphic addon previously used
 
-		Graphic::System::set();
-		Input::System::set();
+		Graphic::System::set();				//set the new graphic addon
+		Input::System::set();				//set the new input addon
 	}
 }}
